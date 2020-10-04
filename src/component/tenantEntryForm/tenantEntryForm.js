@@ -1,10 +1,10 @@
 import React from "react"
-import "./propertyEntryForm.css"
+
 import {  FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
-import {PropertyFormValidation} from "../../utility/validation/propertyEntryFormValidation"
+import {tenantEntryFormValidation} from "../../utility/validation/tenantEntryFormValidation.js"
 
-const PropertyEntry=()=>{
+const TenantEntry=()=>{
     return(
         <div>
                 <div className="PropertyFormEntry">
@@ -17,17 +17,20 @@ const PropertyEntry=()=>{
                               city: "",
                               provience: "",
                               country: "",
-                              phoneNo: "",
+                              
                             },
-                        property_type: "",
-                        property_price: "",
-                        property_status: "",
+                        tenant_phoneNo: "",
+                        tenant_firstName: "",
+                        tenant_middleName: "",
+                        tenant_lastName:"",
+                        tenant_email:"",
+                        
                     }}}
                     onSubmit={(values) => {
                        
                         console.log(values);
                     }}
-                    validationSchema={PropertyFormValidation}
+                    validationSchema={tenantEntryFormValidation}
                 >
                     {({
                         touched,
@@ -44,20 +47,85 @@ const PropertyEntry=()=>{
                                 <FormGroup className="entryForm">
                                     <div className="text-center">
 
-                                        <p className="text-white font-weight-bold">Property Entry Form</p>
+                                        <p className="text-white font-weight-bold"> <h3>Tenant Entry Form </h3></p>
                                     </div>
                                     <div> <Label className="text-white font-weight-bold" for="exampleCity">ID</Label></div>
+                                    <Input 
+                                    type="text"
+                                    placeholder="ID will be automatically Assigned"
+                                    > </Input>
                                     
                                     <div>
                                     {/* <div className="m-4"> */}
-                                    <div>
-                    <h3>Permanent Address </h3>
+                                    
+
+                  <div className="row ">
+                  <div className="mt-4 col-md-4">
+                    <Label for="exampleName">First Name</Label>
+                    <Input
+                      type="text"
+                      value={values.tenant_firstName}
+                      name="tenant_firstName"
+                      placeholder="Enter your firstName"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.tenant_firstName && errors.tenant_firstName && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.tenant_firstName}
+                      </span>
+                    )}
                   </div>
 
-                                
+                  <div className="mt-4 col-md-4">
+                    <Label for="exampleName">Middle Name</Label>
+                    <Input
+                      type="text"
+                      value={values.tenant_middleName}
+                      name="tenant_middleName"
+                      placeholder="Enter your middleName"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.tenant_middleName && errors.tenant_middleName && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.tenant_middleName}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="mt-4 col-md-4">
+                    <Label for="exampleName">Last Name</Label>
+                    <Input
+                      type="text"
+                      value={values.tenant_lastName}
+                      name="tenant_lastName"
+                      placeholder="Enter your lastName"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.tenant_lastName && errors.tenant_lastName && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.tenant_lastName}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
 
                   <div className="row m-3">
-
+                  <div>
+                                    <p className="bold"> Permanent Address </p>
+                  </div>
                   <div className="col-md-3">
                       <Label for="exampleName">Street</Label>
                       <Input
@@ -111,6 +179,31 @@ const PropertyEntry=()=>{
                     </div>
 
                     <div className="col-md-3">
+                      <Label for="exampleName">Country</Label>
+                      <Input
+                        type="text"
+                        value={
+                          values.address.permanent
+                            ? values.address.permanent.country
+                            : ""
+                        }
+                        name="address.permanent.ountry"
+                        placeholder="Enter your Country"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched?.address?.permanent?.country &&
+                        errors?.address?.permanent?.country && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors?.address?.permanent?.country}
+                          </span>
+                        )}
+                    </div>
+
+                    <div className="col-md-3">
                       <Label for="exampleSelect">ZipCode</Label>
                       <Input
                         type="text"
@@ -159,35 +252,51 @@ const PropertyEntry=()=>{
                             {errors?.address?.permanent?.country}
                           </span>
                         )}
-                    </div>
-                    <div className="col-md-3">
-                      <Label for="exampleName">Phone Number</Label>
+                    </div> 
+                  </div>
+                  <div className="col-md-3">
+                      <Label for="exampleName">Email</Label>
                       <Input
-                        type="number"
-                        value={
-                          values.address.permanent
-                            ? values.address.permanent.phoneNo
-                            : ""
-                        }
-                        name="address.permanent.phoneNo"
-                        placeholder="Enter Phone Number"
+                        type="email"
+                        value={values.tenant_email}
+                        
+                        name="tenant_email"
+                        placeholder="Enter Email"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      {touched?.address?.permanent?.phoneNo &&
-                        errors?.address?.permanent?.phoneNo && (
+                      {touched.tenant_email &&
+                        errors.tenant_email && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.address?.permanent?.phoneNo}
+                            {errors.tenant_email}
                           </span>
                         )}
                     </div>
+
+                  <div className="mt-4 col-md-4">
+                    <Label for="exampleName">Contact Number</Label>
+                    <Input
+                      type="number"
+                      value={values.tenant_phoneNo}
+                      name="tenant_phoneNo"
+                      placeholder="Enter your Contact Number"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.tenant_phoneNo && errors.tenant_phoneNo && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.tenant_phoneNo}
+                      </span>
+                    )}
                   </div>
-                </div>
-                                    
-                                    <button type="submit" onClick={handleSubmit}>Add</button>
+                </div> 
+                                    <button className="m-4"type="submit" onClick={handleSubmit}>Add New Tenant</button>
                                 </FormGroup>
                             </Form>
                         )}
@@ -200,4 +309,4 @@ const PropertyEntry=()=>{
     )
 }
 
-export default PropertyEntry
+export default TenantEntry

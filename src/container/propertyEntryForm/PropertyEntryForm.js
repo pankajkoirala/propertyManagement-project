@@ -1,5 +1,5 @@
 import React from "react"
-import PropertyEntryFormComponent from "../../component/PropertyEntryForm/PropertyEntryForm"
+import PropertyEntryFormComponent from "../../component/propertyEntryForm/propertyEntryForm.js"
 
 const PropertyEntry=()=>{
     return(
