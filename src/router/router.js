@@ -9,9 +9,9 @@ const RouterPage = () => {
     return (
             <Router>
                 <Switch>
-                <Route exact path="/" component={Homepage} />  
-                <Route exact path="/entry" component={PropertyEntry} />                    
-                    <PrivateRouter exact path="/login" component={LoginComponent} />
+                <PrivateRouter exact path="/" component={Homepage} />  
+                <PrivateRouter exact path="/entry" component={PropertyEntry} />                    
+                    <Route exact path="/login" component={LoginComponent} />
                 </Switch>
             </Router>
     )

@@ -1,0 +1,36 @@
+.loginform {
+    background-color: rgb(188, 195, 207);
+    padding: 20px;
+    border-radius: 10px;
+    height: 100%;
+    width: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: 80px;
+    transform: translate(-50% -50%);
+  }
+  .fulllogin {
+    background-image: url("https://s3.amazonaws.com/npl-cdn/static/blog/wp-content/uploads/2018/05/18142249/reflective-sunset-lake-tahoe_t20_1WNjlO-750x499.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .email {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .password {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  @media only screen and (max-width: 600px) {
+    .loginform {
+      height: auto;
+      width: auto;
+      margin: 100px;
+    }
+  }
+  .loginImg {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    align-items: center;
+  }
