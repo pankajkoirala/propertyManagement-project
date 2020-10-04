@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LoginComponent from "../component/login/login";
+import LoginComponent from "../container/login/login ";
 import PrivateRouter from "./privateRouter"
 import Homepage from "../container/homepage/homepage"
 import PropertyEntry from "../container/propertyEntryForm/PropertyEntryForm"

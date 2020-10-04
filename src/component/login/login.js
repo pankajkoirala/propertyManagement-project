@@ -14,7 +14,7 @@ const LoginComponent = (props) => {
                         password: "",
                     }}
                     onSubmit={(values) => {
-                       
+                       props.login(values)
                         console.log(values);
                     }}
                     validationSchema={LoginValidator}
