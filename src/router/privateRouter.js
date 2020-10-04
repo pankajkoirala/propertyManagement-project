@@ -8,8 +8,6 @@ let [status,setStatus]=useState(true)
  <Route
  {...rest}
  render={(props)=>status?<Component {...props}/>:<Redirect to="/"/>}/>
-
-
   )
 }
 export default PrivateRouter
