@@ -1,4 +1,5 @@
 import React from "react"
+import "./homepage.css"
 import Navbar from "../../shared/navbar"
 import{setLocalStorage} from "../../const/tokenStorage"
 import { Button, ButtonGroup } from 'reactstrap'; 
@@ -12,22 +13,24 @@ const Homepage=()=>{
         }, 1000);
     }
     return(
-        <div>
-        <div><Navbar/></div>
-       <button onClick={()=>logout()}>erase/logout</button>
+        <div className="bck-color">
+        {/* <div><Navbar/></div> */}
+       <button className="m-5"onClick={()=>logout()}>Logout</button>
 
         <div>
-<ButtonGroup size="lg">
-  <Button className="m-5"><Link to="/propertyentry"> Create Property</Link></Button><br/>
-  <Button className="m-5"><Link to="/tenantentry"> Create Tenant</Link></Button>
-  <Button className="m-5" ><Link to="/employeeentry"> Create Employee</Link></Button>
+<ButtonGroup size="lg" className="m-2 d-flex justify-content-around">
+<Link to="/propertyentry"><Button color="primary" size="lg" block className="buttonProperty"> Create Property</Button></Link>
+  <Link to="/tenantentry"><Button color="success" size="lg" block className="buttonProperty"> Create Tenant</Button> </Link>
+  <Link to="/employeeentry"><Button color="secondary" size="lg" block className="buttonProperty"> Create Employee</Button></Link>
 </ButtonGroup>
 </div>
+<br/>
+<br/>
 <div>
-<ButtonGroup className="m-5" size="lg">
-  <Button className="m-5">View Property</Button>
-  <Button className="m-5">View Tenant</Button>
-  <Button className="m-5">View Employee</Button>
+<ButtonGroup  size="lg" className=" d-flex justify-content-around">
+<Link to="/propertyview"><Button color="danger" size="lg" block className="buttonProperty" >View Property</Button></Link>
+<Link to="/tenantview"> <Button color="warning" size="lg" block className="buttonProperty">View Tenant</Button></Link>
+<Link to="/employeeview"><Button color="info" size="lg" block className="buttonProperty" >View Employee</Button></Link>
 </ButtonGroup>
 </div>
 </div>
