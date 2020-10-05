@@ -18,7 +18,7 @@ export const PropertyFormValidation = Yup.object().shape({
     .min(1, "Too Short")
     .max(50, "Too long")
     .required("Required"),
-    property_photo:Yup.string()    .required("Required Field"),
+  property_photo: Yup.string().required("Required Field"),
   country: Yup.string()
     .min(1, "Too Short")
     .max(50, "Too long")
