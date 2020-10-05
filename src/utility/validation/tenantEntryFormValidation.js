@@ -4,12 +4,10 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
 export const tenantEntryFormValidation = Yup.object().shape({
   
   tenant_firstName: Yup.string().required("Please enter First Name"),
-  tenant_middleName: Yup.string().required("Please enter  Middle Name"),
+  tenant_middleName: Yup.string(),
   tenant_lastName: Yup.string().required("Please enter Last Name"),
   tenant_photo: Yup.string().required("Please upload Photo"),
-  tenant_phoneNo: Yup.string()
-        .matches(phoneRegExp, "Phone number is not valid")
-        .required("Required Field"),
+  tenant_phoneNo: Yup.number().required("Required Field"),
         
   tenant_email: Yup.string().required("Please enter Email"),
   address: Yup.object({
@@ -25,9 +23,7 @@ export const tenantEntryFormValidation = Yup.object().shape({
         .min(1, "Too Short")
         .max(50, "Too long")
         .required("Required"),
-        ZipCode: Yup.string()
-       
-        .required("Required"),
+        ZipCode: Yup.number().required("Required"),
       country: Yup.string()
         .min(1, "Too Short")
         .max(50, "Too long")

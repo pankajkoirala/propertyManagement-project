@@ -1,0 +1,21 @@
+.buttonProperty {
+  padding: 50px;
+  transition: transform .5s;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.buttonProperty:hover {
+  -ms-transform: scale(1.5);
+  /* IE 9 */
+  -webkit-transform: scale(1.5);
+
+  transform: scale(1.5);
+}
+
+
+.bck-color {
+  background-color: rgb(214, 241, 241);
+  height: 800px;
+}

@@ -11,8 +11,8 @@ const TenantEntry=()=>{
             <div>
                 <Formik
                     initialValues={{
-                        address: {
-                            permanent: {
+                      address: {
+                            
                               street:"",
                               city: "",
                               provience: "",
@@ -26,7 +26,7 @@ const TenantEntry=()=>{
                         tenant_lastName:"",
                         tenant_email:"",
                         
-                    }}}
+                    }}
                     onSubmit={(values) => {
                        
                         console.log(values);
@@ -124,7 +124,7 @@ const TenantEntry=()=>{
                       <Input
                         type="text"
                         value={
-                          values.address.permanent.street
+                          values.address.street
                         }
                         name="address.street"
                         placeholder="Enter your Street"
@@ -149,7 +149,7 @@ const TenantEntry=()=>{
                       <Input
                         type="text"
                         value={
-                          values.address.permanent.city
+                          values.address.city
                         }
                         name="address.city"
                         placeholder="Enter your City"
@@ -172,7 +172,7 @@ const TenantEntry=()=>{
                       <Input
                         type="text"
                         value={
-                          values.address.permanent.provience
+                          values.address.provience
                         }
                         name="address.provience"
                         placeholder="Enter Provience Name"
@@ -282,24 +282,27 @@ const TenantEntry=()=>{
                   </div>
                   </div>
                   
-                  <div className="mt-4 col-md-4">
-                    <Label for="exampleName">Upload Photo</Label>
-                    <Input
-                      type="file"
-                      value={values.tenant_photo}
-                      name="tenant_photo"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.tenant_photo && errors.tenant_photo && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.tenant_photo}
-                      </span>
-                    )}
-                  </div>
+                  <div className="mt-4 mb-4">
+                <Label>Upload Photo</Label>
+                <Input
+                  type="file"
+                  name="tenant_photo"
+                  accept="image/*"
+                  onChange={(event) => {
+                    setFieldValue("pic", event.currentTarget.files[0]);
+                  }}
+                />
+
+                {touched.tenant_photo && values.tenant_photo && (
+                  <img
+                    src={URL.createObjectURL(values.tenant_photo)}
+                    alt="no pic"
+                    height="200"
+                  />
+                )}
+              </div>
+
+                  
                 </div> 
                                     <button className="success m-4"type="submit" onClick={handleSubmit}>Add</button>
                                 </FormGroup>

@@ -31,7 +31,7 @@ const TenantEntry=()=>{
                        
                         console.log(values);
                     }}
-                    validationSchema={tenantEntryFormValidation}
+                   validationSchema={tenantEntryFormValidation}
                 >
                     {({
                         touched,
