@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import {LoginValidator} from "../../utility/validation/loginValidation"
 
 const LoginComponent = (props) => {
+ 
     return (
         <div>    <div className="fulllogin">
             <div>
