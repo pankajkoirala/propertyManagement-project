@@ -5,6 +5,7 @@ import PrivateRouter from "./privateRouter"
 import Homepage from "../container/homepage/homepage"
 import PropertyEntry from "../container/propertyEntryForm/PropertyEntryForm"
 import TenantEntry from "../container/tenantEntryForm/tenantEntryForm.js"
+import EmployeeEntry from "../container/employeeEntryForm/employeeEntryForm.js"
 
 const RouterPage = () => {
     return (
@@ -13,6 +14,7 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/" component={Homepage} />  
                 <PrivateRouter exact path="/entry" component={PropertyEntry} />  
                 <PrivateRouter exact path="/tenantentry" component={TenantEntry} /> 
+                <PrivateRouter exact path="/employeeentry" component={EmployeeEntry} />
                 
                     <Route exact path="/login" component={LoginComponent} />
                 </Switch>

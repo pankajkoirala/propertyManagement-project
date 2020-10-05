@@ -12,7 +12,6 @@ const TenantEntry=()=>{
                 <Formik
                     initialValues={{
                         address: {
-                            permanent: {
                               street:"",
                               city: "",
                               provience: "",
@@ -25,8 +24,9 @@ const TenantEntry=()=>{
                         tenant_middleName: "",
                         tenant_lastName:"",
                         tenant_email:"",
+                        post:"",
                         
-                    }}}
+                    }}
                     onSubmit={(values) => {
                        
                         console.log(values);
@@ -48,7 +48,7 @@ const TenantEntry=()=>{
                                 <FormGroup className="">
                                     <div className="text-center">
 
-                                        <p className="text-black font-weight-bold"> <h3>Tenant Entry Form </h3></p>
+                                        <p className="text-black font-weight-bold"> <h3>Employee Entry Form </h3></p>
                                     </div>
                                     <div>
                                     {/* <div className="m-4"> */}
@@ -124,7 +124,7 @@ const TenantEntry=()=>{
                       <Input
                         type="text"
                         value={
-                          values.address.permanent.street
+                          values.address.street
                         }
                         name="address.street"
                         placeholder="Enter your Street"
@@ -149,7 +149,7 @@ const TenantEntry=()=>{
                       <Input
                         type="text"
                         value={
-                          values.address.permanent.city
+                          values.address.city
                         }
                         name="address.city"
                         placeholder="Enter your City"
@@ -172,7 +172,7 @@ const TenantEntry=()=>{
                       <Input
                         type="text"
                         value={
-                          values.address.permanent.provience
+                          values.address.provience
                         }
                         name="address.provience"
                         placeholder="Enter Provience Name"
@@ -277,6 +277,26 @@ const TenantEntry=()=>{
                         style={{ fontSize: 12 }}
                       >
                         {errors.tenant_phoneNo}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="col-md-6">
+                    <Label for="exampleName">Post</Label>
+                    <Input
+                      type="text"
+                      value={values.post}
+                      name="post"
+                      placeholder="Enter the post assigned"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.tenant_post && errors.tenant_post && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.post}
                       </span>
                     )}
                   </div>
