@@ -18,9 +18,9 @@ const Homepage=()=>{
 
         <div>
 <ButtonGroup size="lg">
-  <Button className="m-5">Create Property</Button><br/>
+  <Button className="m-5"><Link to="/propertyentry"> Create Property</Link></Button><br/>
   <Button className="m-5"><Link to="/tenantentry"> Create Tenant</Link></Button>
-  <Button className="m-5" >Create Employee</Button>
+  <Button className="m-5" ><Link to="/employeeentry"> Create Employee</Link></Button>
 </ButtonGroup>
 </div>
 <div>
