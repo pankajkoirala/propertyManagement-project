@@ -19,7 +19,7 @@ const Homepage=()=>{
 
         <div>
 <ButtonGroup size="lg" className="m-2 d-flex justify-content-around">
-<Link to="/propertyentry"><Button color="primary" size="lg" block className="buttonProperty"> Create Property</Button></Link>
+<Link to="/propertentry"><Button color="primary" size="lg" block className="buttonProperty"> Create Property</Button></Link>
   <Link to="/tenantentry"><Button color="success" size="lg" block className="buttonProperty"> Create Tenant</Button> </Link>
   <Link to="/employeeentry"><Button color="secondary" size="lg" block className="buttonProperty"> Create Employee</Button></Link>
 </ButtonGroup>

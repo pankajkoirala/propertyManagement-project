@@ -2,7 +2,7 @@ import React from "react";
 import "./propertyEntryForm.css";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
-import { PropertyFormValidation } from "../../utility/validation/propertyEntryFormValidation";
+import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
   return (

@@ -1,29 +1,28 @@
 import React from "react"
+import './employeeEntryForm.css'
 
 import {  FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
-import {tenantEntryFormValidation} from "../../utility/validation/tenantEntryFormValidation.js"
+import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
 const TenantEntry=()=>{
     return(
         <div>
-                <div className="PropertyFormEntry">
+                <div >
             <div>
                 <Formik
                     initialValues={{
-                        address: {
                               street:"",
                               city: "",
                               provience: "",
                               country: "",
                               ZipCode: "",
-                            },
-                        tenant_photo:"",
-                        tenant_phoneNo: "",
-                        tenant_firstName: "",
-                        tenant_middleName: "",
-                        tenant_lastName:"",
-                        tenant_email:"",
+                        employee_photo:"",
+                        employee_phoneNo: "",
+                        employee_firstName: "",
+                        employee_middleName: "",
+                        employee_lastName:"",
+                        employee_email:"",
                         post:"",
                         
                     }}
@@ -31,7 +30,7 @@ const TenantEntry=()=>{
                        
                         console.log(values);
                     }}
-                   validationSchema={tenantEntryFormValidation}
+                   validationSchema={employeeEntryFormValidation}
                 >
                     {({
                         touched,
@@ -45,7 +44,7 @@ const TenantEntry=()=>{
                     }) => (
                             <Form className="d-flex justify-content-center ">
                             
-                                <FormGroup className="">
+                                <FormGroup className="employeeEntry">
                                     <div className="text-center">
 
                                         <p className="text-black font-weight-bold"> <h3>Employee Entry Form </h3></p>
@@ -59,18 +58,18 @@ const TenantEntry=()=>{
                     <Label for="exampleName">First Name</Label>
                     <Input
                       type="text"
-                      value={values.tenant_firstName}
-                      name="tenant_firstName"
+                      value={values.employee_firstName}
+                      name="employee_firstName"
                       placeholder="Enter your firstName"
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {touched.tenant_firstName && errors.tenant_firstName && (
+                    {touched.employee_firstName && errors.employee_firstName && (
                       <span
                         className="text-danger col-md-12 text-left mb-2"
                         style={{ fontSize: 12 }}
                       >
-                        {errors.tenant_firstName}
+                        {errors.employee_firstName}
                       </span>
                     )}
                   </div>
@@ -79,18 +78,18 @@ const TenantEntry=()=>{
                     <Label for="exampleName">Middle Name</Label>
                     <Input
                       type="text"
-                      value={values.tenant_middleName}
-                      name="tenant_middleName"
+                      value={values.employee_middleName}
+                      name="employee_middleName"
                       placeholder="Enter your middleName"
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {touched.tenant_middleName && errors.tenant_middleName && (
+                    {touched.employee_middleName && errors.employee_middleName && (
                       <span
                         className="text-danger col-md-12 text-left mb-2"
                         style={{ fontSize: 12 }}
                       >
-                        {errors.tenant_middleName}
+                        {errors.employee_middleName}
                       </span>
                     )}
                   </div>
@@ -99,18 +98,18 @@ const TenantEntry=()=>{
                     <Label for="exampleName">Last Name</Label>
                     <Input
                       type="text"
-                      value={values.tenant_lastName}
-                      name="tenant_lastName"
+                      value={values.employee_lastName}
+                      name="employee_lastName"
                       placeholder="Enter your lastName"
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {touched.tenant_lastName && errors.tenant_lastName && (
+                    {touched.employee_lastName && errors.employee_lastName && (
                       <span
                         className="text-danger col-md-12 text-left mb-2"
                         style={{ fontSize: 12 }}
                       >
-                        {errors.tenant_lastName}
+                        {errors.employee_lastName}
                       </span>
                     )}
                   </div>
@@ -124,20 +123,20 @@ const TenantEntry=()=>{
                       <Input
                         type="text"
                         value={
-                          values.address.street
+                          values.street
                         }
-                        name="address.street"
+                        name="street"
                         placeholder="Enter your Street"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      {touched?.address?.street &&
-                        errors?.address?.street && (
+                      {touched?.street &&
+                        errors?.street && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.address?.street}
+                            {errors?.street}
                           </span>
                         )}
                     </div>
@@ -149,20 +148,20 @@ const TenantEntry=()=>{
                       <Input
                         type="text"
                         value={
-                          values.address.city
+                          values.city
                         }
-                        name="address.city"
+                        name="city"
                         placeholder="Enter your City"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      {touched?.address?.city &&
-                        errors?.address?.city && (
+                      {touched?.city &&
+                        errors?.city && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.address?.city}
+                            {errors?.city}
                           </span>
                         )}
                     </div>
@@ -172,20 +171,20 @@ const TenantEntry=()=>{
                       <Input
                         type="text"
                         value={
-                          values.address.provience
+                          values.provience
                         }
-                        name="address.provience"
+                        name="provience"
                         placeholder="Enter Provience Name"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      {touched?.address?.provience &&
-                        errors?.address?.provience && (
+                      {touched?.provience &&
+                        errors?.provience && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.address?.provience}
+                            {errors?.provience}
                           </span>
                         )}
                     </div>
@@ -195,9 +194,9 @@ const TenantEntry=()=>{
                       <Label for="exampleSelect">ZipCode</Label>
                       <Input
                         type="text"
-                        name="address.ZipCode"
+                        name="ZipCode"
                         value={
-                          values.address.ZipCode
+                          values.ZipCode
                         }
                         id="exampleSelect"
                         onChange={handleChange}
@@ -205,13 +204,13 @@ const TenantEntry=()=>{
                       >
                         
                       </Input>
-                      {touched?.address?.ZipCode &&
-                        errors?.address?.ZipCode && (
+                      {touched?.ZipCode &&
+                        errors?.ZipCode && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.address?.ZipCode}
+                            {errors?.ZipCode}
                           </span>
                         )}
                     </div>
@@ -220,20 +219,20 @@ const TenantEntry=()=>{
                       <Input
                         type="text"
                         value={
-                          values.address.country
+                          values.country
                         }
-                        name="address.country"
+                        name="country"
                         placeholder="Enter the name of Country"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      {touched?.address?.country &&
-                        errors?.address?.country && (
+                      {touched?.country &&
+                        errors?.country && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.address?.country}
+                            {errors?.country}
                           </span>
                         )}
                     </div> 
@@ -243,20 +242,20 @@ const TenantEntry=()=>{
                       <Label for="exampleName">Email</Label>
                       <Input
                         type="email"
-                        value={values.tenant_email}
+                        value={values.employee_email}
                         
-                        name="tenant_email"
+                        name="employee_email"
                         placeholder="Enter Email"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      {touched.tenant_email &&
-                        errors.tenant_email && (
+                      {touched.employee_email &&
+                        errors.employee_email && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors.tenant_email}
+                            {errors.employee_email}
                           </span>
                         )}
                     </div>
@@ -265,18 +264,18 @@ const TenantEntry=()=>{
                     <Label for="exampleName">Contact Number</Label>
                     <Input
                       type="number"
-                      value={values.tenant_phoneNo}
-                      name="tenant_phoneNo"
+                      value={values.employee_phoneNo}
+                      name="employee_phoneNo"
                       placeholder="Enter your Contact Number"
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {touched.tenant_phoneNo && errors.tenant_phoneNo && (
+                    {touched.employee_phoneNo && errors.employee_phoneNo && (
                       <span
                         className="text-danger col-md-12 text-left mb-2"
                         style={{ fontSize: 12 }}
                       >
-                        {errors.tenant_phoneNo}
+                        {errors.employee_phoneNo}
                       </span>
                     )}
                   </div>
@@ -291,7 +290,7 @@ const TenantEntry=()=>{
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {touched.tenant_post && errors.tenant_post && (
+                    {touched.post && errors.post && (
                       <span
                         className="text-danger col-md-12 text-left mb-2"
                         style={{ fontSize: 12 }}
@@ -306,17 +305,17 @@ const TenantEntry=()=>{
                     <Label for="exampleName">Upload Photo</Label>
                     <Input
                       type="file"
-                      value={values.tenant_photo}
-                      name="tenant_photo"
+                      value={values.employee_photo}
+                      name="employee_photo"
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {touched.tenant_photo && errors.tenant_photo && (
+                    {touched.employee_photo && errors.employee_photo && (
                       <span
                         className="text-danger col-md-12 text-left mb-2"
                         style={{ fontSize: 12 }}
                       >
-                        {errors.tenant_photo}
+                        {errors.employee_photo}
                       </span>
                     )}
                   </div>
