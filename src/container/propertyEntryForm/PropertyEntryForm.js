@@ -1,5 +1,5 @@
 import React from "react"
-import PropertyEntryFormComponent from "../../component/PropertyEntryForm/PropertyEntryForm"
+import PropertyEntryFormComponent from "../../component/entryForm/PropertyEntryForm/PropertyEntryForm.js"
 import { base_URL } from "../../const/base_URL";
 import Axios from "axios";
 

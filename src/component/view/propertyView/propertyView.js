@@ -1,10 +1,13 @@
 import React from 'react'
+import "./propertyView.css"
 
 
 const PropertyView=()=>{
   return( 
   
-  <div> This is Property view</div>
+  <div className="propertyview"> 
+    No property record found.
+    </div>
     
     )
 }

@@ -1,10 +1,11 @@
 import React from 'react'
+import "./tenantView.css"
 
 
 const TenantView=()=>{
   return( 
   
-  <div> This is Tenant view</div>
+  <div className="propertyview"> No tenant record found.</div>
     
     )
 }

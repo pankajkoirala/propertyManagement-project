@@ -1,5 +1,5 @@
 import React from "react"
-import TenantEntryFormComponent from "../../component/tenantEntryForm/tenantEntryForm.js"
+import TenantEntryFormComponent from "../../component/entryForm/tenantEntryForm/tenantEntryForm.js"
 
 const TenantEntry=()=>{
     return(

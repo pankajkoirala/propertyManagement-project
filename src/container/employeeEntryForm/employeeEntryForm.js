@@ -1,5 +1,5 @@
 import React from "react"
-import EmployeeEntryFormComponent from "../../component/employeeEntryForm/employeeEntryForm.js"
+import EmployeeEntryFormComponent from "../../component/entryForm/employeeEntryForm/employeeEntryForm.js"
 
 const EmployeeEntry=()=>{
     return(
