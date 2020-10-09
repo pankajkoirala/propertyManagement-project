@@ -14,7 +14,8 @@ const ChequeEntry=()=> {
             issueDate: "",
             status: "",
             remarks: "",
-            photo: "",
+            amount: "",
+            picture: "",
         
           }}
           onSubmit={(values) => {
@@ -44,47 +45,73 @@ const ChequeEntry=()=> {
                   {/* <div className="m-4"> */}
 
                   <div className="row ">
-                    <div className="mt-4 col-md-4">
-                      <Label for="exampleName">Issue Date</Label>
+                    <div className="mt-4 col-md-3">
+                      <Label for="exampleName">Cheque Date</Label>
                       <Input
                         type="date"
-                        value={values.issueDate}
-                        name="tenant_issueDate"
-                        placeholder="Enter issue date of Cheque"
+                        value={values.chequeDate}
+                        name="chequeDate"
+                        placeholder="Enter date of Cheque"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      {touched.issueDate && errors.issueDate && (
+                      {touched.chequeDate && errors.chequeDate && (
                         <span
                           className="text-danger col-md-12 text-left mb-2"
                           style={{ fontSize: 12 }}
                         >
-                          {errors.issueDate}
+                          {errors.chequeDate}
                         </span>
                       )}
                     </div>
-
-                    <div className="mt-4 col-md-4">
-                      <Label for="exampleName">Status</Label>
+                    <div className="mt-4 col-md-3">
+                      <Label for="exampleName">Amount</Label>
                       <Input
-                        type="text"
-                        value={values.status}
-                        name="Cheque Status"
-                        placeholder="Select status of Cheque"
+                        type="number"
+                        value={values.amount}
+                        name="amount"
+                        placeholder="Cheque Amount"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      {touched.status && errors.status && (
+                      {touched.amount && errors.amount && (
                         <span
                           className="text-danger col-md-12 text-left mb-2"
                           style={{ fontSize: 12 }}
                         >
-                          {errors.status}
+                          {errors.amount}
                         </span>
                       )}
                     </div>
 
-                    <div className="mt-4 col-md-4">
+                    <div className="mt-4 col-md-3">
+                    <Label for="exampleSelect">Status</Label>
+                  <Input
+                    type="select"
+                    name="status"
+                    id="exampleSelect"
+                    placeholder="Select Status of Cheque"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.status}
+                  >
+                    <option value="">Select any one</option>
+                    <option value="Cleared">Cleared</option>
+                    <option value="Pending">Pending</option>
+                   
+                  </Input>
+
+                  {touched.status && errors.status && (
+                    <span
+                      className="text-danger col-md-12 text-left mb-2"
+                      style={{ fontSize: 12 }}
+                    >
+                      {errors.status}
+                    </span>
+                  )}
+                    </div>
+
+                    <div className="mt-4 col-md-3">
                       <Label for="exampleName">Remarks</Label>
                       <Input
                         type="text"
@@ -108,13 +135,34 @@ const ChequeEntry=()=> {
                   
                   
                   <div className="row">
+
+                  <div className="col-md-6 text-left mb-2 mt-4">
+                            <Label className="float-left">Upload Scan Copy</Label>
+                            <Input
+                              type="file"
+                              name="picture"
+                              accept="image/*"
+                              onChange={(event) => {
+                                setFieldValue("picture", event.currentTarget.files[0]);
+                              }}
+                            />
+
+                            {touched.picture && values.picture && (
+                              <img
+                                src={URL.createObjectURL(values.picture)}
+                                alt="no picture"
+                                height="20"
+                              />
+                            )}
+                          </div>
+                    
                     <button
-                  className="success m-4"
-                  type="submit"
-                  onClick={handleSubmit}
-                >
-                  Click to Add Cheque Records
-                </button>
+                          className="Success col-4 mt-2"
+                          type="submit"
+                          onClick={handleSubmit}
+                        >
+                          Add Cheque
+                        </button>
 
                   </div>
                 </div>
