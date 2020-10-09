@@ -8,7 +8,10 @@ const NavbarPage = () => {
  
 
   return (
-    <div>
+    <div> 
+        <div className="text-center">
+          <img className="loginImg" src="https://jpcprinting.co.uk/wp-content/uploads/2015/08/blank-profile.png" alt="" />
+      </div>
 <Accordion defaultActiveKey="" className="menu">
   <Card>
     <Card.Header>
@@ -63,7 +66,7 @@ const NavbarPage = () => {
       </Accordion.Toggle>
     </Card.Header>
     <Accordion.Collapse eventKey="5">
-      <Card.Body><Link to="/paymententry"> <Button variant="primary" className="button-size">Add Payment</Button></Link><br/> 
+      <Card.Body><Link to="/chequeentry"> <Button variant="primary" className="button-size">Add Payment</Button></Link><br/> 
       <Link to="/paymentupdate">  <Button variant="secondary" className="button-size">Update</Button></Link><br/>
                 <Link to="/paymentview"> <Button variant="success" className="button-size">View Payment</Button></Link><br/>
                 </Card.Body>
