@@ -17,13 +17,13 @@ const TenantEntry=()=>{
                               provience: "",
                               country: "",
                               ZipCode: "",
-                        employee_photo:"",
-                        employee_phoneNo: "",
-                        employee_firstName: "",
-                        employee_middleName: "",
-                        employee_lastName:"",
-                        employee_email:"",
-                        post:"",
+                              employee_photo:"",
+                              employee_phoneNo: "",
+                              employee_firstName: "",
+                              employee_middleName: "",
+                              employee_lastName:"",
+                              employee_email:"",
+                              post:"",
                         
                     }}
                     onSubmit={(values) => {
@@ -42,7 +42,7 @@ const TenantEntry=()=>{
                         setFieldValue,
                         isSubmitting,
                     }) => (
-                            <Form className="d-flex justify-content-center ">
+                            <Form>
                             
                                 <FormGroup className="employeeEntry">
                                     <div className="text-center">
