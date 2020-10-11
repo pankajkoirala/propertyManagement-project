@@ -279,7 +279,8 @@ const TenantEntry=()=>{
                       </span>
                     )}
                   </div>
-
+                  </div>
+      <div className="row">
                   <div className="col-md-6">
                     <Label for="exampleName">Post</Label>
                     <Input
@@ -299,9 +300,9 @@ const TenantEntry=()=>{
                       </span>
                     )}
                   </div>
-                  </div>
                   
-                  <div className="mt-4 col-md-4">
+                  
+                  <div className="col-md-6">
                     <Label for="exampleName">Upload Photo</Label>
                     <Input
                       type="file"
@@ -319,6 +320,8 @@ const TenantEntry=()=>{
                       </span>
                     )}
                   </div>
+                  </div>
+                  
                 </div> 
                                     <button className="success m-4"type="submit" onClick={handleSubmit}>Add</button>
                                 </FormGroup>

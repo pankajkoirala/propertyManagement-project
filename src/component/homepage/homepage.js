@@ -1,8 +1,9 @@
 import React from "react"
 import "./homepage.css"
 import Navbar from "../../shared/navbar"
+import VIDEO from "../../assets/video.gif"
 import{setLocalStorage} from "../../const/tokenStorage"
-import ENTRYFORM from "../../component/entryForm/employeeEntryForm/employeeEntryForm.js"
+
 
 
 const Homepage=()=>{
@@ -19,7 +20,16 @@ const Homepage=()=>{
             <div className="col-2 navBar">
                 <Navbar/>
             </div>
-            <div className="col-9 bodydisplay"> <ENTRYFORM/></div>
+            
+            <div className="col-9 bodydisplay">  This is body display in dashboard. Displayed will be as per the button clicked on the left corner. <div className="video">
+            <video autoPlay="autoplay" loop={true}>
+              <source
+                src={<VIDEO/>}
+                type="video/gif"
+              />
+              Your browser does not support HTML5 video.
+            </video>
+          </div></div>
         </div>
         
     )
