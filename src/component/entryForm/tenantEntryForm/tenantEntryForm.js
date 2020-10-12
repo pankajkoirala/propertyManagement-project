@@ -237,6 +237,7 @@ const TenantEntry = () => {
                           </span>
                         )}
                       </div>
+                      
 
                       <div className="col-md-6">
                         <Label for="exampleName">Contact Number</Label>
@@ -257,11 +258,31 @@ const TenantEntry = () => {
                           </span>
                         )}
                       </div>
-
-                      <div className="col-md-6">
+                      </div>
+                      <div className="row ">
+                      <div className="col-md-4">
                         <Label for="exampleName">Assigned Property</Label>
                         <Input
                           type="text"
+                          value={values.assignedProperty}
+                          name="assignedProperty"
+                          placeholder="Assigned Propery ID"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.assignedProperty && errors.assignedProperty && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.assignedProperty}
+                          </span>
+                        )}
+                      </div>
+                      <div className="col-md-4">
+                        <Label for="exampleName">From </Label>
+                        <Input
+                          type="date"
                           value={values.assignedProperty}
                           name="assignedProperty"
                           placeholder="Property Assigned"
@@ -277,39 +298,85 @@ const TenantEntry = () => {
                           </span>
                         )}
                       </div>
-
-                      <button
-                    className="success m-4"
-                    type="submit"
-                  >
-                    <Link to="/chequeentry"> Click to Add Cheque Records </Link>
-                   
-                  </button>
-
-                    </div>
-
-                    <div className="mt-4 mb-4">
-                      <Label>Upload Photo</Label>
-                      <Input
-                        type="file"
-                        name="tenant_photo"
-                        accept="image/*"
-                        onChange={(event) => {
-                          setFieldValue("tenant_photo", event.currentTarget.files[0]);
-                        }}
-                      />
-
-                      {touched.tenant_photo && values.tenant_photo && (
-                        <img
-                          src={URL.createObjectURL(values.tenant_photo)}
-                          alt="no pic"
-                          height="200"
+                      <div className="col-md-4">
+                        <Label for="exampleName">To</Label>
+                        <Input
+                          type="date"
+                          value={values.assignedProperty}
+                          name="assignedProperty"
+                          placeholder="Property Assigned ID"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                         />
-                      )}
-                    </div>
+                        {touched.assignedProperty && errors.assignedProperty && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.assignedProperty}
+                          </span>
+                        )}
+                      </div>
+                      </div>
+
+                    
+                     <div className="row"> 
+                     <div className="col-md-4">
+                                    <Label>Upload Government Issued ID</Label>
+                                    <Input
+                                      type="file"
+                                      name="tenant_photo"
+                                      accept="image/*"
+                                      onChange={(event) => {
+                                        setFieldValue("tenant_photo", event.currentTarget.files[0]);
+                                      }}
+                                    />
+
+                                    {touched.tenant_photo && values.tenant_photo && (
+                                      <img
+                                        src={URL.createObjectURL(values.tenant_photo)}
+                                        alt="no pic"
+                                        height="200"
+                                      />
+                                    )}
+                                  </div>
+
+
+                                  <div className="col-md-4">
+                                    <Label>Upload tenant Photo</Label>
+                                    <Input
+                                      type="file"
+                                      name="tenant_photo"
+                                      accept="image/*"
+                                      onChange={(event) => {
+                                        setFieldValue("tenant_photo", event.currentTarget.files[0]);
+                                      }}
+                                    />
+
+                                    {touched.tenant_photo && values.tenant_photo && (
+                                      <img
+                                        src={URL.createObjectURL(values.tenant_photo)}
+                                        alt="no pic"
+                                        height="200"
+                                      />
+                                    )}
+                                  </div>
+
+                                  <div classsName="col-md-4 m-4">
+                                        <button
+                                      className="success "
+                                      type="submit"
+                                    >
+                                <Link to="/chequeentry"> Click to Add Cheque Records </Link>
+                              
+                              </button>
+                              </div>
+                       </div>
+
+                       
                   </div>
                   <button
-                    className="success m-4"
+                    className="success col-md-4 m-5"
                     type="submit"
                     onClick={handleSubmit}
                   >
