@@ -23,6 +23,7 @@ const PropertyEntry = (props) => {
             }}
             onSubmit={(values) => {
               props.propertySend(values)
+              console.log(values);
             }}
             validationSchema={PropertyFormValidation}
           >
@@ -216,9 +217,9 @@ const PropertyEntry = (props) => {
                     }}
                   />
 
-                  {touched.pic && values.pic && (
+                  {touched.photo && values.photo && (
                     <img
-                      src={URL.createObjectURL(values.pic)}
+                      src={URL.createObjectURL(values.photo)}
                       alt="no pic"
                       height="200"
                     />
