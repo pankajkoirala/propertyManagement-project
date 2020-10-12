@@ -1,25 +1,29 @@
 import React from 'react'
 import "./propertyView.css"
 import { Link } from "react-router-dom";
+import Image from "../../../assets/sample.jpg"
+import Filter from "../../filter.js"
 
-
+let a = [1,2,3,4,5,6,7,8, 9,10,11,12,13,14,15,16,17,18,19,20]
 
 const PropertyView=()=>{
   return ( 
   
   <div className="row m-5">
   
-             <div> 
-                   
+             <div className="col-12"> 
+                <Filter/>
              </div>
-    
-                 <div className="property-card">
-                    <div className="card-contents">
+                {a.map(()=>{
+
+                  return(
+<div className="property-card">
+                    <div className="card-contents mt-5">
                       <div className="image">
-                        {/* <img
-                          src={https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1522708323590-d24dbb6b0267%3Fixlib%3Drb-1.2.1%26ixid%3DeyJhcHBfaWQiOjEyMDd9%26w%3D1000%26q%3D80&imgrefurl=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fapartment&tbnid=gwdYLdav5UDpxM&vet=12ahUKEwjA09_b5KvsAhVqALcAHfoICmAQMygBegUIARC3AQ..i&docid=ElXNO4r_cLkkKM&w=1000&h=667&q=apartment%20photos&ved=2ahUKEwjA09_b5KvsAhVqALcAHfoICmAQMygBegUIARC3AQ}
+                        <img
+                          src={Image}
                           alt="recently added"
-                        /> */}
+                        /> 
                         
                       </div>
                       <div className="property-desc">
@@ -30,6 +34,9 @@ const PropertyView=()=>{
                         </p>
                         <p>
                           Rs. <b>500</b> per Month
+                        </p>
+                        <p>
+                         Status <b>Occupied</b> per Month
                         </p>
                         {/* <Link to={link + "/" + id}> */}
                           <button
@@ -42,6 +49,9 @@ const PropertyView=()=>{
                       </div> 
                     </div>
                   </div>
+                  )
+                })}
+                 
     </div>
     
     )
