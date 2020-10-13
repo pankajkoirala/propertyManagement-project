@@ -12,6 +12,7 @@ import TenantView from "../container/view/tenantView.js"
 import Dashboard from "../component/view/dashboardView/dashboardView.js"
 import Chequeentry from "../component/entryForm/chequeEntry/chequeEntryForm.js"
 import OnePropertyView from "../container/view/propertyDetailView"
+import TanentDetailView from "../container/view/tanentDetailView"
 
 
 const RouterPage = () => {
@@ -31,6 +32,8 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/login" component={LoginComponent} />
                 <PrivateRouter exact path="/propertyDetail/:id" component={OnePropertyView} />
+                <PrivateRouter exact path="/tanent/:id" component={TanentDetailView} />
+
 
                 </Switch>
             </Router>
