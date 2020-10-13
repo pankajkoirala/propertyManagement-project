@@ -4,6 +4,7 @@
   height: 430px;
   min-width: 250px;
   max-width: 300px;
+  margin: 1px;
   -webkit-box-shadow: 2px 3px 17px -10px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 2px 3px 17px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 3px 17px -10px rgba(0, 0, 0, 0.75);
