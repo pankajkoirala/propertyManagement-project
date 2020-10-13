@@ -2,11 +2,11 @@ import React from "react";
 import "./tenantEntryForm.css";
 
 import { FormGroup, Label, Input, Form } from "reactstrap";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
 
-const TenantEntry = () => {
+const TenantEntry = (props) => {
   return (
     <div>
       <div className="PropertyFormEntry">
@@ -18,20 +18,20 @@ const TenantEntry = () => {
               provience: "",
               country: "",
               ZipCode: "",
-
               tenant_photo: "",
               tenant_phoneNo: "",
               tenant_firstName: "",
               tenant_middleName: "",
               tenant_lastName: "",
               tenant_email: "",
-              assignedProperty:"",
-              
+              tenant_GovId: "",
+
             }}
             onSubmit={(values) => {
+              props.tenantData(values)
               console.log(values);
             }}
-            validationSchema={TenantEntryFormValidation}
+            // validationSchema={TenantEntryFormValidation}
           >
             {({
               touched,
@@ -237,7 +237,6 @@ const TenantEntry = () => {
                           </span>
                         )}
                       </div>
-                      
 
                       <div className="col-md-6">
                         <Label for="exampleName">Contact Number</Label>
@@ -258,122 +257,55 @@ const TenantEntry = () => {
                           </span>
                         )}
                       </div>
-                      </div>
-                      <div className="row ">
+                    </div>
+
+                    <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Assigned Property</Label>
+                        <Label>Upload Government Issued ID</Label>
                         <Input
-                          type="text"
-                          value={values.assignedProperty}
-                          name="assignedProperty"
-                          placeholder="Assigned Propery ID"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
+                          type="file"
+                          name="tenant_GovId"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "tenant_GovId",
+                              event.currentTarget.files[0]
+                            );
+                          }}
                         />
-                        {touched.assignedProperty && errors.assignedProperty && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.assignedProperty}
-                          </span>
+
+                        {touched.tenant_GovId && values.tenant_GovId && (
+                          <img
+                            src={URL.createObjectURL(values.tenant_GovId)}
+                            alt="no pic"
+                            height="200"
+                          />
                         )}
                       </div>
+
                       <div className="col-md-4">
-                        <Label for="exampleName">From </Label>
+                        <Label>Upload tenant Photo</Label>
                         <Input
-                          type="date"
-                          value={values.assignedProperty}
-                          name="assignedProperty"
-                          placeholder="Property Assigned"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
+                          type="file"
+                          name="tenant_photo"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "tenant_photo",
+                              event.currentTarget.files[0]
+                            );
+                          }}
                         />
-                        {touched.assignedProperty && errors.assignedProperty && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.assignedProperty}
-                          </span>
+
+                        {touched.tenant_photo && values.tenant_photo && (
+                          <img
+                            src={URL.createObjectURL(values.tenant_photo)}
+                            alt="no pic"
+                            height="200"
+                          />
                         )}
                       </div>
-                      <div className="col-md-4">
-                        <Label for="exampleName">To</Label>
-                        <Input
-                          type="date"
-                          value={values.assignedProperty}
-                          name="assignedProperty"
-                          placeholder="Property Assigned ID"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.assignedProperty && errors.assignedProperty && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.assignedProperty}
-                          </span>
-                        )}
-                      </div>
-                      </div>
-
-                    
-                     <div className="row"> 
-                     <div className="col-md-4">
-                                    <Label>Upload Government Issued ID</Label>
-                                    <Input
-                                      type="file"
-                                      name="tenant_photo"
-                                      accept="image/*"
-                                      onChange={(event) => {
-                                        setFieldValue("tenant_photo", event.currentTarget.files[0]);
-                                      }}
-                                    />
-
-                                    {touched.tenant_photo && values.tenant_photo && (
-                                      <img
-                                        src={URL.createObjectURL(values.tenant_photo)}
-                                        alt="no pic"
-                                        height="200"
-                                      />
-                                    )}
-                                  </div>
-
-
-                                  <div className="col-md-4">
-                                    <Label>Upload tenant Photo</Label>
-                                    <Input
-                                      type="file"
-                                      name="tenant_photo"
-                                      accept="image/*"
-                                      onChange={(event) => {
-                                        setFieldValue("tenant_photo", event.currentTarget.files[0]);
-                                      }}
-                                    />
-
-                                    {touched.tenant_photo && values.tenant_photo && (
-                                      <img
-                                        src={URL.createObjectURL(values.tenant_photo)}
-                                        alt="no pic"
-                                        height="200"
-                                      />
-                                    )}
-                                  </div>
-
-                                  <div classsName="col-md-4 m-4">
-                                        <button
-                                      className="success "
-                                      type="submit"
-                                    >
-                                <Link to="/chequeentry"> Click to Add Cheque Records </Link>
-                              
-                              </button>
-                              </div>
-                       </div>
-
-                       
+                    </div>
                   </div>
                   <button
                     className="success col-md-4 m-5"

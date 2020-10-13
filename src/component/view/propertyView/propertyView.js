@@ -1,61 +1,51 @@
-import React from 'react'
-import "./propertyView.css"
+import React from "react";
+import "./propertyView.css";
 import { Link } from "react-router-dom";
-import Image from "../../../assets/sample.jpg"
-import Filter from "../../filter.js"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faWindowClose
+} from "@fortawesome/free-solid-svg-icons";
 
-let a = [1,2,3,4,5,6,7,8, 9,10,11,12,13,14,15,16,17,18,19,20]
 
-const PropertyView=()=>{
-  return ( 
-  
-  <div className="row m-5">
-  
-             <div className="col-12"> 
-                <Filter/>
-             </div>
-                {a.map(()=>{
+const PropertyView = (props) => {
+  console.log(props.propertyData);
+  return (
+    <div className="row m-5">
+      {props.propertyData.map((arg, index) => {
+        return (
+          <div key={index} className="property-card">
+            <div className="card-contents">
+              <button onClick={() => props.DeletProperty(arg._id)}>
+                delet property
+              </button>
+              <FontAwesomeIcon className="mx-2" icon={faWindowClose} />
+              <div className="image">
+                <img src={arg.photo} alt="recently added" />
+              </div>
+              <div className="property-desc">
+        <h5>{arg.property_type}</h5>
+        <p>For: {arg.property_status}</p>
+                <p>
+                  <i className="fa fa-map-marker"></i> {arg.country},{arg.city}
+                </p>
+                <p>
+        Rs. <b>{arg.property_price}</b> per Month
+                </p>
+                {/* <Link to={link + "/" + id}> */}
 
-                  return(
-<div className="property-card">
-                    <div className="card-contents mt-5">
-                      <div className="image">
-                        <img
-                          src={Image}
-                          alt="recently added"
-                        /> 
-                        
-                      </div>
-                      <div className="property-desc">
-                        <h5>House</h5>
-                        <p>For: me</p>
-                        <p>
-                          <i className="fa fa-map-marker"></i> Anamnagar
-                        </p>
-                        <p>
-                          Rs. <b>500</b> per Month
-                        </p>
-                        <p>
-                         Status <b>Occupied</b> per Month
-                        </p>
-                        {/* <Link to={link + "/" + id}> */}
-                          <button
-                            // id="card-button"
-                            // onClick={() => handleDetailsCardClick(id, type)}
-                            >
-                            View Details
-                          </button>
-                        {/* </Link> */}
-                      </div> 
-                    </div>
-                  </div>
-                  )
-                })}
-                 
+                <Link to={`/propertyDetail/${arg._id}`}>
+                  {" "}
+                  <button>view detail</button>{" "}
+                </Link>
+
+                {/* </Link> */}
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
-    
-    )
-}
+  );
+};
 
-
-export default PropertyView
+export default PropertyView;

@@ -19,10 +19,11 @@ const PropertyEntry = (props) => {
               property_status: "",
               BHK:"",
               toilet:"",
-              property_photo:""
+             photo:""
             }}
             onSubmit={(values) => {
               props.propertySend(values)
+              console.log(values);
             }}
             validationSchema={PropertyFormValidation}
           >
@@ -204,26 +205,26 @@ const PropertyEntry = (props) => {
                       )}
                     </div>
 
+                    <div className="mt-4 mb-4">
+                  <Label className="font-weight-bold text-white">Product Photo</Label>
+                  <Input
+                  className="text-white "
+                    type="file"
+                    name="photo"
+                    accept="image/*"
+                    onChange={(event) => {
+                      setFieldValue("photo", event.currentTarget.files[0]);
+                    }}
+                  />
 
-                    <div className="mt-4  p-3">
-            <Label className="float-left">Photo</Label>
-            <Input
-              type="file"
-              name="property_photo"
-              accept="image/*"
-              onChange={(event) => {
-                setFieldValue("property_photo", event.currentTarget.files[0]);
-              }}
-            />
-
-            {touched.property_photo && values.property_photo && (
-              <img
-                src={URL.createObjectURL(values.property_photo)}
-                alt="no picture"
-                height="20"
-              />
-            )}
-          </div>
+                  {touched.photo && values.photo && (
+                    <img
+                      src={URL.createObjectURL(values.photo)}
+                      alt="no pic"
+                      height="200"
+                    />
+                  )}
+                </div>
                    
 
                   </div>

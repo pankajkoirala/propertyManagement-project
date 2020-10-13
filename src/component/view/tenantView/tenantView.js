@@ -3,7 +3,8 @@ import "./tenantView.css"
 import { Table } from 'react-bootstrap';
 
 
-const TenantView=()=>{
+const TenantView=(props)=>{
+  console.log(props.tenant);
   return( 
   
   <div className="tenantview"> Tenant/Occupants View
