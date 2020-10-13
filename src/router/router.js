@@ -9,9 +9,9 @@ import EmployeeEntry from "../container/employeeEntryForm/employeeEntryForm.js"
 import EmployeeView from "../container/view/employeeView.js"
 import PropertyView from "../container/view/propertyView.js"
 import TenantView from "../container/view/tenantView.js"
-
 import Dashboard from "../component/view/dashboardView/dashboardView.js"
 import Chequeentry from "../component/entryForm/chequeEntry/chequeEntryForm.js"
+import OnePropertyView from "../container/view/propertyDetailView"
 const RouterPage = () => {
     return (
             <Router>
@@ -26,8 +26,9 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/propertyview" component={PropertyView} />
                 <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
                 <PrivateRouter exact path="/dashboard" component={Dashboard} />
-
                 <Route exact path="/login" component={LoginComponent} />
+                <PrivateRouter exact path="/propertyDetail/:id" component={OnePropertyView} />
+
                 </Switch>
             </Router>
     )
