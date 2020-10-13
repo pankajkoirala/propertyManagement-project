@@ -9,9 +9,7 @@ let PropertyDetailViewComponent=(props)=>{
     return(
         <div key={index} className="property-card">
         <div className="card-contents">
-          <button onClick={() => props.DeletProperty(arg._id)}>
-            delet property
-          </button>
+        
           <div className="image">
             <img src={arg.photo} alt="recently added" />
           </div>

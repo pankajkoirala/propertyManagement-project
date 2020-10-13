@@ -12,8 +12,11 @@ import TenantView from "../container/view/tenantView.js"
 import Dashboard from "../component/view/dashboardView/dashboardView.js"
 import Chequeentry from "../component/entryForm/chequeEntry/chequeEntryForm.js"
 import OnePropertyView from "../container/view/propertyDetailView"
+
+
 const RouterPage = () => {
     return (
+        <div>
             <Router>
                
                 <Switch>
@@ -31,6 +34,7 @@ const RouterPage = () => {
 
                 </Switch>
             </Router>
+            </div>
     )
 }
 export default RouterPage

@@ -6,7 +6,19 @@ const DashbooardView=()=>{
   return( 
   
   <div className="dashboard"> 
-    DashBoard View. View of Charts and other graphs
+  <div className="row">
+<div className="col-md-4">
+  <h4>expanse</h4>
+</div>
+<div className="col-md-4">
+<h4>maintanance</h4>
+
+</div>
+<div className="col-md-4">
+<h4>income</h4>
+
+</div>
+</div>
     </div>
     
     )
