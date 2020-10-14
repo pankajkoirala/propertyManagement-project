@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 
+
 const PropertyView = (props) => {
   console.log(props.propertyData);
   return (
