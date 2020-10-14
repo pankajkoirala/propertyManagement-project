@@ -1,6 +1,7 @@
 import React from 'react'
 import "./tenantView.css"
 import { Table } from 'react-bootstrap';
+import {Link} from "react-router-dom"
 
 
 const TenantView=(props)=>{
@@ -22,58 +23,24 @@ const TenantView=(props)=>{
                   <th>Remarks</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td></td>
-                  <td>Otto</td>
-                  <td>98446454545</td>
-                  <td>abc@email.com</td>
-                  <td>Tenant</td>
-                  <td><button className="success ml-3">View Detail</button><button className="danger ml-2">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>Thornton</td>
-                  <td>123456</td>
-                  <td>cccc@email.com</td>
-                  <td>Occupant</td>
-                  <td><button className="success ml-3">View Detail</button><button className="danger ml-2">Delete</button></td>
-                </tr>
-                <tr>
-                <td>3</td>
-                  <td>Jony</td>
-                  <td>Hilton</td>
-                  <td>Hanry</td>
-                  <td>4454445</td>
-                  <td>hamro@email.com</td>
-                  <td>Occupant</td>
-                  <td><button className="success ml-3">View Detail</button><button className="danger ml-2">Delete</button></td>
-                </tr>
-                <tr>
-                <td>4</td>
-                  <td>Jony</td>
-                  <td>Hilton</td>
-                  <td>Hanry</td>
-                  <td>4454445</td>
-                  <td>timro@email.com</td>
-                  <td>Tenant</td>
-                  <td><button className="success ml-3">View Detail</button><button className="danger ml-2">Delete</button></td>
-                </tr>
-                <tr>
-                <td>5</td>
-                  <td>Jony</td>
-                  <td>Hilton</td>
-                  <td>Hanry</td>
-                  <td>4454445</td>
-                  <td>xyz@email.com</td>
-                  <td>Tenant</td>
-                  <td><button className="success ml-3">View Detail</button><button className="danger ml-2">Delete</button></td>
-                </tr>
-              </tbody>
+              {props.tenant.map((arg,index)=>{
+                return(
+                  <tbody key={index}>
+                  <tr>
+                <td>{index+1}</td>
+                <td>{arg.tenant_firstName}</td>
+                <td>{arg.tenant_middleName}</td>
+                <td>{arg.tenant_lastName}</td>
+                <td>{arg.tenant_phoneNo}</td>
+                <td>{arg.tenant_email}</td>
+                    <td>Tenant</td>
+                    <td><Link to={`/tanent/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> <button className="danger ml-2">Delete</button></td>
+                  </tr>
+                  
+                </tbody>
+                  )
+              })}
+           
             </Table>
   
   

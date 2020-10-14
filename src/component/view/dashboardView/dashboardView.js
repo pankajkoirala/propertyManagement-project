@@ -6,7 +6,7 @@ const DashbooardView=()=>{
   return( 
   
   <div className="dashboard"> 
-    DashBoard View. View of Charts and other graphs
+
     </div>
     
     )

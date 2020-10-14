@@ -16,10 +16,8 @@ const PropertyView = (props) => {
         return (
           <div key={index} className="property-card">
             <div className="card-contents">
-              <button onClick={() => props.DeletProperty(arg._id)}>
-                delet property
-              </button>
-              <FontAwesomeIcon className="mx-2" icon={faWindowClose} />
+           
+              <FontAwesomeIcon onClick={()=>props.DeletProperty(arg._id)} className="mx-2" icon={faWindowClose} />
               <div className="image">
                 <img src={arg.photo} alt="recently added" />
               </div>
