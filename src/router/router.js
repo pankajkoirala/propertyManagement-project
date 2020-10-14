@@ -12,9 +12,8 @@ import TenantView from "../container/view/tenantView.js"
 import Dashboard from "../component/view/dashboardView/dashboardView.js"
 import Chequeentry from "../component/entryForm/chequeEntry/chequeEntryForm.js"
 import OnePropertyView from "../container/view/propertyDetailView"
-import TanentDetailView from "../container/view/tanentDetailView"
-
-
+import Lease from "../component/entryForm/lease/lease.js"
+import TanentDetailView from "../component/view/tenantView/tenantDetailView.js"
 const RouterPage = () => {
     return (
         <div>
@@ -30,6 +29,7 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/propertyview" component={PropertyView} />
                 <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
                 <PrivateRouter exact path="/dashboard" component={Dashboard} />
+                <PrivateRouter exact path="/lease" component={Lease} />
                 <Route exact path="/login" component={LoginComponent} />
                 <PrivateRouter exact path="/propertyDetail/:id" component={OnePropertyView} />
                 <PrivateRouter exact path="/tanent/:id" component={TanentDetailView} />
