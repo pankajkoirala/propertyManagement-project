@@ -13,13 +13,13 @@ const TenantView=(props)=>{
   <Table striped bordered hover size="sm">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th>SN</th>
                   <th>First Name</th>
                   <th>Middle Name</th>
                   <th>Last Name</th>
                   <th>Contact Number</th>
                   <th>Contact Email</th>
-                  <th>Role</th>
+               
                   <th>Remarks</th>
                 </tr>
               </thead>
@@ -33,7 +33,7 @@ const TenantView=(props)=>{
                 <td>{arg.tenant_lastName}</td>
                 <td>{arg.tenant_phoneNo}</td>
                 <td>{arg.tenant_email}</td>
-                    <td>Tenant</td>
+                    
                     <td><Link to={`/tanent/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> <button className="danger ml-2">Delete</button></td>
                   </tr>
                   

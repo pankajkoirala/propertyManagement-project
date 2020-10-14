@@ -20,27 +20,7 @@ const Homepage = () => {
       </div>
 
       <div className="col-9 bodydisplay">
-        
-        <div className="">
           <div className="row">
-            <div className="col-md-3">
-              <h4>expanse</h4>
-            </div>
-            <div className="col-md-3">
-              <h4>maintanance</h4>
-            </div>
-            <div className="col-md-3">
-              <h4>income</h4>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-3">
-              <h4>expanse</h4>
-            </div>
-            <div className="col-md-3">
-              <h4>maintanance</h4>
-            </div>
-            
             <div className="col-9 bodydisplay"> <h1>DashBoard</h1>
             <div className="row m-3">
               <div className="col-4">
@@ -57,14 +37,10 @@ const Homepage = () => {
             <div className="row m-2">
               <div className="col-10"><img src={Occupancy} alt="Income" /></div>
             </div>
-            <div className="row m-3">
-              <div className="col-5"><img src={Maintainance} alt="Income" /></div>
-              <div className="col-5"><img src={INCOME} alt="Income" /></div>
-             
-            </div>
+            
           </div>
         </div>
-      </div>
+      
     </div>
     </div>
   );

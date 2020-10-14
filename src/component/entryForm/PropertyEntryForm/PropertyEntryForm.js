@@ -1,6 +1,7 @@
 import React from "react";
 import "./propertyEntryForm.css";
 import { FormGroup, Label, Input, Form } from "reactstrap";
+import { Table} from 'react-bootstrap';
 import { Formik } from "formik";
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
@@ -42,14 +43,23 @@ const PropertyEntry = (props) => {
                   <div className=" d-flex justify-content-center d-flex flex-column m-3">
                     <div className="">
                       <Label for="exampleSelect">Property Type</Label>
+                     
                       <Input
-                        type="text"
-                        name="property_type"
-                        value={values.property_type}
-                        id="exampleSelect"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      ></Input>
+                    type="select"
+                    name="property_type"
+                    id="exampleSelect"
+                    placeholder="Select"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.property_type}
+                  >
+                    <option value=""> </option>
+                    <option value="villa">Villa</option>
+                    <option value="house">House</option>
+                    <option value="apartment">Apartment</option>
+                   
+                  </Input>
+      
                       {touched?.property_type && errors?.property_type && (
                         <span
                           className="text-danger col-md-12 text-left mb-2"
@@ -65,7 +75,7 @@ const PropertyEntry = (props) => {
                   <Input
                     type="number"
                     name="property_price"
-                    placeholder="enter your Age"
+                    placeholder="Enter Price"
                     value={values.property_price}
                     min={0}
                     onChange={handleChange}
@@ -90,8 +100,7 @@ const PropertyEntry = (props) => {
                         onBlur={handleBlur}
                       >
                         <option value="">select one</option>
-                        <option value="for sell">for sell</option>
-                        <option value="for rent"> for rent</option>
+                        <option value="free">Free</option>
                         <option value="Repair and Maintanance">
                           Repair and Maintanance
                         </option>
@@ -165,9 +174,59 @@ const PropertyEntry = (props) => {
                         </span>
                       )}
                     </div>
+                      <div className="">   
+                        <Label for="exampleName"> <h3>Properties</h3></Label></div>
 
-                    <div className="">
-                      <Label for="exampleName">BHK</Label>
+
+                      <Table bordered>
+                        <thead>
+                          <tr>
+                            <th>SN</th>
+                            <th>Unit</th>
+                            <th>Area</th>
+                            <th>Remarks</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>Bedroom</td>
+                            <td>200 Sq.Ft.</td>
+                            <td>Attached TB</td>
+                          </tr>
+                         
+                          <tr>
+                          <td>2</td>
+                            <td>Hall</td>
+                            <td>300 Sq.Ft</td>
+                            <td>Ocean View</td>
+                          </tr>
+
+                          
+
+                          <tr>
+                          <td>3</td>
+                            <td>Kitchen with Dinning</td>
+                            <td>100 Sq.Ft</td>
+                            <td>Ocean View</td>
+                          </tr>
+                          
+                          <tr>
+                          <td>4</td>
+                            <td>Bathroom</td>
+                            <td>30 Sq.Ft</td>
+                            <td>On first floor with Bathtub</td>
+                          </tr>
+                        </tbody>
+                      </Table>
+
+
+
+
+
+
+                    {/* <div className="">
+                      <Label for="exampleName">Bedroom</Label>
                       <Input
                         type="text"
                         value={values.BHK}
@@ -184,9 +243,9 @@ const PropertyEntry = (props) => {
                           {errors?.BHK}
                         </span>
                       )}
-                    </div>
-                    <div className="">
-                      <Label for="exampleName">toilet</Label>
+                    </div> */}
+                   {/* <div className="">
+                       <Label for="exampleName">toilet</Label>
                       <Input
                         type="text"
                         value={values.toilet}
@@ -203,7 +262,53 @@ const PropertyEntry = (props) => {
                           {errors?.toilet}
                         </span>
                       )}
-                    </div>
+                    </div> */}
+
+                       <div className="">
+                       <Label>
+                             <h3>Facilities</h3> 
+                            </Label>
+                            <FormGroup check>
+                            <Label check>
+                              <Input type="checkbox" />{' '}
+                              Parking
+                            </Label>
+                          </FormGroup>
+                          <FormGroup check>
+                            <Label check>
+                              <Input type="checkbox" />{' '}
+                             Swimming
+                            </Label>
+                          </FormGroup>
+                          <FormGroup check>
+                            <Label check>
+                              <Input type="checkbox" />{' '}
+                             Balcony
+                            </Label>
+                          </FormGroup><FormGroup check>
+                            <Label check>
+                              <Input type="checkbox" />{' '}
+                             Smoking
+                            </Label>
+                          </FormGroup>
+                          <FormGroup check>
+                            <Label check>
+                              <Input type="checkbox" />{' '}
+                             Pet Allowed
+                            </Label>
+                          </FormGroup>
+                          
+                          {/* {touched.facilities && errors.facilities && (
+                                  <span
+                                    className="text-danger col-md-12 text-left mb-2"
+                                    style={{ fontSize: 12 }}
+                                  >
+                                    {errors.facilities}
+                                  </span>
+                                )} */}
+                              </div>
+
+
 
                     <div className="mt-4 mb-4">
                   <Label className="font-weight-bold text-white">Product Photo</Label>
