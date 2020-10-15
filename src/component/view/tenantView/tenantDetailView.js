@@ -25,10 +25,10 @@ const TanentDetailView = (props) => {
        
 
             <h4>Office Detail</h4>
-            <div className="my-2"> <span className="font-weight-bold h6">Name: </span>  hello </div>
-            <div className="my-2"> <span className="font-weight-bold h6">address: </span>ok</div>
-            <div className="my-2"> <span className="font-weight-bold h6">phone No: </span> oooooosssss</div>
-            <div className="my-2"> <span className="font-weight-bold h6">post: </span> dfsf</div></div>
+            <div className="my-2"> <span className="font-weight-bold h6">Name: </span>  {} </div>
+     <div className="my-2"> <span className="font-weight-bold h6">address: </span>{}</div>
+     <div className="my-2"> <span className="font-weight-bold h6">phone No: </span> {}</div>
+     <div className="my-2"> <span className="font-weight-bold h6">post: </span>{}</div></div>
 
         </div>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./propertyEntryForm.css";
 import { FormGroup, Label, Input, Form } from "reactstrap";
-import { Table} from 'react-bootstrap';
+import { Table } from "react-bootstrap";
 import { Formik } from "formik";
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
@@ -12,21 +12,27 @@ const PropertyEntry = (props) => {
         <div>
           <Formik
             initialValues={{
-                street: "",
-                city: "",
-                country: "",
+              street: "",
+              city: "",
+              country: "",
               property_type: "",
               property_price: "",
               property_status: "",
-              BHK:"",
-              toilet:"",
-             photo:""
+              BHK: "",
+              toilet: "",
+              photo: "",
+              Parking:"",
+              Swimming:"",
+              Balcony:"",
+              Smoking:"",
+              PetAllowed:"",
+              Garden:""
             }}
             onSubmit={(values) => {
-              props.propertySend(values)
+              props.propertySend(values);
               console.log(values);
             }}
-            validationSchema={PropertyFormValidation}
+            // validationSchema={PropertyFormValidation}
           >
             {({
               touched,
@@ -43,23 +49,22 @@ const PropertyEntry = (props) => {
                   <div className=" d-flex justify-content-center d-flex flex-column m-3">
                     <div className="">
                       <Label for="exampleSelect">Property Type</Label>
-                     
+
                       <Input
-                    type="select"
-                    name="property_type"
-                    id="exampleSelect"
-                    placeholder="Select"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.property_type}
-                  >
-                    <option value=""> </option>
-                    <option value="villa">Villa</option>
-                    <option value="house">House</option>
-                    <option value="apartment">Apartment</option>
-                   
-                  </Input>
-      
+                        type="select"
+                        name="property_type"
+                        id="exampleSelect"
+                        placeholder="Select"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.property_type}
+                      >
+                        <option value=""> </option>
+                        <option value="Villa">Villa</option>
+                        <option value="House">House</option>
+                        <option value="Apartment">Apartment</option>
+                      </Input>
+
                       {touched?.property_type && errors?.property_type && (
                         <span
                           className="text-danger col-md-12 text-left mb-2"
@@ -71,24 +76,24 @@ const PropertyEntry = (props) => {
                     </div>
 
                     <div className="">
-                  <Label>Property price</Label>
-                  <Input
-                    type="number"
-                    name="property_price"
-                    placeholder="Enter Price"
-                    value={values.property_price}
-                    min={0}
-                    onChange={handleChange}
-                  />
-                  {touched.property_price && errors.property_price && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.property_price}
-                    </span>
-                  )}
-                </div>
+                      <Label>Property price</Label>
+                      <Input
+                        type="number"
+                        name="property_price"
+                        placeholder="Enter Price"
+                        value={values.property_price}
+                        min={0}
+                        onChange={handleChange}
+                      />
+                      {touched.property_price && errors.property_price && (
+                        <span
+                          className="text-danger col-md-12 text-left mb-2"
+                          style={{ fontSize: 12 }}
+                        >
+                          {errors.property_price}
+                        </span>
+                      )}
+                    </div>
                     <div className="">
                       <Label for="exampleSelect">Property Status</Label>
                       <Input
@@ -174,56 +179,52 @@ const PropertyEntry = (props) => {
                         </span>
                       )}
                     </div>
-                      <div className="">   
-                        <Label for="exampleName"> <h3>Properties</h3></Label></div>
+                    <div className="">
+                      <Label for="exampleName">
+                        {" "}
+                        <h3>Properties</h3>
+                      </Label>
+                    </div>
 
+                    <Table bordered>
+                      <thead>
+                        <tr>
+                          <th>SN</th>
+                          <th>Unit</th>
+                          <th>Area</th>
+                          <th>Remarks</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Bedroom</td>
+                          <td>200 Sq.Ft.</td>
+                          <td>Attached TB</td>
+                        </tr>
 
-                      <Table bordered>
-                        <thead>
-                          <tr>
-                            <th>SN</th>
-                            <th>Unit</th>
-                            <th>Area</th>
-                            <th>Remarks</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Bedroom</td>
-                            <td>200 Sq.Ft.</td>
-                            <td>Attached TB</td>
-                          </tr>
-                         
-                          <tr>
+                        <tr>
                           <td>2</td>
-                            <td>Hall</td>
-                            <td>300 Sq.Ft</td>
-                            <td>Ocean View</td>
-                          </tr>
+                          <td>Hall</td>
+                          <td>300 Sq.Ft</td>
+                          <td>Ocean View</td>
+                        </tr>
 
-                          
-
-                          <tr>
+                        <tr>
                           <td>3</td>
-                            <td>Kitchen with Dinning</td>
-                            <td>100 Sq.Ft</td>
-                            <td>Ocean View</td>
-                          </tr>
-                          
-                          <tr>
+                          <td>Kitchen with Dinning</td>
+                          <td>100 Sq.Ft</td>
+                          <td>Ocean View</td>
+                        </tr>
+
+                        <tr>
                           <td>4</td>
-                            <td>Bathroom</td>
-                            <td>30 Sq.Ft</td>
-                            <td>On first floor with Bathtub</td>
-                          </tr>
-                        </tbody>
-                      </Table>
-
-
-
-
-
+                          <td>Bathroom</td>
+                          <td>30 Sq.Ft</td>
+                          <td>On first floor with Bathtub</td>
+                        </tr>
+                      </tbody>
+                    </Table>
 
                     {/* <div className="">
                       <Label for="exampleName">Bedroom</Label>
@@ -244,7 +245,7 @@ const PropertyEntry = (props) => {
                         </span>
                       )}
                     </div> */}
-                   {/* <div className="">
+                    {/* <div className="">
                        <Label for="exampleName">toilet</Label>
                       <Input
                         type="text"
@@ -264,47 +265,42 @@ const PropertyEntry = (props) => {
                       )}
                     </div> */}
 
-                       <div className="">
-                       <Label>
-                             <h3>Facilities</h3> 
-                            </Label>
-                            <FormGroup check>
-                            <Label check>
-                              <Input type="checkbox" />{' '}
-                              Parking
-                            </Label>
-                          </FormGroup>
-                          <FormGroup check>
-                            <Label check>
-                              <Input type="checkbox" />{' '}
-                             Swimming
-                            </Label>
-                          </FormGroup>
-                          <FormGroup check>
-                            <Label check>
-                              <Input type="checkbox" />{' '}
-                             Balcony
-                            </Label>
-                          </FormGroup><FormGroup check>
-                            <Label check>
-                              <Input type="checkbox" />{' '}
-                             Smoking
-                            </Label>
-                          </FormGroup>
-                          <FormGroup check>
-                            <Label check>
-                              <Input type="checkbox" />{' '}
-                             Pet Allowed
-                            </Label>
-                          </FormGroup>
-                          <FormGroup check>
-                            <Label check>
-                              <Input type="checkbox" />{' '}
-                            Garden
-                            </Label>
-                          </FormGroup>
-                          
-                          {/* {touched.facilities && errors.facilities && (
+                    <div className="">
+                      <Label>
+                        <h3>Facilities</h3>
+                      </Label>
+                      <FormGroup check>
+                        <Label check>
+                          <Input type="checkbox" name="Parking"value="available" /> Parking
+                        </Label>
+                      </FormGroup>
+                      <FormGroup check>
+                        <Label check>
+                          <Input type="checkbox" name="Swimming"value="available" /> Swimming
+                        </Label>
+                      </FormGroup>
+                      <FormGroup check>
+                        <Label check>
+                          <Input type="checkbox" name="Balcony"value="available" /> Balcony
+                        </Label>
+                      </FormGroup>
+                      <FormGroup check>
+                        <Label check>
+                          <Input type="checkbox"  name="Smoking"value="available" /> Smoking
+                        </Label>
+                      </FormGroup>
+                      <FormGroup check>
+                        <Label check>
+                          <Input type="checkbox" name="PetAllowed"value="available" /> Pet Allowed
+                        </Label>
+                      </FormGroup>
+                      <FormGroup check>
+                        <Label check>
+                          <Input type="checkbox" name="Garden"value="available"/> Garden
+                        </Label>
+                      </FormGroup>
+
+                      {/* {touched.facilities && errors.facilities && (
                                   <span
                                     className="text-danger col-md-12 text-left mb-2"
                                     style={{ fontSize: 12 }}
@@ -312,32 +308,30 @@ const PropertyEntry = (props) => {
                                     {errors.facilities}
                                   </span>
                                 )} */}
-                              </div>
-
-
+                    </div>
 
                     <div className="mt-4 mb-4">
-                  <Label className="font-weight-bold text-white">Product Photo</Label>
-                  <Input
-                  className="text-white "
-                    type="file"
-                    name="photo"
-                    accept="image/*"
-                    onChange={(event) => {
-                      setFieldValue("photo", event.currentTarget.files[0]);
-                    }}
-                  />
+                      <Label className="font-weight-bold text-white">
+                        Product Photo
+                      </Label>
+                      <Input
+                        className="text-white "
+                        type="file"
+                        name="photo"
+                        accept="image/*"
+                        onChange={(event) => {
+                          setFieldValue("photo", event.currentTarget.files[0]);
+                        }}
+                      />
 
-                  {touched.photo && values.photo && (
-                    <img
-                      src={URL.createObjectURL(values.photo)}
-                      alt="no pic"
-                      height="200"
-                    />
-                  )}
-                </div>
-                   
-
+                      {touched.photo && values.photo && (
+                        <img
+                          src={URL.createObjectURL(values.photo)}
+                          alt="no pic"
+                          height="200"
+                        />
+                      )}
+                    </div>
                   </div>
 
                   <button type="submit" onClick={handleSubmit}>
