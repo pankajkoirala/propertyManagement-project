@@ -297,6 +297,12 @@ const PropertyEntry = (props) => {
                              Pet Allowed
                             </Label>
                           </FormGroup>
+                          <FormGroup check>
+                            <Label check>
+                              <Input type="checkbox" />{' '}
+                            Garden
+                            </Label>
+                          </FormGroup>
                           
                           {/* {touched.facilities && errors.facilities && (
                                   <span

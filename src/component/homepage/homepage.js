@@ -3,7 +3,7 @@ import "./homepage.css"
 import Navbar from "../../shared/navbar"
 import INCOME from "../../assets/income.PNG"
 import Maintainance from "../../assets/maintinance.PNG"
-import Occupancy from "../../assets/occupancy.PNG"
+import Occupancy from "../../assets/1.PNG"
 import{setLocalStorage} from "../../const/tokenStorage"
 
 const Homepage = () => {
