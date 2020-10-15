@@ -3,3 +3,11 @@ background-color: tomato;
 margin: 40px;
 padding: 10px
 }
+
+.box{
+  margin: 3px;
+  height:100px;
+  width: 80px;
+  border-color:lemonchiffon ;
+  border-style: dotted;
+}
