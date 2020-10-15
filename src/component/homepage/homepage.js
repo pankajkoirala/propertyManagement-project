@@ -1,10 +1,11 @@
 import React from "react"
 import "./homepage.css"
+//import {Card, Button} from "reactstrap";
 import Navbar from "../../shared/navbar"
 import INCOME from "../../assets/income.PNG"
 import Maintainance from "../../assets/maintinance.PNG"
 import Occupancy from "../../assets/1.PNG"
-import{setLocalStorage} from "../../const/tokenStorage"
+//import{setLocalStorage} from "../../const/tokenStorage"
 
 const Homepage = () => {
   // // let logout=()=>{
@@ -26,7 +27,21 @@ const Homepage = () => {
               <div className="col-4">
                     <img src={INCOME} alt="Income" />
               </div>
-              <div className="col-4"> <img src={Maintainance} alt="Income" /></div>
+              <div className="col-4"> 
+               <img src={Maintainance} alt="Income" /> 
+
+              {/* <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="left" src="holder.js/100px180" />
+                        <Card.Body>
+                          <Card.Title>Maintainance</Card.Title>
+                          <Card.Text>
+                            Some quick example text to build on the card title and make up the bulk of
+                            the card's content.
+                          </Card.Text>
+                          <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                      </Card> */}
+              </div>
               <div className="col-4"><img src={INCOME} alt="Income" /></div>
             </div>
             <div className="row m-3">

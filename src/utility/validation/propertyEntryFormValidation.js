@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 export const PropertyFormValidation = Yup.object().shape({
-  property_type: Yup.string().oneOf(["Villa", "House", "Flat"])
+  property_type: Yup.string().oneOf(["villa", "house", "flat"])
   .required("Required"),
   property_price: Yup.number().required("Please enter price"),
   property_status: Yup.string()
