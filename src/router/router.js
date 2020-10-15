@@ -13,7 +13,7 @@ import Dashboard from "../component/view/dashboardView/dashboardView.js"
 import Chequeentry from "../component/entryForm/chequeEntry/chequeEntryForm.js"
 import OnePropertyView from "../container/view/propertyDetailView"
 import Lease from "../component/entryForm/lease/lease.js"
-import TanentDetailView from "../component/view/tenantView/tenantDetailView.js"
+import TanentDetailView from "../container/view/tanentDetailView"
 const RouterPage = () => {
     return (
         <div>
