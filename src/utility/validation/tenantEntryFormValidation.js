@@ -8,8 +8,9 @@ export const TenantEntryFormValidation = Yup.object().shape({
   tenant_photo: Yup.string().required("Please upload Photo"),
   tenant_phoneNo: Yup.number().required("Required Field"),
   assignedProperty: Yup.string().required("Please select property assigned"),
-  
-
+  tenant_GovIdNo:Yup.string().required("Please Enter Government ID number"),
+  tenant_DrivingLicenceNo:Yup.string().required("Please Enter Driving Licence number"),
+  tenant_DOB:Yup.date().required("Please Enter Date of Birth"),
   tenant_email: Yup.string().required("Please enter Email"),
   city: Yup.string()
     .min(1, "Too Short")
