@@ -1,7 +1,8 @@
-import React from "react"
+import React,{useState,useEffect} from "react"
 
 import EmployeeViews from "../../component/view/employeeView/employeeView.js"
 import Axios from "axios"
+import {base_URL} from "../../const/base_URL"
 
 const EmployeeView=()=>{
     const [employee,setEmployee]=useState([])
@@ -9,13 +10,13 @@ const EmployeeView=()=>{
         EmployeeData()
     },[])
 
-    et EmployeeData=()=>{
+    let EmployeeData=()=>{
         Axios({
             method: 'get',
             url: base_URL+"/api/employee",
             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
             }).then((res)=>{
-                setTenant(res.data);
+                setEmployee(res.data);
           }).catch((err)=>{
             console.log(err);
           })

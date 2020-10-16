@@ -6,7 +6,7 @@ import { Formik } from "formik";
 
 import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
 
-const LeaseEntry = () => {
+const LeaseEntry = (props) => {
   const [cheque, setCheque] = useState([]);
 
   return (
@@ -20,26 +20,25 @@ const LeaseEntry = () => {
       <Formik
         initialValues={{
           chequeList: cheque,
-          lease_number: "",
           lease_enterDate: "",
           tenants: "",
-          property_occupants: "",
           lease_Term: "",
           commenceDate: "",
           expirationDate: "",
           rentAmount: "",
-          dueDate: "",
+          firstDueDate: "",
           frequency: "",
           gracePeriod: "",
           late_feeType: "",
           lateFeeAmount: "",
           securityDeposite: "",
-          securityDueDatet: "",
-          picture: "",
+          securityfirstDueDate: "",
+          photo: "",
         }}
         onSubmit={(values) => {
           values.chequeList = cheque;
           console.log(values);
+          props.leaseData(values)
         }}
         //validationSchema={LeaseEntryFormValidation}
       >
@@ -59,42 +58,24 @@ const LeaseEntry = () => {
                 <div className="col-12 mt-2 ml-2 mr-2">
                   <b>General Information</b>{" "}
                 </div>
-                <div className="col-md-4">
-                  <Label for="exampleName">Lease Number</Label>
-                  <Input
-                    type="text"
-                    value={values.leaseNumber}
-                    name="leaseNumber"
-                    placeholder="Lease Number"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.leaseNumber && errors.leaseNumber && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.leaseNumber}
-                    </span>
-                  )}
-                </div>
+               
 
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
                   <Input
                     type="date"
-                    value={values.enterDate}
-                    name="enterDate"
+                    value={values.lease_enterDate}
+                    name="lease_enterDate"
                     placeholder="Enter Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {touched.enterDate && errors.enterDate && (
+                  {touched.lease_enterDate && errors.lease_enterDate && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.enterDate}
+                      {errors.lease_enterDate}
                     </span>
                   )}
                 </div>
@@ -112,7 +93,6 @@ const LeaseEntry = () => {
                     placeholder="Select Status of Cheque"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.status}
                   >
                     <option value=""> </option>
                     <option value="addNewTenant">Add New</option>
@@ -121,12 +101,12 @@ const LeaseEntry = () => {
                     </option>
                   </Input>
 
-                  {touched.status && errors.status && (
+                  {touched.tenants && errors.tenants && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.status}
+                      {errors.tenants}
                     </span>
                   )}
                 </div>
@@ -158,36 +138,7 @@ const LeaseEntry = () => {
                   )}
                 </div>
 
-                <div className="col-md-12">
-                  <b>Property Occupants</b>
-                </div>
-                <div className="col-6">
-                  <Label for="exampleName">Occupant(s)</Label>
-                  <Input
-                    type="select"
-                    name="property_occupants"
-                    id="exampleSelect"
-                    placeholder="Enter Property Occupants"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.property_occupants}
-                  >
-                    <option value=""> </option>
-                    <option value="addOccupant">Add New Occupant</option>
-                    <option value="selectOccupantsFromList">
-                      Select from Occupant List
-                    </option>
-                  </Input>
-
-                  {touched.status && errors.status && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.property_occupants}
-                    </span>
-                  )}
-                </div>
+               
               </div>
               <div className="col-md-12">
                 <b>Terms of Tendency</b>
@@ -205,8 +156,8 @@ const LeaseEntry = () => {
                     value={values.lease_Term}
                   >
                     <option value=""> </option>
-                    <option value="value.monthToMonth">Month to Month</option>
-                    <option value="value.fixedTerm">Fixed Terms</option>
+                    <option value="monthToMonth">Month to Month</option>
+                    <option value="fixedTerm">Fixed Terms</option>
                   </Input>
 
                   {touched.lease_Term && errors.lease_Term && (
@@ -288,20 +239,20 @@ const LeaseEntry = () => {
                   <Label for="exampleSelect">First Due Date</Label>
                   <Input
                     type="date"
-                    name="dueDate"
+                    name="firstDueDate"
                     id="exampleSelect"
                     placeholder="Due Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.dueDate}
+                    value={values.firstDueDate}
                   ></Input>
 
-                  {touched.dueDate && errors.dueDate && (
+                  {touched.firstDueDate && errors.firstDueDate && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.dueDate}
+                      {errors.firstDueDate}
                     </span>
                   )}
                 </div>
@@ -314,7 +265,6 @@ const LeaseEntry = () => {
                     placeholder="Frequencyt"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.frequency}
                   >
                     <option value=""> </option>
                     <option value="daily">Daily</option>
@@ -369,7 +319,6 @@ const LeaseEntry = () => {
                     placeholder="Select Late Fee type"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.late_feeType}
                   >
                     <option value=""> </option>
                     <option value="flat">Flat</option>
@@ -415,7 +364,7 @@ const LeaseEntry = () => {
                   <Label for="exampleSelect">Security Deposit</Label>
                   <Input
                     type="number"
-                    name="securityDeposites"
+                    name="securityDeposite"
                     id="exampleSelect"
                     placeholder="Security Deposite"
                     onChange={handleChange}
@@ -436,20 +385,20 @@ const LeaseEntry = () => {
                   <Label for="exampleSelect">Deposite Due Date</Label>
                   <Input
                     type="date"
-                    name="securityDueDate"
+                    name="securityfirstDueDate"
                     id="exampleSelect"
                     placeholder="Security Due Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.securityDueDate}
+                    value={values.securityfirstDueDate}
                   ></Input>
 
-                  {touched.securityDueDate && errors.securityDueDate && (
+                  {touched.securityfirstDueDate && errors.securityfirstDueDate && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.securityDueDate}
+                      {errors.securityfirstDueDate}
                     </span>
                   )}
                 </div>
@@ -459,16 +408,16 @@ const LeaseEntry = () => {
                   <Label className="float-left">Upload Agrement Copy</Label>
                   <Input
                     type="file"
-                    name="picture"
+                    name="photo"
                     accept="image/*"
                     onChange={(event) => {
-                      setFieldValue("picture", event.currentTarget.files[0]);
+                      setFieldValue("photo", event.currentTarget.files[0]);
                     }}
                   />
 
-                  {touched.picture && values.picture && (
+                  {touched.photo && values.photo && (
                     <img
-                      src={URL.createObjectURL(values.picture)}
+                      src={URL.createObjectURL(values.photo)}
                       alt="no picture"
                       height="20"
                     />
