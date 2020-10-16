@@ -25,6 +25,9 @@ const TenantEntry = (props) => {
               tenant_lastName: "",
               tenant_email: "",
               tenant_GovId: "",
+              tenant_GovIdNo: "",
+              tenant_DrivingLicenceNo: "",
+              tenant_DOB: "",
 
             }}
             onSubmit={(values) => {
@@ -61,7 +64,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.tenant_firstName}
                           name="tenant_firstName"
-                          placeholder="Enter your firstName"
+                          placeholder="Firs tName"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -81,7 +84,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.tenant_middleName}
                           name="tenant_middleName"
-                          placeholder="Enter your middleName"
+                          placeholder="Middle Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -101,7 +104,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.tenant_lastName}
                           name="tenant_lastName"
-                          placeholder="Enter your lastName"
+                          placeholder="Last Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -123,7 +126,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.street}
                           name="street"
-                          placeholder="Enter your Street"
+                          placeholder="Street"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -143,7 +146,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.city}
                           name="city"
-                          placeholder="Enter your City"
+                          placeholder="City"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -163,7 +166,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.provience}
                           name="provience"
-                          placeholder="Enter Provience Name"
+                          placeholder="Provience Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -179,11 +182,12 @@ const TenantEntry = (props) => {
                     </div>
                     <div className="row">
                       <div className="col-md-6">
-                        <Label for="exampleSelect">ZipCode</Label>
+                        <Label for="exampleSelect">Zip Code</Label>
                         <Input
                           type="text"
                           name="ZipCode"
                           value={values.ZipCode}
+                          placeholder="Zip Code"
                           id="exampleSelect"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -254,6 +258,69 @@ const TenantEntry = (props) => {
                             style={{ fontSize: 12 }}
                           >
                             {errors.tenant_phoneNo}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <Label for="exampleName">Date of Birth</Label>
+                        <Input
+                          type="date"
+                          value={values.tenant_DOB}
+                          name="tenant_DOB"
+                          placeholder="Enter DOB"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.tenant_DOB && errors.tenant_DOB && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.tenant_DOB}
+                          </span>
+                        )}
+                      </div>
+                      </div>
+
+                    <div className="row">
+                      <div className="col-md-6">
+                        <Label for="exampleName">Government Issue Card Number</Label>
+                        <Input
+                          type="string"
+                          value={values.tenant_GovIdNo}
+                          name="tenant_GovIdNo"
+                          placeholder="Enter Government Id Number"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.tenant_GovIdNo && errors.tenant_GovIdNo && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.tenant_GovIdNo}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="col-md-6">
+                        <Label for="exampleName">Driving Licence Number</Label>
+                        <Input
+                          type="number"
+                          value={values.tenant_DrivingLicenceNo}
+                          name="tenant_DrivingLicenceNo"
+                          placeholder="Enter your Driving Licence Number"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.tenant_DrivingLicenceNo && errors.tenant_DrivingLicenceNo && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.tenant_DrivingLicenceNo}
                           </span>
                         )}
                       </div>

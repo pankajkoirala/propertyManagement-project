@@ -8,7 +8,7 @@ const TenantView=(props)=>{
   console.log(props.tenant);
   return( 
   
-  <div className="tenantview"> Tenant/Occupants View
+  <div className="tenantview"> Tenant View
   
   <Table striped bordered hover size="sm">
               <thead>
@@ -19,7 +19,6 @@ const TenantView=(props)=>{
                   <th>Last Name</th>
                   <th>Contact Number</th>
                   <th>Contact Email</th>
-               
                   <th>Remarks</th>
                 </tr>
               </thead>
