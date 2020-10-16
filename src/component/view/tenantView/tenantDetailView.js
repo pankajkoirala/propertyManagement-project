@@ -13,8 +13,8 @@ import {
 
 
 const TanentDetailView = (props) => {
-  // console.log(props.selectedTenantone);
-  // let selectedselectedMember = props.selectedTenantone;
+  console.log(props.selectedTenantone);
+  let selectedselectedMember = props.selectedTenantone;
   return (
     <div className="row pbox">
    {/* {selectedselectedMember.map((arg,index)=>{
@@ -94,14 +94,15 @@ const TanentDetailView = (props) => {
 
 
                         <div className="col-12 bg-primary">
-                        <div className="row m">
+                        <div className="row">
                               <div className="col-8 bg-success text-left"><b>Application Date:</b><br/> January 21, 2020
                               <br/><br/>
-                              <b>Property Occupied: <br/> 412 B, Tripureshwor</b>
-                              </div>
-                              <div className="col-4"><img className="logo" src={LOGO} alt="" /></div>
-                               <div className="col-4"><img className="printer" src={PRINTERLOGO} alt="" /></div>
-                 
+                              <b>Property Occupied: <br/> 412 B, Kuleshwor</b>
+                              </div>  
+                             
+                                  <div className="col-4 bg-warning"><img className="logo" src={LOGO} alt="" /></div> 
+                                  {/* <div className="col-2"><img className="printer" src={PRINTERLOGO} alt="" /></div> */}
+                               
                           </div>
                         </div>
 
@@ -125,6 +126,12 @@ const TanentDetailView = (props) => {
                                 </tr>
                               </thead>
                               <tbody>
+                              <tr>
+                                  
+                                  <th scope="col">Address</th>
+                                  <th scope="col">Tripureshwor, Kathmandu</th>
+                                  
+                                </tr>
                                 <tr>
                                   <th scope="row">Phone No. </th>
                                   <td>9834759302</td>
