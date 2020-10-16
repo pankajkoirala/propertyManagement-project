@@ -2,7 +2,7 @@ import React from "react";
 import "./propertyEntryForm.css";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Table } from "react-bootstrap";
-import { Formik } from "formik";
+import { Field, Formik } from "formik";
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
@@ -21,12 +21,12 @@ const PropertyEntry = (props) => {
               BHK: "",
               toilet: "",
               photo: "",
-              Parking:"",
-              Swimming:"",
-              Balcony:"",
-              Smoking:"",
-              PetAllowed:"",
-              Garden:""
+              Parking: "",
+              Swimming: "",
+              Balcony: "",
+              Smoking: "",
+              PetAllowed: "",
+              Garden: "",
             }}
             onSubmit={(values) => {
               props.propertySend(values);
@@ -271,32 +271,68 @@ const PropertyEntry = (props) => {
                       </Label>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox" name="Parking"value="available" /> Parking
+                          <Input
+                            type="checkbox"
+                            name="Parking"
+                            onChange={(e) =>setFieldValue("Parking", e.currentTarget.checked?"available":"unavailable")}
+                       
+                          />{" "}
+                          Parking
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox" name="Swimming"value="available" /> Swimming
+                          <Input
+                            type="checkbox"
+                            name="Swimming"
+                            onChange={(e) =>setFieldValue("Swimming", e.currentTarget.checked?"available":"unavailable")}
+
+                          />{" "}
+                          Swimming
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox" name="Balcony"value="available" /> Balcony
+                          <Input
+                            type="checkbox"
+                            name="Balcony"
+                            onChange={(e) =>setFieldValue("Balcony", e.currentTarget.checked?"available":"unavailable")}
+
+                          />{" "}
+                          Balcony
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox"  name="Smoking"value="available" /> Smoking
+                          <Input
+                            type="checkbox"
+                            name="Smoking"
+                            onChange={(e) =>setFieldValue("Smoking", e.currentTarget.checked?"available":"unavailable")}
+
+                          />{" "}
+                          Smoking
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox" name="PetAllowed"value="available" /> Pet Allowed
+                          <Input
+                            type="checkbox"
+                            name="PetAllowed"
+                            onChange={(e) =>setFieldValue("PetAllowed", e.currentTarget.checked?"available":"unavailable")}
+
+                          />{" "}
+                          Pet Allowed
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox" name="Garden"value="available"/> Garden
+                          <Input
+                            type="checkbox"
+                            name="Garden"
+                            onChange={(e) =>setFieldValue("Garden", e.currentTarget.checked?"available":"unavailable")}
+
+                          />{" "}
+                          Garden
                         </Label>
                       </FormGroup>
 
