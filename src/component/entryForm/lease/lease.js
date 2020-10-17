@@ -8,6 +8,7 @@ import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryForm
 
 const LeaseEntry = (props) => {
   const [cheque, setCheque] = useState([]);
+  const [propertyId, setPropertyId] = useState([]);
 
   return (
     <div className="leasediv">
@@ -21,7 +22,8 @@ const LeaseEntry = (props) => {
         initialValues={{
           chequeList: cheque,
           lease_enterDate: "",
-          tenants: "",
+          tenants: [],
+          property: [],
           lease_Term: "",
           commenceDate: "",
           expirationDate: "",
@@ -38,7 +40,7 @@ const LeaseEntry = (props) => {
         onSubmit={(values) => {
           values.chequeList = cheque;
           console.log(values);
-          props.leaseData(values)
+          props.leaseData(values);
         }}
         //validationSchema={LeaseEntryFormValidation}
       >
@@ -58,7 +60,6 @@ const LeaseEntry = (props) => {
                 <div className="col-12 mt-2 ml-2 mr-2">
                   <b>General Information</b>{" "}
                 </div>
-               
 
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
@@ -91,14 +92,14 @@ const LeaseEntry = (props) => {
                     name="tenants"
                     id="exampleSelect"
                     placeholder="Select Status of Cheque"
-                    onChange={handleChange}
+                    onChange={(e) => setFieldValue("tenants", [e.target.value])}
                     onBlur={handleBlur}
                   >
-                    <option value=""> </option>
-                    <option value="addNewTenant">Add New</option>
-                    <option value="viewTenantList">
-                      List from Tenant Entry
-                    </option>
+                    {props.tenant.map((arg, index) => {
+                      return (
+                        <option value={arg._id}>{arg.tenant_firstName} </option>
+                      );
+                    })}
                   </Input>
 
                   {touched.tenants && errors.tenants && (
@@ -117,17 +118,28 @@ const LeaseEntry = (props) => {
                     name="property"
                     id="exampleSelect"
                     placeholder="Select Status of Cheque"
-                    onChange={handleChange}
+                    onChange={(e) =>
+                      setFieldValue("property", [
+                        ...values.property,
+                        e.target.value,
+                      ])
+                    }
                     onBlur={handleBlur}
-                    value={values.property}
                   >
-                    <option value=""> </option>
-                    <option value="addProperty"> Add Property</option>
-                    <option value="selectTenantFromList">
-                      List from Property Entry
-                    </option>
+                    {props.property.map((arg, index) => {
+                      return (
+                        <option value={arg._id}>
+                          {arg.property_type}
+                          {arg.referenceNO}{" "}
+                        </option>
+                      );
+                    })}
                   </Input>
-
+                  {/* //selected house list shown */}
+                  {values.property.map((a) => {
+                    let house = props.property.find((b) => b._id === a);
+                    return <div>{house.property_type}</div>;
+                  })}
                   {touched.property && errors.property && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -137,8 +149,6 @@ const LeaseEntry = (props) => {
                     </span>
                   )}
                 </div>
-
-               
               </div>
               <div className="col-md-12">
                 <b>Terms of Tendency</b>
