@@ -8,7 +8,18 @@ import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryForm
 
 const LeaseEntry = (props) => {
   const [cheque, setCheque] = useState([]);
-  const [propertyId, setPropertyId] = useState([]);
+  const [date, setdate] = useState('');
+  const [chequeNum, setChequeNum] = useState('');
+
+
+
+  let setChequeList=(data)=>{
+    let updatedcheque=cheque
+    updatedcheque.push(data)
+    setCheque(updatedcheque)
+    setdate('')
+    setChequeNum('')
+  }
 
   return (
     <div className="leasediv">
@@ -20,9 +31,9 @@ const LeaseEntry = (props) => {
       </div>
       <Formik
         initialValues={{
-          chequeList: cheque,
+          chequeList: [],
           lease_enterDate: "",
-          tenants: [],
+          tenants: '',
           property: [],
           lease_Term: "",
           commenceDate: "",
@@ -38,7 +49,12 @@ const LeaseEntry = (props) => {
           photo: "",
         }}
         onSubmit={(values) => {
-          values.chequeList = cheque;
+          values.chequeList =JSON.stringify(cheque);
+          values.property =JSON.stringify(values.property);
+
+
+
+          
           console.log(values);
           props.leaseData(values);
         }}
@@ -60,7 +76,7 @@ const LeaseEntry = (props) => {
                 <div className="col-12 mt-2 ml-2 mr-2">
                   <b>General Information</b>{" "}
                 </div>
-
+<h1 onClick={()=>console.log(values)}>test</h1>
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
                   <Input
@@ -92,7 +108,7 @@ const LeaseEntry = (props) => {
                     name="tenants"
                     id="exampleSelect"
                     placeholder="Select Status of Cheque"
-                    onChange={(e) => setFieldValue("tenants", [e.target.value])}
+                    onChange={handleChange}
                     onBlur={handleBlur}
                   >
                     {props.tenant.map((arg, index) => {
@@ -126,7 +142,7 @@ const LeaseEntry = (props) => {
                     }
                     onBlur={handleBlur}
                   >
-                    {props.property.map((arg, index) => {
+                    {props?.property?.map((arg, index) => {
                       return (
                         <option value={arg._id}>
                           {arg.property_type}
@@ -136,9 +152,9 @@ const LeaseEntry = (props) => {
                     })}
                   </Input>
                   {/* //selected house list shown */}
-                  {values.property.map((a) => {
-                    let house = props.property.find((b) => b._id === a);
-                    return <div>{house.property_type}</div>;
+                  {values?.property?.map((a) => {
+                    let house = props?.property?.find((b) => b._id === a);
+                    return <div>{house?.property_type}</div>;
                   })}
                   {touched.property && errors.property && (
                     <span
@@ -444,77 +460,37 @@ const LeaseEntry = (props) => {
               </div>
 
               {/* cheque display  */}
-            </FormGroup>
-          </Form>
-        )}
-      </Formik>
-      <Formik
-        initialValues={{
-          issueDate: "",
-          chequeNo: "",
-        }}
-        onSubmit={(values, actions) => {
-          console.log(cheque);
-        }}
-      >
-        {({
-          touched,
-          errors,
-          values,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          setFieldValue,
-          isSubmitting,
-        }) => (
-          <Form>
+              <Form>
             <div className="row">
               <div className="col-md-4">
                 <Label for="exampleName">cheque issue date</Label>
                 <Input
                   type="date"
-                  value={values.issueDate}
-                  name="issueDate"
+                  value={date}
                   placeholder="Enter Date"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  onChange={(e)=>setdate(e.target.value)}
+
                 />
-                {touched.issueDate && errors.issueDate && (
-                  <span
-                    className="text-danger col-md-12 text-left mb-2"
-                    style={{ fontSize: 12 }}
-                  >
-                    {errors.issueDate}
-                  </span>
-                )}
+          
               </div>
               <div className="col-md-4">
                 <Label for="exampleName">cheque chequeNo </Label>
                 <Input
                   type="number"
-                  value={values.chequeNo}
-                  name="chequeNo"
+                  value={chequeNum}
                   placeholder="Enter Date"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  onChange={(e)=>setChequeNum(e.target.value)}
+
                 />
-                {touched.chequeNo && errors.chequeNo && (
-                  <span
-                    className="text-danger col-md-12 text-left mb-2"
-                    style={{ fontSize: 12 }}
-                  >
-                    {errors.chequeNo}
-                  </span>
-                )}
+               
               </div>
             </div>
             <button
               type="button"
+              disabled={!date||!chequeNum}
               onClick={() => {
-                setCheque([
-                  ...cheque,
-                  { issueDate: values.issueDate, chequeNo: values.chequeNo },
-                ]);
+                setChequeList({issueDate:date,chequeNo:chequeNum})
+             
               }}
             >
               add cheque
@@ -542,8 +518,11 @@ const LeaseEntry = (props) => {
               })}
             </Table>
           </Form>
+            </FormGroup>
+          </Form>
         )}
       </Formik>
+      
     </div>
   );
 };
