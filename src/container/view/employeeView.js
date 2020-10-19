@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import React from "react"
-import EmployeeViews from "../../component/view/employeeView/employeeView.js"
-
-const EmployeeView=()=>{
-=======
 import React,{useState,useEffect} from "react"
 
 import EmployeeViews from "../../component/view/employeeView/employeeView.js"
@@ -28,7 +22,6 @@ const EmployeeView=()=>{
           })
     
     }
->>>>>>> 300be500af3bcdbe384296677ec0ca83fd42f159
     return(
         <div><EmployeeViews/></div>
     )
