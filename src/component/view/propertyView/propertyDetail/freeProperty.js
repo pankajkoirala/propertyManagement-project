@@ -16,7 +16,13 @@ const FreePropertyView = (props) => {
   let occupied = props.propertyData.filter(
     (arg) => arg.property_status === "free"
   );
-  console.log(occupied);
+  let w = occupied.filter(
+    (arg) =>
+      arg !==
+      props.lease.map((arg) => arg.property.map((arg) => arg.referenceNO))
+  );
+
+  console.log(w);
   return (
     <div className="row m-5">
       {occupied.map((arg, index) => {
@@ -35,15 +41,16 @@ const FreePropertyView = (props) => {
                 alt="Card image cap"
               />
               <CardBody>
-                <CardTitle>Card title</CardTitle>
-                <CardSubtitle>Card subtitle</CardSubtitle>
+                <CardTitle>Name:{arg.property_type}</CardTitle>
+                <CardSubtitle>
+                  <span>Status:{arg.property_status}</span>
+                </CardSubtitle>
                 <CardText>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Location:{arg.city}
+                  {arg.country}
                 </CardText>
                 <Link to={`/propertyDetail/${arg._id}`}>
-                  {" "}
-                  <button className="mx-2">view detail</button>{" "}
+                  <button className="mx-2">view detail</button>
                 </Link>
                 <Link to="/lease">
                   <button className="mx-2">Add lease</button>
