@@ -62,14 +62,15 @@ const NavbarPage = () => {
   <Card>
     <Card.Header>
       <Accordion.Toggle as={Card.Header} variant="link" eventKey="5">
-       <b> Payment</b>
+       <b>Cheque</b>
       </Accordion.Toggle>
     </Card.Header>
     <Accordion.Collapse eventKey="5">
-      <Card.Body><Link to="/chequeentry"> <Button variant="primary" className="button-size">Add Payment</Button></Link><br/> 
-      <Link to="/paymentupdate">  <Button variant="secondary" className="button-size">Update</Button></Link><br/>
-                <Link to="/paymentview"> <Button variant="success" className="button-size">View Payment</Button></Link><br/>
-                </Card.Body>
+      <Card.Body>
+      <Link to="/chequeentry"> <Button variant="primary" className="button-size">Cheque Entry</Button></Link><br/> 
+      <Link to="/chequeBounce"> <Button variant="success" className="button-size">Cheque Bounce</Button></Link><br/>
+      <Link to="/chequeHold"> <Button variant="success" className="button-size">Cheque Hold</Button></Link><br/>
+      </Card.Body>
     </Accordion.Collapse>
   </Card>
   <Card>
@@ -143,20 +144,6 @@ const NavbarPage = () => {
   <Card.Header>
       <Accordion.Toggle as={Button} variant="link" eventKey="12">
       <Link to="/managementCompany"> <b>Management Company</b> </Link>
-      </Accordion.Toggle>
-    </Card.Header>
-  </Card>
-  <Card>
-  <Card.Header>
-      <Accordion.Toggle as={Button} variant="link" eventKey="12">
-      <Link to="/chequeBounce"> <b>ChequeBounce</b> </Link>
-      </Accordion.Toggle>
-    </Card.Header>
-  </Card>
-  <Card>
-  <Card.Header>
-      <Accordion.Toggle as={Button} variant="link" eventKey="13">
-      <Link to="/chequeHold"> <b>Cheque Hold</b> </Link>
       </Accordion.Toggle>
     </Card.Header>
   </Card>
