@@ -8,18 +8,16 @@ import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryForm
 
 const LeaseEntry = (props) => {
   const [cheque, setCheque] = useState([]);
-  const [date, setdate] = useState('');
-  const [chequeNum, setChequeNum] = useState('');
+  const [date, setdate] = useState("");
+  const [chequeNum, setChequeNum] = useState("");
 
-
-
-  let setChequeList=(data)=>{
-    let updatedcheque=cheque
-    updatedcheque.push(data)
-    setCheque(updatedcheque)
-    setdate('')
-    setChequeNum('')
-  }
+  let setChequeList = (data) => {
+    let updatedcheque = cheque;
+    updatedcheque.push(data);
+    setCheque(updatedcheque);
+    setdate("");
+    setChequeNum("");
+  };
 
   return (
     <div className="leasediv">
@@ -33,7 +31,7 @@ const LeaseEntry = (props) => {
         initialValues={{
           chequeList: [],
           lease_enterDate: "",
-          tenants: '',
+          tenants: "",
           property: [],
           lease_Term: "",
           commenceDate: "",
@@ -49,12 +47,9 @@ const LeaseEntry = (props) => {
           photo: "",
         }}
         onSubmit={(values) => {
-          values.chequeList =JSON.stringify(cheque);
-          values.property =JSON.stringify(values.property);
+          values.chequeList = JSON.stringify(cheque);
+          values.property = JSON.stringify(values.property);
 
-
-
-          
           console.log(values);
           props.leaseData(values);
         }}
@@ -76,7 +71,6 @@ const LeaseEntry = (props) => {
                 <div className="col-12 mt-2 ml-2 mr-2">
                   <b>General Information</b>{" "}
                 </div>
-<h1 onClick={()=>console.log(values)}>test</h1>
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
                   <Input
@@ -111,9 +105,11 @@ const LeaseEntry = (props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   >
-                    {props.tenant.map((arg, index) => {
+                    {" "}
+                    <option value="">select one </option>
+                    {props?.tenant.map((arg, index) => {
                       return (
-                        <option value={arg._id}>{arg.tenant_firstName} </option>
+                        <option key={index} value={arg?._id}>{arg?.tenant_firstName} </option>
                       );
                     })}
                   </Input>
@@ -142,11 +138,13 @@ const LeaseEntry = (props) => {
                     }
                     onBlur={handleBlur}
                   >
+                    <option value="">select one </option>
+
                     {props?.property?.map((arg, index) => {
                       return (
-                        <option value={arg._id}>
-                          {arg.property_type}
-                          {arg.referenceNO}{" "}
+                        <option key={index} value={arg._id}>
+                          {arg?.property_type}
+                          {arg?.referenceNO}
                         </option>
                       );
                     })}
@@ -461,68 +459,62 @@ const LeaseEntry = (props) => {
 
               {/* cheque display  */}
               <Form>
-            <div className="row">
-              <div className="col-md-4">
-                <Label for="exampleName">cheque issue date</Label>
-                <Input
-                  type="date"
-                  value={date}
-                  placeholder="Enter Date"
-                  onChange={(e)=>setdate(e.target.value)}
-
-                />
-          
-              </div>
-              <div className="col-md-4">
-                <Label for="exampleName">cheque chequeNo </Label>
-                <Input
-                  type="number"
-                  value={chequeNum}
-                  placeholder="Enter Date"
-                  onChange={(e)=>setChequeNum(e.target.value)}
-
-                />
-               
-              </div>
-            </div>
-            <button
-              type="button"
-              disabled={!date||!chequeNum}
-              onClick={() => {
-                setChequeList({issueDate:date,chequeNo:chequeNum})
-             
-              }}
-            >
-              add cheque
-            </button>
-            <Table striped bordered hover size="sm">
-              <thead>
-                <tr>
-                  <th>SN</th>
-                  <th>Issue Date</th>
-                  <th>Cheque No</th>
-                  <th>statue</th>
-                </tr>
-              </thead>
-              {cheque.map((arg, index) => {
-                return (
-                  <tbody key={index}>
+                <div className="row">
+                  <div className="col-md-4">
+                    <Label for="exampleName">cheque issue date</Label>
+                    <Input
+                      type="date"
+                      value={date}
+                      placeholder="Enter Date"
+                      onChange={(e) => setdate(e.target.value)}
+                    />
+                  </div>
+                  <div className="col-md-4">
+                    <Label for="exampleName">cheque chequeNo </Label>
+                    <Input
+                      type="number"
+                      value={chequeNum}
+                      placeholder="Enter Date"
+                      onChange={(e) => setChequeNum(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  disabled={!date || !chequeNum}
+                  onClick={() => {
+                    setChequeList({ issueDate: date, chequeNo: chequeNum });
+                  }}
+                >
+                  add cheque
+                </button>
+                <Table striped bordered hover size="sm">
+                  <thead>
                     <tr>
-                      <td>{index + 1}</td>
-                      <td>{arg.issueDate}</td>
-                      <td>{arg.chequeNo}</td>
-                      <td>Pending/paid</td>
+                      <th>SN</th>
+                      <th>Issue Date</th>
+                      <th>Cheque No</th>
+                      <th>statue</th>
                     </tr>
-                  </tbody>
-                );
-              })}
-            </Table>
-          </Form>
+                  </thead>
+                  {cheque.map((arg, index) => {
+                    return (
+                      <tbody key={index}>
+                        <tr>
+                          <td>{index + 1}</td>
+                          <td>{arg.issueDate}</td>
+                          <td>{arg.chequeNo}</td>
+                          <td>Pending/paid</td>
+                        </tr>
+                      </tbody>
+                    );
+                  })}
+                </Table>
+              </Form>
             </FormGroup>
           </Form>
         )}
       </Formik>
-      
     </div>
   );
 };

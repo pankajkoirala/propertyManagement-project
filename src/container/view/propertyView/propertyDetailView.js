@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from "react"
-import PropertyDetailViewComp from "../../component/view/propertyView/propertyDetailView"
+import PropertyDetailViewComp from "../../../component/view/propertyView/propertyDetail/propertyDetailView"
 import Axios from "axios"
-import { base_URL } from "../../const/base_URL";
+import { base_URL } from "../../../const/base_URL";
 import {useParams} from "react-router-dom"
 
 
