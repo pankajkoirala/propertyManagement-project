@@ -2,7 +2,7 @@ import React from "react";
 import "./propertyEntryForm.css";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Table } from "react-bootstrap";
-import { Formik } from "formik";
+import { Field, Formik } from "formik";
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
@@ -18,15 +18,25 @@ const PropertyEntry = (props) => {
               property_type: "",
               property_price: "",
               property_status: "",
-              BHK: "",
-              toilet: "",
+              bedromArea: "",
+              kitchenArea: "",
+              hallArea: "",
+              bathroomArea: "",
+              NoOfBathroom: "",
+              NoOfHall: "",
+              NoOfKitchen: "",
+              NoOfbedrom: "",
+              bathroomRemark: "",
+              hallRemark:"",
+              bedroomRemark:"",
+              kitchenRemark:"",
               photo: "",
-              Parking:"",
-              Swimming:"",
-              Balcony:"",
-              Smoking:"",
-              PetAllowed:"",
-              Garden:""
+              Parking: "",
+              Swimming: "",
+              Balcony: "",
+              Smoking: "",
+              PetAllowed: "",
+              Garden: "",
             }}
             onSubmit={(values) => {
               props.propertySend(values);
@@ -181,7 +191,6 @@ const PropertyEntry = (props) => {
                     </div>
                     <div className="">
                       <Label for="exampleName">
-                        {" "}
                         <h3>Properties</h3>
                       </Label>
                     </div>
@@ -190,8 +199,10 @@ const PropertyEntry = (props) => {
                       <thead>
                         <tr>
                           <th>SN</th>
-                          <th>Unit</th>
+                          <th>topic</th>
                           <th>Area</th>
+                          <th>unit</th>
+
                           <th>Remarks</th>
                         </tr>
                       </thead>
@@ -199,71 +210,253 @@ const PropertyEntry = (props) => {
                         <tr>
                           <td>1</td>
                           <td>Bedroom</td>
-                          <td>200 Sq.Ft.</td>
-                          <td>Attached TB</td>
+                          <td>
+                            <Input
+                              type="number"
+                              value={values.bedromArea}
+                              name="bedromArea"
+                              placeholder="area in Sq.ft"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched?.bedromArea && errors?.bedromArea && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors?.bedromArea}
+                              </span>
+                            )}
+                          </td>
+                          <td>
+                            {" "}
+                            <Input
+                              type="number"
+                              value={values.NoOfbedrom}
+                              name="NoOfbedrom"
+                              placeholder="area in Sq.ft"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched?.NoOfbedrom && errors?.NoOfbedrom && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors?.NoOfbedrom}
+                              </span>
+                            )}
+                          </td>
+
+                          <td>
+                            <Input
+                              type="text"
+                              value={values.bedroomRemark}
+                              name="bedroomRemark"
+                              placeholder="Enter the bedroomRemark"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.bedroomRemark && errors.bedroomRemark && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.bedroomRemark}
+                              </span>
+                            )}
+                          </td>
                         </tr>
 
                         <tr>
                           <td>2</td>
                           <td>Hall</td>
-                          <td>300 Sq.Ft</td>
-                          <td>Ocean View</td>
+                          <td>
+                            <Input
+                              type="number"
+                              value={values.hallArea}
+                              name="hallArea"
+                              placeholder="area in Sq.ft"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched?.hallArea && errors?.hallArea && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors?.hallArea}
+                              </span>
+                            )}
+                          </td>
+                          <td>
+                            {" "}
+                            <Input
+                              type="number"
+                              value={values.NoOfHall}
+                              name="NoOfHall"
+                              placeholder="area in Sq.ft"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched?.NoOfHall && errors?.NoOfHall && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors?.NoOfHall}
+                              </span>
+                            )}
+                          </td>
+
+                          <td>
+                            {" "}
+                            <Input
+                              type="text"
+                              value={values.hallRemark}
+                              name="hallRemark"
+                              placeholder="Enter the hallRemark"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.hallRemark && errors.hallRemark && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.hallRemark}
+                              </span>
+                            )}
+                          </td>
                         </tr>
 
                         <tr>
                           <td>3</td>
                           <td>Kitchen with Dinning</td>
-                          <td>100 Sq.Ft</td>
-                          <td>Ocean View</td>
+                          <td>
+                            <Input
+                              type="number"
+                              value={values.kitchenArea}
+                              name="kitchenArea"
+                              placeholder="area in Sq.ft"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched?.kitchenArea && errors?.kitchenArea && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors?.kitchenArea}
+                              </span>
+                            )}
+                          </td>
+                          <td>
+                            {" "}
+                            <Input
+                              type="number"
+                              value={values.NoOfKitchen}
+                              name="NoOfKitchen"
+                              placeholder="area in Sq.ft"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched?.NoOfKitchen && errors?.NoOfKitchen && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors?.NoOfKitchen}
+                              </span>
+                            )}{" "}
+                          </td>
+
+                          <td>
+                            {" "}
+                            <Input
+                              type="text"
+                              value={values.kitchenRemark}
+                              name="kitchenRemark"
+                              placeholder="Enter the kitchenRemark"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.kitchenRemark && errors.kitchenRemark && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.kitchenRemark}
+                              </span>
+                            )}
+                          </td>
                         </tr>
 
                         <tr>
                           <td>4</td>
                           <td>Bathroom</td>
-                          <td>30 Sq.Ft</td>
-                          <td>On first floor with Bathtub</td>
+                          <td>
+                            <Input
+                              type="number"
+                              value={values.bathroomArea}
+                              name="bathroomArea"
+                              placeholder="area in Sq.ft"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched?.bathroomArea && errors?.bathroomArea && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors?.bathroomArea}
+                              </span>
+                            )}
+                          </td>
+                          <td>
+                            <Input
+                              type="number"
+                              value={values.NoOfBathroom}
+                              name="NoOfBathroom"
+                              placeholder="area in Sq.ft"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched?.NoOfBathroom &&
+                              errors?.NoOfBathroom && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors?.NoOfBathroom}
+                                </span>
+                              )}{" "}
+                          </td>
+
+                          <td>
+                            {" "}
+                            <Input
+                              type="text"
+                              value={values.bathroomRemark}
+                              name="bathroomRemark"
+                              placeholder="Enter the bathroomRemark"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.bathroomRemark && errors.bathroomRemark && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.bathroomRemark}
+                              </span>
+                            )}
+                          </td>
                         </tr>
                       </tbody>
                     </Table>
 
-                    {/* <div className="">
-                      <Label for="exampleName">Bedroom</Label>
-                      <Input
-                        type="text"
-                        value={values.BHK}
-                        name="BHK"
-                        placeholder="Enter your Street"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched?.BHK && errors?.BHK && (
-                        <span
-                          className="text-danger col-md-12 text-left mb-2"
-                          style={{ fontSize: 12 }}
-                        >
-                          {errors?.BHK}
-                        </span>
-                      )}
-                    </div> */}
-                    {/* <div className="">
-                       <Label for="exampleName">toilet</Label>
-                      <Input
-                        type="text"
-                        value={values.toilet}
-                        name="toilet"
-                        placeholder="Enter your Street"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched?.toilet && errors?.toilet && (
-                        <span
-                          className="text-danger col-md-12 text-left mb-2"
-                          style={{ fontSize: 12 }}
-                        >
-                          {errors?.toilet}
-                        </span>
-                      )}
-                    </div> */}
+                    
 
                     <div className="">
                       <Label>
@@ -271,32 +464,104 @@ const PropertyEntry = (props) => {
                       </Label>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox" name="Parking"value="available" /> Parking
+                          <Input
+                            type="checkbox"
+                            name="Parking"
+                            onChange={(e) =>
+                              setFieldValue(
+                                "Parking",
+                                e.currentTarget.checked
+                                  ? "available"
+                                  : "unavailable"
+                              )
+                            }
+                          />{" "}
+                          Parking
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox" name="Swimming"value="available" /> Swimming
+                          <Input
+                            type="checkbox"
+                            name="Swimming"
+                            onChange={(e) =>
+                              setFieldValue(
+                                "Swimming",
+                                e.currentTarget.checked
+                                  ? "available"
+                                  : "unavailable"
+                              )
+                            }
+                          />{" "}
+                          Swimming
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox" name="Balcony"value="available" /> Balcony
+                          <Input
+                            type="checkbox"
+                            name="Balcony"
+                            onChange={(e) =>
+                              setFieldValue(
+                                "Balcony",
+                                e.currentTarget.checked
+                                  ? "available"
+                                  : "unavailable"
+                              )
+                            }
+                          />{" "}
+                          Balcony
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox"  name="Smoking"value="available" /> Smoking
+                          <Input
+                            type="checkbox"
+                            name="Smoking"
+                            onChange={(e) =>
+                              setFieldValue(
+                                "Smoking",
+                                e.currentTarget.checked
+                                  ? "available"
+                                  : "unavailable"
+                              )
+                            }
+                          />{" "}
+                          Smoking
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox" name="PetAllowed"value="available" /> Pet Allowed
+                          <Input
+                            type="checkbox"
+                            name="PetAllowed"
+                            onChange={(e) =>
+                              setFieldValue(
+                                "PetAllowed",
+                                e.currentTarget.checked
+                                  ? "available"
+                                  : "unavailable"
+                              )
+                            }
+                          />{" "}
+                          Pet Allowed
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
-                          <Input type="checkbox" name="Garden"value="available"/> Garden
+                          <Input
+                            type="checkbox"
+                            name="Garden"
+                            onChange={(e) =>
+                              setFieldValue(
+                                "Garden",
+                                e.currentTarget.checked
+                                  ? "available"
+                                  : "unavailable"
+                              )
+                            }
+                          />{" "}
+                          Garden
                         </Label>
                       </FormGroup>
 

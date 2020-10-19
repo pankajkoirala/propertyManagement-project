@@ -6,8 +6,20 @@ import { Formik } from "formik";
 
 import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
 
-const LeaseEntry = () => {
+const LeaseEntry = (props) => {
   const [cheque, setCheque] = useState([]);
+  const [date, setdate] = useState('');
+  const [chequeNum, setChequeNum] = useState('');
+
+
+
+  let setChequeList=(data)=>{
+    let updatedcheque=cheque
+    updatedcheque.push(data)
+    setCheque(updatedcheque)
+    setdate('')
+    setChequeNum('')
+  }
 
   return (
     <div className="leasediv">
@@ -19,27 +31,32 @@ const LeaseEntry = () => {
       </div>
       <Formik
         initialValues={{
-          chequeList: cheque,
-          lease_number: "",
+          chequeList: [],
           lease_enterDate: "",
-          tenants: "",
-          property_occupants: "",
+          tenants: '',
+          property: [],
           lease_Term: "",
           commenceDate: "",
           expirationDate: "",
           rentAmount: "",
-          dueDate: "",
+          firstDueDate: "",
           frequency: "",
           gracePeriod: "",
           late_feeType: "",
           lateFeeAmount: "",
           securityDeposite: "",
-          securityDueDatet: "",
-          picture: "",
+          securityfirstDueDate: "",
+          photo: "",
         }}
         onSubmit={(values) => {
-          values.chequeList = cheque;
+          values.chequeList =JSON.stringify(cheque);
+          values.property =JSON.stringify(values.property);
+
+
+
+          
           console.log(values);
+          props.leaseData(values);
         }}
         //validationSchema={LeaseEntryFormValidation}
       >
@@ -59,42 +76,23 @@ const LeaseEntry = () => {
                 <div className="col-12 mt-2 ml-2 mr-2">
                   <b>General Information</b>{" "}
                 </div>
-                <div className="col-md-4">
-                  <Label for="exampleName">Lease Number</Label>
-                  <Input
-                    type="text"
-                    value={values.leaseNumber}
-                    name="leaseNumber"
-                    placeholder="Lease Number"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.leaseNumber && errors.leaseNumber && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.leaseNumber}
-                    </span>
-                  )}
-                </div>
-
+<h1 onClick={()=>console.log(values)}>test</h1>
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
                   <Input
                     type="date"
-                    value={values.enterDate}
-                    name="enterDate"
+                    value={values.lease_enterDate}
+                    name="lease_enterDate"
                     placeholder="Enter Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {touched.enterDate && errors.enterDate && (
+                  {touched.lease_enterDate && errors.lease_enterDate && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.enterDate}
+                      {errors.lease_enterDate}
                     </span>
                   )}
                 </div>
@@ -112,21 +110,20 @@ const LeaseEntry = () => {
                     placeholder="Select Status of Cheque"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.status}
                   >
-                    <option value=""> </option>
-                    <option value="addNewTenant">Add New</option>
-                    <option value="viewTenantList">
-                      List from Tenant Entry
-                    </option>
+                    {props.tenant.map((arg, index) => {
+                      return (
+                        <option value={arg._id}>{arg.tenant_firstName} </option>
+                      );
+                    })}
                   </Input>
 
-                  {touched.status && errors.status && (
+                  {touched.tenants && errors.tenants && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.status}
+                      {errors.tenants}
                     </span>
                   )}
                 </div>
@@ -137,54 +134,34 @@ const LeaseEntry = () => {
                     name="property"
                     id="exampleSelect"
                     placeholder="Select Status of Cheque"
-                    onChange={handleChange}
+                    onChange={(e) =>
+                      setFieldValue("property", [
+                        ...values.property,
+                        e.target.value,
+                      ])
+                    }
                     onBlur={handleBlur}
-                    value={values.property}
                   >
-                    <option value=""> </option>
-                    <option value="addProperty"> Add Property</option>
-                    <option value="selectTenantFromList">
-                      List from Property Entry
-                    </option>
+                    {props?.property?.map((arg, index) => {
+                      return (
+                        <option value={arg._id}>
+                          {arg.property_type}
+                          {arg.referenceNO}{" "}
+                        </option>
+                      );
+                    })}
                   </Input>
-
+                  {/* //selected house list shown */}
+                  {values?.property?.map((a) => {
+                    let house = props?.property?.find((b) => b._id === a);
+                    return <div>{house?.property_type}</div>;
+                  })}
                   {touched.property && errors.property && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
                       {errors.property}
-                    </span>
-                  )}
-                </div>
-
-                <div className="col-md-12">
-                  <b>Property Occupants</b>
-                </div>
-                <div className="col-6">
-                  <Label for="exampleName">Occupant(s)</Label>
-                  <Input
-                    type="select"
-                    name="property_occupants"
-                    id="exampleSelect"
-                    placeholder="Enter Property Occupants"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.property_occupants}
-                  >
-                    <option value=""> </option>
-                    <option value="addOccupant">Add New Occupant</option>
-                    <option value="selectOccupantsFromList">
-                      Select from Occupant List
-                    </option>
-                  </Input>
-
-                  {touched.status && errors.status && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.property_occupants}
                     </span>
                   )}
                 </div>
@@ -205,8 +182,8 @@ const LeaseEntry = () => {
                     value={values.lease_Term}
                   >
                     <option value=""> </option>
-                    <option value="value.monthToMonth">Month to Month</option>
-                    <option value="value.fixedTerm">Fixed Terms</option>
+                    <option value="monthToMonth">Month to Month</option>
+                    <option value="fixedTerm">Fixed Terms</option>
                   </Input>
 
                   {touched.lease_Term && errors.lease_Term && (
@@ -288,20 +265,20 @@ const LeaseEntry = () => {
                   <Label for="exampleSelect">First Due Date</Label>
                   <Input
                     type="date"
-                    name="dueDate"
+                    name="firstDueDate"
                     id="exampleSelect"
                     placeholder="Due Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.dueDate}
+                    value={values.firstDueDate}
                   ></Input>
 
-                  {touched.dueDate && errors.dueDate && (
+                  {touched.firstDueDate && errors.firstDueDate && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.dueDate}
+                      {errors.firstDueDate}
                     </span>
                   )}
                 </div>
@@ -314,7 +291,6 @@ const LeaseEntry = () => {
                     placeholder="Frequencyt"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.frequency}
                   >
                     <option value=""> </option>
                     <option value="daily">Daily</option>
@@ -369,7 +345,6 @@ const LeaseEntry = () => {
                     placeholder="Select Late Fee type"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.late_feeType}
                   >
                     <option value=""> </option>
                     <option value="flat">Flat</option>
@@ -415,7 +390,7 @@ const LeaseEntry = () => {
                   <Label for="exampleSelect">Security Deposit</Label>
                   <Input
                     type="number"
-                    name="securityDeposites"
+                    name="securityDeposite"
                     id="exampleSelect"
                     placeholder="Security Deposite"
                     onChange={handleChange}
@@ -436,20 +411,20 @@ const LeaseEntry = () => {
                   <Label for="exampleSelect">Deposite Due Date</Label>
                   <Input
                     type="date"
-                    name="securityDueDate"
+                    name="securityfirstDueDate"
                     id="exampleSelect"
                     placeholder="Security Due Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.securityDueDate}
+                    value={values.securityfirstDueDate}
                   ></Input>
 
-                  {touched.securityDueDate && errors.securityDueDate && (
+                  {touched.securityfirstDueDate && errors.securityfirstDueDate && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.securityDueDate}
+                      {errors.securityfirstDueDate}
                     </span>
                   )}
                 </div>
@@ -459,16 +434,16 @@ const LeaseEntry = () => {
                   <Label className="float-left">Upload Agrement Copy</Label>
                   <Input
                     type="file"
-                    name="picture"
+                    name="photo"
                     accept="image/*"
                     onChange={(event) => {
-                      setFieldValue("picture", event.currentTarget.files[0]);
+                      setFieldValue("photo", event.currentTarget.files[0]);
                     }}
                   />
 
-                  {touched.picture && values.picture && (
+                  {touched.photo && values.photo && (
                     <img
-                      src={URL.createObjectURL(values.picture)}
+                      src={URL.createObjectURL(values.photo)}
                       alt="no picture"
                       height="20"
                     />
@@ -485,77 +460,37 @@ const LeaseEntry = () => {
               </div>
 
               {/* cheque display  */}
-            </FormGroup>
-          </Form>
-        )}
-      </Formik>
-      <Formik
-        initialValues={{
-          issueDate: "",
-          chequeNo: "",
-        }}
-        onSubmit={(values, actions) => {
-          console.log(cheque);
-        }}
-      >
-        {({
-          touched,
-          errors,
-          values,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          setFieldValue,
-          isSubmitting,
-        }) => (
-          <Form>
+              <Form>
             <div className="row">
               <div className="col-md-4">
                 <Label for="exampleName">cheque issue date</Label>
                 <Input
                   type="date"
-                  value={values.issueDate}
-                  name="issueDate"
+                  value={date}
                   placeholder="Enter Date"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  onChange={(e)=>setdate(e.target.value)}
+
                 />
-                {touched.issueDate && errors.issueDate && (
-                  <span
-                    className="text-danger col-md-12 text-left mb-2"
-                    style={{ fontSize: 12 }}
-                  >
-                    {errors.issueDate}
-                  </span>
-                )}
+          
               </div>
               <div className="col-md-4">
                 <Label for="exampleName">cheque chequeNo </Label>
                 <Input
                   type="number"
-                  value={values.chequeNo}
-                  name="chequeNo"
+                  value={chequeNum}
                   placeholder="Enter Date"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  onChange={(e)=>setChequeNum(e.target.value)}
+
                 />
-                {touched.chequeNo && errors.chequeNo && (
-                  <span
-                    className="text-danger col-md-12 text-left mb-2"
-                    style={{ fontSize: 12 }}
-                  >
-                    {errors.chequeNo}
-                  </span>
-                )}
+               
               </div>
             </div>
             <button
               type="button"
+              disabled={!date||!chequeNum}
               onClick={() => {
-                setCheque([
-                  ...cheque,
-                  { issueDate: values.issueDate, chequeNo: values.chequeNo },
-                ]);
+                setChequeList({issueDate:date,chequeNo:chequeNum})
+             
               }}
             >
               add cheque
@@ -583,8 +518,11 @@ const LeaseEntry = () => {
               })}
             </Table>
           </Form>
+            </FormGroup>
+          </Form>
         )}
       </Formik>
+      
     </div>
   );
 };
