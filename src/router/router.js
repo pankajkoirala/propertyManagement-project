@@ -16,7 +16,15 @@ import Lease from "../container/leaseEntryForm/leaseEntryform"
 import TanentDetailView from "../container/view/tanentDetailView"
 import LeaseDisplay from "../container/view/leaseDisplay/leaseDisplay"
 
+import OwnerEntry from "../container/entryForm/ownerEntry/ownerEnty.js"
+import BankDetail  from "../container/entryForm/bankAccountEntryForm/bankAccountContainer.js"
+import BrokerDetail  from "../container/entryForm/brokerEntryForm/brokerDetailContainer.js"
+import DeveloperDetail  from "../container/entryForm/developersCompanyEntryContainer/developerContainer.js"
+import InvoiceDetail from "../container/entryForm/invoiceEntryContainer/invoice.js"
+import MaintainanceCompany from "../container/entryForm/maintainanceCompanyEntryForm/maintainanceCompanyContainer.js"
+import ManagementCompany from "../container/entryForm/managementCompanyEntryForm/managementCompanyContainer.js"
 const RouterPage = () => {
+
     return (
         <div>
             <Router>
@@ -36,8 +44,13 @@ const RouterPage = () => {
                 <Route exact path="/login" component={LoginComponent} />
                 <PrivateRouter exact path="/propertyDetail/:id" component={OnePropertyView} />
                 <PrivateRouter exact path="/tanent/:id" component={TanentDetailView} />
-
-
+                <PrivateRouter exact path="/ownerEntry" component={OwnerEntry} />
+                <PrivateRouter exact path="/bankDetail" component={BankDetail} />
+                <PrivateRouter exact path="/brokerDetail" component={BrokerDetail} />
+                <PrivateRouter exact path="/developerDetail" component={DeveloperDetail} />
+                <PrivateRouter exact path="/invoiceDetail" component={InvoiceDetail} />
+                <PrivateRouter exact path="/maintainanceCompany" component={MaintainanceCompany} />
+                <PrivateRouter exact path="/managementCompany" component={ManagementCompany} />
                 </Switch>
             </Router>
             </div>

@@ -13,7 +13,7 @@ const TenantView=(props)=>{
   <Table striped bordered hover size="sm">
               <thead>
                 <tr>
-                  <th>SN</th>
+                  <th>ID Number</th>
                   <th>First Name</th>
                   <th>Middle Name</th>
                   <th>Last Name</th>

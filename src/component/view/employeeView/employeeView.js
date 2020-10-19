@@ -1,7 +1,7 @@
 import React from 'react'
 import "./employeeView.css"
 import { Table } from 'react-bootstrap';
-import {Link} from "react-router-dom"
+//import {Link} from "react-router-dom"
 
 
 const EmployeeView=(props)=>{
@@ -23,7 +23,8 @@ const EmployeeView=(props)=>{
                   <th>Remarks</th>
                 </tr>
               </thead>
-              {props.tenant.map((arg,index)=>{
+              <tbody>
+              {/* {props.tenant.map((arg,index)=>{
                 return(
               <tbody key={index}>
                 <tr>
@@ -34,11 +35,11 @@ const EmployeeView=(props)=>{
                   <td>{arg.employee_phoneNo}</td>
                   <td>{arg.employee_post}</td>
                   <td><Link to={`/employee/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> <button className="danger ml-2">Delete</button></td>
-                  </tr>
+                  </tr> */}
 
               </tbody>
-              )
-            })}
+              {/* )
+            })} */}
             </Table>
     </div>
     
