@@ -1,5 +1,5 @@
 import React from "react";
-import ChequeBounceEntry from "../../../component/entryForm/chequeBounceDetail/chequeBounceEntry.js"
+import ChequeBounceEntry from "../../../../component/entryForm/cheque/chequeBounceDetail/chequeBounceEntry.js"
 
 
 const chequeBounceEntry=()=> {

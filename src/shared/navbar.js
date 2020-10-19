@@ -153,6 +153,13 @@ const NavbarPage = () => {
       </Accordion.Toggle>
     </Card.Header>
   </Card>
+  <Card>
+  <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="13">
+      <Link to="/chequeHold"> <b>Cheque Hold</b> </Link>
+      </Accordion.Toggle>
+    </Card.Header>
+  </Card>
   </Accordion>
     </div>
   );

@@ -10,7 +10,7 @@ import EmployeeView from "../container/view/employeeView.js"
 import PropertyView from "../container/view/propertyView.js"
 import TenantView from "../container/view/tenantView.js"
 import Dashboard from "../component/view/dashboardView/dashboardView.js"
-import Chequeentry from "../component/entryForm/chequeEntry/chequeEntryForm.js"
+import Chequeentry from "../container/entryForm/cheque/chequeEntry/chequeEntryForm.js"
 import OnePropertyView from "../container/view/propertyDetailView"
 import Lease from "../container/leaseEntryForm/leaseEntryform"
 import TanentDetailView from "../container/view/tanentDetailView"
@@ -23,7 +23,8 @@ import DeveloperDetail  from "../container/entryForm/developersCompanyEntryConta
 import InvoiceDetail from "../container/entryForm/invoiceEntryContainer/invoice.js"
 import MaintainanceCompany from "../container/entryForm/maintainanceCompanyEntryForm/maintainanceCompanyContainer.js"
 import ManagementCompany from "../container/entryForm/managementCompanyEntryForm/managementCompanyContainer.js"
-import ChequeBounce from "../container/entryForm/chequeBounce/chequeBounceEntry.js"
+import ChequeBounce from "../container/entryForm/cheque/chequeBounce/chequeBounceEntry.js"
+import ChequeHold from "../container/entryForm/cheque/chequeHold/chequeHoldEntry.js"
 const RouterPage = () => {
 
     return (
@@ -53,7 +54,7 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/maintainanceCompany" component={MaintainanceCompany} />
                 <PrivateRouter exact path="/managementCompany" component={ManagementCompany} />
                 <PrivateRouter exact path="/chequeBounce" component={ChequeBounce} />
-                
+                <PrivateRouter exact path="/chequeHold" component={ChequeHold} />
                 </Switch>
             </Router>
             </div>
