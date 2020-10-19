@@ -23,6 +23,7 @@ import DeveloperDetail  from "../container/entryForm/developersCompanyEntryConta
 import InvoiceDetail from "../container/entryForm/invoiceEntryContainer/invoice.js"
 import MaintainanceCompany from "../container/entryForm/maintainanceCompanyEntryForm/maintainanceCompanyContainer.js"
 import ManagementCompany from "../container/entryForm/managementCompanyEntryForm/managementCompanyContainer.js"
+import ChequeBounce from "../container/entryForm/chequeBounce/chequeBounceEntry.js"
 const RouterPage = () => {
 
     return (
@@ -51,6 +52,8 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/invoiceDetail" component={InvoiceDetail} />
                 <PrivateRouter exact path="/maintainanceCompany" component={MaintainanceCompany} />
                 <PrivateRouter exact path="/managementCompany" component={ManagementCompany} />
+                <PrivateRouter exact path="/chequeBounce" component={ChequeBounce} />
+                
                 </Switch>
             </Router>
             </div>
