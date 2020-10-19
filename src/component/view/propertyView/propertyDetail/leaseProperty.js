@@ -6,7 +6,6 @@ import { Table } from 'react-bootstrap';
 
 const LeaseDisplay=(props)=>{
 console.log(props.lease);
-
     return(
         <div>
              <Table striped bordered hover size="sm">

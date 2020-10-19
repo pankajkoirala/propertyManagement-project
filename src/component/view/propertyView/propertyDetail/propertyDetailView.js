@@ -10,8 +10,8 @@ let PropertyDetailViewComponent=(props)=>{
         <div key={index} className="property-card">
         <div className="card-contents">
         
-          <div className="image">
-            <img src={arg.photo} alt="recently added" />
+          <div className="">
+            <img className="Propertyimage" src={arg.photo} alt="recently added" />
           </div>
           <div className="property-desc">
     <h5>{arg.property_type}</h5>

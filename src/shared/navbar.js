@@ -26,7 +26,7 @@ const NavbarPage = () => {
 
       <Link to="/propertentry"><Button variant="primary" className="button-size">Create Property</Button></Link><br/> 
       <Link to="/propertyedit"><Button variant="secondary" className="button-size">Edit Property</Button></Link><br/>
-      <Link to="/propertyview"><Button variant="success" className="button-size">View Property</Button></Link><br/>
+      <Link to="/propertyView"><Button variant="success" className="button-size">View Property</Button></Link><br/>
       <Link to="/propertydelete"><Button variant="danger" className="button-size">Delete Property</Button></Link><br/>
       
       </Card.Body>
