@@ -96,7 +96,57 @@ const NavbarPage = () => {
       </Accordion.Toggle>
     </Card.Header>
   </Card>
-</Accordion>
+  <Card>
+    <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="5">
+      <Link to="/ownerEntry"> <b>Owner Entry</b> </Link>
+      </Accordion.Toggle>
+    </Card.Header>
+  </Card>
+  <Card>
+    <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="7">
+      <Link to="/bankDetail"> <b>Bank Detail</b> </Link>
+      </Accordion.Toggle>
+    </Card.Header>
+  </Card>
+  <Card>
+  <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="8">
+      <Link to="/brokerDetail"> <b>Broker Detail</b> </Link>
+      </Accordion.Toggle>
+    </Card.Header>
+  </Card>
+
+<Card>
+  <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="9">
+      <Link to="/developerDetail"> <b>Developer Detail</b> </Link>
+      </Accordion.Toggle>
+    </Card.Header>
+  </Card>
+  <Card>
+  <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="10">
+      <Link to="/invoiceDetail"> <b>Invoice Detail</b> </Link>
+      </Accordion.Toggle>
+    </Card.Header>
+  </Card>
+  <Card>
+  <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="11">
+      <Link to="/maintainanceCompany"> <b>Maintainance Company</b> </Link>
+      </Accordion.Toggle>
+    </Card.Header>
+  </Card>
+  <Card>
+  <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="12">
+      <Link to="/managementCompany"> <b>Management Company</b> </Link>
+      </Accordion.Toggle>
+    </Card.Header>
+  </Card>
+  </Accordion>
     </div>
   );
 }

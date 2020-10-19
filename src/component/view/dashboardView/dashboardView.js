@@ -15,13 +15,14 @@ const DashbooardView=()=>{
                     type="select"
                     name="tenants"
                     id="exampleSelect"
-                    placeholder="Select Status of Cheque"
+                    placeholder="Select Property"
                     // onChange={handleChange}
                     // onBlur={handleBlur}
                     // value={values.status}
                   >
                     <option value=""> </option>
-                    <option value="viewTenantList">List from Tenant Entry</option>
+                    <option value="viewTenantList">Add New Property</option>
+                    <option value="viewTenantList">Property List</option>
                    
                   </Input>
 
