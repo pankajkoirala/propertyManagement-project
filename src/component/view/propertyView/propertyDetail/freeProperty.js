@@ -28,10 +28,10 @@ const FreePropertyView = (props) => {
   });
 
   let  unReservedProperty = property.filter((x) => !reserve.includes(x.referenceNO))
-  console.log("allproperty",property);
-  console.log("leaseproperty",leasedata);
-  console.log("reserve",reserve);
-  console.log("unreserve",unReservedProperty);
+  // console.log("allproperty",property);
+  // console.log("leaseproperty",leasedata);
+  // console.log("reserve",reserve);
+  // console.log("unreserve",unReservedProperty);
 
 
 
