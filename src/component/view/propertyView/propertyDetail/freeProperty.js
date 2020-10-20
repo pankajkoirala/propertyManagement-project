@@ -16,16 +16,28 @@ const FreePropertyView = (props) => {
   let occupied = props.propertyData.filter(
     (arg) => arg.property_status === "free"
   );
-  let w = occupied.filter(
-    (arg) =>
-      arg !==
-      props.lease.map((arg) => arg.property.map((arg) => arg.referenceNO))
-  );
 
-  console.log(w);
+  let reserve=[]
+
+
+  let property= props.propertyData
+  let leasedata=props.lease
+
+  leasedata.forEach((l) => {
+    l.property.forEach((a) => reserve.push(a.referenceNO));
+  });
+
+  let  unReservedProperty = property.filter((x) => !reserve.includes(x.referenceNO))
+  console.log("allproperty",property);
+  console.log("leaseproperty",leasedata);
+  console.log("reserve",reserve);
+  console.log("unreserve",unReservedProperty);
+
+
+
   return (
     <div className="row m-5">
-      {occupied.map((arg, index) => {
+      {unReservedProperty.map((arg, index) => {
         return (
           <div key={index}>
             <Card className="propertyCard">

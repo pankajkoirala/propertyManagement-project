@@ -15,9 +15,15 @@ const TenantEntry=()=>{
         formData.append("tenant_lastName", data.tenant_lastName);
         formData.append("tenant_middleName", data.tenant_middleName);
         formData.append("tenant_phoneNo", data.tenant_phoneNo);
-        formData.append("tenant_photo", data.tenant_photo);
-        formData.append("tenant_GovId", data.tenant_GovId);
         formData.append("tenant_email", data.tenant_email);
+
+        formData.append("tenant_photo", data.tenant_photo);
+        formData.append("tenant_EId_photo", data.tenant_EId_photo);
+        formData.append("tenant_TradeLicense_photo", data.tenant_TradeLicense_photo);
+        formData.append("tenant_IdentityLetter_photo", data.tenant_IdentityLetter_photo);
+        formData.append("tenant_SK_Properties_photo", data.tenant_SK_Properties_photo);
+        formData.append("tenant_POA_photo", data.tenant_POA_photo);
+
 
         
         

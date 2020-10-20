@@ -18,17 +18,20 @@ const TenantEntry = (props) => {
               provience: "",
               country: "",
               ZipCode: "",
-              tenant_photo: "",
               tenant_phoneNo: "",
               tenant_firstName: "",
               tenant_middleName: "",
               tenant_lastName: "",
               tenant_email: "",
-              tenant_GovId: "",
               tenant_GovIdNo: "",
               tenant_DrivingLicenceNo: "",
               tenant_DOB: "",
-
+              tenant_photo: "",
+              tenant_EId_photo: "",
+              tenant_TradeLicense_photo: "",
+              tenant_IdentityLetter_photo: "",
+              tenant_SK_Properties_photo: "",
+              tenant_POA_photo: "",
             }}
             onSubmit={(values) => {
               props.tenantData(values)
@@ -328,22 +331,22 @@ const TenantEntry = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label>Upload Government Issued ID</Label>
+                        <Label>Upload tenant EID</Label>
                         <Input
                           type="file"
-                          name="tenant_GovId"
+                          name="tenant_EId_photo"
                           accept="image/*"
                           onChange={(event) => {
                             setFieldValue(
-                              "tenant_GovId",
+                              "tenant_EId_photo",
                               event.currentTarget.files[0]
                             );
                           }}
                         />
 
-                        {touched.tenant_GovId && values.tenant_GovId && (
+                        {touched.tenant_EId_photo && values.tenant_EId_photo && (
                           <img
-                            src={URL.createObjectURL(values.tenant_GovId)}
+                            src={URL.createObjectURL(values.tenant_EId_photo)}
                             alt="no pic"
                             height="200"
                           />
@@ -372,6 +375,97 @@ const TenantEntry = (props) => {
                           />
                         )}
                       </div>
+{/* hello */}
+
+<div className="col-md-4">
+                        <Label>Upload Trade License photo</Label>
+                        <Input
+                          type="file"
+                          name="tenant_TradeLicense_photo"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "tenant_TradeLicense_photo",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
+
+                        {touched.tenant_TradeLicense_photo && values.tenant_TradeLicense_photo && (
+                          <img
+                            src={URL.createObjectURL(values.tenant_TradeLicense_photo)}
+                            alt="no pic"
+                            height="200"
+                          />
+                        )}
+                      </div>
+                      <div className="col-md-4">
+                        <Label>tenant IdentityLetter photo</Label>
+                        <Input
+                          type="file"
+                          name="tenant_IdentityLetter_photo"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "tenant_IdentityLetter_photo",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
+
+                        {touched.tenant_IdentityLetter_photo && values.tenant_IdentityLetter_photo && (
+                          <img
+                            src={URL.createObjectURL(values.tenant_IdentityLetter_photo)}
+                            alt="no pic"
+                            height="200"
+                          />
+                        )}
+                      </div>
+                      <div className="col-md-4">
+                        <Label>tenant_SK_Properties_photo</Label>
+                        <Input
+                          type="file"
+                          name="tenant_SK_Properties_photo"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "tenant_SK_Properties_photo",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
+
+                        {touched.tenant_SK_Properties_photo && values.tenant_SK_Properties_photo && (
+                          <img
+                            src={URL.createObjectURL(values.tenant_SK_Properties_photo)}
+                            alt="no pic"
+                            height="200"
+                          />
+                        )}
+                      </div>
+                      <div className="col-md-4">
+                        <Label>Upload tenant_POA_photo</Label>
+                        <Input
+                          type="file"
+                          name="tenant_POA_photo"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "tenant_POA_photo",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
+
+                        {touched.tenant_POA_photo && values.tenant_POA_photo && (
+                          <img
+                            src={URL.createObjectURL(values.tenant_POA_photo)}
+                            alt="no pic"
+                            height="200"
+                          />
+                        )}
+                      </div>
+
                     </div>
                   </div>
                   <button
