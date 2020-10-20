@@ -6,40 +6,62 @@ import { Field, Formik } from "formik";
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
+  console.log(props);
+  
+  let initialValue={
+      street:props?.property?.street|| "",
+      city: props?.property?.city|| "",
+      country: props?.property?.country|| "",
+      property_type: props?.property?.property_type|| "",
+      property_price: props?.property?.property_price|| "",
+      property_status: props?.property?.property_status|| "",
+      bedroomArea: props?.property?.bedroomArea|| "",
+      NoOfbedroom: props?.property?.NoOfbedroom|| "",
+      bedroomRemark: props?.property?.bedroomRemark|| "",
+      kitchenArea: props?.property?.kitchenArea|| "",
+      NoOfKitchen: props?.property?.NoOfKitchen|| "",
+      kitchenRemark: props?.property?.kitchenRemark|| "",
+      hallArea: props?.property?.hallArea|| "",
+      NoOfHall:props?.property?.NoOfHall|| "",
+      hallRemark: props?.property?.hallRemark|| "",
+      bathroomArea: props?.property?.bathroomArea|| "",
+      NoOfBathroom: props?.property?.NoOfBathroom|| "",
+      bathroomRemark: props?.property?.bathroomRemark|| "",
+      Balcony_Area: props?.property?.Balcony_Area|| "",
+      NoOfBalcony: props?.property?.NoOfBalcony|| "",
+      BalconyRemark: props?.property?.BalconyRemark|| "",
+      photo: props?.property?.photo|| "",
+      Parking: props?.property?.Parking|| "",
+      Swimming: props?.property?.Swimming|| "",
+      Smoking: props?.property?.Smoking|| "",
+      PetAllowed: props?.property?.PetAllowed|| "",
+      Garden: props?.property?.Garden|| "",
+      property_community: props?.property?.property_community|| "",
+      building_Name: props?.property?.building_Name|| "",
+      building_Number: props?.property?.building_Number|| "",
+      plot_Number: props?.property?.plot_Number|| "",
+      building_floorNumber: props?.property?.building_floorNumber|| "",
+      Muncipality_Number: props?.property?.Muncipality_Number|| "",
+      Property_Area: props?.property?.Property_Area|| "",
+      Property_Premise_Number: props?.property?.Property_Premise_Number|| "",
+      Title_Deed_Photo: props?.property?.Title_Deed_Photo|| "",
+    }
+  
   return (
     <div>
       <div>
         <div>
           <Formik
-            initialValues={{
-              street: "",
-              city: "",
-              country: "",
-              property_type: "",
-              property_price: "",
-              property_status: "",
-              bedromArea: "",
-              kitchenArea: "",
-              hallArea: "",
-              bathroomArea: "",
-              NoOfBathroom: "",
-              NoOfHall: "",
-              NoOfKitchen: "",
-              NoOfbedrom: "",
-              bathroomRemark: "",
-              hallRemark:"",
-              bedroomRemark:"",
-              kitchenRemark:"",
-              photo: "",
-              Parking: "",
-              Swimming: "",
-              Balcony: "",
-              Smoking: "",
-              PetAllowed: "",
-              Garden: "",
-            }}
+            initialValues={
+              initialValue 
+            }
             onSubmit={(values) => {
-              props.propertySend(values);
+              props.property?props.propertyUpdate(values,props?.property?._id):
+                props.propertySend(values);
+
+            
+              
+
               console.log(values);
             }}
             // validationSchema={PropertyFormValidation}
@@ -56,138 +78,301 @@ const PropertyEntry = (props) => {
             }) => (
               <Form className=" ">
                 <FormGroup className=" container">
+                  <h1 className="text-center my-4">Please Fill Up the Property information</h1>
                   <div className=" d-flex justify-content-center d-flex flex-column m-3">
-                    <div className="">
-                      <Label for="exampleSelect">Property Type</Label>
+                    <div className="d-flex flex-wrap">
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleSelect">Property Type</Label>
 
-                      <Input
-                        type="select"
-                        name="property_type"
-                        id="exampleSelect"
-                        placeholder="Select"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.property_type}
-                      >
-                        <option value=""> </option>
-                        <option value="Villa">Villa</option>
-                        <option value="House">House</option>
-                        <option value="Apartment">Apartment</option>
-                      </Input>
+                        <Input
+                          type="select"
+                          name="property_type"
+                          id="exampleSelect"
+                          placeholder="Select"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.property_type}
+                        >
+                          <option value=""> </option>
+                          <option value="Villa">Villa</option>
+                          <option value="House">House</option>
+                          <option value="Apartment">Apartment</option>
+                        </Input>
 
-                      {touched?.property_type && errors?.property_type && (
-                        <span
-                          className="text-danger col-md-12 text-left mb-2"
-                          style={{ fontSize: 12 }}
-                        >
-                          {errors?.property_type}
-                        </span>
-                      )}
-                    </div>
+                        {touched?.property_type && errors?.property_type && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors?.property_type}
+                          </span>
+                        )}
+                      </div>
 
-                    <div className="">
-                      <Label>Property price</Label>
-                      <Input
-                        type="number"
-                        name="property_price"
-                        placeholder="Enter Price"
-                        value={values.property_price}
-                        min={0}
-                        onChange={handleChange}
-                      />
-                      {touched.property_price && errors.property_price && (
-                        <span
-                          className="text-danger col-md-12 text-left mb-2"
-                          style={{ fontSize: 12 }}
+                      <div className="col-sm-4 my-1">
+                        <Label>Property price</Label>
+                        <Input
+                          type="number"
+                          name="property_price"
+                          placeholder="Enter Price"
+                          value={values.property_price}
+                          min={0}
+                          onChange={handleChange}
+                        />
+                        {touched.property_price && errors.property_price && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.property_price}
+                          </span>
+                        )}
+                      </div>
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleSelect">Property Status</Label>
+                        <Input
+                          type="select"
+                          name="property_status"
+                          value={values.property_status}
+                          id="exampleSelect"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                         >
-                          {errors.property_price}
-                        </span>
-                      )}
-                    </div>
-                    <div className="">
-                      <Label for="exampleSelect">Property Status</Label>
-                      <Input
-                        type="select"
-                        name="property_status"
-                        value={values.property_status}
-                        id="exampleSelect"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      >
-                        <option value="">select one</option>
-                        <option value="free">Free</option>
-                        <option value="Repair and Maintanance">
-                          Repair and Maintanance
-                        </option>
-                        <option value="Occupied">Occupied</option>
-                      </Input>
-                      {touched.property_status && errors.property_status && (
-                        <span
-                          className="text-danger col-md-12 text-left mb-2"
-                          style={{ fontSize: 12 }}
-                        >
-                          {errors.property_status}
-                        </span>
-                      )}
-                    </div>
+                          <option value="">select one</option>
+                          <option value="free">Free</option>
+                          <option value="Occupied">Occupied</option>
+                        </Input>
+                        {touched.property_status && errors.property_status && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.property_status}
+                          </span>
+                        )}
+                      </div>
 
-                    <div className="">
-                      <Label for="exampleName">Country</Label>
-                      <Input
-                        type="text"
-                        value={values.country}
-                        name="country"
-                        placeholder="Enter the name of Country"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched.country && errors.country && (
-                        <span
-                          className="text-danger col-md-12 text-left mb-2"
-                          style={{ fontSize: 12 }}
-                        >
-                          {errors.country}
-                        </span>
-                      )}
-                    </div>
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">Country</Label>
+                        <Input
+                          type="text"
+                          value={values.country}
+                          name="country"
+                          placeholder="Enter the name of Country"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.country && errors.country && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.country}
+                          </span>
+                        )}
+                      </div>
 
-                    <div className="">
-                      <Label for="exampleName">City</Label>
-                      <Input
-                        type="text"
-                        value={values.city}
-                        name="city"
-                        placeholder="Enter your City"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched.city && errors.city && (
-                        <span
-                          className="text-danger col-md-12 text-left mb-2"
-                          style={{ fontSize: 12 }}
-                        >
-                          {errors.city}
-                        </span>
-                      )}
-                    </div>
-                    <div className="">
-                      <Label for="exampleName">Street</Label>
-                      <Input
-                        type="text"
-                        value={values.street}
-                        name="street"
-                        placeholder="Enter your Street"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched.street && errors.street && (
-                        <span
-                          className="text-danger col-md-12 text-left mb-2"
-                          style={{ fontSize: 12 }}
-                        >
-                          {errors.street}
-                        </span>
-                      )}
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">City</Label>
+                        <Input
+                          type="text"
+                          value={values.city}
+                          name="city"
+                          placeholder="Enter your City"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.city && errors.city && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.city}
+                          </span>
+                        )}
+                      </div>
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">Street</Label>
+                        <Input
+                          type="text"
+                          value={values.street}
+                          name="street"
+                          placeholder="Enter your Street"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.street && errors.street && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.street}
+                          </span>
+                        )}
+                      </div>
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">building Name</Label>
+                        <Input
+                          type="text"
+                          value={values.building_Name}
+                          name="building_Name"
+                          placeholder="Enter your Street"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.building_Name && errors.building_Name && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.building_Name}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">building Number </Label>
+                        <Input
+                          type="number"
+                          value={values.building_Number}
+                          name="building_Number"
+                          placeholder="Enter your Street"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.building_Number && errors.building_Number && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.building_Number}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">plot Number</Label>
+                        <Input
+                          type="number"
+                          value={values.plot_Number}
+                          name="plot_Number"
+                          placeholder="Enter the name of Country"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.plot_Number && errors.plot_Number && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.plot_Number}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">building floorNumber</Label>
+                        <Input
+                          type="number"
+                          value={values.building_floorNumber}
+                          name="building_floorNumber"
+                          placeholder="Enter the name of Country"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.building_floorNumber &&
+                          errors.building_floorNumber && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.building_floorNumber}
+                            </span>
+                          )}
+                      </div>
+
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">Muncipality Number</Label>
+                        <Input
+                          type="number"
+                          value={values.Muncipality_Number}
+                          name="Muncipality_Number"
+                          placeholder="Enter the name of Country"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.Muncipality_Number &&
+                          errors.Muncipality_Number && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.Muncipality_Number}
+                            </span>
+                          )}
+                      </div>
+
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">Property Area</Label>
+                        <Input
+                          type="number"
+                          value={values.Property_Area}
+                          name="Property_Area"
+                          placeholder="Enter the name of Country"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.Property_Area && errors.Property_Area && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.Property_Area}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">community</Label>
+                        <Input
+                          type="text"
+                          value={values.property_community}
+                          name="property_community"
+                          placeholder="Enter the name of Country"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.property_community &&
+                          errors.property_community && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.property_community}
+                            </span>
+                          )}
+                      </div>
+
+                      <div className="col-sm-4 my-1">
+                        <Label for="exampleName">Property Premise Number</Label>
+                        <Input
+                          type="number"
+                          value={values.Property_Premise_Number}
+                          name="Property_Premise_Number"
+                          placeholder="Enter the name of Country"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.Property_Premise_Number &&
+                          errors.Property_Premise_Number && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.Property_Premise_Number}
+                            </span>
+                          )}
+                      </div>
                     </div>
                     <div className="">
                       <Label for="exampleName">
@@ -213,18 +398,18 @@ const PropertyEntry = (props) => {
                           <td>
                             <Input
                               type="number"
-                              value={values.bedromArea}
-                              name="bedromArea"
+                              value={values.bedroomArea}
+                              name="bedroomArea"
                               placeholder="area in Sq.ft"
                               onChange={handleChange}
                               onBlur={handleBlur}
                             />
-                            {touched?.bedromArea && errors?.bedromArea && (
+                            {touched?.bedroomArea && errors?.bedroomArea && (
                               <span
                                 className="text-danger col-md-12 text-left mb-2"
                                 style={{ fontSize: 12 }}
                               >
-                                {errors?.bedromArea}
+                                {errors?.bedroomArea}
                               </span>
                             )}
                           </td>
@@ -232,18 +417,18 @@ const PropertyEntry = (props) => {
                             {" "}
                             <Input
                               type="number"
-                              value={values.NoOfbedrom}
-                              name="NoOfbedrom"
+                              value={values.NoOfbedroom}
+                              name="NoOfbedroom"
                               placeholder="area in Sq.ft"
                               onChange={handleChange}
                               onBlur={handleBlur}
                             />
-                            {touched?.NoOfbedrom && errors?.NoOfbedrom && (
+                            {touched?.NoOfbedroom && errors?.NoOfbedroom && (
                               <span
                                 className="text-danger col-md-12 text-left mb-2"
                                 style={{ fontSize: 12 }}
                               >
-                                {errors?.NoOfbedrom}
+                                {errors?.NoOfbedroom}
                               </span>
                             )}
                           </td>
@@ -453,10 +638,69 @@ const PropertyEntry = (props) => {
                             )}
                           </td>
                         </tr>
+
+                        <tr>
+                          <td>5</td>
+                          <td>Balcony</td>
+                          <td>
+                            <Input
+                              type="number"
+                              value={values.Balcony_Area}
+                              name="Balcony_Area"
+                              placeholder="area in Sq.ft"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched?.Balcony_Area && errors?.Balcony_Area && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors?.Balcony_Area}
+                              </span>
+                            )}
+                          </td>
+                          <td>
+                            <Input
+                              type="number"
+                              value={values.NoOfBalcony}
+                              name="NoOfBalcony"
+                              placeholder="area in Sq.ft"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched?.NoOfBalcony && errors?.NoOfBalcony && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors?.NoOfBalcony}
+                              </span>
+                            )}{" "}
+                          </td>
+
+                          <td>
+                            {" "}
+                            <Input
+                              type="text"
+                              value={values.BalconyRemark}
+                              name="BalconyRemark"
+                              placeholder="Enter the bathroomRemark"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.BalconyRemark && errors.BalconyRemark && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.BalconyRemark}
+                              </span>
+                            )}
+                          </td>
+                        </tr>
                       </tbody>
                     </Table>
-
-                    
 
                     <div className="">
                       <Label>
@@ -496,23 +740,7 @@ const PropertyEntry = (props) => {
                           Swimming
                         </Label>
                       </FormGroup>
-                      <FormGroup check>
-                        <Label check>
-                          <Input
-                            type="checkbox"
-                            name="Balcony"
-                            onChange={(e) =>
-                              setFieldValue(
-                                "Balcony",
-                                e.currentTarget.checked
-                                  ? "available"
-                                  : "unavailable"
-                              )
-                            }
-                          />{" "}
-                          Balcony
-                        </Label>
-                      </FormGroup>
+
                       <FormGroup check>
                         <Label check>
                           <Input
@@ -575,12 +803,31 @@ const PropertyEntry = (props) => {
                                 )} */}
                     </div>
 
-                    <div className="mt-4 mb-4">
-                      <Label className="font-weight-bold text-white">
-                        Product Photo
-                      </Label>
+                    <div className="col-md-4">
+                      <Label>Title Deed Photo</Label>
                       <Input
-                        className="text-white "
+                        type="file"
+                        name="Title_Deed_Photo"
+                        accept="image/*"
+                        onChange={(event) => {
+                          setFieldValue(
+                            "Title_Deed_Photo",
+                            event.currentTarget.files[0]
+                          );
+                        }}
+                      />
+
+                      {touched.Title_Deed_Photo && values.Title_Deed_Photo && (
+                        <img
+                          src={URL.createObjectURL(values.Title_Deed_Photo)}
+                          alt="no pic"
+                          height="200"
+                        />
+                      )}
+                    </div>
+                    <div className="col-md-4">
+                      <Label>property photo</Label>
+                      <Input
                         type="file"
                         name="photo"
                         accept="image/*"

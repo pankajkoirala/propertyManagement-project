@@ -45,6 +45,7 @@ let leaseData=()=>{
 
 }
 
+
     return(
         <div><AllPropertyViews
         propertyData={propertyData}
