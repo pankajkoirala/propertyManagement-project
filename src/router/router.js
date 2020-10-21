@@ -22,6 +22,7 @@ import MaintainanceCompany from "../container/entryForm/maintainanceCompanyEntry
 import ManagementCompany from "../container/entryForm/managementCompanyEntryForm/managementCompanyContainer.js"
 import ChequeBounce from "../container/entryForm/cheque/chequeBounce/chequeBounceEntry.js"
 import ChequeHold from "../container/entryForm/cheque/chequeHold/chequeHoldEntry.js"
+import BrokerPerson from "../container/entryForm/broker_Person/broker_PersonContainer.js"
 
 import AllProperty from "../container/view/propertyView/allProperty.js"
 
@@ -54,6 +55,8 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/managementCompany" component={ManagementCompany} />
                 <PrivateRouter exact path="/chequeBounce" component={ChequeBounce} />
                 <PrivateRouter exact path="/chequeHold" component={ChequeHold} />
+                <PrivateRouter exact path="/brokerPerson" component={BrokerPerson} />
+                
                 </Switch>
             </Router>
             </div>

@@ -11,9 +11,9 @@ const ChequeBounce=()=> {
       <div>
                 <Formik
                     initialValues={{
-                              street:"",
-                              city: "",
-                              provience: "",
+                      cheque_Bound_ID:"",
+                      bounce_Date: "",
+                      cheque_Number: "",
                               country: "",
                               ZipCode: "",
                               employee_photo:"",
@@ -43,32 +43,32 @@ const ChequeBounce=()=> {
                     }) => (
                             <Form>
                             
-                                <FormGroup className="">
+                                <FormGroup className=" p-4">
                                     <div className="text-center">
 
-                                        <p className="text-black font-weight-bold"> <h3>Cheque Bounce Detail Form </h3></p>
+                                        <p className="text-black font-weight-bold"> <h3>Cheque Bound Detail Form </h3></p>
                                     </div>
                                     <div>
                                     {/* <div className="m-4"> */}
                                     
 
-                  <div className="row ">
+                  <div className="row">
                   <div className="mt-4 col-md-4">
-                    <Label for="exampleName">Cheque ID</Label>
+                    <Label for="exampleName">Cheque Bound ID</Label>
                     <Input
                       type="text"
-                      value={values.employee_firstName}
-                      name="employee_firstName"
-                      placeholder="Enter Cheque ID"
+                      value={values.cheque_Bound_ID}
+                      name="cheque_Bound_ID"
+                      placeholder="Enter Cheque Bound ID"
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {touched.employee_firstName && errors.employee_firstName && (
+                    {touched.cheque_Bound_ID && errors.cheque_Bound_IDe && (
                       <span
                         className="text-danger col-md-12 text-left mb-2"
                         style={{ fontSize: 12 }}
                       >
-                        {errors.employee_firstName}
+                        {errors.cheque_Bound_ID}
                       </span>
                     )}
                   </div>
@@ -77,65 +77,45 @@ const ChequeBounce=()=> {
                     <Label for="exampleName">Cheque Number</Label>
                     <Input
                       type="text"
-                      value={values.employee_middleName}
-                      name="employee_middleName"
-                      placeholder="Enter Cheque Number"
+                      value={values.cheque_Number}
+                      name="cheque_Number"
+                      placeholder="Cheque Number"
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {touched.employee_middleName && errors.employee_middleName && (
+                    {touched.cheque_Number && errors.cheque_Number && (
                       <span
                         className="text-danger col-md-12 text-left mb-2"
                         style={{ fontSize: 12 }}
                       >
-                        {errors.employee_middleName}
+                        {errors.cheque_Number}
                       </span>
                     )}
                   </div>
 
-                  <div className="mt-4 col-md-4">
-                    <Label for="exampleName">Cheque Fetch Bank Detail</Label>
-                    <Input
-                      type="text"
-                      value={values.employee_lastName}
-                      name="employee_lastName"
-                      placeholder="Cheque Fetch Bank Detail"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.employee_lastName && errors.employee_lastName && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.employee_lastName}
-                      </span>
-                    )}
-                  </div>
+            
                 </div>
 
                 
                   <div className="row">
                  
                   <div className="col-md-4">
-                      <Label for="exampleName">Bank Name</Label>
+                      <Label for="exampleName">Cheque Bounce Date</Label>
                       <Input
                         type="text"
-                        value={
-                          values.street
-                        }
-                        name="street"
-                        placeholder="EnterBank Name"
+                        value={ values.bounce_Date }
+                        name="bounce_Date"
+                        placeholder="Cheque Bounce Date"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      {touched?.street &&
-                        errors?.street && (
+                      {touched.bounce_Date &&
+                        errors.bounce_Date && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.street}
+                            {errors.bounce_Date}
                           </span>
                         )}
                     </div>
@@ -143,14 +123,14 @@ const ChequeBounce=()=> {
 
 
                     <div className="col-md-4">
-                      <Label for="exampleName">Cheque Issuer Name</Label>
+                      <Label for="exampleName">Bank ID</Label>
                       <Input
                         type="text"
                         value={
                           values.city
                         }
                         name="city"
-                        placeholder="Cheque Issuer Name"
+                        placeholder="Bank ID"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
@@ -165,56 +145,9 @@ const ChequeBounce=()=> {
                         )}
                     </div>
 
-                    <div className="col-md-4">
-                      <Label for="exampleName">Tenant ID</Label>
-                      <Input
-                        type="text"
-                        value={
-                          values.provience
-                        }
-                        name="provience"
-                        placeholder="Enter Tenant ID"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched?.provience &&
-                        errors?.provience && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors?.provience}
-                          </span>
-                        )}
-                    </div>
+                    
 </div>
-<div className="row">
-                    <div className="col-md-6">
-                      <Label for="exampleSelect">Lease ID</Label>
-                      <Input
-                        type="text"
-                        name="ZipCode"
-                        value={
-                          values.ZipCode
-                        }
-                        id="exampleSelect"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      >
-                        
-                      </Input>
-                      {touched?.ZipCode &&
-                        errors?.ZipCode && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors?.ZipCode}
-                          </span>
-                        )}
-                    </div>
-                   
-                  </div>
+
                 </div> 
                   <button className="success m-4"type="submit" onClick={handleSubmit}>Add</button>
                     </FormGroup>
