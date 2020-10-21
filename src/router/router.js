@@ -22,6 +22,7 @@ import MaintainanceCompany from "../container/entryForm/maintainanceCompanyEntry
 import ManagementCompany from "../container/entryForm/managementCompanyEntryForm/managementCompanyContainer.js"
 import ChequeBounce from "../container/entryForm/cheque/chequeBounce/chequeBounceEntry.js"
 import ChequeHold from "../container/entryForm/cheque/chequeHold/chequeHoldEntry.js"
+import LeaseProperty from "../container/view/propertyView/lease/leaseproperty"
 
 import AllProperty from "../container/view/propertyView/allProperty.js"
 
@@ -42,6 +43,8 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
                 <PrivateRouter exact path="/dashboard" component={Dashboard} />
                 <PrivateRouter exact path="/lease" component={Lease} />
+                <PrivateRouter exact path="/leaseProperty" component={LeaseProperty} />
+
                 <Route exact path="/login" component={LoginComponent} />
                 <PrivateRouter exact path="/propertyDetail/:id" component={OnePropertyView} />
                 <PrivateRouter exact path="/tanent/:id" component={TanentDetailView} />
