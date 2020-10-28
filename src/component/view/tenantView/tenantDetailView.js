@@ -4,6 +4,7 @@ import "./tenantView.css";
 import moment from "moment";
 import LOGO from "../../../assets/logo.png";
 import PRINTERLOGO from "../../../assets/printer.jpg";
+import TanentEntryForm from '../../../component/entryForm/tenantEntryForm/tenantEntryForm'
 
 
 const TanentDetailView = (props) => {
@@ -19,6 +20,7 @@ const TanentDetailView = (props) => {
 
       <div className="col-12 bg-primary">
         <div className="row">
+
           <div className="col-8 bg-success text-left">
             <b>Application Date:</b>
             <br /> January 21, 2020
@@ -130,6 +132,7 @@ const TanentDetailView = (props) => {
           </div>
         </div>
       </div>
+
     </div>
 
         )

@@ -6,7 +6,6 @@ import { Field, Formik } from "formik";
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
-  console.log(props);
   
   let initialValue={
       street:props?.property?.street|| "",
@@ -30,12 +29,11 @@ const PropertyEntry = (props) => {
       Balcony_Area: props?.property?.Balcony_Area|| "",
       NoOfBalcony: props?.property?.NoOfBalcony|| "",
       BalconyRemark: props?.property?.BalconyRemark|| "",
-      photo: props?.property?.photo|| "",
-      Parking: props?.property?.Parking|| "",
-      Swimming: props?.property?.Swimming|| "",
-      Smoking: props?.property?.Smoking|| "",
-      PetAllowed: props?.property?.PetAllowed|| "",
-      Garden: props?.property?.Garden|| "",
+      Parking: props?.property?.Parking|| "unavailable",
+      Swimming: props?.property?.Swimming|| "unavailable",
+      Smoking: props?.property?.Smoking|| "unavailable",
+      PetAllowed: props?.property?.PetAllowed|| "unavailable",
+      Garden: props?.property?.Garden|| "unavailable",
       property_community: props?.property?.property_community|| "",
       building_Name: props?.property?.building_Name|| "",
       building_Number: props?.property?.building_Number|| "",
@@ -45,6 +43,7 @@ const PropertyEntry = (props) => {
       Property_Area: props?.property?.Property_Area|| "",
       Property_Premise_Number: props?.property?.Property_Premise_Number|| "",
       Title_Deed_Photo: props?.property?.Title_Deed_Photo|| "",
+      photo: props?.property?.photo|| "",
     }
   
   return (
@@ -58,11 +57,11 @@ const PropertyEntry = (props) => {
             onSubmit={(values) => {
               props.property?props.propertyUpdate(values,props?.property?._id):
                 props.propertySend(values);
+                console.log(values);
 
             
               
 
-              console.log(values);
             }}
             // validationSchema={PropertyFormValidation}
           >

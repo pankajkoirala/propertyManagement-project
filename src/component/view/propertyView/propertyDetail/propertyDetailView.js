@@ -20,6 +20,7 @@ let PropertyDetailViewComponent = (props) => {
               <div className="property-desc">
                 <h5>{arg.property_type}</h5>
                 <p>For: {arg.property_status}</p>
+                <h1>{arg._id}</h1>
                 <p>
                   <i className="fa fa-map-marker"></i> {arg.country},{arg.city}
                 </p>

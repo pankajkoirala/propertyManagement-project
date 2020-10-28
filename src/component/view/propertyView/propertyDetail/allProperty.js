@@ -25,7 +25,6 @@ const PropertyView = (props) => {
 let AllProperty=()=>{
   setSelectProperty(props.propertyData)
 }
-console.log(selectProperty);
   return (
     <div className=" m-5">
       <div>
