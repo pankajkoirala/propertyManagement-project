@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PropertyEntryForm from "../../../../component/entryForm/PropertyEntryForm/PropertyEntryForm";
+import PropertyEntryForm from "../../entryForm/PropertyEntryForm/PropertyEntryForm";
 import './property.css'
 
 let PropertyDetailViewComponent = (props) => {

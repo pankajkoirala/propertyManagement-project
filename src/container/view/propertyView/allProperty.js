@@ -1,14 +1,13 @@
 import React,{useState,useEffect} from "react"
-import AllPropertyViews from "../../../component/view/propertyView/propertyDetail/allProperty"
+import AllPropertyViews from "../../../component/view/propertyView/allProperty"
 import Axios from "axios"
 import { base_URL } from "../../../const/base_URL";
 
 
 
-const PropertyView=()=>{
+const PropertyView=(props)=>{
     const [propertyData,setPropertyData]=useState([])
     const [lease,setLease]=useState([])
-
 
     useEffect(()=>{
         serverData()

@@ -1,5 +1,7 @@
 import React from "react";
 import "./tenantEntryForm.css";
+import moment from "moment";
+
 
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -7,34 +9,43 @@ import { Formik } from "formik";
 import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
 
 const TenantEntry = (props) => {
+  console.log(props);
+
+  let initialvalue = {
+    tenant_GovIdNo: props.selectedTenantone?.tenant_GovIdNo || "",
+    tenant_DrivingLicenceNo:
+      props.selectedTenantone?.tenant_DrivingLicenceNo || "",
+    street: props.selectedTenantone?.street|| "",
+    city: props.selectedTenantone?.city || "",
+    provience: props.selectedTenantone?.provience || "",
+    country: props.selectedTenantone?.country || "",
+    ZipCode: props.selectedTenantone?.ZipCode || "",
+    tenant_phoneNo: props.selectedTenantone?.tenant_phoneNo || "",
+    tenant_firstName: props.selectedTenantone?.tenant_firstName || "",
+    tenant_middleName: props.selectedTenantone?.tenant_middleName || "",
+    tenant_lastName: props.selectedTenantone?.tenant_lastName || "",
+    tenant_email: props.selectedTenantone?.tenant_email || "",
+    tenant_DateOfBirth:moment(props.selectedTenantone?.tenant_DateOfBirth).format("YYYY-MM-DD") || "",
+    tenant_photo: props.selectedTenantone?.tenant_photo || "",
+    tenant_EId_photo: props.selectedTenantone?.tenant_EId_photo || "",
+    tenant_TradeLicense_photo:
+      props.selectedTenantone?.tenant_TradeLicense_photo || "",
+    tenant_IdentityLetter_photo:
+      props.selectedTenantone?.tenant_IdentityLetter_photo || "",
+    tenant_SK_Properties_photo:
+      props.selectedTenantone?.tenant_SK_Properties_photo || "",
+    tenant_POA_photo: props.selectedTenantone?.tenant_POA_photo || "",
+  };
   return (
     <div>
       <div className="PropertyFormEntry">
         <div>
           <Formik
-            initialValues={{
-              street: "",
-              city: "",
-              provience: "",
-              country: "",
-              ZipCode: "",
-              tenant_phoneNo: "",
-              tenant_firstName: "",
-              tenant_middleName: "",
-              tenant_lastName: "",
-              tenant_email: "",
-              tenant_GovIdNo: "",
-              tenant_DrivingLicenceNo: "",
-              tenant_DOB: "",
-              tenant_photo: "",
-              tenant_EId_photo: "",
-              tenant_TradeLicense_photo: "",
-              tenant_IdentityLetter_photo: "",
-              tenant_SK_Properties_photo: "",
-              tenant_POA_photo: "",
-            }}
+            initialValues={initialvalue}
             onSubmit={(values) => {
-              props.tenantData(values)
+              props.selectedTenantone
+                ? props.tenentUpdate(values, props.selectedTenantone?._id)
+                : props.tenantData(values);
               console.log(values);
             }}
             // validationSchema={TenantEntryFormValidation}
@@ -270,28 +281,30 @@ const TenantEntry = (props) => {
                         <Label for="exampleName">Date of Birth</Label>
                         <Input
                           type="date"
-                          value={values.tenant_DOB}
-                          name="tenant_DOB"
+                          value={values.tenant_DateOfBirth}
+                          name="tenant_DateOfBirth"
                           placeholder="Enter DOB"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.tenant_DOB && errors.tenant_DOB && (
+                        {touched.tenant_DateOfBirth && errors.tenant_DateOfBirth && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors.tenant_DOB}
+                            {errors.tenant_DateOfBirth}
                           </span>
                         )}
                       </div>
-                      </div>
+                    </div>
 
                     <div className="row">
                       <div className="col-md-6">
-                        <Label for="exampleName">Government Issue Card Number</Label>
+                        <Label for="exampleName">
+                          Government Issue Card Number
+                        </Label>
                         <Input
-                          type="string"
+                          type="number"
                           value={values.tenant_GovIdNo}
                           name="tenant_GovIdNo"
                           placeholder="Enter Government Id Number"
@@ -318,14 +331,15 @@ const TenantEntry = (props) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.tenant_DrivingLicenceNo && errors.tenant_DrivingLicenceNo && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.tenant_DrivingLicenceNo}
-                          </span>
-                        )}
+                        {touched.tenant_DrivingLicenceNo &&
+                          errors.tenant_DrivingLicenceNo && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.tenant_DrivingLicenceNo}
+                            </span>
+                          )}
                       </div>
                     </div>
 
@@ -344,13 +358,17 @@ const TenantEntry = (props) => {
                           }}
                         />
 
-                        {touched.tenant_EId_photo && values.tenant_EId_photo && (
-                          <img
-                            src={URL.createObjectURL(values.tenant_EId_photo)}
-                            alt="no pic"
-                            height="200"
-                          />
-                        )}
+                        {touched.tenant_EId_photo &&
+                          values.tenant_EId_photo && (
+                            <img
+                              src={URL.createObjectURL(
+                                values.tenant_EId_photo
+                                 
+                              )}
+                              alt="no pic"
+                              height="200"
+                            />
+                          )}
                       </div>
 
                       <div className="col-md-4">
@@ -369,15 +387,17 @@ const TenantEntry = (props) => {
 
                         {touched.tenant_photo && values.tenant_photo && (
                           <img
-                            src={URL.createObjectURL(values.tenant_photo)}
+                            src={URL.createObjectURL(
+                              values.tenant_photo 
+                            )}
                             alt="no pic"
                             height="200"
                           />
                         )}
                       </div>
-{/* hello */}
+                      {/* hello */}
 
-<div className="col-md-4">
+                      <div className="col-md-4">
                         <Label>Upload Trade License photo</Label>
                         <Input
                           type="file"
@@ -391,13 +411,17 @@ const TenantEntry = (props) => {
                           }}
                         />
 
-                        {touched.tenant_TradeLicense_photo && values.tenant_TradeLicense_photo && (
-                          <img
-                            src={URL.createObjectURL(values.tenant_TradeLicense_photo)}
-                            alt="no pic"
-                            height="200"
-                          />
-                        )}
+                        {touched.tenant_TradeLicense_photo &&
+                          values.tenant_TradeLicense_photo && (
+                            <img
+                              src={URL.createObjectURL(
+                                values.tenant_TradeLicense_photo
+                                  
+                              )}
+                              alt="no pic"
+                              height="200"
+                            />
+                          )}
                       </div>
                       <div className="col-md-4">
                         <Label>tenant IdentityLetter photo</Label>
@@ -413,13 +437,17 @@ const TenantEntry = (props) => {
                           }}
                         />
 
-                        {touched.tenant_IdentityLetter_photo && values.tenant_IdentityLetter_photo && (
-                          <img
-                            src={URL.createObjectURL(values.tenant_IdentityLetter_photo)}
-                            alt="no pic"
-                            height="200"
-                          />
-                        )}
+                        {touched.tenant_IdentityLetter_photo &&
+                          values.tenant_IdentityLetter_photo && (
+                            <img
+                              src={URL.createObjectURL(
+                                values.tenant_IdentityLetter_photo
+                                 
+                              )}
+                              alt="no pic"
+                              height="200"
+                            />
+                          )}
                       </div>
                       <div className="col-md-4">
                         <Label>tenant_SK_Properties_photo</Label>
@@ -435,13 +463,17 @@ const TenantEntry = (props) => {
                           }}
                         />
 
-                        {touched.tenant_SK_Properties_photo && values.tenant_SK_Properties_photo && (
-                          <img
-                            src={URL.createObjectURL(values.tenant_SK_Properties_photo)}
-                            alt="no pic"
-                            height="200"
-                          />
-                        )}
+                        {touched.tenant_SK_Properties_photo &&
+                          values.tenant_SK_Properties_photo && (
+                            <img
+                              src={URL.createObjectURL(
+                                values.tenant_SK_Properties_photo
+                                  
+                              )}
+                              alt="no pic"
+                              height="200"
+                            />
+                          )}
                       </div>
                       <div className="col-md-4">
                         <Label>Upload tenant_POA_photo</Label>
@@ -457,15 +489,18 @@ const TenantEntry = (props) => {
                           }}
                         />
 
-                        {touched.tenant_POA_photo && values.tenant_POA_photo && (
-                          <img
-                            src={URL.createObjectURL(values.tenant_POA_photo)}
-                            alt="no pic"
-                            height="200"
-                          />
-                        )}
+                        {touched.tenant_POA_photo &&
+                          values.tenant_POA_photo && (
+                            <img
+                              src={URL.createObjectURL(
+                                values.tenant_POA_photo
+                                 
+                              )}
+                              alt="no pic"
+                              height="200"
+                            />
+                          )}
                       </div>
-
                     </div>
                   </div>
                   <button

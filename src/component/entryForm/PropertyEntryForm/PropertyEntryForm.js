@@ -6,7 +6,7 @@ import { Field, Formik } from "formik";
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
-  
+  console.log(props);
   let initialValue={
       street:props?.property?.street|| "",
       city: props?.property?.city|| "",
@@ -45,7 +45,6 @@ const PropertyEntry = (props) => {
       Title_Deed_Photo: props?.property?.Title_Deed_Photo|| "",
       photo: props?.property?.photo|| "",
     }
-  console.log( props?.property?.photo);
   return (
     <div>
       <div>
@@ -808,7 +807,7 @@ const PropertyEntry = (props) => {
                         type="file"
                         name="Title_Deed_Photo"
                         accept="image/*"
-                        onChange={(event) => {
+                        onChange={ (event) => {
                           setFieldValue(
                             "Title_Deed_Photo",
                             event.currentTarget.files[0]
@@ -818,7 +817,7 @@ const PropertyEntry = (props) => {
 
                       {touched.Title_Deed_Photo && values.Title_Deed_Photo && (
                         <img
-                          src={URL.createObjectURL(values.Title_Deed_Photo?values.Title_Deed_Photo:'')}
+                          src={ URL.createObjectURL(values.Title_Deed_Photo)}
                           alt="no pic"
                           height="200"
                         />
@@ -837,7 +836,7 @@ const PropertyEntry = (props) => {
 
                       {touched.photo && values.photo && (
                         <img
-                          src={URL.createObjectURL(values.photo?values.photo:'')}
+                          src={URL.createObjectURL(values.photo)}
                           alt="no pic"
                           height="200"
                         />
@@ -845,7 +844,7 @@ const PropertyEntry = (props) => {
                     </div>
                   </div>
 
-                  <button type="submit" onClick={()=>{handleSubmit();props.showHide()}}>
+                  <button type="submit" onClick={handleSubmit}>
                     Submit
                   </button>
                 </FormGroup>

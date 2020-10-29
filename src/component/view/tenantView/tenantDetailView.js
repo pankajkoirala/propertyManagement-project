@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./tenantView.css";
 
 import moment from "moment";
@@ -8,14 +8,18 @@ import TanentEntryForm from '../../../component/entryForm/tenantEntryForm/tenant
 
 
 const TanentDetailView = (props) => {
-  console.log(props.selectedTenantone);
-  let selectedMember = props.selectedTenantone;
+  const [showEditForm, setShowEditForm] = useState(false);
+
+  let tenentshowHide=()=>{
+    setShowEditForm(!showEditForm)
+  }
+
   return (
 
     <div>
-      {selectedMember.map((arg,index)=>{
+      {showEditForm===false?props.selectedTenantone.map((arg,index)=>{
         return(
-          <div className="row pbox">
+          <div key={index} className="row pbox">
      
 
       <div className="col-12 bg-primary">
@@ -33,6 +37,9 @@ const TanentDetailView = (props) => {
 
           <div className="col-4 bg-warning">
             <img className="logo" src={LOGO} alt="" />
+            <button onClick={() => setShowEditForm(!showEditForm)}>
+                edit
+              </button>
           </div>
           {/* <div className="col-2"><img className="printer" src={PRINTERLOGO} alt="" /></div> */}
         </div>
@@ -42,8 +49,8 @@ const TanentDetailView = (props) => {
         <div className="text-center">
           <img
             className="tenantImg"
-            src="https://www.unicef.org/nepal/sites/unicef.org.nepal/files/styles/hero_mobile/public/NIBINA%20TIMAKSINA-IMG_9476.jpg?itok=VnPlq-xm"
-            alt=""
+            src={arg.tenant_EId_photo}
+            alt={arg.tenant_EId_photo}
           />
           <h3>Sulochana Poudel</h3>
         </div>
@@ -53,7 +60,7 @@ const TanentDetailView = (props) => {
         <div className="row">
           <div className="col-6 bg-success">
             <h5>PRIMARY APPLICANT</h5>
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">Email</th>
@@ -85,7 +92,7 @@ const TanentDetailView = (props) => {
             </table>
           </div>
           <div className="col-6 bg-danger">
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">Birthdate</th>
@@ -136,7 +143,11 @@ const TanentDetailView = (props) => {
     </div>
 
         )
-      })}
+      }): <TanentEntryForm
+      {...props}
+      selectedTenantone={props.selectedTenantone[0]}
+      />}
+     
     </div>
     
   );
