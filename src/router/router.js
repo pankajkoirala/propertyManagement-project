@@ -46,8 +46,6 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/leaseProperty" component={LeaseProperty} />
 
                 <Route exact path="/login" component={LoginComponent} />
-                <PrivateRouter exact path="/propertyDetail/:id" component={OnePropertyView} />
-                <PrivateRouter exact path="/tanent/:id" component={TanentDetailView} />
                 <PrivateRouter exact path="/ownerEntry" component={OwnerEntry} />
                 <PrivateRouter exact path="/bankDetail" component={BankDetail} />
                 <PrivateRouter exact path="/brokerDetail" component={BrokerDetail} />
@@ -57,6 +55,8 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/managementCompany" component={ManagementCompany} />
                 <PrivateRouter exact path="/chequeBounce" component={ChequeBounce} />
                 <PrivateRouter exact path="/chequeHold" component={ChequeHold} />
+                <PrivateRouter exact path="/propertyDetail/:id" component={OnePropertyView} />
+                <PrivateRouter exact path="/tanent/:id" component={TanentDetailView} />
                 </Switch>
             </Router>
             </div>

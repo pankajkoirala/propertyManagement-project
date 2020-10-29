@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react"
-import PropertyDetailViewComp from "../../../component/view/propertyView/propertyDetail/propertyDetailView"
+import PropertyDetailViewComp from "../../../component/view/propertyView/propertyDetailView"
 import Axios from "axios"
 import { base_URL } from "../../../const/base_URL";
 import {useParams} from "react-router-dom"
@@ -17,6 +17,7 @@ let PropertyDetailView=()=>{
     },[])
 
     let selectedone=serverAllData.filter((arg)=>arg._id===id)
+    console.log(selectedone);
 let serverData=()=>{
     Axios({
         method: 'get',
@@ -85,7 +86,6 @@ const propertyUpdate=(data,ID)=>{
 
     return(
 <div><PropertyDetailViewComp
-serverAllData={serverAllData}
 selectedone={selectedone}
 propertyUpdate={propertyUpdate}
 /></div>

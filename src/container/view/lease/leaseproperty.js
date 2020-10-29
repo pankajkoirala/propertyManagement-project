@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react"
 import Axios from "axios"
-import LeaseProperty from "../../../component/view/propertyView/propertyDetail/leaseProperty"
+import LeaseProperty from "../../../component/view/propertyView/leaseProperty"
 import { base_URL } from "../../../const/base_URL";
 
 
