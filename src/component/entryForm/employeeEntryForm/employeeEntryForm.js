@@ -28,7 +28,7 @@ const TenantEntry = (props) => {
             }}
             onSubmit={(values) => {
               console.log(values);
-            props.EmployeeData(values)
+              props.EmployeeData(values);
             }}
             //                   validationSchema={employeeEntryFormValidation}
           >

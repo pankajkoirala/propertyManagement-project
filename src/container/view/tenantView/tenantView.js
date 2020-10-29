@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react"
-import TenantViews from "../../component/view/tenantView/tenantView.js"
-import { base_URL } from "../../const/base_URL";
+import TenantViews from "../../../component/view/tenantView/tenantView.js"
+import { base_URL } from "../../../const/base_URL";
 import Axios from "axios"
 
 

@@ -45,7 +45,7 @@ const PropertyEntry = (props) => {
       Title_Deed_Photo: props?.property?.Title_Deed_Photo|| "",
       photo: props?.property?.photo|| "",
     }
-  
+  console.log( props?.property?.photo);
   return (
     <div>
       <div>
@@ -818,7 +818,7 @@ const PropertyEntry = (props) => {
 
                       {touched.Title_Deed_Photo && values.Title_Deed_Photo && (
                         <img
-                          src={URL.createObjectURL(values.Title_Deed_Photo)}
+                          src={URL.createObjectURL(values.Title_Deed_Photo?values.Title_Deed_Photo:'')}
                           alt="no pic"
                           height="200"
                         />
@@ -837,7 +837,7 @@ const PropertyEntry = (props) => {
 
                       {touched.photo && values.photo && (
                         <img
-                          src={URL.createObjectURL(values.photo)}
+                          src={URL.createObjectURL(values.photo?values.photo:'')}
                           alt="no pic"
                           height="200"
                         />
@@ -845,8 +845,8 @@ const PropertyEntry = (props) => {
                     </div>
                   </div>
 
-                  <button type="submit" onClick={handleSubmit}>
-                    Add
+                  <button type="submit" onClick={()=>{handleSubmit();props.showHide()}}>
+                    Submit
                   </button>
                 </FormGroup>
               </Form>

@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import PropertyEntryForm from "../../../../component/entryForm/PropertyEntryForm/PropertyEntryForm";
+import './property.css'
 
 let PropertyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
 
+let showHide=()=>{
+  setShowEditForm(!showEditForm)
+}
   return (
     <div>
-      {props.selectedone.map((arg, index) => {
+      {showEditForm===false? props.selectedone.map((arg, index) => {
         return (
           <div key={index} className="property-card">
             <div className="card-contents">
@@ -20,7 +24,6 @@ let PropertyDetailViewComponent = (props) => {
               <div className="property-desc">
                 <h5>{arg.property_type}</h5>
                 <p>For: {arg.property_status}</p>
-                <h1>{arg._id}</h1>
                 <p>
                   <i className="fa fa-map-marker"></i> {arg.country},{arg.city}
                 </p>
@@ -31,14 +34,17 @@ let PropertyDetailViewComponent = (props) => {
               <button onClick={() => setShowEditForm(!showEditForm)}>
                 edit
               </button>
-              <PropertyEntryForm 
-              {...props}
-              property={props.selectedone[0]}
-              />
+            
+             
             </div>
           </div>
         );
-      })}
+      }):   <PropertyEntryForm 
+      {...props}
+showHide={showHide}
+
+      property={props.selectedone[0]}
+      />}
     </div>
   );
 };

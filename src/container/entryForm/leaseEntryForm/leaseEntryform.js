@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react"
-import LeaseEntryFormComponent from "../../component/entryForm/lease/lease"
-import { base_URL } from "../../const/base_URL";
+import LeaseEntryFormComponent from "../../../component/entryForm/lease/lease"
+import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 
 const LeaseEntry=()=>{
