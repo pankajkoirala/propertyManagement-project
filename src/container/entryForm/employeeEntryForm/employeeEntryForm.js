@@ -1,6 +1,6 @@
 import React from "react"
-import EmployeeEntryFormComponent from "../../component/entryForm/employeeEntryForm/employeeEntryForm.js"
-import { base_URL } from "../../const/base_URL";
+import EmployeeEntryFormComponent from "../../../component/entryForm/employeeEntryForm/employeeEntryForm.js"
+import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 
 

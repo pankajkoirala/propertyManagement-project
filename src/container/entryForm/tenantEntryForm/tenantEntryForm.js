@@ -1,6 +1,6 @@
 import React from "react"
-import TenantEntryFormComponent from "../../component/entryForm/tenantEntryForm/tenantEntryForm.js"
-import { base_URL } from "../../const/base_URL";
+import TenantEntryFormComponent from "../../../component/entryForm/tenantEntryForm/tenantEntryForm.js"
+import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 
 const TenantEntry=()=>{

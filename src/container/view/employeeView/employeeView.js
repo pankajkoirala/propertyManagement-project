@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from "react"
 
-import EmployeeViews from "../../component/view/employeeView/employeeView.js"
+import EmployeeViews from "../../../component/view/employeeView/employeeView.js"
 import Axios from "axios"
-import {base_URL} from "../../const/base_URL"
+import {base_URL} from "../../../const/base_URL"
 
 const EmployeeView=()=>{
     const [employee,setEmployee]=useState([])
