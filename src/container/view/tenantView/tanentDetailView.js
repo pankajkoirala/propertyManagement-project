@@ -3,35 +3,19 @@ import TanentViewComp from "../../../component/view/tenantView/tenantDetailView"
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios"
 import {useParams} from "react-router-dom"
+import {connect} from 'react-redux'
 
 
 
-const TanentDetailViewCont=()=>{
-    const [tenant,setTenant]=useState([])
+const TanentDetailViewCont=(props)=>{
     const { id } = useParams();
 
     
-    
-    useEffect(()=>{
-      tenentAllData()
-    },[])
+   
     
     //using params and select one tanent to see detail
-    let selectedTenantone=tenant.filter((arg)=>arg._id===id)
+    let selectedTenantone=props?.redux_tenantData?.tenant?.filter((arg)=>arg._id===id)
 
-      let tenentAllData=()=>{
-        Axios({
-          method: 'get',
-          url: base_URL+"/api/tenant",
-          config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
-          }).then((res)=>{
-              setTenant(res.data);
-        }).catch((err)=>{
-          console.log(err);
-        })
-  
-      }
-   
 
    
 
@@ -81,5 +65,13 @@ tenentUpdate={tenentUpdate}
     )
 }
 
+const mapStateToProps = (state) => ({
+  redux_tenantData: state.tenant,
+});
 
-export default TanentDetailViewCont
+const mapDispatchToProps = (dispatch) => ({
+  redux_Add_Tenant: (arg) => dispatch({ type:"ADD_ALL_TENANT", payload:arg }),
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TanentDetailViewCont);

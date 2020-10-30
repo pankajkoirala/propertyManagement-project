@@ -7,30 +7,33 @@ import { employeeEntryFormValidation } from "../../../utility/validation/employe
 import { propTypes } from "react-bootstrap/esm/Image";
 
 const TenantEntry = (props) => {
+  let initialValue = {
+    employee_street: props?.selectedEmployee?.employee_street || "",
+    employee_city: props?.selectedEmployee?.employee_city || "",
+    employee_provience: props?.selectedEmployee?.employee_provience || "",
+    employee_country: props?.selectedEmployee?.employee_country || "",
+    employee_ZipCode: props?.selectedEmployee?.employee_ZipCode || "",
+    employee_photo: props?.selectedEmployee?.employee_photo || "",
+    employee_phoneNo: props?.selectedEmployee?.employee_phoneNo || "",
+    employee_firstName: props?.selectedEmployee?.employee_firstName || "",
+    employee_middleName: props?.selectedEmployee?.employee_middleName || "",
+    employee_lastName: props?.selectedEmployee?.employee_lastName || "",
+    employee_email: props?.selectedEmployee?.employee_email || "",
+    employee_post: props?.selectedEmployee?.employee_post || "",
+  };
   return (
     <div>
       <div>
         <div>
           <Formik
-            initialValues={{
-              employee_street: "",
-              employee_city: "",
-              employee_provience: "",
-              employee_country: "",
-              employee_ZipCode: "",
-              employee_photo: "",
-              employee_phoneNo: "",
-              employee_firstName: "",
-              employee_middleName: "",
-              employee_lastName: "",
-              employee_email: "",
-              employee_post: "",
-            }}
+            initialValues={initialValue}
             onSubmit={(values) => {
+              props.selectedEmployee
+                ? props.EmployeeUpdate(values, props?.selectedEmployee?._id)
+                : props.EmployeeData(values);
               console.log(values);
-              props.EmployeeData(values);
             }}
-            //                   validationSchema={employeeEntryFormValidation}
+            // validationSchema={employeeEntryFormValidation}
           >
             {({
               touched,
@@ -306,10 +309,10 @@ const TenantEntry = (props) => {
                   </div>
                   <button
                     className="success m-4"
-                    type="submit"
+                    type="button"
                     onClick={handleSubmit}
                   >
-                    Add
+                    submit
                   </button>
                 </FormGroup>
               </Form>

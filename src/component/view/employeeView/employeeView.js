@@ -1,50 +1,68 @@
+
+
 import React from 'react'
-import "./employeeView.css"
 import { Table } from 'react-bootstrap';
-//import {Link} from "react-router-dom"
+import {Link} from "react-router-dom"
+import {connect} from 'react-redux'
 
 
 const EmployeeView=(props)=>{
-  console.log(props.tenant);
   return( 
   
+  <div className="tenantview"> Tenant View
   
-  <div className="view"> Employee Views
-   
-                <Table striped bordered hover size="sm">
+  <Table striped bordered hover size="sm">
               <thead>
                 <tr>
-                  <th>SN</th>
+                <th>SN</th>
+                  <th>ID Number</th>
                   <th>First Name</th>
                   <th>Middle Name</th>
                   <th>Last Name</th>
                   <th>Contact Number</th>
-                  <th>Post</th>
+                  <th>Contact Email</th>
                   <th>Remarks</th>
                 </tr>
               </thead>
-              <tbody>
-              {/* {props.tenant.map((arg,index)=>{
+              {props.allEmployee.map((arg,index)=>{
                 return(
-              <tbody key={index}>
-                <tr>
-                  <td>{index+1}</td>
-                  <td>{arg.employee_firstName}</td>
-                  <td>{arg.employee_middleName}</td>
-                  <td>{arg.employee_lastName}</td>
-                  <td>{arg.employee_phoneNo}</td>
-                  <td>{arg.employee_post}</td>
-                  <td><Link to={`/employee/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> <button className="danger ml-2">Delete</button></td>
-                  </tr> */}
+                  <tbody key={index}>
+                  <tr>
+                <td>{index+1}</td>
+                <td>{arg.Employee_ID}</td>
 
-              </tbody>
-              {/* )
-            })} */}
+                <td>{arg.employee_firstName}</td>
+                <td>{arg.employee_middleName}</td>
+                <td>{arg.employee_lastName}</td>
+                <td>{arg.employee_phoneNo}</td>
+                <td>{arg.employee_email}</td>
+                    
+                <h1>{props. nameMatra_number}</h1>
+                    <td><Link to={`/employee/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> <button className="danger ml-2">Delete</button></td>
+                  </tr>
+                  
+                </tbody>
+                  )
+              })}
+          
             </Table>
-    </div>
+           
+  </div>
     
     )
 }
 
+const mapStateToProps = (state) => ({
+  nameMatra_number: state.number,
+});
 
-export default EmployeeView
+const mapDispatchToProps = (dispatch) => ({
+ // deletItem: (data) => dispatch({ type: delettoCart, payload: data }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeView);
+
+
+
+
+

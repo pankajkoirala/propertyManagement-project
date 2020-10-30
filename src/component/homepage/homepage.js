@@ -5,9 +5,11 @@ import Navbar from "../../shared/navbar"
 import INCOME from "../../assets/income.PNG"
 import Maintainance from "../../assets/maintinance.PNG"
 import Occupancy from "../../assets/1.PNG"
+import {connect} from 'react-redux'
+import { AddFive } from "../../redux_pract/sample"
 //import{setLocalStorage} from "../../const/tokenStorage"
 
-const Homepage = () => {
+const Homepage = (props) => {
   // // let logout=()=>{
   // //     localStorage.clear()
   // //     setTimeout(() => {
@@ -57,9 +59,21 @@ const Homepage = () => {
         </div>
       
     </div>
+    <button onClick={props.addone}>addone</button>
     </div>
   );
 };
-export default Homepage;
+const mapStateToProps = (state) => ({
+  nameMatra_number: state.number,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addone: () => dispatch({ type: "ADDFIVE", payload: 5 }),
+  addfie: () => dispatch(AddFive),
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
+
 
 {/* <div className="logoutCss"><button className="m-5"onClick={()=>logout()}>Logout</button> </div> */}

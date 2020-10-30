@@ -2,6 +2,8 @@ import React,{useState,useEffect} from "react"
 import AllPropertyViews from "../../../component/view/propertyView/allProperty"
 import Axios from "axios"
 import { base_URL } from "../../../const/base_URL";
+import {connect} from 'react-redux'
+
 
 
 
@@ -21,6 +23,7 @@ let serverData=()=>{
         config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
         }).then((res)=>{
             setPropertyData(res.data);
+            props.redux_Add_Property(res.data)
       }).catch((err)=>{
         console.log(err);
       })
@@ -53,5 +56,14 @@ let leaseData=()=>{
         /></div>
     )
 }
+const mapStateToProps = (state) => ({
+    nameMatra_number: state.number,
+  });
+  
+  const mapDispatchToProps = (dispatch) => ({
+    redux_Add_Property: (arg) => dispatch({ type:"ADD_ALL_PROPRRTY", payload:arg }),
+  
+  });
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(PropertyView);
 
-export default PropertyView
