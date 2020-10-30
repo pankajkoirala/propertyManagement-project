@@ -14,7 +14,8 @@ import {
 
 import "./property.css";
 
-const PropertyView = (props) => {
+const PropertyView = (props) => {;
+
   const[selectProperty,setSelectProperty]=useState(props.propertyData)
   //freeProperty
  let freeProperty=()=>{

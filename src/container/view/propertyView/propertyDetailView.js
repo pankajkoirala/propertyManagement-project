@@ -3,33 +3,18 @@ import PropertyDetailViewComp from "../../../component/view/propertyView/propert
 import Axios from "axios"
 import { base_URL } from "../../../const/base_URL";
 import {useParams} from "react-router-dom"
+import {connect} from 'react-redux'
 
 
 
 
-let PropertyDetailView=()=>{
-    const[serverAllData,setServerAllData]=useState([])
 
- const { id } = useParams();
+let PropertyDetailView=(props)=>{
 
-    useEffect(()=>{
-        serverData()
-    },[])
+  const { id } = useParams();
 
-    let selectedone=serverAllData.filter((arg)=>arg._id===id)
-    console.log(selectedone);
-let serverData=()=>{
-    Axios({
-        method: 'get',
-        url: base_URL+"/api/property",
-        config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
-        }).then((res)=>{
-            setServerAllData(res.data);
-      }).catch((err)=>{
-        console.log(err);
-      })
+  let selectedone=props?.Redux_propertyData?.property?.filter((arg)=>arg._id===id)
 
-}
 
 
 const propertyUpdate=(data,ID)=>{
@@ -86,9 +71,19 @@ const propertyUpdate=(data,ID)=>{
 
     return(
 <div><PropertyDetailViewComp
-selectedone={selectedone}
 propertyUpdate={propertyUpdate}
+selectedone={selectedone}
 /></div>
     )
 }
-export default PropertyDetailView
+
+const mapStateToProps = (state) => ({
+  Redux_propertyData: state.property,
+ });
+ 
+ const mapDispatchToProps = (dispatch) => ({
+ });
+ 
+ export default connect(mapStateToProps, mapDispatchToProps)(PropertyDetailView);
+
+                

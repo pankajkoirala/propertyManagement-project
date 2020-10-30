@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import PropertyEntryForm from "../../entryForm/PropertyEntryForm/PropertyEntryForm";
 import './property.css'
+import {useParams} from "react-router-dom"
+
+import {connect} from 'react-redux'
 
 let PropertyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+
+
+
+
 
 let showHide=()=>{
   setShowEditForm(!showEditForm)
@@ -48,4 +55,6 @@ showHide={showHide}
     </div>
   );
 };
+
+
 export default PropertyDetailViewComponent;
