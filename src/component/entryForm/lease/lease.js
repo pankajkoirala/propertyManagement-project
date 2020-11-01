@@ -3,13 +3,34 @@ import "./lease.css";
 
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
-
+import moment from "moment";
 import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
 
 const LeaseEntry = (props) => {
   const [cheque, setCheque] = useState([]);
   const [date, setdate] = useState("");
   const [chequeNum, setChequeNum] = useState("");
+  const [ChequeStatus, setChequeStatus] = useState("");
+console.log(props);
+
+  let initialvalue={
+    chequeList:props?.lease?.chequeList|| [],
+    lease_enterDate:moment (props?.lease?.lease_enterDate).format("YYYY-MM-DD") || "",
+    tenants: props?.lease?.tenants||"",
+    property:props?.lease?.property|| [],
+    lease_Term: props?.lease?.lease_Term||"",
+    commenceDate:moment (props?.lease?.commenceDate).format("YYYY-MM-DD") || "",
+    expirationDate:moment (props?.lease?.expirationDate).format("YYYY-MM-DD") || "",
+    rentAmount: props?.lease?.rentAmount||"",
+    firstDueDate:moment (props?.lease?.firstDueDate).format("YYYY-MM-DD") || "",
+    frequency: props?.lease?.frequency||"",
+    gracePeriod: props?.lease?.gracePeriod||"",
+    late_feeType: props?.lease?.late_feeType||"",
+    lateFeeAmount: props?.lease?.lateFeeAmount||"",
+    securityDeposite: props?.lease?.securityDeposite||"",
+    securityfirstDueDate:moment (props?.lease?.securityfirstDueDate).format("YYYY-MM-DD") || "",
+    photo: props?.lease?.photo||"",
+  }
 
   let setChequeList = (data) => {
     let updatedcheque = cheque;
@@ -24,28 +45,11 @@ const LeaseEntry = (props) => {
       <div className="row">
         <div className="col-12 text-center">
           <h3>Lease Term Detail </h3>
-        </div>{" "}
+        </div>
         <br />
       </div>
       <Formik
-        initialValues={{
-          chequeList: [],
-          lease_enterDate: "",
-          tenants: "",
-          property: [],
-          lease_Term: "",
-          commenceDate: "",
-          expirationDate: "",
-          rentAmount: "",
-          firstDueDate: "",
-          frequency: "",
-          gracePeriod: "",
-          late_feeType: "",
-          lateFeeAmount: "",
-          securityDeposite: "",
-          securityfirstDueDate: "",
-          photo: "",
-        }}
+        initialValues={initialvalue}
         onSubmit={(values) => {
           values.chequeList = JSON.stringify(cheque);
           values.property = JSON.stringify(values.property);
@@ -69,7 +73,7 @@ const LeaseEntry = (props) => {
             <FormGroup>
               <div className="row ">
                 <div className="col-12 mt-2 ml-2 mr-2">
-                  <b>General Information</b>{" "}
+                  General Information
                 </div>
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
@@ -107,11 +111,13 @@ const LeaseEntry = (props) => {
                   >
                     {" "}
                     <option value="">select one </option>
-                    {props?.tenant.map((arg, index) => {
+                    { !props.lease?props?.tenant.map((arg, index) => {
                       return (
-                        <option key={index} value={arg?._id}>{arg?.tenant_firstName} </option>
+                        <option key={index} value={arg?._id}>
+                          {arg?.tenant_firstName}{" "}
+                        </option>
                       );
-                    })}
+                    }):''}
                   </Input>
 
                   {touched.tenants && errors.tenants && (
@@ -478,12 +484,41 @@ const LeaseEntry = (props) => {
                       onChange={(e) => setChequeNum(e.target.value)}
                     />
                   </div>
+                  <div className="col-md-5">
+                    <Label for="exampleSelect">Cheque status(s)</Label>
+                    <Input
+                      type="select"
+                      name="cheque_status"
+                      id="exampleSelect"
+                      placeholder="Select Status of Cheque"
+                      onChange={(e) => setChequeStatus(e.target.value)}
+                    >
+                      {" "}
+                      <option value="">select one </option>
+                      <option value="pending">pending </option>
+                      <option value="clear">clear </option>
+                      <option value="bounce">bounce </option>
+                    </Input>
+
+                    {touched.cheque_status && errors.cheque_status && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.cheque_status}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <button
                   type="button"
-                  disabled={!date || !chequeNum}
+                  disabled={!date || !chequeNum || !ChequeStatus}
                   onClick={() => {
-                    setChequeList({ issueDate: date, chequeNo: chequeNum });
+                    setChequeList({
+                      issueDate: date,
+                      chequeNo: chequeNum,
+                      cheque_status: ChequeStatus,
+                    });
                   }}
                 >
                   add cheque
@@ -504,11 +539,12 @@ const LeaseEntry = (props) => {
                           <td>{index + 1}</td>
                           <td>{arg.issueDate}</td>
                           <td>{arg.chequeNo}</td>
-                          <td>Pending/paid</td>
+                          <td>{arg.cheque_status}</td>
                         </tr>
                       </tbody>
                     );
                   })}
+                
                 </Table>
               </Form>
             </FormGroup>
