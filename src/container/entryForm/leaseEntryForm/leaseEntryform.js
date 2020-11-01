@@ -2,14 +2,18 @@ import React,{useState,useEffect} from "react"
 import LeaseEntryFormComponent from "../../../component/entryForm/lease/lease"
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
+import {connect} from 'react-redux'
 
-const LeaseEntry=()=>{
+const LeaseEntry=(props)=>{
 const[property,setProperty]=useState([])
 const[tenant,setTenant]=useState([])
 useEffect(()=>{
   propertyData()
   TenantData()
 },[])
+
+console.log('Redux_propertyData',props.Redux_propertyData);
+console.log('redux_tenantData',props.redux_tenantData);
 
 
     const leaseData=(data)=>{
@@ -79,5 +83,14 @@ let TenantData=()=>{
         /></div>
     )
 }
+const mapStateToProps = (state) => ({
+  Redux_propertyData: state.property,
+  redux_tenantData: state.tenant,
 
-export default LeaseEntry
+ });
+ 
+ const mapDispatchToProps = (dispatch) => ({
+ });
+ 
+ export default connect(mapStateToProps, mapDispatchToProps)(LeaseEntry);
+

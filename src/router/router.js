@@ -13,7 +13,9 @@ import Chequeentry from "../container/entryForm/cheque/chequeEntry/chequeEntryFo
 import OnePropertyView from "../container/view/propertyView/propertyDetailView"
 import Lease from "../container/entryForm/leaseEntryForm/leaseEntryform"
 import TanentDetailView from "../container/view/tenantView/tanentDetailView"
-import employeeDetailView from "../container/view/employeeView/emoloyeeViewDetail"
+import EmployeeDetailView from "../container/view/employeeView/emoloyeeViewDetail"
+import LeaseDetailView from "../container/view/lease/leaseDetailView"
+
 
 
 import OwnerEntry from "../container/entryForm/ownerEntry/ownerEnty.js"
@@ -60,7 +62,9 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/chequeHold" component={ChequeHold} />
                 <PrivateRouter exact path="/propertyDetail/:id" component={OnePropertyView} />
                 <PrivateRouter exact path="/tanent/:id" component={TanentDetailView} />
-                <PrivateRouter exact path="/employee/:id" component={employeeDetailView} />
+                <PrivateRouter exact path="/employee/:id" component={EmployeeDetailView} />
+                <PrivateRouter exact path="/lease/:id" component={LeaseDetailView} />
+
 
                 </Switch>
             </Router>

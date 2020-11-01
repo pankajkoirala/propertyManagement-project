@@ -6,61 +6,56 @@ import { Field, Formik } from "formik";
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
-  console.log(props);
-  let initialValue={
-      street:props?.property?.street|| "",
-      city: props?.property?.city|| "",
-      country: props?.property?.country|| "",
-      property_type: props?.property?.property_type|| "",
-      property_price: props?.property?.property_price|| "",
-      property_status: props?.property?.property_status|| "",
-      bedroomArea: props?.property?.bedroomArea|| "",
-      NoOfbedroom: props?.property?.NoOfbedroom|| "",
-      bedroomRemark: props?.property?.bedroomRemark|| "",
-      kitchenArea: props?.property?.kitchenArea|| "",
-      NoOfKitchen: props?.property?.NoOfKitchen|| "",
-      kitchenRemark: props?.property?.kitchenRemark|| "",
-      hallArea: props?.property?.hallArea|| "",
-      NoOfHall:props?.property?.NoOfHall|| "",
-      hallRemark: props?.property?.hallRemark|| "",
-      bathroomArea: props?.property?.bathroomArea|| "",
-      NoOfBathroom: props?.property?.NoOfBathroom|| "",
-      bathroomRemark: props?.property?.bathroomRemark|| "",
-      Balcony_Area: props?.property?.Balcony_Area|| "",
-      NoOfBalcony: props?.property?.NoOfBalcony|| "",
-      BalconyRemark: props?.property?.BalconyRemark|| "",
-      Parking: props?.property?.Parking|| "unavailable",
-      Swimming: props?.property?.Swimming|| "unavailable",
-      Smoking: props?.property?.Smoking|| "unavailable",
-      PetAllowed: props?.property?.PetAllowed|| "unavailable",
-      Garden: props?.property?.Garden|| "unavailable",
-      property_community: props?.property?.property_community|| "",
-      building_Name: props?.property?.building_Name|| "",
-      building_Number: props?.property?.building_Number|| "",
-      plot_Number: props?.property?.plot_Number|| "",
-      building_floorNumber: props?.property?.building_floorNumber|| "",
-      Muncipality_Number: props?.property?.Muncipality_Number|| "",
-      Property_Area: props?.property?.Property_Area|| "",
-      Property_Premise_Number: props?.property?.Property_Premise_Number|| "",
-      Title_Deed_Photo: props?.property?.Title_Deed_Photo|| "",
-      photo: props?.property?.photo|| "",
-    }
+  console.log("ok", props);
+  let initialValue = {
+    street: props?.property?.street || "",
+    city: props?.property?.city || "",
+    country: props?.property?.country || "",
+    property_type: props?.property?.property_type || "",
+    property_price: props?.property?.property_price || "",
+    property_status: props?.property?.property_status || "",
+    bedroomArea: props?.property?.bedroomArea || "",
+    NoOfbedroom: props?.property?.NoOfbedroom || "",
+    bedroomRemark: props?.property?.bedroomRemark || "",
+    kitchenArea: props?.property?.kitchenArea || "",
+    NoOfKitchen: props?.property?.NoOfKitchen || "",
+    kitchenRemark: props?.property?.kitchenRemark || "",
+    hallArea: props?.property?.hallArea || "",
+    NoOfHall: props?.property?.NoOfHall || "",
+    hallRemark: props?.property?.hallRemark || "",
+    bathroomArea: props?.property?.bathroomArea || "",
+    NoOfBathroom: props?.property?.NoOfBathroom || "",
+    bathroomRemark: props?.property?.bathroomRemark || "",
+    Balcony_Area: props?.property?.Balcony_Area || "",
+    NoOfBalcony: props?.property?.NoOfBalcony || "",
+    BalconyRemark: props?.property?.BalconyRemark || "",
+    Parking: props?.property?.Parking || "unavailable",
+    Swimming: props?.property?.Swimming || "unavailable",
+    Smoking: props?.property?.Smoking || "unavailable",
+    PetAllowed: props?.property?.PetAllowed || "unavailable",
+    Garden: props?.property?.Garden || "unavailable",
+    property_community: props?.property?.property_community || "",
+    building_Name: props?.property?.building_Name || "",
+    building_Number: props?.property?.building_Number || "",
+    plot_Number: props?.property?.plot_Number || "",
+    building_floorNumber: props?.property?.building_floorNumber || "",
+    Muncipality_Number: props?.property?.Muncipality_Number || "",
+    Property_Area: props?.property?.Property_Area || "",
+    Property_Premise_Number: props?.property?.Property_Premise_Number || "",
+    Title_Deed_Photo: props?.property?.Title_Deed_Photo || "",
+    photo: props?.property?.photo || "",
+  };
   return (
     <div>
       <div>
         <div>
           <Formik
-            initialValues={
-              initialValue 
-            }
+            initialValues={initialValue}
             onSubmit={(values) => {
-              props.property?props.propertyUpdate(values,props?.property?._id):
-                props.propertySend(values);
-                console.log(values);
-
-            
-              
-
+              props.property
+                ? props.propertyUpdate(values, props?.property?._id)
+                : props.propertySend(values);
+              console.log(values);
             }}
             // validationSchema={PropertyFormValidation}
           >
@@ -76,7 +71,9 @@ const PropertyEntry = (props) => {
             }) => (
               <Form className=" ">
                 <FormGroup className=" container">
-                  <h1 className="text-center my-4">Please Fill Up the Property information</h1>
+                  <h1 className="text-center my-4">
+                    Please Fill Up the Property information
+                  </h1>
                   <div className=" d-flex justify-content-center d-flex flex-column m-3">
                     <div className="d-flex flex-wrap">
                       <div className="col-sm-4 my-1">
@@ -807,7 +804,7 @@ const PropertyEntry = (props) => {
                         type="file"
                         name="Title_Deed_Photo"
                         accept="image/*"
-                        onChange={ (event) => {
+                        onChange={(event) => {
                           setFieldValue(
                             "Title_Deed_Photo",
                             event.currentTarget.files[0]
@@ -817,7 +814,11 @@ const PropertyEntry = (props) => {
 
                       {touched.Title_Deed_Photo && values.Title_Deed_Photo && (
                         <img
-                          src={ URL.createObjectURL(values.Title_Deed_Photo)}
+                          src={
+                            typeof values.Title_Deed_Photo === "string"
+                              ? values.Title_Deed_Photo
+                              : URL.createObjectURL(values.Title_Deed_Photo)
+                          }
                           alt="no pic"
                           height="200"
                         />
@@ -833,10 +834,14 @@ const PropertyEntry = (props) => {
                           setFieldValue("photo", event.currentTarget.files[0]);
                         }}
                       />
-
+                    
                       {touched.photo && values.photo && (
                         <img
-                          src={URL.createObjectURL(values.photo)}
+                          src={
+                            typeof values.photo === "string"
+                              ? values.photo
+                              : URL.createObjectURL(values.photo)
+                          }
                           alt="no pic"
                           height="200"
                         />

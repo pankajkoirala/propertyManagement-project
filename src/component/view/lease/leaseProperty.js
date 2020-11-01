@@ -33,7 +33,7 @@ const LeaseDisplay=(props)=>{
                 <td><a href={arg.photo} target={arg.photo}>aggrement photo</a></td>
 
                     
-                    <td><Link to={`/tanent/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> <button className="danger ml-2">Delete</button></td>
+                    <td><Link to={`/lease/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> <button className="danger ml-2">Delete</button></td>
                   </tr>
                   
                 </tbody>
