@@ -189,11 +189,12 @@ const BankAccountComponent=()=>{
                     </div>
 </div>
 <div className="row">
-                    <div className="col-md-6">
-                      <Label for="exampleSelect">Lease ID</Label>
+                    <div className="col-md-4">
+                      <Label for="exampleSelect">Bank RM Name</Label>
                       <Input
                         type="text"
                         name="ZipCode"
+                        placeholder="Bank RM Name"
                         value={
                           values.ZipCode
                         }
@@ -213,6 +214,58 @@ const BankAccountComponent=()=>{
                           </span>
                         )}
                     </div>
+                    <div className="col-md-4">
+                      <Label for="exampleSelect">Bank RM Number</Label>
+                      <Input
+                        type="text"
+                        name="ZipCode"
+                        placeholder="Bank RM Number"
+                        value={
+                          values.ZipCode
+                        }
+                        id="exampleSelect"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      >
+                        
+                      </Input>
+                      {touched?.ZipCode &&
+                        errors?.ZipCode && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors?.ZipCode}
+                          </span>
+                        )}
+                    </div>
+                    <div className="col-md-4">
+                      <Label for="exampleSelect">SWIFT Code/ IBAN Code</Label>
+                      <Input
+                        type="text"
+                        name="ZipCode"
+                        placeholder="SWIFT Code/ IBAN Code"
+                        value={
+                          values.ZipCode
+                        }
+                        id="exampleSelect"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      >
+                        
+                      </Input>
+                      {touched?.ZipCode &&
+                        errors?.ZipCode && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors?.ZipCode}
+                          </span>
+                        )}
+                    </div>
+                    
+                   
                    
                   </div>
                 </div> 
