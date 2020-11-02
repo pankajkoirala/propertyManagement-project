@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react"
-import PropertyDetailViewComp from "../../../component/view/propertyView/propertyDetailView"
+import LeaseDetailViewComp from "../../../component/view/lease/leaseDetailView"
 import Axios from "axios"
 import { base_URL } from "../../../const/base_URL";
 import {useParams} from "react-router-dom"
@@ -9,15 +9,15 @@ import {connect} from 'react-redux'
 
 
 
-let PropertyDetailView=(props)=>{
+let LeaseDetailView=(props)=>{
+    
+    const { id } = useParams();
+    
+    let selecteOneLease=props?.Redux_LeaseData?.lease?.filter((arg)=>arg._id===id)
 
-  const { id } = useParams();
-
-  let selectedone=props?.Redux_propertyData?.property?.filter((arg)=>arg._id===id)
 
 
-
-const propertyUpdate=(data,ID)=>{
+const LeaseUpdate=(data,ID)=>{
     const formData = new FormData();
     formData.append("street", data.street);
     formData.append("city", data.city);
@@ -70,20 +70,19 @@ const propertyUpdate=(data,ID)=>{
 
 
     return(
-<div><PropertyDetailViewComp
-propertyUpdate={propertyUpdate}
-selectedone={selectedone}
+<div><LeaseDetailViewComp
+selecteOneLease={selecteOneLease}
 /></div>
     )
 }
 
 const mapStateToProps = (state) => ({
-  Redux_propertyData: state.property,
+  Redux_LeaseData: state.lease,
  });
  
  const mapDispatchToProps = (dispatch) => ({
  });
  
- export default connect(mapStateToProps, mapDispatchToProps)(PropertyDetailView);
+ export default connect(mapStateToProps, mapDispatchToProps)(LeaseDetailView);
 
                 

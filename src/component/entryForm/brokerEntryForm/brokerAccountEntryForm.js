@@ -1,193 +1,153 @@
-import React from "react"
-import './brokerAccount.css'
+import React from "react";
+import "./brokerAccount.css";
 
-import {  FormGroup, Label, Input, Form } from "reactstrap";
+import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
-const BrokerComponent=()=>{
-    return(
+const BrokerComponent = (props) => {
+  return (
+    <div>
+      <div>
         <div>
-                <div >
-            <div>
-                <Formik
-                    initialValues={{
-                              broker_ID:"",
-                              company_Name: "",
-                              broker_Registeration_Date: "",
-                              registeration_Number: "",
-                              address: "",
-                              city:"",
-                              provience: "",
-                              zipCode: "",
-                              contactPerson1: "",
-                              contactPerson2:"",
-                              contactPerson3:"",
-                              contactNumber1: "",
-                              contactNumber2:"",
-                              contactNumber3:"",
-                              email3:"",
-                              email1:"",
-                              email2:"",
-                              mobile:"",
-                              tradeLicencePhoto:"",
-
-                    }}
-                    onSubmit={(values) => {
-                       
-                        console.log(values);
-                    }}
-                   //validationSchema={employeeEntryFormValidation}
-                >
-                    {({
-                        touched,
-                        errors,
-                        values,
-                        handleChange,
-                        handleBlur,
-                        handleSubmit,
-                        setFieldValue,
-                        isSubmitting,
-                    }) => (
-                            <Form>
-                            
-                                <FormGroup className="p-5 bg-warning m-2">
-                                    <div className="text-center">
-
-                                        <p className="text-black font-weight-bold"> <h3>Broker Entry Form </h3></p>
-                                    </div>
-                                    <div>
-                                    {/* <div className="m-4"> */}
-                                    
-
-<div className="row">
-<div className="mt-4 col-md-5">
-                    <Label for="exampleName">Broker ID</Label>
-                    <Input
-                      type="text"
-                      value={values.broker_ID}
-                      name="broker_ID"
-                      placeholder="Broker ID"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.broker_ID && errors.broker_ID && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.broker_ID}
-                      </span>
-                    )}
+          <Formik
+            initialValues={{
+              street: "",
+              city: "",
+              provience: "",
+              country: "",
+              ZipCode: "",
+              broker_photo: "",
+              broker_phoneNo: "",
+              broker_RegistrationNumber: "",
+              broker_companyName: "",
+              broker_companyRegisterDate: "",
+              broker_email: "",
+            }}
+            onSubmit={(values) => {
+              props.brokerData(values)
+              console.log(values);
+            }}
+            //validationSchema={employeeEntryFormValidation}
+          >
+            {({
+              touched,
+              errors,
+              values,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              setFieldValue,
+              isSubmitting,
+            }) => (
+              <Form>
+                <FormGroup className="p-5 bg-warning m-2">
+                  <div className="text-center">
+                    <p className="text-black font-weight-bold">
+                      {" "}
+                      <h3>Broker Company Entry Form </h3>
+                    </p>
                   </div>
-</div>
+                  <div>
+                    {/* <div className="m-4"> */}
 
+                    
 
-                  <div className="row">
-                  
+                    <div className="row">
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleName">Company Name</Label>
+                        <Input
+                          type="text"
+                          value={values.broker_companyName}
+                          name="broker_companyName"
+                          placeholder="Company Name"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.broker_companyName &&
+                          errors.broker_companyName && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.broker_companyName}
+                            </span>
+                          )}
+                      </div>
 
-                  <div className="mt-4 col-md-4">
-                    <Label for="exampleName">Company Name</Label>
-                    <Input
-                      type="text"
-                      value={values.company_Name}
-                      name="company_Name"
-                      placeholder="Company Name"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.company_Name && errors.company_Name && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.company_Name}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="mt-4 col-md-4">
-                    <Label for="exampleName">Registeration Date</Label>
-                    <Input
-                      type="text"
-                      value={values.broker_Registeration_Date}
-                      name="broker_Registeration_Date"
-                      placeholder="Registeration Date"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.broker_Registeration_Date && errors.broker_Registeration_Date && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.broker_Registeration_Date}
-                      </span>
-                    )}
-                  </div>
-                  <div className="mt-4 col-md-4">
-                    <Label for="exampleName">Registration Number</Label>
-                    <Input
-                      type="text"
-                      value={values.registeration_Number}
-                      name="registeration_Number"
-                      placeholder="Registration Number"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.registeration_Number && errors.registeration_Number && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.registeration_Number}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                
-                  <div className="row">
-                 
-                  <div className="col-md-4">
-                      <Label for="exampleName">Address</Label>
-                      <Input
-                        type="text"
-                        value={
-                          values.address
-                        }
-                        name="street"
-                        placeholder="Enter Address"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched?.address &&
-                        errors?.address && (
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleName">Registeration Date</Label>
+                        <Input
+                          type="date"
+                          value={values.broker_companyRegisterDate}
+                          name="broker_companyRegisterDate"
+                          placeholder="Registeration Date"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.broker_companyRegisterDate && errors.broker_companyRegisterDate && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.address}
+                            {errors.broker_companyRegisterDate}
                           </span>
                         )}
+                      </div>
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleName">Registration Number</Label>
+                        <Input
+                          type="text"
+                          value={values.broker_RegistrationNumber}
+                          name="broker_RegistrationNumber"
+                          placeholder="Registration Number"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.broker_RegistrationNumber &&
+                          errors.broker_RegistrationNumber && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.broker_RegistrationNumber}
+                            </span>
+                          )}
+                      </div>
                     </div>
 
+                    <div className="row">
+                      <div className="col-md-4">
+                        <Label for="exampleName">street</Label>
+                        <Input
+                          type="text"
+                          value={values.street}
+                          name="street"
+                          placeholder="Enter your Street"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched?.street && errors?.street && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors?.street}
+                          </span>
+                        )}
+                      </div>
 
-
-                    <div className="col-md-4">
-                      <Label for="exampleName">City</Label>
-                      <Input
-                        type="text"
-                        value={
-                          values.city
-                        }
-                        name="city"
-                        placeholder="Enter your City"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched?.city &&
-                        errors?.city && (
+                      <div className="col-md-4">
+                        <Label for="exampleName">City</Label>
+                        <Input
+                          type="text"
+                          value={values.city}
+                          name="city"
+                          placeholder="Enter your City"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched?.city && errors?.city && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
@@ -195,22 +155,19 @@ const BrokerComponent=()=>{
                             {errors?.city}
                           </span>
                         )}
-                    </div>
+                      </div>
 
-                    <div className="col-md-4">
-                      <Label for="exampleName">Provience</Label>
-                      <Input
-                        type="text"
-                        value={
-                          values.provience
-                        }
-                        name="provience"
-                        placeholder="Enter Provience Name"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched?.provience &&
-                        errors?.provience && (
+                      <div className="col-md-4">
+                        <Label for="exampleName">Provience</Label>
+                        <Input
+                          type="text"
+                          value={values.provience}
+                          name="provience"
+                          placeholder="Enter Provience Name"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched?.provience && errors?.provience && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
@@ -218,25 +175,20 @@ const BrokerComponent=()=>{
                             {errors?.provience}
                           </span>
                         )}
+                      </div>
                     </div>
-</div>
-<div className="row">
-                    <div className="col-md-6">
-                      <Label for="exampleSelect">ZipCode</Label>
-                      <Input
-                        type="text"
-                        name="zipCode"
-                        value={
-                          values.zipCode
-                        }
-                        id="exampleSelect"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      >
-                        
-                      </Input>
-                      {touched?.zipCode &&
-                        errors?.zipCode && (
+                    <div className="row">
+                      <div className="col-md-6">
+                        <Label for="exampleSelect">ZipCode</Label>
+                        <Input
+                          type="text"
+                          name="ZipCode"
+                          value={values.ZipCode}
+                          id="exampleSelect"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        ></Input>
+                        {touched?.ZipCode && errors?.ZipCode && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
@@ -244,21 +196,18 @@ const BrokerComponent=()=>{
                             {errors?.zipCode}
                           </span>
                         )}
-                    </div>
-                    <div className="col-md-6">
-                      <Label for="exampleName">Country</Label>
-                      <Input
-                        type="text"
-                        value={
-                          values.country
-                        }
-                        name="country"
-                        placeholder="Enter the name of Country"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched?.country &&
-                        errors?.country && (
+                      </div>
+                      <div className="col-md-6">
+                        <Label for="exampleName">Country</Label>
+                        <Input
+                          type="text"
+                          value={values.country}
+                          name="country"
+                          placeholder="Enter the name of Country"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched?.country && errors?.country && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
@@ -266,249 +215,88 @@ const BrokerComponent=()=>{
                             {errors?.country}
                           </span>
                         )}
-                    </div> 
-                  </div>
-                  <div className="row">
-                  <div className="col-md-4">
-                      <Label for="exampleName">Contact Person1</Label>
-                      <Input
-                        type="email"
-                        value={values.contactPerson1}
-                        
-                        name="contactPerson1"
-                        placeholder="Contact Person"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched.contactPerson1 &&
-                        errors.contactPerson1 && (
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <Label for="exampleName">Email</Label>
+                        <Input
+                          type="email"
+                          value={values.broker_email}
+                          name="broker_email"
+                          placeholder="Enter Email"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.broker_email && errors.broker_email && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors.contactPerson1}
+                            {errors.broker_email}
                           </span>
                         )}
-                    </div>
+                      </div>
 
-                  <div className="col-md-4">
-                    <Label for="exampleName">Contact Number1</Label>
-                    <Input
-                      type="number"
-                      value={values.contactNumber1}
-                      name="employee_phoneNo"
-                      placeholder="Enter your Contact Number"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.contactNumber1 && errors.contactNumber1 && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.contactNumber1}
-                      </span>
-                    )}
-                  </div>
-                  <div className="col-md-4">
-                    <Label for="exampleName">Email1</Label>
-                    <Input
-                      type="email"
-                      value={values.email1}
-                      name="email1"
-                      placeholder="Enter your Email1"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.email1 && errors.email1 && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.email1}
-                      </span>
-                    )}
-                  </div>
-                  </div>
-                  <div className="row">
-                  <div className="col-md-4">
-                      <Label for="exampleName">Contact Person2</Label>
-                      <Input
-                        type="email"
-                        value={values.contactPerson2}
-                        
-                        name="employee_email"
-                        placeholder="Enter Email"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched.contactPerson2 &&
-                        errors.contactPerson2 && (
+                      <div className="col-md-6">
+                        <Label for="exampleName">Contact Number</Label>
+                        <Input
+                          type="number"
+                          value={values.broker_phoneNo}
+                          name="broker_phoneNo"
+                          placeholder="Enter your Contact Number"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.broker_phoneNo && errors.broker_phoneNo && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors.contactPerson2}
+                            {errors.broker_phoneNo}
                           </span>
                         )}
+                      </div>
                     </div>
+                    <div className="row">
+                     
 
-                  <div className="col-md-4">
-                    <Label for="exampleName">Contact Number2</Label>
-                    <Input
-                      type="number"
-                      value={values.contactNumber2}
-                      name="contactNumber2"
-                      placeholder="Enter your Contact Number"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
+                      <div className="col-md-6 text-left mb-2 mt-4">
+                  <Label className="float-left">Upload Agrement Copy</Label>
+                  <Input
+                    type="file"
+                    name="broker_photo"
+                    accept="image/*"
+                    onChange={(event) => {
+                      setFieldValue("broker_photo", event.currentTarget.files[0]);
+                    }}
+                  />
+
+                  {touched.broker_photo && values.broker_photo && (
+                    <img
+                      src={URL.createObjectURL(values.broker_photo)}
+                      alt="no picture"
+                      height="20"
                     />
-                    {touched.contactNumber2 && errors.contactNumber2 && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.contactNumber2}
-                      </span>
-                    )}
-                  </div>
-                  <div className="col-md-4">
-                    <Label for="exampleName">Email2</Label>
-                    <Input
-                      type="email"
-                      value={values.email2}
-                      name="email2"
-                      placeholder="Enter your Email"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.email2 && errors.email2 && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.email2}
-                      </span>
-                    )}
-                  </div>
-                  </div>
-                  <div className="row">
-                  <div className="col-md-4">
-                      <Label for="exampleName">Contact Person3</Label>
-                      <Input
-                        type="text"
-                        value={values.contactPerson3}
-                        
-                        name="contactPerson3"
-                        placeholder="Enter Contact Person"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched.contactPerson3 &&
-                        errors.contactPerson3 && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.contactPerson3}
-                          </span>
-                        )}
+                  )}
+                </div>
                     </div>
-
-                  <div className="col-md-4">
-                    <Label for="exampleName">Contact Number3</Label>
-                    <Input
-                      type="number"
-                      value={values.employee_phoneNo}
-                      name="contactNumber3"
-                      placeholder="Enter your Contact Number"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.contactNumber3 && errors.contactNumber3 && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.contactNumber3}
-                      </span>
-                    )}
                   </div>
-                  <div className="col-md-4">
-                    <Label for="exampleName">Email3</Label>
-                    <Input
-                      type="email"
-                      value={values.email3}
-                      name="email3"
-                      placeholder="Enter your Email"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.email3 && errors.email3 && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.email3}
-                      </span>
-                    )}
-                  </div>
-                  </div>
-      <div className="row">
-                  <div className="col-md-6">
-                    <Label for="exampleName">Mobile Number</Label>
-                    <Input
-                      type="text"
-                      value={values.mobile}
-                      name="post"
-                      placeholder="Mobile Number"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.mobile && errors.mobile && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.mobile}
-                      </span>
-                    )}
-                  </div>
-                  
-                  
-                  <div className="col-md-6">
-                    <Label for="exampleName">Trade Licence Photo</Label>
-                    <Input
-                      type="file"
-                      value={values.tradeLicencePhoto}
-                      name="tradeLicencePhoto"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.tradeLicencePhoto && errors.tradeLicencePhoto && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.tradeLicencePhoto}
-                      </span>
-                    )}
-                  </div>
-                  </div>
-                  
-                </div> 
-                                    <button className="success m-4"type="submit" onClick={handleSubmit}>Add</button>
-                                </FormGroup>
-                            </Form>
-                        )}
-                </Formik>
-            </div>
+                  <button
+                    className="success m-4"
+                    type="submit"
+                    onClick={handleSubmit}
+                  >
+                    Add
+                  </button>
+                </FormGroup>
+              </Form>
+            )}
+          </Formik>
         </div>
+      </div>
+    </div>
+  );
+};
 
-
-        </div>
-    )
-}
-
-
-export default BrokerComponent
+export default BrokerComponent;

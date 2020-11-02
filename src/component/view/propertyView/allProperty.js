@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
@@ -14,13 +14,32 @@ import {
 
 import "./property.css";
 
-const PropertyView = (props) => {
+const PropertyView = (props) => {;
+
+  const[selectProperty,setSelectProperty]=useState(props.propertyData)
+  //freeProperty
+ let freeProperty=()=>{
+  let freeproperty=props.propertyData.filter((arg)=>arg.property_status==="free")
+  setSelectProperty(freeproperty)
+ }
+//all property
+let AllProperty=()=>{
+  setSelectProperty(props.propertyData)
+}
   return (
-    <div className="row m-5">
-      {props.propertyData.map((arg, index) => {
+    <div className=" m-5">
+      <div>
+      <button onClick={()=>freeProperty()}>freeprop</button>
+      <button onClick={()=>AllProperty()}>AllProperty</button>
+
+   <Link to="/leaseProperty"><button> lease property  </button></Link> 
+   </div>
+   <div className="d-flex flex-wrap">
+      {selectProperty.map((arg, index) => {
         return (
-          <div key={index}>
-            <Card className="propertyCard">
+          <div key={index} >
+            <div>
+            <Card className=" propertyCard">
               <FontAwesomeIcon
                 onClick={() => props.DeletProperty(arg._id)}
                 className="mx-2"
@@ -47,9 +66,11 @@ const PropertyView = (props) => {
            
               </CardBody>
             </Card>
+            </div>
           </div>
         );
       })}
+      </div>
     </div>
   );
 };

@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
-import PropertyEntryForm from "../../../../component/entryForm/PropertyEntryForm/PropertyEntryForm";
+import PropertyEntryForm from "../../entryForm/PropertyEntryForm/PropertyEntryForm";
+import './property.css'
+import {useParams} from "react-router-dom"
+
+import {connect} from 'react-redux'
 
 let PropertyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
 
+
+
+
+
+let showHide=()=>{
+  setShowEditForm(!showEditForm)
+}
   return (
     <div>
-      {props.selectedone.map((arg, index) => {
+      {showEditForm===false? props.selectedone.map((arg, index) => {
         return (
           <div key={index} className="property-card">
             <div className="card-contents">
@@ -30,15 +41,20 @@ let PropertyDetailViewComponent = (props) => {
               <button onClick={() => setShowEditForm(!showEditForm)}>
                 edit
               </button>
-              <PropertyEntryForm 
-              {...props}
-              property={props.selectedone[0]}
-              />
+            
+             
             </div>
           </div>
         );
-      })}
+      }):   <PropertyEntryForm 
+      {...props}
+showHide={showHide}
+
+      property={props.selectedone[0]}
+      />}
     </div>
   );
 };
+
+
 export default PropertyDetailViewComponent;
