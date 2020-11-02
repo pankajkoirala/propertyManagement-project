@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 
 
 
-const EmployeeView=(props)=>{
+const BrokerCompany=(props)=>{
     const [allBrokerCompany,setallBrokerCompany]=useState([])
     useEffect(()=>{
         BrokerCompanyData()
@@ -20,7 +20,6 @@ const EmployeeView=(props)=>{
             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
             }).then((res)=>{
                 setallBrokerCompany(res.data);
-               props.redux_Add_BrokerCompany(res.data)
           }).catch((err)=>{
             console.log(err);
           })
@@ -32,13 +31,6 @@ const EmployeeView=(props)=>{
         /></div>
     )
 }
-const mapStateToProps = (state) => ({
-    redux_brokerCompany: state.BrokerCompany,
-  });
+
   
-  const mapDispatchToProps = (dispatch) => ({
-    redux_Add_BrokerCompany: (arg) => dispatch({ type:"ADD_ALL_BROKER_COMPANY", payload:arg }),
-  
-  });
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(EmployeeView);
+  export default BrokerCompany;

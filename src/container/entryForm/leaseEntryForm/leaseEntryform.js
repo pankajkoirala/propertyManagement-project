@@ -5,12 +5,8 @@ import Axios from "axios";
 import {connect} from 'react-redux'
 
 const LeaseEntry=(props)=>{
-const[property,setProperty]=useState([])
-const[tenant,setTenant]=useState([])
-useEffect(()=>{
-  propertyData()
-  TenantData()
-},[])
+
+
 
 console.log('Redux_propertyData',props.Redux_propertyData);
 console.log('redux_tenantData',props.redux_tenantData);
@@ -48,38 +44,11 @@ console.log('redux_tenantData',props.redux_tenantData);
         })
       
       }
-//property data
-let propertyData=()=>{
-  Axios({
-      method: 'get',
-      url: base_URL+"/api/property",
-      config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
-      }).then((res)=>{
-          setProperty(res.data);
-    }).catch((err)=>{
-      console.log(err);
-    })
 
-}
-//tenant data
-let TenantData=()=>{
-  Axios({
-      method: 'get',
-      url: base_URL+"/api/tenant",
-      config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
-      }).then((res)=>{
-          setTenant(res.data);
-    }).catch((err)=>{
-      console.log(err);
-    })
-
-}
 
     return(
         <div><LeaseEntryFormComponent
        leaseData={leaseData}
-       property={property}
-       tenant={tenant}       
         /></div>
     )
 }

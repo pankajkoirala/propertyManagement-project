@@ -41,8 +41,11 @@ let showHide=()=>{
               <button onClick={() => setShowEditForm(!showEditForm)}>
                 edit
               </button>
+              <button onClick={() =>props.DeleteProperty(arg._id)}>
+                delete
+              </button>
             
-             
+              
             </div>
           </div>
         );

@@ -40,6 +40,7 @@ let showHide=()=>{
               <button onClick={() => setShowEditForm(!showEditForm)}>
                 edit
               </button>
+              <button className="danger ml-2" onClick={()=>{props.managementCompanyDelete(arg._id)}}>Delete</button>
             
              
             </div>

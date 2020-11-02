@@ -48,11 +48,33 @@ const BrokerDetailViewCont = (props) => {
       });
   };
 
+  const BrokerDelete = (ID) => {
+   
+
+    Axios({
+      method: "delete",
+      url: base_URL + "/api/brokerCompany/" + ID,
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <BrokerCompanyViewComp
         selectedBrokerCompany={selectedBrokerCompany}
        BrokerUpdate={BrokerUpdate}
+       BrokerDelete={BrokerDelete}
       />
     </div>
   );

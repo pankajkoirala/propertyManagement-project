@@ -33,6 +33,7 @@ let EmployeeDetailViewComponent = (props) => {
                     <button onClick={() => setShowEditForm(!showEditForm)}>
                       edit
                     </button>
+                    <button className="danger ml-2" onClick={()=>{props.employeeDelete(arg._id)}}>Delete</button>
                   </div>
                   {/* <div className="col-2"><img className="printer" src={PRINTERLOGO} alt="" /></div> */}
                 </div>

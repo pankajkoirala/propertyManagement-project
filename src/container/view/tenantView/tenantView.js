@@ -20,7 +20,6 @@ const TenantView=(props)=>{
             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
             }).then((res)=>{
                 setTenant(res.data);
-                props.redux_Add_Tenant(res.data)
           }).catch((err)=>{
             console.log(err);
           })
@@ -35,12 +34,6 @@ const TenantView=(props)=>{
     )
 }
 
-const mapStateToProps = (state) => ({
-  });
+
   
-  const mapDispatchToProps = (dispatch) => ({
-    redux_Add_Tenant: (arg) => dispatch({ type:"ADD_ALL_TENANT", payload:arg }),
-  
-  });
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(TenantView);
+  export default TenantView;

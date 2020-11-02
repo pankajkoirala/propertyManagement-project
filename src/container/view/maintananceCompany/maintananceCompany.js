@@ -20,7 +20,6 @@ const MaintananceCompanyView=(props)=>{
             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
             }).then((res)=>{
                 setMaintananceCompany(res.data);
-                props.redux_Add_maintananceCompany(res.data)
           }).catch((err)=>{
             console.log(err);
           })
@@ -35,12 +34,4 @@ const MaintananceCompanyView=(props)=>{
     )
 }
 
-const mapStateToProps = (state) => ({
-  });
-  
-  const mapDispatchToProps = (dispatch) => ({
-    redux_Add_maintananceCompany: (arg) => dispatch({ type: "ADD_ALL_MAINTANANCE_COMPANY", payload: arg }),
-  
-  });
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(MaintananceCompanyView);
+  export default MaintananceCompanyView

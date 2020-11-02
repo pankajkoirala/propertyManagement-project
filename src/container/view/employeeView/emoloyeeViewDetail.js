@@ -50,11 +50,32 @@ const TanentDetailViewCont = (props) => {
       });
   };
 
+  const employeeDelete = (ID) => {
+ 
+    Axios({
+      method: "delete",
+      url: base_URL + "/api/employee/" + ID,
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <EmployeeViewComp
         selectedEmployee={selectedEmployee}
         EmployeeUpdate={EmployeeUpdate}
+        employeeDelete={employeeDelete}
       />
     </div>
   );

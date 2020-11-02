@@ -49,11 +49,27 @@ const TanentDetailViewCont = (props) => {
       
       }
 
+      const tenentDelete=(ID)=>{
+     
+
+        Axios({
+          method: 'delete',
+          url: base_URL+"/api/tenant/"+ID,
+          config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
+          }).then((res)=>{
+      console.log(res);
+        }).catch((err)=>{
+          console.log(err);
+        })
+      
+      }
+
   return (
     <div>
       <TanentViewComp
         selectedTenantone={selectedTenantone}
         tenentUpdate={tenentUpdate}
+        tenentDelete={tenentDelete}
       />
     </div>
   );

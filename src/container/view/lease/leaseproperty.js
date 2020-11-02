@@ -27,7 +27,6 @@ let leaseData=()=>{
         config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
         }).then((res)=>{
             setLease(res.data);
-            props.redux_Add_Lease(res.data)
       }).catch((err)=>{
         console.log(err);
       })
@@ -43,13 +42,5 @@ let leaseData=()=>{
     )
 }
 
-const mapStateToProps = (state) => ({
-    nameMatra_number: state.number,
-  });
-  
-  const mapDispatchToProps = (dispatch) => ({
-    redux_Add_Lease: (arg) => dispatch({ type:"ADD_ALL_LEASE", payload:arg }),
-  
-  });
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(LeasePropertyView);
+
+  export default LeasePropertyView;

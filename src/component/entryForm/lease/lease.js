@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./lease.css";
-
+import { connect } from "react-redux";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
@@ -11,7 +11,6 @@ const LeaseEntry = (props) => {
   const [date, setdate] = useState("");
   const [chequeNum, setChequeNum] = useState("");
   const [ChequeStatus, setChequeStatus] = useState("");
-console.log(props);
 
   let initialvalue={
     late_feeType: props?.lease?.late_feeType||"",
@@ -79,6 +78,7 @@ console.log(props);
                   <Label for="exampleName">Lease Entered On</Label>
                   <Input
                     type="date"
+                    disabled={props.lease?true:false}
                     value={values.lease_enterDate}
                     name="lease_enterDate"
                     placeholder="Enter Date"
@@ -109,15 +109,14 @@ console.log(props);
                     onChange={handleChange}
                     onBlur={handleBlur}
                   >
-                    {" "}
                     <option value="">select one </option>
-                    { !props.lease?props?.tenant.map((arg, index) => {
+                    { props?.redux_tenantData?.tenant?.map((arg, index) => {
                       return (
                         <option key={index} value={arg?._id}>
                           {arg?.tenant_firstName}{" "}
                         </option>
                       );
-                    }):''}
+                    })}
                   </Input>
 
                   {touched.tenants && errors.tenants && (
@@ -146,7 +145,7 @@ console.log(props);
                   >
                     <option value="">select one </option>
 
-                    {props?.property?.map((arg, index) => {
+                    {props?.Redux_propertyData?.property?.map((arg, index) => {
                       return (
                         <option key={index} value={arg._id}>
                           {arg?.property_type}
@@ -555,4 +554,15 @@ console.log(props);
   );
 };
 
-export default LeaseEntry;
+const mapStateToProps = (state) => ({
+  Redux_propertyData: state.property,
+  redux_tenantData: state.tenant,
+
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+ 
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LeaseEntry);
