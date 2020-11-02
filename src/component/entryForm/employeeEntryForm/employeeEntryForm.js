@@ -47,10 +47,10 @@ const TenantEntry = (props) => {
               <Form>
                 <FormGroup className="employeeEntry">
                   <div className="text-center">
-                    <p className="text-black font-weight-bold">
+                    <div className="text-black font-weight-bold">
                       {" "}
                       <h3>Employee Entry Form </h3>
-                    </p>
+                    </div>
                   </div>
                   <div>
                     {/* <div className="m-4"> */}

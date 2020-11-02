@@ -1,30 +1,35 @@
 import React from "react";
 import "./brokerAccount.css";
-
+import moment from "moment";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
+
 const BrokerComponent = (props) => {
+  let initialvalue={
+    street:props?.BrokerCompany?.street||"",
+    city:props?.BrokerCompany?.city||"",
+    provience:props?.BrokerCompany?.provience||"",
+    country:props?.BrokerCompany?.country||"",
+    ZipCode:props?.BrokerCompany?.ZipCode||"",
+    broker_photo:props?.BrokerCompany?.broker_photo||"",
+    broker_phoneNo:props?.BrokerCompany?.broker_phoneNo||"",
+    broker_RegistrationNumber:props?.BrokerCompany?.broker_RegistrationNumber||"",
+    broker_companyName:props?.BrokerCompany?.broker_companyName||"",
+    broker_companyRegisterDate:  moment(props.BrokerCompany?.broker_companyRegisterDate).format(
+      "YYYY-MM-DD"
+    ) || "",
+    broker_email:props?.BrokerCompany?.broker_email||"",
+  }
   return (
     <div>
       <div>
         <div>
           <Formik
-            initialValues={{
-              street: "",
-              city: "",
-              provience: "",
-              country: "",
-              ZipCode: "",
-              broker_photo: "",
-              broker_phoneNo: "",
-              broker_RegistrationNumber: "",
-              broker_companyName: "",
-              broker_companyRegisterDate: "",
-              broker_email: "",
-            }}
+            initialValues={initialvalue}
             onSubmit={(values) => {
+              props.BrokerCompany?props.BrokerUpdate(values,props.BrokerCompany._id):
               props.brokerData(values)
               console.log(values);
             }}
@@ -43,10 +48,10 @@ const BrokerComponent = (props) => {
               <Form>
                 <FormGroup className="p-5 bg-warning m-2">
                   <div className="text-center">
-                    <p className="text-black font-weight-bold">
+                    <div className="text-black font-weight-bold">
                       {" "}
                       <h3>Broker Company Entry Form </h3>
-                    </p>
+                    </div>
                   </div>
                   <div>
                     {/* <div className="m-4"> */}
@@ -274,7 +279,7 @@ const BrokerComponent = (props) => {
 
                   {touched.broker_photo && values.broker_photo && (
                     <img
-                      src={URL.createObjectURL(values.broker_photo)}
+                      src={typeof(values.broker_photo)==='string'?values.broker_photo: URL.createObjectURL(values.broker_photo)}
                       alt="no picture"
                       height="20"
                     />

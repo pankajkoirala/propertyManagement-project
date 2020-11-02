@@ -43,10 +43,10 @@ const BrokerPerson=(props)=>{
               <Form>
                 <FormGroup className="p-5 bg-warning m-2">
                   <div className="text-center">
-                    <p className="text-black font-weight-bold">
+                    <div className="text-black font-weight-bold">
                       {" "}
                       <h3>Broker Person Entry Form </h3>
-                    </p>
+                    </div>
                   </div>
                   <div>
                     {/* <div className="m-4"> */}

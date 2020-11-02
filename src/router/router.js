@@ -20,7 +20,7 @@ import LeaseDetailView from "../container/view/lease/leaseDetailView"
 
 import OwnerEntry from "../container/entryForm/ownerEntry/ownerEnty.js"
 import BankDetail  from "../container/entryForm/bankAccountEntryForm/bankAccountContainer.js"
-import BrokerDetail  from "../container/entryForm/brokerEntryForm/brokerDetailContainer.js"
+import BrokerDetailEntryForm  from "../container/entryForm/brokerEntryForm/brokerDetailContainer.js"
 import BrokerPersonDetail  from "../container/entryForm/broker_Person/broker_PersonContainer.js"
 import DeveloperDetail  from "../container/entryForm/developersCompanyEntryContainer/developerContainer.js"
 import InvoiceDetail from "../container/entryForm/invoiceEntryContainer/invoice.js"
@@ -33,9 +33,13 @@ import ChequeHold from "../container/entryForm/cheque/chequeHold/chequeHoldEntry
 import LeaseProperty from "../container/view/lease/leaseproperty"
 
 import AllProperty from "../container/view/propertyView/allProperty.js"
+import AllBrokerCompany from "../container/view/brokerCompany/brokerCompany"
+
 import AllMaintainanceCompany from "../container/view/maintananceCompany/maintananceCompany"
 import MaintainanceCompanyDetail from "../container/view/maintananceCompany/maintananceCompanyDetail"
 import ManagementCompanyDetail from "../container/view/managementCompany/managementCompanyDetail"
+import BrokerCompanyDetail from "../container/view/brokerCompany/brokerDetailView"
+
 
 
 
@@ -61,16 +65,15 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/leaseProperty" component={LeaseProperty} />
                 <PrivateRouter exact path="/maintananceCompanyList" component={AllMaintainanceCompany} />
                 <PrivateRouter exact path="/managementCompanyList" component={AllManagementCompany} />
+                <PrivateRouter exact path="/brokerCompanyList" component={AllBrokerCompany} />
 
 
-               
 
                 <Route exact path="/login" component={LoginComponent} />
                 <PrivateRouter exact path="/ownerEntry" component={OwnerEntry} />
                 <PrivateRouter exact path="/bankDetail" component={BankDetail} />
-                <PrivateRouter exact path="/brokerDetail" component={BrokerDetail} />
+                <PrivateRouter exact path="/brokerEntryForm" component={BrokerDetailEntryForm} />
                 <PrivateRouter exact path="/brokerPersonDetail" component={BrokerPersonDetail} />
-                
                 <PrivateRouter exact path="/developerDetail" component={DeveloperDetail} />
                 <PrivateRouter exact path="/invoiceDetail" component={InvoiceDetail} />
                 <PrivateRouter exact path="/maintainanceCompanyForm" component={MaintainanceCompanyEntryForm} />
@@ -83,6 +86,8 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/lease/:id" component={LeaseDetailView} />
                 <PrivateRouter exact path="/maintainanceCompany/:id" component={MaintainanceCompanyDetail} />
                 <PrivateRouter exact path="/managementCompany/:id" component={ManagementCompanyDetail} />
+                <PrivateRouter exact path="/brokerCompany/:id" component={BrokerCompanyDetail} />
+
 
 
                 

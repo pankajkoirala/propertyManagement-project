@@ -114,7 +114,9 @@ const NavbarPage = () => {
   <Card>
   <Card.Header>
       <Accordion.Toggle as={Button} variant="link" eventKey="8">
-      <Link to="/brokerDetail"> <b>Broker Company Detail</b> </Link>
+      <Link to="/brokerEntryForm"> <b>Broker Company entryForm</b> </Link>
+      <Link to="/brokerCompanyList"> <b>Broker Company list</b> </Link>
+
       </Accordion.Toggle>
     </Card.Header>
   </Card>

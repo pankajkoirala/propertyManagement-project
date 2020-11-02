@@ -8,7 +8,7 @@ const ManagementCompanyView=(props)=>{
 
   return( 
   
-  <div className="tenantview"> Tenant View
+  <div className="tenantview"> Management Company List
   
   <Table striped bordered hover size="sm">
               <thead>

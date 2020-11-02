@@ -9,7 +9,7 @@ import {connect} from 'react-redux'
 const EmployeeView=(props)=>{
   return( 
   
-  <div className="tenantview"> Tenant View
+  <div className="tenantview"> Employee list
   
   <Table striped bordered hover size="sm">
               <thead>
