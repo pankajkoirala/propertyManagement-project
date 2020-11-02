@@ -1,33 +1,47 @@
 import React from "react";
 import "./maintainanceCompany.css";
-
+import moment from "moment";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
 const MaintainanceCompanyComponent = (props) => {
+  console.log(props);
+
+  let initialvalue = {
+    Company_street: props?.maintananceCompany?.Company_street || "",
+    Company_city: props?.maintananceCompany?.Company_city || "",
+    Company_provience: props?.maintananceCompany?.Company_provience || "",
+    Company_country: props?.maintananceCompany?.Company_country || "",
+    Company_ZipCode: props?.maintananceCompany?.Company_ZipCode || "",
+    Company_uploadPhoto: props?.maintananceCompany?.Company_uploadPhoto || "",
+    Company_phoneNo: props?.maintananceCompany?.Company_phoneNo || "",
+    Company_Registration_Number:
+      props?.maintananceCompany?.Company_Registration_Number || "",
+    Company_Name: props?.maintananceCompany?.Company_Name || "",
+    Company_Registeration_Date:
+      moment(props.maintananceCompany?.Company_Registeration_Date).format(
+        "YYYY-MM-DD"
+      ) || "",
+    Company_email: props?.maintananceCompany?.Company_email || "",
+    Company_Mobile_Number:
+      props?.maintananceCompany?.Company_Mobile_Number || "",
+  };
+
   return (
     <div>
       <div>
         <div>
           <Formik
-            initialValues={{
-              Company_street: "",
-              Company_city: "",
-              Company_provience: "",
-              Company_country: "",
-              Company_ZipCode: "",
-              Company_uploadPhoto: "",
-              Company_phoneNo: "",
-              Company_Registration_Number: "",
-              Company_Name: "",
-              Company_Registeration_Date: "",
-              Company_email: "",
-              Company_Mobile_Number: "",
-            }}
+            initialValues={initialvalue}
             onSubmit={(values) => {
               console.log(values);
-              props.MaintananceCompanyData(values)
+              props.maintananceCompany
+                ? props.maintananceCompanyUpdate(
+                    values,
+                    props?.maintananceCompany?._id
+                  )
+                : props.MaintananceCompanyData(values);
             }}
             //validationSchema={employeeEntryFormValidation}
           >
@@ -44,10 +58,10 @@ const MaintainanceCompanyComponent = (props) => {
               <Form>
                 <FormGroup className="p-5 bg-warning m-2">
                   <div className="text-center">
-                    <p className="text-black font-weight-bold">
+                    <div className="text-black font-weight-bold">
                       {" "}
                       <h3>Maintainance Compant Entry Form </h3>
-                    </p>
+                    </div>
                   </div>
                   <div>
                     {/* <div className="m-4"> */}
@@ -166,14 +180,15 @@ const MaintainanceCompanyComponent = (props) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.Company_provience && errors?.Company_provience && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors?.Company_provience}
-                          </span>
-                        )}
+                        {touched?.Company_provience &&
+                          errors?.Company_provience && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors?.Company_provience}
+                            </span>
+                          )}
                       </div>
                     </div>
                     <div className="row">
@@ -280,24 +295,34 @@ const MaintainanceCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-6 text-left mb-2 mt-4">
-                  <Label className="float-left">Company Photo</Label>
-                  <Input
-                    type="file"
-                    name="Company_uploadPhoto"
-                    accept="image/*"
-                    onChange={(event) => {
-                      setFieldValue("Company_uploadPhoto", event.currentTarget.files[0]);
-                    }}
-                  />
+                        <Label className="float-left">Company Photo</Label>
+                        <Input
+                          type="file"
+                          name="Company_uploadPhoto"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "Company_uploadPhoto",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
 
-                  {touched.Company_uploadPhoto && values.Company_uploadPhoto && (
-                    <img
-                      src={URL.createObjectURL(values.Company_uploadPhoto)}
-                      alt="no picture"
-                      height="20"
-                    />
-                  )}
-                </div>
+                        {touched.Company_uploadPhoto &&
+                          values.Company_uploadPhoto && (
+                            <img
+                              src={
+                                typeof values.Company_uploadPhoto === "string"
+                                  ? values.Company_uploadPhoto
+                                  : URL.createObjectURL(
+                                      values.Company_uploadPhoto
+                                    )
+                              }
+                              alt="no picture"
+                              height="20"
+                            />
+                          )}
+                      </div>
                     </div>
                   </div>
                   <button

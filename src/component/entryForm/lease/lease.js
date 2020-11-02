@@ -14,6 +14,8 @@ const LeaseEntry = (props) => {
 console.log(props);
 
   let initialvalue={
+    late_feeType: props?.lease?.late_feeType||"",
+    frequency: props?.lease?.frequency||"",
     chequeList:props?.lease?.chequeList|| [],
     lease_enterDate:moment (props?.lease?.lease_enterDate).format("YYYY-MM-DD") || "",
     tenants: props?.lease?.tenants||"",
@@ -23,15 +25,13 @@ console.log(props);
     expirationDate:moment (props?.lease?.expirationDate).format("YYYY-MM-DD") || "",
     rentAmount: props?.lease?.rentAmount||"",
     firstDueDate:moment (props?.lease?.firstDueDate).format("YYYY-MM-DD") || "",
-    frequency: props?.lease?.frequency||"",
     gracePeriod: props?.lease?.gracePeriod||"",
-    late_feeType: props?.lease?.late_feeType||"",
     lateFeeAmount: props?.lease?.lateFeeAmount||"",
     securityDeposite: props?.lease?.securityDeposite||"",
     securityfirstDueDate:moment (props?.lease?.securityfirstDueDate).format("YYYY-MM-DD") || "",
+
     photo: props?.lease?.photo||"",
   }
-
   let setChequeList = (data) => {
     let updatedcheque = cheque;
     updatedcheque.push(data);

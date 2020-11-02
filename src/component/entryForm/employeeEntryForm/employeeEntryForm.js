@@ -4,7 +4,6 @@ import "./employeeEntryForm.css";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import { employeeEntryFormValidation } from "../../../utility/validation/employeeEntryFormValidation.js";
-import { propTypes } from "react-bootstrap/esm/Image";
 
 const TenantEntry = (props) => {
   let initialValue = {
@@ -299,7 +298,12 @@ const TenantEntry = (props) => {
 
                         {touched.employee_photo && values.employee_photo && (
                           <img
-                            src={URL.createObjectURL(values.employee_photo)}
+                            src={typeof (values?.employee_photo) ===
+                              "string"
+                                ? values?.employee_photo
+                                : URL.createObjectURL(
+                                    values?.employee_photo
+                                  )}
                             alt="no picture"
                             height="20"
                           />

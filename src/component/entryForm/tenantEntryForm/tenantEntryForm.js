@@ -2,20 +2,18 @@ import React from "react";
 import "./tenantEntryForm.css";
 import moment from "moment";
 
-
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
 
 const TenantEntry = (props) => {
-  console.log(props);
-
+console.log(props.selectedTenantone);
   let initialvalue = {
     tenant_GovIdNo: props.selectedTenantone?.tenant_GovIdNo || "",
     tenant_DrivingLicenceNo:
       props.selectedTenantone?.tenant_DrivingLicenceNo || "",
-    street: props.selectedTenantone?.street|| "",
+    street: props.selectedTenantone?.street || "",
     city: props.selectedTenantone?.city || "",
     provience: props.selectedTenantone?.provience || "",
     country: props.selectedTenantone?.country || "",
@@ -25,7 +23,10 @@ const TenantEntry = (props) => {
     tenant_middleName: props.selectedTenantone?.tenant_middleName || "",
     tenant_lastName: props.selectedTenantone?.tenant_lastName || "",
     tenant_email: props.selectedTenantone?.tenant_email || "",
-    tenant_DateOfBirth:moment(props.selectedTenantone?.tenant_DateOfBirth).format("YYYY-MM-DD") || "",
+    tenant_DateOfBirth:
+      moment(props.selectedTenantone?.tenant_DateOfBirth).format(
+        "YYYY-MM-DD"
+      ) || "",
     tenant_photo: props.selectedTenantone?.tenant_photo || "",
     tenant_EId_photo: props.selectedTenantone?.tenant_EId_photo || "",
     tenant_TradeLicense_photo:
@@ -44,7 +45,7 @@ const TenantEntry = (props) => {
             initialValues={initialvalue}
             onSubmit={(values) => {
               props.selectedTenantone
-                ? props.tenentUpdate(values, props.selectedTenantone?._id)
+                ? props.tenentUpdate( values, props?.selectedTenantone?._id)
                 : props.tenantData(values);
               console.log(values);
             }}
@@ -63,10 +64,10 @@ const TenantEntry = (props) => {
               <Form className="d-flex justify-content-center">
                 <FormGroup className="fulldiv">
                   <div className="text-center">
-                    <p className="text-black font-weight-bold">
+                    <div className="text-black font-weight-bold">
                       {" "}
                       <h3>Tenant Entry Form </h3>
-                    </p>
+                    </div>
                   </div>
                   <div>
                     {/* <div className="m-4"> */}
@@ -287,14 +288,15 @@ const TenantEntry = (props) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.tenant_DateOfBirth && errors.tenant_DateOfBirth && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.tenant_DateOfBirth}
-                          </span>
-                        )}
+                        {touched.tenant_DateOfBirth &&
+                          errors.tenant_DateOfBirth && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.tenant_DateOfBirth}
+                            </span>
+                          )}
                       </div>
                     </div>
 
@@ -361,10 +363,13 @@ const TenantEntry = (props) => {
                         {touched.tenant_EId_photo &&
                           values.tenant_EId_photo && (
                             <img
-                              src={URL.createObjectURL(
-                                values.tenant_EId_photo
-                                 
-                              )}
+                              src={
+                                typeof( values?.tenant_EId_photo) === "string"
+                                  ? values.tenant_EId_photo
+                                  : URL.createObjectURL(
+                                      values?.tenant_EId_photo
+                                    )
+                              }
                               alt="no pic"
                               height="200"
                             />
@@ -384,12 +389,13 @@ const TenantEntry = (props) => {
                             );
                           }}
                         />
-
-                        {touched.tenant_photo && values.tenant_photo && (
+                   {touched.tenant_photo && values.tenant_photo && (
                           <img
-                            src={URL.createObjectURL(
-                              values.tenant_photo 
-                            )}
+                            src={
+                             typeof ( values?.tenant_photo) === "string"
+                                ? values?.tenant_photo
+                                : URL.createObjectURL(values?.tenant_photo)
+                            }
                             alt="no pic"
                             height="200"
                           />
@@ -414,10 +420,14 @@ const TenantEntry = (props) => {
                         {touched.tenant_TradeLicense_photo &&
                           values.tenant_TradeLicense_photo && (
                             <img
-                              src={URL.createObjectURL(
-                                values.tenant_TradeLicense_photo
-                                  
-                              )}
+                              src={
+                                typeof( values?.tenant_TradeLicense_photo) ===
+                                "string"
+                                  ? values?.tenant_TradeLicense_photo
+                                  : URL.createObjectURL(
+                                      values?.tenant_TradeLicense_photo
+                                    )
+                              }
                               alt="no pic"
                               height="200"
                             />
@@ -440,10 +450,14 @@ const TenantEntry = (props) => {
                         {touched.tenant_IdentityLetter_photo &&
                           values.tenant_IdentityLetter_photo && (
                             <img
-                              src={URL.createObjectURL(
-                                values.tenant_IdentityLetter_photo
-                                 
-                              )}
+                              src={
+                                typeof (values?.tenant_IdentityLetter_photo) ===
+                                "string"
+                                  ? values?.tenant_IdentityLetter_photo
+                                  : URL.createObjectURL(
+                                      values?.tenant_IdentityLetter_photo
+                                    )
+                              }
                               alt="no pic"
                               height="200"
                             />
@@ -466,10 +480,14 @@ const TenantEntry = (props) => {
                         {touched.tenant_SK_Properties_photo &&
                           values.tenant_SK_Properties_photo && (
                             <img
-                              src={URL.createObjectURL(
-                                values.tenant_SK_Properties_photo
-                                  
-                              )}
+                              src={
+                                typeof (values?.tenant_SK_Properties_photo) ===
+                                "string"
+                                  ? values?.tenant_SK_Properties_photo
+                                  : URL.createObjectURL(
+                                      values?.tenant_SK_Properties_photo
+                                    )
+                              }
                               alt="no pic"
                               height="200"
                             />
@@ -492,10 +510,13 @@ const TenantEntry = (props) => {
                         {touched.tenant_POA_photo &&
                           values.tenant_POA_photo && (
                             <img
-                              src={URL.createObjectURL(
-                                values.tenant_POA_photo
-                                 
-                              )}
+                              src={
+                                typeof( values?.tenant_POA_photo) === "string"
+                                  ? values?.tenant_POA_photo
+                                  : URL.createObjectURL(
+                                      values?.tenant_POA_photo
+                                    )
+                              }
                               alt="no pic"
                               height="200"
                             />
