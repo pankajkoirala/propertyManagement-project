@@ -1,13 +1,13 @@
-import React from "react";
-import "./brokerAccount.css";
+import React from "react"
+import './broker_person.css'
 
-import { FormGroup, Label, Input, Form } from "reactstrap";
+import {  FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
-const BrokerCompanyComponent = (props) => {
-  return (
-    <div>
+const BrokerPerson=(props)=>{
+    return(
+        <div>
       <div>
         <div>
           <Formik
@@ -45,7 +45,7 @@ const BrokerCompanyComponent = (props) => {
                   <div className="text-center">
                     <p className="text-black font-weight-bold">
                       {" "}
-                      <h3>Broker Company Entry Form </h3>
+                      <h3>Broker Person Entry Form </h3>
                     </p>
                   </div>
                   <div>
@@ -55,10 +55,10 @@ const BrokerCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Company Name</Label>
+                        <Label for="exampleName">Broker ID</Label>
                         <Input
                           type="text"
-                          value={values.broker_companyName}
+                          //value={values.broker_companyName}
                           name="broker_companyName"
                           placeholder="Company Name"
                           onChange={handleChange}
@@ -76,7 +76,7 @@ const BrokerCompanyComponent = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Registeration Date</Label>
+                        <Label for="exampleName">Broker Company ID</Label>
                         <Input
                           type="date"
                           value={values.broker_companyRegisterDate}
@@ -95,7 +95,7 @@ const BrokerCompanyComponent = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Registration Number</Label>
+                        <Label for="exampleName">Last Name</Label>
                         <Input
                           type="text"
                           value={values.broker_RegistrationNumber}
@@ -118,7 +118,7 @@ const BrokerCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">street</Label>
+                        <Label for="exampleName">Street</Label>
                         <Input
                           type="text"
                           value={values.street}
@@ -193,7 +193,7 @@ const BrokerCompanyComponent = (props) => {
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.ZipCode}
+                            {errors?.zipCode}
                           </span>
                         )}
                       </div>
@@ -257,9 +257,28 @@ const BrokerCompanyComponent = (props) => {
                           </span>
                         )}
                       </div>
+                     
                     </div>
                     <div className="row">
-                     
+                    <div className="col-md-6">
+                        <Label for="exampleName">Special Area</Label>
+                        <Input
+                          type="number"
+                          value={values.broker_phoneNo}
+                          name="broker_phoneNo"
+                          placeholder="Enter your Contact Number"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.broker_phoneNo && errors.broker_phoneNo && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.broker_phoneNo}
+                          </span>
+                        )}
+                      </div>
 
                       <div className="col-md-6 text-left mb-2 mt-4">
                   <Label className="float-left">Upload Agrement Copy</Label>
@@ -296,7 +315,7 @@ const BrokerCompanyComponent = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+    )
+}
 
-export default BrokerCompanyComponent;
+export default BrokerPerson

@@ -45,7 +45,7 @@ const BrokerComponent = (props) => {
                   <div className="text-center">
                     <p className="text-black font-weight-bold">
                       {" "}
-                      <h3>Broker Entry Form </h3>
+                      <h3>Broker Company Entry Form </h3>
                     </p>
                   </div>
                   <div>
@@ -193,7 +193,7 @@ const BrokerComponent = (props) => {
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.ZipCode}
+                            {errors?.zipCode}
                           </span>
                         )}
                       </div>

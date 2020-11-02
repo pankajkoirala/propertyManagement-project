@@ -15,12 +15,13 @@ import Lease from "../container/entryForm/leaseEntryForm/leaseEntryform"
 import TanentDetailView from "../container/view/tenantView/tanentDetailView"
 import EmployeeDetailView from "../container/view/employeeView/emoloyeeViewDetail"
 import LeaseDetailView from "../container/view/lease/leaseDetailView"
-import BrokerCompanyDetail from "../container/entryForm/brokerEntryForm/brokerCompanyDetailContainer.js"
+
 
 
 import OwnerEntry from "../container/entryForm/ownerEntry/ownerEnty.js"
 import BankDetail  from "../container/entryForm/bankAccountEntryForm/bankAccountContainer.js"
 import BrokerDetail  from "../container/entryForm/brokerEntryForm/brokerDetailContainer.js"
+import BrokerPersonDetail  from "../container/entryForm/broker_Person/broker_PersonContainer.js"
 import DeveloperDetail  from "../container/entryForm/developersCompanyEntryContainer/developerContainer.js"
 import InvoiceDetail from "../container/entryForm/invoiceEntryContainer/invoice.js"
 import MaintainanceCompany from "../container/entryForm/maintainanceCompanyEntryForm/maintainanceCompanyContainer.js"
@@ -49,12 +50,14 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/dashboard" component={Dashboard} />
                 <PrivateRouter exact path="/lease" component={Lease} />
                 <PrivateRouter exact path="/leaseProperty" component={LeaseProperty} />
-                <PrivateRouter exact path="/brokerCompanyDetail" component={BrokerCompanyDetail} />
+               
 
                 <Route exact path="/login" component={LoginComponent} />
                 <PrivateRouter exact path="/ownerEntry" component={OwnerEntry} />
                 <PrivateRouter exact path="/bankDetail" component={BankDetail} />
                 <PrivateRouter exact path="/brokerDetail" component={BrokerDetail} />
+                <PrivateRouter exact path="/brokerPersonDetail" component={BrokerPersonDetail} />
+                
                 <PrivateRouter exact path="/developerDetail" component={DeveloperDetail} />
                 <PrivateRouter exact path="/invoiceDetail" component={InvoiceDetail} />
                 <PrivateRouter exact path="/maintainanceCompany" component={MaintainanceCompany} />
