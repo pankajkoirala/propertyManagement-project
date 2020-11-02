@@ -15,7 +15,7 @@ import Lease from "../container/entryForm/leaseEntryForm/leaseEntryform"
 import TanentDetailView from "../container/view/tenantView/tanentDetailView"
 import EmployeeDetailView from "../container/view/employeeView/emoloyeeViewDetail"
 import LeaseDetailView from "../container/view/lease/leaseDetailView"
-
+import BrokerCompanyDetail from "../container/entryForm/brokerEntryForm/brokerCompanyDetailContainer.js"
 
 
 import OwnerEntry from "../container/entryForm/ownerEntry/ownerEnty.js"
@@ -49,6 +49,7 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/dashboard" component={Dashboard} />
                 <PrivateRouter exact path="/lease" component={Lease} />
                 <PrivateRouter exact path="/leaseProperty" component={LeaseProperty} />
+                <PrivateRouter exact path="/brokerCompanyDetail" component={BrokerCompanyDetail} />
 
                 <Route exact path="/login" component={LoginComponent} />
                 <PrivateRouter exact path="/ownerEntry" component={OwnerEntry} />
@@ -64,6 +65,7 @@ const RouterPage = () => {
                 <PrivateRouter exact path="/tanent/:id" component={TanentDetailView} />
                 <PrivateRouter exact path="/employee/:id" component={EmployeeDetailView} />
                 <PrivateRouter exact path="/lease/:id" component={LeaseDetailView} />
+                
 
 
                 </Switch>
