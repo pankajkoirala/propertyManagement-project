@@ -47,12 +47,32 @@ const MaintananceCompanyDetailView = (props) => {
         console.log(err);
       });
   };
+  const managementCompanyDelete = (ID) => {
+ 
+    Axios({
+      method: "delete",
+      url: base_URL + "/api/managementCompany/" + ID,
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
       <ManagementCompanyViewComp
         selectedManagementCompany={selectedManagementCompany}
         managementCompanyUpdate={managementCompanyUpdate}
+        managementCompanyDelete={managementCompanyDelete}
       />
     </div>
   );

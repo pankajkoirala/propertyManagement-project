@@ -67,12 +67,16 @@ const propertyUpdate=(data,ID)=>{
       console.log(err);
     })
   }
+  let DeleteProperty=(Id)=>{
+    Axios.delete(base_URL+`/api/property/${Id}`).then((data)=>console.log(data)).catch((err)=>console.log(err))
+}
 
 
     return(
 <div><PropertyDetailViewComp
 propertyUpdate={propertyUpdate}
 selectedone={selectedone}
+DeleteProperty={DeleteProperty}
 /></div>
     )
 }

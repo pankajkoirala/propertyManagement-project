@@ -6,8 +6,9 @@ import {Link} from "react-router-dom"
 const MaintananceCompanyView=(props)=>{
   return( 
   
-  <div className="tenantview"> Maintanance Company List
-  
+  <div className="tenantview">
+      <h1 className='text-center'> Maintanance Company List</h1> 
+
   <Table striped bordered hover size="sm">
               <thead>
                 <tr>
@@ -31,7 +32,7 @@ const MaintananceCompanyView=(props)=>{
                 <td>{arg.Company_phoneNo}</td>
                 <td>{arg.Company_email}</td>
                     
-                    <td><Link to={`/maintainanceCompany/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> <button className="danger ml-2">Delete</button></td>
+                    <td><Link to={`/maintainanceCompany/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> </td>
                   </tr>
                   
                 </tbody>

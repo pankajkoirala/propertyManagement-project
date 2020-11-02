@@ -21,7 +21,6 @@ const EmployeeView=(props)=>{
             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
             }).then((res)=>{
                 setEmployee(res.data);
-               props.redux_Add_employee(res.data)
           }).catch((err)=>{
             console.log(err);
           })
@@ -33,13 +32,5 @@ const EmployeeView=(props)=>{
         /></div>
     )
 }
-const mapStateToProps = (state) => ({
-    redux_tenantData: state.tenant,
-  });
-  
-  const mapDispatchToProps = (dispatch) => ({
-    redux_Add_employee: (arg) => dispatch({ type:"ADD_ALL_EMPLOYEE", payload:arg }),
-  
-  });
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(EmployeeView);
+
+  export default EmployeeView;

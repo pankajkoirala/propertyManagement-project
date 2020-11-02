@@ -12,6 +12,7 @@ let BrokerCompanyDetailViewComponent = (props) => {
 
 
 let showHide=()=>{
+  console.log(props.history);
   setShowEditForm(!showEditForm)
 }
   return (
@@ -40,6 +41,9 @@ let showHide=()=>{
               <button onClick={() => setShowEditForm(!showEditForm)}>
                 edit
               </button>
+              <button className="danger ml-2" onClick={()=>{props.BrokerDelete(arg._id);
+             
+              }}>Delete</button>
             
              
             </div>

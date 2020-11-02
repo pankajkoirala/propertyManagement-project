@@ -20,7 +20,6 @@ const ManagementCompanyView=(props)=>{
             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
             }).then((res)=>{
                 setManagementCompany(res.data);
-                props.redux_Add_ManagementCompany(res.data)
           }).catch((err)=>{
             console.log(err);
           })
@@ -35,12 +34,5 @@ const ManagementCompanyView=(props)=>{
     )
 }
 
-const mapStateToProps = (state) => ({
-  });
   
-  const mapDispatchToProps = (dispatch) => ({
-    redux_Add_ManagementCompany: (arg) => dispatch({ type: "ADD_ALL_MANAGEMENT_COMPANY", payload: arg }),
-  
-  });
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(ManagementCompanyView);
+  export default ManagementCompanyView;

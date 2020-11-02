@@ -8,7 +8,8 @@ const ManagementCompanyView=(props)=>{
 
   return( 
   
-  <div className="tenantview"> Management Company List
+  <div className="tenantview"> 
+      <h1 className='text-center'>Management Company List</h1> 
   
   <Table striped bordered hover size="sm">
               <thead>
@@ -33,7 +34,7 @@ const ManagementCompanyView=(props)=>{
                 <td>{arg.managementCompany_phoneNo}</td>
                 <td>{arg.managementCompany_email}</td>
                     
-                    <td><Link to={`/managementCompany/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> <button className="danger ml-2">Delete</button></td>
+                    <td><Link to={`/managementCompany/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> </td>
                   </tr>
                   
                 </tbody>

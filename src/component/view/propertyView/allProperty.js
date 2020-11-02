@@ -16,35 +16,21 @@ import "./property.css";
 
 const PropertyView = (props) => {;
 
-  const[selectProperty,setSelectProperty]=useState(props.propertyData)
-  //freeProperty
- let freeProperty=()=>{
-  let freeproperty=props.propertyData.filter((arg)=>arg.property_status==="free")
-  setSelectProperty(freeproperty)
- }
-//all property
-let AllProperty=()=>{
-  setSelectProperty(props.propertyData)
-}
+
   return (
     <div className=" m-5">
       <div>
-      <button onClick={()=>freeProperty()}>freeprop</button>
-      <button onClick={()=>AllProperty()}>AllProperty</button>
+      
 
    <Link to="/leaseProperty"><button> lease property  </button></Link> 
    </div>
    <div className="d-flex flex-wrap">
-      {selectProperty.map((arg, index) => {
+      {props.propertyData.map((arg, index) => {
         return (
           <div key={index} >
             <div>
             <Card className=" propertyCard">
-              <FontAwesomeIcon
-                onClick={() => props.DeletProperty(arg._id)}
-                className="mx-2"
-                icon={faWindowClose}
-              />
+             
 
               <CardImg
                 className="Propertyimage"

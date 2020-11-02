@@ -9,8 +9,9 @@ import {connect} from 'react-redux'
 const EmployeeView=(props)=>{
   return( 
   
-  <div className="tenantview"> Employee list
-  
+  <div className="tenantview"> 
+      <h1 className='text-center'>Employee list</h1> 
+
   <Table striped bordered hover size="sm">
               <thead>
                 <tr>
@@ -38,7 +39,7 @@ const EmployeeView=(props)=>{
                 <td>{arg.employee_email}</td>
                     
                 <h1>{props. nameMatra_number}</h1>
-                    <td><Link to={`/employee/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> <button className="danger ml-2">Delete</button></td>
+                    <td><Link to={`/employee/${arg._id}`}> <button className="success ml-3">View Detail</button></Link> </td>
                   </tr>
                   
                 </tbody>
