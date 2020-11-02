@@ -47,7 +47,7 @@ const DeveloperCompanyComponent=()=>{
                                 <FormGroup className="p-5 bg-info m-2">
                                     <div className="text-center">
 
-                                        <p className="text-black font-weight-bold"> <h3>Developer Entry Form </h3></p>
+                                        <div className="text-black font-weight-bold"> <h3>Developer Entry Form </h3></div>
                                     </div>
                                     <div>
                                     {/* <div className="m-4"> */}

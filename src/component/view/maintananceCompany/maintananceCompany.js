@@ -6,7 +6,7 @@ import {Link} from "react-router-dom"
 const MaintananceCompanyView=(props)=>{
   return( 
   
-  <div className="tenantview"> Tenant View
+  <div className="tenantview"> Maintanance Company List
   
   <Table striped bordered hover size="sm">
               <thead>

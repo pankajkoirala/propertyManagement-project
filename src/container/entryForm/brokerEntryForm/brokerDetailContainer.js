@@ -1,5 +1,5 @@
 import React from "react"
-import BrokerDetailComponent from "../../../component/entryForm/brokerEntryForm/brokerAccountEntryForm.js"
+import BrokerDetailComponent from "../../../component/entryForm/brokerEntryForm/brokerCompanyEntryForm"
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 
@@ -22,7 +22,7 @@ const BrokerDetailContainer=()=>{
         
         Axios({
           method: 'post',
-          url: base_URL+"/api/broker",
+          url: base_URL+"/api/brokerCompany",
           data: formData,
           config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
           }).then((res)=>{

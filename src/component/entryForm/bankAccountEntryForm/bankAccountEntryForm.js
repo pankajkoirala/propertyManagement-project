@@ -46,7 +46,7 @@ const BankAccountComponent=()=>{
                                 <FormGroup className="p-2">
                                     <div className="text-center">
 
-                                        <p className="text-black font-weight-bold"> <h3>Bank Details </h3></p>
+                                        <div className="text-black font-weight-bold"> <h3>Bank Details </h3></div>
                                     </div>
                                     <div>
                                     {/* <div className="m-4"> */}
