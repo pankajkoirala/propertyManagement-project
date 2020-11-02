@@ -1,31 +1,36 @@
 import React from "react";
 import "./managementCompany.css";
-
+import moment from "moment";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
 const ManagementCompanyComponent = (props) => {
+  console.log(props);
+  let initialvalue={
+    managementCompany_street:props?.managementCompany?.managementCompany_street||"",
+    managementCompany_city:props?.managementCompany?.managementCompany_city||"",
+    managementCompany_provience:props?.managementCompany?.managementCompany_provience||"",
+    managementCompany_country:props?.managementCompany?.managementCompany_country||"",
+    managementCompany_ZipCode:props?.managementCompany?.managementCompany_ZipCode||"",
+    managementCompany_photo:props?.managementCompany?.managementCompany_photo||"",
+    managementCompany_phoneNo:props?.managementCompany?.managementCompany_phoneNo||"",
+    managementCompany_Registeration_Number:props?.managementCompany?.managementCompany_Registeration_Number||"",
+    managementCompany_name:props?.managementCompany?.managementCompany_name||"",
+    managementCompany_Registeration_Date:moment(props.managementCompany?.managementCompany_Registeration_Date).format(
+      "YYYY-MM-DD"
+    ) || "",
+    managementCompany_email:props?.managementCompany?.managementCompany_email||"",
+    managementCompany_MobileNumber:props?.managementCompany?.managementCompany_MobileNumber||"",
+  }
   return (
     <div>
       <div>
         <div>
           <Formik
-            initialValues={{
-              managementCompany_street: "",
-              managementCompany_city: "",
-              managementCompany_provience: "",
-              managementCompany_country: "",
-              managementCompany_ZipCode: "",
-              managementCompany_photo: "",
-              managementCompany_phoneNo: "",
-              managementCompany_Registeration_Number: "",
-              managementCompany_name: "",
-              managementCompany_Registeration_Date: "",
-              managementCompany_email: "",
-              managementCompany_MobileNumber: "",
-            }}
+            initialValues={initialvalue}
             onSubmit={(values) => {
+              props.managementCompany?props.managementCompanyUpdate(values,props?.managementCompany._id):
               props.ManagementCompanyData(values)
               console.log(values);
             }}
@@ -44,10 +49,10 @@ const ManagementCompanyComponent = (props) => {
               <Form>
                 <FormGroup className="p-5 bg-light m-2">
                   <div className="text-center">
-                    <p className="text-black font-weight-bold">
+                    <div className="text-black font-weight-bold">
                       {" "}
                       <h3>Management Company Entry Form </h3>
-                    </p>
+                    </div>
                   </div>
                   <div>
                     {/* <div className="m-4"> */}
@@ -308,7 +313,7 @@ const ManagementCompanyComponent = (props) => {
 
                   {touched.managementCompany_photo && values.managementCompany_photo && (
                     <img
-                      src={URL.createObjectURL(values.managementCompany_photo)}
+                      src={typeof(values.managementCompany_photo)==='string'?values.managementCompany_photo: URL.createObjectURL(values.managementCompany_photo)}
                       alt="no picture"
                       height="20"
                     />

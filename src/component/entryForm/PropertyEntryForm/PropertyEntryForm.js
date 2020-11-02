@@ -6,7 +6,6 @@ import { Field, Formik } from "formik";
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
-  console.log("ok", props);
   let initialValue = {
     street: props?.property?.street || "",
     city: props?.property?.city || "",
