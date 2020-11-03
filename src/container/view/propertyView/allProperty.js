@@ -9,11 +9,9 @@ import {connect} from 'react-redux'
 
 const PropertyView=(props)=>{
     const [propertyData,setPropertyData]=useState([])
-    const [lease,setLease]=useState([])
 
     useEffect(()=>{
         serverData()
-        leaseData()
     },[])
 
 let serverData=()=>{
@@ -30,29 +28,33 @@ let serverData=()=>{
 }
 
 
-let leaseData=()=>{
-    Axios({
-        method: 'get',
-        url: base_URL+"/api/lease",
-        config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
-        }).then((res)=>{
-            setLease(res.data);
-      }).catch((err)=>{
-        console.log(err);
-      })
 
-}
+//lease all property 
+let LeasePropertyId=[]
+
+props.leaseData_redux.lease.map((arg)=>arg.property.map((arg1)=>
+LeasePropertyId.push(arg1._id)
+))
 
 
     return(
         <div><AllPropertyViews
         propertyData={propertyData}
-        lease={lease}
+        LeasePropertyId={LeasePropertyId}
         /></div>
     )
 }
 
   
+const mapStateToProps = (state) => ({
+    leaseData_redux:state.lease
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyView);
   
-  export default PropertyView
 

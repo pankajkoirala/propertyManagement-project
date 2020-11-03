@@ -14,7 +14,6 @@ const PropertyEntry=()=>{
         formData.append("country", data.country);
         formData.append("property_type", data.property_type);
         formData.append("property_price", data.property_price);
-        formData.append("property_status", data.property_status);
         formData.append("bedroomArea", data.bedroomArea);
         formData.append("NoOfbedroom", data.NoOfbedroom);
         formData.append("bedroomRemark", data.bedroomRemark);
@@ -43,6 +42,9 @@ const PropertyEntry=()=>{
         formData.append("Smoking", data.Smoking);
         formData.append("Swimming", data.Swimming);
         formData.append("Parking", data.Parking);
+        formData.append("Parking_1", data.Parking_1);
+        formData.append("Parking_2", data.Parking_2);
+        formData.append("Parking_3", data.Parking_3);
         formData.append("Title_Deed_Photo", data.Title_Deed_Photo);
         formData.append("photo", data.photo);
          

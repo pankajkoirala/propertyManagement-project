@@ -5,8 +5,6 @@ import Axios from "axios";
 import { connect } from "react-redux";
 
 let FetchData = (props) => {
-  console.log("pankaj koirala");
-
   useEffect(() => {
     BrokerCompanyData();
     EmployeeData();
@@ -15,6 +13,7 @@ let FetchData = (props) => {
     AllManagementCompany();
     propertyData();
     TenantData();
+    ChequeData()
   }, []);
   let BrokerCompanyData = () => {
     Axios({
@@ -28,7 +27,6 @@ let FetchData = (props) => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         props.redux_Add_BrokerCompany(res.data);
       })
       .catch((err) => {
@@ -47,7 +45,6 @@ let FetchData = (props) => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         props.redux_Add_employee(res.data);
       })
       .catch((err) => {
@@ -67,7 +64,6 @@ let FetchData = (props) => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         props.redux_Add_Lease(res.data);
       })
       .catch((err) => {
@@ -86,7 +82,6 @@ let FetchData = (props) => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         props.redux_Add_maintananceCompany(res.data);
       })
       .catch((err) => {
@@ -105,7 +100,6 @@ let FetchData = (props) => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         props.redux_Add_ManagementCompany(res.data);
       })
       .catch((err) => {
@@ -124,7 +118,6 @@ let FetchData = (props) => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         props.redux_Add_Property(res.data);
       })
       .catch((err) => {
@@ -143,20 +136,42 @@ let FetchData = (props) => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         props.redux_Add_Tenant(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  let ChequeData = () => {
+    Axios({
+      method: "get",
+      url: base_URL + "/api/cheque",
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        props.redux_Add_Cheque(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+ 
+
   return (
     <div>
       <RouterPage />
     </div>
   );
 };
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+ 
+});
 
 const mapDispatchToProps = (dispatch) => ({
   redux_Add_BrokerCompany: (arg) =>
@@ -171,6 +186,8 @@ const mapDispatchToProps = (dispatch) => ({
   redux_Add_Property: (arg) =>
     dispatch({ type: "ADD_ALL_PROPRRTY", payload: arg }),
   redux_Add_Tenant: (arg) => dispatch({ type: "ADD_ALL_TENANT", payload: arg }),
+  redux_Add_Cheque: (arg) => dispatch({ type: "ADD_ALL_CHEQUE", payload: arg }),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FetchData);
