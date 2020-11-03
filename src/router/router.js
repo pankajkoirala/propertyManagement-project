@@ -32,11 +32,15 @@ import LeaseProperty from "../container/view/lease/leaseproperty";
 
 import AllProperty from "../container/view/propertyView/allProperty.js";
 import AllBrokerCompany from "../container/view/brokerCompany/brokerCompany";
+import ChequeView from './../container/view/cheque/chequeView' 
 
 import AllMaintainanceCompany from "../container/view/maintananceCompany/maintananceCompany";
 import MaintainanceCompanyDetail from "../container/view/maintananceCompany/maintananceCompanyDetail";
 import ManagementCompanyDetail from "../container/view/managementCompany/managementCompanyDetail";
 import BrokerCompanyDetail from "../container/view/brokerCompany/brokerDetailView";
+import ChequeDetailView from "../container/view/cheque/ChequeViewDetail";
+
+
 
 const RouterPage = () => {
   return (
@@ -55,6 +59,9 @@ const RouterPage = () => {
           <PrivateRouter exact path="/employeeview" component={EmployeeView} />
           <PrivateRouter exact path="/tenantview" component={TenantView} />
           <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
+          <PrivateRouter exact path="/chequeView" component={ChequeView} />
+
+
           <PrivateRouter exact path="/dashboard" component={Dashboard} />
           <PrivateRouter exact path="/lease" component={Lease} />
           <PrivateRouter
@@ -143,6 +150,11 @@ const RouterPage = () => {
             exact
             path="/brokerCompany/:id"
             component={BrokerCompanyDetail}
+          />
+             <PrivateRouter
+            exact
+            path="/cheque/:id"
+            component={ChequeDetailView}
           />
         </Switch>
       </Router>

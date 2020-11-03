@@ -38,12 +38,14 @@ const PropertyView = (props) => {;
                 alt="Card image cap"
               />
               <CardBody>
+                <CardTitle>id:{arg._id}</CardTitle>
                 <CardTitle>Name:{arg.property_type}</CardTitle>
+
                 <CardSubtitle>
-                  <span>Status:{arg.property_status}</span>
+                  <span>Status:{props.LeasePropertyId.some((arg1)=>arg1===arg._id)===true?<span className='text-danger font-weight-bold'>occupied</span>:<span className='text-success font-weight-bold'>free</span>}</span>
                 </CardSubtitle>
                 <CardText>
-                  Location:{arg.city}
+                  Location:{arg.city} 
                   {arg.country}
                 </CardText>
                 <Link to={`/propertyDetail/${arg._id}`}>

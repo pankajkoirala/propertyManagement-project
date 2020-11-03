@@ -70,6 +70,8 @@ const NavbarPage = () => {
       <Link to="/chequeentry"> <Button variant="primary" className="button-size">Cheque Entry</Button></Link><br/> 
       <Link to="/chequeBounce"> <Button variant="success" className="button-size">Cheque Bounce</Button></Link><br/>
       <Link to="/chequeHold"> <Button variant="success" className="button-size">Cheque Hold</Button></Link><br/>
+      <Link to="/chequeView"> <Button variant="success" className="button-size">Cheque View</Button></Link><br/>
+
       </Card.Body>
     </Accordion.Collapse>
   </Card>

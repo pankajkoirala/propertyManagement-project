@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import LeaseEntryForm from "../../entryForm/lease/lease";
+import ChequeEntryForm from "../../entryForm/cheque/chequeEntry/chequeEntryForm";
 
 
-let LeaseDetailViewComponent = (props) => {
+let ChequeDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
 
 
@@ -10,11 +10,12 @@ let LeaseDetailViewComponent = (props) => {
 
 
 let showHide=()=>{
+  console.log(props.history);
   setShowEditForm(!showEditForm)
 }
   return (
     <div>
-      {showEditForm===false? props.selecteOneLease.map((arg, index) => {
+      {showEditForm===false? props.selectedCheque.map((arg, index) => {
         return (
           <div key={index} className="property-card">
             <div className="card-contents">
@@ -38,23 +39,23 @@ let showHide=()=>{
               <button onClick={() => setShowEditForm(!showEditForm)}>
                 edit
               </button>
-              <button onClick={() =>props.LeaseDelete(arg._id)}>
-                delete
-              </button>
+              <button className="danger ml-2" onClick={()=>{props.BrokerDelete(arg._id);
+             
+              }}>Delete</button>
             
              
             </div>
           </div>
         );
-      }):<LeaseEntryForm 
+      }):   <ChequeEntryForm 
       {...props}
 showHide={showHide}
 
-      lease={props.selecteOneLease[0]}
+Cheque={props.selectedCheque[0]}
       />}
     </div>
   );
 };
 
 
-export default LeaseDetailViewComponent;
+export default ChequeDetailViewComponent;

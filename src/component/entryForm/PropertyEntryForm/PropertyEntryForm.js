@@ -2,7 +2,7 @@ import React from "react";
 import "./propertyEntryForm.css";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Table } from "react-bootstrap";
-import { Field, Formik } from "formik";
+import { Formik } from "formik";
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
@@ -12,7 +12,6 @@ const PropertyEntry = (props) => {
     country: props?.property?.country || "",
     property_type: props?.property?.property_type || "",
     property_price: props?.property?.property_price || "",
-    property_status: props?.property?.property_status || "",
     bedroomArea: props?.property?.bedroomArea || "",
     NoOfbedroom: props?.property?.NoOfbedroom || "",
     bedroomRemark: props?.property?.bedroomRemark || "",
@@ -43,6 +42,11 @@ const PropertyEntry = (props) => {
     Property_Premise_Number: props?.property?.Property_Premise_Number || "",
     Title_Deed_Photo: props?.property?.Title_Deed_Photo || "",
     photo: props?.property?.photo || "",
+    //added schema
+    Parking_1: props?.property?.Parking_1 || "not available",
+    Parking_2: props?.property?.Parking_2 || "not available",
+    Parking_3: props?.property?.Parking_3 || "not available",
+
   };
   return (
     <div>
@@ -122,29 +126,7 @@ const PropertyEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="col-sm-4 my-1">
-                        <Label for="exampleSelect">Property Status</Label>
-                        <Input
-                          type="select"
-                          name="property_status"
-                          value={values.property_status}
-                          id="exampleSelect"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        >
-                          <option value="">select one</option>
-                          <option value="free">Free</option>
-                          <option value="Occupied">Occupied</option>
-                        </Input>
-                        {touched.property_status && errors.property_status && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.property_status}
-                          </span>
-                        )}
-                      </div>
+                    
 
                       <div className="col-sm-4 my-1">
                         <Label for="exampleName">Country</Label>
@@ -378,6 +360,7 @@ const PropertyEntry = (props) => {
                       <thead>
                         <tr>
                           <th>SN</th>
+                          
                           <th>topic</th>
                           <th>Area</th>
                           <th>unit</th>
@@ -408,7 +391,7 @@ const PropertyEntry = (props) => {
                             )}
                           </td>
                           <td>
-                            {" "}
+                            
                             <Input
                               type="number"
                               value={values.NoOfbedroom}
@@ -449,7 +432,10 @@ const PropertyEntry = (props) => {
 
                         <tr>
                           <td>2</td>
-                          <td>Hall</td>
+                          <td>Hall
+                         
+                             </td>
+                             
                           <td>
                             <Input
                               type="number"
@@ -469,7 +455,7 @@ const PropertyEntry = (props) => {
                             )}
                           </td>
                           <td>
-                            {" "}
+                            
                             <Input
                               type="number"
                               value={values.NoOfHall}
@@ -489,7 +475,7 @@ const PropertyEntry = (props) => {
                           </td>
 
                           <td>
-                            {" "}
+                            
                             <Input
                               type="text"
                               value={values.hallRemark}
@@ -531,7 +517,7 @@ const PropertyEntry = (props) => {
                             )}
                           </td>
                           <td>
-                            {" "}
+                            
                             <Input
                               type="number"
                               value={values.NoOfKitchen}
@@ -547,11 +533,11 @@ const PropertyEntry = (props) => {
                               >
                                 {errors?.NoOfKitchen}
                               </span>
-                            )}{" "}
+                            )}
                           </td>
 
                           <td>
-                            {" "}
+                            
                             <Input
                               type="text"
                               value={values.kitchenRemark}
@@ -609,11 +595,11 @@ const PropertyEntry = (props) => {
                                 >
                                   {errors?.NoOfBathroom}
                                 </span>
-                              )}{" "}
+                              )}
                           </td>
 
                           <td>
-                            {" "}
+                            
                             <Input
                               type="text"
                               value={values.bathroomRemark}
@@ -670,11 +656,11 @@ const PropertyEntry = (props) => {
                               >
                                 {errors?.NoOfBalcony}
                               </span>
-                            )}{" "}
+                            )}
                           </td>
 
                           <td>
-                            {" "}
+                            
                             <Input
                               type="text"
                               value={values.BalconyRemark}
@@ -693,6 +679,70 @@ const PropertyEntry = (props) => {
                             )}
                           </td>
                         </tr>
+                        {values.Parking === "available" ? (
+                          <tr>
+                            <td>6</td>
+                            <td>parking</td>
+                            <td>
+                              <Input
+                                type="number"
+                                value={values.Parking_1}
+                                name="Parking_1"
+                                placeholder="parking area 1"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                              {touched?.Parking_1 && errors?.Parking_1 && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors?.Parking_1}
+                                </span>
+                              )}
+                            </td>
+                            <td>
+                              <Input
+                                type="number"
+                                value={values.Parking_2}
+                                name="Parking_2"
+                                placeholder="parking area 2"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                              {touched?.Parking_2 &&
+                                errors?.Parking_2 && (
+                                  <span
+                                    className="text-danger col-md-12 text-left mb-2"
+                                    style={{ fontSize: 12 }}
+                                  >
+                                    {errors?.Parking_2}
+                                  </span>
+                                )}
+                            </td>
+
+                            <td>
+                              <Input
+                                type="number"
+                                value={values.Parking_3}
+                                name="Parking_3"
+                                placeholder="parking area 3"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                              {touched.Parking_3 && errors.Parking_3 && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors.Parking_3}
+                                </span>
+                              )}
+                            </td>
+                          </tr>
+                        ) : (''
+                          
+                        )}
                       </tbody>
                     </Table>
 
@@ -705,6 +755,9 @@ const PropertyEntry = (props) => {
                           <Input
                             type="checkbox"
                             name="Parking"
+                            checked={
+                              values.Parking === "available" ? true : false
+                            }
                             onChange={(e) =>
                               setFieldValue(
                                 "Parking",
@@ -713,15 +766,19 @@ const PropertyEntry = (props) => {
                                   : "unavailable"
                               )
                             }
-                          />{" "}
+                          />
                           Parking
                         </Label>
+                        
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
                           <Input
                             type="checkbox"
                             name="Swimming"
+                            checked={
+                              values.Swimming === "available" ? true : false
+                            }
                             onChange={(e) =>
                               setFieldValue(
                                 "Swimming",
@@ -730,7 +787,7 @@ const PropertyEntry = (props) => {
                                   : "unavailable"
                               )
                             }
-                          />{" "}
+                          />
                           Swimming
                         </Label>
                       </FormGroup>
@@ -738,6 +795,9 @@ const PropertyEntry = (props) => {
                       <FormGroup check>
                         <Label check>
                           <Input
+                            checked={
+                              values.Smoking === "available" ? true : false
+                            }
                             type="checkbox"
                             name="Smoking"
                             onChange={(e) =>
@@ -748,13 +808,16 @@ const PropertyEntry = (props) => {
                                   : "unavailable"
                               )
                             }
-                          />{" "}
+                          />
                           Smoking
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
                           <Input
+                            checked={
+                              values.PetAllowed === "available" ? true : false
+                            }
                             type="checkbox"
                             name="PetAllowed"
                             onChange={(e) =>
@@ -765,13 +828,16 @@ const PropertyEntry = (props) => {
                                   : "unavailable"
                               )
                             }
-                          />{" "}
+                          />
                           Pet Allowed
                         </Label>
                       </FormGroup>
                       <FormGroup check>
                         <Label check>
                           <Input
+                            checked={
+                              values.Garden === "available" ? true : false
+                            }
                             type="checkbox"
                             name="Garden"
                             onChange={(e) =>
@@ -782,7 +848,7 @@ const PropertyEntry = (props) => {
                                   : "unavailable"
                               )
                             }
-                          />{" "}
+                          />
                           Garden
                         </Label>
                       </FormGroup>
@@ -833,7 +899,7 @@ const PropertyEntry = (props) => {
                           setFieldValue("photo", event.currentTarget.files[0]);
                         }}
                       />
-                    
+
                       {touched.photo && values.photo && (
                         <img
                           src={

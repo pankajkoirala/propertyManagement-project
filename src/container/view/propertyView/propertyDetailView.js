@@ -24,7 +24,6 @@ const propertyUpdate=(data,ID)=>{
     formData.append("country", data.country);
     formData.append("property_type", data.property_type);
     formData.append("property_price", data.property_price);
-    formData.append("property_status", data.property_status);
     formData.append("bedroomArea", data.bedroomArea);
     formData.append("NoOfbedroom", data.NoOfbedroom);
     formData.append("bedroomRemark", data.bedroomRemark);
@@ -55,6 +54,9 @@ const propertyUpdate=(data,ID)=>{
     formData.append("Property_Premise_Number", data.Property_Premise_Number);
     formData.append("Title_Deed_Photo", data.Title_Deed_Photo);
     formData.append("photo", data.photo);
+    formData.append("Parking_1", data.Parking_1);
+    formData.append("Parking_2", data.Parking_2);
+    formData.append("Parking_3", data.Parking_3);
      
     Axios({
       method: 'put',

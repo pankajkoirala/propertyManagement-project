@@ -8,8 +8,12 @@ const LeaseEntry=(props)=>{
 
 
 
-console.log('Redux_propertyData',props.Redux_propertyData);
-console.log('redux_tenantData',props.redux_tenantData);
+//console.log('Redux_propertyData',props.Redux_propertyData.property);
+//console.log('Redux_LeaseData',props.Redux_LeaseData.lease);
+
+
+
+
 
 
     const leaseData=(data)=>{
@@ -45,16 +49,30 @@ console.log('redux_tenantData',props.redux_tenantData);
       
       }
 
+      let reserveProperty = [];
+      let unReserveProperty = [];
+    
+      props.Redux_LeaseData.lease.forEach((arg) => {
+        arg.property.forEach((arg1) => reserveProperty.push(arg1._id));
+      });
+      unReserveProperty = props.Redux_propertyData.property.filter(
+        (arg) => !reserveProperty.includes(arg._id)
+      );
+      
 
     return(
         <div><LeaseEntryFormComponent
        leaseData={leaseData}
+       unReserveProperty={unReserveProperty}
+       redux_tenantData={props.redux_tenantData}
         /></div>
     )
 }
 const mapStateToProps = (state) => ({
   Redux_propertyData: state.property,
   redux_tenantData: state.tenant,
+  Redux_LeaseData: state.lease,
+
 
  });
  

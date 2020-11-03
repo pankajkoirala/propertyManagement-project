@@ -54,7 +54,7 @@ const LeaseEntry = (props) => {
           values.property = JSON.stringify(values.property);
 
           console.log(values);
-          props.leaseData(values);
+          props?.lease?props.LeaseUpdate(values,props.lease._id):props.leaseData(values);
         }}
         //validationSchema={LeaseEntryFormValidation}
       >
@@ -145,7 +145,7 @@ const LeaseEntry = (props) => {
                   >
                     <option value="">select one </option>
 
-                    {props?.Redux_propertyData?.property?.map((arg, index) => {
+                    {props?.unReserveProperty?.map((arg, index) => {
                       return (
                         <option key={index} value={arg._id}>
                           {arg?.property_type}
@@ -446,7 +446,7 @@ const LeaseEntry = (props) => {
 
                   {touched.photo && values.photo && (
                     <img
-                      src={URL.createObjectURL(values.photo)}
+                      src={typeof(values.photo)==='string'?values.photo:URL.createObjectURL(values.photo)}
                       alt="no picture"
                       height="20"
                     />
@@ -554,15 +554,6 @@ const LeaseEntry = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  Redux_propertyData: state.property,
-  redux_tenantData: state.tenant,
 
 
-});
-
-const mapDispatchToProps = (dispatch) => ({
- 
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(LeaseEntry);
+export default LeaseEntry;
