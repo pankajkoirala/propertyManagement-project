@@ -32,9 +32,9 @@ let serverData=()=>{
 //lease all property 
 let LeasePropertyId=[]
 
-props.leaseData_redux.lease.map((arg)=>arg.property.map((arg1)=>
-LeasePropertyId.push(arg1._id)
-))
+props.leaseData_redux.lease.map((arg)=>
+LeasePropertyId.push(arg.property._id)
+)
 
 
     return(

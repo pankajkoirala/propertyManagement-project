@@ -62,18 +62,50 @@ const LeaseUpdate=(data,ID)=>{
     })
   }
 
+  //property remove which are in lease from all property
+  let reserveProperty = [];
+  let unReserveProperty = [];
+
+  props.Redux_LeaseData.lease.forEach((arg) => {
+    reserveProperty.push(arg.property._id);
+  });
+  unReserveProperty = props.Redux_propertyData.property.filter(
+    (arg) => !reserveProperty.includes(arg._id)
+  );
+  
+  //cheque remove which are in checklist from all cheque
+  let chequeUsed = [];
+  let UnchequeUsed = [];
+  props.Redux_LeaseData.lease.forEach((arg) => {
+    arg.chequeList.map((arg1) => {
+      chequeUsed.push(arg1._id);
+    });
+  });
+
+  UnchequeUsed = props.redux_ChequeData.cheque.filter(
+    (arg) => !chequeUsed.includes(arg._id)
+  );
+
+
 
     return(
 <div><LeaseDetailViewComp
 selecteOneLease={selecteOneLease}
 LeaseDelete={LeaseDelete}
 LeaseUpdate={LeaseUpdate}
+//try
+unReserveProperty={unReserveProperty}
+redux_tenantData={props.redux_tenantData}
+UnchequeUsed={UnchequeUsed}
 /></div>
     )
 }
 
 const mapStateToProps = (state) => ({
   Redux_LeaseData: state.lease,
+  Redux_propertyData: state.property,
+  redux_tenantData: state.tenant,
+  redux_ChequeData: state.cheque,
  });
  
  const mapDispatchToProps = (dispatch) => ({
