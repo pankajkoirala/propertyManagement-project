@@ -46,9 +46,9 @@ const ChequeView = (props) => {
                 <h1>{props.nameMatra_number}</h1>
                 <td>
                   <Link to={`/cheque/${arg._id}`}>
-                    {" "}
+              
                     <button className="success ml-3">View Detail</button>
-                  </Link>{" "}
+                  </Link>
                 </td>
               </tr>
             </tbody>

@@ -1,42 +1,32 @@
 import React, { useState } from "react";
 import "./lease.css";
-import { connect } from "react-redux";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
 
 const LeaseEntry = (props) => {
-  const [cheque, setCheque] = useState([]);
-  const [date, setdate] = useState("");
-  const [chequeNum, setChequeNum] = useState("");
-  const [ChequeStatus, setChequeStatus] = useState("");
+  let initialvalue = {
+    chequeList: props?.lease?.chequeList.map((arg) => arg._id) || [],
+    late_feeType: props?.lease?.late_feeType || "",
+    frequency: props?.lease?.frequency || "",
+    lease_enterDate:
+      moment(props?.lease?.lease_enterDate).format("YYYY-MM-DD") || "",
+    tenants: props?.lease?.tenants._id || "",
+    property: props?.lease?.property._id || "",
+    lease_Term: props?.lease?.lease_Term || "",
+    commenceDate: moment(props?.lease?.commenceDate).format("YYYY-MM-DD") || "",
+    expirationDate:
+      moment(props?.lease?.expirationDate).format("YYYY-MM-DD") || "",
+    rentAmount: props?.lease?.rentAmount || "",
+    firstDueDate: moment(props?.lease?.firstDueDate).format("YYYY-MM-DD") || "",
+    gracePeriod: props?.lease?.gracePeriod || "",
+    lateFeeAmount: props?.lease?.lateFeeAmount || "",
+    securityDeposite: props?.lease?.securityDeposite || "",
+    securityfirstDueDate:
+      moment(props?.lease?.securityfirstDueDate).format("YYYY-MM-DD") || "",
 
-  let initialvalue={
-    late_feeType: props?.lease?.late_feeType||"",
-    frequency: props?.lease?.frequency||"",
-    chequeList:props?.lease?.chequeList|| [],
-    lease_enterDate:moment (props?.lease?.lease_enterDate).format("YYYY-MM-DD") || "",
-    tenants: props?.lease?.tenants||"",
-    property:props?.lease?.property|| [],
-    lease_Term: props?.lease?.lease_Term||"",
-    commenceDate:moment (props?.lease?.commenceDate).format("YYYY-MM-DD") || "",
-    expirationDate:moment (props?.lease?.expirationDate).format("YYYY-MM-DD") || "",
-    rentAmount: props?.lease?.rentAmount||"",
-    firstDueDate:moment (props?.lease?.firstDueDate).format("YYYY-MM-DD") || "",
-    gracePeriod: props?.lease?.gracePeriod||"",
-    lateFeeAmount: props?.lease?.lateFeeAmount||"",
-    securityDeposite: props?.lease?.securityDeposite||"",
-    securityfirstDueDate:moment (props?.lease?.securityfirstDueDate).format("YYYY-MM-DD") || "",
-
-    photo: props?.lease?.photo||"",
-  }
-  let setChequeList = (data) => {
-    let updatedcheque = cheque;
-    updatedcheque.push(data);
-    setCheque(updatedcheque);
-    setdate("");
-    setChequeNum("");
+    photo: props?.lease?.photo || "",
   };
 
   return (
@@ -50,11 +40,12 @@ const LeaseEntry = (props) => {
       <Formik
         initialValues={initialvalue}
         onSubmit={(values) => {
-          values.chequeList = JSON.stringify(cheque);
-          values.property = JSON.stringify(values.property);
+          values.chequeList = JSON.stringify(values.chequeList);
 
           console.log(values);
-          props?.lease?props.LeaseUpdate(values,props.lease._id):props.leaseData(values);
+          props?.lease
+            ? props.LeaseUpdate(values, props.lease._id)
+            : props.leaseData(values);
         }}
         //validationSchema={LeaseEntryFormValidation}
       >
@@ -71,14 +62,12 @@ const LeaseEntry = (props) => {
           <Form>
             <FormGroup>
               <div className="row ">
-                <div className="col-12 mt-2 ml-2 mr-2">
-                  General Information
-                </div>
+                <div className="col-12 mt-2 ml-2 mr-2">General Information</div>
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
                   <Input
                     type="date"
-                    disabled={props.lease?true:false}
+                    disabled={props.lease ? true : false}
                     value={values.lease_enterDate}
                     name="lease_enterDate"
                     placeholder="Enter Date"
@@ -110,7 +99,7 @@ const LeaseEntry = (props) => {
                     onBlur={handleBlur}
                   >
                     <option value="">select one </option>
-                    { props?.redux_tenantData?.tenant?.map((arg, index) => {
+                    {props?.redux_tenantData?.tenant?.map((arg, index) => {
                       return (
                         <option key={index} value={arg?._id}>
                           {arg?.tenant_firstName}{" "}
@@ -135,12 +124,7 @@ const LeaseEntry = (props) => {
                     name="property"
                     id="exampleSelect"
                     placeholder="Select Status of Cheque"
-                    onChange={(e) =>
-                      setFieldValue("property", [
-                        ...values.property,
-                        e.target.value,
-                      ])
-                    }
+                    onChange={handleChange}
                     onBlur={handleBlur}
                   >
                     <option value="">select one </option>
@@ -154,11 +138,7 @@ const LeaseEntry = (props) => {
                       );
                     })}
                   </Input>
-                  {/* //selected house list shown */}
-                  {values?.property?.map((a) => {
-                    let house = props?.property?.find((b) => b._id === a);
-                    return <div>{house?.property_type}</div>;
-                  })}
+
                   {touched.property && errors.property && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -446,7 +426,11 @@ const LeaseEntry = (props) => {
 
                   {touched.photo && values.photo && (
                     <img
-                      src={typeof(values.photo)==='string'?values.photo:URL.createObjectURL(values.photo)}
+                      src={
+                        typeof values.photo === "string"
+                          ? values.photo
+                          : URL.createObjectURL(values.photo)
+                      }
                       alt="no picture"
                       height="20"
                     />
@@ -462,90 +446,50 @@ const LeaseEntry = (props) => {
                 </button>
               </div>
 
-              {/* cheque display  */}
-              <Form>
-                <div className="row">
-                  <div className="col-md-4">
-                    <Label for="exampleName">cheque issue date</Label>
-                    <Input
-                      type="date"
-                      value={date}
-                      placeholder="Enter Date"
-                      onChange={(e) => setdate(e.target.value)}
-                    />
-                  </div>
-                  <div className="col-md-4">
-                    <Label for="exampleName">cheque chequeNo </Label>
-                    <Input
-                      type="number"
-                      value={chequeNum}
-                      placeholder="Enter Date"
-                      onChange={(e) => setChequeNum(e.target.value)}
-                    />
-                  </div>
-                  <div className="col-md-5">
-                    <Label for="exampleSelect">Cheque status(s)</Label>
-                    <Input
-                      type="select"
-                      name="cheque_status"
-                      id="exampleSelect"
-                      placeholder="Select Status of Cheque"
-                      onChange={(e) => setChequeStatus(e.target.value)}
-                    >
-                      {" "}
-                      <option value="">select one </option>
-                      <option value="pending">pending </option>
-                      <option value="clear">clear </option>
-                      <option value="bounce">bounce </option>
-                    </Input>
-
-                    {touched.cheque_status && errors.cheque_status && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.cheque_status}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  disabled={!date || !chequeNum || !ChequeStatus}
-                  onClick={() => {
-                    setChequeList({
-                      issueDate: date,
-                      chequeNo: chequeNum,
-                      cheque_status: ChequeStatus,
-                    });
-                  }}
+              <div className="col-md-5">
+                <Label for="exampleSelect">cheque (s)</Label>
+                <Input
+                  type="select"
+                  name="chequeList"
+                  id="exampleSelect"
+                  placeholder="Select Status of Cheque"
+                  onChange={(e) =>
+                    setFieldValue("chequeList", [
+                      ...values.chequeList,
+                      e.target.value,
+                    ])
+                  }
+                  onBlur={handleBlur}
                 >
-                  add cheque
-                </button>
-                <Table striped bordered hover size="sm">
-                  <thead>
-                    <tr>
-                      <th>SN</th>
-                      <th>Issue Date</th>
-                      <th>Cheque No</th>
-                      <th>statue</th>
-                    </tr>
-                  </thead>
-                  {cheque.map((arg, index) => {
+                  <option value="">select one </option>
+                  {props?.UnchequeUsed?.map((arg, index) => {
                     return (
-                      <tbody key={index}>
-                        <tr>
-                          <td>{index + 1}</td>
-                          <td>{arg.issueDate}</td>
-                          <td>{arg.chequeNo}</td>
-                          <td>{arg.cheque_status}</td>
-                        </tr>
-                      </tbody>
+                      <option key={index} value={arg?._id}>
+                        {arg?.cheque_number}{" "}
+                      </option>
                     );
                   })}
-                
-                </Table>
-              </Form>
+                </Input>
+
+                {!props.lease
+                  ? values?.chequeList?.map((a) => {
+                      let house = props?.redux_ChequeData?.cheque?.find(
+                        (b) => b._id === a
+                      );
+                      return <div>{house?.cheque_number}</div>;
+                    })
+                  : values?.chequeList?.map((arg, index) => {
+                      return <h1 key={index}>{arg?.cheque_number}</h1>;
+                    })}
+                {touched.chequeList && errors.chequeList && (
+                  <span
+                    className="text-danger col-md-12 text-left mb-2"
+                    style={{ fontSize: 12 }}
+                  >
+                    {errors.chequeList}
+                  </span>
+                )}
+              </div>
             </FormGroup>
           </Form>
         )}
@@ -553,7 +497,5 @@ const LeaseEntry = (props) => {
     </div>
   );
 };
-
-
 
 export default LeaseEntry;
