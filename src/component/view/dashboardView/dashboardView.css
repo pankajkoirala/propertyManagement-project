@@ -1,13 +1,13 @@
-.dashboard{
-background-color: tomato;
-margin: 40px;
-padding: 10px
+.dashboard {
+  background-color: tomato;
+  margin: 40px;
+  padding: 10px;
 }
 
-.box{
+.box {
   margin: 3px;
-  height:100px;
+  height: 100px;
   width: 80px;
-  border-color:lemonchiffon ;
+  border-color: lemonchiffon;
   border-style: dotted;
 }

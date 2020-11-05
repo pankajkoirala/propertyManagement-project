@@ -1,23 +1,18 @@
-import React,{useEffect,useState} from "react"
-import PropertyDetailViewComp from "../../../component/view/propertyView/propertyDetailView"
-import Axios from "axios"
+import React, { useEffect, useState } from "react";
+import PropertyDetailViewComp from "../../../component/view/propertyView/propertyDetailView";
+import Axios from "axios";
 import { base_URL } from "../../../const/base_URL";
-import {useParams} from "react-router-dom"
-import {connect} from 'react-redux'
+import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
 
-
-
-
-
-let PropertyDetailView=(props)=>{
-
+let PropertyDetailView = (props) => {
   const { id } = useParams();
 
-  let selectedone=props?.Redux_propertyData?.property?.filter((arg)=>arg._id===id)
+  let selectedone = props?.Redux_propertyData?.property?.filter(
+    (arg) => arg._id === id
+  );
 
-
-
-const propertyUpdate=(data,ID)=>{
+  const propertyUpdate = (data, ID) => {
     const formData = new FormData();
     formData.append("street", data.street);
     formData.append("city", data.city);
@@ -57,39 +52,46 @@ const propertyUpdate=(data,ID)=>{
     formData.append("Parking_1", data.Parking_1);
     formData.append("Parking_2", data.Parking_2);
     formData.append("Parking_3", data.Parking_3);
-     
+
     Axios({
-      method: 'put',
-      url: base_URL+"/api/property/"+ID,
+      method: "put",
+      url: base_URL + "/api/property/" + ID,
       data: formData,
-      config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
-      }).then((res)=>{
-  console.log(res);
-    }).catch((err)=>{
-      console.log(err);
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
     })
-  }
-  let DeleteProperty=(Id)=>{
-    Axios.delete(base_URL+`/api/property/${Id}`).then((data)=>console.log(data)).catch((err)=>console.log(err))
-}
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  let DeleteProperty = (Id) => {
+    Axios.delete(base_URL + `/api/property/${Id}`)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
 
-
-    return(
-<div><PropertyDetailViewComp
-propertyUpdate={propertyUpdate}
-selectedone={selectedone}
-DeleteProperty={DeleteProperty}
-/></div>
-    )
-}
+  return (
+    <div>
+      <PropertyDetailViewComp
+        propertyUpdate={propertyUpdate}
+        selectedone={selectedone}
+        DeleteProperty={DeleteProperty}
+      />
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
   Redux_propertyData: state.property,
- });
- 
- const mapDispatchToProps = (dispatch) => ({
- });
- 
- export default connect(mapStateToProps, mapDispatchToProps)(PropertyDetailView);
+});
 
-                
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyDetailView);

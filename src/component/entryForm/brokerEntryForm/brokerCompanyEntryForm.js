@@ -5,23 +5,24 @@ import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
-
 const BrokerComponent = (props) => {
-  let initialvalue={
-    street:props?.BrokerCompany?.street||"",
-    city:props?.BrokerCompany?.city||"",
-    provience:props?.BrokerCompany?.provience||"",
-    country:props?.BrokerCompany?.country||"",
-    ZipCode:props?.BrokerCompany?.ZipCode||"",
-    broker_photo:props?.BrokerCompany?.broker_photo||"",
-    broker_phoneNo:props?.BrokerCompany?.broker_phoneNo||"",
-    broker_RegistrationNumber:props?.BrokerCompany?.broker_RegistrationNumber||"",
-    broker_companyName:props?.BrokerCompany?.broker_companyName||"",
-    broker_companyRegisterDate:  moment(props.BrokerCompany?.broker_companyRegisterDate).format(
-      "YYYY-MM-DD"
-    ) || "",
-    broker_email:props?.BrokerCompany?.broker_email||"",
-  }
+  let initialvalue = {
+    street: props?.BrokerCompany?.street || "",
+    city: props?.BrokerCompany?.city || "",
+    provience: props?.BrokerCompany?.provience || "",
+    country: props?.BrokerCompany?.country || "",
+    ZipCode: props?.BrokerCompany?.ZipCode || "",
+    broker_photo: props?.BrokerCompany?.broker_photo || "",
+    broker_phoneNo: props?.BrokerCompany?.broker_phoneNo || "",
+    broker_RegistrationNumber:
+      props?.BrokerCompany?.broker_RegistrationNumber || "",
+    broker_companyName: props?.BrokerCompany?.broker_companyName || "",
+    broker_companyRegisterDate:
+      moment(props.BrokerCompany?.broker_companyRegisterDate).format(
+        "YYYY-MM-DD"
+      ) || "",
+    broker_email: props?.BrokerCompany?.broker_email || "",
+  };
   return (
     <div>
       <div>
@@ -29,8 +30,9 @@ const BrokerComponent = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
-              props.BrokerCompany?props.BrokerUpdate(values,props.BrokerCompany._id):
-              props.brokerData(values)
+              props.BrokerCompany
+                ? props.BrokerUpdate(values, props.BrokerCompany._id)
+                : props.brokerData(values);
               console.log(values);
             }}
             //validationSchema={employeeEntryFormValidation}
@@ -55,8 +57,6 @@ const BrokerComponent = (props) => {
                   </div>
                   <div>
                     {/* <div className="m-4"> */}
-
-                    
 
                     <div className="row">
                       <div className="mt-4 col-md-4">
@@ -90,14 +90,15 @@ const BrokerComponent = (props) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.broker_companyRegisterDate && errors.broker_companyRegisterDate && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.broker_companyRegisterDate}
-                          </span>
-                        )}
+                        {touched.broker_companyRegisterDate &&
+                          errors.broker_companyRegisterDate && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.broker_companyRegisterDate}
+                            </span>
+                          )}
                       </div>
                       <div className="mt-4 col-md-4">
                         <Label for="exampleName">Registration Number</Label>
@@ -264,27 +265,34 @@ const BrokerComponent = (props) => {
                       </div>
                     </div>
                     <div className="row">
-                     
-
                       <div className="col-md-6 text-left mb-2 mt-4">
-                  <Label className="float-left">Upload Agrement Copy</Label>
-                  <Input
-                    type="file"
-                    name="broker_photo"
-                    accept="image/*"
-                    onChange={(event) => {
-                      setFieldValue("broker_photo", event.currentTarget.files[0]);
-                    }}
-                  />
+                        <Label className="float-left">
+                          Upload Agrement Copy
+                        </Label>
+                        <Input
+                          type="file"
+                          name="broker_photo"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "broker_photo",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
 
-                  {touched.broker_photo && values.broker_photo && (
-                    <img
-                      src={typeof(values.broker_photo)==='string'?values.broker_photo: URL.createObjectURL(values.broker_photo)}
-                      alt="no picture"
-                      height="20"
-                    />
-                  )}
-                </div>
+                        {touched.broker_photo && values.broker_photo && (
+                          <img
+                            src={
+                              typeof values.broker_photo === "string"
+                                ? values.broker_photo
+                                : URL.createObjectURL(values.broker_photo)
+                            }
+                            alt="no picture"
+                            height="20"
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
                   <button

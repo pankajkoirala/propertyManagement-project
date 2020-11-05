@@ -7,7 +7,7 @@ import { Formik } from "formik";
 import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
 
 const TenantEntry = (props) => {
-console.log(props.selectedTenantone);
+  console.log(props.selectedTenantone);
   let initialvalue = {
     tenant_GovIdNo: props.selectedTenantone?.tenant_GovIdNo || "",
     tenant_DrivingLicenceNo:
@@ -44,7 +44,7 @@ console.log(props.selectedTenantone);
             initialValues={initialvalue}
             onSubmit={(values) => {
               props.selectedTenantone
-                ? props.tenentUpdate( values, props?.selectedTenantone?._id)
+                ? props.tenentUpdate(values, props?.selectedTenantone?._id)
                 : props.tenantData(values);
               console.log(values);
             }}
@@ -363,7 +363,7 @@ console.log(props.selectedTenantone);
                           values.tenant_EId_photo && (
                             <img
                               src={
-                                typeof( values?.tenant_EId_photo) === "string"
+                                typeof values?.tenant_EId_photo === "string"
                                   ? values.tenant_EId_photo
                                   : URL.createObjectURL(
                                       values?.tenant_EId_photo
@@ -388,10 +388,10 @@ console.log(props.selectedTenantone);
                             );
                           }}
                         />
-                   {touched.tenant_photo && values.tenant_photo && (
+                        {touched.tenant_photo && values.tenant_photo && (
                           <img
                             src={
-                             typeof ( values?.tenant_photo) === "string"
+                              typeof values?.tenant_photo === "string"
                                 ? values?.tenant_photo
                                 : URL.createObjectURL(values?.tenant_photo)
                             }
@@ -420,7 +420,7 @@ console.log(props.selectedTenantone);
                           values.tenant_TradeLicense_photo && (
                             <img
                               src={
-                                typeof( values?.tenant_TradeLicense_photo) ===
+                                typeof values?.tenant_TradeLicense_photo ===
                                 "string"
                                   ? values?.tenant_TradeLicense_photo
                                   : URL.createObjectURL(
@@ -450,7 +450,7 @@ console.log(props.selectedTenantone);
                           values.tenant_IdentityLetter_photo && (
                             <img
                               src={
-                                typeof (values?.tenant_IdentityLetter_photo) ===
+                                typeof values?.tenant_IdentityLetter_photo ===
                                 "string"
                                   ? values?.tenant_IdentityLetter_photo
                                   : URL.createObjectURL(
@@ -480,7 +480,7 @@ console.log(props.selectedTenantone);
                           values.tenant_SK_Properties_photo && (
                             <img
                               src={
-                                typeof (values?.tenant_SK_Properties_photo) ===
+                                typeof values?.tenant_SK_Properties_photo ===
                                 "string"
                                   ? values?.tenant_SK_Properties_photo
                                   : URL.createObjectURL(
@@ -510,7 +510,7 @@ console.log(props.selectedTenantone);
                           values.tenant_POA_photo && (
                             <img
                               src={
-                                typeof( values?.tenant_POA_photo) === "string"
+                                typeof values?.tenant_POA_photo === "string"
                                   ? values?.tenant_POA_photo
                                   : URL.createObjectURL(
                                       values?.tenant_POA_photo

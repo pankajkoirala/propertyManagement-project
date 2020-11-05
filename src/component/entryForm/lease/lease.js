@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./lease.css";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
+import RegexConponent from "../../../shared/regex_Component";
 
 const LeaseEntry = (props) => {
+  const [suggestion, setSuggestion] = useState([]);
+  const [name, setName] = useState("");
+
+  //autocomplete
+  let onTextChange = (e) => {
+    let suggestions = [];
+
+    const regex = new RegExp(`^${e}`, "gi");
+    e == ""
+      ? (suggestions = [])
+      : (suggestions = props?.redux_tenantData?.tenant?.filter((v) =>
+          regex.test(v.tenant_firstName || v.TenantId)
+        ));
+    console.log("hello", suggestions);
+    setSuggestion(suggestions);
+  };
+
   let initialvalue = {
     chequeList: props?.lease?.chequeList.map((arg) => arg._id) || [],
     late_feeType: props?.lease?.late_feeType || "",
@@ -91,22 +109,38 @@ const LeaseEntry = (props) => {
                 <div className="col-md-5">
                   <Label for="exampleSelect">Tenants(s)</Label>
                   <Input
-                    type="select"
+                    autoComplete=""
+                    type="text"
                     name="tenants"
                     id="exampleSelect"
                     placeholder="Select Status of Cheque"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
+                    value={name}
+                    onChange={(e) => {
+                      return (
+                        setName(e.target.value), onTextChange(e.target.value)
+                      );
+                    }}
                   >
                     <option value="">select one </option>
-                    {props?.redux_tenantData?.tenant?.map((arg, index) => {
-                      return (
-                        <option key={index} value={arg?._id}>
-                          {arg?.tenant_firstName}{" "}
-                        </option>
-                      );
-                    })}
                   </Input>
+                  {suggestion.length !== 0 ? (
+                    <ul>
+                      {suggestion.map((item, index) => (
+                        <option
+                          className="tanentOption"
+                          onClick={() => {
+                            values.tenants = item._id;
+                            setName(item.tenant_firstName);
+                            setSuggestion([]);
+                          }}
+                          value={item._id}
+                          key={index}
+                        >
+                          {item.TenantId} - {item.tenant_firstName}
+                        </option>
+                      ))}
+                    </ul>
+                  ) : null}
 
                   {touched.tenants && errors.tenants && (
                     <span
@@ -132,8 +166,7 @@ const LeaseEntry = (props) => {
                     {props?.unReserveProperty?.map((arg, index) => {
                       return (
                         <option key={index} value={arg._id}>
-                          {arg?.property_type}
-                          {arg?.referenceNO}
+                          {arg?.referenceNO}-{arg?.property_type}
                         </option>
                       );
                     })}
@@ -491,6 +524,7 @@ const LeaseEntry = (props) => {
                 )}
               </div>
             </FormGroup>
+            <RegexConponent unReserveProperty={props.unReserveProperty} />
           </Form>
         )}
       </Formik>

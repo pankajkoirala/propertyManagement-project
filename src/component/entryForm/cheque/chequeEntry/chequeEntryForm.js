@@ -7,6 +7,7 @@ import moment from "moment";
 
 const ChequeEntry = (props) => {
   let initialvalue = {
+    cheque_bankName: props?.Cheque?.cheque_bankName || "",
     cheque_issueDate:
       moment(props?.Cheque?.cheque_issueDate).format("YYYY-MM-DD") || "",
     cheque_entryDate:
@@ -132,6 +133,25 @@ const ChequeEntry = (props) => {
                           </span>
                         )}
                       </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName"> bank Name</Label>
+                        <Input
+                          type="text"
+                          value={values.cheque_bankName}
+                          name="cheque_bankName"
+                          placeholder="Bank name"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.cheque_bankName && errors.cheque_bankName && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.cheque_bankName}
+                          </span>
+                        )}
+                      </div>
 
                       <div className="mt-4 col-md-3">
                         <Label for="exampleSelect">Status</Label>
@@ -148,7 +168,6 @@ const ChequeEntry = (props) => {
                           <option value="Cleared">Cleared</option>
                           <option value="Pending">Pending</option>
                           <option value="Bounce">bounce</option>
-
                         </Input>
 
                         {touched.cheque_status && errors.cheque_status && (
@@ -174,7 +193,7 @@ const ChequeEntry = (props) => {
                           {props?.Redux_propertyData?.map((arg, index) => {
                             return (
                               <option key={index} value={arg._id}>
-                                {arg._id}
+                                {arg.referenceNO}-{arg.property_type}
                               </option>
                             );
                           })}

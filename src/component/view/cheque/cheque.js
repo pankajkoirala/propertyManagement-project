@@ -6,7 +6,7 @@ import moment from "moment";
 const ChequeView = (props) => {
   return (
     <div className="tenantview">
-      <h1 className="text-center">Employee list</h1>
+      <h1 className="text-center">Cheque list</h1>
 
       <Table striped bordered hover size="sm">
         <thead>
@@ -28,7 +28,7 @@ const ChequeView = (props) => {
                 <td>{index + 1}</td>
                 <td>{arg.lease_property.referenceNO}</td>
 
-                <td>cheque number</td>
+                <td>{arg.cheque_number}</td>
 
                 <td>{moment(arg.cheque_issueDate).format("YYYY-MM-DD")}</td>
                 <td>{arg.cheque_amount}</td>
@@ -37,16 +37,16 @@ const ChequeView = (props) => {
                   className={
                     arg.cheque_status === "Pending"
                       ? "bg-danger text-white font-weight-bold"
-                      :arg.cheque_status==='Cleared'?"bg-success text-white font-weight-bold":"bg-secondary text-white font-weight-bold"
+                      : arg.cheque_status === "Cleared"
+                      ? "bg-success text-white font-weight-bold"
+                      : "bg-secondary text-white font-weight-bold"
                   }
                 >
                   {arg.cheque_status}
                 </td>
 
-                <h1>{props.nameMatra_number}</h1>
                 <td>
                   <Link to={`/cheque/${arg._id}`}>
-              
                     <button className="success ml-3">View Detail</button>
                   </Link>
                 </td>

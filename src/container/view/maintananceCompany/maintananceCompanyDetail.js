@@ -54,8 +54,7 @@ const MaintananceCompanyDetailView = (props) => {
       });
   };
 
-  const maintananceCompanyDelete = ( ID) => {
-   
+  const maintananceCompanyDelete = (ID) => {
     Axios({
       method: "delete",
       url: base_URL + "/api/maintananceCompany/" + ID,

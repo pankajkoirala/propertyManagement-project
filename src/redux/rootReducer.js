@@ -8,8 +8,6 @@ import { managementCompanyReducer } from "./managementCompany_redux";
 import { brokerCompanyReducer } from "./broker_company";
 import { chequeReducer } from "./cheque_redux";
 
-
-
 export let rootReducer = combineReducers({
   property: propertyReducer,
   tenant: TenantReducer,
@@ -18,5 +16,5 @@ export let rootReducer = combineReducers({
   maintananceCompany: maintananceCompanyReducer,
   managementCompany: managementCompanyReducer,
   brokerCompany: brokerCompanyReducer,
-  cheque:chequeReducer
+  cheque: chequeReducer,
 });

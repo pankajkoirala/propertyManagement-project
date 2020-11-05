@@ -1,13 +1,13 @@
-import React from "react"
-import './broker_person.css'
+import React from "react";
+import "./broker_person.css";
 
-import {  FormGroup, Label, Input, Form } from "reactstrap";
+import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
-const BrokerPerson=(props)=>{
-    return(
-        <div>
+const BrokerPerson = (props) => {
+  return (
+    <div>
       <div>
         <div>
           <Formik
@@ -25,7 +25,7 @@ const BrokerPerson=(props)=>{
               broker_email: "",
             }}
             onSubmit={(values) => {
-              props.brokerData(values)
+              props.brokerData(values);
               console.log(values);
             }}
             //validationSchema={employeeEntryFormValidation}
@@ -50,8 +50,6 @@ const BrokerPerson=(props)=>{
                   </div>
                   <div>
                     {/* <div className="m-4"> */}
-
-                    
 
                     <div className="row">
                       <div className="mt-4 col-md-4">
@@ -85,14 +83,15 @@ const BrokerPerson=(props)=>{
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.broker_companyRegisterDate && errors.broker_companyRegisterDate && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.broker_companyRegisterDate}
-                          </span>
-                        )}
+                        {touched.broker_companyRegisterDate &&
+                          errors.broker_companyRegisterDate && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.broker_companyRegisterDate}
+                            </span>
+                          )}
                       </div>
                       <div className="mt-4 col-md-4">
                         <Label for="exampleName">Last Name</Label>
@@ -257,10 +256,9 @@ const BrokerPerson=(props)=>{
                           </span>
                         )}
                       </div>
-                     
                     </div>
                     <div className="row">
-                    <div className="col-md-6">
+                      <div className="col-md-6">
                         <Label for="exampleName">Special Area</Label>
                         <Input
                           type="number"
@@ -281,24 +279,29 @@ const BrokerPerson=(props)=>{
                       </div>
 
                       <div className="col-md-6 text-left mb-2 mt-4">
-                  <Label className="float-left">Upload Agrement Copy</Label>
-                  <Input
-                    type="file"
-                    name="broker_photo"
-                    accept="image/*"
-                    onChange={(event) => {
-                      setFieldValue("broker_photo", event.currentTarget.files[0]);
-                    }}
-                  />
+                        <Label className="float-left">
+                          Upload Agrement Copy
+                        </Label>
+                        <Input
+                          type="file"
+                          name="broker_photo"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "broker_photo",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
 
-                  {touched.broker_photo && values.broker_photo && (
-                    <img
-                      src={URL.createObjectURL(values.broker_photo)}
-                      alt="no picture"
-                      height="20"
-                    />
-                  )}
-                </div>
+                        {touched.broker_photo && values.broker_photo && (
+                          <img
+                            src={URL.createObjectURL(values.broker_photo)}
+                            alt="no picture"
+                            height="20"
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
                   <button
@@ -315,7 +318,7 @@ const BrokerPerson=(props)=>{
         </div>
       </div>
     </div>
-    )
-}
+  );
+};
 
-export default BrokerPerson
+export default BrokerPerson;

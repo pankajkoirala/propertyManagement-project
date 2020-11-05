@@ -1,6 +1,10 @@
-.leasediv{
+.leasediv {
   margin: 10px;
   padding: 10px;
-  background-color:lightgrey;
+  background-color: lightgrey;
   border-radius: 20px;
+}
+.tanentOption {
+  z-index: 9999;
+  background-color: brown;
 }

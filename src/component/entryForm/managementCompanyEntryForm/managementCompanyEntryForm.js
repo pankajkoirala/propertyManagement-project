@@ -7,22 +7,34 @@ import { Formik } from "formik";
 
 const ManagementCompanyComponent = (props) => {
   console.log(props);
-  let initialvalue={
-    managementCompany_street:props?.managementCompany?.managementCompany_street||"",
-    managementCompany_city:props?.managementCompany?.managementCompany_city||"",
-    managementCompany_provience:props?.managementCompany?.managementCompany_provience||"",
-    managementCompany_country:props?.managementCompany?.managementCompany_country||"",
-    managementCompany_ZipCode:props?.managementCompany?.managementCompany_ZipCode||"",
-    managementCompany_photo:props?.managementCompany?.managementCompany_photo||"",
-    managementCompany_phoneNo:props?.managementCompany?.managementCompany_phoneNo||"",
-    managementCompany_Registeration_Number:props?.managementCompany?.managementCompany_Registeration_Number||"",
-    managementCompany_name:props?.managementCompany?.managementCompany_name||"",
-    managementCompany_Registeration_Date:moment(props.managementCompany?.managementCompany_Registeration_Date).format(
-      "YYYY-MM-DD"
-    ) || "",
-    managementCompany_email:props?.managementCompany?.managementCompany_email||"",
-    managementCompany_MobileNumber:props?.managementCompany?.managementCompany_MobileNumber||"",
-  }
+  let initialvalue = {
+    managementCompany_street:
+      props?.managementCompany?.managementCompany_street || "",
+    managementCompany_city:
+      props?.managementCompany?.managementCompany_city || "",
+    managementCompany_provience:
+      props?.managementCompany?.managementCompany_provience || "",
+    managementCompany_country:
+      props?.managementCompany?.managementCompany_country || "",
+    managementCompany_ZipCode:
+      props?.managementCompany?.managementCompany_ZipCode || "",
+    managementCompany_photo:
+      props?.managementCompany?.managementCompany_photo || "",
+    managementCompany_phoneNo:
+      props?.managementCompany?.managementCompany_phoneNo || "",
+    managementCompany_Registeration_Number:
+      props?.managementCompany?.managementCompany_Registeration_Number || "",
+    managementCompany_name:
+      props?.managementCompany?.managementCompany_name || "",
+    managementCompany_Registeration_Date:
+      moment(
+        props.managementCompany?.managementCompany_Registeration_Date
+      ).format("YYYY-MM-DD") || "",
+    managementCompany_email:
+      props?.managementCompany?.managementCompany_email || "",
+    managementCompany_MobileNumber:
+      props?.managementCompany?.managementCompany_MobileNumber || "",
+  };
   return (
     <div>
       <div>
@@ -30,8 +42,12 @@ const ManagementCompanyComponent = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
-              props.managementCompany?props.managementCompanyUpdate(values,props?.managementCompany._id):
-              props.ManagementCompanyData(values)
+              props.managementCompany
+                ? props.managementCompanyUpdate(
+                    values,
+                    props?.managementCompany._id
+                  )
+                : props.ManagementCompanyData(values);
               console.log(values);
             }}
             //validationSchema={employeeEntryFormValidation}
@@ -56,8 +72,6 @@ const ManagementCompanyComponent = (props) => {
                   </div>
                   <div>
                     {/* <div className="m-4"> */}
-
-
 
                     <div className="row">
                       <div className="mt-4 col-md-4">
@@ -167,9 +181,7 @@ const ManagementCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">
-                         provience
-                        </Label>
+                        <Label for="exampleName">provience</Label>
                         <Input
                           type="text"
                           value={values.managementCompany_provience}
@@ -191,9 +203,7 @@ const ManagementCompanyComponent = (props) => {
                     </div>
                     <div className="row">
                       <div className="col-md-6">
-                        <Label for="exampleSelect">
-                          ZipCode
-                        </Label>
+                        <Label for="exampleSelect">ZipCode</Label>
                         <Input
                           type="number"
                           name="managementCompany_ZipCode"
@@ -213,9 +223,7 @@ const ManagementCompanyComponent = (props) => {
                           )}
                       </div>
                       <div className="col-md-6">
-                        <Label for="exampleName">
-                          country
-                        </Label>
+                        <Label for="exampleName">country</Label>
                         <Input
                           type="text"
                           value={values.managementCompany_country}
@@ -301,24 +309,35 @@ const ManagementCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-6 text-left mb-2 mt-4">
-                  <Label className="float-left">Company Photo</Label>
-                  <Input
-                    type="file"
-                    name="managementCompany_photo"
-                    accept="image/*"
-                    onChange={(event) => {
-                      setFieldValue("managementCompany_photo", event.currentTarget.files[0]);
-                    }}
-                  />
+                        <Label className="float-left">Company Photo</Label>
+                        <Input
+                          type="file"
+                          name="managementCompany_photo"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "managementCompany_photo",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
 
-                  {touched.managementCompany_photo && values.managementCompany_photo && (
-                    <img
-                      src={typeof(values.managementCompany_photo)==='string'?values.managementCompany_photo: URL.createObjectURL(values.managementCompany_photo)}
-                      alt="no picture"
-                      height="20"
-                    />
-                  )}
-                </div>
+                        {touched.managementCompany_photo &&
+                          values.managementCompany_photo && (
+                            <img
+                              src={
+                                typeof values.managementCompany_photo ===
+                                "string"
+                                  ? values.managementCompany_photo
+                                  : URL.createObjectURL(
+                                      values.managementCompany_photo
+                                    )
+                              }
+                              alt="no picture"
+                              height="20"
+                            />
+                          )}
+                      </div>
                     </div>
                   </div>
                   <button

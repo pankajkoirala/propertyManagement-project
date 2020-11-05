@@ -1,23 +1,18 @@
-import React,{useEffect,useState} from "react"
-import LeaseDetailViewComp from "../../../component/view/lease/leaseDetailView"
-import Axios from "axios"
+import React, { useEffect, useState } from "react";
+import LeaseDetailViewComp from "../../../component/view/lease/leaseDetailView";
+import Axios from "axios";
 import { base_URL } from "../../../const/base_URL";
-import {useParams} from "react-router-dom"
-import {connect} from 'react-redux'
+import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
 
+let LeaseDetailView = (props) => {
+  const { id } = useParams();
 
+  let selecteOneLease = props?.Redux_LeaseData?.lease?.filter(
+    (arg) => arg._id === id
+  );
 
-
-
-let LeaseDetailView=(props)=>{
-    
-    const { id } = useParams();
-    
-    let selecteOneLease=props?.Redux_LeaseData?.lease?.filter((arg)=>arg._id===id)
-
-
-
-const LeaseUpdate=(data,ID)=>{
+  const LeaseUpdate = (data, ID) => {
     const formData = new FormData();
     formData.append("chequeList", data.chequeList);
     formData.append("lease_enterDate", data.lease_enterDate);
@@ -36,31 +31,44 @@ const LeaseUpdate=(data,ID)=>{
     formData.append("property", data.property);
 
     formData.append("photo", data.photo);
-     
-    Axios({
-      method: 'put',
-      url: base_URL+"/api/lease/"+ID,
-      data: formData,
-      config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
-      }).then((res)=>{
-  console.log(res);
-    }).catch((err)=>{
-      console.log(err);
-    })
-  }
 
-  const LeaseDelete=(ID)=>{
-  
     Axios({
-      method: 'delete',
-      url: base_URL+"/api/lease/"+ID,
-      config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
-      }).then((res)=>{
-  console.log(res);
-    }).catch((err)=>{
-      console.log(err);
+      method: "put",
+      url: base_URL + "/api/lease/" + ID,
+      data: formData,
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
     })
-  }
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const LeaseDelete = (ID) => {
+    Axios({
+      method: "delete",
+      url: base_URL + "/api/lease/" + ID,
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   //property remove which are in lease from all property
   let reserveProperty = [];
@@ -72,7 +80,7 @@ const LeaseUpdate=(data,ID)=>{
   unReserveProperty = props.Redux_propertyData.property.filter(
     (arg) => !reserveProperty.includes(arg._id)
   );
-  
+
   //cheque remove which are in checklist from all cheque
   let chequeUsed = [];
   let UnchequeUsed = [];
@@ -86,31 +94,28 @@ const LeaseUpdate=(data,ID)=>{
     (arg) => !chequeUsed.includes(arg._id)
   );
 
-
-
-    return(
-<div><LeaseDetailViewComp
-selecteOneLease={selecteOneLease}
-LeaseDelete={LeaseDelete}
-LeaseUpdate={LeaseUpdate}
-//try
-unReserveProperty={unReserveProperty}
-redux_tenantData={props.redux_tenantData}
-UnchequeUsed={UnchequeUsed}
-/></div>
-    )
-}
+  return (
+    <div>
+      <LeaseDetailViewComp
+        selecteOneLease={selecteOneLease}
+        LeaseDelete={LeaseDelete}
+        LeaseUpdate={LeaseUpdate}
+        //try
+        unReserveProperty={unReserveProperty}
+        redux_tenantData={props.redux_tenantData}
+        UnchequeUsed={UnchequeUsed}
+      />
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
   Redux_LeaseData: state.lease,
   Redux_propertyData: state.property,
   redux_tenantData: state.tenant,
   redux_ChequeData: state.cheque,
- });
- 
- const mapDispatchToProps = (dispatch) => ({
- });
- 
- export default connect(mapStateToProps, mapDispatchToProps)(LeaseDetailView);
+});
 
-                
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LeaseDetailView);

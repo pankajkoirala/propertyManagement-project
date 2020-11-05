@@ -13,7 +13,7 @@ let FetchData = (props) => {
     AllManagementCompany();
     propertyData();
     TenantData();
-    ChequeData()
+    ChequeData();
   }, []);
   let BrokerCompanyData = () => {
     Axios({
@@ -161,7 +161,6 @@ let FetchData = (props) => {
         console.log(err);
       });
   };
- 
 
   return (
     <div>
@@ -169,9 +168,7 @@ let FetchData = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
- 
-});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   redux_Add_BrokerCompany: (arg) =>
@@ -187,7 +184,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: "ADD_ALL_PROPRRTY", payload: arg }),
   redux_Add_Tenant: (arg) => dispatch({ type: "ADD_ALL_TENANT", payload: arg }),
   redux_Add_Cheque: (arg) => dispatch({ type: "ADD_ALL_CHEQUE", payload: arg }),
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FetchData);
