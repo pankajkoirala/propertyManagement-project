@@ -298,12 +298,11 @@ const TenantEntry = (props) => {
 
                         {touched.employee_photo && values.employee_photo && (
                           <img
-                            src={typeof (values?.employee_photo) ===
-                              "string"
+                            src={
+                              typeof values?.employee_photo === "string"
                                 ? values?.employee_photo
-                                : URL.createObjectURL(
-                                    values?.employee_photo
-                                  )}
+                                : URL.createObjectURL(values?.employee_photo)
+                            }
                             alt="no picture"
                             height="20"
                           />

@@ -1,12 +1,12 @@
-import React from "react"
-import "./homepage.css"
+import React from "react";
+import "./homepage.css";
 //import {Card, Button} from "reactstrap";
-import Navbar from "../../shared/navbar"
-import INCOME from "../../assets/income.PNG"
-import Maintainance from "../../assets/maintinance.PNG"
-import Occupancy from "../../assets/1.PNG"
-import {connect} from 'react-redux'
-import { AddFive } from "../../redux_pract/sample"
+import Navbar from "../../shared/navbar";
+import INCOME from "../../assets/income.PNG";
+import Maintainance from "../../assets/maintinance.PNG";
+import Occupancy from "../../assets/1.PNG";
+import { connect } from "react-redux";
+import { AddFive } from "../../redux_pract/sample";
 //import{setLocalStorage} from "../../const/tokenStorage"
 
 const Homepage = (props) => {
@@ -23,16 +23,18 @@ const Homepage = (props) => {
       </div>
 
       <div className="col-9 bodydisplay">
-          <div className="row">
-            <div className="col-9 bodydisplay"> <h1>DashBoard</h1>
+        <div className="row">
+          <div className="col-9 bodydisplay">
+            {" "}
+            <h1>DashBoard</h1>
             <div className="row m-3">
               <div className="col-4">
-                    <img src={INCOME} alt="Income" />
+                <img src={INCOME} alt="Income" />
               </div>
-              <div className="col-4"> 
-               <img src={Maintainance} alt="Income" /> 
+              <div className="col-4">
+                <img src={Maintainance} alt="Income" />
 
-              {/* <Card style={{ width: '18rem' }}>
+                {/* <Card style={{ width: '18rem' }}>
                         <Card.Img variant="left" src="holder.js/100px180" />
                         <Card.Body>
                           <Card.Title>Maintainance</Card.Title>
@@ -44,22 +46,30 @@ const Homepage = (props) => {
                         </Card.Body>
                       </Card> */}
               </div>
-              <div className="col-4"><img src={INCOME} alt="Income" /></div>
+              <div className="col-4">
+                <img src={INCOME} alt="Income" />
+              </div>
             </div>
             <div className="row m-3">
-              <div className="col-4"><img src={Maintainance} alt="Income" /></div>
-              <div className="col-4"><img src={INCOME} alt="Income" /></div>
-              <div className="col-4"><img src={Maintainance} alt="Income" /></div>
+              <div className="col-4">
+                <img src={Maintainance} alt="Income" />
+              </div>
+              <div className="col-4">
+                <img src={INCOME} alt="Income" />
+              </div>
+              <div className="col-4">
+                <img src={Maintainance} alt="Income" />
+              </div>
             </div>
             <div className="row m-2">
-              <div className="col-10"><img src={Occupancy} alt="Income" /></div>
+              <div className="col-10">
+                <img src={Occupancy} alt="Income" />
+              </div>
             </div>
-            
           </div>
         </div>
-      
-    </div>
-    <button onClick={props.addone}>addone</button>
+      </div>
+      <button onClick={props.addone}>addone</button>
     </div>
   );
 };
@@ -70,10 +80,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addone: () => dispatch({ type: "ADDFIVE", payload: 5 }),
   addfie: () => dispatch(AddFive),
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
 
-
-{/* <div className="logoutCss"><button className="m-5"onClick={()=>logout()}>Logout</button> </div> */}
+{
+  /* <div className="logoutCss"><button className="m-5"onClick={()=>logout()}>Logout</button> </div> */
+}

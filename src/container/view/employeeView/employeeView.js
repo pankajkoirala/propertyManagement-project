@@ -1,36 +1,40 @@
-import React,{useState,useEffect} from "react"
+import React, { useState, useEffect } from "react";
 
-import EmployeeViews from "../../../component/view/employeeView/employeeView.js"
-import Axios from "axios"
-import {base_URL} from "../../../const/base_URL"
-import { propTypes } from "react-bootstrap/esm/Image"
-import {connect} from 'react-redux'
+import EmployeeViews from "../../../component/view/employeeView/employeeView.js";
+import Axios from "axios";
+import { base_URL } from "../../../const/base_URL";
+import { propTypes } from "react-bootstrap/esm/Image";
+import { connect } from "react-redux";
 
+const EmployeeView = (props) => {
+  const [employee, setEmployee] = useState([]);
+  useEffect(() => {
+    EmployeeData();
+  }, []);
 
+  let EmployeeData = () => {
+    Axios({
+      method: "get",
+      url: base_URL + "/api/employee",
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        setEmployee(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  return (
+    <div>
+      <EmployeeViews allEmployee={employee} />
+    </div>
+  );
+};
 
-const EmployeeView=(props)=>{
-    const [employee,setEmployee]=useState([])
-    useEffect(()=>{
-        EmployeeData()
-    },[])
-
-    let EmployeeData=()=>{
-        Axios({
-            method: 'get',
-            url: base_URL+"/api/employee",
-            config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
-            }).then((res)=>{
-                setEmployee(res.data);
-          }).catch((err)=>{
-            console.log(err);
-          })
-    
-    }
-    return(
-        <div><EmployeeViews
-        allEmployee={employee}
-        /></div>
-    )
-}
-
-  export default EmployeeView;
+export default EmployeeView;

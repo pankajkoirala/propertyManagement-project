@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+//regex
+
 import LoginComponent from "../container/login/login ";
 import PrivateRouter from "./privateRouter";
 import Homepage from "../container/homepage/homepage";
@@ -15,7 +17,6 @@ import Lease from "../container/entryForm/leaseEntryForm/leaseEntryform";
 import TanentDetailView from "../container/view/tenantView/tanentDetailView";
 import EmployeeDetailView from "../container/view/employeeView/emoloyeeViewDetail";
 import LeaseDetailView from "../container/view/lease/leaseDetailView";
-
 import OwnerEntry from "../container/entryForm/ownerEntry/ownerEnty.js";
 import BankDetail from "../container/entryForm/bankAccountEntryForm/bankAccountContainer.js";
 import BrokerDetailEntryForm from "../container/entryForm/brokerEntryForm/brokerDetailContainer.js";
@@ -25,22 +26,17 @@ import InvoiceDetail from "../container/entryForm/invoiceEntryContainer/invoice.
 import MaintainanceCompanyEntryForm from "../container/entryForm/maintainanceCompanyEntryForm/maintainanceCompanyContainer.js";
 import ManagementCompany from "../container/entryForm/managementCompanyEntryForm/managementCompanyContainer.js";
 import AllManagementCompany from "../container/view/managementCompany/managementCompany";
-
 import ChequeBounce from "../container/entryForm/cheque/chequeBounce/chequeBounceEntry.js";
 import ChequeHold from "../container/entryForm/cheque/chequeHold/chequeHoldEntry.js";
 import LeaseProperty from "../container/view/lease/leaseproperty";
-
 import AllProperty from "../container/view/propertyView/allProperty.js";
 import AllBrokerCompany from "../container/view/brokerCompany/brokerCompany";
-import ChequeView from './../container/view/cheque/chequeView' 
-
+import ChequeView from "./../container/view/cheque/chequeView";
 import AllMaintainanceCompany from "../container/view/maintananceCompany/maintananceCompany";
 import MaintainanceCompanyDetail from "../container/view/maintananceCompany/maintananceCompanyDetail";
 import ManagementCompanyDetail from "../container/view/managementCompany/managementCompanyDetail";
 import BrokerCompanyDetail from "../container/view/brokerCompany/brokerDetailView";
 import ChequeDetailView from "../container/view/cheque/ChequeViewDetail";
-
-
 
 const RouterPage = () => {
   return (
@@ -60,7 +56,6 @@ const RouterPage = () => {
           <PrivateRouter exact path="/tenantview" component={TenantView} />
           <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
           <PrivateRouter exact path="/chequeView" component={ChequeView} />
-
 
           <PrivateRouter exact path="/dashboard" component={Dashboard} />
           <PrivateRouter exact path="/lease" component={Lease} />
@@ -151,7 +146,7 @@ const RouterPage = () => {
             path="/brokerCompany/:id"
             component={BrokerCompanyDetail}
           />
-             <PrivateRouter
+          <PrivateRouter
             exact
             path="/cheque/:id"
             component={ChequeDetailView}

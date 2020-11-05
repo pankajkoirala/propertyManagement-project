@@ -1,14 +1,12 @@
-import React from "react"
-import BrokerPersonComponent from "../../../component/entryForm/brokerPersonEntryForm/broker_person.js"
+import React from "react";
+import BrokerPersonComponent from "../../../component/entryForm/brokerPersonEntryForm/broker_person.js";
 
+const BrokerPersonContainer = () => {
+  return (
+    <div>
+      <BrokerPersonComponent />
+    </div>
+  );
+};
 
-
-const BrokerPersonContainer=()=>{
-    return(
-        <div>
-             <BrokerPersonComponent/>   
-        </div>
-    )
-}
-
-export default BrokerPersonContainer
+export default BrokerPersonContainer;

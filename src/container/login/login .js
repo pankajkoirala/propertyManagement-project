@@ -33,8 +33,7 @@ const LoginContainer = (props) => {
   };
   return (
     <div>
-      <LoginComponent login={login} 
-      response={response}/>
+      <LoginComponent login={login} response={response} />
     </div>
   );
 };

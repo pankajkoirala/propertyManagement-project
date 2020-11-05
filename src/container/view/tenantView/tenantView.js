@@ -1,39 +1,40 @@
-import React,{useState,useEffect} from "react"
-import TenantViews from "../../../component/view/tenantView/tenantView.js"
+import React, { useState, useEffect } from "react";
+import TenantViews from "../../../component/view/tenantView/tenantView.js";
 import { base_URL } from "../../../const/base_URL";
-import Axios from "axios"
-import {connect} from 'react-redux'
+import Axios from "axios";
+import { connect } from "react-redux";
 
+const TenantView = (props) => {
+  const [tenant, setTenant] = useState([]);
 
+  useEffect(() => {
+    TenantData();
+  }, []);
 
-const TenantView=(props)=>{
-    const [tenant,setTenant]=useState([])
+  let TenantData = () => {
+    Axios({
+      method: "get",
+      url: base_URL + "/api/tenant",
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        setTenant(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    useEffect(()=>{
-        TenantData()
-    },[])
+  return (
+    <div>
+      <TenantViews tenant={tenant} />
+    </div>
+  );
+};
 
-    let TenantData=()=>{
-        Axios({
-            method: 'get',
-            url: base_URL+"/api/tenant",
-            config: { headers: {'Content-Type': 'application/x-www-form-urlencoded',"Access-Control-Allow-Origin": "*", }}
-            }).then((res)=>{
-                setTenant(res.data);
-          }).catch((err)=>{
-            console.log(err);
-          })
-    
-    }
-    
-
-    return(
-        <div><TenantViews
-        tenant={tenant}
-        /></div>
-    )
-}
-
-
-  
-  export default TenantView;
+export default TenantView;

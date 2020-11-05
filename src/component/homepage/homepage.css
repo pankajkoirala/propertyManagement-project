@@ -1,16 +1,15 @@
-.bodydisplay{
-  background-color:lightsteelblue;
-  height:auto;
+.bodydisplay {
+  background-color: lightsteelblue;
+  height: auto;
   width: 100%;
   margin: 10px auto;
   padding: 5px;
   position: sticky;
   height: 100%;
   overflow: auto;
-  
 }
 
-.navBar{
+.navBar {
   margin: 10px;
   margin-left: 35px;
   width: 100%;
@@ -18,4 +17,3 @@
   background-color: thistle;
   position: relative;
 }
-

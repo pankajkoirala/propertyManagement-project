@@ -46,7 +46,6 @@ const PropertyEntry = (props) => {
     Parking_1: props?.property?.Parking_1 || "not available",
     Parking_2: props?.property?.Parking_2 || "not available",
     Parking_3: props?.property?.Parking_3 || "not available",
-
   };
   return (
     <div>
@@ -126,7 +125,6 @@ const PropertyEntry = (props) => {
                           </span>
                         )}
                       </div>
-                    
 
                       <div className="col-sm-4 my-1">
                         <Label for="exampleName">Country</Label>
@@ -360,7 +358,7 @@ const PropertyEntry = (props) => {
                       <thead>
                         <tr>
                           <th>SN</th>
-                          
+
                           <th>topic</th>
                           <th>Area</th>
                           <th>unit</th>
@@ -391,7 +389,6 @@ const PropertyEntry = (props) => {
                             )}
                           </td>
                           <td>
-                            
                             <Input
                               type="number"
                               value={values.NoOfbedroom}
@@ -432,10 +429,8 @@ const PropertyEntry = (props) => {
 
                         <tr>
                           <td>2</td>
-                          <td>Hall
-                         
-                             </td>
-                             
+                          <td>Hall</td>
+
                           <td>
                             <Input
                               type="number"
@@ -455,7 +450,6 @@ const PropertyEntry = (props) => {
                             )}
                           </td>
                           <td>
-                            
                             <Input
                               type="number"
                               value={values.NoOfHall}
@@ -475,7 +469,6 @@ const PropertyEntry = (props) => {
                           </td>
 
                           <td>
-                            
                             <Input
                               type="text"
                               value={values.hallRemark}
@@ -517,7 +510,6 @@ const PropertyEntry = (props) => {
                             )}
                           </td>
                           <td>
-                            
                             <Input
                               type="number"
                               value={values.NoOfKitchen}
@@ -537,7 +529,6 @@ const PropertyEntry = (props) => {
                           </td>
 
                           <td>
-                            
                             <Input
                               type="text"
                               value={values.kitchenRemark}
@@ -587,19 +578,17 @@ const PropertyEntry = (props) => {
                               onChange={handleChange}
                               onBlur={handleBlur}
                             />
-                            {touched?.NoOfBathroom &&
-                              errors?.NoOfBathroom && (
-                                <span
-                                  className="text-danger col-md-12 text-left mb-2"
-                                  style={{ fontSize: 12 }}
-                                >
-                                  {errors?.NoOfBathroom}
-                                </span>
-                              )}
+                            {touched?.NoOfBathroom && errors?.NoOfBathroom && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors?.NoOfBathroom}
+                              </span>
+                            )}
                           </td>
 
                           <td>
-                            
                             <Input
                               type="text"
                               value={values.bathroomRemark}
@@ -660,7 +649,6 @@ const PropertyEntry = (props) => {
                           </td>
 
                           <td>
-                            
                             <Input
                               type="text"
                               value={values.BalconyRemark}
@@ -710,15 +698,14 @@ const PropertyEntry = (props) => {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                               />
-                              {touched?.Parking_2 &&
-                                errors?.Parking_2 && (
-                                  <span
-                                    className="text-danger col-md-12 text-left mb-2"
-                                    style={{ fontSize: 12 }}
-                                  >
-                                    {errors?.Parking_2}
-                                  </span>
-                                )}
+                              {touched?.Parking_2 && errors?.Parking_2 && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors?.Parking_2}
+                                </span>
+                              )}
                             </td>
 
                             <td>
@@ -740,8 +727,8 @@ const PropertyEntry = (props) => {
                               )}
                             </td>
                           </tr>
-                        ) : (''
-                          
+                        ) : (
+                          ""
                         )}
                       </tbody>
                     </Table>
@@ -769,7 +756,6 @@ const PropertyEntry = (props) => {
                           />
                           Parking
                         </Label>
-                        
                       </FormGroup>
                       <FormGroup check>
                         <Label check>

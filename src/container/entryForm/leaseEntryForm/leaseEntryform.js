@@ -70,7 +70,6 @@ const LeaseEntry = (props) => {
     (arg) => !chequeUsed.includes(arg._id)
   );
 
-
   return (
     <div>
       <LeaseEntryFormComponent

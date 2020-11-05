@@ -51,7 +51,6 @@ const TanentDetailViewCont = (props) => {
   };
 
   const employeeDelete = (ID) => {
- 
     Axios({
       method: "delete",
       url: base_URL + "/api/employee/" + ID,

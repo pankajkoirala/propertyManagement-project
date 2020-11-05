@@ -24,8 +24,7 @@ const ChequeDetailViewCont = (props) => {
     formData.append("lease_property", data.lease_property);
     formData.append("cheque_number", data.cheque_number);
     formData.append("cheque_entryDate", data.cheque_entryDate);
-
-
+    formData.append("cheque_bankName", data.cheque_bankName);
 
     Axios({
       method: "put",
@@ -68,6 +67,7 @@ const ChequeDetailViewCont = (props) => {
   return (
     <div>
       <ChequeViewComp
+        Redux_propertyData={props.Redux_propertyData.property}
         selectedCheque={selectedCheque}
         ChequeUpdate={ChequeUpdate}
         ChequeDelete={ChequeDelete}
@@ -78,12 +78,10 @@ const ChequeDetailViewCont = (props) => {
 
 const mapStateToProps = (state) => ({
   redux_ChequeData: state.cheque,
+  Redux_propertyData: state.property,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  redux_Add_Tenant: (arg) =>
-    dispatch({ type: "ADD_ALL_BROKER_COMPANY", payload: arg }),
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(
   mapStateToProps,
