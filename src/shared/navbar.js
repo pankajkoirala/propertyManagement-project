@@ -2,8 +2,15 @@ import React from "react";
 import { Accordion, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import { setLocalStorage } from "../const/tokenStorage";
 
 const NavbarPage = () => {
+  let logout = () => {
+    localStorage.clear();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
   return (
     <div>
       <div className="text-center">
@@ -191,7 +198,9 @@ const NavbarPage = () => {
         <Card>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="4">
-              <b>Logout </b>
+              <b className="m-5" onClick={() => logout()}>
+                Logout
+              </b>
             </Accordion.Toggle>
           </Card.Header>
         </Card>

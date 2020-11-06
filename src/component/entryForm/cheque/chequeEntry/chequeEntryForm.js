@@ -4,6 +4,7 @@ import "./chequeEntryForm.css";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
+import { notification } from "../../../../shared/notification";
 
 const ChequeEntry = (props) => {
   let initialvalue = {
@@ -257,13 +258,22 @@ const ChequeEntry = (props) => {
                           />
                         )}
                       </div>
-
                       <button
                         className="Success col-4 mt-2"
                         type="submit"
                         onClick={handleSubmit}
                       >
                         Add Cheque
+                      </button>
+                      ;
+                      <button
+                        type="button"
+                        onClick={() => {
+                          notification("Created successfully", "SUCCESS");
+                          console.log("sulochana");
+                        }}
+                      >
+                        test
                       </button>
                     </div>
                   </div>

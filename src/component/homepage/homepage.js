@@ -7,15 +7,8 @@ import Maintainance from "../../assets/maintinance.PNG";
 import Occupancy from "../../assets/1.PNG";
 import { connect } from "react-redux";
 import { AddFive } from "../../redux_pract/sample";
-//import{setLocalStorage} from "../../const/tokenStorage"
 
 const Homepage = (props) => {
-  // // let logout=()=>{
-  // //     localStorage.clear()
-  // //     setTimeout(() => {
-  // //         window.location.reload()
-  // //     }, 1000);
-  // }
   return (
     <div className="row">
       <div className="col-2 navBar">
@@ -77,7 +70,3 @@ const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
-
-{
-  /* <div className="logoutCss"><button className="m-5"onClick={()=>logout()}>Logout</button> </div> */
-}
