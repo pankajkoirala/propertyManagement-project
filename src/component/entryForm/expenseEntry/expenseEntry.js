@@ -1,19 +1,42 @@
-import React from "react";
-
-import { FormGroup, Label, Input, Form } from "reactstrap";
+import React, { useState } from "react";
+import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 
-let expenseList = [];
-
 const ExpenseEntry = (props) => {
-  console.log(props);
+  const [expenseHeading, setExpenseHeading] = useState("");
+  const [expenseAmount, setExpenseAmount] = useState("");
+  const [deleteData, setdeleteData] = useState("");
+  const [expenselist, setexpenselist] = useState([]);
+
+  let filterExpenseList = expenselist.filter(
+    (arg) => arg.expenseHead !== deleteData
+  );
+  let timeout = () => {
+    setTimeout(() => {
+      setdeleteData("");
+    }, 5000);
+  };
+
+  let ExpenseData = (data) => {
+    expenselist.push(data);
+    setExpenseAmount("");
+    setExpenseHeading("");
+  };
+  let deleteItem = (id) => {
+    setdeleteData(id);
+  };
+
   let initialvalue = {
-    expense_list: expenseList,
+    expense_list: expenselist,
     expense_EntryDate: "",
     Maintanance_ticketID: "",
     Expense_Remark: "",
   };
+
+  console.log("pankajkoirala", filterExpenseList);
+  console.log("deleteData", deleteData);
+
   return (
     <div>
       <div className="PropertyFormEntry">
@@ -21,7 +44,6 @@ const ExpenseEntry = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
-              props.MaintananceTicketData(values);
               console.log(values);
             }}
             // validationSchema={TenantEntryFormValidation}
@@ -89,46 +111,6 @@ const ExpenseEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">expense heading</Label>
-                        <Input
-                          type="text"
-                          value={values.MaintanancePropertyID}
-                          name="MaintanancePropertyID"
-                          placeholder="Cheque Amount"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.MaintanancePropertyID &&
-                          errors.MaintanancePropertyID && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.MaintanancePropertyID}
-                            </span>
-                          )}
-                      </div>
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">amount</Label>
-                        <Input
-                          type="number"
-                          value={values.MaintananceCompanyId}
-                          name="MaintananceCompanyId"
-                          placeholder="Cheque Amount"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.MaintananceCompanyId &&
-                          errors.MaintananceCompanyId && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.MaintananceCompanyId}
-                            </span>
-                          )}
-                      </div>
-                      <div className="mt-4 col-md-3">
                         <Label for="exampleName">remark</Label>
                         <Input
                           type="text"
@@ -147,6 +129,54 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">expense heading</Label>
+                        <Input
+                          type="text"
+                          name="expense_Heading"
+                          value={expenseHeading}
+                          placeholder="Cheque Amount"
+                          onChange={(e) => setExpenseHeading(e.target.value)}
+                        />
+                        {touched.expense_Heading && errors.expense_Heading && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.expense_Heading}
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">amount</Label>
+                        <Input
+                          type="number"
+                          name="expense_amount"
+                          placeholder="Cheque Amount"
+                          value={expenseAmount}
+                          onChange={(e) => setExpenseAmount(e.target.value)}
+                        />
+                        {touched.expense_amount && errors.expense_amount && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.expense_amount}
+                          </span>
+                        )}
+                      </div>
+                      <button
+                        type="button"
+                        //disabled={!expenseHeading || !expenseAmount}
+                        onClick={() =>
+                          ExpenseData({
+                            expenseHead: expenseHeading,
+                            expenseAmount: expenseAmount,
+                          })
+                        }
+                      >
+                        add
+                      </button>
                     </div>
 
                     <div className="row">
@@ -157,6 +187,40 @@ const ExpenseEntry = (props) => {
                       >
                         submit
                       </button>
+
+                      <Table striped bordered hover size="sm">
+                        <thead>
+                          <tr>
+                            <th>SN</th>
+                            <th> expense heade</th>
+                            <th>expense amount</th>
+                            <th>delete</th>
+                          </tr>
+                        </thead>
+                        {filterExpenseList.map((arg, index) => {
+                          return (
+                            <tbody key={index}>
+                              <tr>
+                                <td>{index + 1}</td>
+
+                                <td>{arg.expenseHead}</td>
+                                <td>{arg.expenseAmount}</td>
+                                <td>
+                                  <button
+                                    type="button"
+                                    onClick={
+                                      (() => deleteItem(arg.expenseHead),
+                                      timeout())
+                                    }
+                                  >
+                                    delete
+                                  </button>{" "}
+                                </td>
+                              </tr>
+                            </tbody>
+                          );
+                        })}
+                      </Table>
                     </div>
                   </div>
                 </FormGroup>

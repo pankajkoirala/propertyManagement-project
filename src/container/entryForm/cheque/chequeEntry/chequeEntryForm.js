@@ -3,6 +3,7 @@ import ChequeEntryComponent from "../../../../component/entryForm/cheque/chequeE
 import { connect } from "react-redux";
 import { base_URL } from "../../../../const/base_URL";
 import Axios from "axios";
+import { notification } from "../../../../shared/notification.js";
 
 const ChequeEntryContainer = (props) => {
   const ChequeeData = (data) => {
@@ -30,10 +31,10 @@ const ChequeEntryContainer = (props) => {
       },
     })
       .then((res) => {
-        console.log(res);
+        notification("Created successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
   return (

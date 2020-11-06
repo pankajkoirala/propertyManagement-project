@@ -3,6 +3,7 @@ import FetchDataPage from "./router/fetch_AllData";
 //import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 //redux
+import { ToastContainer } from "react-toastify";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
+        <ToastContainer />
         <div className="">
           <FetchDataPage />
         </div>
