@@ -4,6 +4,7 @@ import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
+import { notification } from "../../../shared/notification.js";
 
 const BrokerDetailViewCont = (props) => {
   const { id } = useParams();
@@ -46,10 +47,10 @@ const BrokerDetailViewCont = (props) => {
       },
     })
       .then((res) => {
-        console.log(res);
+        notification("Updated successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
 
@@ -65,10 +66,10 @@ const BrokerDetailViewCont = (props) => {
       },
     })
       .then((res) => {
-        console.log(res);
+        notification("successfully Deleted", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
 

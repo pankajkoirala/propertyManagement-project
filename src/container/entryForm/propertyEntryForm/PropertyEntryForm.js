@@ -2,6 +2,7 @@ import React from "react";
 import PropertyEntryFormComponent from "../../../component/entryForm/PropertyEntryForm/PropertyEntryForm";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
+import { notification } from "../../../shared/notification.js";
 
 const PropertyEntry = () => {
   const propertySend = (data) => {
@@ -57,10 +58,10 @@ const PropertyEntry = () => {
       },
     })
       .then((res) => {
-        console.log(res);
+        notification("Created successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
 

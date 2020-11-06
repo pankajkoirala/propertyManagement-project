@@ -3,6 +3,7 @@ import LeaseEntryFormComponent from "../../../component/entryForm/lease/lease";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { connect } from "react-redux";
+import { notification } from "../../../shared/notification.js";
 
 const LeaseEntry = (props) => {
   //console.log('Redux_propertyData',props.Redux_propertyData.property);
@@ -40,10 +41,10 @@ const LeaseEntry = (props) => {
       },
     })
       .then((res) => {
-        console.log(res);
+        notification("Created successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
   //property remove which are in lease from all property

@@ -2,6 +2,7 @@ import React from "react";
 import BrokerDetailComponent from "../../../component/entryForm/brokerEntryForm/brokerCompanyEntryForm";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
+import { notification } from "../../../shared/notification.js";
 
 const BrokerDetailContainer = () => {
   const brokerData = (data) => {
@@ -36,10 +37,10 @@ const BrokerDetailContainer = () => {
       },
     })
       .then((res) => {
-        console.log(res);
+        notification("Created successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
   return (

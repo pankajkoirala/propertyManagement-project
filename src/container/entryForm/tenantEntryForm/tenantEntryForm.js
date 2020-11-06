@@ -2,6 +2,7 @@ import React from "react";
 import TenantEntryFormComponent from "../../../component/entryForm/tenantEntryForm/tenantEntryForm.js";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
+import { notification } from "../../../shared/notification.js";
 
 const TenantEntry = () => {
   const tenantData = (data) => {
@@ -47,10 +48,10 @@ const TenantEntry = () => {
       },
     })
       .then((res) => {
-        console.log(res);
+        notification("Created successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
   return (

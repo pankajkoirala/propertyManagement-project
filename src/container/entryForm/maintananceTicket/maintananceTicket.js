@@ -2,6 +2,7 @@ import React from "react";
 import MaintananceTicketComponent from "../../../component/entryForm/maintananceTicket/maintananceTicket";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
+import { notification } from "../../../shared/notification.js";
 
 const MaintananceTicketContainer = () => {
   const MaintananceTicketData = (data) => {
@@ -17,10 +18,10 @@ const MaintananceTicketContainer = () => {
       },
     })
       .then((res) => {
-        console.log(res.data);
+        notification("Created successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import EmployeeEntryFormComponent from "../../../component/entryForm/employeeEntryForm/employeeEntryForm.js";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
+import { notification } from "../../../shared/notification.js";
 
 const EmployeeEntry = () => {
   const EmployeeData = (data) => {
@@ -31,10 +32,10 @@ const EmployeeEntry = () => {
       },
     })
       .then((res) => {
-        console.log(res);
+        notification("Created successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
   return (

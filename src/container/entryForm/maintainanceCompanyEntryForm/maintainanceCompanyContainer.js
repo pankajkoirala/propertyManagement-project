@@ -2,6 +2,7 @@ import React from "react";
 import MaintainanceCompanyComponent from "../../../component/entryForm/maintainanceCompanyEntryForm/maintainanceCompanyEntryForm.js";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
+import { notification } from "../../../shared/notification.js";
 
 const MaintainanceCompanyContainer = () => {
   const MaintananceCompanyData = (data) => {
@@ -37,10 +38,10 @@ const MaintainanceCompanyContainer = () => {
       },
     })
       .then((res) => {
-        console.log(res.data);
+        notification("Created successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
   return (
