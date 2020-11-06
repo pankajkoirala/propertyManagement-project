@@ -69,18 +69,12 @@ const Homepage = (props) => {
           </div>
         </div>
       </div>
-      <button onClick={props.addone}>addone</button>
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  nameMatra_number: state.number,
-});
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = (dispatch) => ({
-  addone: () => dispatch({ type: "ADDFIVE", payload: 5 }),
-  addfie: () => dispatch(AddFive),
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
 

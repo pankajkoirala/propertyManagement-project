@@ -4,7 +4,7 @@ import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
-import RegexConponent from "../../../shared/regex_Component";
+import RegexConponent from "../../../shared/regexComponent";
 
 const LeaseEntry = (props) => {
   const [suggestion, setSuggestion] = useState([]);
@@ -153,25 +153,13 @@ const LeaseEntry = (props) => {
                 </div>
                 <div className="col-md-6">
                   <Label for="exampleSelect">Property</Label>
-                  <Input
-                    type="select"
-                    name="property"
-                    id="exampleSelect"
-                    placeholder="Select Status of Cheque"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  >
-                    <option value="">select one </option>
 
-                    {props?.unReserveProperty?.map((arg, index) => {
-                      return (
-                        <option key={index} value={arg._id}>
-                          {arg?.referenceNO}-{arg?.property_type}
-                        </option>
-                      );
-                    })}
-                  </Input>
-
+                  <RegexConponent
+                    setFieldValue={setFieldValue}
+                    filteringData={props.unReserveProperty}
+                    searchingData={"property_type"}
+                    name={"property"}
+                  />
                   {touched.property && errors.property && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -524,7 +512,6 @@ const LeaseEntry = (props) => {
                 )}
               </div>
             </FormGroup>
-            <RegexConponent unReserveProperty={props.unReserveProperty} />
           </Form>
         )}
       </Formik>

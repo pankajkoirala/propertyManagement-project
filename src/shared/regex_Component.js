@@ -1,28 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { Label, Input } from "reactstrap";
+//name props bata aayo
+//full array data
+//set attribute
+
+let sampleArray = [
+  { name: "pankaj", value: "123" },
+  { name: "koirala", value: "1223233" },
+  { name: "sushant", value: "987" },
+];
 
 let RegexConponent = (props) => {
-  const [Propsuggestion, setPropSuggestion] = useState([]);
-  const [Propname, setPropName] = useState("");
+  const [options, setOptions] = useState([]);
+  const [character, setCharacter] = useState("");
 
-  //autocomplete
-  let onTextChange = (e) => {
-    let suggestions = [];
+  const { setFieldValue, name, samplearray } = props;
 
+  let filterArray = (e) => {
     const regex = new RegExp(`^${e}`, "gi");
-    e == ""
-      ? (suggestions = [])
-      : (suggestions = props?.unReserveProperty?.filter((v) =>
-          regex.test(v.property_type || v.TenantId)
-        ));
-    console.log("hello", suggestions);
-    setPropSuggestion(suggestions);
-  };
 
-  console.log(props?.unReserveProperty);
+    let selectedOptions = sampleArray.filter((option) =>
+      regex.test(option.name)
+    );
+    setOptions(selectedOptions);
+    console.log(e);
+  };
+  console.log(options);
+  // //autocomplete
+  // let onTextChange = (e) => {
+  //   let suggestions = [];
+
+  //   const regex = new RegExp(`^${e}`, "gi");
+  //   e == ""
+  //     ? (suggestions = [])
+  //     : (suggestions = props?.unReserveProperty?.filter((v) =>
+  //         regex.test(v.property_type || v.TenantId)
+  //       ));
+  //   setPropSuggestion(suggestions);
+  //   console.log("hello", suggestions);
+  // };
+
+  // console.log(props);
   return (
     <div>
-      {" "}
+      {/* {" "}
       <div className="col-md-5">
         <Label for="exampleSelect">Tenants(s)</Label>
         <Input
@@ -55,7 +76,20 @@ let RegexConponent = (props) => {
             ))}
           </ul>
         ) : null}
-      </div>
+      </div> */}
+      <Input
+        type="text"
+        onChange={(e) => {
+          return setCharacter(e.target.value), filterArray(e.target.value);
+        }}
+      ></Input>
+      {options.map((arg, i) => {
+        return (
+          <div onclick={() => setFieldValue(name, arg.value)} key={i}>
+            {arg.name}
+          </div>
+        );
+      })}
     </div>
   );
 };

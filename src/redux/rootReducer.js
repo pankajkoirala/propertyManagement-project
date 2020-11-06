@@ -7,6 +7,8 @@ import { maintananceCompanyReducer } from "./maintananceCompany_redux";
 import { managementCompanyReducer } from "./managementCompany_redux";
 import { brokerCompanyReducer } from "./broker_company";
 import { chequeReducer } from "./cheque_redux";
+import { DeveloperCompanyReducer } from "./DeveloperCompany_redux";
+import { maintananceTicketReducer } from "./maintananceTicket_redux";
 
 export let rootReducer = combineReducers({
   property: propertyReducer,
@@ -17,4 +19,6 @@ export let rootReducer = combineReducers({
   managementCompany: managementCompanyReducer,
   brokerCompany: brokerCompanyReducer,
   cheque: chequeReducer,
+  DeveloperCompany: DeveloperCompanyReducer,
+  maintananceTicket: maintananceTicketReducer,
 });

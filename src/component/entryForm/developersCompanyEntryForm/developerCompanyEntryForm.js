@@ -1,32 +1,51 @@
 import React from "react";
 import "./developerCompany.css";
-
+import moment from "moment";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
-const DeveloperCompanyComponent = () => {
+const DeveloperCompanyComponent = (props) => {
+  console.log(props);
+
+  let initialValue = {
+    Developer_street: props?.developerCompany?.Developer_street || "",
+    Developer_city: props?.developerCompany?.Developer_city || "",
+    Developer_provience: props?.developerCompany?.Developer_provience || "",
+    Developer_country: props?.developerCompany?.Developer_country || "",
+    Developer_ZipCode: props?.developerCompany?.Developer_ZipCode || "",
+    DeveloperCompany_photo:
+      props?.developerCompany?.DeveloperCompany_photo || "",
+    DeveloperCompany_phoneNo:
+      props?.developerCompany?.DeveloperCompany_phoneNo || "",
+    DeveloperCompany_Name: props?.developerCompany?.DeveloperCompany_Name || "",
+    DeveloperCompany_RegisterationDate:
+      moment(
+        props?.developerCompany?.DeveloperCompany_RegisterationDate
+      ).format("YYYY-MM-DD") || "",
+
+    DeveloperCompany_email:
+      props?.developerCompany?.DeveloperCompany_email || "",
+    DeveloperCompany_MobileNumber:
+      props?.developerCompany?.DeveloperCompany_MobileNumber || "",
+    DeveloperCompany_RegisterationNumber:
+      props?.developerCompany?.DeveloperCompany_RegisterationNumber || "",
+  };
+
   return (
     <div>
       <div>
         <div>
           <Formik
-            initialValues={{
-              street: "",
-              city: "",
-              provience: "",
-              country: "",
-              ZipCode: "",
-              employee_photo: "",
-              employee_phoneNo: "",
-              employee_firstName: "",
-              employee_middleName: "",
-              employee_lastName: "",
-              employee_email: "",
-              post: "",
-            }}
+            initialValues={initialValue}
             onSubmit={(values) => {
               console.log(values);
+              props?.developerCompany
+                ? props.DeveloperCompanyUpdate(
+                    values,
+                    props?.developerCompany?._id
+                  )
+                : props.DevelopmentCompanyData(values);
             }}
             //validationSchema={employeeEntryFormValidation}
           >
@@ -52,47 +71,24 @@ const DeveloperCompanyComponent = () => {
                     {/* <div className="m-4"> */}
 
                     <div className="row">
-                      <div className="mt-4 col-md-9">
-                        <Label for="exampleName">Developer ID</Label>
-                        <Input
-                          type="text"
-                          value={values.employee_firstName}
-                          name="employee_firstName"
-                          placeholder="Broker ID"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.employee_firstName &&
-                          errors.employee_firstName && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.employee_firstName}
-                            </span>
-                          )}
-                      </div>
-                    </div>
-
-                    <div className="row">
                       <div className="mt-4 col-md-4">
                         <Label for="exampleName">Company Name</Label>
                         <Input
                           type="text"
-                          value={values.employee_middleName}
+                          value={values.DeveloperCompany_Name}
                           s
-                          name="employee_middleName"
+                          name="DeveloperCompany_Name"
                           placeholder="Company Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.employee_middleName &&
-                          errors.employee_middleName && (
+                        {touched.DeveloperCompany_Name &&
+                          errors.DeveloperCompany_Name && (
                             <span
                               className="text-danger col-md-12 text-left mb-2"
                               style={{ fontSize: 12 }}
                             >
-                              {errors.employee_middleName}
+                              {errors.DeveloperCompany_Name}
                             </span>
                           )}
                       </div>
@@ -100,39 +96,40 @@ const DeveloperCompanyComponent = () => {
                       <div className="mt-4 col-md-4">
                         <Label for="exampleName">Registeration Date</Label>
                         <Input
-                          type="text"
-                          value={values.employee_lastName}
-                          name="employee_lastName"
+                          type="date"
+                          value={values.DeveloperCompany_RegisterationDate}
+                          name="DeveloperCompany_RegisterationDate"
                           placeholder="Registeration Date"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.employee_lastName && errors.employee_lastName && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.employee_lastName}
-                          </span>
-                        )}
-                      </div>
-                      <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Registration Number</Label>
-                        <Input
-                          type="text"
-                          value={values.employee_firstName}
-                          name="employee_firstName"
-                          placeholder="Registration Number"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.employee_firstName &&
-                          errors.employee_firstName && (
+                        {touched.DeveloperCompany_RegisterationDate &&
+                          errors.DeveloperCompany_RegisterationDate && (
                             <span
                               className="text-danger col-md-12 text-left mb-2"
                               style={{ fontSize: 12 }}
                             >
-                              {errors.employee_firstName}
+                              {errors.DeveloperCompany_RegisterationDate}
+                            </span>
+                          )}
+                      </div>
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleName">Registration Number</Label>
+                        <Input
+                          type="number"
+                          value={values.DeveloperCompany_RegisterationNumber}
+                          name="DeveloperCompany_RegisterationNumber"
+                          placeholder="Registration Number"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.DeveloperCompany_RegisterationNumber &&
+                          errors.DeveloperCompany_RegisterationNumber && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.DeveloperCompany_RegisterationNumber}
                             </span>
                           )}
                       </div>
@@ -140,103 +137,106 @@ const DeveloperCompanyComponent = () => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Address</Label>
+                        <Label for="exampleName">street</Label>
                         <Input
                           type="text"
-                          value={values.street}
-                          name="street"
-                          placeholder="Enter your Street"
+                          value={values.Developer_street}
+                          name="Developer_street"
+                          placeholder="Enter your Developer_street"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.street && errors?.street && (
+                        {touched?.Developer_street && errors?.Developer_street && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.street}
+                            {errors?.Developer_street}
                           </span>
                         )}
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">City</Label>
+                        <Label for="exampleName">city</Label>
                         <Input
                           type="text"
-                          value={values.city}
-                          name="city"
-                          placeholder="Enter your City"
+                          value={values.Developer_city}
+                          name="Developer_city"
+                          placeholder="Enter your Developer_city"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.city && errors?.city && (
+                        {touched?.Developer_city && errors?.Developer_city && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.city}
+                            {errors?.Developer_city}
                           </span>
                         )}
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">Provience</Label>
+                        <Label for="exampleName">provience</Label>
                         <Input
                           type="text"
-                          value={values.provience}
-                          name="provience"
-                          placeholder="Enter Provience Name"
+                          value={values.Developer_provience}
+                          name="Developer_provience"
+                          placeholder="Enter Developer_provience Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.provience && errors?.provience && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors?.provience}
-                          </span>
-                        )}
+                        {touched?.Developer_provience &&
+                          errors?.Developer_provience && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors?.Developer_provience}
+                            </span>
+                          )}
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleSelect">ZipCode</Label>
                         <Input
-                          type="text"
-                          name="ZipCode"
-                          value={values.ZipCode}
+                          type="number"
+                          name="Developer_ZipCode"
+                          value={values.Developer_ZipCode}
                           id="exampleSelect"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         ></Input>
-                        {touched?.ZipCode && errors?.ZipCode && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors?.ZipCode}
-                          </span>
-                        )}
+                        {touched?.Developer_ZipCode &&
+                          errors?.Developer_ZipCode && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors?.Developer_ZipCode}
+                            </span>
+                          )}
                       </div>
                       <div className="col-md-6">
-                        <Label for="exampleName">Country</Label>
+                        <Label for="exampleName">country</Label>
                         <Input
                           type="text"
-                          value={values.country}
-                          name="country"
-                          placeholder="Enter the name of Country"
+                          value={values.Developer_country}
+                          name="Developer_country"
+                          placeholder="Enter the name of Developer_country"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.country && errors?.country && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors?.country}
-                          </span>
-                        )}
+                        {touched?.Developer_country &&
+                          errors?.Developer_country && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors?.Developer_country}
+                            </span>
+                          )}
                       </div>
                     </div>
                     <div className="row">
@@ -244,80 +244,95 @@ const DeveloperCompanyComponent = () => {
                         <Label for="exampleName">Email</Label>
                         <Input
                           type="email"
-                          value={values.employee_email}
-                          name="employee_email"
+                          value={values.DeveloperCompany_email}
+                          name="DeveloperCompany_email"
                           placeholder="Enter Email"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.employee_email && errors.employee_email && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.employee_email}
-                          </span>
-                        )}
+                        {touched.DeveloperCompany_email &&
+                          errors.DeveloperCompany_email && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.DeveloperCompany_email}
+                            </span>
+                          )}
                       </div>
 
                       <div className="col-md-6">
                         <Label for="exampleName">Contact Number</Label>
                         <Input
                           type="number"
-                          value={values.employee_phoneNo}
-                          name="employee_phoneNo"
+                          value={values.DeveloperCompany_phoneNo}
+                          name="DeveloperCompany_phoneNo"
                           placeholder="Enter your Contact Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.employee_phoneNo && errors.employee_phoneNo && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.employee_phoneNo}
-                          </span>
-                        )}
+                        {touched.DeveloperCompany_phoneNo &&
+                          errors.DeveloperCompany_phoneNo && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.DeveloperCompany_phoneNo}
+                            </span>
+                          )}
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">Mobile Number</Label>
                         <Input
-                          type="text"
-                          value={values.post}
-                          name="post"
+                          type="number"
+                          value={values.DeveloperCompany_MobileNumber}
+                          name="DeveloperCompany_MobileNumber"
                           placeholder="Mobile Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.post && errors.post && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.post}
-                          </span>
-                        )}
+                        {touched.DeveloperCompany_MobileNumber &&
+                          errors.DeveloperCompany_MobileNumber && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.DeveloperCompany_MobileNumber}
+                            </span>
+                          )}
                       </div>
 
-                      <div className="col-md-6">
-                        <Label for="exampleName">Upload Photo</Label>
+                      <div className="col-md-6 text-left mb-2 mt-4">
+                        <Label className="float-left">employee Photo</Label>
                         <Input
                           type="file"
-                          value={values.employee_photo}
                           name="employee_photo"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "DeveloperCompany_photo",
+                              event.currentTarget.files[0]
+                            );
+                          }}
                         />
-                        {touched.employee_photo && errors.employee_photo && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.employee_photo}
-                          </span>
-                        )}
+
+                        {touched.DeveloperCompany_photo &&
+                          values.DeveloperCompany_photo && (
+                            <img
+                              src={
+                                typeof values?.DeveloperCompany_photo ===
+                                "string"
+                                  ? values?.DeveloperCompany_photo
+                                  : URL.createObjectURL(
+                                      values?.DeveloperCompany_photo
+                                    )
+                              }
+                              alt="no picture"
+                              height="20"
+                            />
+                          )}
                       </div>
                     </div>
                   </div>

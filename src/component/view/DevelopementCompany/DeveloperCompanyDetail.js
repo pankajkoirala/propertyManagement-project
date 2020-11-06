@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import ChequeEntryForm from "../../entryForm/cheque/chequeEntry/chequeEntryForm";
+import DeveloperCompanyForm from "../../entryForm/developersCompanyEntryForm/developerCompanyEntryForm";
 
-let ChequeDetailViewComponent = (props) => {
+let DeveloperCompanyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
 
   let showHide = () => {
-    console.log(props.history);
     setShowEditForm(!showEditForm);
   };
   return (
     <div>
       {showEditForm === false ? (
-        props.selectedCheque.map((arg, index) => {
+        props.selectedDeveloperCompany.map((arg, index) => {
           return (
             <div key={index} className="property-card">
               <div className="card-contents">
@@ -36,27 +35,22 @@ let ChequeDetailViewComponent = (props) => {
                 <button onClick={() => setShowEditForm(!showEditForm)}>
                   edit
                 </button>
-                <button
-                  className="danger ml-2"
-                  onClick={() => {
-                    props.ChequeDelete(arg._id);
-                  }}
-                >
-                  Delete
+                <button onClick={() => props.LeaseDelete(arg._id)}>
+                  delete
                 </button>
               </div>
             </div>
           );
         })
       ) : (
-        <ChequeEntryForm
+        <DeveloperCompanyForm
           {...props}
           showHide={showHide}
-          Cheque={props.selectedCheque[0]}
+          developerCompany={props.selectedDeveloperCompany[0]}
         />
       )}
     </div>
   );
 };
 
-export default ChequeDetailViewComponent;
+export default DeveloperCompanyDetailViewComponent;

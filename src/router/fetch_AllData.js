@@ -14,6 +14,8 @@ let FetchData = (props) => {
     propertyData();
     TenantData();
     ChequeData();
+    DevelopementCompanyData();
+    MaintananceTicketData();
   }, []);
   let BrokerCompanyData = () => {
     Axios({
@@ -162,6 +164,44 @@ let FetchData = (props) => {
       });
   };
 
+  let DevelopementCompanyData = () => {
+    Axios({
+      method: "get",
+      url: base_URL + "/api/DeveloperCompany",
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        props.redux_Add_DevelopementCompany(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  let MaintananceTicketData = () => {
+    Axios({
+      method: "get",
+      url: base_URL + "/api/MaintananceTicket",
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        props.redux_Add_MaintananceTicket(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <RouterPage />
@@ -184,6 +224,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: "ADD_ALL_PROPRRTY", payload: arg }),
   redux_Add_Tenant: (arg) => dispatch({ type: "ADD_ALL_TENANT", payload: arg }),
   redux_Add_Cheque: (arg) => dispatch({ type: "ADD_ALL_CHEQUE", payload: arg }),
+  redux_Add_DevelopementCompany: (arg) =>
+    dispatch({ type: "ADD_ALL_DEVELOPEMENT_COMPANY", payload: arg }),
+  redux_Add_MaintananceTicket: (arg) =>
+    dispatch({ type: "ADD_ALL_MAINTANANCE_TICKET", payload: arg }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FetchData);

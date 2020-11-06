@@ -2,12 +2,23 @@ import React from "react";
 import "./tenantView.css";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const TenantView = (props) => {
   return (
     <div className="tenantview">
       <h1 className="text-center">Tenant View</h1>
-
+      <Form inline>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <Input
+            type="search"
+            name="password"
+            id="search"
+            placeholder="search!"
+          />
+        </FormGroup>
+        <Button>Submit</Button>
+      </Form>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
