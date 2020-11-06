@@ -4,6 +4,7 @@ import Axios from "axios";
 import { base_URL } from "../../../const/base_URL";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
+import { notification } from "../../../shared/notification.js";
 
 let PropertyDetailView = (props) => {
   const { id } = useParams();
@@ -65,16 +66,16 @@ let PropertyDetailView = (props) => {
       },
     })
       .then((res) => {
-        console.log(res);
+        notification("Updated successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
   let DeleteProperty = (Id) => {
     Axios.delete(base_URL + `/api/property/${Id}`)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+      .then((data) => notification("successfully Deleted", "SUCCESS"))
+      .catch((err) => notification("error", "ERROR"));
   };
 
   return (

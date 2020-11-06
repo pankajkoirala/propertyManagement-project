@@ -2,6 +2,7 @@ import React from "react";
 import ManagementCompanyComponent from "../../../component/entryForm/managementCompanyEntryForm/managementCompanyEntryForm.js";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
+import { notification } from "../../../shared/notification.js";
 
 const ManagementCompanyContainer = () => {
   const ManagementCompanyData = (data) => {
@@ -52,10 +53,10 @@ const ManagementCompanyContainer = () => {
       },
     })
       .then((res) => {
-        console.log(res.data);
+        notification("Created successfully", "SUCCESS");
       })
       .catch((err) => {
-        console.log(err);
+        notification("error", "ERROR");
       });
   };
   return (

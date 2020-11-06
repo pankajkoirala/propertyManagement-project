@@ -17,6 +17,7 @@ let FetchData = (props) => {
     DevelopementCompanyData();
     MaintananceTicketData();
   }, []);
+
   let BrokerCompanyData = () => {
     Axios({
       method: "get",
