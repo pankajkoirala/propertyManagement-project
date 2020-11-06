@@ -91,9 +91,9 @@ const PropertyEntry = (props) => {
                           value={values.property_type}
                         >
                           <option value=""> </option>
-                          <option value="Villa">Villa</option>
-                          <option value="House">House</option>
-                          <option value="Apartment">Apartment</option>
+                          <option value="Villa">Residential</option>
+                          <option value="House">Commericial</option>
+                          <option value="Apartment">Land</option>
                         </Input>
 
                         {touched?.property_type && errors?.property_type && (
