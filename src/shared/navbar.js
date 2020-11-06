@@ -181,7 +181,7 @@ const NavbarPage = () => {
         <Card>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="6">
-              <Link to="/dashboard">
+              <Link to="/maintananceTicket">
                 {" "}
                 <b>Maintainance Ticket</b>{" "}
               </Link>
@@ -243,8 +243,10 @@ const NavbarPage = () => {
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="9">
               <Link to="/developerDetail">
-                {" "}
                 <b>Developer Detail</b>{" "}
+              </Link>
+              <Link to="/developerCompanyList">
+                <b>Developer list</b>{" "}
               </Link>
             </Accordion.Toggle>
           </Card.Header>
@@ -273,6 +275,7 @@ const NavbarPage = () => {
             </Accordion.Toggle>
           </Card.Header>
         </Card>
+
         <Card>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="12">
@@ -283,6 +286,21 @@ const NavbarPage = () => {
               <Link to="/managementCompanyList">
                 {" "}
                 <b>Management Company list</b>{" "}
+              </Link>
+            </Accordion.Toggle>
+          </Card.Header>
+        </Card>
+
+        <Card>
+          <Card.Header>
+            <Accordion.Toggle as={Button} variant="link" eventKey="12">
+              <Link to="/expenseEntryForm">
+                {" "}
+                <b>expense entry form</b>{" "}
+              </Link>
+              <Link to="/managementCompanyList">
+                {" "}
+                <b>expense list</b>{" "}
               </Link>
             </Accordion.Toggle>
           </Card.Header>

@@ -1,4 +1,5 @@
 import React from "react";
+import RegexConponent from "../../../shared/regex_Component";
 import "./ownerEntry.css";
 
 // import {  FormGroup, Label, Input, Form } from "reactstrap";
@@ -6,7 +7,11 @@ import "./ownerEntry.css";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
 const OwnerEntry = () => {
-  return <div>This is owner Entry Form</div>;
+  return (
+    <div>
+      <RegexConponent />
+    </div>
+  );
 };
 
 export default OwnerEntry;
