@@ -1,31 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./lease.css";
-import { FormGroup, Label, Input, Form, Table } from "reactstrap";
+import { FormGroup, Label, Input, Form, Table, Col } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
 import RegexConponent from "../../../shared/regexComponent";
 
 const LeaseEntry = (props) => {
-  const [suggestion, setSuggestion] = useState([]);
-  const [name, setName] = useState("");
-
-  //autocomplete
-  let onTextChange = (e) => {
-    let suggestions = [];
-
-    const regex = new RegExp(`^${e}`, "gi");
-    e == ""
-      ? (suggestions = [])
-      : (suggestions = props?.redux_tenantData?.tenant?.filter((v) =>
-          regex.test(v.tenant_firstName || v.TenantId)
-        ));
-    console.log("hello", suggestions);
-    setSuggestion(suggestions);
-  };
+  const [commerceDate, setCommerceDate] = useState("");
+  const [expireDate, setExpireDate] = useState("");
+  const [paymentTime, setpaymentTime] = useState("");
 
   let initialvalue = {
-    chequeList: props?.lease?.chequeList.map((arg) => arg._id) || [],
     late_feeType: props?.lease?.late_feeType || "",
     frequency: props?.lease?.frequency || "",
     lease_enterDate:
@@ -43,9 +29,23 @@ const LeaseEntry = (props) => {
     securityDeposite: props?.lease?.securityDeposite || "",
     securityfirstDueDate:
       moment(props?.lease?.securityfirstDueDate).format("YYYY-MM-DD") || "",
-
     photo: props?.lease?.photo || "",
   };
+
+  //difference in comerceDate and expirationDate
+  let difference = moment(props?.lease?.expirationDate || expireDate).diff(
+    moment(props?.lease?.commenceDate || commerceDate),
+    "days"
+  ); // resul
+  let noOfPayment =
+    Math.round((difference / (paymentTime ? paymentTime : 1)) * 100) / 100;
+
+  let days = 0;
+  let addedDays = [];
+
+  for (let index = 0; index < noOfPayment.toFixed(0); index++) {
+    addedDays.push((days = days + paymentTime));
+  }
 
   return (
     <div className="leasediv">
@@ -106,41 +106,17 @@ const LeaseEntry = (props) => {
                 <b>Select Property and Tenant</b>
               </div>
               <div className="row ">
-                <div className="col-md-5">
+                <div className="col-md-6">
                   <Label for="exampleSelect">Tenants(s)</Label>
-                  <Input
-                    autoComplete=""
-                    type="text"
-                    name="tenants"
-                    id="exampleSelect"
-                    placeholder="Select Status of Cheque"
-                    value={name}
-                    onChange={(e) => {
-                      return (
-                        setName(e.target.value), onTextChange(e.target.value)
-                      );
-                    }}
-                  >
-                    <option value="">select one </option>
-                  </Input>
-                  {suggestion.length !== 0 ? (
-                    <ul>
-                      {suggestion.map((item, index) => (
-                        <option
-                          className="tanentOption"
-                          onClick={() => {
-                            values.tenants = item._id;
-                            setName(item.tenant_firstName);
-                            setSuggestion([]);
-                          }}
-                          value={item._id}
-                          key={index}
-                        >
-                          {item.TenantId} - {item.tenant_firstName}
-                        </option>
-                      ))}
-                    </ul>
-                  ) : null}
+
+                  <RegexConponent
+                    {...props}
+                    setFieldValue={setFieldValue}
+                    options={props?.redux_tenantData?.tenant?.map((tenent) => {
+                      return { name: tenent.tenant_firstName, id: tenent._id };
+                    })}
+                    name={"tenants"}
+                  />
 
                   {touched.tenants && errors.tenants && (
                     <span
@@ -156,8 +132,9 @@ const LeaseEntry = (props) => {
 
                   <RegexConponent
                     setFieldValue={setFieldValue}
-                    filteringData={props.unReserveProperty}
-                    searchingData={"property_type"}
+                    options={props.unReserveProperty.map((property) => {
+                      return { name: property.property_type, id: property._id };
+                    })}
                     name={"property"}
                   />
                   {touched.property && errors.property && (
@@ -208,7 +185,10 @@ const LeaseEntry = (props) => {
                     placeholder="Select Commence Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.commenceDate}
+                    value={
+                      (setCommerceDate(values.commenceDate),
+                      values.commenceDate)
+                    }
                   ></Input>
 
                   {touched.commenceDate && errors.commenceDate && (
@@ -224,7 +204,10 @@ const LeaseEntry = (props) => {
                   <Label for="exampleName">Expiration Date</Label>
                   <Input
                     type="date"
-                    value={values.expirationDate}
+                    value={
+                      (setExpireDate(values.expirationDate),
+                      values.expirationDate)
+                    }
                     name="expirationDate"
                     placeholder="ExpirationDate"
                     onChange={handleChange}
@@ -286,7 +269,7 @@ const LeaseEntry = (props) => {
                     </span>
                   )}
                 </div>
-                <div className="col-4">
+                {/* <div className="col-4">
                   <Label for="exampleName">Frequency</Label>
                   <Input
                     type="select"
@@ -297,7 +280,6 @@ const LeaseEntry = (props) => {
                     onBlur={handleBlur}
                   >
                     <option value=""> </option>
-                    <option value="daily">Daily</option>
                     <option value="weekly">Weekly</option>
                     <option value="bi-weekly">Bi-Weekly</option>
                     <option value="monthly">Monthly</option>
@@ -313,7 +295,68 @@ const LeaseEntry = (props) => {
                       {errors.frequency}
                     </span>
                   )}
-                </div>
+                </div> */}
+                <FormGroup tag="fieldset" row>
+                  <legend className="col-form-label col-sm-2">
+                    payment frequency{" "}
+                  </legend>
+                  <Col sm={10}>
+                    <FormGroup check>
+                      <Label check>
+                        <Input
+                          type="radio"
+                          checked={
+                            values.frequency === "weekly"
+                              ? (setpaymentTime(7), true)
+                              : false
+                          }
+                          onClick={() => {
+                            setFieldValue("frequency", "weekly");
+                            setpaymentTime(7);
+                          }}
+                          name="radio2"
+                        />
+                        weekly
+                      </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                      <Label check>
+                        <Input
+                          checked={
+                            values.frequency === "monthly"
+                              ? (setpaymentTime(30), true)
+                              : false
+                          }
+                          type="radio"
+                          onClick={() => {
+                            setFieldValue("frequency", "monthly");
+                            setpaymentTime(30);
+                          }}
+                          name="radio2"
+                        />
+                        Monthly
+                      </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                      <Label check>
+                        <Input
+                          checked={
+                            values.frequency === "yearly"
+                              ? (setpaymentTime(360), true)
+                              : false
+                          }
+                          type="radio"
+                          onClick={() => {
+                            setFieldValue("frequency", "yearly");
+                            setpaymentTime(365);
+                          }}
+                          name="radio2"
+                        />{" "}
+                        yearly
+                      </Label>
+                    </FormGroup>
+                  </Col>
+                </FormGroup>
               </div>
               <div className="col-md-12">
                 <b>Grace Period and Late Payment Fee</b>
@@ -466,52 +509,39 @@ const LeaseEntry = (props) => {
                   Save
                 </button>
               </div>
-
-              <div className="col-md-5">
-                <Label for="exampleSelect">cheque (s)</Label>
-                <Input
-                  type="select"
-                  name="chequeList"
-                  id="exampleSelect"
-                  placeholder="Select Status of Cheque"
-                  onChange={(e) =>
-                    setFieldValue("chequeList", [
-                      ...values.chequeList,
-                      e.target.value,
-                    ])
-                  }
-                  onBlur={handleBlur}
-                >
-                  <option value="">select one </option>
-                  {props?.UnchequeUsed?.map((arg, index) => {
-                    return (
-                      <option key={index} value={arg?._id}>
-                        {arg?.cheque_number}{" "}
-                      </option>
-                    );
-                  })}
-                </Input>
-
-                {!props.lease
-                  ? values?.chequeList?.map((a) => {
-                      let house = props?.redux_ChequeData?.cheque?.find(
-                        (b) => b._id === a
-                      );
-                      return <div>{house?.cheque_number}</div>;
-                    })
-                  : values?.chequeList?.map((arg, index) => {
-                      return <h1 key={index}>{arg?.cheque_number}</h1>;
-                    })}
-                {touched.chequeList && errors.chequeList && (
-                  <span
-                    className="text-danger col-md-12 text-left mb-2"
-                    style={{ fontSize: 12 }}
-                  >
-                    {errors.chequeList}
-                  </span>
-                )}
-              </div>
             </FormGroup>
+            <Table striped bordered hover size="sm">
+              <thead>
+                <tr>
+                  <th>SN</th>
+                  <th>date of payment</th>
+                  <th>remark</th>
+                </tr>
+              </thead>
+
+              {commerceDate && expireDate && paymentTime
+                ? addedDays.map((arg, index) => {
+                    return (
+                      <tbody key={index}>
+                        <tr>
+                          <td>{index + 1}</td>
+                          <td>
+                            {moment().add(arg, "days").format("DD-MM-YYYY")}
+                          </td>
+                          <td
+                            style={{
+                              height: "10px",
+                              width: "10px",
+                              backgroundColor: "red",
+                              borderRadius: "50%",
+                            }}
+                          ></td>
+                        </tr>
+                      </tbody>
+                    );
+                  })
+                : ""}
+            </Table>
           </Form>
         )}
       </Formik>

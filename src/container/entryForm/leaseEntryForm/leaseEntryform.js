@@ -6,12 +6,8 @@ import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 
 const LeaseEntry = (props) => {
-  //console.log('Redux_propertyData',props.Redux_propertyData.property);
-  //console.log('Redux_LeaseData',props.Redux_LeaseData.lease);
-
   const leaseData = (data) => {
     const formData = new FormData();
-    formData.append("chequeList", data.chequeList);
     formData.append("lease_enterDate", data.lease_enterDate);
     formData.append("tenants", data.tenants);
     formData.append("lease_Term", data.lease_Term);
@@ -42,11 +38,13 @@ const LeaseEntry = (props) => {
     })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
+        props.history.push("/invoiceDetail");
       })
       .catch((err) => {
         notification("error", "ERROR");
       });
   };
+
   //property remove which are in lease from all property
   let reserveProperty = [];
   let unReserveProperty = [];
@@ -58,26 +56,12 @@ const LeaseEntry = (props) => {
     (arg) => !reserveProperty.includes(arg._id)
   );
 
-  //cheque remove which are in checklist from all cheque
-  let chequeUsed = [];
-  let UnchequeUsed = [];
-  props.Redux_LeaseData.lease.forEach((arg) => {
-    arg.chequeList.map((arg1) => {
-      chequeUsed.push(arg1._id);
-    });
-  });
-
-  UnchequeUsed = props.redux_ChequeData.cheque.filter(
-    (arg) => !chequeUsed.includes(arg._id)
-  );
-
   return (
     <div>
       <LeaseEntryFormComponent
         leaseData={leaseData}
         unReserveProperty={unReserveProperty}
         redux_tenantData={props.redux_tenantData}
-        UnchequeUsed={UnchequeUsed}
       />
     </div>
   );
@@ -86,9 +70,11 @@ const mapStateToProps = (state) => ({
   Redux_propertyData: state.property,
   redux_tenantData: state.tenant,
   Redux_LeaseData: state.lease,
-  redux_ChequeData: state.cheque,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  redux_Add_invoice: (arg) =>
+    dispatch({ type: "ADD_ALL_INVOICE", payload: arg }),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeaseEntry);

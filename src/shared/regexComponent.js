@@ -6,48 +6,60 @@ import { Label, Input } from "reactstrap";
 //searching data
 
 let RegexConponent = (props) => {
-  const [options, setOptions] = useState([]);
+  const [updatedOptions, setUpdatedOptions] = useState([]);
   const [value, setValue] = useState("");
-  const [match, setmatch] = useState("");
 
-  const { setFieldValue, name, filteringData, searchingData } = props;
+  const { setFieldValue, name, options, onChange } = props;
 
   let filterArray = (e) => {
     const regex = new RegExp(`^${e}`, "gi");
 
     let selectedOptions =
       e === ""
-        ? setOptions([])
-        : filteringData.filter((option) => regex.test(option.property_type));
-    setOptions(selectedOptions);
-    console.log(e);
+        ? setUpdatedOptions([])
+        : options.filter((option) => regex.test(option.name));
+    setUpdatedOptions(selectedOptions);
   };
-  console.log(options);
 
   return (
-    <div>
+    <div style={{ position: "absolute", marginTop: "0", marginBottom: "0" }}>
       <Input
+        style={{
+          position: "relative",
+          top: "0",
+          bottom: "0",
+          zIndex: "999",
+          width: "400px",
+        }}
         type="text"
-        name={name}
         value={value}
         onChange={(e) => {
-          return filterArray(e.target.value), setValue(e.target.value);
+          filterArray(e.target.value);
+          setValue(e.target.value);
         }}
       ></Input>
-      {options?.length > 0
-        ? options.map((arg, i) => {
+
+      {updatedOptions?.length > 0
+        ? updatedOptions.map((arg, i) => {
             return (
               <div
+                style={{
+                  position: "relative",
+                  top: "0",
+                  bottom: "0",
+                  zIndex: "11",
+                }}
+                className="bg-danger"
                 onClick={() => {
-                  return (
-                    setFieldValue(name, arg._id),
-                    setValue(arg.property_type),
-                    setOptions([])
-                  );
+                  console.log(arg._id);
+                  setFieldValue(name, arg.id);
+
+                  setValue(arg.name);
+                  setUpdatedOptions([]);
                 }}
                 key={i}
               >
-                {arg.property_type}
+                {arg.name}
               </div>
             );
           })
