@@ -15,7 +15,6 @@ let LeaseDetailView = (props) => {
 
   const LeaseUpdate = (data, ID) => {
     const formData = new FormData();
-    formData.append("chequeList", data.chequeList);
     formData.append("lease_enterDate", data.lease_enterDate);
     formData.append("tenants", data.tenants);
     formData.append("lease_Term", data.lease_Term);
@@ -82,19 +81,6 @@ let LeaseDetailView = (props) => {
     (arg) => !reserveProperty.includes(arg._id)
   );
 
-  //cheque remove which are in checklist from all cheque
-  let chequeUsed = [];
-  let UnchequeUsed = [];
-  props.Redux_LeaseData.lease.forEach((arg) => {
-    arg.chequeList.map((arg1) => {
-      chequeUsed.push(arg1._id);
-    });
-  });
-
-  UnchequeUsed = props.redux_ChequeData.cheque.filter(
-    (arg) => !chequeUsed.includes(arg._id)
-  );
-
   return (
     <div>
       <LeaseDetailViewComp
@@ -104,7 +90,6 @@ let LeaseDetailView = (props) => {
         //try
         unReserveProperty={unReserveProperty}
         redux_tenantData={props.redux_tenantData}
-        UnchequeUsed={UnchequeUsed}
       />
     </div>
   );
@@ -114,7 +99,6 @@ const mapStateToProps = (state) => ({
   Redux_LeaseData: state.lease,
   Redux_propertyData: state.property,
   redux_tenantData: state.tenant,
-  redux_ChequeData: state.cheque,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

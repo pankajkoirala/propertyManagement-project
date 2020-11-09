@@ -39,7 +39,10 @@ import BrokerCompanyDetail from "../container/view/brokerCompany/brokerDetailVie
 import ChequeDetailView from "../container/view/cheque/ChequeViewDetail";
 import AllDevelopementCompany from "../container/view/DevelopementCompany/DevelopementCompany";
 import DeveloperCompanyDetailView from "../container/view/DevelopementCompany/DeveloperCompanyDetailView";
-import ExpenseEntry from "../component/entryForm/expenseEntry/expenseEntry";
+import ExpenseEntry from "../container/entryForm/expenseEntryForm/expenseEntryForm";
+import ExpensesList from "../container/view/expense/expense";
+import ExpenseDetailView from "../container/view/expense/expenseDetailView";
+import MaintananceTicketList from "../container/view/maintananceTicket/maintananceTicket";
 
 const RouterPage = () => {
   return (
@@ -96,6 +99,12 @@ const RouterPage = () => {
             exact
             path="/developerCompanyList"
             component={AllDevelopementCompany}
+          />
+          <PrivateRouter exact path="/expensesList" component={ExpensesList} />
+          <PrivateRouter
+            exact
+            path="/maintananceTicketList"
+            component={MaintananceTicketList}
           />
 
           <Route exact path="/login" component={LoginComponent} />
@@ -173,6 +182,11 @@ const RouterPage = () => {
             exact
             path="/DeveloperCompany/:id"
             component={DeveloperCompanyDetailView}
+          />
+          <PrivateRouter
+            exact
+            path="/expense/:id"
+            component={ExpenseDetailView}
           />
         </Switch>
       </Router>

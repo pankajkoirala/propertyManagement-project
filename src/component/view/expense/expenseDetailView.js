@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react";
-import LeaseEntryForm from "../../entryForm/lease/lease";
-import moment from "moment";
+import ExpenseEntryForm from "../../entryForm/expenseEntry/expenseEntry";
 
-let LeaseDetailViewComponent = (props) => {
+let ExpenseDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+  console.log(props);
 
   let showHide = () => {
     setShowEditForm(!showEditForm);
   };
-
-  if (props?.selecteOneLease?.length > 0) {
-    let commerceDate = moment(props?.selecteOneLease[0]?.commenceDate);
-    let expireDate = moment(props?.selecteOneLease[0]?.expirationDate);
-
-    let difference = expireDate.diff(commerceDate, "days"); // resul
-    console.log(difference);
-  }
-
   return (
     <div>
       {showEditForm === false ? (
-        props.selecteOneLease.map((arg, index) => {
+        props.selectedExpense.map((arg, index) => {
           return (
             <div key={index} className="property-card">
               <div className="card-contents">
@@ -45,22 +36,27 @@ let LeaseDetailViewComponent = (props) => {
                 <button onClick={() => setShowEditForm(!showEditForm)}>
                   edit
                 </button>
-                <button onClick={() => props.LeaseDelete(arg._id)}>
-                  delete
+                <button
+                  className="danger ml-2"
+                  onClick={() => {
+                    props.expenseDelete(arg._id);
+                  }}
+                >
+                  Delete
                 </button>
               </div>
             </div>
           );
         })
       ) : (
-        <LeaseEntryForm
+        <ExpenseEntryForm
           {...props}
           showHide={showHide}
-          lease={props.selecteOneLease[0]}
+          expense={props.selectedExpense[0]}
         />
       )}
     </div>
   );
 };
 
-export default LeaseDetailViewComponent;
+export default ExpenseDetailViewComponent;

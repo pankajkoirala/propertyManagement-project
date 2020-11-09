@@ -1,42 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
+import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 
 const ExpenseEntry = (props) => {
+  console.log(props?.expense?.expense_list);
   const [expenseHeading, setExpenseHeading] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
-  const [deleteData, setdeleteData] = useState("");
-  const [expenselist, setexpenselist] = useState([]);
-
-  let filterExpenseList = expenselist.filter(
-    (arg) => arg.expenseHead !== deleteData
+  const [id, setId] = useState("");
+  const [expenselist, setexpenselist] = useState(
+    props?.expense ? props?.expense?.expense_list : []
   );
-  let timeout = () => {
-    setTimeout(() => {
-      setdeleteData("");
-    }, 5000);
-  };
 
-  let ExpenseData = (data) => {
-    expenselist.push(data);
+  let removeExpense = (id) =>
+    setexpenselist(expenselist.filter((arg) => arg.expenseId !== id));
+
+  let addExpense = (data) => {
+    setexpenselist([...expenselist, data]);
     setExpenseAmount("");
     setExpenseHeading("");
   };
-  let deleteItem = (id) => {
-    setdeleteData(id);
-  };
 
   let initialvalue = {
-    expense_list: expenselist,
-    expense_EntryDate: "",
-    Maintanance_ticketID: "",
-    Expense_Remark: "",
+    expense_list: props?.expense?.expense_list || [],
+    expense_EntryDate:
+      moment(props?.expense?.expense_EntryDate).format("YYYY-MM-DD") || "",
+    Maintanance_ticketID: props?.expense?.Maintanance_ticketID._id || "",
+    Expense_Remark: props?.expense?.Expense_Remark || "",
+    expenseInvoiceNumber: props?.expense?.expenseInvoiceNumber || "",
   };
-
-  console.log("pankajkoirala", filterExpenseList);
-  console.log("deleteData", deleteData);
-
   return (
     <div>
       <div className="PropertyFormEntry">
@@ -44,7 +37,18 @@ const ExpenseEntry = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
+              values.expense_list = expenselist.map((arg) => {
+                return {
+                  expenseHead: arg.expenseHead,
+                  expenseAmount: arg.expenseAmount,
+                  expenseId: arg.expenseId,
+                };
+              });
+              values.expense_list = JSON.stringify(values.expense_list);
               console.log(values);
+              props?.expense
+                ? props.expenseUpdate(values, props?.expense?._id)
+                : props.expenseData(values);
             }}
             // validationSchema={TenantEntryFormValidation}
           >
@@ -129,6 +133,28 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
+
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">invoice number</Label>
+                        <Input
+                          type="text"
+                          value={values.expenseInvoiceNumber}
+                          name="expenseInvoiceNumber"
+                          placeholder="Bank name"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.expenseInvoiceNumber &&
+                          errors.expenseInvoiceNumber && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.expenseInvoiceNumber}
+                            </span>
+                          )}
+                      </div>
+
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">expense heading</Label>
                         <Input
@@ -151,7 +177,6 @@ const ExpenseEntry = (props) => {
                         <Label for="exampleName">amount</Label>
                         <Input
                           type="number"
-                          name="expense_amount"
                           placeholder="Cheque Amount"
                           value={expenseAmount}
                           onChange={(e) => setExpenseAmount(e.target.value)}
@@ -167,11 +192,12 @@ const ExpenseEntry = (props) => {
                       </div>
                       <button
                         type="button"
-                        //disabled={!expenseHeading || !expenseAmount}
+                        disabled={!expenseHeading || !expenseAmount}
                         onClick={() =>
-                          ExpenseData({
+                          addExpense({
                             expenseHead: expenseHeading,
                             expenseAmount: expenseAmount,
+                            expenseId: uuidv4(),
                           })
                         }
                       >
@@ -197,7 +223,7 @@ const ExpenseEntry = (props) => {
                             <th>delete</th>
                           </tr>
                         </thead>
-                        {filterExpenseList.map((arg, index) => {
+                        {expenselist.map((arg, index) => {
                           return (
                             <tbody key={index}>
                               <tr>
@@ -208,13 +234,12 @@ const ExpenseEntry = (props) => {
                                 <td>
                                   <button
                                     type="button"
-                                    onClick={
-                                      (() => deleteItem(arg.expenseHead),
-                                      timeout())
-                                    }
+                                    onClick={() => {
+                                      removeExpense(arg.expenseId);
+                                    }}
                                   >
                                     delete
-                                  </button>{" "}
+                                  </button>
                                 </td>
                               </tr>
                             </tbody>

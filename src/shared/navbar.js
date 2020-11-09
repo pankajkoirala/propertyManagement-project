@@ -192,6 +192,10 @@ const NavbarPage = () => {
                 {" "}
                 <b>Maintainance Ticket</b>{" "}
               </Link>
+              <Link to="/maintananceTicketList">
+                {" "}
+                <b>Maintainance Ticket list</b>{" "}
+              </Link>
             </Accordion.Toggle>
           </Card.Header>
         </Card>
@@ -307,7 +311,7 @@ const NavbarPage = () => {
                 {" "}
                 <b>expense entry form</b>{" "}
               </Link>
-              <Link to="/managementCompanyList">
+              <Link to="/expensesList">
                 {" "}
                 <b>expense list</b>{" "}
               </Link>

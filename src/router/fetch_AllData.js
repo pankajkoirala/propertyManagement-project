@@ -16,6 +16,7 @@ let FetchData = (props) => {
     ChequeData();
     DevelopementCompanyData();
     MaintananceTicketData();
+    ExpensesData();
   }, []);
 
   let BrokerCompanyData = () => {
@@ -203,6 +204,26 @@ let FetchData = (props) => {
       });
   };
 
+  let ExpensesData = () => {
+    Axios({
+      method: "get",
+      url: base_URL + "/api/expense",
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        console.log(res.data);
+        props.redux_Add_expense(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <RouterPage />
@@ -229,6 +250,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: "ADD_ALL_DEVELOPEMENT_COMPANY", payload: arg }),
   redux_Add_MaintananceTicket: (arg) =>
     dispatch({ type: "ADD_ALL_MAINTANANCE_TICKET", payload: arg }),
+  redux_Add_expense: (arg) =>
+    dispatch({ type: "ADD_ALL_EXPENSE", payload: arg }),
+  redux_Add_invoice: (arg) =>
+    dispatch({ type: "ADD_ALL_INVOICE", payload: arg }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FetchData);
