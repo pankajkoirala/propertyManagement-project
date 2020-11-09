@@ -113,7 +113,17 @@ const LeaseEntry = (props) => {
                     {...props}
                     setFieldValue={setFieldValue}
                     options={props?.redux_tenantData?.tenant?.map((tenent) => {
-                      return { name: tenent.tenant_firstName, id: tenent._id };
+                      return {
+                        name:
+                          tenent.tenant_firstName +
+                          " " +
+                          tenent.tenant_middleName +
+                          " " +
+                          tenent.tenant_lastName +
+                          "-" +
+                          tenent.TenantId,
+                        id: tenent._id,
+                      };
                     })}
                     name={"tenants"}
                   />
@@ -133,7 +143,11 @@ const LeaseEntry = (props) => {
                   <RegexConponent
                     setFieldValue={setFieldValue}
                     options={props.unReserveProperty.map((property) => {
-                      return { name: property.property_type, id: property._id };
+                      return {
+                        name:
+                          property.property_type + "-" + property.referenceNO,
+                        id: property._id,
+                      };
                     })}
                     name={"property"}
                   />

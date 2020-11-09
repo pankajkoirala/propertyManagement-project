@@ -43,6 +43,7 @@ import ExpenseEntry from "../container/entryForm/expenseEntryForm/expenseEntryFo
 import ExpensesList from "../container/view/expense/expense";
 import ExpenseDetailView from "../container/view/expense/expenseDetailView";
 import MaintananceTicketList from "../container/view/maintananceTicket/maintananceTicket";
+import MaintananceTicketDetailView from "../container/view/maintananceTicket/maintananceTicketDetailView";
 
 const RouterPage = () => {
   return (
@@ -147,6 +148,12 @@ const RouterPage = () => {
             path="/propertyDetail/:id"
             component={OnePropertyView}
           />
+          <PrivateRouter
+            exact
+            path="/maintananceTicket/:id"
+            component={MaintananceTicketDetailView}
+          />
+
           <PrivateRouter
             exact
             path="/tanent/:id"

@@ -52,7 +52,7 @@ const MaintananceTicketView = (props) => {
                 <td>{arg?.MaintananceCompanyDetailInfo}</td>
 
                 <td>
-                  <Link to={`/managementCompany/${arg._id}`}>
+                  <Link to={`/maintananceTicket/${arg._id}`}>
                     {" "}
                     <button className="success ml-3">View Detail</button>
                   </Link>{" "}
