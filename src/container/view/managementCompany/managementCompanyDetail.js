@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 
-const MaintananceCompanyDetailView = (props) => {
+const ManagementCompanyDetailView = (props) => {
   const { id } = useParams();
 
   //using params and select one tanent to see detail
@@ -110,4 +110,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MaintananceCompanyDetailView);
+)(ManagementCompanyDetailView);

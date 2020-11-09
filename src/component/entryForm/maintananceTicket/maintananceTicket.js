@@ -7,11 +7,20 @@ import moment from "moment";
 const MaintananceTicket = (props) => {
   console.log(props);
   let initialvalue = {
-    maintananceTicketIssueDate: "",
-    maintananceTicketDueDate: "",
-    MaintanancePropertyID: "",
-    MaintananceCompanyId: "",
-    MaintananceCompanyDetailInfo: "",
+    maintananceTicketIssueDate:
+      moment(props?.maintananceTicket?.maintananceTicketIssueDate).format(
+        "YYYY-MM-DD"
+      ) || "",
+    maintananceTicketDueDate:
+      moment(props?.maintananceTicket?.maintananceTicketDueDate).format(
+        "YYYY-MM-DD"
+      ) || "",
+    MaintanancePropertyID:
+      props?.maintananceTicket?.MaintanancePropertyID._id || "",
+    MaintananceCompanyId:
+      props?.maintananceTicket?.MaintananceCompanyId._id || "",
+    MaintananceCompanyDetailInfo:
+      props?.maintananceTicket?.MaintananceCompanyDetailInfo || "",
   };
   return (
     <div>
@@ -20,7 +29,12 @@ const MaintananceTicket = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
-              props.MaintananceTicketData(values);
+              props?.maintananceTicket
+                ? props.maintananceTicketUpdate(
+                    values,
+                    props?.maintananceTicket?._id
+                  )
+                : props.MaintananceTicketData(values);
               console.log(values);
             }}
             // validationSchema={TenantEntryFormValidation}

@@ -9,7 +9,7 @@ let RegexConponent = (props) => {
   const [updatedOptions, setUpdatedOptions] = useState([]);
   const [value, setValue] = useState("");
 
-  const { setFieldValue, name, options, onChange } = props;
+  const { setFieldValue, name, options } = props;
 
   let filterArray = (e) => {
     const regex = new RegExp(`^${e}`, "gi");
@@ -32,6 +32,7 @@ let RegexConponent = (props) => {
           width: "400px",
         }}
         type="text"
+        //  onClick={() => setUpdatedOptions(options)}
         value={value}
         onChange={(e) => {
           filterArray(e.target.value);
