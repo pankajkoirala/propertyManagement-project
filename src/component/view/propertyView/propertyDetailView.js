@@ -39,7 +39,15 @@ let PropertyDetailViewComponent = (props) => {
                 <button onClick={() => setShowEditForm(!showEditForm)}>
                   edit
                 </button>
-                <button onClick={() => props.DeleteProperty(arg._id)}>
+                <button
+                  type="button"
+                  disabled={
+                    props.leaseIdList.some((ID) => ID === arg._id) === true
+                      ? true
+                      : false
+                  }
+                  onClick={() => props.DeleteProperty(arg._id)}
+                >
                   delete
                 </button>
               </div>

@@ -1,37 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./propertyEntryForm.css";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Table } from "react-bootstrap";
 import { Formik } from "formik";
+import { v4 as uuidv4 } from "uuid";
+
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
+  const [heading, setHeading] = useState("");
+  const [unit, setUnit] = useState("");
+  const [remark, setRemark] = useState("");
+  const [facilities, setFacilities] = useState(
+    props?.property ? props?.property?.facilities : []
+  );
+
+  let addFacilities = (data) => {
+    setFacilities([...facilities, data]);
+    setHeading("");
+    setRemark("");
+    setUnit("");
+  };
+  let removeExpense = (id) =>
+    setFacilities(facilities.filter((arg) => arg.facilitiesId !== id));
+
   let initialValue = {
-    street: props?.property?.street || "",
     city: props?.property?.city || "",
+    area: props?.property?.area || "",
     country: props?.property?.country || "",
     property_type: props?.property?.property_type || "",
     property_price: props?.property?.property_price || "",
-    bedroomArea: props?.property?.bedroomArea || "",
-    NoOfbedroom: props?.property?.NoOfbedroom || "",
-    bedroomRemark: props?.property?.bedroomRemark || "",
-    kitchenArea: props?.property?.kitchenArea || "",
-    NoOfKitchen: props?.property?.NoOfKitchen || "",
-    kitchenRemark: props?.property?.kitchenRemark || "",
-    hallArea: props?.property?.hallArea || "",
-    NoOfHall: props?.property?.NoOfHall || "",
-    hallRemark: props?.property?.hallRemark || "",
-    bathroomArea: props?.property?.bathroomArea || "",
-    NoOfBathroom: props?.property?.NoOfBathroom || "",
-    bathroomRemark: props?.property?.bathroomRemark || "",
-    Balcony_Area: props?.property?.Balcony_Area || "",
-    NoOfBalcony: props?.property?.NoOfBalcony || "",
-    BalconyRemark: props?.property?.BalconyRemark || "",
-    Parking: props?.property?.Parking || "unavailable",
-    Swimming: props?.property?.Swimming || "unavailable",
-    Smoking: props?.property?.Smoking || "unavailable",
-    PetAllowed: props?.property?.PetAllowed || "unavailable",
-    Garden: props?.property?.Garden || "unavailable",
+    facilities: props?.property?.facilities || [],
     property_community: props?.property?.property_community || "",
     building_Name: props?.property?.building_Name || "",
     building_Number: props?.property?.building_Number || "",
@@ -42,10 +41,7 @@ const PropertyEntry = (props) => {
     Property_Premise_Number: props?.property?.Property_Premise_Number || "",
     Title_Deed_Photo: props?.property?.Title_Deed_Photo || "",
     photo: props?.property?.photo || "",
-    //added schema
-    Parking_1: props?.property?.Parking_1 || "not available",
-    Parking_2: props?.property?.Parking_2 || "not available",
-    Parking_3: props?.property?.Parking_3 || "not available",
+    Parking_Number: props?.property?.Parking_Number || "not available",
   };
   return (
     <div>
@@ -54,10 +50,10 @@ const PropertyEntry = (props) => {
           <Formik
             initialValues={initialValue}
             onSubmit={(values) => {
+              values.facilities = JSON.stringify(facilities);
               props.property
                 ? props.propertyUpdate(values, props?.property?._id)
                 : props.propertySend(values);
-              console.log(values);
             }}
             // validationSchema={PropertyFormValidation}
           >
@@ -91,9 +87,9 @@ const PropertyEntry = (props) => {
                           value={values.property_type}
                         >
                           <option value=""> </option>
-                          <option value="Villa">Residential</option>
-                          <option value="House">Commericial</option>
-                          <option value="Apartment">Land</option>
+                          <option value="Residential">Residential</option>
+                          <option value="Commericial">Commericial</option>
+                          <option value="Land">Land</option>
                         </Input>
 
                         {touched?.property_type && errors?.property_type && (
@@ -166,24 +162,25 @@ const PropertyEntry = (props) => {
                         )}
                       </div>
                       <div className="col-sm-4 my-1">
-                        <Label for="exampleName">Street</Label>
+                        <Label for="exampleName">Area</Label>
                         <Input
-                          type="text"
-                          value={values.street}
-                          name="street"
-                          placeholder="Enter your Street"
+                          type="area"
+                          value={values.area}
+                          name="area"
+                          placeholder="Enter your City"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.street && errors.street && (
+                        {touched.area && errors.area && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors.street}
+                            {errors.area}
                           </span>
                         )}
                       </div>
+
                       <div className="col-sm-4 my-1">
                         <Label for="exampleName">building Name</Label>
                         <Input
@@ -350,505 +347,127 @@ const PropertyEntry = (props) => {
                     </div>
                     <div className="">
                       <Label for="exampleName">
-                        <h3>Properties</h3>
+                        <h3>Facilities</h3>
                       </Label>
                     </div>
 
                     <Table bordered>
                       <thead>
                         <tr>
-                          <th>SN</th>
-
-                          <th>topic</th>
-                          <th>Area</th>
+                          <th>heading</th>
                           <th>unit</th>
 
                           <th>Remarks</th>
+                          <th>add</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>1</td>
-                          <td>Bedroom</td>
-                          <td>
-                            <Input
-                              type="number"
-                              value={values.bedroomArea}
-                              name="bedroomArea"
-                              placeholder="area in Sq.ft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched?.bedroomArea && errors?.bedroomArea && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors?.bedroomArea}
-                              </span>
-                            )}
-                          </td>
-                          <td>
-                            <Input
-                              type="number"
-                              value={values.NoOfbedroom}
-                              name="NoOfbedroom"
-                              placeholder="area in Sq.ft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched?.NoOfbedroom && errors?.NoOfbedroom && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors?.NoOfbedroom}
-                              </span>
-                            )}
-                          </td>
-
                           <td>
                             <Input
                               type="text"
-                              value={values.bedroomRemark}
-                              name="bedroomRemark"
-                              placeholder="Enter the bedroomRemark"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
+                              value={heading}
+                              onChange={(e) => {
+                                setHeading(e.target.value);
+                              }}
                             />
-                            {touched.bedroomRemark && errors.bedroomRemark && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.bedroomRemark}
-                              </span>
-                            )}
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>2</td>
-                          <td>Hall</td>
-
-                          <td>
-                            <Input
-                              type="number"
-                              value={values.hallArea}
-                              name="hallArea"
-                              placeholder="area in Sq.ft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched?.hallArea && errors?.hallArea && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors?.hallArea}
-                              </span>
-                            )}
                           </td>
                           <td>
                             <Input
                               type="number"
-                              value={values.NoOfHall}
-                              name="NoOfHall"
-                              placeholder="area in Sq.ft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
+                              value={unit}
+                              onChange={(e) => {
+                                setUnit(e.target.value);
+                              }}
                             />
-                            {touched?.NoOfHall && errors?.NoOfHall && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors?.NoOfHall}
-                              </span>
-                            )}
                           </td>
-
                           <td>
                             <Input
                               type="text"
-                              value={values.hallRemark}
-                              name="hallRemark"
-                              placeholder="Enter the hallRemark"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
+                              value={remark}
+                              onChange={(e) => {
+                                setRemark(e.target.value);
+                              }}
                             />
-                            {touched.hallRemark && errors.hallRemark && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.hallRemark}
-                              </span>
-                            )}
+                          </td>
+                          <td>
+                            <button
+                              disabled={!heading || !unit || !remark}
+                              onClick={() =>
+                                addFacilities({
+                                  heading: heading,
+                                  unit: unit,
+                                  remark: remark,
+                                  facilitiesId: uuidv4(),
+                                })
+                              }
+                              type="button"
+                              className="font-weight-bold"
+                            >
+                              Add
+                            </button>
                           </td>
                         </tr>
-
-                        <tr>
-                          <td>3</td>
-                          <td>Kitchen with Dinning</td>
-                          <td>
-                            <Input
-                              type="number"
-                              value={values.kitchenArea}
-                              name="kitchenArea"
-                              placeholder="area in Sq.ft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched?.kitchenArea && errors?.kitchenArea && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors?.kitchenArea}
-                              </span>
-                            )}
-                          </td>
-                          <td>
-                            <Input
-                              type="number"
-                              value={values.NoOfKitchen}
-                              name="NoOfKitchen"
-                              placeholder="area in Sq.ft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched?.NoOfKitchen && errors?.NoOfKitchen && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors?.NoOfKitchen}
-                              </span>
-                            )}
-                          </td>
-
-                          <td>
-                            <Input
-                              type="text"
-                              value={values.kitchenRemark}
-                              name="kitchenRemark"
-                              placeholder="Enter the kitchenRemark"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched.kitchenRemark && errors.kitchenRemark && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.kitchenRemark}
-                              </span>
-                            )}
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>4</td>
-                          <td>Bathroom</td>
-                          <td>
-                            <Input
-                              type="number"
-                              value={values.bathroomArea}
-                              name="bathroomArea"
-                              placeholder="area in Sq.ft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched?.bathroomArea && errors?.bathroomArea && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors?.bathroomArea}
-                              </span>
-                            )}
-                          </td>
-                          <td>
-                            <Input
-                              type="number"
-                              value={values.NoOfBathroom}
-                              name="NoOfBathroom"
-                              placeholder="area in Sq.ft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched?.NoOfBathroom && errors?.NoOfBathroom && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors?.NoOfBathroom}
-                              </span>
-                            )}
-                          </td>
-
-                          <td>
-                            <Input
-                              type="text"
-                              value={values.bathroomRemark}
-                              name="bathroomRemark"
-                              placeholder="Enter the bathroomRemark"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched.bathroomRemark && errors.bathroomRemark && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.bathroomRemark}
-                              </span>
-                            )}
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>5</td>
-                          <td>Balcony</td>
-                          <td>
-                            <Input
-                              type="number"
-                              value={values.Balcony_Area}
-                              name="Balcony_Area"
-                              placeholder="area in Sq.ft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched?.Balcony_Area && errors?.Balcony_Area && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors?.Balcony_Area}
-                              </span>
-                            )}
-                          </td>
-                          <td>
-                            <Input
-                              type="number"
-                              value={values.NoOfBalcony}
-                              name="NoOfBalcony"
-                              placeholder="area in Sq.ft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched?.NoOfBalcony && errors?.NoOfBalcony && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors?.NoOfBalcony}
-                              </span>
-                            )}
-                          </td>
-
-                          <td>
-                            <Input
-                              type="text"
-                              value={values.BalconyRemark}
-                              name="BalconyRemark"
-                              placeholder="Enter the bathroomRemark"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched.BalconyRemark && errors.BalconyRemark && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.BalconyRemark}
-                              </span>
-                            )}
-                          </td>
-                        </tr>
-                        {values.Parking === "available" ? (
-                          <tr>
-                            <td>6</td>
-                            <td>parking</td>
-                            <td>
-                              <Input
-                                type="number"
-                                value={values.Parking_1}
-                                name="Parking_1"
-                                placeholder="parking area 1"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                              />
-                              {touched?.Parking_1 && errors?.Parking_1 && (
-                                <span
-                                  className="text-danger col-md-12 text-left mb-2"
-                                  style={{ fontSize: 12 }}
-                                >
-                                  {errors?.Parking_1}
-                                </span>
-                              )}
-                            </td>
-                            <td>
-                              <Input
-                                type="number"
-                                value={values.Parking_2}
-                                name="Parking_2"
-                                placeholder="parking area 2"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                              />
-                              {touched?.Parking_2 && errors?.Parking_2 && (
-                                <span
-                                  className="text-danger col-md-12 text-left mb-2"
-                                  style={{ fontSize: 12 }}
-                                >
-                                  {errors?.Parking_2}
-                                </span>
-                              )}
-                            </td>
-
-                            <td>
-                              <Input
-                                type="number"
-                                value={values.Parking_3}
-                                name="Parking_3"
-                                placeholder="parking area 3"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                              />
-                              {touched.Parking_3 && errors.Parking_3 && (
-                                <span
-                                  className="text-danger col-md-12 text-left mb-2"
-                                  style={{ fontSize: 12 }}
-                                >
-                                  {errors.Parking_3}
-                                </span>
-                              )}
-                            </td>
-                          </tr>
-                        ) : (
-                          ""
-                        )}
                       </tbody>
                     </Table>
+                    {facilities.length > 0 ? (
+                      <Table bordered>
+                        <thead>
+                          <tr>
+                            <th>SN</th>
+                            <th>heading</th>
+                            <th>unit</th>
+                            <th>Remarks</th>
+                            <th>add</th>
+                          </tr>
+                        </thead>
+                        {facilities.map((arg, index) => {
+                          return (
+                            <tbody key={index}>
+                              <tr>
+                                <td>{index + 1}</td>
+                                <td>{arg.heading}</td>
+                                <td>{arg.unit}</td>
+                                <td>{arg.remark}</td>
 
-                    <div className="">
-                      <Label>
-                        <h3>Facilities</h3>
-                      </Label>
-                      <FormGroup check>
-                        <Label check>
-                          <Input
-                            type="checkbox"
-                            name="Parking"
-                            checked={
-                              values.Parking === "available" ? true : false
-                            }
-                            onChange={(e) =>
-                              setFieldValue(
-                                "Parking",
-                                e.currentTarget.checked
-                                  ? "available"
-                                  : "unavailable"
-                              )
-                            }
-                          />
-                          Parking
-                        </Label>
-                      </FormGroup>
-                      <FormGroup check>
-                        <Label check>
-                          <Input
-                            type="checkbox"
-                            name="Swimming"
-                            checked={
-                              values.Swimming === "available" ? true : false
-                            }
-                            onChange={(e) =>
-                              setFieldValue(
-                                "Swimming",
-                                e.currentTarget.checked
-                                  ? "available"
-                                  : "unavailable"
-                              )
-                            }
-                          />
-                          Swimming
-                        </Label>
-                      </FormGroup>
-
-                      <FormGroup check>
-                        <Label check>
-                          <Input
-                            checked={
-                              values.Smoking === "available" ? true : false
-                            }
-                            type="checkbox"
-                            name="Smoking"
-                            onChange={(e) =>
-                              setFieldValue(
-                                "Smoking",
-                                e.currentTarget.checked
-                                  ? "available"
-                                  : "unavailable"
-                              )
-                            }
-                          />
-                          Smoking
-                        </Label>
-                      </FormGroup>
-                      <FormGroup check>
-                        <Label check>
-                          <Input
-                            checked={
-                              values.PetAllowed === "available" ? true : false
-                            }
-                            type="checkbox"
-                            name="PetAllowed"
-                            onChange={(e) =>
-                              setFieldValue(
-                                "PetAllowed",
-                                e.currentTarget.checked
-                                  ? "available"
-                                  : "unavailable"
-                              )
-                            }
-                          />
-                          Pet Allowed
-                        </Label>
-                      </FormGroup>
-                      <FormGroup check>
-                        <Label check>
-                          <Input
-                            checked={
-                              values.Garden === "available" ? true : false
-                            }
-                            type="checkbox"
-                            name="Garden"
-                            onChange={(e) =>
-                              setFieldValue(
-                                "Garden",
-                                e.currentTarget.checked
-                                  ? "available"
-                                  : "unavailable"
-                              )
-                            }
-                          />
-                          Garden
-                        </Label>
-                      </FormGroup>
-
-                      {/* {touched.facilities && errors.facilities && (
-                                  <span
-                                    className="text-danger col-md-12 text-left mb-2"
-                                    style={{ fontSize: 12 }}
+                                <td>
+                                  <button
+                                    type="button"
+                                    className="font-weight-bold"
+                                    onClick={() =>
+                                      removeExpense(arg.facilitiesId)
+                                    }
                                   >
-                                    {errors.facilities}
-                                  </span>
-                                )} */}
+                                    Delete
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          );
+                        })}
+                      </Table>
+                    ) : (
+                      ""
+                    )}
+                    <div className="col-sm-4 my-1">
+                      <Label for="exampleName">Parking Number</Label>
+                      <Input
+                        type="text"
+                        value={values.Parking_Number}
+                        name="Parking_Number"
+                        placeholder="Enter the name of Country"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.Parking_Number && errors.Parking_Number && (
+                        <span
+                          className="text-danger col-md-12 text-left mb-2"
+                          style={{ fontSize: 12 }}
+                        >
+                          {errors.Parking_Number}
+                        </span>
+                      )}
                     </div>
-
                     <div className="col-md-4">
                       <Label>Title Deed Photo</Label>
                       <Input

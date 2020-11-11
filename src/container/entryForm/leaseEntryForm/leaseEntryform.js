@@ -16,9 +16,7 @@ const LeaseEntry = (props) => {
     formData.append("rentAmount", data.rentAmount);
     formData.append("firstDueDate", data.firstDueDate);
     formData.append("frequency", data.frequency);
-    formData.append("gracePeriod", data.gracePeriod);
-    formData.append("late_feeType", data.late_feeType);
-    formData.append("lateFeeAmount", data.lateFeeAmount);
+
     formData.append("securityDeposite", data.securityDeposite);
     formData.append("securityfirstDueDate", data.securityfirstDueDate);
     formData.append("property", data.property);

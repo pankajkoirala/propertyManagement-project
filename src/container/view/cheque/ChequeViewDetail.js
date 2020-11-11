@@ -64,7 +64,9 @@ const ChequeDetailViewCont = (props) => {
         notification("error", "ERROR");
       });
   };
-
+  //lease data
+  let leaseDataID = [];
+  props.Redux_leaseData.lease.map((arg) => leaseDataID.push(arg._id));
   return (
     <div>
       <ChequeViewComp
@@ -72,6 +74,8 @@ const ChequeDetailViewCont = (props) => {
         selectedCheque={selectedCheque}
         ChequeUpdate={ChequeUpdate}
         ChequeDelete={ChequeDelete}
+        leaseDataID={leaseDataID}
+        Redux_leaseData={props.Redux_leaseData.lease}
       />
     </div>
   );
@@ -80,6 +84,7 @@ const ChequeDetailViewCont = (props) => {
 const mapStateToProps = (state) => ({
   redux_ChequeData: state.cheque,
   Redux_propertyData: state.property,
+  Redux_leaseData: state.lease,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

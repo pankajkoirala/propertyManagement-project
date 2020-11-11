@@ -7,8 +7,6 @@ import { connect } from "react-redux";
 let MaintananceTicketDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
 
-  console.log("selectedManagementCompany", props.selectedManagementCompany);
-
   let showHide = () => {
     setShowEditForm(!showEditForm);
   };

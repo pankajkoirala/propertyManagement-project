@@ -5,7 +5,6 @@ import moment from "moment";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const MaintananceTicketView = (props) => {
-  console.log(props.maintananceTicket);
   return (
     <div className="tenantview">
       <h1 className="text-center">Maintanance Ticket List</h1>

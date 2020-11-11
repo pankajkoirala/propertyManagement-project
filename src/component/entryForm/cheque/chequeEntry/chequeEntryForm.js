@@ -5,6 +5,7 @@ import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import { notification } from "../../../../shared/notification";
+import RegexComponent from "../../../../shared/regexComponent";
 
 const ChequeEntry = (props) => {
   let initialvalue = {
@@ -181,24 +182,19 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleSelect">lease_property</Label>
-                        <Input
-                          type="select"
-                          name="lease_property"
-                          id="exampleSelect"
-                          placeholder="Select Status of Cheque"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        >
-                          <option value="">Select any one</option>
-                          {props?.Redux_propertyData?.map((arg, index) => {
-                            return (
-                              <option key={index} value={arg._id}>
-                                {arg.referenceNO}-{arg.property_type}
-                              </option>
-                            );
+                        <Label for="exampleSelect">lease number</Label>
+                        <RegexComponent
+                          {...props}
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_leaseData?.map((lease) => {
+                            return {
+                              name: lease.LeaseId,
+
+                              id: lease._id,
+                            };
                           })}
-                        </Input>
+                          name={"lease_property"}
+                        />
 
                         {touched.lease_property && errors.lease_property && (
                           <span
@@ -264,16 +260,6 @@ const ChequeEntry = (props) => {
                         onClick={handleSubmit}
                       >
                         Add Cheque
-                      </button>
-                      ;
-                      <button
-                        type="button"
-                        onClick={() => {
-                          notification("Created successfully", "SUCCESS");
-                          console.log("sulochana");
-                        }}
-                      >
-                        test
                       </button>
                     </div>
                   </div>

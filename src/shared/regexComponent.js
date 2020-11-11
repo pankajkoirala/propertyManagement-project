@@ -17,8 +17,12 @@ let RegexConponent = (props) => {
     let selectedOptions =
       e === ""
         ? setUpdatedOptions([])
-        : options.filter((option) => regex.test(option.name));
+        : options?.filter((option) => regex.test(option.name));
     setUpdatedOptions(selectedOptions);
+  };
+  //remove list on click on other place
+  window.onclick = () => {
+    setUpdatedOptions([]);
   };
 
   return (
@@ -29,10 +33,10 @@ let RegexConponent = (props) => {
           top: "0",
           bottom: "0",
           zIndex: "999",
-          width: "400px",
+          width: "300px",
         }}
         type="text"
-        //  onClick={() => setUpdatedOptions(options)}
+        onClick={() => setUpdatedOptions(options)}
         value={value}
         onChange={(e) => {
           filterArray(e.target.value);
@@ -52,7 +56,6 @@ let RegexConponent = (props) => {
                 }}
                 className="bg-danger"
                 onClick={() => {
-                  console.log(arg._id);
                   setFieldValue(name, arg.id);
 
                   setValue(arg.name);

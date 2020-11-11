@@ -15,31 +15,12 @@ let PropertyDetailView = (props) => {
 
   const propertyUpdate = (data, ID) => {
     const formData = new FormData();
-    formData.append("street", data.street);
     formData.append("city", data.city);
     formData.append("country", data.country);
     formData.append("property_type", data.property_type);
     formData.append("property_price", data.property_price);
-    formData.append("bedroomArea", data.bedroomArea);
-    formData.append("NoOfbedroom", data.NoOfbedroom);
-    formData.append("bedroomRemark", data.bedroomRemark);
-    formData.append("kitchenArea", data.kitchenArea);
-    formData.append("NoOfKitchen", data.NoOfKitchen);
-    formData.append("kitchenRemark", data.kitchenRemark);
-    formData.append("hallArea", data.hallArea);
-    formData.append("NoOfHall", data.NoOfHall);
-    formData.append("hallRemark", data.hallRemark);
-    formData.append("bathroomArea", data.bathroomArea);
-    formData.append("NoOfBathroom", data.NoOfBathroom);
-    formData.append("bathroomRemark", data.bathroomRemark);
-    formData.append("Balcony_Area", data.Balcony_Area);
-    formData.append("NoOfBalcony", data.NoOfBalcony);
-    formData.append("BalconyRemark", data.BalconyRemark);
-    formData.append("Garden", data.Garden);
-    formData.append("PetAllowed", data.PetAllowed);
-    formData.append("Smoking", data.Smoking);
-    formData.append("Swimming", data.Swimming);
-    formData.append("Parking", data.Parking);
+    formData.append("Parking_Number", data.Parking_Number);
+    formData.append("facilities", data.facilities);
     formData.append("property_community", data.property_community);
     formData.append("building_Name", data.building_Name);
     formData.append("building_Number", data.building_Number);
@@ -48,11 +29,9 @@ let PropertyDetailView = (props) => {
     formData.append("Muncipality_Number", data.Muncipality_Number);
     formData.append("Property_Area", data.Property_Area);
     formData.append("Property_Premise_Number", data.Property_Premise_Number);
+    formData.append("area", data.area);
     formData.append("Title_Deed_Photo", data.Title_Deed_Photo);
     formData.append("photo", data.photo);
-    formData.append("Parking_1", data.Parking_1);
-    formData.append("Parking_2", data.Parking_2);
-    formData.append("Parking_3", data.Parking_3);
 
     Axios({
       method: "put",
@@ -74,9 +53,15 @@ let PropertyDetailView = (props) => {
   };
   let DeleteProperty = (Id) => {
     Axios.delete(base_URL + `/api/property/${Id}`)
-      .then((data) => notification("successfully Deleted", "SUCCESS"))
+      .then((data) => {
+        console.log(data);
+        notification("successfully Deleted", "SUCCESS");
+      })
       .catch((err) => notification("error", "ERROR"));
   };
+
+  //lease id
+  let leaseid = props.Redux_leaseData.lease.map((arg) => arg.property._id);
 
   return (
     <div>
@@ -84,6 +69,7 @@ let PropertyDetailView = (props) => {
         propertyUpdate={propertyUpdate}
         selectedone={selectedone}
         DeleteProperty={DeleteProperty}
+        leaseIdList={leaseid}
       />
     </div>
   );
@@ -91,6 +77,7 @@ let PropertyDetailView = (props) => {
 
 const mapStateToProps = (state) => ({
   Redux_propertyData: state.property,
+  Redux_leaseData: state.lease,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

@@ -1,125 +1,101 @@
 import React, { useState } from "react";
-import "./ownerEntry.css";
+
+import { FormGroup, Label, Input, Form, Table } from "reactstrap";
+import { Formik } from "formik";
 import moment from "moment";
 
-// import {  FormGroup, Label, Input, Form } from "reactstrap";
-// import { Formik } from "formik";
-//import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
-import { FormGroup, Label, Input, Form } from "reactstrap";
-import { Formik } from "formik";
+const ChequeEntry = (props) => {
+  const [photo, setPhoto] = useState([]);
+  var [photoName, setPhotoName] = useState([]);
+  var [photosList, setPhotosList] = useState([]);
+  var [nameList, setNameList] = useState([]);
+  var [initialValue, setInitialValue] = useState({});
 
-let date = new Date();
+  console.log("ChequeEntry -> photosList", photosList);
+  console.log("ChequeEntry -> nameList", nameList);
 
-const OwnerEntry = (props) => {
-  const [photos, setPhotos] = useState([]);
-  const [photoName, setPhotoName] = useState("");
-  const [photo, setPhoto] = useState({});
-  console.log("photos array", photos);
-
-  let initialvalue = {
-    allPhotos: photos,
-  };
-  let addPhoto = (data) => {
-    setPhotos([...photos, data]);
-    setPhoto({});
-    setPhotoName("");
-  };
+  var initialValue = {};
+  for (var i = 0; i < nameList.length; i++)
+    initialValue[nameList[i]] = photosList[i];
+  console.log(initialValue);
 
   return (
     <div>
-      <Formik
-        initialValues={initialvalue}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
-        // validationSchema={TenantEntryFormValidation}
-      >
-        {({
-          touched,
-          errors,
-          values,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          setFieldValue,
-          isSubmitting,
-        }) => (
-          <Form className="d-flex justify-content-center">
-            <FormGroup className="">
-              <div className="text-center">
-                <div className="text-black font-weight-bold">
-                  {" "}
-                  <h3>Cheque Entry Form </h3>
-                </div>
-              </div>
-              <div>
-                {/* <div className="m-4"> */}
+      <div className="PropertyFormEntry">
+        <div>
+          <Formik
+            initialValues={initialValue}
+            onSubmit={(values) => {
+              props.ownerData(initialValue);
+              console.log(initialValue);
+            }}
+            // validationSchema={TenantEntryFormValidation}
+          >
+            {({ handleSubmit }) => (
+              <Form className="d-flex justify-content-center">
+                <FormGroup className="">
+                  <div className="text-center">
+                    <div className="row">
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <Input
+                          type="file"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setPhoto(event.currentTarget.files[0]);
+                          }}
+                        />
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <Input
+                          type="text"
+                          onChange={(e) => {
+                            setPhotoName(e.target.value);
+                          }}
+                        />
+                      </div>
 
-                <div className="row ">
-                  <div className="mt-4 col-md-3">
-                    <Label for="exampleName"> bank Name</Label>
-                    <Input
-                      type="text"
-                      value={photoName}
-                      onChange={(e) => setPhotoName(e.target.value)}
-                    />
-                    {/* {touched.cheque_bankName && errors.cheque_bankName && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
+                      <button
+                        className="Success col-4 mt-2"
+                        type="button"
+                        onClick={() => {
+                          setNameList([...nameList, photoName]);
+                          setPhotosList([...photosList, photo]);
+                        }}
                       >
-                        {errors.cheque_bankName}
-                      </span>
-                    )} */}
-                  </div>
-                </div>
+                        Add Cheque
+                      </button>
+                    </div>
+                    {/* {photosData.map((arg, index) => {
+                      return (
+                        <Table key={index}>
+                          <tr>
+                            <td>{index + 1}</td>
 
-                <div className="row">
-                  <div className="col-md-6 text-left mb-2 mt-4">
-                    <Label className="float-left">Upload Scan Copy</Label>
-                    <Input
-                      type="file"
-                      accept="image/*"
-                      onChange={(event) =>
-                        setPhoto(event.currentTarget.files[0])
-                      }
-                    />
-
-                    {/* {touched.cheque_picture && values.cheque_picture && (
-                      <img
-                        src={
-                          typeof values.cheque_picture === "string"
-                            ? values.cheque_picture
-                            : URL.createObjectURL()
-                        }
-                        alt="no picture"
-                        height="20"
-                      />
-                    )} */}
+                            <td>{arg.Name}</td>
+                            <td>
+                              <img src={arg.url} alt="" />{" "}
+                            </td>
+                            <td>
+                              <button type="button" onClick={() => {}}>
+                                delete
+                              </button>
+                            </td>
+                          </tr>
+                        </Table>
+                      );
+                    })} */}
+                    <button type="button" onClick={handleSubmit}>
+                      submit
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      addPhoto({ photoname: photoName, pphoto: photo });
-                    }}
-                  >
-                    add
-                  </button>
-                  <button
-                    className="Success col-4 mt-2"
-                    type="submit"
-                    onClick={handleSubmit}
-                  >
-                    Add Cheque
-                  </button>
-                </div>
-              </div>
-            </FormGroup>
-          </Form>
-        )}
-      </Formik>
+                </FormGroup>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default OwnerEntry;
+export default ChequeEntry;

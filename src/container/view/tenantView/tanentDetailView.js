@@ -17,14 +17,11 @@ const TanentDetailViewCont = (props) => {
   //tanent update
   const tenentUpdate = (data, ID) => {
     const formData = new FormData();
-    formData.append("street", data.street);
+    formData.append("area", data.area);
     formData.append("city", data.city);
     formData.append("country", data.country);
-    formData.append("provience", data.provience);
-    formData.append("ZipCode", data.ZipCode);
-    formData.append("tenant_firstName", data.tenant_firstName);
-    formData.append("tenant_lastName", data.tenant_lastName);
-    formData.append("tenant_middleName", data.tenant_middleName);
+    formData.append("tenant_Name", data.tenant_Name);
+    formData.append("company_Name", data.company_Name);
     formData.append("tenant_phoneNo", data.tenant_phoneNo);
     formData.append("tenant_email", data.tenant_email);
     formData.append("tenant_photo", data.tenant_photo);
@@ -43,7 +40,10 @@ const TanentDetailViewCont = (props) => {
     );
     formData.append("tenant_POA_photo", data.tenant_POA_photo);
     formData.append("tenant_GovIdNo", data.tenant_GovIdNo);
-    formData.append("tenant_DateOfBirth", data.tenant_DateOfBirth);
+    formData.append(
+      "DateOfBirth_registrationDate",
+      data.DateOfBirth_registrationDate
+    );
     formData.append("tenant_DrivingLicenceNo", data.tenant_DrivingLicenceNo);
 
     Axios({

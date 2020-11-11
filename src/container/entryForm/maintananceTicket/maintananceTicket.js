@@ -2,9 +2,10 @@ import React from "react";
 import MaintananceTicketComponent from "../../../component/entryForm/maintananceTicket/maintananceTicket";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
+import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 
-const MaintananceTicketContainer = () => {
+const MaintananceTicketContainer = (props) => {
   const MaintananceTicketData = (data) => {
     Axios({
       method: "post",
@@ -24,13 +25,31 @@ const MaintananceTicketContainer = () => {
         notification("error", "ERROR");
       });
   };
+
   return (
     <div>
       <MaintananceTicketComponent
         MaintananceTicketData={MaintananceTicketData}
+        Redux_propertyData={props.Redux_propertyData.property}
+        Redux_maintananceCompanyData={
+          props.Redux_maintananceCompanyData.maintananceCompany
+        }
+        Redux_managementCompanyData={
+          props.Redux_managementCompanyData.managementCompany
+        }
       />
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  Redux_propertyData: state.property,
+  Redux_maintananceCompanyData: state.maintananceCompany,
+  Redux_managementCompanyData: state.managementCompany,
+});
 
-export default MaintananceTicketContainer;
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MaintananceTicketContainer);
