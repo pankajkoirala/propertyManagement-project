@@ -37,7 +37,7 @@ const MaintananceTicketDetailView = (props) => {
   const maintananceTicketDelete = (ID) => {
     Axios({
       method: "delete",
-      url: base_URL + "/api/managementCompany/" + ID,
+      url: base_URL + "/api/MaintananceTicket/" + ID,
       config: {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -59,6 +59,13 @@ const MaintananceTicketDetailView = (props) => {
         selectedMaintananceTicket={selectedMaintananceTicket}
         maintananceTicketDelete={maintananceTicketDelete}
         maintananceTicketUpdate={maintananceTicketUpdate}
+        Redux_propertyData={props.Redux_propertyData.property}
+        Redux_maintananceCompanyData={
+          props.Redux_maintananceCompanyData.maintananceCompany
+        }
+        Redux_managementCompanyData={
+          props.Redux_managementCompanyData.managementCompany
+        }
       />
     </div>
   );
@@ -66,6 +73,9 @@ const MaintananceTicketDetailView = (props) => {
 
 const mapStateToProps = (state) => ({
   redux_maintananceTicketData: state.maintananceTicket,
+  Redux_propertyData: state.property,
+  Redux_maintananceCompanyData: state.maintananceCompany,
+  Redux_managementCompanyData: state.managementCompany,
 });
 
 const mapDispatchToProps = (dispatch) => ({

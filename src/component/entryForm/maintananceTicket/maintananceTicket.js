@@ -1,11 +1,10 @@
 import React from "react";
-
+import RegexComponent from "../../../shared/regexComponent";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 
 const MaintananceTicket = (props) => {
-  console.log(props);
   let initialvalue = {
     maintananceTicketIssueDate:
       moment(props?.maintananceTicket?.maintananceTicketIssueDate).format(
@@ -16,9 +15,11 @@ const MaintananceTicket = (props) => {
         "YYYY-MM-DD"
       ) || "",
     MaintanancePropertyID:
-      props?.maintananceTicket?.MaintanancePropertyID._id || "",
+      props?.maintananceTicket?.MaintanancePropertyID?._id || "",
     MaintananceCompanyId:
-      props?.maintananceTicket?.MaintananceCompanyId._id || "",
+      props?.maintananceTicket?.MaintananceCompanyId?._id || "",
+    managementCompanyId:
+      props?.maintananceTicket?.managementCompanyId?._id || "",
     MaintananceCompanyDetailInfo:
       props?.maintananceTicket?.MaintananceCompanyDetailInfo || "",
   };
@@ -104,14 +105,23 @@ const MaintananceTicket = (props) => {
 
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">property id</Label>
-                        <Input
-                          type="text"
-                          value={values.MaintanancePropertyID}
-                          name="MaintanancePropertyID"
-                          placeholder="Cheque Amount"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
+                        <RegexComponent
+                          {...props}
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_propertyData?.map(
+                            (property) => {
+                              return {
+                                name:
+                                  property.referenceNO +
+                                  "-" +
+                                  property.property_type,
+                                id: property._id,
+                              };
+                            }
+                          )}
+                          name={"MaintanancePropertyID"}
                         />
+
                         {touched.MaintanancePropertyID &&
                           errors.MaintanancePropertyID && (
                             <span
@@ -124,14 +134,21 @@ const MaintananceTicket = (props) => {
                       </div>
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">maintanance Company Id</Label>
-                        <Input
-                          type="text"
-                          value={values.MaintananceCompanyId}
-                          name="MaintananceCompanyId"
-                          placeholder="Cheque Amount"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
+                        <RegexComponent
+                          {...props}
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_maintananceCompanyData?.map(
+                            (maintananceCompany) => {
+                              return {
+                                name: maintananceCompany.Company_ID,
+
+                                id: maintananceCompany._id,
+                              };
+                            }
+                          )}
+                          name={"MaintananceCompanyId"}
                         />
+
                         {touched.MaintananceCompanyId &&
                           errors.MaintananceCompanyId && (
                             <span
@@ -139,6 +156,37 @@ const MaintananceTicket = (props) => {
                               style={{ fontSize: 12 }}
                             >
                               {errors.MaintananceCompanyId}
+                            </span>
+                          )}
+                      </div>
+
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">
+                          managementCompanyId Company Id
+                        </Label>
+                        <RegexComponent
+                          {...props}
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_managementCompanyData?.map(
+                            (managementCompany) => {
+                              return {
+                                name:
+                                  managementCompany.managementCompany_companyID,
+
+                                id: managementCompany._id,
+                              };
+                            }
+                          )}
+                          name={"managementCompanyId"}
+                        />
+
+                        {touched.managementCompanyId &&
+                          errors.managementCompanyId && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.managementCompanyId}
                             </span>
                           )}
                       </div>

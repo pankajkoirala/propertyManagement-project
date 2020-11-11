@@ -6,7 +6,6 @@ import INCOME from "../../assets/income.PNG";
 import Maintainance from "../../assets/maintinance.PNG";
 import Occupancy from "../../assets/1.PNG";
 import { connect } from "react-redux";
-import { AddFive } from "../../redux_pract/sample";
 
 const Homepage = (props) => {
   return (

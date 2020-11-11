@@ -216,7 +216,6 @@ let FetchData = (props) => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         props.redux_Add_expense(res.data);
       })
       .catch((err) => {

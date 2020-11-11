@@ -7,6 +7,10 @@ import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 
 let LeaseDetailView = (props) => {
+  const [property, setProperty] = useState([]);
+  useEffect(() => {
+    unreserveProperty();
+  }, []);
   const { id } = useParams();
 
   let selecteOneLease = props?.Redux_LeaseData?.lease?.filter(
@@ -23,9 +27,7 @@ let LeaseDetailView = (props) => {
     formData.append("rentAmount", data.rentAmount);
     formData.append("firstDueDate", data.firstDueDate);
     formData.append("frequency", data.frequency);
-    formData.append("gracePeriod", data.gracePeriod);
-    formData.append("late_feeType", data.late_feeType);
-    formData.append("lateFeeAmount", data.lateFeeAmount);
+
     formData.append("securityDeposite", data.securityDeposite);
     formData.append("securityfirstDueDate", data.securityfirstDueDate);
     formData.append("property", data.property);
@@ -71,15 +73,18 @@ let LeaseDetailView = (props) => {
   };
 
   //property remove which are in lease from all property
-  let reserveProperty = [];
-  let unReserveProperty = [];
+  let unreserveProperty = () => {
+    let reserveProperty = [];
+    let unReserveProperty = [];
 
-  props.Redux_LeaseData.lease.forEach((arg) => {
-    reserveProperty.push(arg.property._id);
-  });
-  unReserveProperty = props.Redux_propertyData.property.filter(
-    (arg) => !reserveProperty.includes(arg._id)
-  );
+    props.Redux_LeaseData.lease.forEach((arg) => {
+      reserveProperty.push(arg?.property?._id);
+    });
+    unReserveProperty = props.Redux_propertyData.property.filter(
+      (arg) => !reserveProperty.includes(arg._id)
+    );
+    setProperty(unReserveProperty);
+  };
 
   return (
     <div>
@@ -88,7 +93,7 @@ let LeaseDetailView = (props) => {
         LeaseDelete={LeaseDelete}
         LeaseUpdate={LeaseUpdate}
         //try
-        unReserveProperty={unReserveProperty}
+        unReserveProperty={property}
         redux_tenantData={props.redux_tenantData}
       />
     </div>

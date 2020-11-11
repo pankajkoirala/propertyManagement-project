@@ -16,8 +16,8 @@ const LeaseEntry = (props) => {
     frequency: props?.lease?.frequency || "",
     lease_enterDate:
       moment(props?.lease?.lease_enterDate).format("YYYY-MM-DD") || "",
-    tenants: props?.lease?.tenants._id || "",
-    property: props?.lease?.property._id || "",
+    tenants: props?.lease?.tenants?._id || "",
+    property: props?.lease?.property?._id || "",
     lease_Term: props?.lease?.lease_Term || "",
     commenceDate: moment(props?.lease?.commenceDate).format("YYYY-MM-DD") || "",
     expirationDate:
@@ -151,6 +151,7 @@ const LeaseEntry = (props) => {
                     })}
                     name={"property"}
                   />
+
                   {touched.property && errors.property && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -164,7 +165,7 @@ const LeaseEntry = (props) => {
               <div className="col-md-12">
                 <b>Terms of Tendency</b>
               </div>
-              <div className="row">
+              <div className="row mt-4">
                 <div className="col-md-4">
                   <Label for="exampleSelect">Lease Terms</Label>
                   <Input
@@ -372,77 +373,7 @@ const LeaseEntry = (props) => {
                   </Col>
                 </FormGroup>
               </div>
-              <div className="col-md-12">
-                <b>Grace Period and Late Payment Fee</b>
-              </div>
-              <div className="row">
-                <div className="col-md-4">
-                  <Label for="exampleSelect">Grace Period Days</Label>
-                  <Input
-                    type="number"
-                    name="gracePeriod"
-                    id="exampleSelect"
-                    placeholder="gracePeriod"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.gracePeriod}
-                  ></Input>
 
-                  {touched.gracePeriod && errors.gracePeriod && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.gracePeriod}
-                    </span>
-                  )}
-                </div>
-                <div className="col-md-4">
-                  <Label for="exampleSelect">Late Fee Type</Label>
-                  <Input
-                    type="select"
-                    name="late_feeType"
-                    id="exampleSelect"
-                    placeholder="Select Late Fee type"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  >
-                    <option value=""> </option>
-                    <option value="flat">Flat</option>
-                    <option value="percentage">Percentage</option>
-                  </Input>
-
-                  {touched.late_feeType && errors.late_feeType && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.late_feeType}
-                    </span>
-                  )}
-                </div>
-                <div className="col-4">
-                  <Label for="exampleName">Late Fee Amount</Label>
-                  <Input
-                    type="number"
-                    name="lateFeeAmount"
-                    id="exampleSelect"
-                    placeholder="Late Fee Amount"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.lateFeeAmount}
-                  ></Input>
-
-                  {touched.lateFeeAmount && errors.lateFeeAmount && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.lateFeeAmount}
-                    </span>
-                  )}
-                </div>
-              </div>
               <div className="col-md-12">
                 <b>Security Deposit</b>
               </div>
@@ -525,13 +456,17 @@ const LeaseEntry = (props) => {
               </div>
             </FormGroup>
             <Table striped bordered hover size="sm">
-              <thead>
-                <tr>
-                  <th>SN</th>
-                  <th>date of payment</th>
-                  <th>remark</th>
-                </tr>
-              </thead>
+              {commerceDate && expireDate && paymentTime ? (
+                <thead>
+                  <tr>
+                    <th>SN</th>
+                    <th>date of payment</th>
+                    <th>remark</th>
+                  </tr>
+                </thead>
+              ) : (
+                ""
+              )}
 
               {commerceDate && expireDate && paymentTime
                 ? addedDays.map((arg, index) => {

@@ -37,6 +37,13 @@ let ChequeDetailViewComponent = (props) => {
                   edit
                 </button>
                 <button
+                  disabled={
+                    props.leaseDataID?.some(
+                      (ID) => ID === arg?.lease_property?._id
+                    ) === true
+                      ? true
+                      : false
+                  }
                   className="danger ml-2"
                   onClick={() => {
                     props.ChequeDelete(arg._id);

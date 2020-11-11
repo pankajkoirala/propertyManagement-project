@@ -40,7 +40,7 @@ const ChequeEntryContainer = (props) => {
   return (
     <div>
       <ChequeEntryComponent
-        Redux_propertyData={props.Redux_propertyData.property}
+        Redux_leaseData={props.Redux_leaseData.lease}
         ChequeeData={ChequeeData}
       />
     </div>
@@ -48,7 +48,7 @@ const ChequeEntryContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  Redux_propertyData: state.property,
+  Redux_leaseData: state.lease,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

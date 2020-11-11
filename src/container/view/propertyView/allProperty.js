@@ -34,7 +34,7 @@ const PropertyView = (props) => {
   let LeasePropertyId = [];
 
   props.leaseData_redux.lease.map((arg) =>
-    LeasePropertyId.push(arg.property._id)
+    LeasePropertyId.push(arg?.property?._id)
   );
 
   return (
