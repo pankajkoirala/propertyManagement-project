@@ -5,6 +5,7 @@ import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction";
 
 const TanentDetailViewCont = (props) => {
   const { id } = useParams();
@@ -15,8 +16,17 @@ const TanentDetailViewCont = (props) => {
   );
 
   //tanent update
-  const tenentUpdate = (data, ID) => {
+  const tenentUpdate = (data, ID, file) => {
+    console.log(data);
     const formData = new FormData();
+    if (typeof file[0].file !== "string") {
+      file.forEach((element) => {
+        formData.append(element.fileName, element.file);
+      });
+    } else {
+      formData.append("files_list", data.files_list);
+    }
+
     formData.append("area", data.area);
     formData.append("city", data.city);
     formData.append("country", data.country);
@@ -24,21 +34,7 @@ const TanentDetailViewCont = (props) => {
     formData.append("company_Name", data.company_Name);
     formData.append("tenant_phoneNo", data.tenant_phoneNo);
     formData.append("tenant_email", data.tenant_email);
-    formData.append("tenant_photo", data.tenant_photo);
-    formData.append("tenant_EId_photo", data.tenant_EId_photo);
-    formData.append(
-      "tenant_TradeLicense_photo",
-      data.tenant_TradeLicense_photo
-    );
-    formData.append(
-      "tenant_IdentityLetter_photo",
-      data.tenant_IdentityLetter_photo
-    );
-    formData.append(
-      "tenant_SK_Properties_photo",
-      data.tenant_SK_Properties_photo
-    );
-    formData.append("tenant_POA_photo", data.tenant_POA_photo);
+
     formData.append("tenant_GovIdNo", data.tenant_GovIdNo);
     formData.append(
       "DateOfBirth_registrationDate",
@@ -59,6 +55,7 @@ const TanentDetailViewCont = (props) => {
     })
       .then((res) => {
         notification("Updated successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");
@@ -78,6 +75,9 @@ const TanentDetailViewCont = (props) => {
     })
       .then((res) => {
         notification("successfully Deleted", "SUCCESS");
+        props.history.push("/tenantList");
+
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

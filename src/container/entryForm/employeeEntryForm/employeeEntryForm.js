@@ -3,6 +3,7 @@ import EmployeeEntryFormComponent from "../../../component/entryForm/employeeEnt
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction.js";
 
 const EmployeeEntry = () => {
   const EmployeeData = (data) => {
@@ -33,6 +34,7 @@ const EmployeeEntry = () => {
     })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

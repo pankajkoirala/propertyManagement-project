@@ -50,7 +50,7 @@ const RouterPage = () => {
     <div>
       <Router>
         <Switch>
-          <PrivateRouter exact path="/propertyView" component={AllProperty} />
+          <PrivateRouter exact path="/propertyList" component={AllProperty} />
           <PrivateRouter
             exact
             path="/expenseEntryForm"
@@ -65,10 +65,10 @@ const RouterPage = () => {
             path="/employeeentry"
             component={EmployeeEntry}
           />
-          <PrivateRouter exact path="/employeeview" component={EmployeeView} />
-          <PrivateRouter exact path="/tenantview" component={TenantView} />
+          <PrivateRouter exact path="/employeeList" component={EmployeeView} />
+          <PrivateRouter exact path="/tenantList" component={TenantView} />
           <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
-          <PrivateRouter exact path="/chequeView" component={ChequeView} />
+          <PrivateRouter exact path="/chequeList" component={ChequeView} />
 
           <PrivateRouter
             exact
@@ -78,7 +78,7 @@ const RouterPage = () => {
           <PrivateRouter exact path="/lease" component={Lease} />
           <PrivateRouter
             exact
-            path="/leaseProperty"
+            path="/leasePropertyList"
             component={LeaseProperty}
           />
           <PrivateRouter

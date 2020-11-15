@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
+import PoopUp from "./../../../shared/popup";
+import RegexComponent from "./../../../shared/regexComponent";
 
 const ExpenseEntry = (props) => {
-  console.log(props?.expense?.expense_list);
+  const [showPopup, setShowPopUp] = useState(false);
   const [expenseHeading, setExpenseHeading] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
-  const [id, setId] = useState("");
   const [expenselist, setexpenselist] = useState(
-    props?.expense ? props?.expense?.expense_list : []
+    props?.expense?.expense_list || []
   );
-
+  //remove expanse
   let removeExpense = (id) =>
     setexpenselist(expenselist.filter((arg) => arg.expenseId !== id));
 
+  //add expense
   let addExpense = (data) => {
     setexpenselist([...expenselist, data]);
     setExpenseAmount("");
@@ -26,7 +28,7 @@ const ExpenseEntry = (props) => {
     expense_list: props?.expense?.expense_list || [],
     expense_EntryDate:
       moment(props?.expense?.expense_EntryDate).format("YYYY-MM-DD") || "",
-    Maintanance_ticketID: props?.expense?.Maintanance_ticketID._id || "",
+    Maintanance_ticketID: props?.expense?.Maintanance_ticketID?._id || "",
     Expense_Remark: props?.expense?.Expense_Remark || "",
     expenseInvoiceNumber: props?.expense?.expenseInvoiceNumber || "",
   };
@@ -95,13 +97,18 @@ const ExpenseEntry = (props) => {
                       </div>
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">maintanance ticket ID</Label>
-                        <Input
-                          type="text"
-                          value={values.Maintanance_ticketID}
-                          name="Maintanance_ticketID"
-                          placeholder="Enter date of Cheque"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
+                        <RegexComponent
+                          {...props}
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_maintananceTicketData?.map(
+                            (maintananceTicket) => {
+                              return {
+                                name: maintananceTicket.maintananceTicket_ID,
+                                id: maintananceTicket._id,
+                              };
+                            }
+                          )}
+                          name={"Maintanance_ticketID"}
                         />
                         {touched.Maintanance_ticketID &&
                           errors.Maintanance_ticketID && (
@@ -208,11 +215,22 @@ const ExpenseEntry = (props) => {
                     <div className="row">
                       <button
                         className="Success col-4 mt-2"
-                        type="submit"
-                        onClick={handleSubmit}
+                        type="button"
+                        onClick={() => setShowPopUp(true)}
                       >
                         submit
                       </button>
+                      <PoopUp
+                        isOpen={showPopup}
+                        isClose={setShowPopUp}
+                        CRUD_Function={handleSubmit}
+                        buttonName={props.expense ? "Update" : "Create"}
+                        message={
+                          props.expense
+                            ? "are you sure want to update"
+                            : "are you sure want to create"
+                        }
+                      />
 
                       <Table striped bordered hover size="sm">
                         <thead>

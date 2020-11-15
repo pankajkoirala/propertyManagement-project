@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./employeeEntryForm.css";
 
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
+import PoopUp from "./../../../shared/popup";
+
 import { employeeEntryFormValidation } from "../../../utility/validation/employeeEntryFormValidation.js";
 
 const TenantEntry = (props) => {
+  const [showPopup, setShowPopUp] = useState(false);
+
   let initialValue = {
     employee_street: props?.selectedEmployee?.employee_street || "",
     employee_city: props?.selectedEmployee?.employee_city || "",
@@ -313,10 +317,21 @@ const TenantEntry = (props) => {
                   <button
                     className="success m-4"
                     type="button"
-                    onClick={handleSubmit}
+                    onClick={() => setShowPopUp(true)}
                   >
                     submit
                   </button>
+                  <PoopUp
+                    isOpen={showPopup}
+                    isClose={setShowPopUp}
+                    CRUD_Function={handleSubmit}
+                    buttonName={props.selectedEmployee ? "Update" : "Create"}
+                    message={
+                      props.selectedEmployee
+                        ? "are you sure want to update"
+                        : "are you sure want to create"
+                    }
+                  />
                 </FormGroup>
               </Form>
             )}

@@ -5,6 +5,7 @@ import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction";
 
 const TanentDetailViewCont = (props) => {
   console.log(props);
@@ -45,6 +46,7 @@ const TanentDetailViewCont = (props) => {
     })
       .then((res) => {
         notification("Updated successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");
@@ -64,6 +66,9 @@ const TanentDetailViewCont = (props) => {
     })
       .then((res) => {
         notification("successfully Deleted", "SUCCESS");
+        props.history.push("/employeeList");
+
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

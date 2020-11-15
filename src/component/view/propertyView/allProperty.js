@@ -18,7 +18,7 @@ const PropertyView = (props) => {
   return (
     <div className=" m-5">
       <div>
-        <Link to="/leaseProperty">
+        <Link to="/leasePropertyList">
           <button> lease property </button>
         </Link>
       </div>

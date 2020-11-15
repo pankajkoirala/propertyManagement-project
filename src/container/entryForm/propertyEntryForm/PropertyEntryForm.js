@@ -3,10 +3,14 @@ import PropertyEntryFormComponent from "../../../component/entryForm/PropertyEnt
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction";
 
 const PropertyEntry = () => {
-  const propertySend = (data) => {
+  const propertySend = (data, file) => {
     const formData = new FormData();
+    file.forEach((element) => {
+      formData.append(element.fileName, element.file);
+    });
     formData.append("city", data.city);
     formData.append("country", data.country);
     formData.append("property_type", data.property_type);
@@ -22,8 +26,8 @@ const PropertyEntry = () => {
     formData.append("Property_Area", data.Property_Area);
     formData.append("Property_Premise_Number", data.Property_Premise_Number);
     formData.append("area", data.area);
-    formData.append("Title_Deed_Photo", data.Title_Deed_Photo);
-    formData.append("photo", data.photo);
+
+    formData.append("Property_ownerName", data.Property_ownerName);
 
     Axios({
       method: "post",
@@ -38,6 +42,7 @@ const PropertyEntry = () => {
     })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

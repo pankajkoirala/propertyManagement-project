@@ -3,10 +3,14 @@ import TenantEntryFormComponent from "../../../component/entryForm/tenantEntryFo
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction.js";
 
 const TenantEntry = () => {
-  const tenantData = (data) => {
+  const tenantData = (data, file) => {
     const formData = new FormData();
+    file.forEach((element) => {
+      formData.append(element.fileName, element.file);
+    });
     formData.append("area", data.area);
     formData.append("city", data.city);
     formData.append("country", data.country);
@@ -14,21 +18,7 @@ const TenantEntry = () => {
     formData.append("company_Name", data.company_Name);
     formData.append("tenant_phoneNo", data.tenant_phoneNo);
     formData.append("tenant_email", data.tenant_email);
-    formData.append("tenant_photo", data.tenant_photo);
-    formData.append("tenant_EId_photo", data.tenant_EId_photo);
-    formData.append(
-      "tenant_TradeLicense_photo",
-      data.tenant_TradeLicense_photo
-    );
-    formData.append(
-      "tenant_IdentityLetter_photo",
-      data.tenant_IdentityLetter_photo
-    );
-    formData.append(
-      "tenant_SK_Properties_photo",
-      data.tenant_SK_Properties_photo
-    );
-    formData.append("tenant_POA_photo", data.tenant_POA_photo);
+
     formData.append("tenant_GovIdNo", data.tenant_GovIdNo);
     formData.append(
       "DateOfBirth_registrationDate",
@@ -49,6 +39,7 @@ const TenantEntry = () => {
     })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

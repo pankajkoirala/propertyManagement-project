@@ -4,6 +4,7 @@ import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction";
 
 const LeaseEntry = (props) => {
   const leaseData = (data) => {
@@ -36,7 +37,7 @@ const LeaseEntry = (props) => {
     })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
-        props.history.push("/invoiceDetail");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

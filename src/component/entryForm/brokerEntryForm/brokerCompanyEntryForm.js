@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./brokerAccount.css";
 import moment from "moment";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
+import PoopUp from "./../../../shared/popup";
 
 const BrokerComponent = (props) => {
+  const [showPopup, setShowPopUp] = useState(false);
+
   let initialvalue = {
     street: props?.BrokerCompany?.street || "",
     city: props?.BrokerCompany?.city || "",
@@ -297,11 +300,22 @@ const BrokerComponent = (props) => {
                   </div>
                   <button
                     className="success m-4"
-                    type="submit"
-                    onClick={handleSubmit}
+                    type="button"
+                    onClick={() => setShowPopUp(true)}
                   >
                     Add
                   </button>
+                  <PoopUp
+                    isOpen={showPopup}
+                    isClose={setShowPopUp}
+                    CRUD_Function={handleSubmit}
+                    buttonName={props.BrokerCompany ? "Update" : "Create"}
+                    message={
+                      props.BrokerCompany
+                        ? "are you sure want to update"
+                        : "are you sure want to create"
+                    }
+                  />
                 </FormGroup>
               </Form>
             )}

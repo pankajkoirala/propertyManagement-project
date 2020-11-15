@@ -3,6 +3,7 @@ import MaintainanceCompanyComponent from "../../../component/entryForm/maintaina
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction.js";
 
 const MaintainanceCompanyContainer = () => {
   const MaintananceCompanyData = (data) => {
@@ -39,6 +40,7 @@ const MaintainanceCompanyContainer = () => {
     })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

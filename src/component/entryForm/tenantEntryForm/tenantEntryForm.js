@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./tenantEntryForm.css";
 import moment from "moment";
 
-import { FormGroup, Label, Input, Form } from "reactstrap";
+import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
+import PoopUp from "./../../../shared/popup";
 
 const TenantEntry = (props) => {
-  console.log(props.selectedTenantone);
+  const [showPopup, setShowPopUp] = useState(false);
+
+  const [allFile, setAllFile] = useState(
+    props.selectedTenantone?.files_list || []
+  );
+  console.log(allFile);
+
+  let photoDelete = (name) => {
+    setAllFile(allFile.filter((file) => file.fileName !== name));
+  };
+
   let initialvalue = {
     tenant_GovIdNo: props.selectedTenantone?.tenant_GovIdNo || "",
     tenant_DrivingLicenceNo:
@@ -23,27 +34,28 @@ const TenantEntry = (props) => {
       moment(props.selectedTenantone?.DateOfBirth_registrationDate).format(
         "YYYY-MM-DD"
       ) || "",
-    tenant_photo: props.selectedTenantone?.tenant_photo || "",
-    tenant_EId_photo: props.selectedTenantone?.tenant_EId_photo || "",
-    tenant_TradeLicense_photo:
-      props.selectedTenantone?.tenant_TradeLicense_photo || "",
-    tenant_IdentityLetter_photo:
-      props.selectedTenantone?.tenant_IdentityLetter_photo || "",
-    tenant_SK_Properties_photo:
-      props.selectedTenantone?.tenant_SK_Properties_photo || "",
-    tenant_POA_photo: props.selectedTenantone?.tenant_POA_photo || "",
+    files_list: [],
+    fileName: "",
+    file: "",
   };
   return (
     <div>
-      <div className="PropertyFormEntry">
+      <div className="">
         <div>
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
+              typeof allFile[0].file === "string"
+                ? (values.files_list = JSON.stringify(allFile))
+                : (values.files_list = "");
+
               props.selectedTenantone
-                ? props.tenentUpdate(values, props?.selectedTenantone?._id)
-                : props.tenantData(values);
-              console.log(values);
+                ? props.tenentUpdate(
+                    values,
+                    props?.selectedTenantone?._id,
+                    allFile
+                  )
+                : props.tenantData(values, allFile);
             }}
             // validationSchema={TenantEntryFormValidation}
           >
@@ -283,193 +295,156 @@ const TenantEntry = (props) => {
                           )}
                       </div>
                     </div>
-
                     <div className="row">
-                      <div className="col-md-4">
-                        <Label>Upload tenant EID</Label>
+                      <div className="col-md-4 text-left mb-2 mt-4">
                         <Input
-                          type="file"
-                          name="tenant_EId_photo"
-                          accept="image/*"
-                          onChange={(event) => {
-                            setFieldValue(
-                              "tenant_EId_photo",
-                              event.currentTarget.files[0]
-                            );
-                          }}
-                        />
-
-                        {touched.tenant_EId_photo &&
-                          values.tenant_EId_photo && (
-                            <img
-                              src={
-                                typeof values?.tenant_EId_photo === "string"
-                                  ? values.tenant_EId_photo
-                                  : URL.createObjectURL(
-                                      values?.tenant_EId_photo
-                                    )
-                              }
-                              alt="no pic"
-                              height="200"
-                            />
-                          )}
+                          name="fileName"
+                          type="text"
+                          placeholder="Select Status of Cheque"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.fileName}
+                        ></Input>
                       </div>
-
-                      <div className="col-md-4">
-                        <Label>Upload tenant Photo</Label>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <Label
+                          onClick={() => console.log(values)}
+                          className="float-left"
+                        >
+                          Upload Scan Copy
+                        </Label>
                         <Input
                           type="file"
-                          name="tenant_photo"
+                          alt="no picture"
+                          name="file"
                           accept="image/*"
                           onChange={(event) => {
-                            setFieldValue(
-                              "tenant_photo",
-                              event.currentTarget.files[0]
-                            );
+                            setFieldValue("file", event.currentTarget.files[0]);
                           }}
                         />
-                        {touched.tenant_photo && values.tenant_photo && (
-                          <img
-                            src={
-                              typeof values?.tenant_photo === "string"
-                                ? values?.tenant_photo
-                                : URL.createObjectURL(values?.tenant_photo)
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <button
+                          disabled={!values.fileName || !values.file}
+                          onClick={() => {
+                            let filterData = allFile?.find(
+                              (a) => a.fileName === values.fileName
+                            );
+                            if (filterData) {
+                              let afterRemoveSameData = allFile.filter(
+                                (arg) => arg.fileName !== filterData.fileName
+                              );
+                              setAllFile([
+                                ...afterRemoveSameData,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
+                            } else {
+                              setAllFile([
+                                ...allFile,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
                             }
-                            alt="no pic"
-                            height="200"
-                          />
-                        )}
-                      </div>
-                      {/* hello */}
-
-                      <div className="col-md-4">
-                        <Label>Upload Trade License photo</Label>
-                        <Input
-                          type="file"
-                          name="tenant_TradeLicense_photo"
-                          accept="image/*"
-                          onChange={(event) => {
-                            setFieldValue(
-                              "tenant_TradeLicense_photo",
-                              event.currentTarget.files[0]
-                            );
                           }}
-                        />
-
-                        {touched.tenant_TradeLicense_photo &&
-                          values.tenant_TradeLicense_photo && (
-                            <img
-                              src={
-                                typeof values?.tenant_TradeLicense_photo ===
-                                "string"
-                                  ? values?.tenant_TradeLicense_photo
-                                  : URL.createObjectURL(
-                                      values?.tenant_TradeLicense_photo
-                                    )
-                              }
-                              alt="no pic"
-                              height="200"
-                            />
-                          )}
-                      </div>
-                      <div className="col-md-4">
-                        <Label>tenant IdentityLetter photo</Label>
-                        <Input
-                          type="file"
-                          name="tenant_IdentityLetter_photo"
-                          accept="image/*"
-                          onChange={(event) => {
-                            setFieldValue(
-                              "tenant_IdentityLetter_photo",
-                              event.currentTarget.files[0]
-                            );
-                          }}
-                        />
-
-                        {touched.tenant_IdentityLetter_photo &&
-                          values.tenant_IdentityLetter_photo && (
-                            <img
-                              src={
-                                typeof values?.tenant_IdentityLetter_photo ===
-                                "string"
-                                  ? values?.tenant_IdentityLetter_photo
-                                  : URL.createObjectURL(
-                                      values?.tenant_IdentityLetter_photo
-                                    )
-                              }
-                              alt="no pic"
-                              height="200"
-                            />
-                          )}
-                      </div>
-                      <div className="col-md-4">
-                        <Label>tenant_SK_Properties_photo</Label>
-                        <Input
-                          type="file"
-                          name="tenant_SK_Properties_photo"
-                          accept="image/*"
-                          onChange={(event) => {
-                            setFieldValue(
-                              "tenant_SK_Properties_photo",
-                              event.currentTarget.files[0]
-                            );
-                          }}
-                        />
-
-                        {touched.tenant_SK_Properties_photo &&
-                          values.tenant_SK_Properties_photo && (
-                            <img
-                              src={
-                                typeof values?.tenant_SK_Properties_photo ===
-                                "string"
-                                  ? values?.tenant_SK_Properties_photo
-                                  : URL.createObjectURL(
-                                      values?.tenant_SK_Properties_photo
-                                    )
-                              }
-                              alt="no pic"
-                              height="200"
-                            />
-                          )}
-                      </div>
-                      <div className="col-md-4">
-                        <Label>Upload tenant_POA_photo</Label>
-                        <Input
-                          type="file"
-                          name="tenant_POA_photo"
-                          accept="image/*"
-                          onChange={(event) => {
-                            setFieldValue(
-                              "tenant_POA_photo",
-                              event.currentTarget.files[0]
-                            );
-                          }}
-                        />
-
-                        {touched.tenant_POA_photo &&
-                          values.tenant_POA_photo && (
-                            <img
-                              src={
-                                typeof values?.tenant_POA_photo === "string"
-                                  ? values?.tenant_POA_photo
-                                  : URL.createObjectURL(
-                                      values?.tenant_POA_photo
-                                    )
-                              }
-                              alt="no pic"
-                              height="200"
-                            />
-                          )}
+                          type="button"
+                        >
+                          Add
+                        </button>
                       </div>
                     </div>
+                    <button
+                      className="success col-md-4 m-5"
+                      type="button"
+                      onClick={() => setShowPopUp(true)}
+                    >
+                      Add
+                    </button>
+                    <PoopUp
+                      isOpen={showPopup}
+                      isClose={setShowPopUp}
+                      CRUD_Function={handleSubmit}
+                      buttonName={props.selectedTenantone ? "Update" : "Create"}
+                      message={
+                        props.selectedTenantone
+                          ? "are you sure want to update"
+                          : "are you sure want to create"
+                      }
+                    />
                   </div>
-                  <button
-                    className="success col-md-4 m-5"
-                    type="submit"
-                    onClick={handleSubmit}
-                  >
-                    Add
-                  </button>
+
+                  {props?.selectedTenantone?.files_list ||
+                  allFile?.length !== 0 ? (
+                    <Table striped bordered hover size="sm">
+                      <thead>
+                        <tr>
+                          <th>SN</th>
+                          <th> Name</th>
+                          <th>image</th>
+                          <th>
+                            <button
+                              type="button"
+                              style={
+                                props?.selectedTenantone
+                                  ? { display: "inline" }
+                                  : { display: "none" }
+                              }
+                              onClick={() => setAllFile([])}
+                            >
+                              deleteAll
+                            </button>
+                          </th>
+                        </tr>
+                      </thead>
+                      {allFile?.map((arg, index) => {
+                        return (
+                          <tbody key={index}>
+                            <tr>
+                              <td>{index + 1}</td>
+
+                              <td className="font-weight-bold">
+                                {arg.fileName}
+                              </td>
+                              <td>
+                                <img
+                                  src={
+                                    typeof arg.file === "string"
+                                      ? arg.file
+                                      : URL.createObjectURL(arg.file)
+                                  }
+                                  alt=""
+                                  alt="no picture"
+                                  height="80px"
+                                />
+                              </td>
+                              <td>
+                                <button
+                                  type="button"
+                                  style={
+                                    props?.selectedTenantone
+                                      ? { display: "none" }
+                                      : { display: "inline" }
+                                  }
+                                  type="button"
+                                  onClick={() => {
+                                    photoDelete(arg.fileName);
+                                  }}
+                                >
+                                  delete
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        );
+                      })}
+                    </Table>
+                  ) : (
+                    ""
+                  )}
                 </FormGroup>
               </Form>
             )}

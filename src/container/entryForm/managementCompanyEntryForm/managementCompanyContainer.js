@@ -3,6 +3,7 @@ import ManagementCompanyComponent from "../../../component/entryForm/managementC
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction.js";
 
 const ManagementCompanyContainer = () => {
   const ManagementCompanyData = (data) => {
@@ -54,6 +55,7 @@ const ManagementCompanyContainer = () => {
     })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

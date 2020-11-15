@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import BrokerCompanyEntryForm from "../../entryForm/brokerEntryForm/brokerCompanyEntryForm";
-import { useParams } from "react-router-dom";
-
-import { connect } from "react-redux";
+import PoopUp from "./../../../shared/popup";
 
 let BrokerCompanyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showPopup, setShowPopUp] = useState(false);
 
   let showHide = () => {
     console.log(props.history);
@@ -42,11 +41,19 @@ let BrokerCompanyDetailViewComponent = (props) => {
                 <button
                   className="danger ml-2"
                   onClick={() => {
-                    props.BrokerDelete(arg._id);
+                    setShowPopUp(true);
                   }}
                 >
                   Delete
                 </button>
+                <PoopUp
+                  isOpen={showPopup}
+                  isClose={setShowPopUp}
+                  CRUD_Function={props.BrokerDelete}
+                  id={arg._id}
+                  buttonName={"Delete"}
+                  message={"are you sure want to delete"}
+                />
               </div>
             </div>
           );

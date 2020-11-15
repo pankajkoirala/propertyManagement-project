@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ExpenseEntryForm from "../../entryForm/expenseEntry/expenseEntry";
+import PoopUp from "./../../../shared/popup";
 
 let ExpenseDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showPopup, setShowPopUp] = useState(false);
+
   console.log(props);
 
   let showHide = () => {
@@ -39,11 +42,19 @@ let ExpenseDetailViewComponent = (props) => {
                 <button
                   className="danger ml-2"
                   onClick={() => {
-                    props.expenseDelete(arg._id);
+                    setShowPopUp(true);
                   }}
                 >
                   Delete
                 </button>
+                <PoopUp
+                  isOpen={showPopup}
+                  isClose={setShowPopUp}
+                  CRUD_Function={props.expenseDelete}
+                  id={arg._id}
+                  buttonName={"Delete"}
+                  message={"are you sure want to delete"}
+                />
               </div>
             </div>
           );

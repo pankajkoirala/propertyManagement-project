@@ -41,7 +41,7 @@ const NavbarPage = () => {
                 </Button>
               </Link>
               <br />
-              <Link to="/propertyView">
+              <Link to="/propertyList">
                 <Button variant="success" className="button-size">
                   View Property
                 </Button>
@@ -76,7 +76,7 @@ const NavbarPage = () => {
                 </Button>
               </Link>
               <br />
-              <Link to="/tenantview">
+              <Link to="/tenantList">
                 <Button variant="success" className="button-size">
                   View Tenant
                 </Button>
@@ -119,7 +119,7 @@ const NavbarPage = () => {
                 </Button>
               </Link>
               <br />
-              <Link to="/employeeview">
+              <Link to="/employeeList">
                 {" "}
                 <Button variant="success" className="button-size">
                   View Employee
@@ -165,7 +165,7 @@ const NavbarPage = () => {
                 </Button>
               </Link>
               <br />
-              <Link to="/chequeView">
+              <Link to="/chequeList">
                 {" "}
                 <Button variant="success" className="button-size">
                   Cheque View

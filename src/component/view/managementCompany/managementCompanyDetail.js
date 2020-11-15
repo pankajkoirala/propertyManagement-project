@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ManagementCompanyEntryForm from "../../entryForm/managementCompanyEntryForm/managementCompanyEntryForm";
-import { useParams } from "react-router-dom";
-
-import { connect } from "react-redux";
+import PoopUp from "./../../../shared/popup";
 
 let ManagementCompanyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showPopup, setShowPopUp] = useState(false);
 
   console.log("selectedManagementCompany", props.selectedManagementCompany);
 
@@ -43,11 +42,19 @@ let ManagementCompanyDetailViewComponent = (props) => {
                 <button
                   className="danger ml-2"
                   onClick={() => {
-                    props.managementCompanyDelete(arg._id);
+                    setShowPopUp(true);
                   }}
                 >
                   Delete
                 </button>
+                <PoopUp
+                  isOpen={showPopup}
+                  isClose={setShowPopUp}
+                  CRUD_Function={props.managementCompanyDelete}
+                  buttonName={"Delete"}
+                  id={arg._id}
+                  message={"are you sure want to delete"}
+                />
               </div>
             </div>
           );

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import RegexComponent from "../../../shared/regexComponent";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
+import PoopUp from "./../../../shared/popup";
 
 const MaintananceTicket = (props) => {
+  const [showPopup, setShowPopUp] = useState(false);
+
   let initialvalue = {
     maintananceTicketIssueDate:
       moment(props?.maintananceTicket?.maintananceTicketIssueDate).format(
@@ -112,9 +115,9 @@ const MaintananceTicket = (props) => {
                             (property) => {
                               return {
                                 name:
-                                  property.referenceNO +
+                                  property.property_type +
                                   "-" +
-                                  property.property_type,
+                                  property.referenceNO,
                                 id: property._id,
                               };
                             }
@@ -140,7 +143,10 @@ const MaintananceTicket = (props) => {
                           options={props?.Redux_maintananceCompanyData?.map(
                             (maintananceCompany) => {
                               return {
-                                name: maintananceCompany.Company_ID,
+                                name:
+                                  maintananceCompany.Company_Name +
+                                  "-" +
+                                  maintananceCompany.Company_ID,
 
                                 id: maintananceCompany._id,
                               };
@@ -171,6 +177,8 @@ const MaintananceTicket = (props) => {
                             (managementCompany) => {
                               return {
                                 name:
+                                  managementCompany.managementCompany_name +
+                                  "-" +
                                   managementCompany.managementCompany_companyID,
 
                                 id: managementCompany._id,
@@ -215,11 +223,24 @@ const MaintananceTicket = (props) => {
                     <div className="row">
                       <button
                         className="Success col-4 mt-2"
-                        type="submit"
-                        onClick={handleSubmit}
+                        type="button"
+                        onClick={() => setShowPopUp(true)}
                       >
                         submit
                       </button>
+                      <PoopUp
+                        isOpen={showPopup}
+                        isClose={setShowPopUp}
+                        CRUD_Function={handleSubmit}
+                        buttonName={
+                          props.maintananceTicket ? "Update" : "Create"
+                        }
+                        message={
+                          props.maintananceTicket
+                            ? "are you sure want to update"
+                            : "are you sure want to create"
+                        }
+                      />
                     </div>
                   </div>
                 </FormGroup>
