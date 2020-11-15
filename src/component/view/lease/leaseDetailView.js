@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import LeaseEntryForm from "../../entryForm/lease/lease";
 import moment from "moment";
+import PoopUp from "./../../../shared/popup";
 
 let LeaseDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showPopup, setShowPopUp] = useState(false);
 
   let showHide = () => {
     setShowEditForm(!showEditForm);
@@ -45,9 +47,15 @@ let LeaseDetailViewComponent = (props) => {
                 <button onClick={() => setShowEditForm(!showEditForm)}>
                   edit
                 </button>
-                <button onClick={() => props.LeaseDelete(arg._id)}>
-                  delete
-                </button>
+                <button onClick={() => setShowPopUp(true)}>delete</button>
+                <PoopUp
+                  isOpen={showPopup}
+                  isClose={setShowPopUp}
+                  CRUD_Function={props.LeaseDelete}
+                  id={arg._id}
+                  buttonName={"Delete"}
+                  message={"are you sure want to delete"}
+                />
               </div>
             </div>
           );

@@ -5,6 +5,7 @@ import { base_URL } from "../../../const/base_URL";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction";
 
 let LeaseDetailView = (props) => {
   const [property, setProperty] = useState([]);
@@ -47,6 +48,7 @@ let LeaseDetailView = (props) => {
     })
       .then((res) => {
         notification("Updated successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");
@@ -66,6 +68,9 @@ let LeaseDetailView = (props) => {
     })
       .then((res) => {
         notification("successfully Deleted", "SUCCESS");
+        props.history.push("/leasePropertyList");
+
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

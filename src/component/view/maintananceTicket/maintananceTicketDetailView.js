@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import MaintananceTicketEntryForm from "../../entryForm/maintananceTicket/maintananceTicket";
-import { useParams } from "react-router-dom";
-
-import { connect } from "react-redux";
+import PoopUp from "./../../../shared/popup";
 
 let MaintananceTicketDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showPopup, setShowPopUp] = useState(false);
 
   let showHide = () => {
     setShowEditForm(!showEditForm);
@@ -41,11 +40,19 @@ let MaintananceTicketDetailViewComponent = (props) => {
                 <button
                   className="danger ml-2"
                   onClick={() => {
-                    props.maintananceTicketDelete(arg._id);
+                    setShowPopUp(true);
                   }}
                 >
                   Delete
                 </button>
+                <PoopUp
+                  isOpen={showPopup}
+                  isClose={setShowPopUp}
+                  CRUD_Function={props.maintananceTicketDelete}
+                  id={arg._id}
+                  buttonName={"Delete"}
+                  message={"are you sure want to delete"}
+                />
               </div>
             </div>
           );

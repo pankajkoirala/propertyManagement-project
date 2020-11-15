@@ -4,6 +4,7 @@ import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { connect } from "react-redux";
+import { reloadFunction } from "../../../shared/commonFunction";
 
 const ExpenseEntryForm = (props) => {
   const expenseData = (data) => {
@@ -28,6 +29,7 @@ const ExpenseEntryForm = (props) => {
     })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");
@@ -36,8 +38,23 @@ const ExpenseEntryForm = (props) => {
 
   return (
     <div>
-      <ExpenseEntryFormComponent expenseData={expenseData} />
+      <ExpenseEntryFormComponent
+        expenseData={expenseData}
+        Redux_maintananceTicketData={
+          props.Redux_maintananceTicketData.maintananceTicket
+        }
+      />
     </div>
   );
 };
-export default ExpenseEntryForm;
+
+const mapStateToProps = (state) => ({
+  Redux_maintananceTicketData: state.maintananceTicket,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  redux_Add_invoice: (arg) =>
+    dispatch({ type: "ADD_ALL_INVOICE", payload: arg }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseEntryForm);

@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./lease.css";
 import { FormGroup, Label, Input, Form, Table, Col } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
 import RegexConponent from "../../../shared/regexComponent";
+import PoopUp from "./../../../shared/popup";
 
 const LeaseEntry = (props) => {
+  const [showPopup, setShowPopUp] = useState(false);
+
   const [commerceDate, setCommerceDate] = useState("");
   const [expireDate, setExpireDate] = useState("");
   const [paymentTime, setpaymentTime] = useState("");
@@ -31,6 +34,8 @@ const LeaseEntry = (props) => {
       moment(props?.lease?.securityfirstDueDate).format("YYYY-MM-DD") || "",
     photo: props?.lease?.photo || "",
   };
+
+  console.log(paymentTime);
 
   //difference in comerceDate and expirationDate
   let difference = moment(props?.lease?.expirationDate || expireDate).diff(
@@ -115,11 +120,9 @@ const LeaseEntry = (props) => {
                     options={props?.redux_tenantData?.tenant?.map((tenent) => {
                       return {
                         name:
-                          tenent.tenant_firstName +
-                          " " +
-                          tenent.tenant_middleName +
-                          " " +
-                          tenent.tenant_lastName +
+                          tenent.company_Name +
+                          "-" +
+                          tenent.tenant_Name +
                           "-" +
                           tenent.TenantId,
                         id: tenent._id,
@@ -284,24 +287,25 @@ const LeaseEntry = (props) => {
                     </span>
                   )}
                 </div>
-                {/* <div className="col-4">
+                <div className="col-4">
                   <Label for="exampleName">Frequency</Label>
                   <Input
                     type="select"
                     name="frequency"
                     id="exampleSelect"
                     placeholder="Frequencyt"
-                    onChange={handleChange}
+                    onChange={(e) =>
+                      setFieldValue("frequency", setpaymentTime(e.target.value))
+                    }
                     onBlur={handleBlur}
                   >
                     <option value=""> </option>
-                    <option value="weekly">Weekly</option>
-                    <option value="bi-weekly">Bi-Weekly</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="quartely">Quartely</option>
-                    <option value="yearly">Yearly</option>
+                    <option value="7">Weekly</option>
+                    <option value="14">Bi-Weekly</option>
+                    <option value="30">Monthly</option>
+                    <option value="90">Quartely</option>
+                    <option value="365">Yearly</option>
                   </Input>
-
                   {touched.frequency && errors.frequency && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -310,68 +314,7 @@ const LeaseEntry = (props) => {
                       {errors.frequency}
                     </span>
                   )}
-                </div> */}
-                <FormGroup tag="fieldset" row>
-                  <legend className="col-form-label col-sm-2">
-                    payment frequency{" "}
-                  </legend>
-                  <Col sm={10}>
-                    <FormGroup check>
-                      <Label check>
-                        <Input
-                          type="radio"
-                          checked={
-                            values.frequency === "weekly"
-                              ? (setpaymentTime(7), true)
-                              : false
-                          }
-                          onClick={() => {
-                            setFieldValue("frequency", "weekly");
-                            setpaymentTime(7);
-                          }}
-                          name="radio2"
-                        />
-                        weekly
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label check>
-                        <Input
-                          checked={
-                            values.frequency === "monthly"
-                              ? (setpaymentTime(30), true)
-                              : false
-                          }
-                          type="radio"
-                          onClick={() => {
-                            setFieldValue("frequency", "monthly");
-                            setpaymentTime(30);
-                          }}
-                          name="radio2"
-                        />
-                        Monthly
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label check>
-                        <Input
-                          checked={
-                            values.frequency === "yearly"
-                              ? (setpaymentTime(360), true)
-                              : false
-                          }
-                          type="radio"
-                          onClick={() => {
-                            setFieldValue("frequency", "yearly");
-                            setpaymentTime(365);
-                          }}
-                          name="radio2"
-                        />{" "}
-                        yearly
-                      </Label>
-                    </FormGroup>
-                  </Col>
-                </FormGroup>
+                </div>
               </div>
 
               <div className="col-md-12">
@@ -448,11 +391,22 @@ const LeaseEntry = (props) => {
 
                 <button
                   className="Success col-4 mt-2"
-                  type="submit"
-                  onClick={handleSubmit}
+                  type="button"
+                  onClick={() => setShowPopUp(true)}
                 >
                   Save
                 </button>
+                <PoopUp
+                  isOpen={showPopup}
+                  isClose={setShowPopUp}
+                  CRUD_Function={handleSubmit}
+                  buttonName={props.lease ? "Update" : "Create"}
+                  message={
+                    props.lease
+                      ? "are you sure want to update"
+                      : "are you sure want to create"
+                  }
+                />
               </div>
             </FormGroup>
             <Table striped bordered hover size="sm">

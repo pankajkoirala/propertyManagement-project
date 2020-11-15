@@ -3,6 +3,7 @@ import BrokerDetailComponent from "../../../component/entryForm/brokerEntryForm/
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction";
 
 const BrokerDetailContainer = () => {
   const brokerData = (data) => {
@@ -38,6 +39,7 @@ const BrokerDetailContainer = () => {
     })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

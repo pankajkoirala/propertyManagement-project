@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import EmployeeEntryForm from "../../entryForm/employeeEntryForm/employeeEntryForm";
 import LOGO from "../../../assets/logo.png";
-
-import { connect } from "react-redux";
+import PoopUp from "./../../../shared/popup";
 
 let EmployeeDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showPopup, setShowPopUp] = useState(false);
 
   let showHide = () => {
     setShowEditForm(!showEditForm);
@@ -36,11 +36,19 @@ let EmployeeDetailViewComponent = (props) => {
                     <button
                       className="danger ml-2"
                       onClick={() => {
-                        props.employeeDelete(arg._id);
+                        setShowPopUp(true);
                       }}
                     >
                       Delete
                     </button>
+                    <PoopUp
+                      isOpen={showPopup}
+                      isClose={setShowPopUp}
+                      CRUD_Function={props.employeeDelete}
+                      id={arg._id}
+                      message={"are you sure want to delete"}
+                      buttonName={"Delete"}
+                    />
                   </div>
                   {/* <div className="col-2"><img className="printer" src={PRINTERLOGO} alt="" /></div> */}
                 </div>

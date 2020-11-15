@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ChequeEntryForm from "../../entryForm/cheque/chequeEntry/chequeEntryForm";
+import { ButtonToolbar, Button } from "reactstrap";
+import PoopUp from "./../../../shared/popup";
 
 let ChequeDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showPopup, setShowPopUp] = useState(false);
 
   let showHide = () => {
-    console.log(props.history);
     setShowEditForm(!showEditForm);
   };
+  console.log(showPopup);
+
   return (
     <div>
       {showEditForm === false ? (
@@ -45,12 +49,19 @@ let ChequeDetailViewComponent = (props) => {
                       : false
                   }
                   className="danger ml-2"
-                  onClick={() => {
-                    props.ChequeDelete(arg._id);
-                  }}
+                  id="pankaj"
+                  onClick={() => setShowPopUp(true)}
                 >
                   Delete
                 </button>
+                <PoopUp
+                  isOpen={showPopup}
+                  isClose={setShowPopUp}
+                  CRUD_Function={props.ChequeDelete}
+                  id={arg._id}
+                  message={"are you sure want to delete"}
+                  buttonName={"Delete"}
+                />
               </div>
             </div>
           );

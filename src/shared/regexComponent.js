@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Label, Input } from "reactstrap";
 //name props bata aayo
 //full array data
@@ -8,6 +8,12 @@ import { Label, Input } from "reactstrap";
 let RegexConponent = (props) => {
   const [updatedOptions, setUpdatedOptions] = useState([]);
   const [value, setValue] = useState("");
+  const [optionDisplay, setOptionDisplay] = useState(false);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const { setFieldValue, name, options } = props;
 
@@ -20,13 +26,21 @@ let RegexConponent = (props) => {
         : options?.filter((option) => regex.test(option.name));
     setUpdatedOptions(selectedOptions);
   };
-  //remove list on click on other place
-  window.onclick = () => {
-    setUpdatedOptions([]);
-  };
 
+  //remove list on click on other place
+  const wrapperref = useRef(null);
+  let handleClickOutside = (event) => {
+    const { current: wrap } = wrapperref;
+    if (wrap && !wrap.contains(event.target)) {
+      setOptionDisplay(false);
+      setUpdatedOptions([]);
+    }
+  };
   return (
-    <div style={{ position: "absolute", marginTop: "0", marginBottom: "0" }}>
+    <div
+      ref={wrapperref}
+      style={{ position: "absolute", marginTop: "0", marginBottom: "0" }}
+    >
       <Input
         style={{
           position: "relative",
@@ -36,7 +50,12 @@ let RegexConponent = (props) => {
           width: "300px",
         }}
         type="text"
-        onClick={() => setUpdatedOptions(options)}
+        onClick={() => {
+          setOptionDisplay(!optionDisplay);
+          optionDisplay === true
+            ? setUpdatedOptions([])
+            : setUpdatedOptions(options);
+        }}
         value={value}
         onChange={(e) => {
           filterArray(e.target.value);
@@ -44,30 +63,28 @@ let RegexConponent = (props) => {
         }}
       ></Input>
 
-      {updatedOptions?.length > 0
-        ? updatedOptions.map((arg, i) => {
-            return (
-              <div
-                style={{
-                  position: "relative",
-                  top: "0",
-                  bottom: "0",
-                  zIndex: "11",
-                }}
-                className="bg-danger"
-                onClick={() => {
-                  setFieldValue(name, arg.id);
+      {updatedOptions?.map((arg, i) => {
+        return (
+          <div
+            style={{
+              position: "relative",
+              top: "0",
+              bottom: "0",
+              zIndex: "11",
+            }}
+            className="bg-danger"
+            onClick={() => {
+              setFieldValue(name, arg.id);
 
-                  setValue(arg.name);
-                  setUpdatedOptions([]);
-                }}
-                key={i}
-              >
-                {arg.name}
-              </div>
-            );
-          })
-        : ""}
+              setValue(arg.name);
+              setUpdatedOptions([]);
+            }}
+            key={i}
+          >
+            {arg.name}
+          </div>
+        );
+      })}
     </div>
   );
 };

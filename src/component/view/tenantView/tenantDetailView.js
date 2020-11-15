@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import "./tenantView.css";
+import PoopUp from "./../../../shared/popup";
 
-import moment from "moment";
 import LOGO from "../../../assets/logo.png";
-import PRINTERLOGO from "../../../assets/printer.jpg";
 import TanentEntryForm from "../../../component/entryForm/tenantEntryForm/tenantEntryForm";
 
 const TanentDetailView = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
-
-  let tenentshowHide = () => {
-    setShowEditForm(!showEditForm);
-  };
+  const [showPopup, setShowPopUp] = useState(false);
 
   return (
     <div>
@@ -39,11 +35,19 @@ const TanentDetailView = (props) => {
                     <button
                       className="danger ml-2"
                       onClick={() => {
-                        props.tenentDelete(arg._id);
+                        setShowPopUp(true);
                       }}
                     >
                       Delete
                     </button>
+                    <PoopUp
+                      isOpen={showPopup}
+                      isClose={setShowPopUp}
+                      CRUD_Function={props.tenentDelete}
+                      id={arg._id}
+                      buttonName={"Delete"}
+                      message={"are you sure want to delete"}
+                    />
                   </div>
                   {/* <div className="col-2"><img className="printer" src={PRINTERLOGO} alt="" /></div> */}
                 </div>

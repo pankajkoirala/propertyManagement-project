@@ -1,26 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import "./chequeEntryForm.css";
-
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
-import { notification } from "../../../../shared/notification";
 import RegexComponent from "../../../../shared/regexComponent";
+import PoopUp from "./../../../../shared/popup";
 
 const ChequeEntry = (props) => {
+  const [showPopup, setShowPopUp] = useState(false);
+
   let initialvalue = {
+    miscellaneous_amount: props?.Cheque?.miscellaneous_amount || "",
+    vat_amount: props?.Cheque?.vat_amount || "",
     cheque_bankName: props?.Cheque?.cheque_bankName || "",
     cheque_issueDate:
       moment(props?.Cheque?.cheque_issueDate).format("YYYY-MM-DD") || "",
     cheque_entryDate:
-      moment(props?.Cheque?.cheque_issueDate).format("YYYY-MM-DD") || "",
+      moment(props?.Cheque?.cheque_entryDate).format("YYYY-MM-DD") || "",
     cheque_status: props?.Cheque?.cheque_status || "",
     cheque_remarks: props?.Cheque?.cheque_remarks || "",
     cheque_amount: props?.Cheque?.cheque_amount || "",
     cheque_picture: props?.Cheque?.cheque_picture || "",
     cheque_number: props?.Cheque?.cheque_number || "",
-    lease_property: props?.Cheque?.lease_property._id || "",
+    lease_property: props?.Cheque?.lease_property?._id || "",
+    cheque_depositeDate:
+      moment(props?.Cheque?.cheque_depositeDate).format("YYYY-MM-DD") || "",
+    cheque_clearDate: props?.Cheque?.cheque_clearDate || "YYYY-MM-DD",
+    cheque_bouncedDate: props?.Cheque?.cheque_bouncedDate || "YYYY-MM-DD",
+    cheque_holdDate: props?.Cheque?.cheque_holdDate || "YYYY-MM-DD",
+    cheque_recivedDate:
+      moment(props?.Cheque?.cheque_recivedDate).format("YYYY-MM-DD") || "",
   };
+  console.log(moment());
   return (
     <div>
       <div className="PropertyFormEntry">
@@ -83,7 +94,6 @@ const ChequeEntry = (props) => {
                           type="date"
                           value={values.cheque_issueDate}
                           name="cheque_issueDate"
-                          placeholder="Enter date of Cheque"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -98,24 +108,46 @@ const ChequeEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Amount</Label>
+                        <Label for="exampleName">cheque Recived Date</Label>
                         <Input
-                          type="number"
-                          value={values.cheque_amount}
-                          name="cheque_amount"
-                          placeholder="Cheque Amount"
+                          type="date"
+                          value={values.cheque_recivedDate}
+                          name="cheque_recivedDate"
+                          placeholder="Enter date of Cheque"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.cheque_amount && errors.cheque_amount && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.cheque_amount}
-                          </span>
-                        )}
+                        {touched.cheque_recivedDate &&
+                          errors.cheque_recivedDate && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.cheque_recivedDate}
+                            </span>
+                          )}
                       </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">cheque Deposited Date</Label>
+                        <Input
+                          type="date"
+                          value={values.cheque_depositeDate}
+                          name="cheque_depositeDate"
+                          placeholder="Enter date of Cheque"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.cheque_depositeDate &&
+                          errors.cheque_depositeDate && (
+                            <span
+                              // className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.cheque_depositeDate}
+                            </span>
+                          )}
+                      </div>
+
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">cheque number</Label>
                         <Input
@@ -135,6 +167,65 @@ const ChequeEntry = (props) => {
                           </span>
                         )}
                       </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Cheque Amount</Label>
+                        <Input
+                          type="number"
+                          value={values.cheque_amount}
+                          name="cheque_amount"
+                          placeholder="Cheque Amount"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.cheque_amount && errors.cheque_amount && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.cheque_amount}
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Vat Amount </Label>
+                        <Input
+                          type="number"
+                          value={values.vat_amount}
+                          name="vat_amount"
+                          placeholder="Cheque Amount"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.vat_amount && errors.vat_amount && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.vat_amount}
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">miscellaneous Amount</Label>
+                        <Input
+                          type="number"
+                          value={values.miscellaneous_amount}
+                          name="miscellaneous_amount"
+                          placeholder="Cheque Amount"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.miscellaneous_amount &&
+                          errors.miscellaneous_amount && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.miscellaneous_amount}
+                            </span>
+                          )}
+                      </div>
+
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName"> bank Name</Label>
                         <Input
@@ -207,6 +298,66 @@ const ChequeEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
+                        <Label for="exampleName">cheque Hold Date</Label>
+                        <Input
+                          type="text"
+                          value={values.cheque_holdDate}
+                          name="cheque_holdDate"
+                          placeholder="YYYY-MM-DD"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.cheque_holdDate && errors.cheque_holdDate && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.cheque_holdDate}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">cheque cleared Date</Label>
+                        <Input
+                          type="text"
+                          value={values.cheque_clearDate}
+                          name="cheque_clearDate"
+                          placeholder="YYYY-MM-DD"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.cheque_clearDate && errors.cheque_clearDate && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.cheque_clearDate}
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">cheque bounced Date</Label>
+                        <Input
+                          type="text"
+                          value={values.cheque_bouncedDate}
+                          name="cheque_bouncedDate"
+                          placeholder="YYYY-MM-DD"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.cheque_bouncedDate &&
+                          errors.cheque_bouncedDate && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.cheque_bouncedDate}
+                            </span>
+                          )}
+                      </div>
+
+                      <div className="mt-4 col-md-3">
                         <Label for="exampleName">Remarks</Label>
                         <Input
                           type="text"
@@ -256,11 +407,22 @@ const ChequeEntry = (props) => {
                       </div>
                       <button
                         className="Success col-4 mt-2"
-                        type="submit"
-                        onClick={handleSubmit}
+                        type="button"
+                        onClick={() => setShowPopUp(true)}
                       >
                         Add Cheque
                       </button>
+                      <PoopUp
+                        isOpen={showPopup}
+                        isClose={setShowPopUp}
+                        CRUD_Function={handleSubmit}
+                        buttonName={props.Cheque ? "Update" : "Create"}
+                        message={
+                          props.Cheque
+                            ? "are you sure want to update"
+                            : "are you sure want to create"
+                        }
+                      />
                     </div>
                   </div>
                 </FormGroup>

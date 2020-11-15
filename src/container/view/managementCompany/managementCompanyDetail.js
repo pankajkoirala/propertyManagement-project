@@ -5,6 +5,7 @@ import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
+import { reloadFunction } from "../../../shared/commonFunction";
 
 const ManagementCompanyDetailView = (props) => {
   const { id } = useParams();
@@ -64,6 +65,7 @@ const ManagementCompanyDetailView = (props) => {
     })
       .then((res) => {
         notification("Updated successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");
@@ -82,6 +84,9 @@ const ManagementCompanyDetailView = (props) => {
     })
       .then((res) => {
         notification("successfully Deleted", "SUCCESS");
+        props.history.push("/managementCompanyList");
+
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./developerCompany.css";
 import moment from "moment";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
+import PoopUp from "./../../../shared/popup";
+
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 
 const DeveloperCompanyComponent = (props) => {
-  console.log(props);
+  const [showPopup, setShowPopUp] = useState(false);
 
   let initialValue = {
     Developer_street: props?.developerCompany?.Developer_street || "",
@@ -339,10 +341,21 @@ const DeveloperCompanyComponent = (props) => {
                   <button
                     className="success m-4"
                     type="submit"
-                    onClick={handleSubmit}
+                    onClick={() => setShowPopUp(true)}
                   >
                     Add
                   </button>
+                  <PoopUp
+                    isOpen={showPopup}
+                    isClose={setShowPopUp}
+                    CRUD_Function={handleSubmit}
+                    buttonName={props.developerCompany ? "Update" : "Create"}
+                    message={
+                      props.developerCompany
+                        ? "are you sure want to update"
+                        : "are you sure want to create"
+                    }
+                  />
                 </FormGroup>
               </Form>
             )}

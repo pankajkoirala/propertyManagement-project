@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PropertyEntryForm from "../../entryForm/PropertyEntryForm/PropertyEntryForm";
 import "./property.css";
-import { useParams } from "react-router-dom";
-
-import { connect } from "react-redux";
+import PoopUp from "./../../../shared/popup";
 
 let PropertyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showPopup, setShowPopUp] = useState(false);
 
   let showHide = () => {
     setShowEditForm(!showEditForm);
@@ -46,10 +45,18 @@ let PropertyDetailViewComponent = (props) => {
                       ? true
                       : false
                   }
-                  onClick={() => props.DeleteProperty(arg._id)}
+                  onClick={() => setShowPopUp(true)}
                 >
                   delete
                 </button>
+                <PoopUp
+                  isOpen={showPopup}
+                  isClose={setShowPopUp}
+                  CRUD_Function={props.DeleteProperty}
+                  id={arg._id}
+                  buttonName={"Delete"}
+                  message={"are you sure want to delete"}
+                />
               </div>
             </div>
           );

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MaintananceCompanyEntryForm from "../../entryForm/maintainanceCompanyEntryForm/maintainanceCompanyEntryForm";
-import { useParams } from "react-router-dom";
-
-import { connect } from "react-redux";
+import PoopUp from "./../../../shared/popup";
 
 let MaintananceCompanyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showPopup, setShowPopUp] = useState(false);
 
   let showHide = () => {
     setShowEditForm(!showEditForm);
@@ -41,11 +40,19 @@ let MaintananceCompanyDetailViewComponent = (props) => {
                 <button
                   className="danger ml-2"
                   onClick={() => {
-                    props.maintananceCompanyDelete(arg._id);
+                    setShowPopUp(true);
                   }}
                 >
                   Delete
                 </button>
+                <PoopUp
+                  isOpen={showPopup}
+                  isClose={setShowPopUp}
+                  CRUD_Function={props.maintananceCompanyDelete}
+                  buttonName={"Delete"}
+                  id={arg._id}
+                  message={"are you sure want to delete"}
+                />
               </div>
             </div>
           );

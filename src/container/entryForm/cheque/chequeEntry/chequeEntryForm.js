@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { base_URL } from "../../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../../shared/notification.js";
+import { reloadFunction } from "../../../../shared/commonFunction.js";
 
 const ChequeEntryContainer = (props) => {
   const ChequeeData = (data) => {
@@ -18,6 +19,13 @@ const ChequeEntryContainer = (props) => {
     formData.append("cheque_number", data.cheque_number);
     formData.append("cheque_entryDate", data.cheque_entryDate);
     formData.append("cheque_bankName", data.cheque_bankName);
+    formData.append("cheque_depositeDate", data.cheque_depositeDate);
+    formData.append("cheque_clearDate", data.cheque_clearDate);
+    formData.append("cheque_bouncedDate", data.cheque_bouncedDate);
+    formData.append("cheque_holdDate", data.cheque_holdDate);
+    formData.append("cheque_recivedDate", data.cheque_recivedDate);
+    formData.append("vat_amount", data.vat_amount);
+    formData.append("miscellaneous_amount", data.miscellaneous_amount);
 
     Axios({
       method: "post",
@@ -32,6 +40,7 @@ const ChequeEntryContainer = (props) => {
     })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");
