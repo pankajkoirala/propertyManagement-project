@@ -18,11 +18,9 @@ const DeveloperCompanyDetailViewCont = (props) => {
   //developerCompany update
   const DeveloperCompanyUpdate = (data, ID) => {
     const formData = new FormData();
-    formData.append("Developer_street", data.Developer_Developer_street);
+    formData.append("Developer_area", data.Developer_Developer_area);
     formData.append("Developer_city", data.Developer_city);
-    formData.append("Developer_provience", data.Developer_provience);
     formData.append("Developer_country", data.Developer_country);
-    formData.append("Developer_ZipCode", data.Developer_ZipCode);
     formData.append("DeveloperCompany_photo", data.DeveloperCompany_photo);
     formData.append("DeveloperCompany_phoneNo", data.DeveloperCompany_phoneNo);
     formData.append("DeveloperCompany_Name", data.DeveloperCompany_Name);

@@ -11,11 +11,9 @@ const MaintainanceCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
 
   let initialvalue = {
-    Company_street: props?.maintananceCompany?.Company_street || "",
+    Company_area: props?.maintananceCompany?.Company_area || "",
     Company_city: props?.maintananceCompany?.Company_city || "",
-    Company_provience: props?.maintananceCompany?.Company_provience || "",
     Company_country: props?.maintananceCompany?.Company_country || "",
-    Company_ZipCode: props?.maintananceCompany?.Company_ZipCode || "",
     Company_uploadPhoto: props?.maintananceCompany?.Company_uploadPhoto || "",
     Company_phoneNo: props?.maintananceCompany?.Company_phoneNo || "",
     Company_Registration_Number:
@@ -133,21 +131,21 @@ const MaintainanceCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">street</Label>
+                        <Label for="exampleName">area</Label>
                         <Input
                           type="text"
-                          value={values.Company_street}
-                          name="Company_street"
-                          placeholder="Enter your Company_street"
+                          value={values.Company_area}
+                          name="Company_area"
+                          placeholder="Enter your Company_area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.Company_street && errors?.Company_street && (
+                        {touched?.Company_area && errors?.Company_area && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.Company_street}
+                            {errors?.Company_area}
                           </span>
                         )}
                       </div>
@@ -171,49 +169,7 @@ const MaintainanceCompanyComponent = (props) => {
                           </span>
                         )}
                       </div>
-
                       <div className="col-md-4">
-                        <Label for="exampleName">provience</Label>
-                        <Input
-                          type="text"
-                          value={values.Company_provience}
-                          name="Company_provience"
-                          placeholder="Enter Company_provience Name"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched?.Company_provience &&
-                          errors?.Company_provience && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors?.Company_provience}
-                            </span>
-                          )}
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <Label for="exampleSelect">ZipCode</Label>
-                        <Input
-                          type="number"
-                          name="Company_ZipCode"
-                          value={values.Company_ZipCode}
-                          id="exampleSelect"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        ></Input>
-                        {touched?.Company_ZipCode && errors?.Company_ZipCode && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors?.Company_ZipCode}
-                          </span>
-                        )}
-                      </div>
-                      <div className="col-md-6">
                         <Label for="exampleName">country</Label>
                         <Input
                           type="text"
@@ -233,6 +189,7 @@ const MaintainanceCompanyComponent = (props) => {
                         )}
                       </div>
                     </div>
+
                     <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">Email</Label>

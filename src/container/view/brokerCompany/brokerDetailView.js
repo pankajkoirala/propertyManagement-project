@@ -18,11 +18,9 @@ const BrokerDetailViewCont = (props) => {
   //tanent update
   const BrokerUpdate = (data, ID) => {
     const formData = new FormData();
-    formData.append("street", data.street);
+    formData.append("area", data.area);
     formData.append("city", data.city);
-    formData.append("provience", data.provience);
     formData.append("country", data.country);
-    formData.append("ZipCode", data.ZipCode);
     formData.append("broker_photo", data.broker_photo);
     formData.append("broker_phoneNo", data.broker_phoneNo);
     formData.append(

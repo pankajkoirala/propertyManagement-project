@@ -11,16 +11,14 @@ const ManagementCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
 
   let initialvalue = {
-    managementCompany_street:
-      props?.managementCompany?.managementCompany_street || "",
+    managementCompany_area:
+      props?.managementCompany?.managementCompany_area || "",
     managementCompany_city:
       props?.managementCompany?.managementCompany_city || "",
-    managementCompany_provience:
-      props?.managementCompany?.managementCompany_provience || "",
+
     managementCompany_country:
       props?.managementCompany?.managementCompany_country || "",
-    managementCompany_ZipCode:
-      props?.managementCompany?.managementCompany_ZipCode || "",
+
     managementCompany_photo:
       props?.managementCompany?.managementCompany_photo || "",
     managementCompany_phoneNo:
@@ -142,22 +140,22 @@ const ManagementCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Street</Label>
+                        <Label for="exampleName">area</Label>
                         <Input
                           type="text"
-                          value={values.managementCompany_street}
-                          name="managementCompany_street"
-                          placeholder="Enter your managementCompany_street"
+                          value={values.managementCompany_area}
+                          name="managementCompany_area"
+                          placeholder="Enter your managementCompany_area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.managementCompany_street &&
-                          errors?.managementCompany_street && (
+                        {touched?.managementCompany_area &&
+                          errors?.managementCompany_area && (
                             <span
                               className="text-danger col-md-12 text-left mb-2"
                               style={{ fontSize: 12 }}
                             >
-                              {errors?.managementCompany_street}
+                              {errors?.managementCompany_area}
                             </span>
                           )}
                       </div>
@@ -184,48 +182,6 @@ const ManagementCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">provience</Label>
-                        <Input
-                          type="text"
-                          value={values.managementCompany_provience}
-                          name="managementCompany_provience"
-                          placeholder="Enter managementCompany_provience Name"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched?.managementCompany_provience &&
-                          errors?.managementCompany_provience && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors?.managementCompany_provience}
-                            </span>
-                          )}
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <Label for="exampleSelect">ZipCode</Label>
-                        <Input
-                          type="number"
-                          name="managementCompany_ZipCode"
-                          value={values.managementCompany_ZipCode}
-                          id="exampleSelect"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        ></Input>
-                        {touched?.managementCompany_ZipCode &&
-                          errors?.managementCompany_ZipCode && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors?.managementCompany_ZipCode}
-                            </span>
-                          )}
-                      </div>
-                      <div className="col-md-6">
                         <Label for="exampleName">country</Label>
                         <Input
                           type="text"
@@ -246,6 +202,7 @@ const ManagementCompanyComponent = (props) => {
                           )}
                       </div>
                     </div>
+
                     <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">Email</Label>

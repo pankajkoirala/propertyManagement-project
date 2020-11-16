@@ -10,11 +10,9 @@ const BrokerComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
 
   let initialvalue = {
-    street: props?.BrokerCompany?.street || "",
+    area: props?.BrokerCompany?.area || "",
     city: props?.BrokerCompany?.city || "",
-    provience: props?.BrokerCompany?.provience || "",
     country: props?.BrokerCompany?.country || "",
-    ZipCode: props?.BrokerCompany?.ZipCode || "",
     broker_photo: props?.BrokerCompany?.broker_photo || "",
     broker_phoneNo: props?.BrokerCompany?.broker_phoneNo || "",
     broker_RegistrationNumber:
@@ -127,21 +125,21 @@ const BrokerComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">street</Label>
+                        <Label for="exampleName">area</Label>
                         <Input
                           type="text"
-                          value={values.street}
-                          name="street"
-                          placeholder="Enter your Street"
+                          value={values.area}
+                          name="area"
+                          placeholder="Enter your area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.street && errors?.street && (
+                        {touched?.area && errors?.area && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.street}
+                            {errors?.area}
                           </span>
                         )}
                       </div>
@@ -165,48 +163,7 @@ const BrokerComponent = (props) => {
                           </span>
                         )}
                       </div>
-
                       <div className="col-md-4">
-                        <Label for="exampleName">Provience</Label>
-                        <Input
-                          type="text"
-                          value={values.provience}
-                          name="provience"
-                          placeholder="Enter Provience Name"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched?.provience && errors?.provience && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors?.provience}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <Label for="exampleSelect">ZipCode</Label>
-                        <Input
-                          type="text"
-                          name="ZipCode"
-                          value={values.ZipCode}
-                          id="exampleSelect"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        ></Input>
-                        {touched?.ZipCode && errors?.ZipCode && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors?.zipCode}
-                          </span>
-                        )}
-                      </div>
-                      <div className="col-md-6">
                         <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
@@ -226,6 +183,7 @@ const BrokerComponent = (props) => {
                         )}
                       </div>
                     </div>
+
                     <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">Email</Label>

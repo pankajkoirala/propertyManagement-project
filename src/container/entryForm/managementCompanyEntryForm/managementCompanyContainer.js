@@ -8,20 +8,14 @@ import { reloadFunction } from "../../../shared/commonFunction.js";
 const ManagementCompanyContainer = () => {
   const ManagementCompanyData = (data) => {
     const formData = new FormData();
-    formData.append("managementCompany_street", data.managementCompany_street);
+    formData.append("managementCompany_area", data.managementCompany_area);
     formData.append("managementCompany_city", data.managementCompany_city);
-    formData.append(
-      "managementCompany_provience",
-      data.managementCompany_provience
-    );
+
     formData.append(
       "managementCompany_country",
       data.managementCompany_country
     );
-    formData.append(
-      "managementCompany_ZipCode",
-      data.managementCompany_ZipCode
-    );
+
     formData.append("managementCompany_photo", data.managementCompany_photo);
     formData.append(
       "managementCompany_phoneNo",
