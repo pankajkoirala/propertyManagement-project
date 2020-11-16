@@ -11,15 +11,14 @@ const TenantEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
 
   let initialValue = {
-    employee_street: props?.selectedEmployee?.employee_street || "",
+    employee_area: props?.selectedEmployee?.employee_area || "",
     employee_city: props?.selectedEmployee?.employee_city || "",
-    employee_provience: props?.selectedEmployee?.employee_provience || "",
     employee_country: props?.selectedEmployee?.employee_country || "",
-    employee_ZipCode: props?.selectedEmployee?.employee_ZipCode || "",
+    employee_DOB: props?.selectedEmployee?.employee_DOB || "",
     employee_photo: props?.selectedEmployee?.employee_photo || "",
     employee_phoneNo: props?.selectedEmployee?.employee_phoneNo || "",
     employee_firstName: props?.selectedEmployee?.employee_firstName || "",
-    employee_middleName: props?.selectedEmployee?.employee_middleName || "",
+    employee_middleName: props?.selectedEmployee?.employee_middleName || " ",
     employee_lastName: props?.selectedEmployee?.employee_lastName || "",
     employee_email: props?.selectedEmployee?.employee_email || "",
     employee_post: props?.selectedEmployee?.employee_post || "",
@@ -125,27 +124,27 @@ const TenantEntry = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">employee_street</Label>
+                        <Label for="exampleName">area</Label>
                         <Input
                           type="text"
-                          value={values.employee_street}
-                          name="employee_street"
-                          placeholder="Enter your employee_street"
+                          value={values.employee_area}
+                          name="employee_area"
+                          placeholder="Enter your employee_area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.employee_street && errors?.employee_street && (
+                        {touched?.employee_area && errors?.employee_area && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.employee_street}
+                            {errors?.employee_area}
                           </span>
                         )}
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">employee_city</Label>
+                        <Label for="exampleName">city</Label>
                         <Input
                           type="text"
                           value={values.employee_city}
@@ -163,50 +162,8 @@ const TenantEntry = (props) => {
                           </span>
                         )}
                       </div>
-
                       <div className="col-md-4">
-                        <Label for="exampleName">employee_provience</Label>
-                        <Input
-                          type="text"
-                          value={values.employee_provience}
-                          name="employee_provience"
-                          placeholder="Enter employee_provience Name"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched?.employee_provience &&
-                          errors?.employee_provience && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors?.employee_provience}
-                            </span>
-                          )}
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <Label for="exampleSelect">employee_ZipCode</Label>
-                        <Input
-                          type="number"
-                          name="employee_ZipCode"
-                          value={values.employee_ZipCode}
-                          id="exampleSelect"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        ></Input>
-                        {touched?.employee_ZipCode && errors?.employee_ZipCode && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors?.employee_ZipCode}
-                          </span>
-                        )}
-                      </div>
-                      <div className="col-md-6">
-                        <Label for="exampleName">employee_country</Label>
+                        <Label for="exampleName">country</Label>
                         <Input
                           type="text"
                           value={values.employee_country}
@@ -221,6 +178,27 @@ const TenantEntry = (props) => {
                             style={{ fontSize: 12 }}
                           >
                             {errors?.employee_country}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <Label for="exampleSelect">employee_DOB</Label>
+                        <Input
+                          type="date"
+                          name="employee_DOB"
+                          value={values.employee_DOB}
+                          id="exampleSelect"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        ></Input>
+                        {touched?.employee_DOB && errors?.employee_DOB && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors?.employee_DOB}
                           </span>
                         )}
                       </div>
@@ -268,7 +246,7 @@ const TenantEntry = (props) => {
                     </div>
                     <div className="row">
                       <div className="col-md-6">
-                        <Label for="exampleName">employee_post</Label>
+                        <Label for="exampleName">post</Label>
                         <Input
                           type="text"
                           value={values.employee_post}

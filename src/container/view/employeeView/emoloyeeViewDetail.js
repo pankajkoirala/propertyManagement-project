@@ -20,18 +20,17 @@ const TanentDetailViewCont = (props) => {
   //tanent update
   const EmployeeUpdate = (data, ID) => {
     const formData = new FormData();
-    formData.append("employee_street", data.employee_street);
+    formData.append("employee_area", data.employee_area);
     formData.append("employee_city", data.employee_city);
-    formData.append("employee_provience", data.employee_provience);
     formData.append("employee_country", data.employee_country);
-    formData.append("employee_ZipCode", data.employee_ZipCode);
-    formData.append("employee_photo", data.employee_photo);
+    formData.append("employee_DOB", data.employee_DOB);
     formData.append("employee_phoneNo", data.employee_phoneNo);
     formData.append("employee_firstName", data.employee_firstName);
     formData.append("employee_middleName", data.employee_middleName);
     formData.append("employee_lastName", data.employee_lastName);
     formData.append("employee_email", data.employee_email);
     formData.append("employee_post", data.employee_post);
+    formData.append("employee_photo", data.employee_photo);
 
     Axios({
       method: "put",

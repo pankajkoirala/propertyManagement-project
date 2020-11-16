@@ -4,9 +4,14 @@ import ChequeViewsComponent from "../../../component/view/cheque/cheque";
 import { connect } from "react-redux";
 
 const ChequeViewCont = (props) => {
+  let sortChequeByDate = props.redux_ChequeData.cheque.sort(
+    (a, b) =>
+      new moment(b.cheque_issueDate).format("YYYYMMDD") -
+      new moment(a.cheque_issueDate).format("YYYYMMDD")
+  );
   return (
     <div>
-      <ChequeViewsComponent redux_ChequeData={props.redux_ChequeData.cheque} />
+      <ChequeViewsComponent sortChequeByDate={sortChequeByDate} />
     </div>
   );
 };

@@ -7,13 +7,11 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 const ChequeView = (props) => {
   const [from, setFrom] = useState("YYYY-MM-DD");
   const [to, setTo] = useState("YYYY-MM-DD");
-  const [name, setName] = useState("");
+  const [chequeState, setchequeState] = useState(false);
   let [updatedOptions, setUpdatedOptions] = useState([]);
 
-  useEffect(() => {}, []);
-
   //check filter from to
-  let filterChequeList = props.redux_ChequeData.filter((arg) =>
+  let filterChequeList = props?.sortChequeByDate?.filter((arg) =>
     from === "YYYY-MM-DD" && to === "YYYY-MM-DD"
       ? arg
       : moment(arg.cheque_issueDate).isBetween(
@@ -22,8 +20,8 @@ const ChequeView = (props) => {
         )
   );
 
-  let filterArray = () => {
-    const splittedWord = name.split("");
+  let filterArray = (cheqNo) => {
+    const splittedWord = cheqNo.split("");
     setUpdatedOptions(
       filterChequeList.filter((cheque) =>
         splittedWord.every((letter) => {
@@ -32,8 +30,23 @@ const ChequeView = (props) => {
       )
     );
   };
+  //filter by lease
+  let FilterByLease = (Id) => {
+    const splittedWord = Id.split("");
+    setUpdatedOptions(
+      filterChequeList.filter((cheque) =>
+        splittedWord.every((letter) => {
+          return cheque?.lease_property?.LeaseId?.toString().includes(letter);
+        })
+      )
+    );
+  };
 
-  if (name !== "") {
+  let unUsedCheque = filterChequeList.filter(
+    (arg) => typeof arg?.lease_property?.LeaseId !== "number"
+  );
+
+  if (chequeState !== false) {
     filterChequeList = updatedOptions;
   } else {
     updatedOptions = filterChequeList;
@@ -80,18 +93,49 @@ const ChequeView = (props) => {
           Clear
         </Button>
       </div>
-      <Form inline>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input
-            type="number"
-            onChange={(e) => {
-              filterArray();
-              setName(e.target.value);
-            }}
-            placeholder="search!"
-          />
-        </FormGroup>
-      </Form>
+      <div className="d-flex justify-content-around m-4">
+        <Form inline>
+          <Label className="font-weight-bold">search by cheque no : </Label>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Input
+              type="number"
+              onChange={(e) => {
+                filterArray(e.target.value);
+                e.target.value !== ""
+                  ? setchequeState(true)
+                  : setchequeState(false);
+              }}
+              placeholder="cheque no"
+            />
+          </FormGroup>
+        </Form>
+
+        <Form inline>
+          <Label className="font-weight-bold">search by lease no :</Label>
+
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Input
+              type="text"
+              onChange={(e) => {
+                FilterByLease(e.target.value);
+                e.target.value !== ""
+                  ? setchequeState(true)
+                  : setchequeState(false);
+              }}
+              placeholder=" lease number"
+            />
+          </FormGroup>
+        </Form>
+        <button
+          className="float-right"
+          onClick={() => {
+            setchequeState(!chequeState);
+            setUpdatedOptions(unUsedCheque);
+          }}
+        >
+          lease navako cheque
+        </button>
+      </div>
 
       <Table striped bordered hover size="sm">
         <thead>
@@ -100,7 +144,7 @@ const ChequeView = (props) => {
             <th>property no</th>
 
             <th>Cheque no</th>
-            <th>Cheque Date</th>
+            <th>Cheque issue Date</th>
             <th>cheque amount</th>
             <th>remark</th>
             <th>cheque cheque_status</th>

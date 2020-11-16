@@ -18,11 +18,9 @@ const MaintananceCompanyDetailView = (props) => {
   //tanent update
   const maintananceCompanyUpdate = (data, ID) => {
     const formData = new FormData();
-    formData.append("Company_street", data.Company_street);
+    formData.append("Company_area", data.Company_area);
     formData.append("Company_city", data.Company_city);
-    formData.append("Company_provience", data.Company_provience);
     formData.append("Company_country", data.Company_country);
-    formData.append("Company_ZipCode", data.Company_ZipCode);
     formData.append("Company_uploadPhoto", data.Company_uploadPhoto);
     formData.append("Company_phoneNo", data.Company_phoneNo);
     formData.append(

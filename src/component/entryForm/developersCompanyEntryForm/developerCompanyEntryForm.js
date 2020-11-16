@@ -11,7 +11,7 @@ const DeveloperCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
 
   let initialValue = {
-    Developer_street: props?.developerCompany?.Developer_street || "",
+    Developer_area: props?.developerCompany?.Developer_area || "",
     Developer_city: props?.developerCompany?.Developer_city || "",
     Developer_provience: props?.developerCompany?.Developer_provience || "",
     Developer_country: props?.developerCompany?.Developer_country || "",
@@ -139,21 +139,21 @@ const DeveloperCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">street</Label>
+                        <Label for="exampleName">area</Label>
                         <Input
                           type="text"
-                          value={values.Developer_street}
-                          name="Developer_street"
-                          placeholder="Enter your Developer_street"
+                          value={values.Developer_area}
+                          name="Developer_area"
+                          placeholder="Enter your Developer_area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.Developer_street && errors?.Developer_street && (
+                        {touched?.Developer_area && errors?.Developer_area && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.Developer_street}
+                            {errors?.Developer_area}
                           </span>
                         )}
                       </div>
@@ -177,50 +177,7 @@ const DeveloperCompanyComponent = (props) => {
                           </span>
                         )}
                       </div>
-
                       <div className="col-md-4">
-                        <Label for="exampleName">provience</Label>
-                        <Input
-                          type="text"
-                          value={values.Developer_provience}
-                          name="Developer_provience"
-                          placeholder="Enter Developer_provience Name"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched?.Developer_provience &&
-                          errors?.Developer_provience && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors?.Developer_provience}
-                            </span>
-                          )}
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <Label for="exampleSelect">ZipCode</Label>
-                        <Input
-                          type="number"
-                          name="Developer_ZipCode"
-                          value={values.Developer_ZipCode}
-                          id="exampleSelect"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        ></Input>
-                        {touched?.Developer_ZipCode &&
-                          errors?.Developer_ZipCode && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors?.Developer_ZipCode}
-                            </span>
-                          )}
-                      </div>
-                      <div className="col-md-6">
                         <Label for="exampleName">country</Label>
                         <Input
                           type="text"
@@ -241,6 +198,7 @@ const DeveloperCompanyComponent = (props) => {
                           )}
                       </div>
                     </div>
+
                     <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">Email</Label>
@@ -340,7 +298,7 @@ const DeveloperCompanyComponent = (props) => {
                   </div>
                   <button
                     className="success m-4"
-                    type="submit"
+                    type="button"
                     onClick={() => setShowPopUp(true)}
                   >
                     Add
