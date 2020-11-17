@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TanentViewComp from "../../../component/view/tenantView/tenantDetailView";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";

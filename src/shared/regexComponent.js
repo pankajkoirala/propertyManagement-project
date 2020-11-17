@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Label, Input } from "reactstrap";
+import { Input } from "reactstrap";
 //name props bata aayo
 //full array data
 //set attribute

@@ -2,7 +2,6 @@ import React from "react";
 import { Accordion, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./navbar.css";
-import { setLocalStorage } from "../const/tokenStorage";
 
 const NavbarPage = () => {
   let logout = () => {
@@ -34,25 +33,12 @@ const NavbarPage = () => {
                   Create Property
                 </Button>
               </Link>
-              <br />
-              <Link to="/propertyedit">
-                <Button variant="secondary" className="button-size">
-                  Edit Property
-                </Button>
-              </Link>
-              <br />
+
               <Link to="/propertyList">
                 <Button variant="success" className="button-size">
                   View Property
                 </Button>
               </Link>
-              <br />
-              <Link to="/propertydelete">
-                <Button variant="danger" className="button-size">
-                  Delete Property
-                </Button>
-              </Link>
-              <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
@@ -69,31 +55,18 @@ const NavbarPage = () => {
                   Add Tenant
                 </Button>
               </Link>
-              <br />
-              <Link to="/tenantedit">
-                <Button variant="secondary" className="button-size">
-                  Edit Tenant
-                </Button>
-              </Link>
-              <br />
+
               <Link to="/tenantList">
                 <Button variant="success" className="button-size">
                   View Tenant
                 </Button>
               </Link>
               <br />
-              <Link to="/tenantassigned">
+              <Link to="/lease">
                 <Button variant="warning" className="button-size">
                   Assign property
                 </Button>
               </Link>
-              <br />
-              <Link to="/tenantdelete">
-                <Button variant="danger" className="button-size">
-                  Delete Tenant
-                </Button>
-              </Link>
-              <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
@@ -111,28 +84,13 @@ const NavbarPage = () => {
                   Add Employee
                 </Button>
               </Link>
-              <br />
-              <Link to="/employeeedit">
-                {" "}
-                <Button variant="secondary" className="button-size">
-                  Edit Employee
-                </Button>
-              </Link>
-              <br />
+
               <Link to="/employeeList">
                 {" "}
                 <Button variant="success" className="button-size">
                   View Employee
                 </Button>
               </Link>
-              <br />
-              <Link to="/employeedelete">
-                {" "}
-                <Button variant="danger" className="button-size">
-                  Delete Employee
-                </Button>
-              </Link>
-              <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
@@ -151,20 +109,7 @@ const NavbarPage = () => {
                 </Button>
               </Link>
               <br />
-              <Link to="/chequeBounce">
-                {" "}
-                <Button variant="success" className="button-size">
-                  Cheque Bounce
-                </Button>
-              </Link>
-              <br />
-              <Link to="/chequeHold">
-                {" "}
-                <Button variant="success" className="button-size">
-                  Cheque Hold
-                </Button>
-              </Link>
-              <br />
+
               <Link to="/chequeList">
                 {" "}
                 <Button variant="success" className="button-size">
@@ -177,71 +122,193 @@ const NavbarPage = () => {
         </Card>
         <Card>
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="3">
-              <Link to="/lease"> Lease </Link>
+            <Accordion.Toggle as={Card.Header} variant="link" eventKey="6">
+              <b>Maintainance Ticket</b>
             </Accordion.Toggle>
           </Card.Header>
-          <Accordion.Collapse eventKey="3">
-            <Card.Body>Hello! </Card.Body>
+          <Accordion.Collapse eventKey="6">
+            <Card.Body>
+              <Link to="/maintananceTicket">
+                {" "}
+                <Button variant="primary" className="button-size">
+                  Maintanance Ticket Form
+                </Button>
+              </Link>
+              <br />
+
+              <Link to="/maintananceTicketList">
+                {" "}
+                <Button variant="success" className="button-size">
+                  Maintanance Ticke tList{" "}
+                </Button>
+              </Link>
+              <br />
+            </Card.Body>
           </Accordion.Collapse>
         </Card>
         <Card>
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="6">
-              <Link to="/maintananceTicket">
-                {" "}
-                <b>Maintainance Ticket</b>{" "}
-              </Link>
-              <Link to="/maintananceTicketList">
-                {" "}
-                <b>Maintainance Ticket list</b>{" "}
-              </Link>
+            <Accordion.Toggle as={Card.Header} variant="link" eventKey="7">
+              <b>Owner </b>
             </Accordion.Toggle>
           </Card.Header>
-        </Card>
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="4">
-              <b className="m-5" onClick={() => logout()}>
-                Logout
-              </b>
-            </Accordion.Toggle>
-          </Card.Header>
-        </Card>
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="5">
+          <Accordion.Collapse eventKey="7">
+            <Card.Body>
               <Link to="/ownerEntry">
                 {" "}
-                <b>Owner Entry</b>{" "}
+                <Button variant="primary" className="button-size">
+                  Owner Entry{" "}
+                </Button>
               </Link>
-            </Accordion.Toggle>
-          </Card.Header>
-        </Card>
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="7">
-              <Link to="/bankDetail">
+              <br />
+
+              <Link to="/ownerList">
                 {" "}
-                <b>Bank Detail</b>{" "}
+                <Button variant="success" className="button-size">
+                  Owner List{" "}
+                </Button>
               </Link>
-            </Accordion.Toggle>
-          </Card.Header>
+              <br />
+            </Card.Body>
+          </Accordion.Collapse>
         </Card>
         <Card>
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="8">
+            <Accordion.Toggle as={Card.Header} variant="link" eventKey="8">
+              <b>Broker Company </b>
+            </Accordion.Toggle>
+          </Card.Header>
+          <Accordion.Collapse eventKey="8">
+            <Card.Body>
               <Link to="/brokerEntryForm">
                 {" "}
-                <b>Broker Company entryForm</b>{" "}
+                <Button variant="primary" className="button-size">
+                  broker Company Entry{" "}
+                </Button>
               </Link>
+              <br />
+
               <Link to="/brokerCompanyList">
                 {" "}
-                <b>Broker Company list</b>{" "}
+                <Button variant="success" className="button-size">
+                  broker Company List{" "}
+                </Button>
               </Link>
+              <br />
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+        <Card>
+          <Card.Header>
+            <Accordion.Toggle as={Card.Header} variant="link" eventKey="9">
+              <b>Developer Company </b>
             </Accordion.Toggle>
           </Card.Header>
+          <Accordion.Collapse eventKey="9">
+            <Card.Body>
+              <Link to="/developerDetail">
+                {" "}
+                <Button variant="primary" className="button-size">
+                  Developer Company Entry
+                </Button>
+              </Link>
+              <br />
+
+              <Link to="/developerCompanyList">
+                {" "}
+                <Button variant="success" className="button-size">
+                  Developer Company List
+                </Button>
+              </Link>
+              <br />
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>{" "}
+        <Card>
+          <Card.Header>
+            <Accordion.Toggle as={Card.Header} variant="link" eventKey="10">
+              <b>Maintanance Company </b>
+            </Accordion.Toggle>
+          </Card.Header>
+          <Accordion.Collapse eventKey="10">
+            <Card.Body>
+              <Link to="/maintainanceCompanyForm">
+                {" "}
+                <Button variant="primary" className="button-size">
+                  Maintanance Company Entry
+                </Button>
+              </Link>
+              <br />
+
+              <Link to="/maintananceCompanyList">
+                {" "}
+                <Button variant="success" className="button-size">
+                  Maintanance Company List
+                </Button>
+              </Link>
+              <br />
+            </Card.Body>
+          </Accordion.Collapse>
         </Card>
+        <Card>
+          <Card.Header>
+            <Accordion.Toggle as={Card.Header} variant="link" eventKey="11">
+              <b>Management Company </b>
+            </Accordion.Toggle>
+          </Card.Header>
+          <Accordion.Collapse eventKey="11">
+            <Card.Body>
+              <Link to="/managementCompany">
+                {" "}
+                <Button variant="primary" className="button-size">
+                  Management Company Entry
+                </Button>
+              </Link>
+              <br />
+
+              <Link to="/managementCompanyList">
+                {" "}
+                <Button variant="success" className="button-size">
+                  Maintanance Company List
+                </Button>
+              </Link>
+              <br />
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+        <Card>
+          <Card.Header>
+            <Accordion.Toggle as={Card.Header} variant="link" eventKey="12">
+              <b>Expense </b>
+            </Accordion.Toggle>
+          </Card.Header>
+          <Accordion.Collapse eventKey="12">
+            <Card.Body>
+              <Link to="/expenseEntryForm">
+                {" "}
+                <Button variant="primary" className="button-size">
+                  Expense Entry
+                </Button>
+              </Link>
+              <br />
+
+              <Link to="/expensesList">
+                {" "}
+                <Button variant="success" className="button-size">
+                  Expense List
+                </Button>
+              </Link>
+              <br />
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+        <Card.Header>
+          <Accordion.Toggle as={Button} variant="link" eventKey="4">
+            <b className="m-5" onClick={() => logout()}>
+              Logout
+            </b>
+          </Accordion.Toggle>
+        </Card.Header>
         <Card>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="13">
@@ -254,66 +321,10 @@ const NavbarPage = () => {
         </Card>
         <Card>
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="9">
-              <Link to="/developerDetail">
-                <b>Developer Detail</b>{" "}
-              </Link>
-              <Link to="/developerCompanyList">
-                <b>Developer list</b>{" "}
-              </Link>
-            </Accordion.Toggle>
-          </Card.Header>
-        </Card>
-        <Card>
-          <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="10">
               <Link to="/invoiceDetail">
                 {" "}
                 <b>Invoice Detail</b>{" "}
-              </Link>
-            </Accordion.Toggle>
-          </Card.Header>
-        </Card>
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="11">
-              <Link to="/maintainanceCompanyForm">
-                {" "}
-                <b>Maintainance Company form</b>{" "}
-              </Link>
-              <Link to="/maintananceCompanyList">
-                {" "}
-                <b>Maintainance Company list</b>{" "}
-              </Link>
-            </Accordion.Toggle>
-          </Card.Header>
-        </Card>
-
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="12">
-              <Link to="/managementCompany">
-                {" "}
-                <b>Management Company form</b>{" "}
-              </Link>
-              <Link to="/managementCompanyList">
-                {" "}
-                <b>Management Company list</b>{" "}
-              </Link>
-            </Accordion.Toggle>
-          </Card.Header>
-        </Card>
-
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="12">
-              <Link to="/expenseEntryForm">
-                {" "}
-                <b>expense entry form</b>{" "}
-              </Link>
-              <Link to="/expensesList">
-                {" "}
-                <b>expense list</b>{" "}
               </Link>
             </Accordion.Toggle>
           </Card.Header>

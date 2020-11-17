@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./lease.css";
-import { FormGroup, Label, Input, Form, Table, Col } from "reactstrap";
+import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
-import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
+//import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
 import RegexConponent from "../../../shared/regexComponent";
 import PoopUp from "./../../../shared/popup";
 
@@ -383,7 +383,7 @@ const LeaseEntry = (props) => {
                           ? values.photo
                           : URL.createObjectURL(values.photo)
                       }
-                      alt="no picture"
+                      alt="no file"
                       height="20"
                     />
                   )}

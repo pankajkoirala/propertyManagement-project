@@ -289,7 +289,7 @@ const DeveloperCompanyComponent = (props) => {
                                       values?.DeveloperCompany_photo
                                     )
                               }
-                              alt="no picture"
+                              alt="no file"
                               height="20"
                             />
                           )}

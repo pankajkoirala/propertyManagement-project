@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ManagementCompanyViews from "../../../component/view/managementCompany/managementCompany";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
-import { connect } from "react-redux";
 
 const ManagementCompanyView = (props) => {
   const [ManagementCompany, setManagementCompany] = useState([]);

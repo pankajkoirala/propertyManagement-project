@@ -297,7 +297,7 @@ const BrokerPerson = (props) => {
                         {touched.broker_photo && values.broker_photo && (
                           <img
                             src={URL.createObjectURL(values.broker_photo)}
-                            alt="no picture"
+                            alt="no file"
                             height="20"
                           />
                         )}

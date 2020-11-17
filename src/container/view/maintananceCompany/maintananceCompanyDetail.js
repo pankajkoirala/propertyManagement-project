@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MaintananceCompanyViewComp from "../../../component/view/maintananceCompany/maintananceCompanyDetail";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";

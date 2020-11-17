@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import RouterPage from "./router";
 import { base_URL } from "./../const/base_URL";
 import Axios from "axios";
@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 let FetchData = (props) => {
   useEffect(() => {
+    Owner();
     BrokerCompanyData();
     EmployeeData();
     leaseData();
@@ -222,6 +223,24 @@ let FetchData = (props) => {
         console.log(err);
       });
   };
+  let Owner = () => {
+    Axios({
+      method: "get",
+      url: base_URL + "/api/owner",
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        props.redux_Add_owner(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
@@ -229,6 +248,7 @@ let FetchData = (props) => {
     </div>
   );
 };
+
 const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
@@ -253,6 +273,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: "ADD_ALL_EXPENSE", payload: arg }),
   redux_Add_invoice: (arg) =>
     dispatch({ type: "ADD_ALL_INVOICE", payload: arg }),
+  redux_Add_owner: (arg) => dispatch({ type: "ADD_ALL_OWNER", payload: arg }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FetchData);

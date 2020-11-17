@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
+import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import RegexComponent from "./../../../shared/regexComponent";
 
@@ -9,17 +9,17 @@ const OwnerEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
 
   let initialValue = {
-    owner_area: props?.selectedowner?.owner_area || "",
-    owner_city: props?.selectedowner?.owner_city || "",
-    owner_country: props?.selectedowner?.owner_country || "",
-    owner_DOB: props?.selectedowner?.owner_DOB || "",
-    owner_photo: props?.selectedowner?.owner_photo || "",
-    owner_phoneNo: props?.selectedowner?.owner_phoneNo || "",
-    owner_firstName: props?.selectedowner?.owner_firstName || "",
-    owner_middleName: props?.selectedowner?.owner_middleName || " ",
-    owner_lastName: props?.selectedowner?.owner_lastName || "",
-    owner_email: props?.selectedowner?.owner_email || "",
-    owner_property: props?.selectedowner?.owner_property?._id || "",
+    owner_area: props?.owner?.owner_area || "",
+    owner_city: props?.owner?.owner_city || "",
+    owner_country: props?.owner?.owner_country || "",
+    owner_DOB: moment(props?.owner?.owner_DOB).format("YYYY-MM-DD") || "",
+    owner_photo: props?.owner?.owner_photo || "",
+    owner_phoneNo: props?.owner?.owner_phoneNo || "",
+    owner_firstName: props?.owner?.owner_firstName || "",
+    owner_middleName: props?.owner?.owner_middleName || " ",
+    owner_lastName: props?.owner?.owner_lastName || "",
+    owner_email: props?.owner?.owner_email || "",
+    owner_property: props?.owner?.owner_property?._id || "",
   };
   return (
     <div>
@@ -28,7 +28,9 @@ const OwnerEntry = (props) => {
           <Formik
             initialValues={initialValue}
             onSubmit={(values) => {
-              props.ownerData(values);
+              props?.owner
+                ? props.ownerUpdate(values, props?.owner?._id)
+                : props.ownerData(values);
               console.log(values);
             }}
             // validationSchema={ownerEntryFormValidation}
@@ -287,7 +289,7 @@ const OwnerEntry = (props) => {
                                 ? values?.owner_photo
                                 : URL.createObjectURL(values?.owner_photo)
                             }
-                            alt="no picture"
+                            alt="no file"
                             height="20"
                           />
                         )}
@@ -305,9 +307,9 @@ const OwnerEntry = (props) => {
                     isOpen={showPopup}
                     isClose={setShowPopUp}
                     CRUD_Function={handleSubmit}
-                    buttonName={props.selectedowner ? "Update" : "Create"}
+                    buttonName={props.owner ? "Update" : "Create"}
                     message={
-                      props.selectedowner
+                      props.owner
                         ? "are you sure want to update"
                         : "are you sure want to create"
                     }

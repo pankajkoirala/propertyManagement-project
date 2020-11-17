@@ -2,7 +2,7 @@ import React from "react";
 import "./tenantView.css";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Input } from "reactstrap";
 
 const TenantView = (props) => {
   return (

@@ -18,7 +18,6 @@ import TanentDetailView from "../container/view/tenantView/tanentDetailView";
 import EmployeeDetailView from "../container/view/employeeView/emoloyeeViewDetail";
 import LeaseDetailView from "../container/view/lease/leaseDetailView";
 import OwnerEntry from "../container/entryForm/ownerEntry/ownerEnty.js";
-import BankDetail from "../container/entryForm/bankAccountEntryForm/bankAccountContainer.js";
 import BrokerDetailEntryForm from "../container/entryForm/brokerEntryForm/brokerDetailContainer.js";
 import BrokerPersonDetail from "../container/entryForm/broker_Person/broker_PersonContainer.js";
 import DeveloperDetail from "../container/entryForm/developersCompanyEntryContainer/developerContainer.js";
@@ -26,8 +25,6 @@ import InvoiceDetail from "../container/entryForm/invoiceEntryContainer/invoice.
 import MaintainanceCompanyEntryForm from "../container/entryForm/maintainanceCompanyEntryForm/maintainanceCompanyContainer.js";
 import ManagementCompany from "../container/entryForm/managementCompanyEntryForm/managementCompanyContainer.js";
 import AllManagementCompany from "../container/view/managementCompany/managementCompany";
-import ChequeBounce from "../container/entryForm/cheque/chequeBounce/chequeBounceEntry.js";
-import ChequeHold from "../container/entryForm/cheque/chequeHold/chequeHoldEntry.js";
 import LeaseProperty from "../container/view/lease/leaseproperty";
 import AllProperty from "../container/view/propertyView/allProperty.js";
 import AllBrokerCompany from "../container/view/brokerCompany/brokerCompany";
@@ -41,9 +38,12 @@ import AllDevelopementCompany from "../container/view/DevelopementCompany/Develo
 import DeveloperCompanyDetailView from "../container/view/DevelopementCompany/DeveloperCompanyDetailView";
 import ExpenseEntry from "../container/entryForm/expenseEntryForm/expenseEntryForm";
 import ExpensesList from "../container/view/expense/expense";
+import OwnerList from "../container/view/owner/ownerView";
+
 import ExpenseDetailView from "../container/view/expense/expenseDetailView";
 import MaintananceTicketList from "../container/view/maintananceTicket/maintananceTicket";
 import MaintananceTicketDetailView from "../container/view/maintananceTicket/maintananceTicketDetailView";
+import OwnerDetailView from "../container/view/owner/ownerDetailView";
 
 const RouterPage = () => {
   return (
@@ -69,6 +69,7 @@ const RouterPage = () => {
           <PrivateRouter exact path="/tenantList" component={TenantView} />
           <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
           <PrivateRouter exact path="/chequeList" component={ChequeView} />
+          <PrivateRouter exact path="/ownerList" component={OwnerList} />
 
           <PrivateRouter
             exact
@@ -110,7 +111,6 @@ const RouterPage = () => {
 
           <Route exact path="/login" component={LoginComponent} />
           <PrivateRouter exact path="/ownerEntry" component={OwnerEntry} />
-          <PrivateRouter exact path="/bankDetail" component={BankDetail} />
           <PrivateRouter
             exact
             path="/brokerEntryForm"
@@ -141,13 +141,17 @@ const RouterPage = () => {
             path="/managementCompany"
             component={ManagementCompany}
           />
-          <PrivateRouter exact path="/chequeBounce" component={ChequeBounce} />
-          <PrivateRouter exact path="/chequeHold" component={ChequeHold} />
           <PrivateRouter
             exact
             path="/propertyDetail/:id"
             component={OnePropertyView}
           />
+          <PrivateRouter
+            exact
+            path="/ownerDetail/:id"
+            component={OwnerDetailView}
+          />
+
           <PrivateRouter
             exact
             path="/maintananceTicket/:id"

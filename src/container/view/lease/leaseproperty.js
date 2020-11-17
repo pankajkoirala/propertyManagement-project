@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import LeaseProperty from "../../../component/view/lease/leaseProperty";
 import { base_URL } from "../../../const/base_URL";
-import { propTypes } from "react-bootstrap/esm/Image";
-import { connect } from "react-redux";
 
 const LeasePropertyView = (props) => {
   const [lease, setLease] = useState([]);
