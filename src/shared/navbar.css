@@ -1,15 +1,14 @@
 .menu {
-  width: 90%;
-  margin: 10px auto;
-  padding: 10px;
+  margin: 0px auto;
+  padding: 5px !important;
   background-color: #f1f1f1;
   position: sticky;
-  height: 100%;
+  height: auto;
   overflow: auto;
 }
 
 .button-size {
   margin: 5px;
   width: 150px;
-  height: 50px;
+  height: 60px;
 }

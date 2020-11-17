@@ -68,8 +68,8 @@ const TenantEntry = (props) => {
               setFieldValue,
               isSubmitting,
             }) => (
-              <Form className="d-flex justify-content-center">
-                <FormGroup className="fulldiv">
+              <Form>
+                <FormGroup className="">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}

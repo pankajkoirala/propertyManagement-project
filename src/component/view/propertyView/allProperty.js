@@ -15,11 +15,6 @@ import "./property.css";
 const PropertyView = (props) => {
   return (
     <div className=" m-5">
-      <div>
-        <Link to="/leasePropertyList">
-          <button> lease property </button>
-        </Link>
-      </div>
       <div className="d-flex flex-wrap">
         {props.propertyData.map((arg, index) => {
           return (

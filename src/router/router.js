@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { getLocalStorage } from "../const/tokenStorage";
+
 //regex
 import NavBar from "./../shared/navbar";
 
@@ -47,18 +49,23 @@ import MaintananceTicketDetailView from "../container/view/maintananceTicket/mai
 import OwnerDetailView from "../container/view/owner/ownerDetailView";
 
 const RouterPage = () => {
+  let authorize = getLocalStorage("token");
   return (
     <div>
       <Router>
         <div
           className="col-2"
-          style={{ position: "absolute", zIndex: "999", height: "auto" }}
+          style={
+            authorize
+              ? { position: "absolute", height: "auto" }
+              : { visibility: "hidden" }
+          }
         >
           <NavBar />
         </div>
         <div
           className="col-10"
-          style={{ left: "250px", top: "0", position: "absolute" }}
+          style={{ right: "0", top: "0", position: "absolute" }}
         >
           <Switch>
             <PrivateRouter exact path="/propertyList" component={AllProperty} />
