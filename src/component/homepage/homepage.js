@@ -10,11 +10,7 @@ import { connect } from "react-redux";
 const Homepage = (props) => {
   return (
     <div className="row">
-      <div className="col-2 navBar">
-        <Navbar />
-      </div>
-
-      <div className="col-9 bodydisplay">
+      <div className=" bodydisplay">
         <div className="row">
           <div className="col-9 bodydisplay">
             {" "}
