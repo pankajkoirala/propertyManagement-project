@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //regex
+import NavBar from "./../shared/navbar";
 
 import LoginComponent from "../container/login/login ";
 import PrivateRouter from "./privateRouter";
@@ -49,157 +50,184 @@ const RouterPage = () => {
   return (
     <div>
       <Router>
-        <Switch>
-          <PrivateRouter exact path="/propertyList" component={AllProperty} />
-          <PrivateRouter
-            exact
-            path="/expenseEntryForm"
-            component={ExpenseEntry}
-          />
+        <div
+          className="col-2"
+          style={{ position: "absolute", zIndex: "999", height: "auto" }}
+        >
+          <NavBar />
+        </div>
+        <div
+          className="col-10"
+          style={{ left: "250px", top: "0", position: "absolute" }}
+        >
+          <Switch>
+            <PrivateRouter exact path="/propertyList" component={AllProperty} />
+            <PrivateRouter
+              exact
+              path="/expenseEntryForm"
+              component={ExpenseEntry}
+            />
 
-          <PrivateRouter exact path="/" component={Homepage} />
-          <PrivateRouter exact path="/propertentry" component={PropertyEntry} />
-          <PrivateRouter exact path="/tenantentry" component={TenantEntry} />
-          <PrivateRouter
-            exact
-            path="/employeeentry"
-            component={EmployeeEntry}
-          />
-          <PrivateRouter exact path="/employeeList" component={EmployeeView} />
-          <PrivateRouter exact path="/tenantList" component={TenantView} />
-          <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
-          <PrivateRouter exact path="/chequeList" component={ChequeView} />
-          <PrivateRouter exact path="/ownerList" component={OwnerList} />
+            <PrivateRouter exact path="/" component={Homepage} />
+            <PrivateRouter
+              exact
+              path="/propertentry"
+              component={PropertyEntry}
+            />
+            <PrivateRouter exact path="/tenantentry" component={TenantEntry} />
+            <PrivateRouter
+              exact
+              path="/employeeentry"
+              component={EmployeeEntry}
+            />
+            <PrivateRouter
+              exact
+              path="/employeeList"
+              component={EmployeeView}
+            />
+            <PrivateRouter exact path="/tenantList" component={TenantView} />
+            <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
+            <PrivateRouter exact path="/chequeList" component={ChequeView} />
+            <PrivateRouter exact path="/ownerList" component={OwnerList} />
 
-          <PrivateRouter
-            exact
-            path="/maintananceTicket"
-            component={MaintananceTicket}
-          />
-          <PrivateRouter exact path="/lease" component={Lease} />
-          <PrivateRouter
-            exact
-            path="/leasePropertyList"
-            component={LeaseProperty}
-          />
-          <PrivateRouter
-            exact
-            path="/maintananceCompanyList"
-            component={AllMaintainanceCompany}
-          />
-          <PrivateRouter
-            exact
-            path="/managementCompanyList"
-            component={AllManagementCompany}
-          />
-          <PrivateRouter
-            exact
-            path="/brokerCompanyList"
-            component={AllBrokerCompany}
-          />
-          <PrivateRouter
-            exact
-            path="/developerCompanyList"
-            component={AllDevelopementCompany}
-          />
-          <PrivateRouter exact path="/expensesList" component={ExpensesList} />
-          <PrivateRouter
-            exact
-            path="/maintananceTicketList"
-            component={MaintananceTicketList}
-          />
+            <PrivateRouter
+              exact
+              path="/maintananceTicket"
+              component={MaintananceTicket}
+            />
+            <PrivateRouter exact path="/lease" component={Lease} />
+            <PrivateRouter
+              exact
+              path="/leasePropertyList"
+              component={LeaseProperty}
+            />
+            <PrivateRouter
+              exact
+              path="/maintananceCompanyList"
+              component={AllMaintainanceCompany}
+            />
+            <PrivateRouter
+              exact
+              path="/managementCompanyList"
+              component={AllManagementCompany}
+            />
+            <PrivateRouter
+              exact
+              path="/brokerCompanyList"
+              component={AllBrokerCompany}
+            />
+            <PrivateRouter
+              exact
+              path="/developerCompanyList"
+              component={AllDevelopementCompany}
+            />
+            <PrivateRouter
+              exact
+              path="/expensesList"
+              component={ExpensesList}
+            />
+            <PrivateRouter
+              exact
+              path="/maintananceTicketList"
+              component={MaintananceTicketList}
+            />
 
-          <Route exact path="/login" component={LoginComponent} />
-          <PrivateRouter exact path="/ownerEntry" component={OwnerEntry} />
-          <PrivateRouter
-            exact
-            path="/brokerEntryForm"
-            component={BrokerDetailEntryForm}
-          />
-          <PrivateRouter
-            exact
-            path="/brokerPersonDetail"
-            component={BrokerPersonDetail}
-          />
-          <PrivateRouter
-            exact
-            path="/developerDetail"
-            component={DeveloperDetail}
-          />
-          <PrivateRouter
-            exact
-            path="/invoiceDetail"
-            component={InvoiceDetail}
-          />
-          <PrivateRouter
-            exact
-            path="/maintainanceCompanyForm"
-            component={MaintainanceCompanyEntryForm}
-          />
-          <PrivateRouter
-            exact
-            path="/managementCompany"
-            component={ManagementCompany}
-          />
-          <PrivateRouter
-            exact
-            path="/propertyDetail/:id"
-            component={OnePropertyView}
-          />
-          <PrivateRouter
-            exact
-            path="/ownerDetail/:id"
-            component={OwnerDetailView}
-          />
+            <Route exact path="/login" component={LoginComponent} />
+            <PrivateRouter exact path="/ownerEntry" component={OwnerEntry} />
+            <PrivateRouter
+              exact
+              path="/brokerEntryForm"
+              component={BrokerDetailEntryForm}
+            />
+            <PrivateRouter
+              exact
+              path="/brokerPersonDetail"
+              component={BrokerPersonDetail}
+            />
+            <PrivateRouter
+              exact
+              path="/developerDetail"
+              component={DeveloperDetail}
+            />
+            <PrivateRouter
+              exact
+              path="/invoiceDetail"
+              component={InvoiceDetail}
+            />
+            <PrivateRouter
+              exact
+              path="/maintainanceCompanyForm"
+              component={MaintainanceCompanyEntryForm}
+            />
+            <PrivateRouter
+              exact
+              path="/managementCompany"
+              component={ManagementCompany}
+            />
+            <PrivateRouter
+              exact
+              path="/propertyDetail/:id"
+              component={OnePropertyView}
+            />
+            <PrivateRouter
+              exact
+              path="/ownerDetail/:id"
+              component={OwnerDetailView}
+            />
 
-          <PrivateRouter
-            exact
-            path="/maintananceTicket/:id"
-            component={MaintananceTicketDetailView}
-          />
+            <PrivateRouter
+              exact
+              path="/maintananceTicket/:id"
+              component={MaintananceTicketDetailView}
+            />
 
-          <PrivateRouter
-            exact
-            path="/tanent/:id"
-            component={TanentDetailView}
-          />
-          <PrivateRouter
-            exact
-            path="/employee/:id"
-            component={EmployeeDetailView}
-          />
-          <PrivateRouter exact path="/lease/:id" component={LeaseDetailView} />
-          <PrivateRouter
-            exact
-            path="/maintainanceCompany/:id"
-            component={MaintainanceCompanyDetail}
-          />
-          <PrivateRouter
-            exact
-            path="/managementCompany/:id"
-            component={ManagementCompanyDetail}
-          />
-          <PrivateRouter
-            exact
-            path="/brokerCompany/:id"
-            component={BrokerCompanyDetail}
-          />
-          <PrivateRouter
-            exact
-            path="/cheque/:id"
-            component={ChequeDetailView}
-          />
-          <PrivateRouter
-            exact
-            path="/DeveloperCompany/:id"
-            component={DeveloperCompanyDetailView}
-          />
-          <PrivateRouter
-            exact
-            path="/expense/:id"
-            component={ExpenseDetailView}
-          />
-        </Switch>
+            <PrivateRouter
+              exact
+              path="/tanent/:id"
+              component={TanentDetailView}
+            />
+            <PrivateRouter
+              exact
+              path="/employee/:id"
+              component={EmployeeDetailView}
+            />
+            <PrivateRouter
+              exact
+              path="/lease/:id"
+              component={LeaseDetailView}
+            />
+            <PrivateRouter
+              exact
+              path="/maintainanceCompany/:id"
+              component={MaintainanceCompanyDetail}
+            />
+            <PrivateRouter
+              exact
+              path="/managementCompany/:id"
+              component={ManagementCompanyDetail}
+            />
+            <PrivateRouter
+              exact
+              path="/brokerCompany/:id"
+              component={BrokerCompanyDetail}
+            />
+            <PrivateRouter
+              exact
+              path="/cheque/:id"
+              component={ChequeDetailView}
+            />
+            <PrivateRouter
+              exact
+              path="/DeveloperCompany/:id"
+              component={DeveloperCompanyDetailView}
+            />
+            <PrivateRouter
+              exact
+              path="/expense/:id"
+              component={ExpenseDetailView}
+            />
+          </Switch>
+        </div>
       </Router>
     </div>
   );

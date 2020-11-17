@@ -12,13 +12,6 @@ const NavbarPage = () => {
   };
   return (
     <div>
-      <div className="text-center">
-        <img
-          className="loginImg"
-          src="https://jpcprinting.co.uk/wp-content/uploads/2015/08/blank-profile.png"
-          alt=""
-        />
-      </div>
       <Accordion defaultActiveKey="" className="menu">
         <Card>
           <Card.Header>
