@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropertyDetailViewComp from "../../../component/view/propertyView/propertyDetailView";
 import Axios from "axios";
 import { base_URL } from "../../../const/base_URL";

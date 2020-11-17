@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ManagementCompanyEntryForm from "../../entryForm/managementCompanyEntryForm/managementCompanyEntryForm";
 import PoopUp from "./../../../shared/popup";
 

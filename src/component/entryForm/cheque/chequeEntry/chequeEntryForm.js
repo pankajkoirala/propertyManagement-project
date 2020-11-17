@@ -400,7 +400,7 @@ const ChequeEntry = (props) => {
                                 ? values.cheque_picture
                                 : URL.createObjectURL(values.cheque_picture)
                             }
-                            alt="no picture"
+                            alt="no file"
                             height="20"
                           />
                         )}

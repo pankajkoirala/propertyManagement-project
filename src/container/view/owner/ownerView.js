@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-
-import BrokerCompanyViews from "../../../component/view/brokerCompany/brokerCompany";
-import Axios from "axios";
+import OwnerView from "../../../component/view/owner/ownerView";
 import { base_URL } from "../../../const/base_URL";
+import Axios from "axios";
 
-const BrokerCompany = () => {
-  const [allBrokerCompany, setallBrokerCompany] = useState([]);
+const OwnerViews = (props) => {
+  const [ownersData, setOwnersData] = useState([]);
+
   useEffect(() => {
-    BrokerCompanyData();
+    Owner();
   }, []);
 
-  let BrokerCompanyData = () => {
+  let Owner = () => {
     Axios({
       method: "get",
-      url: base_URL + "/api/brokerCompany",
+      url: base_URL + "/api/owner",
       config: {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -22,17 +22,18 @@ const BrokerCompany = () => {
       },
     })
       .then((res) => {
-        setallBrokerCompany(res.data);
+        setOwnersData(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   return (
     <div>
-      <BrokerCompanyViews allBrokerCompany={allBrokerCompany} />
+      <OwnerView ownersData={ownersData} />
     </div>
   );
 };
 
-export default BrokerCompany;
+export default OwnerViews;

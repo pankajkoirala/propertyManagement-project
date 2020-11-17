@@ -6,7 +6,7 @@ import { Formik } from "formik";
 import { v4 as uuidv4 } from "uuid";
 import PoopUp from "./../../../shared/popup";
 
-import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
+//import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -523,7 +523,7 @@ const PropertyEntry = (props) => {
                         </Label>
                         <Input
                           type="file"
-                          alt="no picture"
+                          alt="no file"
                           name="file"
                           accept="image/*"
                           onChange={(event) => {
@@ -602,8 +602,7 @@ const PropertyEntry = (props) => {
                                         ? arg.file
                                         : URL.createObjectURL(arg.file)
                                     }
-                                    alt=""
-                                    alt="no picture"
+                                    alt="no file"
                                     height="80px"
                                   />
                                 </td>

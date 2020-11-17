@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./tenantEntryForm.css";
 import moment from "moment";
-
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
-import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
+//import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
 import PoopUp from "./../../../shared/popup";
 
 const TenantEntry = (props) => {
@@ -315,7 +314,7 @@ const TenantEntry = (props) => {
                         </Label>
                         <Input
                           type="file"
-                          alt="no picture"
+                          alt="no file"
                           name="file"
                           accept="image/*"
                           onChange={(event) => {
@@ -416,8 +415,7 @@ const TenantEntry = (props) => {
                                       ? arg.file
                                       : URL.createObjectURL(arg.file)
                                   }
-                                  alt=""
-                                  alt="no picture"
+                                  alt="no file"
                                   height="80px"
                                 />
                               </td>
@@ -429,7 +427,6 @@ const TenantEntry = (props) => {
                                       ? { display: "none" }
                                       : { display: "inline" }
                                   }
-                                  type="button"
                                   onClick={() => {
                                     photoDelete(arg.fileName);
                                   }}

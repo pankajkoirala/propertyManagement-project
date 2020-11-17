@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import EmployeeViewComp from "../../../component/view/employeeView/detailEmployeeView";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";

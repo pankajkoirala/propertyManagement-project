@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import BrokerCompanyEntryForm from "../../entryForm/brokerEntryForm/brokerCompanyEntryForm";
+import OwnerEntryForm from "./../../../component/entryForm/ownerEntry/ownerEnty";
 import PoopUp from "./../../../shared/popup";
 
-let BrokerCompanyDetailViewComponent = (props) => {
+let OwnerDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showPopup, setShowPopUp] = useState(false);
 
   let showHide = () => {
-    console.log(props.history);
     setShowEditForm(!showEditForm);
   };
   return (
     <div>
+      s
       {showEditForm === false ? (
-        props.selectedBrokerCompany.map((arg, index) => {
+        props.selectedOwner.map((arg, index) => {
           return (
             <div key={index} className="property-card">
               <div className="card-contents">
@@ -49,9 +49,9 @@ let BrokerCompanyDetailViewComponent = (props) => {
                 <PoopUp
                   isOpen={showPopup}
                   isClose={setShowPopUp}
-                  CRUD_Function={props.BrokerDelete}
-                  id={arg._id}
+                  CRUD_Function={props.ownerDelete}
                   buttonName={"Delete"}
+                  id={arg._id}
                   message={"are you sure want to delete"}
                 />
               </div>
@@ -59,14 +59,14 @@ let BrokerCompanyDetailViewComponent = (props) => {
           );
         })
       ) : (
-        <BrokerCompanyEntryForm
+        <OwnerEntryForm
           {...props}
           showHide={showHide}
-          BrokerCompany={props.selectedBrokerCompany[0]}
+          owner={props.selectedOwner[0]}
         />
       )}
     </div>
   );
 };
 
-export default BrokerCompanyDetailViewComponent;
+export default OwnerDetailViewComponent;

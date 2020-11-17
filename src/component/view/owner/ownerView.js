@@ -1,13 +1,12 @@
 import React from "react";
-import moment from "moment";
-import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 
-const LeaseDisplay = (props) => {
+const OwnerView = (props) => {
   return (
-    <div>
-      <h1>lease list</h1>
+    <div className="tenantview">
+      <h1 className="text-center">owner List</h1>
       <Form inline>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Input
@@ -24,35 +23,38 @@ const LeaseDisplay = (props) => {
         <thead>
           <tr>
             <th>SN</th>
-            <th> lease ID</th>
-            <th>tenent name</th>
-            <th>Lease term</th>
-            <th>commerce date</th>
-            <th>expire date</th>
-            <th>aggrement photo</th>
+            <th>Ticket id</th>
+            <th>Name</th>
+            <th>contact no</th>
+            <th>email ID</th>
+            <th>property</th>
+            <th>detail view</th>
           </tr>
         </thead>
-        {props.lease.map((arg, index) => {
+        {props.ownersData.map((arg, index) => {
           return (
             <tbody key={index}>
               <tr>
                 <td>{index + 1}</td>
-                <td>{arg.LeaseId}</td>
+                <td>{arg?.owner_ID}</td>
                 <td>
-                  {arg?.tenants?.tenant_lastName}{" "}
-                  {arg?.tenants?.tenant_firstName}
+                  {arg?.owner_firstName +
+                    " " +
+                    arg?.owner_middleName +
+                    " " +
+                    arg?.owner_lastName}
                 </td>
-                <td>{arg.lease_Term}</td>
-                <td>{moment(arg?.commenceDate).format("YYYY-MM-DD")}</td>
-                <td>{moment(arg?.expirationDate).format("YYYY-MM-DD")}</td>
+
+                <td>{arg?.owner_phoneNo}</td>
+                <td>{arg?.owner_email}</td>
                 <td>
-                  <a href={arg.photo} target={arg.photo}>
-                    aggrement photo
-                  </a>
+                  {arg?.owner_property?.property_type +
+                    "-" +
+                    arg?.owner_property?.referenceNO}
                 </td>
 
                 <td>
-                  <Link to={`/lease/${arg._id}`}>
+                  <Link to={`/ownerDetail/${arg._id}`}>
                     {" "}
                     <button className="success ml-3">View Detail</button>
                   </Link>{" "}
@@ -65,4 +67,5 @@ const LeaseDisplay = (props) => {
     </div>
   );
 };
-export default LeaseDisplay;
+
+export default OwnerView;

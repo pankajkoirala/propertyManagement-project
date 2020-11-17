@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import moment from "moment";
 import ChequeViewsComponent from "../../../component/view/cheque/cheque";
 import { connect } from "react-redux";

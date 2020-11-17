@@ -5,7 +5,7 @@ import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import PoopUp from "./../../../shared/popup";
 
-import { employeeEntryFormValidation } from "../../../utility/validation/employeeEntryFormValidation.js";
+//import { employeeEntryFormValidation } from "../../../utility/validation/employeeEntryFormValidation.js";
 
 const TenantEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -285,7 +285,7 @@ const TenantEntry = (props) => {
                                 ? values?.employee_photo
                                 : URL.createObjectURL(values?.employee_photo)
                             }
-                            alt="no picture"
+                            alt="no file"
                             height="20"
                           />
                         )}

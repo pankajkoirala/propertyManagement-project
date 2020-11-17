@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import OwnerContainer from "../../../component/entryForm/ownerEntry/ownerEnty.js";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction.js";
 import { connect } from "react-redux";
-import { propTypes } from "react-bootstrap/esm/Image";
 
 const OwnerEntryContainer = (props) => {
   const ownerData = (data) => {

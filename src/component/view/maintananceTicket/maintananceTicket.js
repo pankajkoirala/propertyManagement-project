@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Input } from "reactstrap";
 
 const MaintananceTicketView = (props) => {
   return (

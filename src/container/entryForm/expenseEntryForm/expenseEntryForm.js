@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ExpenseEntryFormComponent from "../../../component/entryForm/expenseEntry/expenseEntry";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";

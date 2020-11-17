@@ -249,7 +249,7 @@ const BrokerComponent = (props) => {
                                 ? values.broker_photo
                                 : URL.createObjectURL(values.broker_photo)
                             }
-                            alt="no picture"
+                            alt="no file"
                             height="20"
                           />
                         )}

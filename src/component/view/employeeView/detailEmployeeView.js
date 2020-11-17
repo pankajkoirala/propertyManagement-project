@@ -7,9 +7,6 @@ let EmployeeDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showPopup, setShowPopUp] = useState(false);
 
-  let showHide = () => {
-    setShowEditForm(!showEditForm);
-  };
   return (
     <div>
       {showEditForm === false ? (

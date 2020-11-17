@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ChequeEntryForm from "../../entryForm/cheque/chequeEntry/chequeEntryForm";
-import { ButtonToolbar, Button } from "reactstrap";
 import PoopUp from "./../../../shared/popup";
 
 let ChequeDetailViewComponent = (props) => {

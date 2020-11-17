@@ -277,7 +277,7 @@ const MaintainanceCompanyComponent = (props) => {
                                       values.Company_uploadPhoto
                                     )
                               }
-                              alt="no picture"
+                              alt="no file"
                               height="20"
                             />
                           )}

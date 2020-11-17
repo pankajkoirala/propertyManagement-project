@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropertyEntryForm from "../../entryForm/PropertyEntryForm/PropertyEntryForm";
 import "./property.css";
 import PoopUp from "./../../../shared/popup";

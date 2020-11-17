@@ -293,7 +293,7 @@ const ManagementCompanyComponent = (props) => {
                                       values.managementCompany_photo
                                     )
                               }
-                              alt="no picture"
+                              alt="no file"
                               height="20"
                             />
                           )}

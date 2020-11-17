@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Input } from "reactstrap";
 
 const ExpenseDisplay = (props) => {
   return (

@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import EmployeeViews from "../../../component/view/employeeView/employeeView.js";
 import Axios from "axios";
 import { base_URL } from "../../../const/base_URL";
-import { propTypes } from "react-bootstrap/esm/Image";
-import { connect } from "react-redux";
 
 const EmployeeView = (props) => {
   const [employee, setEmployee] = useState([]);
