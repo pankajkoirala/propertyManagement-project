@@ -24,6 +24,7 @@ const LoginContainer = (props) => {
         setLocalStorage("token", res.data.token);
         //push to other page after login
         props.history.push("/");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
