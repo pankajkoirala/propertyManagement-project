@@ -16,12 +16,18 @@ const BrokerDetailViewCont = (props) => {
   );
 
   //tanent update
-  const BrokerUpdate = (data, ID) => {
+  const BrokerUpdate = (data, ID, file) => {
     const formData = new FormData();
+    if (typeof file[0].file !== "string") {
+      file.forEach((element) => {
+        formData.append(element.fileName, element.file);
+      });
+    } else {
+      formData.append("files_list", data.files_list);
+    }
     formData.append("area", data.area);
     formData.append("city", data.city);
     formData.append("country", data.country);
-    formData.append("broker_photo", data.broker_photo);
     formData.append("broker_phoneNo", data.broker_phoneNo);
     formData.append(
       "broker_RegistrationNumber",

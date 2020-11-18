@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import "./brokerAccount.css";
 import moment from "moment";
-import { FormGroup, Label, Input, Form } from "reactstrap";
+import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
 import PoopUp from "./../../../shared/popup";
 
 const BrokerComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [allFile, setAllFile] = useState(
+    props?.BrokerCompany ? props?.BrokerCompany?.files_list : []
+  );
+  console.log(allFile);
 
   let initialvalue = {
     area: props?.BrokerCompany?.area || "",
     city: props?.BrokerCompany?.city || "",
     country: props?.BrokerCompany?.country || "",
-    broker_photo: props?.BrokerCompany?.broker_photo || "",
     broker_phoneNo: props?.BrokerCompany?.broker_phoneNo || "",
     broker_RegistrationNumber:
       props?.BrokerCompany?.broker_RegistrationNumber || "",
@@ -23,6 +26,13 @@ const BrokerComponent = (props) => {
         "YYYY-MM-DD"
       ) || "",
     broker_email: props?.BrokerCompany?.broker_email || "",
+    fileName: "",
+    file: "",
+    files_list: [],
+  };
+
+  let photoDelete = (name) => {
+    setAllFile(allFile.filter((file) => file.fileName !== name));
   };
   return (
     <div>
@@ -31,9 +41,12 @@ const BrokerComponent = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
+              typeof allFile[0].file === "string"
+                ? (values.files_list = JSON.stringify(allFile))
+                : (values.files_list = "");
               props.BrokerCompany
-                ? props.BrokerUpdate(values, props.BrokerCompany._id)
-                : props.brokerData(values);
+                ? props.BrokerUpdate(values, props.BrokerCompany._id, allFile)
+                : props.brokerData(values, allFile);
               console.log(values);
             }}
             //validationSchema={employeeEntryFormValidation}
@@ -226,42 +239,133 @@ const BrokerComponent = (props) => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-md-6 text-left mb-2 mt-4">
-                        <Label className="float-left">
-                          Upload Agrement Copy
-                        </Label>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <Input
+                          name="fileName"
+                          type="text"
+                          placeholder="Select Status of Cheque"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.fileName}
+                        ></Input>
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <Label className="float-left">Upload Scan Copy</Label>
                         <Input
                           type="file"
-                          name="broker_photo"
+                          alt="no file"
+                          name="file"
                           accept="image/*"
                           onChange={(event) => {
-                            setFieldValue(
-                              "broker_photo",
-                              event.currentTarget.files[0]
-                            );
+                            setFieldValue("file", event.currentTarget.files[0]);
                           }}
                         />
-
-                        {touched.broker_photo && values.broker_photo && (
-                          <img
-                            src={
-                              typeof values.broker_photo === "string"
-                                ? values.broker_photo
-                                : URL.createObjectURL(values.broker_photo)
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <button
+                          disabled={!values.fileName || !values.file}
+                          onClick={() => {
+                            let filterData = allFile.find(
+                              (a) => a.fileName === values.fileName
+                            );
+                            if (filterData) {
+                              let afterRemoveSameData = allFile.filter(
+                                (arg) => arg.fileName !== filterData.fileName
+                              );
+                              setAllFile([
+                                ...afterRemoveSameData,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
+                            } else {
+                              setAllFile([
+                                ...allFile,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
                             }
-                            alt="no file"
-                            height="20"
-                          />
-                        )}
+                          }}
+                          type="button"
+                        >
+                          Add
+                        </button>
                       </div>
                     </div>
+                    {allFile.length !== 0 ? (
+                      <Table striped bordered hover size="sm">
+                        <thead>
+                          <tr>
+                            <th>SN</th>
+                            <th> Name</th>
+                            <th>image</th>
+                            <th>
+                              <button
+                                style={
+                                  props?.BrokerCompany
+                                    ? { display: "inline" }
+                                    : { display: "none" }
+                                }
+                                onClick={() => setAllFile([])}
+                              >
+                                delete All
+                              </button>
+                            </th>
+                          </tr>
+                        </thead>
+                        {allFile.map((arg, index) => {
+                          return (
+                            <tbody key={index}>
+                              <tr>
+                                <td>{index + 1}</td>
+
+                                <td className="font-weight-bold">
+                                  {arg.fileName}
+                                </td>
+                                <td>
+                                  <img
+                                    src={
+                                      typeof arg.file === "string"
+                                        ? arg.file
+                                        : URL.createObjectURL(arg.file)
+                                    }
+                                    alt="no file"
+                                    height="80px"
+                                  />
+                                </td>
+                                <td>
+                                  <button
+                                    style={
+                                      props?.BrokerCompany
+                                        ? { display: "none" }
+                                        : { display: "inline" }
+                                    }
+                                    type="button"
+                                    onClick={() => {
+                                      photoDelete(arg.fileName);
+                                    }}
+                                  >
+                                    delete
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          );
+                        })}
+                      </Table>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <button
                     className="success m-4"
                     type="button"
                     onClick={() => setShowPopUp(true)}
                   >
-                    Add
+                    Submit
                   </button>
                   <PoopUp
                     isOpen={showPopup}

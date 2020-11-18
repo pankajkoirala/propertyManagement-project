@@ -6,12 +6,14 @@ import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
 
 const BrokerDetailContainer = () => {
-  const brokerData = (data) => {
+  const brokerData = (data, file) => {
     const formData = new FormData();
+    file.forEach((element) => {
+      formData.append(element.fileName, element.file);
+    });
     formData.append("area", data.area);
     formData.append("city", data.city);
     formData.append("country", data.country);
-    formData.append("broker_photo", data.broker_photo);
     formData.append("broker_phoneNo", data.broker_phoneNo);
     formData.append(
       "broker_RegistrationNumber",
