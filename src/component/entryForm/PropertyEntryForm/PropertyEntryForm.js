@@ -515,12 +515,7 @@ const PropertyEntry = (props) => {
                         ></Input>
                       </div>
                       <div className="col-md-4 text-left mb-2 mt-4">
-                        <Label
-                          onClick={() => console.log(values)}
-                          className="float-left"
-                        >
-                          Upload Scan Copy
-                        </Label>
+                        <Label className="float-left">Upload Scan Copy</Label>
                         <Input
                           type="file"
                           alt="no file"

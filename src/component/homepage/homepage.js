@@ -1,13 +1,40 @@
 import React from "react";
 import "./homepage.css";
+import { PieChart } from "react-minimal-pie-chart";
+
 //import {Card, Button} from "reactstrap";
-import Navbar from "../../shared/navbar";
 import INCOME from "../../assets/income.PNG";
 import Maintainance from "../../assets/maintinance.PNG";
-import Occupancy from "../../assets/1.PNG";
 import { connect } from "react-redux";
+import { Line } from "react-chartjs-2";
 
 const Homepage = (props) => {
+  //bardiagram data
+  const data = {
+    labels: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
+    datasets: [
+      {
+        label: "Second dataset",
+        data: [33, 25, 35, 51, 54, 76, 33, 44, 54, 34, 67, 12],
+        fill: false,
+        borderColor: "#742774",
+      },
+    ],
+  };
+
   return (
     <div className="row">
       <div className=" bodydisplay">
@@ -21,18 +48,6 @@ const Homepage = (props) => {
               </div>
               <div className="col-4">
                 <img src={Maintainance} alt="Income" />
-
-                {/* <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="left" src="holder.js/100px180" />
-                        <Card.Body>
-                          <Card.Title>Maintainance</Card.Title>
-                          <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                          </Card.Text>
-                          <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                      </Card> */}
               </div>
               <div className="col-4">
                 <img src={INCOME} alt="Income" />
@@ -49,11 +64,132 @@ const Homepage = (props) => {
                 <img src={Maintainance} alt="Income" />
               </div>
             </div>
-            <div className="row m-2">
-              <div className="col-10">
-                <img src={Occupancy} alt="Income" />
+            {/* //bar diagram */}
+            <div className="App">
+              <Line data={data} />
+            </div>
+            {/* pie chart property */}
+            <div className="d-flex justify-content-between p-4 bg-white">
+              <div className=" p-4">
+                <h3 className="text-center ">property Status</h3>
+                <div className="row ">
+                  <div className="p-2">
+                    <PieChart
+                      style={{ height: "200px", width: "200px" }}
+                      data={[
+                        { title: "One", value: 1, color: "#E38627" },
+                        { title: "Two", value: 15, color: "#C13C37" },
+                        { title: "Three", value: 20, color: "#6A2135" },
+                      ]}
+                    />
+                  </div>
+                  <div className="mt-4 ml-4 d-flex flex-column">
+                    <div className=" h5 row">
+                      <div
+                        style={{
+                          height: "20px",
+                          width: "20px",
+                          backgroundColor: "#E38627",
+                          borderRadius: "50%",
+                          marginRight: "10px",
+                        }}
+                      ></div>
+                      total property unit
+                    </div>
+                    <h4>3</h4>
+                    <div className=" h5 row ">
+                      {" "}
+                      <div
+                        style={{
+                          height: "20px",
+                          width: "20px",
+                          backgroundColor: "#C13C37",
+                          borderRadius: "50%",
+                          marginRight: "10px",
+                        }}
+                      ></div>
+                      free property
+                    </div>
+                    <h4>5</h4>
+                    <div className="h5 row">
+                      {" "}
+                      <div
+                        style={{
+                          height: "20px",
+                          width: "20px",
+                          backgroundColor: "#6A2135",
+                          borderRadius: "50%",
+                          marginRight: "10px",
+                        }}
+                      ></div>
+                      occupied property
+                    </div>
+                    <h4>10</h4>
+                  </div>
+                </div>
+              </div>
+              {/* income piechart */}
+
+              <div className="bg-white p-4">
+                <h3 className="text-center ">Income Status</h3>
+                <div className="row ">
+                  <div className="p-2">
+                    <PieChart
+                      style={{ height: "200px", width: "200px" }}
+                      data={[
+                        { title: "One", value: 1, color: "#E38627" },
+                        { title: "Two", value: 15, color: "#C13C37" },
+                        { title: "Three", value: 20, color: "#6A2135" },
+                      ]}
+                    />
+                  </div>
+                  <div className="mt-4 ml-4 d-flex flex-column">
+                    <div className=" h5 row">
+                      <div
+                        style={{
+                          height: "20px",
+                          width: "20px",
+                          backgroundColor: "#E38627",
+                          borderRadius: "50%",
+                          marginRight: "10px",
+                        }}
+                      ></div>
+                      Rental Income
+                    </div>
+                    <h4>3</h4>
+                    <div className=" h5 row ">
+                      {" "}
+                      <div
+                        style={{
+                          height: "20px",
+                          width: "20px",
+                          backgroundColor: "#C13C37",
+                          borderRadius: "50%",
+                          marginRight: "10px",
+                        }}
+                      ></div>
+                      Vat Income{" "}
+                    </div>
+                    <h4>5</h4>
+                    <div className="h5 row">
+                      {" "}
+                      <div
+                        style={{
+                          height: "20px",
+                          width: "20px",
+                          backgroundColor: "#6A2135",
+                          borderRadius: "50%",
+                          marginRight: "10px",
+                        }}
+                      ></div>
+                      Other Income
+                    </div>
+                    <h4>10</h4>
+                  </div>
+                </div>
               </div>
             </div>
+            ;
           </div>
         </div>
       </div>
