@@ -7,8 +7,11 @@ import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
 
 const LeaseEntry = (props) => {
-  const leaseData = (data) => {
+  const leaseData = (data, file) => {
     const formData = new FormData();
+    file.forEach((element) => {
+      formData.append(element.fileName, element.file);
+    });
     formData.append("lease_enterDate", data.lease_enterDate);
     formData.append("tenants", data.tenants);
     formData.append("lease_Term", data.lease_Term);
@@ -21,8 +24,6 @@ const LeaseEntry = (props) => {
     formData.append("securityDeposite", data.securityDeposite);
     formData.append("securityfirstDueDate", data.securityfirstDueDate);
     formData.append("property", data.property);
-
-    formData.append("photo", data.photo);
 
     Axios({
       method: "post",

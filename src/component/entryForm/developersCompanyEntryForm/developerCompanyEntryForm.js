@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./developerCompany.css";
 import moment from "moment";
-import { FormGroup, Label, Input, Form } from "reactstrap";
+import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import PoopUp from "./../../../shared/popup";
 
@@ -9,6 +9,9 @@ import PoopUp from "./../../../shared/popup";
 
 const DeveloperCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [allFile, setAllFile] = useState(
+    props?.developerCompany ? props?.developerCompany?.files_list : []
+  );
 
   let initialValue = {
     Developer_area: props?.developerCompany?.Developer_area || "",
@@ -16,8 +19,6 @@ const DeveloperCompanyComponent = (props) => {
     Developer_provience: props?.developerCompany?.Developer_provience || "",
     Developer_country: props?.developerCompany?.Developer_country || "",
     Developer_ZipCode: props?.developerCompany?.Developer_ZipCode || "",
-    DeveloperCompany_photo:
-      props?.developerCompany?.DeveloperCompany_photo || "",
     DeveloperCompany_phoneNo:
       props?.developerCompany?.DeveloperCompany_phoneNo || "",
     DeveloperCompany_Name: props?.developerCompany?.DeveloperCompany_Name || "",
@@ -32,6 +33,13 @@ const DeveloperCompanyComponent = (props) => {
       props?.developerCompany?.DeveloperCompany_MobileNumber || "",
     DeveloperCompany_RegisterationNumber:
       props?.developerCompany?.DeveloperCompany_RegisterationNumber || "",
+    fileName: "",
+    file: "",
+    files_list: [],
+  };
+
+  let photoDelete = (name) => {
+    setAllFile(allFile.filter((file) => file.fileName !== name));
   };
 
   return (
@@ -42,12 +50,16 @@ const DeveloperCompanyComponent = (props) => {
             initialValues={initialValue}
             onSubmit={(values) => {
               console.log(values);
+              typeof allFile[0].file === "string"
+                ? (values.files_list = JSON.stringify(allFile))
+                : (values.files_list = "");
               props?.developerCompany
                 ? props.DeveloperCompanyUpdate(
                     values,
-                    props?.developerCompany?._id
+                    props?.developerCompany?._id,
+                    allFile
                   )
-                : props.DevelopmentCompanyData(values);
+                : props.DevelopmentCompanyData(values, allFile);
             }}
             //validationSchema={employeeEntryFormValidation}
           >
@@ -263,38 +275,128 @@ const DeveloperCompanyComponent = (props) => {
                             </span>
                           )}
                       </div>
-
-                      <div className="col-md-6 text-left mb-2 mt-4">
-                        <Label className="float-left">employee Photo</Label>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <Input
+                          name="fileName"
+                          type="text"
+                          placeholder="Select Status of Cheque"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.fileName}
+                        ></Input>
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <Label className="float-left">Upload Scan Copy</Label>
                         <Input
                           type="file"
-                          name="employee_photo"
+                          alt="no file"
+                          name="file"
                           accept="image/*"
                           onChange={(event) => {
-                            setFieldValue(
-                              "DeveloperCompany_photo",
-                              event.currentTarget.files[0]
-                            );
+                            setFieldValue("file", event.currentTarget.files[0]);
                           }}
                         />
-
-                        {touched.DeveloperCompany_photo &&
-                          values.DeveloperCompany_photo && (
-                            <img
-                              src={
-                                typeof values?.DeveloperCompany_photo ===
-                                "string"
-                                  ? values?.DeveloperCompany_photo
-                                  : URL.createObjectURL(
-                                      values?.DeveloperCompany_photo
-                                    )
-                              }
-                              alt="no file"
-                              height="20"
-                            />
-                          )}
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <button
+                          disabled={!values.fileName || !values.file}
+                          onClick={() => {
+                            let filterData = allFile.find(
+                              (a) => a.fileName === values.fileName
+                            );
+                            if (filterData) {
+                              let afterRemoveSameData = allFile.filter(
+                                (arg) => arg.fileName !== filterData.fileName
+                              );
+                              setAllFile([
+                                ...afterRemoveSameData,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
+                            } else {
+                              setAllFile([
+                                ...allFile,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
+                            }
+                          }}
+                          type="button"
+                        >
+                          Add
+                        </button>
                       </div>
                     </div>
+                    {allFile.length !== 0 ? (
+                      <Table striped bordered hover size="sm">
+                        <thead>
+                          <tr>
+                            <th>SN</th>
+                            <th> Name</th>
+                            <th>image</th>
+                            <th>
+                              <button
+                                style={
+                                  props?.developerCompany
+                                    ? { display: "inline" }
+                                    : { display: "none" }
+                                }
+                                onClick={() => setAllFile([])}
+                              >
+                                delete All
+                              </button>
+                            </th>
+                          </tr>
+                        </thead>
+                        {allFile.map((arg, index) => {
+                          return (
+                            <tbody key={index}>
+                              <tr>
+                                <td>{index + 1}</td>
+
+                                <td className="font-weight-bold">
+                                  {arg.fileName}
+                                </td>
+                                <td>
+                                  <img
+                                    src={
+                                      typeof arg.file === "string"
+                                        ? arg.file
+                                        : URL.createObjectURL(arg.file)
+                                    }
+                                    alt="no file"
+                                    height="80px"
+                                  />
+                                </td>
+                                <td>
+                                  <button
+                                    style={
+                                      props?.developerCompany
+                                        ? { display: "none" }
+                                        : { display: "inline" }
+                                    }
+                                    type="button"
+                                    onClick={() => {
+                                      photoDelete(arg.fileName);
+                                    }}
+                                  >
+                                    delete
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          );
+                        })}
+                      </Table>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <button
                     className="success m-4"

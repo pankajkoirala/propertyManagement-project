@@ -18,8 +18,15 @@ let LeaseDetailView = (props) => {
     (arg) => arg._id === id
   );
 
-  const LeaseUpdate = (data, ID) => {
+  const LeaseUpdate = (data, ID, file) => {
     const formData = new FormData();
+    if (typeof file[0].file !== "string") {
+      file.forEach((element) => {
+        formData.append(element.fileName, element.file);
+      });
+    } else {
+      formData.append("files_list", data.files_list);
+    }
     formData.append("lease_enterDate", data.lease_enterDate);
     formData.append("tenants", data.tenants);
     formData.append("lease_Term", data.lease_Term);
@@ -32,8 +39,6 @@ let LeaseDetailView = (props) => {
     formData.append("securityDeposite", data.securityDeposite);
     formData.append("securityfirstDueDate", data.securityfirstDueDate);
     formData.append("property", data.property);
-
-    formData.append("photo", data.photo);
 
     Axios({
       method: "put",

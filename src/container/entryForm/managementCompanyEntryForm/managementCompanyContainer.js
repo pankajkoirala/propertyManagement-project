@@ -6,8 +6,11 @@ import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction.js";
 
 const ManagementCompanyContainer = () => {
-  const ManagementCompanyData = (data) => {
+  const ManagementCompanyData = (data, file) => {
     const formData = new FormData();
+    file.forEach((element) => {
+      formData.append(element.fileName, element.file);
+    });
     formData.append("managementCompany_area", data.managementCompany_area);
     formData.append("managementCompany_city", data.managementCompany_city);
 
@@ -16,7 +19,6 @@ const ManagementCompanyContainer = () => {
       data.managementCompany_country
     );
 
-    formData.append("managementCompany_photo", data.managementCompany_photo);
     formData.append(
       "managementCompany_phoneNo",
       data.managementCompany_phoneNo

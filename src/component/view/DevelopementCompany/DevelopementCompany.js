@@ -1,24 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import SearchInput from "./../../../shared/filterListData";
 
 const DevelopementCompanyView = (props) => {
+  let [developerCompanys, SetDeveloperCompanys] = useState([]);
+  let developerCompanyList = props.allDevelopementCompany;
+
+  if (developerCompanys.length === 0) {
+    developerCompanys = developerCompanyList;
+  } else {
+    developerCompanyList = developerCompanys;
+  }
+
   return (
     <div className="tenantview">
       <h1 className="text-center">Developer company list</h1>
-      <Form inline>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input
-            type="search"
-            name="password"
-            id="search"
-            placeholder="search!"
-          />
-        </FormGroup>
-        <Button>Submit</Button>
-      </Form>
+      <SearchInput
+        filteringData={props.allDevelopementCompany.map((arg) => {
+          return {
+            search1: arg.DeveloperCompany_ID,
+            search2: arg.DeveloperCompany_Name,
+            search3: arg.DeveloperCompany_phoneNo,
+            ID: arg._id,
+          };
+        })}
+        setFilteredData={SetDeveloperCompanys}
+        allData={props.allDevelopementCompany}
+      />
 
       <Table striped bordered hover size="sm">
         <thead>
@@ -33,7 +43,7 @@ const DevelopementCompanyView = (props) => {
             <th>Remarks</th>
           </tr>
         </thead>
-        {props.allDevelopementCompany.map((arg, index) => {
+        {developerCompanyList.map((arg, index) => {
           return (
             <tbody key={index}>
               <tr>

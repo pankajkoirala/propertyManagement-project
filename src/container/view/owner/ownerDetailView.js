@@ -16,21 +16,19 @@ const OwnerViewCont = (props) => {
   );
 
   //tanent update
-  const ownerUpdate = (data, ID) => {
+  const ownerUpdate = (data, ID, file) => {
     const formData = new FormData();
-    // if (typeof file[0].file !== "string") {
-    //   file.forEach((element) => {
-    //     formData.append(element.fileName, element.file);
-    //   });
-    // } else {
-    //   formData.append("files_list", data.files_list);
-    // }
-
+    if (typeof file[0].file !== "string") {
+      file.forEach((element) => {
+        formData.append(element.fileName, element.file);
+      });
+    } else {
+      formData.append("files_list", data.files_list);
+    }
     formData.append("owner_area", data.owner_area);
     formData.append("owner_city", data.owner_city);
     formData.append("owner_country", data.owner_country);
     formData.append("owner_DOB", data.owner_DOB);
-    formData.append("owner_photo", data.owner_photo);
     formData.append("owner_phoneNo", data.owner_phoneNo);
     formData.append("owner_firstName", data.owner_firstName);
     formData.append("owner_middleName", data.owner_middleName);

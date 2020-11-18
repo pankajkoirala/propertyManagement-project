@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import SearchInput from "./../../../shared/filterListData";
 
 const ManagementCompanyView = (props) => {
-  console.log("ManagementCompany", props.ManagementCompany);
+  let [managementCompany, setManagementCompany] = useState([]);
+  let managementCompanyList = props.ManagementCompany;
+
+  if (managementCompany.length === 0) {
+    managementCompany = managementCompanyList;
+  } else {
+    managementCompanyList = managementCompany;
+  }
 
   return (
     <div className="tenantview">
       <h1 className="text-center">Management Company List</h1>
-      <Form inline>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input
-            type="search"
-            name="password"
-            id="search"
-            placeholder="search!"
-          />
-        </FormGroup>
-        <Button>Submit</Button>
-      </Form>
+      <SearchInput
+        filteringData={props.ManagementCompany.map((arg) => {
+          return {
+            search1: arg.managementCompany_companyID,
+            search2: arg.managementCompany_name,
+            search3: arg.managementCompany_MobileNumber,
+            ID: arg._id,
+          };
+        })}
+        setFilteredData={setManagementCompany}
+        allData={props.ManagementCompany}
+      />
 
       <Table striped bordered hover size="sm">
         <thead>
@@ -33,7 +41,7 @@ const ManagementCompanyView = (props) => {
             <th>Remarks</th>
           </tr>
         </thead>
-        {props.ManagementCompany.map((arg, index) => {
+        {managementCompanyList.map((arg, index) => {
           return (
             <tbody key={index}>
               <tr>

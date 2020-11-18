@@ -16,8 +16,15 @@ const ManagementCompanyDetailView = (props) => {
   );
 
   //tanent update
-  const managementCompanyUpdate = (data, ID) => {
+  const managementCompanyUpdate = (data, ID, file) => {
     const formData = new FormData();
+    if (typeof file[0].file !== "string") {
+      file.forEach((element) => {
+        formData.append(element.fileName, element.file);
+      });
+    } else {
+      formData.append("files_list", data.files_list);
+    }
     formData.append("managementCompany_area", data.managementCompany_area);
     formData.append("managementCompany_city", data.managementCompany_city);
 
@@ -26,7 +33,6 @@ const ManagementCompanyDetailView = (props) => {
       data.managementCompany_country
     );
 
-    formData.append("managementCompany_photo", data.managementCompany_photo);
     formData.append(
       "managementCompany_phoneNo",
       data.managementCompany_phoneNo

@@ -16,12 +16,18 @@ const MaintananceCompanyDetailView = (props) => {
   );
 
   //tanent update
-  const maintananceCompanyUpdate = (data, ID) => {
+  const maintananceCompanyUpdate = (data, ID, file) => {
     const formData = new FormData();
+    if (typeof file[0].file !== "string") {
+      file.forEach((element) => {
+        formData.append(element.fileName, element.file);
+      });
+    } else {
+      formData.append("files_list", data.files_list);
+    }
     formData.append("Company_area", data.Company_area);
     formData.append("Company_city", data.Company_city);
     formData.append("Company_country", data.Company_country);
-    formData.append("Company_uploadPhoto", data.Company_uploadPhoto);
     formData.append("Company_phoneNo", data.Company_phoneNo);
     formData.append(
       "Company_Registration_Number",

@@ -6,8 +6,11 @@ import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction.js";
 
 const EmployeeEntry = () => {
-  const EmployeeData = (data) => {
+  const EmployeeData = (data, file) => {
     const formData = new FormData();
+    file.forEach((element) => {
+      formData.append(element.fileName, element.file);
+    });
     formData.append("employee_area", data.employee_area);
     formData.append("employee_city", data.employee_city);
     formData.append("employee_country", data.employee_country);
@@ -18,7 +21,6 @@ const EmployeeEntry = () => {
     formData.append("employee_lastName", data.employee_lastName);
     formData.append("employee_email", data.employee_email);
     formData.append("employee_post", data.employee_post);
-    formData.append("employee_photo", data.employee_photo);
 
     Axios({
       method: "post",

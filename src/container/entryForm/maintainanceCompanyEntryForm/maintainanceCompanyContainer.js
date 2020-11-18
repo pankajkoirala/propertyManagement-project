@@ -6,12 +6,14 @@ import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction.js";
 
 const MaintainanceCompanyContainer = () => {
-  const MaintananceCompanyData = (data) => {
+  const MaintananceCompanyData = (data, file) => {
     const formData = new FormData();
+    file.forEach((element) => {
+      formData.append(element.fileName, element.file);
+    });
     formData.append("Company_area", data.Company_area);
     formData.append("Company_city", data.Company_city);
     formData.append("Company_country", data.Company_country);
-    formData.append("Company_uploadPhoto", data.Company_uploadPhoto);
     formData.append("Company_phoneNo", data.Company_phoneNo);
     formData.append(
       "Company_Registration_Number",

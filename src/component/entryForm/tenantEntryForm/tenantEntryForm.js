@@ -27,7 +27,7 @@ const TenantEntry = (props) => {
     country: props.selectedTenantone?.country || "",
     tenant_phoneNo: props.selectedTenantone?.tenant_phoneNo || "",
     tenant_Name: props.selectedTenantone?.tenant_Name || "",
-    company_Name: props.selectedTenantone?.company_Name || "",
+    company_Name: props.selectedTenantone?.company_Name || "-",
     tenant_email: props.selectedTenantone?.tenant_email || "",
     DateOfBirth_registrationDate:
       moment(props.selectedTenantone?.DateOfBirth_registrationDate).format(

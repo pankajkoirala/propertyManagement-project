@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { Table } from "react-bootstrap";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import { Table } from "reactstrap";
+import SearchInput from "./../../../shared/filterListData";
 
 const ExpenseDisplay = (props) => {
+  let [expenses, SetExpenses] = useState([]);
+  let expensesList = props?.expenseList;
+
+  if (expenses.length === 0) {
+    expenses = expensesList;
+  } else {
+    expensesList = expenses;
+  }
   return (
     <div>
       <h1>lease list</h1>
-      <Form inline>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input
-            type="search"
-            name="password"
-            id="search"
-            placeholder="search!"
-          />
-        </FormGroup>
-        <Button>Submit</Button>
-      </Form>
+      <SearchInput
+        filteringData={props?.expenseList.map((arg) => {
+          return {
+            search1: arg.Expense_ID,
+            search2: "",
+            search3: "",
+            ID: arg._id,
+          };
+        })}
+        setFilteredData={SetExpenses}
+        allData={props?.expenseList}
+      />
 
       <Table striped bordered hover size="sm">
         <thead>
@@ -31,12 +40,12 @@ const ExpenseDisplay = (props) => {
             <th>detail view</th>
           </tr>
         </thead>
-        {props?.expenseList?.map((arg, index) => {
+        {expensesList?.map((arg, index) => {
           return (
             <tbody key={index}>
               <tr>
                 <td>{index + 1}</td>
-                <td>{arg.LeaseId}</td>
+                <td>{arg.Expense_ID}</td>
                 <td>{moment(arg?.expense_EntryDate).format("YYYY-MM-DD")}</td>
                 <td>{arg?.expenseInvoiceNumber}</td>
                 <td>{arg?.Expense_Remark}</td>
