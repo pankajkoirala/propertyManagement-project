@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormGroup, Label, Input, Form } from "reactstrap";
+import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
@@ -7,19 +7,27 @@ import RegexComponent from "./../../../shared/regexComponent";
 
 const OwnerEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [allFile, setAllFile] = useState(
+    props?.owner ? props?.owner?.files_list : []
+  );
 
   let initialValue = {
     owner_area: props?.owner?.owner_area || "",
     owner_city: props?.owner?.owner_city || "",
     owner_country: props?.owner?.owner_country || "",
     owner_DOB: moment(props?.owner?.owner_DOB).format("YYYY-MM-DD") || "",
-    owner_photo: props?.owner?.owner_photo || "",
     owner_phoneNo: props?.owner?.owner_phoneNo || "",
     owner_firstName: props?.owner?.owner_firstName || "",
     owner_middleName: props?.owner?.owner_middleName || " ",
     owner_lastName: props?.owner?.owner_lastName || "",
     owner_email: props?.owner?.owner_email || "",
     owner_property: props?.owner?.owner_property?._id || "",
+    fileName: "",
+    file: "",
+    files_list: [],
+  };
+  let photoDelete = (name) => {
+    setAllFile(allFile.filter((file) => file.fileName !== name));
   };
   return (
     <div>
@@ -28,9 +36,12 @@ const OwnerEntry = (props) => {
           <Formik
             initialValues={initialValue}
             onSubmit={(values) => {
+              typeof allFile[0].file === "string"
+                ? (values.files_list = JSON.stringify(allFile))
+                : (values.files_list = "");
               props?.owner
-                ? props.ownerUpdate(values, props?.owner?._id)
-                : props.ownerData(values);
+                ? props.ownerUpdate(values, props?.owner?._id, allFile)
+                : props.ownerData(values, allFile);
               console.log(values);
             }}
             // validationSchema={ownerEntryFormValidation}
@@ -241,7 +252,7 @@ const OwnerEntry = (props) => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-md-6 mb-4">
                         <Label for="exampleName">owner property</Label>
                         <RegexComponent
                           {...props}
@@ -268,34 +279,129 @@ const OwnerEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="col-md-6 text-left mb-2 mt-4">
-                        <Label className="float-left">owner Photo</Label>
-                        <Input
-                          type="file"
-                          name="owner_photo"
-                          accept="image/*"
-                          onChange={(event) => {
-                            setFieldValue(
-                              "owner_photo",
-                              event.currentTarget.files[0]
-                            );
-                          }}
-                        />
-
-                        {touched.owner_photo && values.owner_photo && (
-                          <img
-                            src={
-                              typeof values?.owner_photo === "string"
-                                ? values?.owner_photo
-                                : URL.createObjectURL(values?.owner_photo)
-                            }
-                            alt="no file"
-                            height="20"
-                          />
-                        )}
-                      </div>
                     </div>
                   </div>
+                  <div className="row mt-4">
+                    <div className="col-md-4 text-left mb-2 mt-4">
+                      <Input
+                        name="fileName"
+                        type="text"
+                        placeholder="Select Status of Cheque"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.fileName}
+                      ></Input>
+                    </div>
+                    <div className="col-md-4 text-left mb-2 mt-4">
+                      <Label className="float-left">Upload Scan Copy</Label>
+                      <Input
+                        type="file"
+                        alt="no file"
+                        name="file"
+                        accept="image/*"
+                        onChange={(event) => {
+                          setFieldValue("file", event.currentTarget.files[0]);
+                        }}
+                      />
+                    </div>
+                    <div className="col-md-4 text-left mb-2 mt-4">
+                      <button
+                        disabled={!values.fileName || !values.file}
+                        onClick={() => {
+                          let filterData = allFile.find(
+                            (a) => a.fileName === values.fileName
+                          );
+                          if (filterData) {
+                            let afterRemoveSameData = allFile.filter(
+                              (arg) => arg.fileName !== filterData.fileName
+                            );
+                            setAllFile([
+                              ...afterRemoveSameData,
+                              {
+                                fileName: values.fileName,
+                                file: values.file,
+                              },
+                            ]);
+                          } else {
+                            setAllFile([
+                              ...allFile,
+                              {
+                                fileName: values.fileName,
+                                file: values.file,
+                              },
+                            ]);
+                          }
+                        }}
+                        type="button"
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </div>
+                  {allFile.length !== 0 ? (
+                    <Table striped bordered hover size="sm">
+                      <thead>
+                        <tr>
+                          <th>SN</th>
+                          <th> Name</th>
+                          <th>image</th>
+                          <th>
+                            <button
+                              style={
+                                props?.owner
+                                  ? { display: "inline" }
+                                  : { display: "none" }
+                              }
+                              onClick={() => setAllFile([])}
+                            >
+                              delete All
+                            </button>
+                          </th>
+                        </tr>
+                      </thead>
+                      {allFile.map((arg, index) => {
+                        return (
+                          <tbody key={index}>
+                            <tr>
+                              <td>{index + 1}</td>
+
+                              <td className="font-weight-bold">
+                                {arg.fileName}
+                              </td>
+                              <td>
+                                <img
+                                  src={
+                                    typeof arg.file === "string"
+                                      ? arg.file
+                                      : URL.createObjectURL(arg.file)
+                                  }
+                                  alt="no file"
+                                  height="80px"
+                                />
+                              </td>
+                              <td>
+                                <button
+                                  style={
+                                    props?.owner
+                                      ? { display: "none" }
+                                      : { display: "inline" }
+                                  }
+                                  type="button"
+                                  onClick={() => {
+                                    photoDelete(arg.fileName);
+                                  }}
+                                >
+                                  delete
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        );
+                      })}
+                    </Table>
+                  ) : (
+                    ""
+                  )}
                   <button
                     className="success m-4"
                     type="button"

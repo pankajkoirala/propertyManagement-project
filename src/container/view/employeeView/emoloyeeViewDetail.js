@@ -18,8 +18,15 @@ const TanentDetailViewCont = (props) => {
   );
 
   //tanent update
-  const EmployeeUpdate = (data, ID) => {
+  const EmployeeUpdate = (data, ID, file) => {
     const formData = new FormData();
+    if (typeof file[0].file !== "string") {
+      file.forEach((element) => {
+        formData.append(element.fileName, element.file);
+      });
+    } else {
+      formData.append("files_list", data.files_list);
+    }
     formData.append("employee_area", data.employee_area);
     formData.append("employee_city", data.employee_city);
     formData.append("employee_country", data.employee_country);
@@ -30,7 +37,6 @@ const TanentDetailViewCont = (props) => {
     formData.append("employee_lastName", data.employee_lastName);
     formData.append("employee_email", data.employee_email);
     formData.append("employee_post", data.employee_post);
-    formData.append("employee_photo", data.employee_photo);
 
     Axios({
       method: "put",

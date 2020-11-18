@@ -30,7 +30,7 @@ const PropertyEntry = (props) => {
   let photoDelete = (name) => {
     setAllFile(allFile.filter((file) => file.fileName !== name));
   };
-  let removeExpense = (id) =>
+  let removeFacilite = (id) =>
     setFacilities(facilities.filter((arg) => arg.facilitiesId !== id));
 
   let initialValue = {
@@ -470,7 +470,7 @@ const PropertyEntry = (props) => {
                                     type="button"
                                     className="font-weight-bold"
                                     onClick={() =>
-                                      removeExpense(arg.facilitiesId)
+                                      removeFacilite(arg.facilitiesId)
                                     }
                                   >
                                     Delete

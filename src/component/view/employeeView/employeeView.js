@@ -1,12 +1,37 @@
-import React from "react";
-import { Table } from "react-bootstrap";
+import React, { useState } from "react";
+import { Table } from "reactstrap";
+
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import SearchInput from "./../../../shared/filterListData";
 
 const EmployeeView = (props) => {
+  let [employees, SetEmployees] = useState([]);
+  let employeesList = props.allEmployee;
+
+  if (employees.length === 0) {
+    employees = employeesList;
+  } else {
+    employeesList = employees;
+  }
   return (
     <div className="tenantview">
       <h1 className="text-center">Employee list</h1>
+      <SearchInput
+        filteringData={props.allEmployee.map((arg) => {
+          return {
+            search1:
+              arg.employee_firstName +
+              arg.employee_middleName +
+              arg.employee_lastName,
+            search2: arg.Employee_ID,
+            search3: arg.employee_phoneNo,
+            ID: arg._id,
+          };
+        })}
+        setFilteredData={SetEmployees}
+        allData={props.allEmployee}
+      />
 
       <Table striped bordered hover size="sm">
         <thead>
@@ -21,7 +46,7 @@ const EmployeeView = (props) => {
             <th>Remarks</th>
           </tr>
         </thead>
-        {props.allEmployee.map((arg, index) => {
+        {employeesList.map((arg, index) => {
           return (
             <tbody key={index}>
               <tr>

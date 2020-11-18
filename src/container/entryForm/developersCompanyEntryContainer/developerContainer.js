@@ -6,12 +6,14 @@ import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction.js";
 
 const BankAccountContainer = () => {
-  const DevelopmentCompanyData = (data) => {
+  const DevelopmentCompanyData = (data, file) => {
     const formData = new FormData();
-    formData.append("Developer_area", data.Developer_Developer_area);
+    file.forEach((element) => {
+      formData.append(element.fileName, element.file);
+    });
+    formData.append("Developer_area", data.Developer_area);
     formData.append("Developer_city", data.Developer_city);
     formData.append("Developer_country", data.Developer_country);
-    formData.append("DeveloperCompany_photo", data.DeveloperCompany_photo);
     formData.append("DeveloperCompany_phoneNo", data.DeveloperCompany_phoneNo);
     formData.append("DeveloperCompany_Name", data.DeveloperCompany_Name);
     formData.append(

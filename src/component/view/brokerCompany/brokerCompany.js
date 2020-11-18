@@ -1,23 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import SearchInput from "./../../../shared/filterListData";
 
 const BrokerCompanyView = (props) => {
+  let [BrokerCompanyList, SetBrokerCompanyList] = useState([]);
+  let brokerCompanyList = props.allBrokerCompany;
+
+  if (BrokerCompanyList.length === 0) {
+    BrokerCompanyList = brokerCompanyList;
+  } else {
+    brokerCompanyList = BrokerCompanyList;
+  }
+
   return (
     <div className="tenantview">
       <h1 className="text-center">broker Company List</h1>
-      <Form inline>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input
-            type="search"
-            name="password"
-            id="search"
-            placeholder="search!"
-          />
-        </FormGroup>
-        <Button>Submit</Button>
-      </Form>
+      <SearchInput
+        filteringData={props.allBrokerCompany.map((arg) => {
+          return {
+            search1: arg.broker_phoneNo,
+            search2: arg.brokerId,
+            search3: arg.broker_companyName,
+            ID: arg._id,
+          };
+        })}
+        setFilteredData={SetBrokerCompanyList}
+        allData={props.allBrokerCompany}
+      />
 
       <Table striped bordered hover size="sm">
         <thead>
@@ -31,7 +41,7 @@ const BrokerCompanyView = (props) => {
             <th>Remarks</th>
           </tr>
         </thead>
-        {props.allBrokerCompany.map((arg, index) => {
+        {brokerCompanyList.map((arg, index) => {
           return (
             <tbody key={index}>
               <tr>

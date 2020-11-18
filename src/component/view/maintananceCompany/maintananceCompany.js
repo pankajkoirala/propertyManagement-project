@@ -1,23 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+
+import SearchInput from "./../../../shared/filterListData";
 
 const MaintananceCompanyView = (props) => {
+  let [maintananceCompany, SetMaintananceCompany] = useState([]);
+  let maintananceCompanyList = props.MaintananceCompany;
+
+  if (maintananceCompany.length === 0) {
+    maintananceCompany = maintananceCompanyList;
+  } else {
+    maintananceCompanyList = maintananceCompany;
+  }
+
   return (
     <div className="tenantview">
       <h1 className="text-center"> Maintanance Company List</h1>
-      <Form inline>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input
-            type="search"
-            name="password"
-            id="search"
-            placeholder="search!"
-          />
-        </FormGroup>
-        <Button>Submit</Button>
-      </Form>
+      <SearchInput
+        filteringData={props.MaintananceCompany.map((arg) => {
+          return {
+            search1: arg.Company_ID,
+            search2: arg.Company_phoneNo,
+            search3: arg.Company_Name,
+            ID: arg._id,
+          };
+        })}
+        setFilteredData={SetMaintananceCompany}
+        allData={props.MaintananceCompany}
+      />
 
       <Table striped bordered hover size="sm">
         <thead>
@@ -31,7 +42,7 @@ const MaintananceCompanyView = (props) => {
             <th>Remarks</th>
           </tr>
         </thead>
-        {props.MaintananceCompany.map((arg, index) => {
+        {maintananceCompanyList.map((arg, index) => {
           return (
             <tbody key={index}>
               <tr>

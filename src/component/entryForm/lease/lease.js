@@ -9,6 +9,9 @@ import PoopUp from "./../../../shared/popup";
 
 const LeaseEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [allFile, setAllFile] = useState(
+    props?.lease ? props?.lease?.files_list : []
+  );
 
   const [commerceDate, setCommerceDate] = useState("");
   const [expireDate, setExpireDate] = useState("");
@@ -32,10 +35,14 @@ const LeaseEntry = (props) => {
     securityDeposite: props?.lease?.securityDeposite || "",
     securityfirstDueDate:
       moment(props?.lease?.securityfirstDueDate).format("YYYY-MM-DD") || "",
-    photo: props?.lease?.photo || "",
+    fileName: "",
+    file: "",
+    files_list: [],
   };
 
-  console.log(paymentTime);
+  let photoDelete = (name) => {
+    setAllFile(allFile.filter((file) => file.fileName !== name));
+  };
 
   //difference in comerceDate and expirationDate
   let difference = moment(props?.lease?.expirationDate || expireDate).diff(
@@ -63,12 +70,13 @@ const LeaseEntry = (props) => {
       <Formik
         initialValues={initialvalue}
         onSubmit={(values) => {
-          values.chequeList = JSON.stringify(values.chequeList);
-
+          typeof allFile[0].file === "string"
+            ? (values.files_list = JSON.stringify(allFile))
+            : (values.files_list = "");
           console.log(values);
           props?.lease
-            ? props.LeaseUpdate(values, props.lease._id)
-            : props.leaseData(values);
+            ? props.LeaseUpdate(values, props.lease._id, allFile)
+            : props.leaseData(values, allFile);
         }}
         //validationSchema={LeaseEntryFormValidation}
       >
@@ -365,30 +373,125 @@ const LeaseEntry = (props) => {
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-6 text-left mb-2 mt-4">
-                  <Label className="float-left">Upload Agrement Copy</Label>
+                <div className="col-md-4 text-left mb-2 mt-4">
+                  <Input
+                    name="fileName"
+                    type="text"
+                    placeholder="Select Status of Cheque"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.fileName}
+                  ></Input>
+                </div>
+                <div className="col-md-4 text-left mb-2 mt-4">
+                  <Label className="float-left">Upload Scan Copy</Label>
                   <Input
                     type="file"
-                    name="photo"
+                    alt="no file"
+                    name="file"
                     accept="image/*"
                     onChange={(event) => {
-                      setFieldValue("photo", event.currentTarget.files[0]);
+                      setFieldValue("file", event.currentTarget.files[0]);
                     }}
                   />
-
-                  {touched.photo && values.photo && (
-                    <img
-                      src={
-                        typeof values.photo === "string"
-                          ? values.photo
-                          : URL.createObjectURL(values.photo)
-                      }
-                      alt="no file"
-                      height="20"
-                    />
-                  )}
                 </div>
+                <div className="col-md-4 text-left mb-2 mt-4">
+                  <button
+                    disabled={!values.fileName || !values.file}
+                    onClick={() => {
+                      let filterData = allFile.find(
+                        (a) => a.fileName === values.fileName
+                      );
+                      if (filterData) {
+                        let afterRemoveSameData = allFile.filter(
+                          (arg) => arg.fileName !== filterData.fileName
+                        );
+                        setAllFile([
+                          ...afterRemoveSameData,
+                          {
+                            fileName: values.fileName,
+                            file: values.file,
+                          },
+                        ]);
+                      } else {
+                        setAllFile([
+                          ...allFile,
+                          {
+                            fileName: values.fileName,
+                            file: values.file,
+                          },
+                        ]);
+                      }
+                    }}
+                    type="button"
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+              {allFile.length !== 0 ? (
+                <Table striped bordered hover size="sm">
+                  <thead>
+                    <tr>
+                      <th>SN</th>
+                      <th> Name</th>
+                      <th>image</th>
+                      <th>
+                        <button
+                          style={
+                            props?.lease
+                              ? { display: "inline" }
+                              : { display: "none" }
+                          }
+                          onClick={() => setAllFile([])}
+                        >
+                          delete All
+                        </button>
+                      </th>
+                    </tr>
+                  </thead>
+                  {allFile.map((arg, index) => {
+                    return (
+                      <tbody key={index}>
+                        <tr>
+                          <td>{index + 1}</td>
 
+                          <td className="font-weight-bold">{arg.fileName}</td>
+                          <td>
+                            <img
+                              src={
+                                typeof arg.file === "string"
+                                  ? arg.file
+                                  : URL.createObjectURL(arg.file)
+                              }
+                              alt="no file"
+                              height="80px"
+                            />
+                          </td>
+                          <td>
+                            <button
+                              style={
+                                props?.lease
+                                  ? { display: "none" }
+                                  : { display: "inline" }
+                              }
+                              type="button"
+                              onClick={() => {
+                                photoDelete(arg.fileName);
+                              }}
+                            >
+                              delete
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    );
+                  })}
+                </Table>
+              ) : (
+                ""
+              )}
+              <div>
                 <button
                   className="Success col-4 mt-2"
                   type="button"
