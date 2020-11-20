@@ -7,37 +7,22 @@ import INCOME from "../../assets/income.PNG";
 import Maintainance from "../../assets/maintinance.PNG";
 import { connect } from "react-redux";
 import { Line } from "react-chartjs-2";
-import { incomeCalc } from "../../shared/commonFunction";
 
 const Homepage = (props) => {
-  //const [addyear, setAddyear] = useState(new Date().getFullYear());
-
-  let number = 1;
-  // let barData = [];
-  // incomeCalc(props.clearedCheque, barData, "01", addyear);
-  // incomeCalc(props.clearedCheque, barData, "02", addyear);
-  // incomeCalc(props.clearedCheque, barData, "03", addyear);
-  // incomeCalc(props.clearedCheque, barData, "05", addyear);
-  // incomeCalc(props.clearedCheque, barData, "06", addyear);
-  // incomeCalc(props.clearedCheque, barData, "07", addyear);
-  // incomeCalc(props.clearedCheque, barData, "08", addyear);
-  // incomeCalc(props.clearedCheque, barData, "09", addyear);
-  // incomeCalc(props.clearedCheque, barData, "10", addyear);
-  // incomeCalc(props.clearedCheque, barData, "04", addyear);
-  // incomeCalc(props.clearedCheque, barData, "11", addyear);
-  // incomeCalc(props.clearedCheque, barData, "12", addyear);
   const {
     rentalIncome,
     vatIncome,
     miscellaneousIncome,
     totalProperty,
     leaseProperty,
-    barData,
+    barIncomeData,
+    BarExpenseData,
     next_preYear,
     setNext_preYear,
   } = props;
 
   //bardiagram data
+  let number = 1;
   const data = {
     labels: [
       "Jan",
@@ -55,10 +40,16 @@ const Homepage = (props) => {
     ],
     datasets: [
       {
-        label: "Second dataset",
-        data: barData,
-        fill: false,
+        label: " Income",
+        data: barIncomeData,
+        fill: true,
         borderColor: "#742774",
+      },
+      {
+        label: "Expense",
+        data: BarExpenseData,
+        fill: false,
+        borderColor: "rgba(75,192,192,1)",
       },
     ],
   };
