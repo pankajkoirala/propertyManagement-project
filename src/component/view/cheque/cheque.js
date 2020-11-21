@@ -5,6 +5,7 @@ import moment from "moment";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const ChequeView = (props) => {
+  const [noOfCheque, setNoOfCheque] = useState("");
   const [from, setFrom] = useState("YYYY-MM-DD");
   const [to, setTo] = useState("YYYY-MM-DD");
   const [chequeState, setchequeState] = useState(false);
@@ -19,7 +20,7 @@ const ChequeView = (props) => {
           moment(to, "YYYY-MM-DD").add(1, "day")
         )
   );
-
+  //filter by check no
   let filterArray = (cheqNo) => {
     const splittedWord = cheqNo.split("");
     setUpdatedOptions(
@@ -42,6 +43,15 @@ const ChequeView = (props) => {
     );
   };
 
+  //filter cheque by cheque status
+  let FilterByChequeStatus = (status) => {
+    let filterCheque = filterChequeList.filter(
+      (arg) => arg.cheque_status === status
+    );
+    setUpdatedOptions(filterCheque);
+    setNoOfCheque(`Number of ${status}:${filterCheque.length}`);
+  };
+  //out of lease cheque
   let unUsedCheque = filterChequeList.filter(
     (arg) => typeof arg?.lease_property?.LeaseId !== "number"
   );
@@ -93,6 +103,7 @@ const ChequeView = (props) => {
           Clear
         </Button>
       </div>
+
       <div className="d-flex justify-content-around m-4">
         <Form inline>
           <Label className="font-weight-bold">search by cheque no : </Label>
@@ -127,21 +138,64 @@ const ChequeView = (props) => {
           </FormGroup>
         </Form>
         <button
-          className="float-right"
           onClick={() => {
             setchequeState(!chequeState);
             setUpdatedOptions(unUsedCheque);
           }}
         >
-          lease navako cheque
+          leaseExpire cheque
+        </button>
+        <button
+          onClick={() => {
+            setchequeState(!chequeState);
+            FilterByChequeStatus("Cleared");
+          }}
+        >
+          cleared
+        </button>
+        <button
+          onClick={() => {
+            setchequeState(!chequeState);
+            FilterByChequeStatus("Bounce");
+          }}
+        >
+          bounce
+        </button>
+        <button
+          onClick={() => {
+            setchequeState(!chequeState);
+            FilterByChequeStatus("Hold");
+          }}
+        >
+          hold
+        </button>
+        <button
+          onClick={() => {
+            setchequeState(!chequeState);
+            FilterByChequeStatus("Pending");
+          }}
+        >
+          pending
+        </button>
+        <button
+          onClick={() => {
+            setchequeState(!chequeState);
+            FilterByChequeStatus("Not Deposited");
+          }}
+        >
+          Not Deposited
         </button>
       </div>
-
+      {chequeState === true ? (
+        <div className="h5">{noOfCheque}</div>
+      ) : (
+        <div className="h5">Number of Cheque:{filterChequeList.length}</div>
+      )}
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
             <th>SN</th>
-            <th>property no</th>
+            <th>lease no</th>
 
             <th>Cheque no</th>
             <th>Cheque issue Date</th>
@@ -157,19 +211,21 @@ const ChequeView = (props) => {
               <tr>
                 <td>{index + 1}</td>
                 <td>{arg?.lease_property?.LeaseId}</td>
-
                 <td>{arg.cheque_number}</td>
-
                 <td>{moment(arg?.cheque_issueDate).format("YYYY-MM-DD")}</td>
                 <td>{arg.cheque_amount}</td>
                 <td>{arg.cheque_remarks}</td>
                 <td
                   className={
                     arg.cheque_status === "Pending"
-                      ? "bg-secondary text-white font-weight-bold"
+                      ? " text-secondary font-weight-bold"
                       : arg.cheque_status === "Cleared"
-                      ? "bg-success text-white font-weight-bold"
-                      : "bg-danger text-white font-weight-bold"
+                      ? " text-success font-weight-bold"
+                      : arg.cheque_status === "Bounce"
+                      ? " text-danger font-weight-bold"
+                      : arg.cheque_status === "Not Deposited"
+                      ? " text-warning font-weight-bold"
+                      : " text-info font-weight-bold"
                   }
                 >
                   {arg.cheque_status}

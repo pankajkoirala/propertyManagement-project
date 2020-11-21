@@ -258,8 +258,10 @@ const ChequeEntry = (props) => {
                           value={values.cheque_status}
                         >
                           <option value="">Select any one</option>
-                          <option value="Cleared">Cleared</option>
+                          <option value="Not Deposited">Not Deposited</option>
                           <option value="Pending">Pending</option>
+                          <option value="Hold">Hold</option>
+                          <option value="Cleared">Cleared</option>
                           <option value="Bounce">bounce</option>
                         </Input>
 
