@@ -49,7 +49,6 @@ const PropertyEntry = (props) => {
     Muncipality_Number: props?.property?.Muncipality_Number || "",
     Property_Area: props?.property?.Property_Area || "",
     Property_Premise_Number: props?.property?.Property_Premise_Number || "",
-    Parking_Number: props?.property?.Parking_Number || "not available",
     fileName: "",
     file: "",
     files_list: [],
@@ -484,25 +483,7 @@ const PropertyEntry = (props) => {
                     ) : (
                       ""
                     )}
-                    <div className="col-sm-4 my-1">
-                      <Label for="exampleName">Parking Number</Label>
-                      <Input
-                        type="text"
-                        value={values.Parking_Number}
-                        name="Parking_Number"
-                        placeholder="Enter the name of Country"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched.Parking_Number && errors.Parking_Number && (
-                        <span
-                          className="text-danger col-md-12 text-left mb-2"
-                          style={{ fontSize: 12 }}
-                        >
-                          {errors.Parking_Number}
-                        </span>
-                      )}
-                    </div>
+
                     <div className="row">
                       <div className="col-md-4 text-left mb-2 mt-4">
                         <Input

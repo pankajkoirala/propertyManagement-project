@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import { Form, FormGroup, Input } from "reactstrap";
 
 const ModalExample = (props) => {
   const { filteringData, setFilteredData, allData } = props;

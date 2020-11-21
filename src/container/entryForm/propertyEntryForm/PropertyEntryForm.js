@@ -15,7 +15,6 @@ const PropertyEntry = () => {
     formData.append("country", data.country);
     formData.append("property_type", data.property_type);
     formData.append("property_price", data.property_price);
-    formData.append("Parking_Number", data.Parking_Number);
     formData.append("facilities", data.facilities);
     formData.append("property_community", data.property_community);
     formData.append("building_Name", data.building_Name);
