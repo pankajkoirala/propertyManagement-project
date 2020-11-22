@@ -9,13 +9,10 @@ import PoopUp from "./../../../shared/popup";
 
 const LeaseEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
-  const [allFile, setAllFile] = useState(
-    props?.lease ? props?.lease?.files_list : []
-  );
-
+  const [allFile, setAllFile] = useState(props?.lease?.files_list || []);
   const [commerceDate, setCommerceDate] = useState("");
   const [expireDate, setExpireDate] = useState("");
-  const [paymentTime, setpaymentTime] = useState("");
+  const [paymentTime, setpaymentTime] = useState(0);
 
   let initialvalue = {
     late_feeType: props?.lease?.late_feeType || "",
@@ -48,16 +45,25 @@ const LeaseEntry = (props) => {
   let difference = moment(props?.lease?.expirationDate || expireDate).diff(
     moment(props?.lease?.commenceDate || commerceDate),
     "days"
-  ); // resul
+  ); // result
   let noOfPayment =
-    Math.round((difference / (paymentTime ? paymentTime : 1)) * 100) / 100;
+    Math.round(
+      (difference /
+        (paymentTime ? paymentTime : 1 || props?.lease?.frequency)) *
+        100
+    ) / 100;
+  console.log("LeaseEntry -> frequency", props?.lease?.frequency);
 
-  let days = 0;
   let addedDays = [];
 
   for (let index = 0; index < noOfPayment.toFixed(0); index++) {
-    addedDays.push((days = days + paymentTime));
+    let days = paymentTime * index;
+    addedDays.push(days);
   }
+  console.log(
+    "🚀 ~ file: lease.js ~ line 60 ~ LeaseEntry ~ addedDays",
+    addedDays
+  );
 
   return (
     <div className="leasediv">
@@ -73,10 +79,10 @@ const LeaseEntry = (props) => {
           typeof allFile[0].file === "string"
             ? (values.files_list = JSON.stringify(allFile))
             : (values.files_list = "");
-          console.log(values);
           props?.lease
             ? props.LeaseUpdate(values, props.lease._id, allFile)
             : props.leaseData(values, allFile);
+          console.log(values);
         }}
         //validationSchema={LeaseEntryFormValidation}
       >
@@ -302,17 +308,16 @@ const LeaseEntry = (props) => {
                     name="frequency"
                     id="exampleSelect"
                     placeholder="Frequencyt"
-                    onChange={(e) =>
-                      setFieldValue("frequency", setpaymentTime(e.target.value))
-                    }
+                    value={(setpaymentTime(values.frequency), values.frequency)}
+                    onChange={handleChange}
                     onBlur={handleBlur}
                   >
-                    <option value=""> </option>
-                    <option value="7">Weekly</option>
-                    <option value="14">Bi-Weekly</option>
-                    <option value="30">Monthly</option>
-                    <option value="90">Quartely</option>
-                    <option value="365">Yearly</option>
+                    <option value=""> select one</option>
+                    <option value={7}>Weekly</option>
+                    <option value={14}>Bi-Weekly</option>
+                    <option value={30}>Monthly</option>
+                    <option value={90}>Quartely</option>
+                    <option value={365}>Yearly</option>
                   </Input>
                   {touched.frequency && errors.frequency && (
                     <span
@@ -513,7 +518,10 @@ const LeaseEntry = (props) => {
               </div>
             </FormGroup>
             <Table striped bordered hover size="sm">
-              {commerceDate && expireDate && paymentTime ? (
+              {props?.lease?.commenceDate ||
+              (commerceDate && props?.lease?.expirationDate) ||
+              (expireDate && props?.lease?.frequency) ||
+              paymentTime ? (
                 <thead>
                   <tr>
                     <th>SN</th>
@@ -525,14 +533,19 @@ const LeaseEntry = (props) => {
                 ""
               )}
 
-              {commerceDate && expireDate && paymentTime
+              {props?.lease?.commenceDate ||
+              (commerceDate && props?.lease?.expirationDate) ||
+              (expireDate && props?.lease?.frequency) ||
+              paymentTime
                 ? addedDays.map((arg, index) => {
                     return (
                       <tbody key={index}>
                         <tr>
                           <td>{index + 1}</td>
                           <td>
-                            {moment().add(arg, "days").format("DD-MM-YYYY")}
+                            {moment(commerceDate)
+                              .add(arg, "days")
+                              .format("DD-MM-YYYY")}
                           </td>
                           <td
                             style={{
