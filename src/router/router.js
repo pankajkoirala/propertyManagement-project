@@ -57,7 +57,7 @@ const RouterPage = () => {
           className="col-2"
           style={
             authorize
-              ? { position: "absolute", height: "auto" }
+              ? { display: 'block', margin: 0, padding: 0 }
               : { visibility: "hidden" }
           }
         >

@@ -1,14 +1,32 @@
+
 .menu {
-  margin: 0px auto;
-  padding: 5px !important;
-  background-color: #f1f1f1;
+  background-color: #3B4AFF;
+  color: #FFFFFF;
+  width: auto;
+  margin: 0;
+  padding: 0;
   position: sticky;
   height: auto;
   overflow: auto;
+  border: none;
 }
+
+.branding-section{
+  padding: 35px 10px 0px 10px;
+}
+
+
+.user-avatar{
+  width: 100%;
+  height: 120px;
+  padding: 0px 80px 20px 80px;
+  text-align: center;
+}
+
 
 .button-size {
   margin: 5px;
   width: 150px;
   height: 60px;
 }
+
