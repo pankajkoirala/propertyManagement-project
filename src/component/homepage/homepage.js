@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./homepage.css";
 import { PieChart } from "react-minimal-pie-chart";
 import SearchIcon from '@material-ui/icons/Search';
@@ -11,7 +11,20 @@ import { connect } from "react-redux";
 import { Line } from "react-chartjs-2";
 
 const Homepage = (props) => {
+  const {
+    rentalIncome,
+    vatIncome,
+    miscellaneousIncome,
+    totalProperty,
+    leaseProperty,
+    barIncomeData,
+    BarExpenseData,
+    next_preYear,
+    setNext_preYear,
+  } = props;
+
   //bardiagram data
+  let number = 1;
   const data = {
     labels: [
       "Jan",
@@ -29,10 +42,16 @@ const Homepage = (props) => {
     ],
     datasets: [
       {
-        label: "Second dataset",
-        data: [33, 25, 35, 51, 54, 76, 33, 44, 54, 34, 67, 12],
-        fill: false,
+        label: " Income",
+        data: barIncomeData,
+        fill: true,
         borderColor: "#742774",
+      },
+      {
+        label: "Expense",
+        data: BarExpenseData,
+        fill: false,
+        borderColor: "rgba(75,192,192,1)",
       },
     ],
   };
@@ -80,7 +99,26 @@ const Homepage = (props) => {
             </div>
             {/* //bar diagram */}
             <div className="App">
+              <h4 className="text-center">year-{next_preYear}</h4>
               <Line data={data} />
+              <div className="d-flex justify-content-center">
+                <button
+                  className="m-2"
+                  type="button"
+                  onClick={() => {
+                    setNext_preYear(next_preYear + number++);
+                  }}
+                >
+                  next year
+                </button>
+                <button
+                  className="m-2"
+                  type="button"
+                  onClick={() => setNext_preYear(next_preYear - number--)}
+                >
+                  pre year
+                </button>
+              </div>
             </div>
             {/* pie chart property */}
             <div className="d-flex justify-content-between p-4 bg-white">
@@ -91,9 +129,21 @@ const Homepage = (props) => {
                     <PieChart
                       style={{ height: "200px", width: "200px" }}
                       data={[
-                        { title: "One", value: 1, color: "#E38627" },
-                        { title: "Two", value: 15, color: "#C13C37" },
-                        { title: "Three", value: 20, color: "#6A2135" },
+                        {
+                          title: "One",
+                          value: totalProperty,
+                          color: "#E38627",
+                        },
+                        {
+                          title: "Two",
+                          value: totalProperty - leaseProperty,
+                          color: "#C13C37",
+                        },
+                        {
+                          title: "Three",
+                          value: leaseProperty,
+                          color: "#6A2135",
+                        },
                       ]}
                     />
                   </div>
@@ -110,7 +160,7 @@ const Homepage = (props) => {
                       ></div>
                       total property unit
                     </div>
-                    <h4>3</h4>
+                    <h4>{totalProperty}</h4>
                     <div className=" h5 row ">
                       {" "}
                       <div
@@ -124,7 +174,7 @@ const Homepage = (props) => {
                       ></div>
                       free property
                     </div>
-                    <h4>5</h4>
+                    <h4>{totalProperty - leaseProperty}</h4>
                     <div className="h5 row">
                       {" "}
                       <div
@@ -138,7 +188,7 @@ const Homepage = (props) => {
                       ></div>
                       occupied property
                     </div>
-                    <h4>10</h4>
+                    <h4>{leaseProperty}</h4>
                   </div>
                 </div>
               </div>
@@ -151,9 +201,13 @@ const Homepage = (props) => {
                     <PieChart
                       style={{ height: "200px", width: "200px" }}
                       data={[
-                        { title: "One", value: 1, color: "#E38627" },
-                        { title: "Two", value: 15, color: "#C13C37" },
-                        { title: "Three", value: 20, color: "#6A2135" },
+                        { title: "One", value: rentalIncome, color: "#E38627" },
+                        { title: "Two", value: vatIncome, color: "#C13C37" },
+                        {
+                          title: "Three",
+                          value: miscellaneousIncome,
+                          color: "#6A2135",
+                        },
                       ]}
                     />
                   </div>
@@ -170,7 +224,7 @@ const Homepage = (props) => {
                       ></div>
                       Rental Income
                     </div>
-                    <h4>3</h4>
+                    <h4>Rs.{rentalIncome}/-</h4>
                     <div className=" h5 row ">
                       {" "}
                       <div
@@ -184,7 +238,7 @@ const Homepage = (props) => {
                       ></div>
                       Vat Income{" "}
                     </div>
-                    <h4>5</h4>
+                    <h4>Rs.{vatIncome}/-</h4>
                     <div className="h5 row">
                       {" "}
                       <div
@@ -198,7 +252,7 @@ const Homepage = (props) => {
                       ></div>
                       Other Income
                     </div>
-                    <h4>10</h4>
+                    <h4>Rs.{miscellaneousIncome}/-</h4>
                   </div>
                 </div>
               </div>

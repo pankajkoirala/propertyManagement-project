@@ -84,6 +84,7 @@ const OwnerViewCont = (props) => {
         selectedOwner={selectedOwner}
         ownerUpdate={ownerUpdate}
         ownerDelete={ownerDelete}
+        Redux_propertyData={props.Redux_propertyData.property}
       />
     </div>
   );
@@ -91,6 +92,7 @@ const OwnerViewCont = (props) => {
 
 const mapStateToProps = (state) => ({
   redux_ownerData: state.owner,
+  Redux_propertyData: state.property,
 });
 
 const mapDispatchToProps = (dispatch) => ({});
