@@ -14,16 +14,10 @@ let ChequeDetailViewComponent = (props) => {
   };
 
   return (
-<<<<<<< HEAD
     <div>
+      <TopNavBar />
       {printInvoice === false ? (
         showEditForm === false ? (
-=======
-    <>
-      <TopNavBar/>
-      <div>
-        {showEditForm === false ? (
->>>>>>> 9bd371d72ef7f1ffb818439cb4655c7e53cbadd9
           props.selectedCheque.map((arg, index) => {
             return (
               <div key={index} className="property-card">
@@ -63,12 +57,9 @@ let ChequeDetailViewComponent = (props) => {
                   >
                     Delete
                   </button>
-<<<<<<< HEAD
                   <button onClick={() => setPrintInvoice(!printInvoice)}>
                     print
                   </button>
-=======
->>>>>>> 9bd371d72ef7f1ffb818439cb4655c7e53cbadd9
                   <PoopUp
                     isOpen={showPopup}
                     isClose={setShowPopUp}
@@ -87,7 +78,6 @@ let ChequeDetailViewComponent = (props) => {
             showHide={showHide}
             Cheque={props.selectedCheque[0]}
           />
-<<<<<<< HEAD
         )
       ) : (
         <Invoice
@@ -97,11 +87,6 @@ let ChequeDetailViewComponent = (props) => {
         />
       )}
     </div>
-=======
-        )}
-      </div>
-    </>
->>>>>>> 9bd371d72ef7f1ffb818439cb4655c7e53cbadd9
   );
 };
 
