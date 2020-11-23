@@ -5,6 +5,7 @@ import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { connect } from "react-redux";
 import { reloadFunction } from "../../../shared/commonFunction";
+import TopNavBar from "../../../shared/topNavBar";
 
 const ExpenseEntryForm = (props) => {
   const expenseData = (data) => {
@@ -38,6 +39,7 @@ const ExpenseEntryForm = (props) => {
 
   return (
     <div>
+      <TopNavBar/>
       <ExpenseEntryFormComponent
         expenseData={expenseData}
         Redux_maintananceTicketData={

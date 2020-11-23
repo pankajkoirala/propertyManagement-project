@@ -4,6 +4,7 @@ import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction.js";
+import TopNavBar from "../../../shared/topNavBar.js";
 
 const MaintainanceCompanyContainer = () => {
   const MaintananceCompanyData = (data, file) => {
@@ -48,6 +49,7 @@ const MaintainanceCompanyContainer = () => {
   };
   return (
     <div>
+      <TopNavBar/>
       <MaintainanceCompanyComponent
         MaintananceCompanyData={MaintananceCompanyData}
       />

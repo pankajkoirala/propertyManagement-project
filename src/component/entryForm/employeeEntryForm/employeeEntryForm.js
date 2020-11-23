@@ -65,11 +65,11 @@ const TenantEntry = (props) => {
               isSubmitting,
             }) => (
               <Form>
-                <FormGroup className="employeeEntry">
+                <FormGroup className="form-group m-5 p-4 ">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Employee Entry Form </h3>
+                      <h3 className="form-head">Employee Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -335,6 +335,7 @@ const TenantEntry = (props) => {
                           }
                         }}
                         type="button"
+                        className="btn btn-secondary btn-sm"
                       >
                         Add
                       </button>
@@ -405,11 +406,11 @@ const TenantEntry = (props) => {
                     ""
                   )}
                   <button
-                    className="success m-4"
+                    className="btn btn-primary success col-md-3 mt-5"
                     type="button"
                     onClick={() => setShowPopUp(true)}
                   >
-                    submit
+                    Submit
                   </button>
                   <PoopUp
                     isOpen={showPopup}

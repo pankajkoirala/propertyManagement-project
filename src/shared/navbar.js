@@ -1,24 +1,26 @@
 import React from "react";
 import { Accordion, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import EmojiTransportationIcon from "@material-ui/icons/EmojiTransportation";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import { Avatar } from "@material-ui/core";
-import ExploreIcon from "@material-ui/icons/Explore";
-import HouseIcon from "@material-ui/icons/House";
-import PersonIcon from "@material-ui/icons/Person";
-import GroupsIcon from "@material-ui/icons/Group";
-import LocalAtmIcon from "@material-ui/icons/LocalAtm";
-import AssignmentIcon from "@material-ui/icons/Assignment";
-import SubjectIcon from "@material-ui/icons/Subject";
-import ImportContactsIcon from "@material-ui/icons/ImportContacts";
-import BugReportIcon from "@material-ui/icons/BugReport";
-import PermIdentityIcon from "@material-ui/icons/PermIdentity";
-import BusinessIcon from "@material-ui/icons/Business";
-import DevicesIcon from "@material-ui/icons/Devices";
-import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { Avatar } from '@material-ui/core';
+import ExploreIcon from '@material-ui/icons/Explore';
+import HouseIcon from '@material-ui/icons/House';
+import PersonIcon from '@material-ui/icons/Person';
+import GroupsIcon from '@material-ui/icons/Group';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import SubjectIcon from '@material-ui/icons/Subject';
+import ImportContactsIcon from '@material-ui/icons/ImportContacts';
+import BugReportIcon from '@material-ui/icons/BugReport';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import BusinessIcon from '@material-ui/icons/Business';
+import DevicesIcon from '@material-ui/icons/Devices';
+import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import "./navbar.css";
 
@@ -38,119 +40,92 @@ const NavbarPage = () => {
         </h4>
       </div>
       <div className="user-avatar">
-        <Avatar
-          alt="user-avatar"
-          variant="rounded"
-          style={{ height: "70px", width: "100px" }}
-        >
-          <AccountCircleIcon fontSize="large" />
+        <Avatar alt="user-avatar" variant="rounded" style={{height:'90px',width:'150px'}}>
+          <AccountCircleIcon fontSize='large'  />
         </Avatar>
         <p className="user-name">John</p>
       </div>
-      <Accordion defaultActiveKey="">
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
+      <Accordion  defaultActiveKey="" >
+        <Card style={{border: 'none'}} >
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
             <Link to="/">
-              <Accordion.Toggle
-                style={{ borderRadius: "50px", border: "none" }}
-                as={Card.Header}
-                variant="link"
-              >
-                <b className="text-white">
-                  <ExploreIcon />
-                  Dashboard
-                </b>
+              <Accordion.Toggle style={{borderRadius:'50px',border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link">
+                <b className="text-white" ><ExploreIcon/>Dashboard</b>
               </Accordion.Toggle>
             </Link>
           </Card.Header>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-              <b>
-                <HouseIcon />
-                Property
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="0">
+              <b><HouseIcon/>Property</b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
               <Link to="/propertentry">
                 <Button variant="primary" className="button-size">
-                  Create Property
+                  <AddBoxIcon/>Create Property
                 </Button>
               </Link>
 
               <Link to="/propertyList">
                 <Button variant="success" className="button-size">
-                  View Property
+                  <VisibilityIcon/>View Property
                 </Button>
               </Link>
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="1">
-              <b>
-                <PersonIcon />
-                Tenant
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="1">
+              <b><PersonIcon/>Tenant</b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="1">
             <Card.Body>
               <Link to="/tenantentry">
                 <Button variant="primary" className="button-size">
-                  Add Tenant
+                  <AddBoxIcon/>Add Tenant
                 </Button>
               </Link>
 
               <Link to="/tenantList">
                 <Button variant="success" className="button-size">
-                  View Tenant
+                  <VisibilityIcon/>View Tenant
                 </Button>
               </Link>
               <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle
-              as={Card.Header}
-              style={{ border: "none", opacity: "100%" }}
-              variant="link"
-              eventKey="3"
-            >
-              <b>
-                <AssignmentIcon />
-                Lease
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="3">
+              <b><AssignmentIcon/>Lease</b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="3">
             <Card.Body>
               <Link to="/lease">
                 <Button variant="primary" className="button-size">
-                  lease entry
+                  <AddBoxIcon/>lease entry
                 </Button>
               </Link>
 
               <Link to="/leasePropertyList">
                 <Button variant="success" className="button-size">
-                  leased property
+                  <VisibilityIcon/>leased property
                 </Button>
               </Link>
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="2">
-              <b>
-                <GroupsIcon /> Employee
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="2">
+              <b><GroupsIcon/> Employee</b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="2">
@@ -158,26 +133,23 @@ const NavbarPage = () => {
               <Link to="/employeeentry">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  Add Employee
+                  <AddBoxIcon/>Add Employee
                 </Button>
               </Link>
 
               <Link to="/employeeList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  View Employee
+                  <VisibilityIcon/>View Employee
                 </Button>
               </Link>
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="5">
-              <b>
-                <LocalAtmIcon />
-                Cheque
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="5">
+              <b><LocalAtmIcon/>Cheque</b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="5">
@@ -185,7 +157,7 @@ const NavbarPage = () => {
               <Link to="/chequeentry">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  Cheque Entry
+                  <AddBoxIcon/>Cheque Entry
                 </Button>
               </Link>
               <br />
@@ -193,20 +165,17 @@ const NavbarPage = () => {
               <Link to="/chequeList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  Cheque View
+                  <VisibilityIcon/>Cheque View
                 </Button>
               </Link>
               <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="6">
-              <b>
-                <BugReportIcon />
-                Maintainance Ticket
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="6">
+              <b><BugReportIcon/>Maintainance Ticket</b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="6">
@@ -214,7 +183,7 @@ const NavbarPage = () => {
               <Link to="/maintananceTicket">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  Maintanance Ticket Form
+                  <AddBoxIcon/>Maintanance Ticket Form
                 </Button>
               </Link>
               <br />
@@ -222,20 +191,17 @@ const NavbarPage = () => {
               <Link to="/maintananceTicketList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  Maintanance Ticke tList{" "}
+                  <VisibilityIcon/>Maintanance Ticket List{" "}
                 </Button>
               </Link>
               <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="7">
-              <b>
-                <PermIdentityIcon />
-                Owner{" "}
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="7">
+              <b><PermIdentityIcon/>Owner </b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="7">
@@ -243,7 +209,7 @@ const NavbarPage = () => {
               <Link to="/ownerEntry">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  Owner Entry{" "}
+                  <AddBoxIcon/>Owner Entry{" "}
                 </Button>
               </Link>
               <br />
@@ -251,20 +217,17 @@ const NavbarPage = () => {
               <Link to="/ownerList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  Owner List{" "}
+                  <VisibilityIcon/>Owner List{" "}
                 </Button>
               </Link>
               <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="8">
-              <b>
-                <BusinessIcon />
-                Broker Company{" "}
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="8">
+              <b><BusinessIcon/>Broker Company </b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="8">
@@ -272,7 +235,7 @@ const NavbarPage = () => {
               <Link to="/brokerEntryForm">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  broker Company Entry{" "}
+                  <AddBoxIcon/>Broker Company Entry{" "}
                 </Button>
               </Link>
               <br />
@@ -280,20 +243,17 @@ const NavbarPage = () => {
               <Link to="/brokerCompanyList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  broker Company List{" "}
+                  <VisibilityIcon/>Broker Company List{" "}
                 </Button>
               </Link>
               <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="9">
-              <b>
-                <DevicesIcon />
-                Developer Company{" "}
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="9">
+              <b><DevicesIcon/>Developer Company </b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="9">
@@ -301,7 +261,7 @@ const NavbarPage = () => {
               <Link to="/developerDetail">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  Developer Company Entry
+                  <AddBoxIcon/>Developer Company Entry
                 </Button>
               </Link>
               <br />
@@ -309,20 +269,17 @@ const NavbarPage = () => {
               <Link to="/developerCompanyList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  Developer Company List
+                  <VisibilityIcon/>Developer Company List
                 </Button>
               </Link>
               <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>{" "}
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="10">
-              <b>
-                <SettingsApplicationsIcon />
-                Maintanance Company{" "}
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="10">
+              <b><SettingsApplicationsIcon/>Maintanance Company </b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="10">
@@ -330,7 +287,7 @@ const NavbarPage = () => {
               <Link to="/maintainanceCompanyForm">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  Maintanance Company Entry
+                  <AddBoxIcon/>Maintanance Company Entry
                 </Button>
               </Link>
               <br />
@@ -338,20 +295,17 @@ const NavbarPage = () => {
               <Link to="/maintananceCompanyList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  Maintanance Company List
+                  <VisibilityIcon/>Maintanance Company List
                 </Button>
               </Link>
               <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="11">
-              <b>
-                <SubjectIcon />
-                Management Company{" "}
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header}  variant="link" eventKey="11">
+              <b><SubjectIcon/>Management Company </b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="11">
@@ -359,7 +313,7 @@ const NavbarPage = () => {
               <Link to="/managementCompany">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  Management Company Entry
+                  <AddBoxIcon/>Management Company Entry
                 </Button>
               </Link>
               <br />
@@ -367,20 +321,17 @@ const NavbarPage = () => {
               <Link to="/managementCompanyList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  Maintanance Company List
+                  <VisibilityIcon/>Maintanance Company List
                 </Button>
               </Link>
               <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Card.Header} variant="link" eventKey="12">
-              <b>
-                <AttachMoneyIcon />
-                Expense{" "}
-              </b>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Card.Header} variant="link" eventKey="12">
+              <b><AttachMoneyIcon/>Expense </b>
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="12">
@@ -388,7 +339,7 @@ const NavbarPage = () => {
               <Link to="/expenseEntryForm">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  Expense Entry
+                  <AddBoxIcon/>Expense Entry
                 </Button>
               </Link>
               <br />
@@ -396,26 +347,44 @@ const NavbarPage = () => {
               <Link to="/expensesList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  Expense List
+                  <VisibilityIcon/> Expense List
                 </Button>
               </Link>
               <br />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="4">
-              <b onClick={() => logout()}>
-                <ExitToAppIcon />
-                Logout
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Button} variant="link" eventKey="4">
+              <b  onClick={() => logout()}>
+                <ExitToAppIcon/>Logout
               </b>
             </Accordion.Toggle>
           </Card.Header>
         </Card>
+<<<<<<< HEAD
         <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="14">
+=======
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Button} variant="link" eventKey="13">
+              <Link to="/brokerPersonDetail">
+                {" "}
+                <b>
+                  <ImportContactsIcon />
+                  Broker Person Detail
+                </b>{" "}
+              </Link>
+            </Accordion.Toggle>
+          </Card.Header>
+        </Card>
+        <Card style={{border:'none',backgroundColor:'#022B39'}}>
+          <Card.Header style={{backgroundColor:'#3B4AFF'}}>
+            <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Button} variant="link" eventKey="14">
+>>>>>>> 9bd371d72ef7f1ffb818439cb4655c7e53cbadd9
               <Link to="/invoiceDetail">
                 {" "}
                 <b>Invoice Detail</b>{" "}

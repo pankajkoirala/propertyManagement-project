@@ -1,44 +1,24 @@
-import React, { useState } from "react";
-import RegexComponent from "../../../shared/regexComponent";
+import React from "react";
+import "./invoice.css";
 import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
-import moment from "moment";
-import PoopUp from "./../../../shared/popup";
 
-const MaintananceTicket = (props) => {
-  const [showPopup, setShowPopUp] = useState(false);
-
+const InvoiceEntry = (props) => {
   let initialvalue = {
-    maintananceTicketIssueDate:
-      moment(props?.maintananceTicket?.maintananceTicketIssueDate).format(
-        "YYYY-MM-DD"
-      ) || "",
-    maintananceTicketDueDate:
-      moment(props?.maintananceTicket?.maintananceTicketDueDate).format(
-        "YYYY-MM-DD"
-      ) || "",
-    MaintanancePropertyID:
-      props?.maintananceTicket?.MaintanancePropertyID?._id || "",
-    MaintananceCompanyId:
-      props?.maintananceTicket?.MaintananceCompanyId?._id || "",
-    managementCompanyId:
-      props?.maintananceTicket?.managementCompanyId?._id || "",
-    MaintananceCompanyDetailInfo:
-      props?.maintananceTicket?.MaintananceCompanyDetailInfo || "",
+    maintananceTicketIssueDate: "",
+    maintananceTicketDueDate: "",
+    MaintanancePropertyID: "",
+    MaintananceCompanyId: "",
+    MaintananceCompanyDetailInfo: "",
   };
   return (
     <div>
-      <div className="PropertyFormEntry mt-5">
+      <div className="PropertyFormEntry">
         <div>
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
-              props?.maintananceTicket
-                ? props.maintananceTicketUpdate(
-                    values,
-                    props?.maintananceTicket?._id
-                  )
-                : props.MaintananceTicketData(values);
+              props.MaintananceTicketData(values);
               console.log(values);
             }}
             // validationSchema={TenantEntryFormValidation}
@@ -53,12 +33,12 @@ const MaintananceTicket = (props) => {
               setFieldValue,
               isSubmitting,
             }) => (
-              <Form className="form-group p-4">
+              <Form className="form-group m-5 p-5">
                 <FormGroup className="">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3 className="form-head">Maintanance Ticket Form </h3>
+                      <h3 className="form-head">Invoice Form </h3>
                     </div>
                   </div>
                   <div>
@@ -108,23 +88,14 @@ const MaintananceTicket = (props) => {
 
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">property id</Label>
-                        <RegexComponent
-                          {...props}
-                          setFieldValue={setFieldValue}
-                          options={props?.Redux_propertyData?.map(
-                            (property) => {
-                              return {
-                                name:
-                                  property.property_type +
-                                  "-" +
-                                  property.referenceNO,
-                                id: property._id,
-                              };
-                            }
-                          )}
-                          name={"MaintanancePropertyID"}
+                        <Input
+                          type="text"
+                          value={values.MaintanancePropertyID}
+                          name="MaintanancePropertyID"
+                          placeholder="Cheque Amount"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                         />
-
                         {touched.MaintanancePropertyID &&
                           errors.MaintanancePropertyID && (
                             <span
@@ -137,24 +108,14 @@ const MaintananceTicket = (props) => {
                       </div>
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">maintanance Company Id</Label>
-                        <RegexComponent
-                          {...props}
-                          setFieldValue={setFieldValue}
-                          options={props?.Redux_maintananceCompanyData?.map(
-                            (maintananceCompany) => {
-                              return {
-                                name:
-                                  maintananceCompany.Company_Name +
-                                  "-" +
-                                  maintananceCompany.Company_ID,
-
-                                id: maintananceCompany._id,
-                              };
-                            }
-                          )}
-                          name={"MaintananceCompanyId"}
+                        <Input
+                          type="text"
+                          value={values.MaintananceCompanyId}
+                          name="MaintananceCompanyId"
+                          placeholder="Cheque Amount"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                         />
-
                         {touched.MaintananceCompanyId &&
                           errors.MaintananceCompanyId && (
                             <span
@@ -162,39 +123,6 @@ const MaintananceTicket = (props) => {
                               style={{ fontSize: 12 }}
                             >
                               {errors.MaintananceCompanyId}
-                            </span>
-                          )}
-                      </div>
-
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">
-                          managementCompanyId Company Id
-                        </Label>
-                        <RegexComponent
-                          {...props}
-                          setFieldValue={setFieldValue}
-                          options={props?.Redux_managementCompanyData?.map(
-                            (managementCompany) => {
-                              return {
-                                name:
-                                  managementCompany.managementCompany_name +
-                                  "-" +
-                                  managementCompany.managementCompany_companyID,
-
-                                id: managementCompany._id,
-                              };
-                            }
-                          )}
-                          name={"managementCompanyId"}
-                        />
-
-                        {touched.managementCompanyId &&
-                          errors.managementCompanyId && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.managementCompanyId}
                             </span>
                           )}
                       </div>
@@ -222,25 +150,12 @@ const MaintananceTicket = (props) => {
 
                     <div className="row">
                       <button
-                        className="btn btn-primary Success col-2 mt-5 ml-3"
-                        type="button"
-                        onClick={() => setShowPopUp(true)}
+                        className="btn btn-primary Success col-2 m-3 mt-5"
+                        type="submit"
+                        onClick={handleSubmit}
                       >
                         Submit
                       </button>
-                      <PoopUp
-                        isOpen={showPopup}
-                        isClose={setShowPopUp}
-                        CRUD_Function={handleSubmit}
-                        buttonName={
-                          props.maintananceTicket ? "Update" : "Create"
-                        }
-                        message={
-                          props.maintananceTicket
-                            ? "are you sure want to update"
-                            : "are you sure want to create"
-                        }
-                      />
                     </div>
                   </div>
                 </FormGroup>
@@ -253,4 +168,4 @@ const MaintananceTicket = (props) => {
   );
 };
 
-export default MaintananceTicket;
+export default InvoiceEntry;
