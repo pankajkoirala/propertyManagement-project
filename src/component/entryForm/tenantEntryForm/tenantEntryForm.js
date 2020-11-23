@@ -28,7 +28,6 @@ const TenantEntry = (props) => {
     country: props.selectedTenantone?.country || "",
     tenant_phoneNo: props.selectedTenantone?.tenant_phoneNo || "",
     tenant_Name: props.selectedTenantone?.tenant_Name || "",
-    company_Name: props.selectedTenantone?.company_Name || "-",
     tenant_email: props.selectedTenantone?.tenant_email || "",
     DateOfBirth_registrationDate:
       moment(props.selectedTenantone?.DateOfBirth_registrationDate).format(
@@ -37,6 +36,7 @@ const TenantEntry = (props) => {
     files_list: [],
     fileName: "",
     file: "",
+    TenentType: props?.selectedTenantone?.TenentType || "",
   };
   return (
     <div className="form-page">
@@ -82,8 +82,34 @@ const TenantEntry = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-md-6">
+                        <Label for="exampleSelect">Tenent Type</Label>
+                        <Input
+                          type="select"
+                          name="TenentType"
+                          id="exampleSelect"
+                          placeholder="Select"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.TenentType}
+                        >
+                          <option value=""> </option>
+                          <option value="Person">Person</option>
+                          <option value="Company">Company</option>
+                        </Input>
+                        {touched.TenentType && errors.TenentType && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.TenentType}
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-4 col-md-6">
                         <Label for="exampleName">
-                          Tenant Name / Authorize Person Name
+                          {values.TenentType === "Company"
+                            ? "Company Name"
+                            : "Tenant Name"}
                         </Label>
                         <Input
                           type="text"
@@ -99,26 +125,6 @@ const TenantEntry = (props) => {
                             style={{ fontSize: 12 }}
                           >
                             {errors.tenant_Name}
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="mt-4 col-md-6">
-                        <Label for="exampleName">Company Name</Label>
-                        <Input
-                          type="text"
-                          value={values.company_Name}
-                          name="company_Name"
-                          placeholder="Company Name"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.company_Name && errors.company_Name && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.company_Name}
                           </span>
                         )}
                       </div>
@@ -229,7 +235,9 @@ const TenantEntry = (props) => {
                     <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">
-                          Date of Birth / Company Registration Date
+                          {values.TenentType === "Company"
+                            ? "Company Registration Date "
+                            : " Date of Birth "}
                         </Label>
                         <Input
                           type="date"
@@ -254,7 +262,9 @@ const TenantEntry = (props) => {
                     <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">
-                          Government Issue Card Number
+                          {values.TenentType === "Company"
+                            ? " Registration Number "
+                            : " Government Issue Card Number"}
                         </Label>
                         <Input
                           type="number"

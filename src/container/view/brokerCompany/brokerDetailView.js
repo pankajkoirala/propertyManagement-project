@@ -39,6 +39,7 @@ const BrokerDetailViewCont = (props) => {
       data.broker_companyRegisterDate
     );
     formData.append("broker_email", data.broker_email);
+    formData.append("brokerType", data.brokerType);
 
     Axios({
       method: "put",

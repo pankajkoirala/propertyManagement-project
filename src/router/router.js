@@ -22,9 +22,7 @@ import EmployeeDetailView from "../container/view/employeeView/emoloyeeViewDetai
 import LeaseDetailView from "../container/view/lease/leaseDetailView";
 import OwnerEntry from "../container/entryForm/ownerEntry/ownerEnty.js";
 import BrokerDetailEntryForm from "../container/entryForm/brokerEntryForm/brokerDetailContainer.js";
-import BrokerPersonDetail from "../container/entryForm/broker_Person/broker_PersonContainer.js";
 import DeveloperDetail from "../container/entryForm/developersCompanyEntryContainer/developerContainer.js";
-import InvoiceDetail from "../container/entryForm/invoiceEntryContainer/invoice.js";
 import MaintainanceCompanyEntryForm from "../container/entryForm/maintainanceCompanyEntryForm/maintainanceCompanyContainer.js";
 import ManagementCompany from "../container/entryForm/managementCompanyEntryForm/managementCompanyContainer.js";
 import AllManagementCompany from "../container/view/managementCompany/managementCompany";
@@ -57,7 +55,7 @@ const RouterPage = () => {
           className="col-2"
           style={
             authorize
-              ? { display: 'block', margin: 0, padding: 0 }
+              ? { display: "block", margin: 0, padding: 0 }
               : { visibility: "hidden" }
           }
         >
@@ -146,21 +144,13 @@ const RouterPage = () => {
               path="/brokerEntryForm"
               component={BrokerDetailEntryForm}
             />
-            <PrivateRouter
-              exact
-              path="/brokerPersonDetail"
-              component={BrokerPersonDetail}
-            />
+
             <PrivateRouter
               exact
               path="/developerDetail"
               component={DeveloperDetail}
             />
-            <PrivateRouter
-              exact
-              path="/invoiceDetail"
-              component={InvoiceDetail}
-            />
+
             <PrivateRouter
               exact
               path="/maintainanceCompanyForm"

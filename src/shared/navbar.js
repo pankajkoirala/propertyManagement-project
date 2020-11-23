@@ -363,6 +363,11 @@ const NavbarPage = () => {
             </Accordion.Toggle>
           </Card.Header>
         </Card>
+<<<<<<< HEAD
+        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
+          <Card.Header>
+            <Accordion.Toggle as={Button} variant="link" eventKey="14">
+=======
         <Card style={{border:'none',backgroundColor:'#022B39'}}>
           <Card.Header style={{backgroundColor:'#3B4AFF'}}>
             <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Button} variant="link" eventKey="13">
@@ -379,6 +384,7 @@ const NavbarPage = () => {
         <Card style={{border:'none',backgroundColor:'#022B39'}}>
           <Card.Header style={{backgroundColor:'#3B4AFF'}}>
             <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Button} variant="link" eventKey="14">
+>>>>>>> 9bd371d72ef7f1ffb818439cb4655c7e53cbadd9
               <Link to="/invoiceDetail">
                 {" "}
                 <b>Invoice Detail</b>{" "}

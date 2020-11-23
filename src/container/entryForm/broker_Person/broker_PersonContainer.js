@@ -5,7 +5,7 @@ import TopNavBar from "../../../shared/topNavBar.js";
 const BrokerPersonContainer = () => {
   return (
     <div>
-      <TopNavBar/>
+      <TopNavBar />
       <BrokerPersonComponent />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import BrokerDetailComponent from "../../../component/entryForm/brokerEntryForm/brokerCompanyEntryForm";
+import BrokerDetailComponent from "../../../component/entryForm/brokerEntryForm/brokerEntryForm";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
@@ -26,6 +26,7 @@ const BrokerDetailContainer = () => {
       data.broker_companyRegisterDate
     );
     formData.append("broker_email", data.broker_email);
+    formData.append("brokerType", data.brokerType);
 
     Axios({
       method: "post",
