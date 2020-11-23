@@ -60,10 +60,10 @@ const LeaseEntry = (props) => {
   }
 
   return (
-    <div className="leasediv">
+    <div className="form-group m-5 p-4">
       <div className="row">
         <div className="col-12 text-center">
-          <h3>Lease Term Detail </h3>
+          <h3 className="form-head">Lease Term Detail </h3>
         </div>
         <br />
       </div>
@@ -92,8 +92,8 @@ const LeaseEntry = (props) => {
         }) => (
           <Form>
             <FormGroup>
-              <div className="row ">
-                <div className="col-12 mt-2 ml-2 mr-2">General Information</div>
+              <div className="row">
+                <div className="col-12 mt-2 ml-2 mr-2 form-head">General Information</div>
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
                   <Input
@@ -115,7 +115,7 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
               </div>
-              <div className="col-md-12">
+              <div className="col-md-12 form-head">
                 <b>Select Property and Tenant</b>
               </div>
               <div className="row ">
@@ -249,7 +249,7 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
               </div>
-              <div className="col-md-12">
+              <div className="col-md-12 form-head">
                 <b>Amount and Schedule of Rent Payment</b>
               </div>
               <div className="row">
@@ -326,7 +326,7 @@ const LeaseEntry = (props) => {
               </div>
 
               <div className="col-md-12">
-                <b>Security Deposit</b>
+                <b className="form-head">Security Deposit</b>
               </div>
               <div className="row">
                 <div className="col-md-4">
@@ -397,6 +397,7 @@ const LeaseEntry = (props) => {
                 </div>
                 <div className="col-md-4 text-left mb-2 mt-4">
                   <button
+                    className="btn btn-secondary btn-sm"
                     disabled={!values.fileName || !values.file}
                     onClick={() => {
                       let filterData = allFile.find(
@@ -493,7 +494,7 @@ const LeaseEntry = (props) => {
               )}
               <div>
                 <button
-                  className="Success col-4 mt-2"
+                  className="btn btn-primary Success col-3 mt-5"
                   type="button"
                   onClick={() => setShowPopUp(true)}
                 >

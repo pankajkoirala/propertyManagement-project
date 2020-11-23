@@ -4,6 +4,7 @@ import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import TopNavBar from "../../../shared/topNavBar";
 
 const BrokerDetailContainer = () => {
   const brokerData = (data, file) => {
@@ -47,6 +48,7 @@ const BrokerDetailContainer = () => {
   };
   return (
     <div>
+      <TopNavBar/>
       <BrokerDetailComponent brokerData={brokerData} />
     </div>
   );

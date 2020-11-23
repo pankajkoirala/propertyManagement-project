@@ -57,11 +57,11 @@ const OwnerEntry = (props) => {
               isSubmitting,
             }) => (
               <Form>
-                <FormGroup className="ownerEntry">
+                <FormGroup className="form-group m-5 p-5">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>owner Entry Form </h3>
+                      <h3 className="form-head">Owner Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -333,6 +333,7 @@ const OwnerEntry = (props) => {
                           }
                         }}
                         type="button"
+                        className="btn btn-secondary btn-sm"
                       >
                         Add
                       </button>
@@ -403,11 +404,11 @@ const OwnerEntry = (props) => {
                     ""
                   )}
                   <button
-                    className="success m-4"
+                    className="btn btn-primary col-sm-2 mt-5"
                     type="button"
                     onClick={() => setShowPopUp(true)}
                   >
-                    submit
+                    Submit
                   </button>
                   <PoopUp
                     isOpen={showPopup}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import LeaseEntryForm from "../../entryForm/lease/lease";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
+import TopNavBar from "../../../shared/topNavBar";
 
 let LeaseDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
@@ -20,54 +21,57 @@ let LeaseDetailViewComponent = (props) => {
   }
 
   return (
-    <div>
-      {showEditForm === false ? (
-        props.selecteOneLease.map((arg, index) => {
-          return (
-            <div key={index} className="property-card">
-              <div className="card-contents">
-                <div className="">
-                  <img
-                    className="Propertyimage"
-                    src={arg.photo}
-                    alt="recently added"
+    <>
+      <TopNavBar/>
+      <div>
+        {showEditForm === false ? (
+          props.selecteOneLease.map((arg, index) => {
+            return (
+              <div key={index} className="property-card">
+                <div className="card-contents">
+                  <div className="">
+                    <img
+                      className="Propertyimage"
+                      src={arg.photo}
+                      alt="recently added"
+                    />
+                  </div>
+                  <div className="property-desc">
+                    <h5>{arg.property_type}</h5>
+                    <p>For: {arg.property_status}</p>
+                    <p>
+                      <i className="fa fa-map-marker"></i> {arg.country},
+                      {arg.city}
+                    </p>
+                    <p>
+                      Rs. <b>{arg.property_price}</b> per Month
+                    </p>
+                  </div>
+                  <button onClick={() => setShowEditForm(!showEditForm)}>
+                    edit
+                  </button>
+                  <button onClick={() => setShowPopUp(true)}>delete</button>
+                  <PoopUp
+                    isOpen={showPopup}
+                    isClose={setShowPopUp}
+                    CRUD_Function={props.LeaseDelete}
+                    id={arg._id}
+                    buttonName={"Delete"}
+                    message={"are you sure want to delete"}
                   />
                 </div>
-                <div className="property-desc">
-                  <h5>{arg.property_type}</h5>
-                  <p>For: {arg.property_status}</p>
-                  <p>
-                    <i className="fa fa-map-marker"></i> {arg.country},
-                    {arg.city}
-                  </p>
-                  <p>
-                    Rs. <b>{arg.property_price}</b> per Month
-                  </p>
-                </div>
-                <button onClick={() => setShowEditForm(!showEditForm)}>
-                  edit
-                </button>
-                <button onClick={() => setShowPopUp(true)}>delete</button>
-                <PoopUp
-                  isOpen={showPopup}
-                  isClose={setShowPopUp}
-                  CRUD_Function={props.LeaseDelete}
-                  id={arg._id}
-                  buttonName={"Delete"}
-                  message={"are you sure want to delete"}
-                />
               </div>
-            </div>
-          );
-        })
-      ) : (
-        <LeaseEntryForm
-          {...props}
-          showHide={showHide}
-          lease={props.selecteOneLease[0]}
-        />
-      )}
-    </div>
+            );
+          })
+        ) : (
+          <LeaseEntryForm
+            {...props}
+            showHide={showHide}
+            lease={props.selecteOneLease[0]}
+          />
+        )}
+      </div>
+    </>
   );
 };
 

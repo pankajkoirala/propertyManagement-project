@@ -41,11 +41,11 @@ const BrokerPerson = (props) => {
               isSubmitting,
             }) => (
               <Form>
-                <FormGroup className="p-5 bg-warning m-2">
+                <FormGroup className="p-4 m-5 form-group">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Broker Person Entry Form </h3>
+                      <h3 className="form-head">Broker Person Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -305,7 +305,7 @@ const BrokerPerson = (props) => {
                     </div>
                   </div>
                   <button
-                    className="success m-4"
+                    className="btn btn-primary col-2 success mt-5"
                     type="submit"
                     onClick={handleSubmit}
                   >

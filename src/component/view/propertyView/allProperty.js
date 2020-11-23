@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchInput from "./../../../shared/filterListData";
+import TopNavBar from '../../../shared/topNavBar';
 
 import {
   Table,
@@ -27,6 +28,8 @@ const PropertyView = (props) => {
   }
 
   return (
+    <>
+    <TopNavBar/>
     <div className=" m-5">
       <div className="d-flex justify-content-between">
         <SearchInput
@@ -114,6 +117,7 @@ const PropertyView = (props) => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

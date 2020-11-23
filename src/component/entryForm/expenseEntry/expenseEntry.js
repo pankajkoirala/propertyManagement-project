@@ -64,12 +64,12 @@ const ExpenseEntry = (props) => {
               setFieldValue,
               isSubmitting,
             }) => (
-              <Form className="d-flex justify-content-center">
+              <Form className="form-group mt-5 p-4">
                 <FormGroup className="">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Expense entry Form </h3>
+                      <h3 className="form-head">Expense entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -199,6 +199,7 @@ const ExpenseEntry = (props) => {
                       </div>
                       <button
                         type="button"
+                        className="btn btn-secondary btn-sm addbtn-expense"
                         disabled={!expenseHeading || !expenseAmount}
                         onClick={() =>
                           addExpense({
@@ -214,11 +215,11 @@ const ExpenseEntry = (props) => {
 
                     <div className="row">
                       <button
-                        className="Success col-4 mt-2"
+                        className="btn btn-primary Success col-2 mt-5 mb-5 ml-3"
                         type="button"
                         onClick={() => setShowPopUp(true)}
                       >
-                        submit
+                        Submit
                       </button>
                       <PoopUp
                         isOpen={showPopup}

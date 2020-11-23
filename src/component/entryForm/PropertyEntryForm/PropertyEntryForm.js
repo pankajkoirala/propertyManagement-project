@@ -54,9 +54,7 @@ const PropertyEntry = (props) => {
     files_list: [],
   };
   return (
-    <div>
-      <div>
-        <div>
+   
           <Formik
             initialValues={initialValue}
             onSubmit={(values) => {
@@ -82,8 +80,8 @@ const PropertyEntry = (props) => {
               isSubmitting,
             }) => (
               <Form className=" ">
-                <FormGroup className=" container">
-                  <h1 className="text-center my-4">
+                <FormGroup className=" form-group m-5 p-5">
+                  <h1 className="form-head text-center my-4">
                     Please Fill Up the Property information
                   </h1>
                   <div className=" d-flex justify-content-center d-flex flex-column m-3">
@@ -381,7 +379,7 @@ const PropertyEntry = (props) => {
                     </div>
                     <div className="">
                       <Label for="exampleName">
-                        <h3>Facilities</h3>
+                        <h3 className="form-head">Facilities</h3>
                       </Label>
                     </div>
 
@@ -536,6 +534,7 @@ const PropertyEntry = (props) => {
                             }
                           }}
                           type="button"
+                          className="btn btn-secondary btn-sm"
                         >
                           Add
                         </button>
@@ -607,7 +606,7 @@ const PropertyEntry = (props) => {
                     )}
                   </div>
 
-                  <button type="button" onClick={() => setShowPopUp(true)}>
+                  <button type="button" className="btn btn-primary col-md-2 ml-3 mt-5" onClick={() => setShowPopUp(true)}>
                     Submit
                   </button>
                   <PoopUp
@@ -625,9 +624,7 @@ const PropertyEntry = (props) => {
               </Form>
             )}
           </Formik>
-        </div>
-      </div>
-    </div>
+
   );
 };
 

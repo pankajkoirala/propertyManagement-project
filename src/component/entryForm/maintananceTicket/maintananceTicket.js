@@ -28,7 +28,7 @@ const MaintananceTicket = (props) => {
   };
   return (
     <div>
-      <div className="PropertyFormEntry">
+      <div className="PropertyFormEntry mt-5">
         <div>
           <Formik
             initialValues={initialvalue}
@@ -53,12 +53,12 @@ const MaintananceTicket = (props) => {
               setFieldValue,
               isSubmitting,
             }) => (
-              <Form className="d-flex justify-content-center">
+              <Form className="form-group p-4">
                 <FormGroup className="">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Maintanance Ticket Form </h3>
+                      <h3 className="form-head">Maintanance Ticket Form </h3>
                     </div>
                   </div>
                   <div>
@@ -222,11 +222,11 @@ const MaintananceTicket = (props) => {
 
                     <div className="row">
                       <button
-                        className="Success col-4 mt-2"
+                        className="btn btn-primary Success col-2 mt-5 ml-3"
                         type="button"
                         onClick={() => setShowPopUp(true)}
                       >
-                        submit
+                        Submit
                       </button>
                       <PoopUp
                         isOpen={showPopup}

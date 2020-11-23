@@ -5,6 +5,7 @@ import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 //import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
 import PoopUp from "./../../../shared/popup";
+import "../styleform/styleform.css"
 
 const TenantEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -38,7 +39,7 @@ const TenantEntry = (props) => {
     file: "",
   };
   return (
-    <div>
+    <div className="form-page">
       <div className="">
         <div>
           <Formik
@@ -69,11 +70,11 @@ const TenantEntry = (props) => {
               isSubmitting,
             }) => (
               <Form>
-                <FormGroup className="">
+                <FormGroup className="form-group m-5 p-5">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Tenant Entry Form </h3>
+                      <h3 className="form-head">Tenant Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -351,13 +352,14 @@ const TenantEntry = (props) => {
                             }
                           }}
                           type="button"
+                          className="btn btn-secondary btn-sm"
                         >
                           Add
                         </button>
                       </div>
                     </div>
                     <button
-                      className="success col-md-4 m-5"
+                      className="btn btn-primary success col-md-2 mt-5"
                       type="button"
                       onClick={() => setShowPopUp(true)}
                     >
@@ -422,6 +424,7 @@ const TenantEntry = (props) => {
                               <td>
                                 <button
                                   type="button"
+                                  className="btn btn-primary"
                                   style={
                                     props?.selectedTenantone
                                       ? { display: "none" }
