@@ -1,15 +1,12 @@
 .bodydisplay {
-  background-color: #ECECEC;
+  background-color: #ececec;
   height: auto;
   width: 100%;
   margin: 0px;
-  padding: 0px;
-  position: sticky;
-  height: 100%;
-  overflow: auto;
+  padding: 10px !important;
 }
 
-.dashboard-top{
+.dashboard-top {
   width: 100%;
   height: 60px;
   display: flex;
@@ -36,19 +33,18 @@
   color: #aaa;
 }
 
-
-.dashboard-top .dashboard-link ul{
+.dashboard-top .dashboard-link ul {
   list-style: none;
   display: flex;
 }
 
-.dashboard-top .dashboard-link ul li a{
+.dashboard-top .dashboard-link ul li a {
   color: #424242;
   padding: 0 20px;
   text-decoration: none;
 }
 
-.bodydisplay h1{
+.bodydisplay h1 {
   padding: 25px 50px;
 }
 

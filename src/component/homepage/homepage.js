@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./homepage.css";
-import topNavBar from '../../shared/topNavBar';
+import topNavBar from "../../shared/topNavBar";
 import { PieChart } from "react-minimal-pie-chart";
-import SearchIcon from '@material-ui/icons/Search';
-
+import SearchIcon from "@material-ui/icons/Search";
 
 //import {Card, Button} from "reactstrap";
 import INCOME from "../../assets/income.PNG";
@@ -59,9 +58,9 @@ const Homepage = (props) => {
 
   return (
     <div className="row">
-      <div className=" bodydisplay">
+      <div className=" col-12 bodydisplay">
         <div className="row">
-          <div className="col-9 bodydisplay">
+          <div className=" bodydisplay">
             {" "}
             <h1>DASHBOARD</h1>
             <div className="row m-3">
