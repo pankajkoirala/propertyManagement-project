@@ -7,12 +7,12 @@ const ModalExample = (props) => {
   let filterByName_Id_Number = (input) => {
     const splittedWord = input.toLowerCase().split("");
 
-    let filterArray = filteringData.filter((arg) =>
+    let filterArray = filteringData?.filter((arg) =>
       splittedWord.every((letter) => {
         return (
-          arg.search1.toString().toLowerCase().includes(letter) ||
-          arg.search2.toString().toLowerCase().includes(letter) ||
-          arg.search3.toString().toLowerCase().includes(letter)
+          arg.search1?.toString()?.toLowerCase()?.includes(letter) ||
+          arg.search2?.toString()?.toLowerCase()?.includes(letter) ||
+          arg.search3?.toString()?.toLowerCase()?.includes(letter)
         );
       })
     );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TopNavBar from "../../../shared/topNavBar";
 import ChequeEntryForm from "../../entryForm/cheque/chequeEntry/chequeEntryForm";
 import PoopUp from "./../../../shared/popup";
-import Invoice from "./../../../container/invoice/invoice";
+import Invoice from "./../../../container/entryForm/invoice/invoice";
 
 let ChequeDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
@@ -52,12 +52,18 @@ let ChequeDetailViewComponent = (props) => {
                         : false
                     }
                     className="danger ml-2"
-                    id="pankaj"
                     onClick={() => setShowPopUp(true)}
                   >
                     Delete
                   </button>
-                  <button onClick={() => setPrintInvoice(!printInvoice)}>
+                  <button
+                    style={
+                      arg.cheque_status !== "Cleared"
+                        ? { visibility: "hidden" }
+                        : { visibility: "visible" }
+                    }
+                    onClick={() => setPrintInvoice(!printInvoice)}
+                  >
                     print
                   </button>
                   <PoopUp

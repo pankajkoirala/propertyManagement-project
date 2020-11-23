@@ -39,12 +39,15 @@ import AllDevelopementCompany from "../container/view/DevelopementCompany/Develo
 import DeveloperCompanyDetailView from "../container/view/DevelopementCompany/DeveloperCompanyDetailView";
 import ExpenseEntry from "../container/entryForm/expenseEntryForm/expenseEntryForm";
 import ExpensesList from "../container/view/expense/expense";
+import InvoiceList from "../container/view/invoice/invoiceList";
+
 import OwnerList from "../container/view/owner/ownerView";
 
 import ExpenseDetailView from "../container/view/expense/expenseDetailView";
 import MaintananceTicketList from "../container/view/maintananceTicket/maintananceTicket";
 import MaintananceTicketDetailView from "../container/view/maintananceTicket/maintananceTicketDetailView";
 import OwnerDetailView from "../container/view/owner/ownerDetailView";
+import InvoiceDetailView from "../container/view/invoice/invoiceDetailView";
 
 const RouterPage = () => {
   let authorize = getLocalStorage("token");
@@ -94,6 +97,7 @@ const RouterPage = () => {
             <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
             <PrivateRouter exact path="/chequeList" component={ChequeView} />
             <PrivateRouter exact path="/ownerList" component={OwnerList} />
+            <PrivateRouter exact path="/invoiceList" component={InvoiceList} />
 
             <PrivateRouter
               exact
@@ -170,6 +174,11 @@ const RouterPage = () => {
               exact
               path="/ownerDetail/:id"
               component={OwnerDetailView}
+            />
+            <PrivateRouter
+              exact
+              path="/invoice/:id"
+              component={InvoiceDetailView}
             />
 
             <PrivateRouter

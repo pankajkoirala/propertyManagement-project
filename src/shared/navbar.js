@@ -510,7 +510,7 @@ const NavbarPage = () => {
               variant="link"
               eventKey="14"
             >
-              <Link to="/invoiceDetail">
+              <Link to="/invoiceList">
                 {" "}
                 <b>Invoice Detail</b>{" "}
               </Link>
