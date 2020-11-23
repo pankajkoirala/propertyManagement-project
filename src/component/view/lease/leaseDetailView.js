@@ -15,9 +15,7 @@ let LeaseDetailViewComponent = (props) => {
   if (props?.selecteOneLease?.length > 0) {
     let commerceDate = moment(props?.selecteOneLease[0]?.commenceDate);
     let expireDate = moment(props?.selecteOneLease[0]?.expirationDate);
-
     let difference = expireDate.diff(commerceDate, "days"); // resul
-    console.log(difference);
   }
 
   return (

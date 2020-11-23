@@ -34,7 +34,10 @@ const NavbarPage = () => {
   return (
     <div className="menu">
       <div className="branding-section">
-        <h4><EmojiTransportationIcon fontSize="large"/>&nbsp;Graphine INC.</h4>
+        <h4>
+          <EmojiTransportationIcon fontSize="large" />
+          &nbsp;Graphine INC.
+        </h4>
       </div>
       <div className="user-avatar">
         <Avatar alt="user-avatar" variant="rounded" style={{height:'90px',width:'150px'}}>
@@ -365,7 +368,10 @@ const NavbarPage = () => {
             <Accordion.Toggle style={{border:'none',backgroundColor:'#3B4AFF'}} as={Button} variant="link" eventKey="13">
               <Link to="/brokerPersonDetail">
                 {" "}
-                <b><ImportContactsIcon/>Broker Person Detail</b>{" "}
+                <b>
+                  <ImportContactsIcon />
+                  Broker Person Detail
+                </b>{" "}
               </Link>
             </Accordion.Toggle>
           </Card.Header>
