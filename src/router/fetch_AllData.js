@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 let FetchData = (props) => {
   useEffect(() => {
+    Invoice();
     Owner();
     BrokerCompanyData();
     EmployeeData();
@@ -236,6 +237,25 @@ let FetchData = (props) => {
     })
       .then((res) => {
         props.redux_Add_owner(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  let Invoice = () => {
+    Axios({
+      method: "get",
+      url: base_URL + "/api/invoice",
+      config: {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    })
+      .then((res) => {
+        props.redux_Add_invoice(res.data);
       })
       .catch((err) => {
         console.log(err);
