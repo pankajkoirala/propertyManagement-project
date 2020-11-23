@@ -1,5 +1,6 @@
 .entryForm {
-  background-color: rgb(188, 195, 207);
+  /* background-color: rgb(188, 195, 207); */
+  background-color: red;  
   padding: 20px;
   border-radius: 10px;
   height: 100%;

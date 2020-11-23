@@ -1,0 +1,25 @@
+.form-head{
+    color: #3B4AFF;
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+
+/* Cheques button fix */
+
+.cheque-btn{
+    margin-top: 40px;
+    margin-left: 20px;
+    height: 40px;
+}
+
+/* Expense Add button fix */
+.addbtn-expense{
+    margin-top: 60px;
+    margin-left: 20px;
+    height: 30px;
+}
+
+.form-group{
+    background: #ffffff !important;
+    border-radius: 25px;
+}

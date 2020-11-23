@@ -76,11 +76,11 @@ const ManagementCompanyComponent = (props) => {
               isSubmitting,
             }) => (
               <Form>
-                <FormGroup className="p-5 bg-light m-2">
+                <FormGroup className="form-group p-5 m-4">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Management Company Entry Form </h3>
+                      <h3 className="form-head">Management Company Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -333,6 +333,7 @@ const ManagementCompanyComponent = (props) => {
                           }
                         }}
                         type="button"
+                        className="btn btn-secondary btn-sm"
                       >
                         Add
                       </button>
@@ -403,7 +404,7 @@ const ManagementCompanyComponent = (props) => {
                     ""
                   )}
                   <button
-                    className="success m-4"
+                    className="btn btn-primary col-2 success mt-5"
                     type="button"
                     onClick={() => setShowPopUp(true)}
                   >

@@ -61,12 +61,12 @@ const BrokerComponent = (props) => {
               setFieldValue,
               isSubmitting,
             }) => (
-              <Form>
-                <FormGroup className="p-5 bg-warning m-2">
+              <Form >
+                <FormGroup className="form-group p-4  m-2">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Broker Company Entry Form </h3>
+                      <h3 className="form-head">Broker Company Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -290,6 +290,7 @@ const BrokerComponent = (props) => {
                             }
                           }}
                           type="button"
+                          className="btn btn-secondary"
                         >
                           Add
                         </button>
@@ -361,7 +362,7 @@ const BrokerComponent = (props) => {
                     )}
                   </div>
                   <button
-                    className="success m-4"
+                    className="btn btn-primary col-md-2 success mt-5"
                     type="button"
                     onClick={() => setShowPopUp(true)}
                   >

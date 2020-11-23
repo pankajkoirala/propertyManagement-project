@@ -73,11 +73,11 @@ const MaintainanceCompanyComponent = (props) => {
               isSubmitting,
             }) => (
               <Form>
-                <FormGroup className="p-5 bg-warning m-2">
+                <FormGroup className="p-5 form-group m-5">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Maintainance Compant Entry Form </h3>
+                      <h3 className="form-head">Maintainance Company Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -323,6 +323,7 @@ const MaintainanceCompanyComponent = (props) => {
                           }
                         }}
                         type="button"
+                        className="btn btn-secondary btn-sm"
                       >
                         Add
                       </button>
@@ -393,7 +394,7 @@ const MaintainanceCompanyComponent = (props) => {
                     ""
                   )}
                   <button
-                    className="success m-4"
+                    className="btn btn-primary col-2 success mt-5"
                     type="button"
                     onClick={() => setShowPopUp(true)}
                   >

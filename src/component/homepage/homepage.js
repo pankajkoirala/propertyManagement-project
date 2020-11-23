@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./homepage.css";
+import topNavBar from '../../shared/topNavBar';
 import { PieChart } from "react-minimal-pie-chart";
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -58,18 +59,6 @@ const Homepage = (props) => {
 
   return (
     <div className="row">
-      <div className="dashboard-top">
-      <div className="form-group has-search">
-        <span className="form-control-feedback"><SearchIcon/></span>
-        <input type="text" className="form-control" placeholder="Search"/>
-      </div>
-        <div className="dashboard-link">
-          <ul>
-            <li><a href='#'>Profile</a></li>
-            <li><a href='#'>Logout</a></li>
-          </ul>
-        </div>
-      </div>
       <div className=" bodydisplay">
         <div className="row">
           <div className="col-9 bodydisplay">

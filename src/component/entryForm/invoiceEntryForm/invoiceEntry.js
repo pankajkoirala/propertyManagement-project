@@ -33,12 +33,12 @@ const InvoiceEntry = (props) => {
               setFieldValue,
               isSubmitting,
             }) => (
-              <Form className="d-flex justify-content-center">
+              <Form className="form-group m-5 p-5">
                 <FormGroup className="">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>invoice Form </h3>
+                      <h3 className="form-head">Invoice Form </h3>
                     </div>
                   </div>
                   <div>
@@ -150,11 +150,11 @@ const InvoiceEntry = (props) => {
 
                     <div className="row">
                       <button
-                        className="Success col-4 mt-2"
+                        className="btn btn-primary Success col-2 m-3 mt-5"
                         type="submit"
                         onClick={handleSubmit}
                       >
-                        submit
+                        Submit
                       </button>
                     </div>
                   </div>

@@ -74,11 +74,11 @@ const DeveloperCompanyComponent = (props) => {
               isSubmitting,
             }) => (
               <Form>
-                <FormGroup className="p-5 bg-info m-2">
+                <FormGroup className="p-3 m-5 form-group">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Developer Entry Form </h3>
+                      <h3 className="form-head">Developer Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -399,7 +399,7 @@ const DeveloperCompanyComponent = (props) => {
                     )}
                   </div>
                   <button
-                    className="success m-4"
+                    className="btn btn-primary col-2 success mt-5"
                     type="button"
                     onClick={() => setShowPopUp(true)}
                   >

@@ -56,12 +56,12 @@ const ChequeEntry = (props) => {
               setFieldValue,
               isSubmitting,
             }) => (
-              <Form className="d-flex justify-content-center">
+              <Form className="form-group m-4 p-5">
                 <FormGroup className="">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Cheque Entry Form </h3>
+                      <h3 className="form-head">Cheque Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -274,7 +274,7 @@ const ChequeEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-md-4">
                         <Label for="exampleSelect">lease number</Label>
                         <RegexComponent
                           {...props}
@@ -408,7 +408,7 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <button
-                        className="Success col-4 mt-2"
+                        className="btn btn-primary col-md-2 cheque-btn"
                         type="button"
                         onClick={() => setShowPopUp(true)}
                       >
