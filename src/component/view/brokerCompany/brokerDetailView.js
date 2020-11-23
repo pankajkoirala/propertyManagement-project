@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import BrokerCompanyEntryForm from "../../entryForm/brokerEntryForm/brokerEntryForm";
-=======
 import TopNavBar from "../../../shared/topNavBar";
-import BrokerCompanyEntryForm from "../../entryForm/brokerEntryForm/brokerCompanyEntryForm";
->>>>>>> 9bd371d72ef7f1ffb818439cb4655c7e53cbadd9
+import BrokerCompanyEntryForm from "../../entryForm/brokerEntryForm/brokerEntryForm";
 import PoopUp from "./../../../shared/popup";
 
 let BrokerCompanyDetailViewComponent = (props) => {
@@ -17,7 +13,7 @@ let BrokerCompanyDetailViewComponent = (props) => {
   };
   return (
     <>
-      <TopNavBar/>
+      <TopNavBar />
       <div>
         {showEditForm === false ? (
           props.selectedBrokerCompany.map((arg, index) => {
