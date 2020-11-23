@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BrokerCompanyEntryForm from "../../entryForm/brokerEntryForm/brokerCompanyEntryForm";
+import BrokerCompanyEntryForm from "../../entryForm/brokerEntryForm/brokerEntryForm";
 import PoopUp from "./../../../shared/popup";
 
 let BrokerCompanyDetailViewComponent = (props) => {

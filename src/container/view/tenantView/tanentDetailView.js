@@ -31,10 +31,9 @@ const TanentDetailViewCont = (props) => {
     formData.append("city", data.city);
     formData.append("country", data.country);
     formData.append("tenant_Name", data.tenant_Name);
-    formData.append("company_Name", data.company_Name);
+    formData.append("TenentType", data.TenentType);
     formData.append("tenant_phoneNo", data.tenant_phoneNo);
     formData.append("tenant_email", data.tenant_email);
-
     formData.append("tenant_GovIdNo", data.tenant_GovIdNo);
     formData.append(
       "DateOfBirth_registrationDate",

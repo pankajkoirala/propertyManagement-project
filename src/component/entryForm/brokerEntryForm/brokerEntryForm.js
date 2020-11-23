@@ -4,7 +4,7 @@ import moment from "moment";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 //import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
-import PoopUp from "./../../../shared/popup";
+import PoopUp from "../../../shared/popup";
 
 const BrokerComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -29,6 +29,7 @@ const BrokerComponent = (props) => {
     fileName: "",
     file: "",
     files_list: [],
+    brokerType: props?.BrokerCompany?.brokerType || "",
   };
 
   let photoDelete = (name) => {
@@ -66,7 +67,7 @@ const BrokerComponent = (props) => {
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Broker Company Entry Form </h3>
+                      <h3>Broker Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -74,7 +75,35 @@ const BrokerComponent = (props) => {
 
                     <div className="row">
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Company Name</Label>
+                        <Label for="exampleSelect">Broker Type</Label>
+                        <Input
+                          type="select"
+                          name="brokerType"
+                          id="exampleSelect"
+                          placeholder="Select"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.brokerType}
+                        >
+                          <option value=""> </option>
+                          <option value="Person">Person</option>
+                          <option value="Company">Company</option>
+                        </Input>
+                        {touched.brokerType && errors.brokerType && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.brokerType}
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleName">
+                          {values.brokerType === "Company"
+                            ? "Company Name"
+                            : "Person Name"}
+                        </Label>
                         <Input
                           type="text"
                           value={values.broker_companyName}
@@ -95,7 +124,11 @@ const BrokerComponent = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Registeration Date</Label>
+                        <Label for="exampleName">
+                          {values.brokerType === "Company"
+                            ? "Company Registeration Date "
+                            : "Date of Birth"}
+                        </Label>
                         <Input
                           type="date"
                           value={values.broker_companyRegisterDate}
@@ -111,26 +144,6 @@ const BrokerComponent = (props) => {
                               style={{ fontSize: 12 }}
                             >
                               {errors.broker_companyRegisterDate}
-                            </span>
-                          )}
-                      </div>
-                      <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Registration Number</Label>
-                        <Input
-                          type="text"
-                          value={values.broker_RegistrationNumber}
-                          name="broker_RegistrationNumber"
-                          placeholder="Registration Number"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.broker_RegistrationNumber &&
-                          errors.broker_RegistrationNumber && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.broker_RegistrationNumber}
                             </span>
                           )}
                       </div>
@@ -198,7 +211,7 @@ const BrokerComponent = (props) => {
                     </div>
 
                     <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <Label for="exampleName">Email</Label>
                         <Input
                           type="email"
@@ -218,7 +231,7 @@ const BrokerComponent = (props) => {
                         )}
                       </div>
 
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <Label for="exampleName">Contact Number</Label>
                         <Input
                           type="number"
@@ -236,6 +249,31 @@ const BrokerComponent = (props) => {
                             {errors.broker_phoneNo}
                           </span>
                         )}
+                      </div>
+                      <div className=" col-md-4">
+                        <Label for="exampleName">
+                          {" "}
+                          {values.brokerType === "Company"
+                            ? "Company Registration Number "
+                            : "Mobile No."}
+                        </Label>
+                        <Input
+                          type="text"
+                          value={values.broker_RegistrationNumber}
+                          name="broker_RegistrationNumber"
+                          placeholder="Registration Number"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.broker_RegistrationNumber &&
+                          errors.broker_RegistrationNumber && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.broker_RegistrationNumber}
+                            </span>
+                          )}
                       </div>
                     </div>
                     <div className="row">

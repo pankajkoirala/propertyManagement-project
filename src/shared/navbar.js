@@ -415,19 +415,6 @@ const NavbarPage = () => {
         </Card>
         <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="13">
-              <Link to="/brokerPersonDetail">
-                {" "}
-                <b>
-                  <ImportContactsIcon />
-                  Broker Person Detail
-                </b>{" "}
-              </Link>
-            </Accordion.Toggle>
-          </Card.Header>
-        </Card>
-        <Card style={{ backgroundColor: "#3B4AFF", border: "none" }}>
-          <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="14">
               <Link to="/invoiceDetail">
                 {" "}

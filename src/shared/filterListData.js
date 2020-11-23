@@ -5,7 +5,7 @@ const ModalExample = (props) => {
   const { filteringData, setFilteredData, allData } = props;
 
   let filterByName_Id_Number = (input) => {
-    const splittedWord = input.split("");
+    const splittedWord = input.toLowerCase().split("");
 
     let filterArray = filteringData.filter((arg) =>
       splittedWord.every((letter) => {
