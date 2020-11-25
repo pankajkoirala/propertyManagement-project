@@ -4,7 +4,6 @@ import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction.js";
-import TopNavBar from "../../../shared/topNavBar.js";
 
 const EmployeeEntry = () => {
   const EmployeeData = (data, file) => {
@@ -22,6 +21,7 @@ const EmployeeEntry = () => {
     formData.append("employee_lastName", data.employee_lastName);
     formData.append("employee_email", data.employee_email);
     formData.append("employee_post", data.employee_post);
+    formData.append("employee_gender", data.employee_gender);
 
     Axios({
       method: "post",
@@ -44,7 +44,6 @@ const EmployeeEntry = () => {
   };
   return (
     <div>
-      <TopNavBar/>
       <EmployeeEntryFormComponent EmployeeData={EmployeeData} />
     </div>
   );

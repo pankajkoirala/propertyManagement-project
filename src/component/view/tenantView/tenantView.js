@@ -3,7 +3,6 @@ import "./tenantView.css";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SearchInput from "./../../../shared/filterListData";
-import TopNavBar from "../../../shared/topNavBar";
 
 const TenantView = (props) => {
   let [tenents, setTenents] = useState([]);
@@ -17,7 +16,6 @@ const TenantView = (props) => {
 
   return (
     <>
-      <TopNavBar/>
       <div className="tenantview">
         <h1 className="text-center">Tenant View</h1>
         <SearchInput

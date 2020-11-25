@@ -3,7 +3,6 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 import SearchInput from "./../../../shared/filterListData";
-import TopNavBar from "../../../shared/topNavBar";
 
 const ExpenseDisplay = (props) => {
   let [expenses, SetExpenses] = useState([]);
@@ -16,7 +15,6 @@ const ExpenseDisplay = (props) => {
   }
   return (
     <>
-      <TopNavBar/>
       <div>
         <h1>lease list</h1>
         <SearchInput

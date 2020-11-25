@@ -5,7 +5,6 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
-import TopNavBar from "../../../shared/topNavBar";
 
 const MaintananceTicketContainer = (props) => {
   const MaintananceTicketData = (data) => {
@@ -31,7 +30,6 @@ const MaintananceTicketContainer = (props) => {
 
   return (
     <div>
-      <TopNavBar/>
       <MaintananceTicketComponent
         MaintananceTicketData={MaintananceTicketData}
         Redux_propertyData={props.Redux_propertyData.property}

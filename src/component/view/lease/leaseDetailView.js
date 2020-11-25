@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import LeaseEntryForm from "../../entryForm/lease/lease";
 import PoopUp from "./../../../shared/popup";
-import TopNavBar from "../../../shared/topNavBar";
 import { Table } from "reactstrap";
 import moment from "moment";
 
@@ -15,7 +14,6 @@ let LeaseDetailViewComponent = (props) => {
 
   return (
     <>
-      <TopNavBar />
       <div>
         {showEditForm === false ? (
           props.selecteOneLease.map((arg, index) => {

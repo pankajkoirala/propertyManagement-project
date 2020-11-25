@@ -201,7 +201,7 @@ const MaintananceTicket = (props) => {
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">detail message</Label>
                         <Input
-                          type="text"
+                          type="textarea"
                           value={values.MaintananceCompanyDetailInfo}
                           name="MaintananceCompanyDetailInfo"
                           placeholder="Bank name"

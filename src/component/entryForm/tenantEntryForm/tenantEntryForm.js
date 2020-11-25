@@ -5,7 +5,7 @@ import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 //import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
 import PoopUp from "./../../../shared/popup";
-import "../styleform/styleform.css"
+import "../styleform/styleform.css";
 
 const TenantEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -257,9 +257,6 @@ const TenantEntry = (props) => {
                             </span>
                           )}
                       </div>
-                    </div>
-
-                    <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">
                           {values.TenentType === "Company"
@@ -283,7 +280,9 @@ const TenantEntry = (props) => {
                           </span>
                         )}
                       </div>
+                    </div>
 
+                    <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">Driving Licence Number</Label>
                         <Input

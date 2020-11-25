@@ -14,6 +14,8 @@ const TenantEntry = (props) => {
   );
 
   let initialValue = {
+    employee_gender: props?.selectedEmployee?.employee_gender || "",
+
     employee_area: props?.selectedEmployee?.employee_area || "",
     employee_city: props?.selectedEmployee?.employee_city || "",
     employee_country: props?.selectedEmployee?.employee_country || "",
@@ -200,7 +202,32 @@ const TenantEntry = (props) => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-md-4">
+                        <Label for="exampleName">Gender</Label>
+                        <Input
+                          type="select"
+                          value={values.employee_gender}
+                          name="employee_gender"
+                          placeholder="Enter gender"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        >
+                          <option value="">select one</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </Input>
+
+                        {touched.employee_gender && errors.employee_gender && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.employee_gender}
+                          </span>
+                        )}
+                      </div>
+                      <div className="col-md-4">
                         <Label for="exampleSelect">employee_DOB</Label>
                         <Input
                           type="date"
@@ -219,9 +246,7 @@ const TenantEntry = (props) => {
                           </span>
                         )}
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <Label for="exampleName">Email</Label>
                         <Input
                           type="email"
@@ -240,7 +265,8 @@ const TenantEntry = (props) => {
                           </span>
                         )}
                       </div>
-
+                    </div>
+                    <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">Contact Number</Label>
                         <Input
@@ -260,8 +286,6 @@ const TenantEntry = (props) => {
                           </span>
                         )}
                       </div>
-                    </div>
-                    <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">post</Label>
                         <Input

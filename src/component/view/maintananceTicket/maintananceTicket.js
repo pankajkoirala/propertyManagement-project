@@ -3,12 +3,10 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import TopNavBar from "../../../shared/topNavBar";
 
 const MaintananceTicketView = (props) => {
   return (
     <>
-      <TopNavBar/>
       <div className="tenantview">
         <h1 className="text-center">Maintanance Ticket List</h1>
         <Form inline>
@@ -43,7 +41,9 @@ const MaintananceTicketView = (props) => {
                   <td>{index + 1}</td>
                   <td>{arg?.maintananceTicket_ID}</td>
                   <td>
-                    {moment(arg?.maintananceTicketIssueDate).format("YYYY-MM-DD")}
+                    {moment(arg?.maintananceTicketIssueDate).format(
+                      "YYYY-MM-DD"
+                    )}
                   </td>
                   <td>
                     {moment(arg?.maintananceTicketDueDate).format("YYYY-MM-DD")}

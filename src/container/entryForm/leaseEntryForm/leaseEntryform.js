@@ -5,7 +5,6 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
-import TopNavBar from "../../../shared/topNavBar";
 
 const LeaseEntry = (props) => {
   const leaseData = (data, file) => {
@@ -59,7 +58,6 @@ const LeaseEntry = (props) => {
 
   return (
     <div>
-      <TopNavBar/>
       <LeaseEntryFormComponent
         leaseData={leaseData}
         unReserveProperty={unReserveProperty}

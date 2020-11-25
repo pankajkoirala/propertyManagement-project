@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 import SearchInput from "./../../../shared/filterListData";
-import TopNavBar from "./../../../shared/topNavBar";
 
 let InvoiceListComponent = (props) => {
   let [invoice, SetInvoice] = useState([]);
@@ -15,7 +14,6 @@ let InvoiceListComponent = (props) => {
   }
   return (
     <>
-      <TopNavBar />
       <div className="tenantview">
         <h1 className="text-center">Invoice list</h1>
         <SearchInput

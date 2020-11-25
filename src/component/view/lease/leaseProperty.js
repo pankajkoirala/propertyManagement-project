@@ -3,12 +3,10 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import TopNavBar from "../../../shared/topNavBar";
 
 const LeaseDisplay = (props) => {
   return (
     <>
-      <TopNavBar/>
       <div>
         <h1>lease list</h1>
         <Form inline>

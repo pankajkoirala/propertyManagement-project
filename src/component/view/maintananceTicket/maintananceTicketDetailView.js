@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MaintananceTicketEntryForm from "../../entryForm/maintananceTicket/maintananceTicket";
 import PoopUp from "./../../../shared/popup";
-import TopNavBar from "../../../shared/topNavBar";
+import { Table } from "reactstrap";
 import moment from "moment";
 
 let MaintananceTicketDetailViewComponent = (props) => {
@@ -13,7 +13,6 @@ let MaintananceTicketDetailViewComponent = (props) => {
   };
   return (
     <>
-      <TopNavBar />
       <div>
         {showEditForm === false ? (
           props.selectedMaintananceTicket.map((arg, index) => {
@@ -37,66 +36,66 @@ let MaintananceTicketDetailViewComponent = (props) => {
                     </h5>
                     <div className="d-flex justify-content-between mr-4">
                       <div style={{ left: "0px" }}>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           Maintanance Company ID
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           Company Name
                         </div>
-                        <div className="font-weight-bold my-1">Area</div>
-                        <div className="font-weight-bold my-1">City</div>
-                        <div className="font-weight-bold my-1">Country</div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">Area</div>
+                        <div className="font-weight-bold my-2">City</div>
+                        <div className="font-weight-bold my-2">Country</div>
+                        <div className="font-weight-bold my-2">
                           Registration Number
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           Registration Date
                         </div>
-                        <div className="font-weight-bold my-1">Email </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">Email </div>
+                        <div className="font-weight-bold my-2">
                           Phone Number
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           Mobile Number
                         </div>
                       </div>
                       <div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.MaintananceCompanyId?.Company_ID}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.MaintananceCompanyId?.Company_Name}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.MaintananceCompanyId?.Company_area}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.MaintananceCompanyId?.Company_city}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.MaintananceCompanyId?.Company_country}
                         </div>
 
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {
                             arg?.MaintananceCompanyId
                               ?.Company_Registration_Number
                           }
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {moment(
                             arg?.MaintananceCompanyId
                               ?.Company_Registeration_Date
                           ).format("YYYY-MM-DD")}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.MaintananceCompanyId?.Company_email}
                         </div>
 
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.MaintananceCompanyId?.Company_phoneNo}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.MaintananceCompanyId?.Company_Mobile_Number}
                         </div>
                       </div>
@@ -122,69 +121,69 @@ let MaintananceTicketDetailViewComponent = (props) => {
                     </h5>
                     <div className="d-flex justify-content-between mr-4">
                       <div style={{ left: "0px" }}>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           Management Company ID
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           Company Name
                         </div>
-                        <div className="font-weight-bold my-1">Area</div>
-                        <div className="font-weight-bold my-1">City</div>
-                        <div className="font-weight-bold my-1">Country</div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">Area</div>
+                        <div className="font-weight-bold my-2">City</div>
+                        <div className="font-weight-bold my-2">Country</div>
+                        <div className="font-weight-bold my-2">
                           Registration Number
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           Registration Date
                         </div>
-                        <div className="font-weight-bold my-1">Email </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">Email </div>
+                        <div className="font-weight-bold my-2">
                           Phone Number
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           Mobile Number
                         </div>
                       </div>
                       <div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {
                             arg?.managementCompanyId
                               ?.managementCompany_companyID
                           }
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.managementCompanyId?.managementCompany_name}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.managementCompanyId?.managementCompany_area}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.managementCompanyId?.managementCompany_city}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.managementCompanyId?.managementCompany_country}
                         </div>
 
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {
                             arg?.managementCompanyId
                               ?.managementCompany_Registeration_Number
                           }
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {moment(
                             arg?.managementCompanyId
                               ?.managementCompany_Registeration_Date
                           ).format("YYYY-MM-DD")}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.managementCompanyId?.managementCompany_email}
                         </div>
 
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.managementCompanyId?.managementCompany_phoneNo}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {
                             arg?.managementCompanyId
                               ?.managementCompany_MobileNumber
@@ -201,40 +200,56 @@ let MaintananceTicketDetailViewComponent = (props) => {
                     </h5>
                     <div className="d-flex justify-content-between mr-4">
                       <div style={{ left: "0px" }}>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           Maintanance Ticket ID
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           Maintanance Ticket Issue Date
                         </div>
-                        <div className="font-weight-bold my-1">
-                          {" "}
+                        <div className="font-weight-bold my-2">
                           Maintanance Ticket Due Date
                         </div>
-                        <div className="font-weight-bold my-1">
-                          {" "}
-                          Maintanance Information
+                        <div className="font-weight-bold my-2">
+                          Property To Be Maintained
                         </div>
                       </div>
                       <div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {arg?.maintananceTicket_ID}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {moment(arg?.maintananceTicketIssueDate).format(
                             "YYYY-MM-DD"
                           )}
                         </div>
-                        <div className="font-weight-bold my-1">
+                        <div className="font-weight-bold my-2">
                           {moment(arg?.maintananceTicketDueDate).format(
                             "YYYY-MM-DD"
                           )}
                         </div>
-                        <div className="font-weight-bold my-1">
-                          {arg?.MaintananceCompanyDetailInfo}
+                        <div className="font-weight-bold my-2">
+                          {arg?.MaintanancePropertyID?.property_type +
+                            "," +
+                            arg?.MaintanancePropertyID?.referenceNO}
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div className="col-6">
+                    <Table striped>
+                      <thead>
+                        <tr>
+                          <th> Maintanance Information</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="font-weight-bold">
+                            {arg?.MaintananceCompanyDetailInfo}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </Table>
                   </div>
                 </div>
                 <button onClick={() => setShowEditForm(!showEditForm)}>

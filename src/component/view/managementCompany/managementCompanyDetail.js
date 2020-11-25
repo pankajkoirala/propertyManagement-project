@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TopNavBar from "../../../shared/topNavBar";
 import ManagementCompanyEntryForm from "../../entryForm/managementCompanyEntryForm/managementCompanyEntryForm";
 import PoopUp from "./../../../shared/popup";
 
@@ -14,7 +13,6 @@ let ManagementCompanyDetailViewComponent = (props) => {
   };
   return (
     <>
-      <TopNavBar/>
       <div>
         {showEditForm === false ? (
           props.selectedManagementCompany.map((arg, index) => {
