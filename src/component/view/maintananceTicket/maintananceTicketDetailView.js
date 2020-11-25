@@ -19,7 +19,7 @@ let MaintananceTicketDetailViewComponent = (props) => {
           props.selectedMaintananceTicket.map((arg, index) => {
             return (
               <div key={index} className="property-card">
-                <div className="row">
+                <div className="row my-4">
                   <div className="col-6">
                     <img
                       style={{
@@ -103,16 +103,14 @@ let MaintananceTicketDetailViewComponent = (props) => {
                     </div>
                   </div>
                 </div>
-                <h5 className="text-center mb-4 mt-4">
-                  Management Company Information
-                </h5>
-                <div className="row">
+
+                <div className="row my-2">
                   <div className="col-6">
                     <img
                       style={{
                         height: "400px",
                         width: "100%",
-                        borderRadius: "20px",
+                        borderRadius: "20px 20px 0px 0px",
                       }}
                       src={arg?.managementCompanyId?.files_list[0]?.file}
                       alt="recently added"
@@ -191,6 +189,49 @@ let MaintananceTicketDetailViewComponent = (props) => {
                             arg?.managementCompanyId
                               ?.managementCompany_MobileNumber
                           }
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row my-4">
+                  <div className="col-6">
+                    <h5 className="text-center mb-4">
+                      Maintanance Ticket Information
+                    </h5>
+                    <div className="d-flex justify-content-between mr-4">
+                      <div style={{ left: "0px" }}>
+                        <div className="font-weight-bold my-1">
+                          Maintanance Ticket ID
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          Maintanance Ticket Issue Date
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {" "}
+                          Maintanance Ticket Due Date
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {" "}
+                          Maintanance Information
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-weight-bold my-1">
+                          {arg?.maintananceTicket_ID}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {moment(arg?.maintananceTicketIssueDate).format(
+                            "YYYY-MM-DD"
+                          )}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {moment(arg?.maintananceTicketDueDate).format(
+                            "YYYY-MM-DD"
+                          )}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg?.MaintananceCompanyDetailInfo}
                         </div>
                       </div>
                     </div>
