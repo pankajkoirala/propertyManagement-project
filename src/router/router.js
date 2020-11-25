@@ -40,14 +40,14 @@ import DeveloperCompanyDetailView from "../container/view/DevelopementCompany/De
 import ExpenseEntry from "../container/entryForm/expenseEntryForm/expenseEntryForm";
 import ExpensesList from "../container/view/expense/expense";
 import InvoiceList from "../container/view/invoice/invoiceList";
-
 import OwnerList from "../container/view/owner/ownerView";
-
 import ExpenseDetailView from "../container/view/expense/expenseDetailView";
 import MaintananceTicketList from "../container/view/maintananceTicket/maintananceTicket";
 import MaintananceTicketDetailView from "../container/view/maintananceTicket/maintananceTicketDetailView";
 import OwnerDetailView from "../container/view/owner/ownerDetailView";
 import InvoiceDetailView from "../container/view/invoice/invoiceDetailView";
+
+import TopNavBar from "./../shared/topNavBar";
 
 const RouterPage = () => {
   let authorize = getLocalStorage("token");
@@ -68,6 +68,8 @@ const RouterPage = () => {
           className="col-10"
           style={{ right: "0", top: "0", position: "absolute" }}
         >
+          <TopNavBar />
+
           <Switch>
             <PrivateRouter exact path="/propertyList" component={AllProperty} />
             <PrivateRouter

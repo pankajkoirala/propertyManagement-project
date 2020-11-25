@@ -37,6 +37,7 @@ const TanentDetailViewCont = (props) => {
     formData.append("employee_lastName", data.employee_lastName);
     formData.append("employee_email", data.employee_email);
     formData.append("employee_post", data.employee_post);
+    formData.append("employee_gender", data.employee_gender);
 
     Axios({
       method: "put",

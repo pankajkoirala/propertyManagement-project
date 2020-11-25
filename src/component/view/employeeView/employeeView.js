@@ -4,7 +4,6 @@ import { Table } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import SearchInput from "./../../../shared/filterListData";
-import TopNavBar from "../../../shared/topNavBar";
 
 const EmployeeView = (props) => {
   let [employees, SetEmployees] = useState([]);
@@ -17,7 +16,6 @@ const EmployeeView = (props) => {
   }
   return (
     <>
-      <TopNavBar/>
       <div className="tenantview">
         <h1 className="text-center">Employee list</h1>
         <SearchInput

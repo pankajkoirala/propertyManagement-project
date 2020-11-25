@@ -4,7 +4,6 @@ import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
-import TopNavBar from "../../../shared/topNavBar";
 
 const PropertyEntry = () => {
   const propertySend = (data, file) => {
@@ -51,7 +50,6 @@ const PropertyEntry = () => {
 
   return (
     <div>
-      <TopNavBar/>
       <PropertyEntryFormComponent propertySend={propertySend} />
     </div>
   );

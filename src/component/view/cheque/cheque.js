@@ -3,7 +3,6 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import TopNavBar from "../../../shared/topNavBar";
 
 const ChequeView = (props) => {
   const [noOfCheque, setNoOfCheque] = useState("");
@@ -65,7 +64,6 @@ const ChequeView = (props) => {
 
   return (
     <>
-      <TopNavBar/>
       <div className="tenantview">
         <h1 className="text-center">Cheque list</h1>
         <div className="d-flex justify-content-center">

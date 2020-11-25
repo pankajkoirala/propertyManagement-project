@@ -5,7 +5,6 @@ import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction.js";
 import { connect } from "react-redux";
-import TopNavBar from "../../../shared/topNavBar.js";
 
 const OwnerEntryContainer = (props) => {
   const ownerData = (data, file) => {
@@ -47,7 +46,6 @@ const OwnerEntryContainer = (props) => {
   console.log(ownerData);
   return (
     <div>
-      <TopNavBar/>
       <OwnerContainer
         ownerData={ownerData}
         Redux_propertyData={props.Redux_propertyData.property}

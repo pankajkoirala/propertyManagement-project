@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import TopNavBar from "../../../shared/topNavBar";
 
 import SearchInput from "./../../../shared/filterListData";
 
@@ -17,7 +16,6 @@ const MaintananceCompanyView = (props) => {
 
   return (
     <>
-      <TopNavBar/>
       <div className="tenantview">
         <h1 className="text-center"> Maintanance Company List</h1>
         <SearchInput

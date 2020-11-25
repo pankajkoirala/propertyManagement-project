@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropertyEntryForm from "../../entryForm/PropertyEntryForm/PropertyEntryForm";
 import "./property.css";
 import PoopUp from "./../../../shared/popup";
-import TopNavBar from "../../../shared/topNavBar";
 import { Table } from "reactstrap";
 
 let PropertyDetailViewComponent = (props) => {
@@ -14,7 +13,6 @@ let PropertyDetailViewComponent = (props) => {
   };
   return (
     <>
-      <TopNavBar />
       <div>
         {showEditForm === false ? (
           props.selectedone.map((arg, index) => {

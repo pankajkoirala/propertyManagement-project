@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TopNavBar from "../../../shared/topNavBar";
 import ExpenseEntryForm from "../../entryForm/expenseEntry/expenseEntry";
 import PoopUp from "./../../../shared/popup";
 
@@ -14,7 +13,6 @@ let ExpenseDetailViewComponent = (props) => {
   };
   return (
     <>
-      <TopNavBar/>
       <div>
         {showEditForm === false ? (
           props.selectedExpense.map((arg, index) => {

@@ -3,7 +3,6 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import SearchInput from "./../../../shared/filterListData";
-import TopNavBar from "../../../shared/topNavBar";
 
 const DevelopementCompanyView = (props) => {
   let [developerCompanys, SetDeveloperCompanys] = useState([]);
@@ -17,7 +16,6 @@ const DevelopementCompanyView = (props) => {
 
   return (
     <>
-      <TopNavBar/>
       <div className="tenantview">
         <h1 className="text-center">Developer company list</h1>
         <SearchInput

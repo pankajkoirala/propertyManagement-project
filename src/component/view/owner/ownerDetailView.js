@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TopNavBar from "../../../shared/topNavBar";
 import OwnerEntryForm from "./../../../component/entryForm/ownerEntry/ownerEnty";
 import PoopUp from "./../../../shared/popup";
 
@@ -12,7 +11,6 @@ let OwnerDetailViewComponent = (props) => {
   };
   return (
     <>
-      <TopNavBar/>
       <div>
         s
         {showEditForm === false ? (
