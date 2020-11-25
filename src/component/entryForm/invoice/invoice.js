@@ -4,13 +4,13 @@ import { Form, Input, Label } from "reactstrap";
 import moment from "moment";
 
 let InvoiceComponent = (props) => {
-  console.log("pankaj koirala", props);
+  console.log("pankaj koirala", props?.Cheque);
   let initialvalue = {
     chequeMongoId: props.Cheque._id,
     invoicePhoto: "",
     invoiceIssueDate: moment().format("YYYY-MM-DD"),
     chequeNumber: props?.Cheque?.cheque_number,
-    lease_id: props?.Cheque?.lease_property.LeaseId,
+    lease_id: props?.Cheque?.lease_property?.LeaseId,
   };
   return (
     <div>
@@ -60,6 +60,15 @@ let InvoiceComponent = (props) => {
                   </div>
                   <button
                     type="button"
+                    style={{
+                      backgroundColor: "blue",
+                      borderRadius: "20px",
+                      margin: "10px",
+                      height: "40px",
+                      width: "150px",
+                      color: "white",
+                      fontWeight: "bold",
+                    }}
                     onClick={() => props.setPrintInvoice(!props.printInvoice)}
                   >
                     cancle
@@ -71,7 +80,16 @@ let InvoiceComponent = (props) => {
                           invoice?.chequeMongoId === props?.Cheque?._id
                       ) === true
                         ? { visibility: "hidden" }
-                        : { visibility: "visible" }
+                        : {
+                            visibility: "visible",
+                            backgroundColor: "blue",
+                            borderRadius: "20px",
+                            margin: "10px",
+                            height: "40px",
+                            width: "150px",
+                            color: "white",
+                            fontWeight: "bold",
+                          }
                     }
                     type="submit"
                     onClick={handleSubmit}

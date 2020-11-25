@@ -52,7 +52,6 @@ const LeaseEntry = (props) => {
         (paymentTime ? paymentTime : 1 || props?.lease?.frequency)) *
         100
     ) / 100;
-  console.log("LeaseEntry -> frequency", props?.lease?.frequency);
 
   let addedDays = [];
 
@@ -99,7 +98,9 @@ const LeaseEntry = (props) => {
           <Form>
             <FormGroup>
               <div className="row">
-                <div className="col-12 mt-2 ml-2 mr-2 form-head">General Information</div>
+                <div className="col-12 mt-2 ml-2 mr-2 form-head">
+                  General Information
+                </div>
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
                   <Input

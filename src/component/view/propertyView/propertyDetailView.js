@@ -3,6 +3,7 @@ import PropertyEntryForm from "../../entryForm/PropertyEntryForm/PropertyEntryFo
 import "./property.css";
 import PoopUp from "./../../../shared/popup";
 import TopNavBar from "../../../shared/topNavBar";
+import { Table } from "reactstrap";
 
 let PropertyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
@@ -13,54 +14,166 @@ let PropertyDetailViewComponent = (props) => {
   };
   return (
     <>
-      <TopNavBar/>
+      <TopNavBar />
       <div>
         {showEditForm === false ? (
           props.selectedone.map((arg, index) => {
             return (
-              <div key={index} className="property-card">
-                <div className="card-contents">
-                  <div className="">
+              <div key={index}>
+                <div className="row">
+                  <div className="col-6">
                     <img
-                      className="Propertyimage"
-                      src={arg.photo}
+                      style={{
+                        height: "400px",
+                        width: "100%",
+                        borderRadius: "20px 20px 0px 0px",
+                      }}
+                      src={arg?.files_list[0]?.file}
                       alt="recently added"
                     />
                   </div>
-                  <div className="property-desc">
-                    <h5>{arg.property_type}</h5>
-                    <p>For: {arg.property_status}</p>
-                    <p>
-                      <i className="fa fa-map-marker"></i> {arg.country},
-                      {arg.city}
-                    </p>
-                    <p>
-                      Rs. <b>{arg.property_price}</b> per Month
-                    </p>
+                  <div className="col-6">
+                    <h5 className="text-center mb-2">Additional Information</h5>
+                    <div className="d-flex justify-content-between mr-4">
+                      <div style={{ left: "0px" }}>
+                        <div className="font-weight-bold my-3">Area</div>
+                        <div className="font-weight-bold my-3">
+                          Building Name
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          Building Number
+                        </div>
+                        <div className="font-weight-bold my-3">Plot Number</div>
+                        <div className="font-weight-bold my-3">
+                          {" "}
+                          Building Floor Number
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          Municipality Number
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          Property Premise Number
+                        </div>
+                        <div className="font-weight-bold my-3">community </div>
+                        <div className="font-weight-bold my-3">
+                          Property Owner Name
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-weight-bold my-3">{arg.area}</div>
+                        <div className="font-weight-bold my-3">
+                          {arg.building_Name}
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          {arg.building_Number}
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          {arg.plot_Number}
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          {arg.building_floorNumber}
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          {arg.Muncipality_Number}
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          {arg.Property_Premise_Number}
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          {arg.property_community}
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          {arg.Property_ownerName}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <button onClick={() => setShowEditForm(!showEditForm)}>
-                    edit
-                  </button>
-                  <button
-                    type="button"
-                    disabled={
-                      props.leaseIdList.some((ID) => ID === arg._id) === true
-                        ? true
-                        : false
-                    }
-                    onClick={() => setShowPopUp(true)}
-                  >
-                    delete
-                  </button>
-                  <PoopUp
-                    isOpen={showPopup}
-                    isClose={setShowPopUp}
-                    CRUD_Function={props.DeleteProperty}
-                    id={arg._id}
-                    buttonName={"Delete"}
-                    message={"are you sure want to delete"}
-                  />
                 </div>
+                <div className="row">
+                  <div className="col-6">
+                    <h5 className="text-center mb-2">Property Information</h5>
+                    <div className="d-flex justify-content-between mr-4">
+                      <div style={{ left: "0px" }}>
+                        <div className="font-weight-bold my-2">Property ID</div>
+                        <div className="font-weight-bold my-2">
+                          Property Type
+                        </div>
+                        <div className="font-weight-bold my-2">
+                          Property Price/Rent Price
+                        </div>
+                        <div className="font-weight-bold my-2">Location</div>
+                      </div>
+                      <div>
+                        <div className="font-weight-bold my-2">
+                          {arg.referenceNO}
+                        </div>
+                        <div className="font-weight-bold my-2">{arg.area}</div>
+                        <div className="font-weight-bold my-2">
+                          {arg.property_type}
+                        </div>
+                        <div className="font-weight-bold my-2">
+                          {arg.property_price}
+                        </div>
+                        <div className="font-weight-bold my-2">
+                          {arg.city + "," + arg.country}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-6">
+                    <h5 className="text-center mb-2">Facilities</h5>
+                    <Table striped>
+                      <thead>
+                        <tr>
+                          <th>SN</th>
+                          <th> Heading</th>
+                          <th> Unit</th>
+                          <th>Remark</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {arg.facilities.map((facilities, index) => {
+                          return (
+                            <tr key={index}>
+                              <th scope="row">{index + 1}</th>
+                              <td className="font-weight-bold">
+                                {facilities.heading}
+                              </td>
+                              <td className="font-weight-bold">
+                                {facilities.unit}
+                              </td>
+                              <td className="font-weight-bold">
+                                {facilities.remark}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </Table>
+                  </div>
+                </div>
+                <button onClick={() => setShowEditForm(!showEditForm)}>
+                  edit
+                </button>
+                <button
+                  type="button"
+                  disabled={
+                    props.leaseIdList.some((ID) => ID === arg._id) === true
+                      ? true
+                      : false
+                  }
+                  onClick={() => setShowPopUp(true)}
+                >
+                  delete
+                </button>
+                <PoopUp
+                  isOpen={showPopup}
+                  isClose={setShowPopUp}
+                  CRUD_Function={props.DeleteProperty}
+                  id={arg._id}
+                  buttonName={"Delete"}
+                  message={"are you sure want to delete"}
+                />
               </div>
             );
           })
