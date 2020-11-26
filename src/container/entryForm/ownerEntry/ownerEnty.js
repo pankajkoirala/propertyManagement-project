@@ -18,9 +18,9 @@ const OwnerEntryContainer = (props) => {
     formData.append("owner_country", data.owner_country);
     formData.append("owner_DOB", data.owner_DOB);
     formData.append("owner_phoneNo", data.owner_phoneNo);
-    formData.append("owner_firstName", data.owner_firstName);
-    formData.append("owner_middleName", data.owner_middleName);
-    formData.append("owner_lastName", data.owner_lastName);
+    formData.append("owner_Name", data.owner_Name);
+    formData.append("owner_Type", data.owner_Type);
+    formData.append("owner_GovID_RegNo", data.owner_GovID_RegNo);
     formData.append("owner_email", data.owner_email);
     formData.append("owner_property", data.owner_property);
 

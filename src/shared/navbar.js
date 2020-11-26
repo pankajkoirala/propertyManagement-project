@@ -32,7 +32,10 @@ const NavbarPage = () => {
     }, 1000);
   };
   return (
-    <div className="menu">
+    <div
+      style={{ backgroundColor: "#3B4AFF", height: "100%" }}
+      className="menu "
+    >
       <div className="branding-section">
         <h4>
           <EmojiTransportationIcon fontSize="large" />
@@ -58,6 +61,7 @@ const NavbarPage = () => {
                   borderRadius: "50px",
                   border: "none",
                   backgroundColor: "#3B4AFF",
+                  height: "10px",
                 }}
                 as={Card.Header}
                 variant="link"
@@ -70,10 +74,16 @@ const NavbarPage = () => {
             </Link>
           </Card.Header>
         </Card>
-        <Card style={{ border: "none", backgroundColor: "#022B39" }}>
+        <Card
+          style={{ border: "none", backgroundColor: "#022B39", height: "auto" }}
+        >
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="0"
@@ -105,7 +115,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="1"
@@ -138,7 +152,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="3"
@@ -170,7 +188,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="2"
@@ -203,7 +225,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="5"
@@ -239,7 +265,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="6"
@@ -275,7 +305,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="7"
@@ -311,7 +345,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="8"
@@ -347,7 +385,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="9"
@@ -383,7 +425,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="10"
@@ -419,7 +465,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="11"
@@ -455,7 +505,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Card.Header}
               variant="link"
               eventKey="12"
@@ -490,7 +544,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Button}
               variant="link"
               eventKey="4"
@@ -505,7 +563,11 @@ const NavbarPage = () => {
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
             <Accordion.Toggle
-              style={{ border: "none", backgroundColor: "#3B4AFF" }}
+              style={{
+                border: "none",
+                backgroundColor: "#3B4AFF",
+                height: "10px",
+              }}
               as={Button}
               variant="link"
               eventKey="14"

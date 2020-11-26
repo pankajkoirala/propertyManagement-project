@@ -143,10 +143,7 @@ const MaintananceTicket = (props) => {
                           options={props?.Redux_maintananceCompanyData?.map(
                             (maintananceCompany) => {
                               return {
-                                name:
-                                  maintananceCompany.Company_Name +
-                                  "-" +
-                                  maintananceCompany.Company_ID,
+                                name: maintananceCompany.Company_Name,
 
                                 id: maintananceCompany._id,
                               };
@@ -176,10 +173,7 @@ const MaintananceTicket = (props) => {
                           options={props?.Redux_managementCompanyData?.map(
                             (managementCompany) => {
                               return {
-                                name:
-                                  managementCompany.managementCompany_name +
-                                  "-" +
-                                  managementCompany.managementCompany_companyID,
+                                name: managementCompany.managementCompany_name,
 
                                 id: managementCompany._id,
                               };

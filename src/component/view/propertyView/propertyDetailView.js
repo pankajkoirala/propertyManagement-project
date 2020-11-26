@@ -150,16 +150,58 @@ let PropertyDetailViewComponent = (props) => {
                     </Table>
                   </div>
                 </div>
-                <button onClick={() => setShowEditForm(!showEditForm)}>
+                <div>
+                  <h5 className="mt4 text-center">Property Document</h5>
+                  <div className="d-flex flex-wrap">
+                    {arg?.files_list?.map((file, index) => {
+                      return (
+                        <div className="m-4">
+                          <div>
+                            <a href={file.file} target={file.file}>
+                              <img
+                                style={{ height: "100px", width: "100px" }}
+                                src={file.file}
+                                alt={file.file}
+                              />
+                            </a>
+                          </div>
+                          <div className="font-weight-bold text-center">
+                            {file.fileName}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <button
+                  style={{
+                    backgroundColor: "blue",
+                    borderRadius: "20px",
+                    margin: "10px",
+                    height: "40px",
+                    width: "100px",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
+                  onClick={() => setShowEditForm(!showEditForm)}
+                >
                   edit
                 </button>
                 <button
-                  type="button"
-                  disabled={
+                  style={
                     props.leaseIdList.some((ID) => ID === arg._id) === true
-                      ? true
-                      : false
+                      ? { visibility: "hidden" }
+                      : {
+                          backgroundColor: "blue",
+                          borderRadius: "20px",
+                          margin: "10px",
+                          height: "40px",
+                          width: "100px",
+                          color: "white",
+                          fontWeight: "bold",
+                        }
                   }
+                  type="button"
                   onClick={() => setShowPopUp(true)}
                 >
                   delete

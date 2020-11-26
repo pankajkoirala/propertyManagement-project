@@ -17,9 +17,10 @@ const OwnerEntry = (props) => {
     owner_country: props?.owner?.owner_country || "",
     owner_DOB: moment(props?.owner?.owner_DOB).format("YYYY-MM-DD") || "",
     owner_phoneNo: props?.owner?.owner_phoneNo || "",
-    owner_firstName: props?.owner?.owner_firstName || "",
-    owner_middleName: props?.owner?.owner_middleName || " ",
-    owner_lastName: props?.owner?.owner_lastName || "",
+    owner_Name: props?.owner?.owner_Name || "",
+    owner_Type: props?.owner?.owner_Type || "",
+    owner_GovID_RegNo: props?.owner?.owner_GovID_RegNo || "",
+
     owner_email: props?.owner?.owner_email || "",
     owner_property: props?.owner?.owner_property?._id || "",
     fileName: "",
@@ -69,61 +70,74 @@ const OwnerEntry = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">First Name</Label>
+                        <Label for="exampleSelect">Owner Type</Label>
+                        <Input
+                          type="select"
+                          name="owner_Type"
+                          id="exampleSelect"
+                          placeholder="Select"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.owner_Type}
+                        >
+                          <option value=""> </option>
+                          <option value="Person">Person</option>
+                          <option value="Company">Company</option>
+                        </Input>
+                        {touched.owner_Type && errors.owner_Type && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.owner_Type}
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleName">
+                          {" "}
+                          {values.owner_Type === "Company"
+                            ? "Company Name"
+                            : " Name "}
+                        </Label>
                         <Input
                           type="text"
-                          value={values.owner_firstName}
-                          name="owner_firstName"
+                          value={values.owner_Name}
+                          name="owner_Name"
                           placeholder="Enter your firstName"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.owner_firstName && errors.owner_firstName && (
+                        {touched.owner_Name && errors.owner_Name && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors.owner_firstName}
+                            {errors.owner_Name}
                           </span>
                         )}
                       </div>
 
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Middle Name</Label>
+                        <Label for="exampleName">
+                          {values.owner_Type === "Company"
+                            ? "Company Registration No"
+                            : " Government Id No "}
+                        </Label>
                         <Input
                           type="text"
-                          value={values.owner_middleName}
-                          name="owner_middleName"
-                          placeholder="Enter your middleName"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.owner_middleName && errors.owner_middleName && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.owner_middleName}
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Last Name</Label>
-                        <Input
-                          type="text"
-                          value={values.owner_lastName}
-                          name="owner_lastName"
+                          value={values.owner_GovID_RegNo}
+                          name="owner_GovID_RegNo"
                           placeholder="Enter your lastName"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.owner_lastName && errors.owner_lastName && (
+                        {touched.owner_GovID_RegNo && errors.owner_GovID_RegNo && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors.owner_lastName}
+                            {errors.owner_GovID_RegNo}
                           </span>
                         )}
                       </div>
@@ -189,9 +203,14 @@ const OwnerEntry = (props) => {
                         )}
                       </div>
                     </div>
+
                     <div className="row">
-                      <div className="col-md-6">
-                        <Label for="exampleSelect">owner_DOB</Label>
+                      <div className="col-md-4">
+                        <Label for="exampleSelect">
+                          {values.owner_Type === "Company"
+                            ? "Company Registration Date"
+                            : " Date Of Birth "}
+                        </Label>
                         <Input
                           type="date"
                           name="owner_DOB"
@@ -209,9 +228,7 @@ const OwnerEntry = (props) => {
                           </span>
                         )}
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <Label for="exampleName">Email</Label>
                         <Input
                           type="email"
@@ -231,7 +248,7 @@ const OwnerEntry = (props) => {
                         )}
                       </div>
 
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <Label for="exampleName">Contact Number</Label>
                         <Input
                           type="number"

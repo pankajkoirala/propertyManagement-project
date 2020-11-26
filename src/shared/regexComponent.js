@@ -72,7 +72,7 @@ let RegexConponent = (props) => {
               bottom: "0",
               zIndex: "11",
             }}
-            className="bg-danger"
+            className="bg-secondary text-white font-weight-bold"
             onClick={() => {
               setFieldValue(name, arg.id);
 

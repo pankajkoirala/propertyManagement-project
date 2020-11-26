@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TopNavBar from "../../../shared/topNavBar";
 import ChequeEntryForm from "../../entryForm/cheque/chequeEntry/chequeEntryForm";
 import PoopUp from "./../../../shared/popup";
 import Invoice from "./../../../container/entryForm/invoice/invoice";
@@ -16,7 +15,6 @@ let ChequeDetailViewComponent = (props) => {
 
   return (
     <div>
-      <TopNavBar />
       {printInvoice === false ? (
         showEditForm === false ? (
           props.selectedCheque.map((arg, index) => {

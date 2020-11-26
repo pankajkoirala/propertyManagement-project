@@ -252,10 +252,30 @@ let MaintananceTicketDetailViewComponent = (props) => {
                     </Table>
                   </div>
                 </div>
-                <button onClick={() => setShowEditForm(!showEditForm)}>
+                <button
+                  style={{
+                    backgroundColor: "blue",
+                    borderRadius: "20px",
+                    margin: "10px",
+                    height: "40px",
+                    width: "100px",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
+                  onClick={() => setShowEditForm(!showEditForm)}
+                >
                   edit
                 </button>
                 <button
+                  style={{
+                    backgroundColor: "blue",
+                    borderRadius: "20px",
+                    margin: "10px",
+                    height: "40px",
+                    width: "100px",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
                   className="danger ml-2"
                   onClick={() => {
                     setShowPopUp(true);

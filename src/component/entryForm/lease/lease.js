@@ -134,12 +134,7 @@ const LeaseEntry = (props) => {
                     setFieldValue={setFieldValue}
                     options={props?.redux_tenantData?.tenant?.map((tenent) => {
                       return {
-                        name:
-                          tenent.company_Name +
-                          "-" +
-                          tenent.tenant_Name +
-                          "-" +
-                          tenent.TenantId,
+                        name: tenent.tenant_Name + "-" + tenent.TenantId,
                         id: tenent._id,
                       };
                     })}
