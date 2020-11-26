@@ -82,6 +82,11 @@ const TanentDetailViewCont = (props) => {
         notification("error", "ERROR");
       });
   };
+  //id taken from leased tanent
+  let leasedTanentId = [];
+  props.redux_leaseData.lease.map((arg) =>
+    leasedTanentId.push(arg?.tenants?._id)
+  );
 
   return (
     <div>
@@ -89,6 +94,7 @@ const TanentDetailViewCont = (props) => {
         selectedTenantone={selectedTenantone}
         tenentUpdate={tenentUpdate}
         tenentDelete={tenentDelete}
+        leasedTanentId={leasedTanentId}
       />
     </div>
   );
@@ -96,6 +102,7 @@ const TanentDetailViewCont = (props) => {
 
 const mapStateToProps = (state) => ({
   redux_tenantData: state.tenant,
+  redux_leaseData: state.lease,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import HomepageComponent from "../../component/homepage/homepage";
 import { connect } from "react-redux";
 import { incomeCalc, expenseCalc } from "../../shared/commonFunction";
-import TopNavBar from "../../shared/topNavBar";
 
 const HomepageContainer = (props) => {
   const [next_preYear, setNext_preYear] = useState(new Date().getFullYear());
@@ -113,7 +112,6 @@ const HomepageContainer = (props) => {
 
   return (
     <div>
-      <TopNavBar/>
       <HomepageComponent
         totalProperty={props.redux_propertyData?.property?.length}
         leaseProperty={props?.redux_leaseData?.lease.length}

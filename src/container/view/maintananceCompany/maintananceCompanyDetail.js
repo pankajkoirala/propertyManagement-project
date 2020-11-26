@@ -83,12 +83,19 @@ const MaintananceCompanyDetailView = (props) => {
       });
   };
 
+  //id taken of maintanance company from maintanance ticket
+  let maintananceCompanyIDs = [];
+  props.redux_MaintananceTicketData.maintananceTicket.map((arg) =>
+    maintananceCompanyIDs.push(arg?.MaintananceCompanyId?._id)
+  );
+
   return (
     <div>
       <MaintananceCompanyViewComp
         selectedMaintananceCompany={selectedMaintananceCompany}
         maintananceCompanyUpdate={maintananceCompanyUpdate}
         maintananceCompanyDelete={maintananceCompanyDelete}
+        maintananceCompanyIDs={maintananceCompanyIDs}
       />
     </div>
   );
@@ -96,6 +103,7 @@ const MaintananceCompanyDetailView = (props) => {
 
 const mapStateToProps = (state) => ({
   redux_MaintananceCompanyData: state.maintananceCompany,
+  redux_MaintananceTicketData: state.maintananceTicket,
 });
 
 const mapDispatchToProps = (dispatch) => ({

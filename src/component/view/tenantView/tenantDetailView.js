@@ -19,7 +19,7 @@ const TanentDetailView = (props) => {
               <div>
                 <div key={index} className="row pbox">
                   <div className="row mt-4">
-                    <div className="col-3">
+                    <div className="col-4">
                       <img
                         style={{
                           height: "400px",
@@ -98,34 +98,58 @@ const TanentDetailView = (props) => {
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <h5 className="mt4 text-center">Employee Document</h5>
-                    <div className="d-flex flex-wrap">
-                      {arg?.files_list?.map((file, index) => {
-                        return (
-                          <div className="m-4">
-                            <div>
-                              <a href={file.file} target={file.file}>
-                                <img
-                                  style={{ height: "100px", width: "100px" }}
-                                  src={file.file}
-                                  alt={file.file}
-                                />
-                              </a>
-                            </div>
-                            <div className="font-weight-bold text-center">
-                              {file.fileName}
-                            </div>
+                </div>
+                <div>
+                  <h5 className="mt4 text-center">Employee Document</h5>
+                  <div className="d-flex flex-wrap">
+                    {arg?.files_list?.map((file, index) => {
+                      return (
+                        <div className="m-4">
+                          <div>
+                            <a href={file.file} target={file.file}>
+                              <img
+                                style={{ height: "100px", width: "100px" }}
+                                src={file.file}
+                                alt={file.file}
+                              />
+                            </a>
                           </div>
-                        );
-                      })}
-                    </div>
+                          <div className="font-weight-bold text-center">
+                            {file.fileName}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
-                <button onClick={() => setShowEditForm(!showEditForm)}>
+                <button
+                  style={{
+                    backgroundColor: "blue",
+                    borderRadius: "20px",
+                    margin: "10px",
+                    height: "40px",
+                    width: "100px",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
+                  onClick={() => setShowEditForm(!showEditForm)}
+                >
                   edit
                 </button>
                 <button
+                  style={
+                    props?.leasedTanentId?.some((ID) => ID === arg._id) === true
+                      ? { visibility: "hidden" }
+                      : {
+                          backgroundColor: "blue",
+                          borderRadius: "20px",
+                          margin: "10px",
+                          height: "40px",
+                          width: "100px",
+                          color: "white",
+                          fontWeight: "bold",
+                        }
+                  }
                   className="danger ml-2"
                   onClick={() => {
                     setShowPopUp(true);

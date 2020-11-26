@@ -214,11 +214,58 @@ let LeaseDetailViewComponent = (props) => {
                     </div>
                   </div>
                 </div>
+                <div>
+                  <h5 className="mt4 ">Lease Document</h5>
+                  <div className="d-flex flex-wrap">
+                    {arg?.files_list?.map((file, index) => {
+                      return (
+                        <div key={index} className="m-4">
+                          <div>
+                            <a href={file.file} target={file.file}>
+                              <img
+                                style={{ height: "100px", width: "100px" }}
+                                src={file.file}
+                                alt={file.file}
+                              />
+                            </a>
+                          </div>
+                          <div className="font-weight-bold text-center">
+                            {file.fileName}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
 
-                <button onClick={() => setShowEditForm(!showEditForm)}>
+                <button
+                  style={{
+                    backgroundColor: "blue",
+                    borderRadius: "20px",
+                    margin: "10px",
+                    height: "40px",
+                    width: "100px",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
+                  onClick={() => setShowEditForm(!showEditForm)}
+                >
                   edit
                 </button>
-                <button onClick={() => setShowPopUp(true)}>delete</button>
+                <button
+                  style={{
+                    backgroundColor: "blue",
+                    borderRadius: "20px",
+                    margin: "10px",
+                    height: "40px",
+                    width: "100px",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
+                  onClick={() => setShowPopUp(true)}
+                >
+                  delete
+                </button>
                 <PoopUp
                   isOpen={showPopup}
                   isClose={setShowPopUp}
