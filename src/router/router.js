@@ -54,22 +54,18 @@ const RouterPage = () => {
   return (
     <div>
       <Router>
-        <div
-          className="col-2"
-          style={
-            authorize
-              ? { display: "block", margin: 0 }
-              : { visibility: "hidden" }
-          }
-        >
-          <NavBar />
+        <div className="col-2" style={{ display: "block", margin: 0 }}>
+          {authorize ? <NavBar /> : ""}
         </div>
         <div
           className="col-10"
-          style={{ right: "0", top: "0", position: "absolute" }}
+          style={
+            authorize
+              ? { right: "0", top: "0", position: "absolute" }
+              : { position: "relative" }
+          }
         >
-          <TopNavBar />
-
+          {authorize ? <TopNavBar /> : ""}
           <Switch>
             <PrivateRouter exact path="/propertyList" component={AllProperty} />
             <PrivateRouter

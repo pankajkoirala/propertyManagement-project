@@ -23,6 +23,8 @@ const MaintananceCompanyDetailView = (props) => {
     formData.append("Maintanance_ticketID", data.Maintanance_ticketID);
     formData.append("Expense_Remark", data.Expense_Remark);
     formData.append("expenseInvoiceNumber", data.expenseInvoiceNumber);
+    formData.append("invoicePhoto", data.invoicePhoto);
+
     Axios({
       method: "put",
       url: base_URL + "/api/expense/" + ID,
