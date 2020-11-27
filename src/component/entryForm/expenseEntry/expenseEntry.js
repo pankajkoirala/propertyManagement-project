@@ -31,6 +31,7 @@ const ExpenseEntry = (props) => {
     Maintanance_ticketID: props?.expense?.Maintanance_ticketID?._id || "",
     Expense_Remark: props?.expense?.Expense_Remark || "",
     expenseInvoiceNumber: props?.expense?.expenseInvoiceNumber || "",
+    invoicePhoto: props?.expense?.invoicePhoto || "",
   };
   return (
     <div>
@@ -211,6 +212,32 @@ const ExpenseEntry = (props) => {
                       >
                         add
                       </button>
+                    </div>
+                    <div className="col-md-6 text-left mb-2 mt-4">
+                      <Label className="float-left">Upload Scan Copy</Label>
+                      <Input
+                        type="file"
+                        name="invoicePhoto"
+                        accept="image/*"
+                        onChange={(event) => {
+                          setFieldValue(
+                            "invoicePhoto",
+                            event.currentTarget.files[0]
+                          );
+                        }}
+                      />
+
+                      {touched.invoicePhoto && values.invoicePhoto && (
+                        <img
+                          src={
+                            typeof values.invoicePhoto === "string"
+                              ? values.invoicePhoto
+                              : URL.createObjectURL(values.invoicePhoto)
+                          }
+                          alt="no file"
+                          height="20"
+                        />
+                      )}
                     </div>
 
                     <div className="row">

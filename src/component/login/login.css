@@ -1,41 +1,42 @@
-.loginform {
-  background-color: rgb(188, 195, 207);
-  padding: 20px;
-  border-radius: 10px;
-  height: 100%;
-  width: 300px;
+.form {
+  height: 500px;
+  width: 400px;
   background: rgba(0, 0, 0, 0.5);
-  margin-top: 80px;
-  transform: translate(-50% -50%);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.fulllogin {
-  background-image: url("");
-  background-repeat: repeat;
-  background-size: cover;
+.form img {
+  height: 160px;
+  width: 160px;
+  margin: 0 auto 2rem auto;
 }
 
-.email {
-  margin-top: 10px;
-  margin-bottom: 20px;
+.form .group {
+  /* height: 60px; */
+  width: 90%;
+  margin: 5px auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.password {
-  margin-top: 10px;
-  margin-bottom: 20px;
+.group .input {
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  padding: 0 0 0 1rem;
 }
 
-@media only screen and (max-width: 600px) {
-  .loginform {
-    height: auto;
-    width: auto;
-    margin: 100px;
-  }
+.group label {
+  color: white;
 }
 
-.loginImg {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  align-items: center;
+.submit-btn {
+  height: 40px;
+  background: teal;
+  border-radius: 8px;
+  border: 1px solid white;
+  margin: 2rem 0;
 }
