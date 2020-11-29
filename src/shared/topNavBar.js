@@ -1,8 +1,15 @@
 import React from "react";
 import "./../component/homepage/homepage.css";
 import SearchIcon from "@material-ui/icons/Search";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const TopNavBar = () => {
+  let logout = () => {
+    localStorage.clear();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
   return (
     <div className="dashboard-top">
       <div className="form-group has-search">
@@ -17,7 +24,11 @@ const TopNavBar = () => {
             <a href="#">Profile</a>
           </li>
           <li>
-            <a href="#">Logout</a>
+            <a href="#" onClick={() => logout()}>
+              {" "}
+              <ExitToAppIcon />
+              Logout
+            </a>
           </li>
         </ul>
       </div>

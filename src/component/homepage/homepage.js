@@ -61,32 +61,9 @@ const Homepage = (props) => {
       <div className=" col-12 bodydisplay">
         <div className="row">
           <div className=" bodydisplay">
-            {" "}
             <h1>DASHBOARD</h1>
-            <div className="row m-3">
-              <div className="col-4">
-                <img src={INCOME} alt="Income" />
-              </div>
-              <div className="col-4">
-                <img src={Maintainance} alt="Income" />
-              </div>
-              <div className="col-4">
-                <img src={INCOME} alt="Income" />
-              </div>
-            </div>
-            <div className="row m-3">
-              <div className="col-4">
-                <img src={Maintainance} alt="Income" />
-              </div>
-              <div className="col-4">
-                <img src={INCOME} alt="Income" />
-              </div>
-              <div className="col-4">
-                <img src={Maintainance} alt="Income" />
-              </div>
-            </div>
             {/* //bar diagram */}
-            <div className="App">
+            <div>
               <h4 className="text-center">year-{next_preYear}</h4>
               <Line data={data} />
               <div className="d-flex justify-content-center">
