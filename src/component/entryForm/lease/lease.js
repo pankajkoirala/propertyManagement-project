@@ -101,6 +101,9 @@ const LeaseEntry = (props) => {
                 <h4 className="col-12 mt-2 ml-2 mr-2 form-head">
                   General Information
                 </h4>
+              </div>
+
+              <div className="row ">
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
                   <Input
@@ -121,12 +124,7 @@ const LeaseEntry = (props) => {
                     </span>
                   )}
                 </div>
-              </div>
-              <div className="col-md-12 form-head">
-                <b>Select Property and Tenant</b>
-              </div>
-              <div className="row ">
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <Label for="exampleSelect">Tenants(s)</Label>
 
                   <RegexConponent
@@ -150,7 +148,7 @@ const LeaseEntry = (props) => {
                     </span>
                   )}
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <Label for="exampleSelect">Property</Label>
 
                   <RegexConponent
@@ -175,10 +173,10 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
               </div>
-              <div className="col-md-12">
+              <div className="col-md-12 m-2">
                 <b>Terms of Tendency</b>
               </div>
-              <div className="row mt-4">
+              <div className="row ">
                 <div className="col-md-4">
                   <Label for="exampleSelect">Lease Terms</Label>
                   <Input
