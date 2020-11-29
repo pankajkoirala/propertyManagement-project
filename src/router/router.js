@@ -54,14 +54,14 @@ const RouterPage = () => {
   return (
     <div>
       <Router>
-        <div className="col-2" style={{ display: "block", margin: 0 }}>
+        <div style={{ display: "block", margin: 0, width: "20%" }}>
           {authorize ? <NavBar /> : ""}
         </div>
         <div
           className="col-10"
           style={
             authorize
-              ? { right: "0", top: "0", position: "absolute" }
+              ? { right: "0", top: "0", position: "absolute", width: "80%" }
               : { position: "relative" }
           }
         >

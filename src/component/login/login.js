@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import "./login.css";
-import { FormGroup, Label, Input, Form } from "reactstrap";
-import { Formik } from "formik";
-import { LoginValidator } from "../../utility/validation/loginValidation";
 import icon from "../../assets/icon.png";
 
 const LoginComponent = (props) => {
@@ -17,6 +14,7 @@ const LoginComponent = (props) => {
     };
     props.login(data);
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="form">
