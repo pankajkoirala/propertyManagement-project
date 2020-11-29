@@ -56,7 +56,12 @@ const Homepage = (props) => {
   return (
     <div>
       <div className=" bodydisplay">
-        <h1>DASHBOARD</h1>
+        <h1
+          className="form-head"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          DASHBOARD
+        </h1>
         {/* //bar diagram */}
         <div>
           <h4 className="text-center">year-{next_preYear}</h4>
