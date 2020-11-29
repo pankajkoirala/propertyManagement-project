@@ -47,9 +47,10 @@ let RegexConponent = (props) => {
           top: "0",
           bottom: "0",
           zIndex: "999",
-          width: "300px",
+          width: "400px",
         }}
         type="text"
+        placeholder={name}
         onClick={() => {
           setOptionDisplay(!optionDisplay);
           optionDisplay === true

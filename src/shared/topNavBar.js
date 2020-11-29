@@ -12,7 +12,7 @@ const TopNavBar = () => {
   };
   return (
     <div className="dashboard-top">
-      <div className="form-group has-search">
+      <div style={{ margin: "12px" }} className="form-group has-search">
         <span className="form-control-feedback">
           <SearchIcon />
         </span>
@@ -20,10 +20,10 @@ const TopNavBar = () => {
       </div>
       <div className="dashboard-link">
         <ul>
-          <li>
+          <li style={{ margin: "15px" }}>
             <a href="#">Profile</a>
           </li>
-          <li>
+          <li style={{ margin: "15px" }}>
             <a href="#" onClick={() => logout()}>
               {" "}
               <ExitToAppIcon />
