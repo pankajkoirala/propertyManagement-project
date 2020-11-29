@@ -98,9 +98,9 @@ const LeaseEntry = (props) => {
           <Form>
             <FormGroup>
               <div className="row">
-                <div className="col-12 mt-2 ml-2 mr-2 form-head">
+                <h4 className="col-12 mt-2 ml-2 mr-2 form-head">
                   General Information
-                </div>
+                </h4>
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
                   <Input
@@ -108,7 +108,7 @@ const LeaseEntry = (props) => {
                     disabled={props.lease ? true : false}
                     value={values.lease_enterDate}
                     name="lease_enterDate"
-                    placeholder="Enter Date"
+                    placeholder="Lease Issue Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -190,7 +190,7 @@ const LeaseEntry = (props) => {
                     onBlur={handleBlur}
                     value={values.lease_Term}
                   >
-                    <option value=""> </option>
+                    <option value=""> Select One</option>
                     <option value="monthToMonth">Month to Month</option>
                     <option value="fixedTerm">Fixed Terms</option>
                   </Input>
@@ -210,7 +210,7 @@ const LeaseEntry = (props) => {
                     type="date"
                     name="commenceDate"
                     id="exampleSelect"
-                    placeholder="Select Commence Date"
+                    placeholder=" Commence Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={
@@ -373,62 +373,66 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
               </div>
-              <div className="row">
-                <div className="col-md-4 text-left mb-2 mt-4">
-                  <Input
-                    name="fileName"
-                    type="text"
-                    placeholder="Select Status of Cheque"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.fileName}
-                  ></Input>
-                </div>
-                <div className="col-md-4 text-left mb-2 mt-4">
-                  <Label className="float-left">Upload Scan Copy</Label>
-                  <Input
-                    type="file"
-                    alt="no file"
-                    name="file"
-                    accept="image/*"
-                    onChange={(event) => {
-                      setFieldValue("file", event.currentTarget.files[0]);
-                    }}
-                  />
-                </div>
-                <div className="col-md-4 text-left mb-2 mt-4">
-                  <button
-                    className="btn btn-secondary btn-sm"
-                    disabled={!values.fileName || !values.file}
-                    onClick={() => {
-                      let filterData = allFile.find(
-                        (a) => a.fileName === values.fileName
-                      );
-                      if (filterData) {
-                        let afterRemoveSameData = allFile.filter(
-                          (arg) => arg.fileName !== filterData.fileName
+              <div style={{ marginTop: "20px" }}>
+                <h4 className="form-head">Document Field</h4>
+                <div className="row">
+                  <div className="col-md-4 text-left mb-2 ">
+                    <p>Document Name</p>
+                    <Input
+                      name="fileName"
+                      type="text"
+                      placeholder="Document Name"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.fileName}
+                    ></Input>
+                  </div>
+                  <div className="col-md-4 text-left mb-2 mt-4">
+                    <Label className="float-left">Upload Scan Copy</Label>
+                    <Input
+                      type="file"
+                      alt="no file"
+                      name="file"
+                      accept="image/*"
+                      onChange={(event) => {
+                        setFieldValue("file", event.currentTarget.files[0]);
+                      }}
+                    />
+                  </div>
+                  <div className="col-md-4 text-left mb-2 mt-4">
+                    <button
+                      className="btn btn-secondary btn-sm"
+                      disabled={!values.fileName || !values.file}
+                      onClick={() => {
+                        let filterData = allFile.find(
+                          (a) => a.fileName === values.fileName
                         );
-                        setAllFile([
-                          ...afterRemoveSameData,
-                          {
-                            fileName: values.fileName,
-                            file: values.file,
-                          },
-                        ]);
-                      } else {
-                        setAllFile([
-                          ...allFile,
-                          {
-                            fileName: values.fileName,
-                            file: values.file,
-                          },
-                        ]);
-                      }
-                    }}
-                    type="button"
-                  >
-                    Add
-                  </button>
+                        if (filterData) {
+                          let afterRemoveSameData = allFile.filter(
+                            (arg) => arg.fileName !== filterData.fileName
+                          );
+                          setAllFile([
+                            ...afterRemoveSameData,
+                            {
+                              fileName: values.fileName,
+                              file: values.file,
+                            },
+                          ]);
+                        } else {
+                          setAllFile([
+                            ...allFile,
+                            {
+                              fileName: values.fileName,
+                              file: values.file,
+                            },
+                          ]);
+                        }
+                      }}
+                      type="button"
+                    >
+                      Add File
+                    </button>
+                  </div>
                 </div>
               </div>
               {allFile.length !== 0 ? (

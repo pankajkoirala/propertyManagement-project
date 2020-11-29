@@ -67,25 +67,24 @@ const BrokerComponent = (props) => {
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3>Broker Entry Form </h3>
+                      <h3 className="form-head">Broker Entry Form </h3>
                     </div>
                   </div>
                   <div>
-                    {/* <div className="m-4"> */}
-
+                    <h4 className="form-head">General Information</h4>
                     <div className="row">
-                      <div className="mt-4 col-md-4">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleSelect">Broker Type</Label>
                         <Input
                           type="select"
                           name="brokerType"
                           id="exampleSelect"
-                          placeholder="Select"
+                          placeholder="Broker Broker"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.brokerType}
                         >
-                          <option value=""> </option>
+                          <option value="">Select One </option>
                           <option value="Person">Person</option>
                           <option value="Company">Company</option>
                         </Input>
@@ -98,7 +97,7 @@ const BrokerComponent = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="mt-4 col-md-4">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleName">
                           {values.brokerType === "Company"
                             ? "Company Name"
@@ -108,7 +107,7 @@ const BrokerComponent = (props) => {
                           type="text"
                           value={values.broker_companyName}
                           name="broker_companyName"
-                          placeholder="Company Name"
+                          placeholder="Broker Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -123,7 +122,7 @@ const BrokerComponent = (props) => {
                           )}
                       </div>
 
-                      <div className="mt-4 col-md-4">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleName">
                           {values.brokerType === "Company"
                             ? "Company Registeration Date "
@@ -133,7 +132,7 @@ const BrokerComponent = (props) => {
                           type="date"
                           value={values.broker_companyRegisterDate}
                           name="broker_companyRegisterDate"
-                          placeholder="Registeration Date"
+                          placeholder="Date"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -156,7 +155,7 @@ const BrokerComponent = (props) => {
                           type="text"
                           value={values.area}
                           name="area"
-                          placeholder="Enter your area"
+                          placeholder="Location area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -176,7 +175,7 @@ const BrokerComponent = (props) => {
                           type="text"
                           value={values.city}
                           name="city"
-                          placeholder="Enter your City"
+                          placeholder=" City"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -195,7 +194,7 @@ const BrokerComponent = (props) => {
                           type="text"
                           value={values.country}
                           name="country"
-                          placeholder="Enter the name of Country"
+                          placeholder=" Country"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -237,7 +236,7 @@ const BrokerComponent = (props) => {
                           type="number"
                           value={values.broker_phoneNo}
                           name="broker_phoneNo"
-                          placeholder="Enter your Contact Number"
+                          placeholder=" Contact Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -261,7 +260,7 @@ const BrokerComponent = (props) => {
                           type="text"
                           value={values.broker_RegistrationNumber}
                           name="broker_RegistrationNumber"
-                          placeholder="Registration Number"
+                          placeholder=" Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -276,62 +275,69 @@ const BrokerComponent = (props) => {
                           )}
                       </div>
                     </div>
-                    <div className="row">
-                      <div className="col-md-4 text-left mb-2 mt-4">
-                        <Input
-                          name="fileName"
-                          type="text"
-                          placeholder="Select Status of Cheque"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.fileName}
-                        ></Input>
-                      </div>
-                      <div className="col-md-4 text-left mb-2 mt-4">
-                        <Label className="float-left">Upload Scan Copy</Label>
-                        <Input
-                          type="file"
-                          alt="no file"
-                          name="file"
-                          accept="image/*"
-                          onChange={(event) => {
-                            setFieldValue("file", event.currentTarget.files[0]);
-                          }}
-                        />
-                      </div>
-                      <div className="col-md-4 text-left mb-2 mt-4">
-                        <button
-                          disabled={!values.fileName || !values.file}
-                          onClick={() => {
-                            let filterData = allFile.find(
-                              (a) => a.fileName === values.fileName
-                            );
-                            if (filterData) {
-                              let afterRemoveSameData = allFile.filter(
-                                (arg) => arg.fileName !== filterData.fileName
+                    <div style={{ marginTop: "20px" }}>
+                      <h4 className="form-head">Document Field</h4>
+                      <div className="row">
+                        <div className="col-md-4 text-left mb-2 mt-2">
+                          <p>Document Name</p>
+                          <Input
+                            name="fileName"
+                            type="text"
+                            placeholder="Document Name"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.fileName}
+                          ></Input>
+                        </div>
+                        <div className="col-md-4 text-left mb-2 ">
+                          <Label className="float-left">Upload Scan Copy</Label>
+                          <Input
+                            type="file"
+                            alt="no file"
+                            name="file"
+                            accept="image/*"
+                            onChange={(event) => {
+                              setFieldValue(
+                                "file",
+                                event.currentTarget.files[0]
                               );
-                              setAllFile([
-                                ...afterRemoveSameData,
-                                {
-                                  fileName: values.fileName,
-                                  file: values.file,
-                                },
-                              ]);
-                            } else {
-                              setAllFile([
-                                ...allFile,
-                                {
-                                  fileName: values.fileName,
-                                  file: values.file,
-                                },
-                              ]);
-                            }
-                          }}
-                          type="button"
-                          className="btn btn-secondary"
-                        >
-                          Add
-                        </button>
+                            }}
+                          />
+                        </div>
+                        <div className="col-md-4 text-left mb-2 mt-4">
+                          <button
+                            disabled={!values.fileName || !values.file}
+                            onClick={() => {
+                              let filterData = allFile.find(
+                                (a) => a.fileName === values.fileName
+                              );
+                              if (filterData) {
+                                let afterRemoveSameData = allFile.filter(
+                                  (arg) => arg.fileName !== filterData.fileName
+                                );
+                                setAllFile([
+                                  ...afterRemoveSameData,
+                                  {
+                                    fileName: values.fileName,
+                                    file: values.file,
+                                  },
+                                ]);
+                              } else {
+                                setAllFile([
+                                  ...allFile,
+                                  {
+                                    fileName: values.fileName,
+                                    file: values.file,
+                                  },
+                                ]);
+                              }
+                            }}
+                            type="button"
+                            className="btn btn-secondary"
+                          >
+                            Add File
+                          </button>
+                        </div>
                       </div>
                     </div>
                     {allFile.length !== 0 ? (

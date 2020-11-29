@@ -78,10 +78,9 @@ const TenantEntry = (props) => {
                     </div>
                   </div>
                   <div>
-                    {/* <div className="m-4"> */}
-
+                    <h4 className="form-head">General Information</h4>
                     <div className="row ">
-                      <div className="mt-4 col-md-6">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleSelect">Tenent Type</Label>
                         <Input
                           type="select"
@@ -105,7 +104,7 @@ const TenantEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="mt-4 col-md-6">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleName">
                           {values.TenentType === "Company"
                             ? "Company Name"
@@ -125,6 +124,25 @@ const TenantEntry = (props) => {
                             style={{ fontSize: 12 }}
                           >
                             {errors.tenant_Name}
+                          </span>
+                        )}
+                      </div>
+                      <div className=" mt-2 col-md-4">
+                        <Label for="exampleName">Email</Label>
+                        <Input
+                          type="email"
+                          value={values.tenant_email}
+                          name="tenant_email"
+                          placeholder="Enter Email"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.tenant_email && errors.tenant_email && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.tenant_email}
                           </span>
                         )}
                       </div>
@@ -177,7 +195,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.country}
                           name="country"
-                          placeholder="Enter the name of Country"
+                          placeholder=" Country"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -192,26 +210,6 @@ const TenantEntry = (props) => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-md-6">
-                        <Label for="exampleName">Email</Label>
-                        <Input
-                          type="email"
-                          value={values.tenant_email}
-                          name="tenant_email"
-                          placeholder="Enter Email"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.tenant_email && errors.tenant_email && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.tenant_email}
-                          </span>
-                        )}
-                      </div>
-
                       <div className="col-md-6">
                         <Label for="exampleName">Contact Number</Label>
                         <Input
@@ -231,8 +229,6 @@ const TenantEntry = (props) => {
                           </span>
                         )}
                       </div>
-                    </div>
-                    <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">
                           {values.TenentType === "Company"
@@ -257,6 +253,8 @@ const TenantEntry = (props) => {
                             </span>
                           )}
                       </div>
+                    </div>
+                    <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">
                           {values.TenentType === "Company"
@@ -280,9 +278,6 @@ const TenantEntry = (props) => {
                           </span>
                         )}
                       </div>
-                    </div>
-
-                    <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">Driving Licence Number</Label>
                         <Input
@@ -304,69 +299,77 @@ const TenantEntry = (props) => {
                           )}
                       </div>
                     </div>
-                    <div className="row">
-                      <div className="col-md-4 text-left mb-2 mt-4">
-                        <Input
-                          name="fileName"
-                          type="text"
-                          placeholder="Select Status of Cheque"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.fileName}
-                        ></Input>
-                      </div>
-                      <div className="col-md-4 text-left mb-2 mt-4">
-                        <Label
-                          onClick={() => console.log(values)}
-                          className="float-left"
-                        >
-                          Upload Scan Copy
-                        </Label>
-                        <Input
-                          type="file"
-                          alt="no file"
-                          name="file"
-                          accept="image/*"
-                          onChange={(event) => {
-                            setFieldValue("file", event.currentTarget.files[0]);
-                          }}
-                        />
-                      </div>
-                      <div className="col-md-4 text-left mb-2 mt-4">
-                        <button
-                          disabled={!values.fileName || !values.file}
-                          onClick={() => {
-                            let filterData = allFile?.find(
-                              (a) => a.fileName === values.fileName
-                            );
-                            if (filterData) {
-                              let afterRemoveSameData = allFile.filter(
-                                (arg) => arg.fileName !== filterData.fileName
+                    <div style={{ marginTop: "20px" }}>
+                      <h4 className="form-head">Document Field</h4>
+                      <div className="row">
+                        <div className="col-md-4 text-left mb-2 ">
+                          <p>Document Name</p>
+                          <Input
+                            name="fileName"
+                            type="text"
+                            placeholder="Document Name"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.fileName}
+                          ></Input>
+                        </div>
+                        <div className="col-md-4 text-left mb-2 mt-2">
+                          <Label
+                            onClick={() => console.log(values)}
+                            className="float-left"
+                          >
+                            Upload Scan Copy
+                          </Label>
+                          <Input
+                            type="file"
+                            alt="no file"
+                            name="file"
+                            accept="image/*"
+                            onChange={(event) => {
+                              setFieldValue(
+                                "file",
+                                event.currentTarget.files[0]
                               );
-                              setAllFile([
-                                ...afterRemoveSameData,
-                                {
-                                  fileName: values.fileName,
-                                  file: values.file,
-                                },
-                              ]);
-                            } else {
-                              setAllFile([
-                                ...allFile,
-                                {
-                                  fileName: values.fileName,
-                                  file: values.file,
-                                },
-                              ]);
-                            }
-                          }}
-                          type="button"
-                          className="btn btn-secondary btn-sm"
-                        >
-                          Add
-                        </button>
+                            }}
+                          />
+                        </div>
+                        <div className="col-md-4 text-left mb-2 mt-4">
+                          <button
+                            disabled={!values.fileName || !values.file}
+                            onClick={() => {
+                              let filterData = allFile?.find(
+                                (a) => a.fileName === values.fileName
+                              );
+                              if (filterData) {
+                                let afterRemoveSameData = allFile.filter(
+                                  (arg) => arg.fileName !== filterData.fileName
+                                );
+                                setAllFile([
+                                  ...afterRemoveSameData,
+                                  {
+                                    fileName: values.fileName,
+                                    file: values.file,
+                                  },
+                                ]);
+                              } else {
+                                setAllFile([
+                                  ...allFile,
+                                  {
+                                    fileName: values.fileName,
+                                    file: values.file,
+                                  },
+                                ]);
+                              }
+                            }}
+                            type="button"
+                            className="btn btn-secondary btn-sm"
+                          >
+                            Add File
+                          </button>
+                        </div>
                       </div>
                     </div>
+
                     <button
                       className="btn btn-primary success col-md-2 mt-5"
                       type="button"
