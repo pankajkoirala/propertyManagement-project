@@ -66,10 +66,9 @@ const OwnerEntry = (props) => {
                     </div>
                   </div>
                   <div>
-                    {/* <div className="m-4"> */}
-
+                    <h4 className="form-head">General Information</h4>
                     <div className="row ">
-                      <div className="mt-4 col-md-4">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleSelect">Owner Type</Label>
                         <Input
                           type="select"
@@ -80,7 +79,7 @@ const OwnerEntry = (props) => {
                           onBlur={handleBlur}
                           value={values.owner_Type}
                         >
-                          <option value=""> </option>
+                          <option value="">Select One </option>
                           <option value="Person">Person</option>
                           <option value="Company">Company</option>
                         </Input>
@@ -93,7 +92,7 @@ const OwnerEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="mt-4 col-md-4">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleName">
                           {" "}
                           {values.owner_Type === "Company"
@@ -104,7 +103,7 @@ const OwnerEntry = (props) => {
                           type="text"
                           value={values.owner_Name}
                           name="owner_Name"
-                          placeholder="Enter your firstName"
+                          placeholder="Owner Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -118,7 +117,7 @@ const OwnerEntry = (props) => {
                         )}
                       </div>
 
-                      <div className="mt-4 col-md-4">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleName">
                           {values.owner_Type === "Company"
                             ? "Company Registration No"
@@ -128,7 +127,7 @@ const OwnerEntry = (props) => {
                           type="text"
                           value={values.owner_GovID_RegNo}
                           name="owner_GovID_RegNo"
-                          placeholder="Enter your lastName"
+                          placeholder="Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -150,7 +149,7 @@ const OwnerEntry = (props) => {
                           type="text"
                           value={values.owner_area}
                           name="owner_area"
-                          placeholder="Enter your owner_area"
+                          placeholder="Location Area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -170,7 +169,7 @@ const OwnerEntry = (props) => {
                           type="text"
                           value={values.owner_city}
                           name="owner_city"
-                          placeholder="Enter your owner_city"
+                          placeholder="City"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -189,7 +188,7 @@ const OwnerEntry = (props) => {
                           type="text"
                           value={values.owner_country}
                           name="owner_country"
-                          placeholder="Enter the name of owner_country"
+                          placeholder="Country"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -203,7 +202,6 @@ const OwnerEntry = (props) => {
                         )}
                       </div>
                     </div>
-
                     <div className="row">
                       <div className="col-md-4">
                         <Label for="exampleSelect">
@@ -254,7 +252,7 @@ const OwnerEntry = (props) => {
                           type="number"
                           value={values.owner_phoneNo}
                           name="owner_phoneNo"
-                          placeholder="Enter your Contact Number"
+                          placeholder=" Contact Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -298,62 +296,66 @@ const OwnerEntry = (props) => {
                       </div>
                     </div>
                   </div>
-                  <div className="row mt-4">
-                    <div className="col-md-4 text-left mb-2 mt-4">
-                      <Input
-                        name="fileName"
-                        type="text"
-                        placeholder="Select Status of Cheque"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.fileName}
-                      ></Input>
-                    </div>
-                    <div className="col-md-4 text-left mb-2 mt-4">
-                      <Label className="float-left">Upload Scan Copy</Label>
-                      <Input
-                        type="file"
-                        alt="no file"
-                        name="file"
-                        accept="image/*"
-                        onChange={(event) => {
-                          setFieldValue("file", event.currentTarget.files[0]);
-                        }}
-                      />
-                    </div>
-                    <div className="col-md-4 text-left mb-2 mt-4">
-                      <button
-                        disabled={!values.fileName || !values.file}
-                        onClick={() => {
-                          let filterData = allFile.find(
-                            (a) => a.fileName === values.fileName
-                          );
-                          if (filterData) {
-                            let afterRemoveSameData = allFile.filter(
-                              (arg) => arg.fileName !== filterData.fileName
+                  <div style={{ marginTop: "40px" }}>
+                    <h4 className="form-head">Document Field</h4>
+                    <div className="row ">
+                      <div className="col-md-4 text-left mb-2 ">
+                        <p>Document Name</p>
+                        <Input
+                          name="fileName"
+                          type="text"
+                          placeholder="Select Status of Cheque"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.fileName}
+                        ></Input>
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-2">
+                        <Label className="float-left">Upload Scan Copy</Label>
+                        <Input
+                          type="file"
+                          alt="no file"
+                          name="file"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue("file", event.currentTarget.files[0]);
+                          }}
+                        />
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <button
+                          disabled={!values.fileName || !values.file}
+                          onClick={() => {
+                            let filterData = allFile.find(
+                              (a) => a.fileName === values.fileName
                             );
-                            setAllFile([
-                              ...afterRemoveSameData,
-                              {
-                                fileName: values.fileName,
-                                file: values.file,
-                              },
-                            ]);
-                          } else {
-                            setAllFile([
-                              ...allFile,
-                              {
-                                fileName: values.fileName,
-                                file: values.file,
-                              },
-                            ]);
-                          }
-                        }}
-                        type="button"
-                        className="btn btn-secondary btn-sm"
-                      >
-                        Add
-                      </button>
+                            if (filterData) {
+                              let afterRemoveSameData = allFile.filter(
+                                (arg) => arg.fileName !== filterData.fileName
+                              );
+                              setAllFile([
+                                ...afterRemoveSameData,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
+                            } else {
+                              setAllFile([
+                                ...allFile,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
+                            }
+                          }}
+                          type="button"
+                          className="btn btn-secondary btn-sm"
+                        >
+                          Add File
+                        </button>
+                      </div>
                     </div>
                   </div>
                   {allFile.length !== 0 ? (

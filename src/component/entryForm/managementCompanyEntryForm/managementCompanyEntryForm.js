@@ -76,18 +76,20 @@ const ManagementCompanyComponent = (props) => {
               isSubmitting,
             }) => (
               <Form>
-                <FormGroup className="form-group p-5 m-4">
+                <FormGroup className=" p-5 m-4">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3 className="form-head">Management Company Entry Form </h3>
+                      <h3 className="form-head">
+                        Management Company Entry Form{" "}
+                      </h3>
                     </div>
                   </div>
                   <div>
-                    {/* <div className="m-4"> */}
+                    <h4 className="form-head">General Information</h4>
 
                     <div className="row">
-                      <div className="mt-4 col-md-4">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleName">Company Name</Label>
                         <Input
                           type="text"
@@ -108,7 +110,7 @@ const ManagementCompanyComponent = (props) => {
                           )}
                       </div>
 
-                      <div className="mt-4 col-md-4">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleName">Registeration Date</Label>
                         <Input
                           type="date"
@@ -128,7 +130,7 @@ const ManagementCompanyComponent = (props) => {
                             </span>
                           )}
                       </div>
-                      <div className="mt-4 col-md-4">
+                      <div className="mt-2 col-md-4">
                         <Label for="exampleName">Registration Number</Label>
                         <Input
                           type="number"
@@ -157,7 +159,7 @@ const ManagementCompanyComponent = (props) => {
                           type="text"
                           value={values.managementCompany_area}
                           name="managementCompany_area"
-                          placeholder="Enter your managementCompany_area"
+                          placeholder="Location Area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -178,7 +180,7 @@ const ManagementCompanyComponent = (props) => {
                           type="text"
                           value={values.managementCompany_city}
                           name="managementCompany_city"
-                          placeholder="Enter your managementCompany_city"
+                          placeholder="City"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -199,7 +201,7 @@ const ManagementCompanyComponent = (props) => {
                           type="text"
                           value={values.managementCompany_country}
                           name="managementCompany_country"
-                          placeholder="Enter the name of managementCompany_country"
+                          placeholder="Country"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -216,7 +218,7 @@ const ManagementCompanyComponent = (props) => {
                     </div>
 
                     <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <Label for="exampleName">Email</Label>
                         <Input
                           type="email"
@@ -237,7 +239,7 @@ const ManagementCompanyComponent = (props) => {
                           )}
                       </div>
 
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <Label for="exampleName">Contact Number</Label>
                         <Input
                           type="number"
@@ -257,9 +259,7 @@ const ManagementCompanyComponent = (props) => {
                             </span>
                           )}
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <Label for="exampleName">Mobile Number</Label>
                         <Input
                           type="number"
@@ -281,64 +281,69 @@ const ManagementCompanyComponent = (props) => {
                       </div>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col-md-4 text-left mb-2 mt-4">
-                      <Input
-                        name="fileName"
-                        type="text"
-                        placeholder="Select Status of Cheque"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.fileName}
-                      ></Input>
-                    </div>
-                    <div className="col-md-4 text-left mb-2 mt-4">
-                      <Label className="float-left">Upload Scan Copy</Label>
-                      <Input
-                        type="file"
-                        alt="no file"
-                        name="file"
-                        accept="image/*"
-                        onChange={(event) => {
-                          setFieldValue("file", event.currentTarget.files[0]);
-                        }}
-                      />
-                    </div>
-                    <div className="col-md-4 text-left mb-2 mt-4">
-                      <button
-                        disabled={!values.fileName || !values.file}
-                        onClick={() => {
-                          let filterData = allFile.find(
-                            (a) => a.fileName === values.fileName
-                          );
-                          if (filterData) {
-                            let afterRemoveSameData = allFile.filter(
-                              (arg) => arg.fileName !== filterData.fileName
+                  <div style={{ marginTop: "20px" }}>
+                    <h4>Document Field</h4>
+                    <div className="row">
+                      <div className="col-md-4 text-left mb-2 ">
+                        <p className="form-head">Document Name</p>
+                        <Input
+                          name="fileName"
+                          type="text"
+                          placeholder="Document Name"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.fileName}
+                        ></Input>
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-2">
+                        <Label className="float-left">Upload Scan Copy</Label>
+                        <Input
+                          type="file"
+                          alt="no file"
+                          name="file"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue("file", event.currentTarget.files[0]);
+                          }}
+                        />
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <button
+                          disabled={!values.fileName || !values.file}
+                          onClick={() => {
+                            let filterData = allFile.find(
+                              (a) => a.fileName === values.fileName
                             );
-                            setAllFile([
-                              ...afterRemoveSameData,
-                              {
-                                fileName: values.fileName,
-                                file: values.file,
-                              },
-                            ]);
-                          } else {
-                            setAllFile([
-                              ...allFile,
-                              {
-                                fileName: values.fileName,
-                                file: values.file,
-                              },
-                            ]);
-                          }
-                        }}
-                        type="button"
-                        className="btn btn-secondary btn-sm"
-                      >
-                        Add
-                      </button>
+                            if (filterData) {
+                              let afterRemoveSameData = allFile.filter(
+                                (arg) => arg.fileName !== filterData.fileName
+                              );
+                              setAllFile([
+                                ...afterRemoveSameData,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
+                            } else {
+                              setAllFile([
+                                ...allFile,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
+                            }
+                          }}
+                          type="button"
+                          className="btn btn-secondary btn-sm"
+                        >
+                          Add File
+                        </button>
+                      </div>
                     </div>
                   </div>
+
                   {allFile.length !== 0 ? (
                     <Table striped bordered hover size="sm">
                       <thead>

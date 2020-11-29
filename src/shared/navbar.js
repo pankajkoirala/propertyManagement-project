@@ -533,23 +533,25 @@ const NavbarPage = () => {
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card style={{ border: "none", backgroundColor: "#022B39" }}>
+        <Card style={{ border: "none" }}>
           <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
-            <Accordion.Toggle
-              style={{
-                border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
-              }}
-              as={Button}
-              variant="link"
-              eventKey="14"
-            >
-              <Link to="/invoiceList">
-                {" "}
-                <b>Invoice Detail</b>{" "}
-              </Link>
-            </Accordion.Toggle>
+            <Link to="/invoiceList">
+              <Accordion.Toggle
+                style={{
+                  borderRadius: "50px",
+                  border: "none",
+                  backgroundColor: "#66b2ff",
+                  borderRadius: "50px",
+                }}
+                as={Card.Header}
+                variant="link"
+              >
+                <b className="text-white">
+                  <ExploreIcon />
+                  Invoice Detail
+                </b>
+              </Accordion.Toggle>
+            </Link>
           </Card.Header>
         </Card>
       </Accordion>

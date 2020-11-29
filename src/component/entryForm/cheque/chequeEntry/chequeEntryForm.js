@@ -93,6 +93,7 @@ const ChequeEntry = (props) => {
                         <Input
                           type="date"
                           value={values.cheque_issueDate}
+                          placeholder="Enter Due date of Cheque"
                           name="cheque_issueDate"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -113,7 +114,7 @@ const ChequeEntry = (props) => {
                           type="date"
                           value={values.cheque_recivedDate}
                           name="cheque_recivedDate"
-                          placeholder="Enter date of Cheque"
+                          placeholder="Enter Recived Date"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -133,7 +134,7 @@ const ChequeEntry = (props) => {
                           type="date"
                           value={values.cheque_depositeDate}
                           name="cheque_depositeDate"
-                          placeholder="Enter date of Cheque"
+                          placeholder="Enter Deposite Date"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -154,7 +155,7 @@ const ChequeEntry = (props) => {
                           type="number"
                           value={values.cheque_number}
                           name="cheque_number"
-                          placeholder="Cheque Amount"
+                          placeholder="Cheque Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -192,7 +193,7 @@ const ChequeEntry = (props) => {
                           type="number"
                           value={values.vat_amount}
                           name="vat_amount"
-                          placeholder="Cheque Amount"
+                          placeholder="VAT Amount"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -206,12 +207,12 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">miscellaneous Amount</Label>
+                        <Label for="exampleName">Miscellaneous Amount</Label>
                         <Input
                           type="number"
                           value={values.miscellaneous_amount}
                           name="miscellaneous_amount"
-                          placeholder="Cheque Amount"
+                          placeholder="Miscellaneous Amount"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -232,7 +233,7 @@ const ChequeEntry = (props) => {
                           type="text"
                           value={values.cheque_bankName}
                           name="cheque_bankName"
-                          placeholder="Bank name"
+                          placeholder="Bank Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -252,7 +253,7 @@ const ChequeEntry = (props) => {
                           type="select"
                           name="cheque_status"
                           id="exampleSelect"
-                          placeholder="Select Status of Cheque"
+                          placeholder="Cheque Status "
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.cheque_status}
@@ -380,52 +381,51 @@ const ChequeEntry = (props) => {
                       </div>
                     </div>
 
-                    <div className="row">
-                      <div className="col-md-6 text-left mb-2 mt-4">
-                        <Label className="float-left">Upload Scan Copy</Label>
-                        <Input
-                          type="file"
-                          name="cheque_picture"
-                          accept="image/*"
-                          onChange={(event) => {
-                            setFieldValue(
-                              "cheque_picture",
-                              event.currentTarget.files[0]
-                            );
-                          }}
-                        />
-
-                        {touched.cheque_picture && values.cheque_picture && (
-                          <img
-                            src={
-                              typeof values.cheque_picture === "string"
-                                ? values.cheque_picture
-                                : URL.createObjectURL(values.cheque_picture)
-                            }
-                            alt="no file"
-                            height="20"
-                          />
-                        )}
-                      </div>
-                      <button
-                        className="btn btn-primary col-md-2 cheque-btn"
-                        type="button"
-                        onClick={() => setShowPopUp(true)}
-                      >
-                        Add Cheque
-                      </button>
-                      <PoopUp
-                        isOpen={showPopup}
-                        isClose={setShowPopUp}
-                        CRUD_Function={handleSubmit}
-                        buttonName={props.Cheque ? "Update" : "Create"}
-                        message={
-                          props.Cheque
-                            ? "are you sure want to update"
-                            : "are you sure want to create"
-                        }
+                    <div className="col-md-6 text-left mb-2 mt-4">
+                      <Label className="float-left">Upload Scan Copy</Label>
+                      <Input
+                        type="file"
+                        name="cheque_picture"
+                        accept="image/*"
+                        onChange={(event) => {
+                          setFieldValue(
+                            "cheque_picture",
+                            event.currentTarget.files[0]
+                          );
+                        }}
                       />
+
+                      {touched.cheque_picture && values.cheque_picture && (
+                        <img
+                          src={
+                            typeof values.cheque_picture === "string"
+                              ? values.cheque_picture
+                              : URL.createObjectURL(values.cheque_picture)
+                          }
+                          alt="no file"
+                          height="20"
+                        />
+                      )}
                     </div>
+
+                    <button
+                      className="btn btn-primary col-md-2 cheque-btn"
+                      type="button"
+                      onClick={() => setShowPopUp(true)}
+                    >
+                      Add Cheque
+                    </button>
+                    <PoopUp
+                      isOpen={showPopup}
+                      isClose={setShowPopUp}
+                      CRUD_Function={handleSubmit}
+                      buttonName={props.Cheque ? "Update" : "Create"}
+                      message={
+                        props.Cheque
+                          ? "are you sure want to update"
+                          : "are you sure want to create"
+                      }
+                    />
                   </div>
                 </FormGroup>
               </Form>
