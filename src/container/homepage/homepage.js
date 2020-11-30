@@ -13,9 +13,6 @@ const HomepageContainer = (props) => {
     parseInt(moment().format("YYYY"))
   );
 
-  console.log(chequeDate_month);
-  console.log(chequeDate_year);
-
   let clearedCheque = props?.redux_ChequeData?.cheque?.filter(
     (arg) => arg.cheque_status === "Cleared"
   );

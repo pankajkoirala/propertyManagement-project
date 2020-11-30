@@ -177,14 +177,14 @@ const ExpenseEntry = (props) => {
                               (maintananceTicket) => {
                                 return {
                                   name:
-                                    maintananceTicket.maintananceTicket_ID +
+                                    maintananceTicket?.maintananceTicket_ID +
                                     "/" +
-                                    maintananceTicket.MaintanancePropertyID
-                                      .property_type +
+                                    maintananceTicket?.MaintanancePropertyID
+                                      ?.property_type +
                                     "-" +
-                                    maintananceTicket.MaintanancePropertyID
-                                      .referenceNO,
-                                  id: maintananceTicket._id,
+                                    maintananceTicket?.MaintanancePropertyID
+                                      ?.referenceNO,
+                                  id: maintananceTicket?._id,
                                 };
                               }
                             )}
