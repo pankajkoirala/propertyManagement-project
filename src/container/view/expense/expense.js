@@ -5,16 +5,18 @@ import { connect } from "react-redux";
 const ExpenseView = (props) => {
   return (
     <div>
-      <ExpensesView expenseList={props.redux_expenseData.expense} />
+      <ExpensesView
+        expenseList={props.redux_expenseData.expense}
+        redux_propertyData={props.redux_propertyData.property}
+      />
     </div>
   );
 };
 const mapStateToProps = (state) => ({
   redux_expenseData: state.expense,
+  redux_propertyData: state.property,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  //redux_Add_Tenant: (arg) => dispatch({ type: "ADD_ALL_MAINTANANCE_COMPANY", payload: arg }),
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseView);

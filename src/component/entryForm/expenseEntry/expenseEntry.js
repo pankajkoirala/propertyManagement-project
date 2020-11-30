@@ -32,6 +32,7 @@ const ExpenseEntry = (props) => {
     Expense_Remark: props?.expense?.Expense_Remark || "",
     expenseInvoiceNumber: props?.expense?.expenseInvoiceNumber || "",
     invoicePhoto: props?.expense?.invoicePhoto || "",
+    expense_Type: props?.expense?.expense_Type || "",
   };
   return (
     <div>
@@ -47,6 +48,7 @@ const ExpenseEntry = (props) => {
                   expenseId: arg.expenseId,
                 };
               });
+
               values.expense_list = JSON.stringify(values.expense_list);
               console.log(values);
               props?.expense
@@ -77,7 +79,7 @@ const ExpenseEntry = (props) => {
                     {/* <div className="m-4"> */}
 
                     <div className="row ">
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-4">
                         <Label for="exampleName">entry date</Label>
                         <Input
                           type="date"
@@ -96,33 +98,8 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">maintanance ticket ID</Label>
-                        <RegexComponent
-                          {...props}
-                          setFieldValue={setFieldValue}
-                          options={props?.Redux_maintananceTicketData?.map(
-                            (maintananceTicket) => {
-                              return {
-                                name: maintananceTicket.maintananceTicket_ID,
-                                id: maintananceTicket._id,
-                              };
-                            }
-                          )}
-                          name={"Maintanance_ticketID"}
-                        />
-                        {touched.Maintanance_ticketID &&
-                          errors.Maintanance_ticketID && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.Maintanance_ticketID}
-                            </span>
-                          )}
-                      </div>
 
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-4">
                         <Label for="exampleName">remark</Label>
                         <Input
                           type="text"
@@ -142,7 +119,7 @@ const ExpenseEntry = (props) => {
                         )}
                       </div>
 
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-4">
                         <Label for="exampleName">invoice number</Label>
                         <Input
                           type="text"
@@ -162,8 +139,73 @@ const ExpenseEntry = (props) => {
                             </span>
                           )}
                       </div>
-
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-2 col-md-4">
+                        <Label for="exampleSelect">Expense Type</Label>
+                        <Input
+                          type="select"
+                          name="expense_Type"
+                          id="exampleSelect"
+                          placeholder="Select"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.expense_Type}
+                        >
+                          <option value="">Select One </option>
+                          <option value="Maintanance">Maintanance</option>
+                          <option value="Legal">Legal</option>
+                          <option value="FMC">FMC</option>
+                          <option value="Utility">Utility</option>
+                          <option value="Office Expense">Office Expense</option>
+                          <option value="Service Charge">Service Charge</option>
+                        </Input>
+                        {touched.expense_Type && errors.expense_Type && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.expense_Type}
+                          </span>
+                        )}
+                      </div>
+                      {values.expense_Type === "Maintanance" ? (
+                        <div className="mt-2 col-4">
+                          <Label for="exampleName">maintanance ticket ID</Label>
+                          <RegexComponent
+                            {...props}
+                            setFieldValue={setFieldValue}
+                            options={props?.Redux_maintananceTicketData?.map(
+                              (maintananceTicket) => {
+                                return {
+                                  name:
+                                    maintananceTicket.maintananceTicket_ID +
+                                    "/" +
+                                    maintananceTicket.MaintanancePropertyID
+                                      .property_type +
+                                    "-" +
+                                    maintananceTicket.MaintanancePropertyID
+                                      .referenceNO,
+                                  id: maintananceTicket._id,
+                                };
+                              }
+                            )}
+                            name={"Maintanance_ticketID"}
+                          />
+                          {touched.Maintanance_ticketID &&
+                            errors.Maintanance_ticketID && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.Maintanance_ticketID}
+                              </span>
+                            )}
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    <div style={{ marginTop: "40px" }} className="row">
+                      <div className="mt-4 col-4">
                         <Label for="exampleName">expense heading</Label>
                         <Input
                           type="text"
@@ -181,7 +223,7 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-4">
                         <Label for="exampleName">amount</Label>
                         <Input
                           type="number"

@@ -36,9 +36,6 @@ const MaintananceTicketContainer = (props) => {
         Redux_maintananceCompanyData={
           props.Redux_maintananceCompanyData.maintananceCompany
         }
-        Redux_managementCompanyData={
-          props.Redux_managementCompanyData.managementCompany
-        }
       />
     </div>
   );
@@ -46,7 +43,6 @@ const MaintananceTicketContainer = (props) => {
 const mapStateToProps = (state) => ({
   Redux_propertyData: state.property,
   Redux_maintananceCompanyData: state.maintananceCompany,
-  Redux_managementCompanyData: state.managementCompany,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

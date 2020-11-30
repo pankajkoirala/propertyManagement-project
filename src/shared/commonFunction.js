@@ -24,9 +24,9 @@ export const incomeCalc = (allCheque, setData, month, addnum) => {
 
 export const expenseCalc = (allExpense, setData, month, addnum) => {
   let monthExpense = 0;
-  let filterExpense = allExpense.filter(
+  let filterExpense = allExpense?.filter(
     (arg) =>
-      moment(arg.expense_EntryDate).format("YYYY-MM") === `${addnum}-${month}`
+      moment(arg?.expense_EntryDate).format("YYYY-MM") === `${addnum}-${month}`
   );
   filterExpense.forEach((arg) => {
     for (let index = 0; index < arg?.expense_list?.length; index++) {

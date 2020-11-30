@@ -5,6 +5,7 @@ import { Table } from "react-bootstrap";
 import { Formik } from "formik";
 import { v4 as uuidv4 } from "uuid";
 import PoopUp from "./../../../shared/popup";
+import RegexConponent from "../../../shared/regexComponent";
 
 //import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
@@ -49,6 +50,9 @@ const PropertyEntry = (props) => {
     Muncipality_Number: props?.property?.Muncipality_Number || "",
     Property_Area: props?.property?.Property_Area || "",
     Property_Premise_Number: props?.property?.Property_Premise_Number || "",
+    developerCompany: props?.property?.developerCompany?._id || "",
+    managementCompany: props?.property?.managementCompany?._id || "",
+
     fileName: "",
     file: "",
     files_list: [],
@@ -372,6 +376,56 @@ const PropertyEntry = (props) => {
                     </span>
                   )}
                 </div>
+                <div className="col-md-">
+                  <Label for="exampleSelect">Developer Company</Label>
+
+                  <RegexConponent
+                    setFieldValue={setFieldValue}
+                    options={props?.redux_DeveloperCompanyData?.map(
+                      (developer) => {
+                        return {
+                          name: developer.DeveloperCompany_Name,
+                          id: developer._id,
+                        };
+                      }
+                    )}
+                    name={"developerCompany"}
+                  />
+
+                  {touched.developerCompany && errors.developerCompany && (
+                    <span
+                      className="text-danger col-md-12 text-left mb-2"
+                      style={{ fontSize: 12 }}
+                    >
+                      {errors.developerCompany}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div className="col-md-">
+                <Label for="exampleSelect">Management Company</Label>
+
+                <RegexConponent
+                  setFieldValue={setFieldValue}
+                  options={props?.Redux_ManagementCompanyData?.map(
+                    (management) => {
+                      return {
+                        name: management.managementCompany_name,
+                        id: management._id,
+                      };
+                    }
+                  )}
+                  name={"managementCompany"}
+                />
+
+                {touched.managementCompany && errors.managementCompany && (
+                  <span
+                    className="text-danger col-md-12 text-left mb-2"
+                    style={{ fontSize: 12 }}
+                  >
+                    {errors.managementCompany}
+                  </span>
+                )}
               </div>
               <div className="">
                 <Label for="exampleName">
