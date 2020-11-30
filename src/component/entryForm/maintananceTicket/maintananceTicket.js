@@ -21,8 +21,7 @@ const MaintananceTicket = (props) => {
       props?.maintananceTicket?.MaintanancePropertyID?._id || "",
     MaintananceCompanyId:
       props?.maintananceTicket?.MaintananceCompanyId?._id || "",
-    managementCompanyId:
-      props?.maintananceTicket?.managementCompanyId?._id || "",
+
     MaintananceCompanyDetailInfo:
       props?.maintananceTicket?.MaintananceCompanyDetailInfo || "",
   };
@@ -65,7 +64,7 @@ const MaintananceTicket = (props) => {
                     {/* <div className="m-4"> */}
 
                     <div className="row ">
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-4">
                         <Label for="exampleName">issue date Date</Label>
                         <Input
                           type="date"
@@ -85,7 +84,7 @@ const MaintananceTicket = (props) => {
                             </span>
                           )}
                       </div>
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-4">
                         <Label for="exampleName">maintanance due Date</Label>
                         <Input
                           type="date"
@@ -106,7 +105,7 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
 
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-4">
                         <Label for="exampleName">property id</Label>
                         <RegexComponent
                           {...props}
@@ -135,7 +134,9 @@ const MaintananceTicket = (props) => {
                             </span>
                           )}
                       </div>
-                      <div className="mt-4 col-md-3">
+                    </div>
+                    <div className="row">
+                      <div className="mt-4 col-4">
                         <Label for="exampleName">maintanance Company Id</Label>
                         <RegexComponent
                           {...props}
@@ -163,36 +164,7 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
 
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">
-                          managementCompanyId Company Id
-                        </Label>
-                        <RegexComponent
-                          {...props}
-                          setFieldValue={setFieldValue}
-                          options={props?.Redux_managementCompanyData?.map(
-                            (managementCompany) => {
-                              return {
-                                name: managementCompany.managementCompany_name,
-
-                                id: managementCompany._id,
-                              };
-                            }
-                          )}
-                          name={"managementCompanyId"}
-                        />
-
-                        {touched.managementCompanyId &&
-                          errors.managementCompanyId && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.managementCompanyId}
-                            </span>
-                          )}
-                      </div>
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-4">
                         <Label for="exampleName">detail message</Label>
                         <Input
                           type="textarea"

@@ -18,11 +18,11 @@ const ExpenseDisplay = (props) => {
       <div>
         <h1>lease list</h1>
         <SearchInput
-          filteringData={props?.expenseList.map((arg) => {
+          filteringData={props?.expenseList?.map((arg) => {
             return {
               search1: arg.Expense_ID,
-              search2: "",
-              search3: "",
+              search2: arg.expense_Type,
+              search3: arg.expenseInvoiceNumber,
               ID: arg._id,
             };
           })}
@@ -34,9 +34,11 @@ const ExpenseDisplay = (props) => {
           <thead>
             <tr>
               <th>SN</th>
-              <th> lease ID</th>
+              <th> Expense ID</th>
               <th>entry date</th>
               <th>invoice number</th>
+              <th>Expense Type</th>
+              <th>Property </th>
               <th>remark</th>
               <th>detail view</th>
             </tr>
@@ -49,8 +51,19 @@ const ExpenseDisplay = (props) => {
                   <td>{arg.Expense_ID}</td>
                   <td>{moment(arg?.expense_EntryDate).format("YYYY-MM-DD")}</td>
                   <td>{arg?.expenseInvoiceNumber}</td>
+                  <td>{arg?.expense_Type}</td>
+                  <th>
+                    {arg?.expense_Type === "Maintanance"
+                      ? (props?.redux_propertyData?.filter(
+                          (property) =>
+                            property._id ===
+                            (arg?.Maintanance_ticketID
+                              ? arg?.Maintanance_ticketID?.MaintanancePropertyID
+                              : "nodata")
+                        ))[0]?.property_type
+                      : "-"}
+                  </th>
                   <td>{arg?.Expense_Remark}</td>
-
                   <td>
                     <Link to={`/expense/${arg._id}`}>
                       {" "}

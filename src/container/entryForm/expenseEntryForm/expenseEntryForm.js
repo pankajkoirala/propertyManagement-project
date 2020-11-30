@@ -9,13 +9,16 @@ import { reloadFunction } from "../../../shared/commonFunction";
 const ExpenseEntryForm = (props) => {
   const expenseData = (data) => {
     const formData = new FormData();
+    if (data.Maintanance_ticketID !== "") {
+      formData.append("Maintanance_ticketID", data.Maintanance_ticketID);
+    }
 
     formData.append("expense_list", data.expense_list);
     formData.append("expense_EntryDate", data.expense_EntryDate);
-    formData.append("Maintanance_ticketID", data.Maintanance_ticketID);
     formData.append("Expense_Remark", data.Expense_Remark);
     formData.append("expenseInvoiceNumber", data.expenseInvoiceNumber);
     formData.append("invoicePhoto", data.invoicePhoto);
+    formData.append("expense_Type", data.expense_Type);
 
     Axios({
       method: "post",

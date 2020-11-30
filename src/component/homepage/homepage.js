@@ -9,15 +9,24 @@ import { Line } from "react-chartjs-2";
 
 const Homepage = (props) => {
   const {
-    rentalIncome,
-    vatIncome,
-    miscellaneousIncome,
     totalProperty,
     leaseProperty,
     barIncomeData,
     BarExpenseData,
     next_preYear,
     setNext_preYear,
+    //cheque month data
+    rentalIncome_month,
+    vatIncome_month,
+    miscellaneousIncome_month,
+    setChequeDate_month,
+    chequeDate_month,
+    //cheque month data
+    rentalIncome_Year,
+    vatIncome_Year,
+    miscellaneousIncome_Year,
+    chequeDate_year,
+    setChequeDate_year,
   } = props;
 
   //bardiagram data
@@ -157,20 +166,24 @@ const Homepage = (props) => {
               </div>
             </div>
           </div>
-          {/* income piechart */}
+          {/* income piechart by month */}
 
           <div className="bg-white p-4">
-            <h3 className="text-center ">Income Status</h3>
+            <h3 className="text-center ">Income Status by Month</h3>
             <div className="row ">
               <div className="p-2">
                 <PieChart
                   style={{ height: "200px", width: "200px" }}
                   data={[
-                    { title: "One", value: rentalIncome, color: "#E38627" },
-                    { title: "Two", value: vatIncome, color: "#C13C37" },
+                    {
+                      title: "One",
+                      value: rentalIncome_month,
+                      color: "#E38627",
+                    },
+                    { title: "Two", value: vatIncome_month, color: "#C13C37" },
                     {
                       title: "Three",
-                      value: miscellaneousIncome,
+                      value: miscellaneousIncome_month,
                       color: "#6A2135",
                     },
                   ]}
@@ -189,7 +202,7 @@ const Homepage = (props) => {
                   ></div>
                   Rental Income
                 </div>
-                <h4>Rs.{rentalIncome}/-</h4>
+                <h4>Rs.{rentalIncome_month}/-</h4>
                 <div className=" h5 row ">
                   {" "}
                   <div
@@ -203,7 +216,7 @@ const Homepage = (props) => {
                   ></div>
                   Vat Income{" "}
                 </div>
-                <h4>Rs.{vatIncome}/-</h4>
+                <h4>Rs.{vatIncome_month}/-</h4>
                 <div className="h5 row">
                   {" "}
                   <div
@@ -217,8 +230,104 @@ const Homepage = (props) => {
                   ></div>
                   Other Income
                 </div>
-                <h4>Rs.{miscellaneousIncome}/-</h4>
+                <h4>Rs.{miscellaneousIncome_month}/-</h4>
               </div>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                style={{ margin: "5px" }}
+                onClick={() => setChequeDate_month(chequeDate_month - number--)}
+              >
+                prev
+              </button>
+              <button
+                onClick={() => setChequeDate_month(chequeDate_month + number++)}
+                style={{ margin: "5px" }}
+              >
+                next
+              </button>
+            </div>
+          </div>
+          {/* pie chart by year */}
+
+          <div className="bg-white p-4">
+            <h3 className="text-center ">Income Status by Year</h3>
+            <div className="row ">
+              <div className="p-2">
+                <PieChart
+                  style={{ height: "200px", width: "200px" }}
+                  data={[
+                    {
+                      title: "One",
+                      value: rentalIncome_Year,
+                      color: "#E38627",
+                    },
+                    { title: "Two", value: vatIncome_Year, color: "#C13C37" },
+                    {
+                      title: "Three",
+                      value: miscellaneousIncome_Year,
+                      color: "#6A2135",
+                    },
+                  ]}
+                />
+              </div>
+              <div className="mt-4 ml-4 d-flex flex-column">
+                <div className=" h5 row">
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#E38627",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Rental Income
+                </div>
+                <h4>Rs.{rentalIncome_Year}/-</h4>
+                <div className=" h5 row ">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#C13C37",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Vat Income{" "}
+                </div>
+                <h4>Rs.{vatIncome_Year}/-</h4>
+                <div className="h5 row">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#6A2135",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Other Income
+                </div>
+                <h4>Rs.{miscellaneousIncome_Year}/-</h4>
+              </div>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                style={{ margin: "5px" }}
+                onClick={() => setChequeDate_year(chequeDate_year + number++)}
+              >
+                prev
+              </button>
+              <button
+                style={{ margin: "5px" }}
+                onClick={() => setChequeDate_year(chequeDate_year - number--)}
+              >
+                next
+              </button>
             </div>
           </div>
         </div>

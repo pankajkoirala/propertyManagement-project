@@ -21,7 +21,7 @@ const ModalExample = (props) => {
     filterArray.forEach((arg) => {
       selectedID.push(arg.ID);
     });
-    selectedObject = allData.filter((arg) => selectedID.includes(arg._id));
+    selectedObject = allData?.filter((arg) => selectedID?.includes(arg._id));
     setFilteredData(selectedObject);
   };
 

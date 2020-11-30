@@ -4,8 +4,9 @@ import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import { connect } from "react-redux";
 
-const PropertyEntry = () => {
+const PropertyEntry = (props) => {
   const propertySend = (data, file) => {
     const formData = new FormData();
     file.forEach((element) => {
@@ -25,8 +26,9 @@ const PropertyEntry = () => {
     formData.append("Property_Area", data.Property_Area);
     formData.append("Property_Premise_Number", data.Property_Premise_Number);
     formData.append("area", data.area);
-
     formData.append("Property_ownerName", data.Property_ownerName);
+    formData.append("developerCompany", data.developerCompany);
+    formData.append("managementCompany", data.managementCompany);
 
     Axios({
       method: "post",
@@ -50,9 +52,27 @@ const PropertyEntry = () => {
 
   return (
     <div>
-      <PropertyEntryFormComponent propertySend={propertySend} />
+      <PropertyEntryFormComponent
+        propertySend={propertySend}
+        Redux_ManagementCompanyData={
+          props.Redux_ManagementCompanyData.managementCompany
+        }
+        redux_DeveloperCompanyData={
+          props.redux_DeveloperCompanyData.DeveloperCompany
+        }
+      />
     </div>
   );
 };
 
-export default PropertyEntry;
+const mapStateToProps = (state) => ({
+  Redux_ManagementCompanyData: state.managementCompany,
+  redux_DeveloperCompanyData: state.DeveloperCompany,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  redux_Add_invoice: (arg) =>
+    dispatch({ type: "ADD_ALL_INVOICE", payload: arg }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyEntry);
