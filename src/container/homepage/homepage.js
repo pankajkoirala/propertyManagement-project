@@ -20,7 +20,7 @@ const HomepageContainer = (props) => {
   //income calculation by month
   if (chequeDate_month < 1) {
     setChequeDate_month(12);
-  } else if (chequeDate_month > 12) {
+  } else if (chequeDate_month === 13) {
     setChequeDate_month(1);
   }
   let rentalIncome_month = 0;
@@ -28,8 +28,8 @@ const HomepageContainer = (props) => {
   let miscellaneousIncome_month = 0;
   let clearedCheque_month = clearedCheque?.filter(
     (arg) =>
-      moment(arg.cheque_issueDate).format("MM") ===
-      `${chequeDate_month}`.padStart(2, 0)
+      moment(arg.cheque_issueDate).format("YYYY-MM") ===
+      moment().format("YYYY") + "-" + `${chequeDate_month}`.padStart(2, 0)
   );
 
   for (let index = 0; index < clearedCheque_month.length; index++) {
@@ -59,8 +59,8 @@ const HomepageContainer = (props) => {
       miscellaneousIncome_Year + clearedCheque_year[index].miscellaneous_amount;
   }
 
-  //bardiagram data calculation
-
+  //bardiagram data calculation by year exp and inc
+  let totalYearIncome = 0;
   let barIncomeData = [];
   incomeCalc(clearedCheque, barIncomeData, "01", next_preYear);
   incomeCalc(clearedCheque, barIncomeData, "02", next_preYear);
@@ -74,7 +74,9 @@ const HomepageContainer = (props) => {
   incomeCalc(clearedCheque, barIncomeData, "04", next_preYear);
   incomeCalc(clearedCheque, barIncomeData, "11", next_preYear);
   incomeCalc(clearedCheque, barIncomeData, "12", next_preYear);
+  barIncomeData.map((arg) => (totalYearIncome = totalYearIncome + arg));
 
+  let totalYearExpense = 0;
   let BarExpenseData = [];
   expenseCalc(
     props?.redux_ExpenseData?.expense,
@@ -148,12 +150,16 @@ const HomepageContainer = (props) => {
     "12",
     next_preYear
   );
+  BarExpenseData.map((arg) => (totalYearExpense = totalYearExpense + arg));
 
   return (
     <div>
       <HomepageComponent
         totalProperty={props.redux_propertyData?.property?.length}
         leaseProperty={props?.redux_leaseData?.lease.length}
+        //bar data
+        totalYearIncome={totalYearIncome}
+        totalYearExpense={totalYearExpense}
         setNext_preYear={setNext_preYear}
         next_preYear={next_preYear}
         barIncomeData={barIncomeData}

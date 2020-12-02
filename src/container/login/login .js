@@ -3,7 +3,6 @@ import Axios from "axios";
 import LoginComponent from "../../component/login/login";
 import { setLocalStorage } from "../../const/tokenStorage";
 import { base_URL } from "../../const/base_URL";
-import LoginImage from "../../assets/sample.jpg";
 import "./Back.css";
 const LoginContainer = (props) => {
   const [response, setResponse] = useState("");
