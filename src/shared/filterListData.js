@@ -12,7 +12,8 @@ const ModalExample = (props) => {
         return (
           arg.search1?.toString()?.toLowerCase()?.includes(letter) ||
           arg.search2?.toString()?.toLowerCase()?.includes(letter) ||
-          arg.search3?.toString()?.toLowerCase()?.includes(letter)
+          arg.search3?.toString()?.toLowerCase()?.includes(letter) ||
+          arg.search4?.toString()?.toLowerCase()?.includes(letter)
         );
       })
     );

@@ -9,8 +9,12 @@ import { reloadFunction } from "../../../shared/commonFunction";
 const ExpenseEntryForm = (props) => {
   const expenseData = (data) => {
     const formData = new FormData();
-    if (data.Maintanance_ticketID !== "") {
+
+    if (data.expense_Type === "Maintanance") {
       formData.append("Maintanance_ticketID", data.Maintanance_ticketID);
+    }
+    if (data.expense_Type === "Maintanance") {
+      formData.append("property_ID", data.property_ID);
     }
 
     formData.append("expense_list", data.expense_list);
@@ -47,6 +51,7 @@ const ExpenseEntryForm = (props) => {
         Redux_maintananceTicketData={
           props.Redux_maintananceTicketData.maintananceTicket
         }
+        redux_propertyData={props.redux_propertyData.property}
       />
     </div>
   );
@@ -54,6 +59,7 @@ const ExpenseEntryForm = (props) => {
 
 const mapStateToProps = (state) => ({
   Redux_maintananceTicketData: state.maintananceTicket,
+  redux_propertyData: state.property,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,6 +1,9 @@
 import React from "react";
 import "./homepage.css";
 import { PieChart } from "react-minimal-pie-chart";
+import { Link } from "react-router-dom";
+import IncomePic from "../../assets/income.jpg";
+import ExpensePic from "../../assets/expense.jpg";
 
 //import {Card, Button} from "reactstrap";
 
@@ -9,12 +12,16 @@ import { Line } from "react-chartjs-2";
 
 const Homepage = (props) => {
   const {
+    //property piechart data
     totalProperty,
     leaseProperty,
+    //line bar data
     barIncomeData,
     BarExpenseData,
     next_preYear,
     setNext_preYear,
+    totalYearIncome,
+    totalYearExpense,
     //cheque month data
     rentalIncome_month,
     vatIncome_month,
@@ -71,54 +78,86 @@ const Homepage = (props) => {
         >
           DASHBOARD
         </h1>
-        {/* //bar diagram */}
-        <div>
-          <h4 className="text-center">year-{next_preYear}</h4>
-          <Line data={data} />
-          <div className="d-flex justify-content-center">
-            <button
-              className="m-2"
-              type="button"
-              onClick={() => {
-                setNext_preYear(next_preYear + number++);
-              }}
-            >
-              next year
-            </button>
-            <button
-              className="m-2"
-              type="button"
-              onClick={() => setNext_preYear(next_preYear - number--)}
-            >
-              pre year
-            </button>
+        {/* //bar income expense  */}
+        <div style={{ display: "flex", flex: "wrap" }}>
+          <div style={{ position: "relative", margin: "20px" }}>
+            <img
+              style={{ height: "300px", width: "300px", borderRadius: "10px" }}
+              src={IncomePic}
+              alt=""
+            />
+            <Link to="/income">
+              {" "}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "0",
+                  color: "white",
+                  fontWeight: "bold",
+                  marginLeft: "160px",
+                  marginBottom: "20px",
+                }}
+              >
+                Income Detail
+              </div>
+            </Link>
           </div>
-        </div>
-        {/* pie chart property */}
-        <div className="d-flex justify-content-between p-4 bg-white">
+          <div style={{ position: "relative", margin: "20px" }}>
+            <img
+              style={{ height: "300px", width: "300px", borderRadius: "10px" }}
+              src={ExpensePic}
+              alt=""
+            />
+            <Link to="/expensesList">
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "0",
+                  color: "white",
+                  fontWeight: "bold",
+                  marginLeft: "160px",
+                  marginBottom: "20px",
+                }}
+              >
+                Expense Detail
+              </div>
+            </Link>
+          </div>
+          {/* pie chart property */}
           <div className=" p-4">
             <h3 className="text-center ">property Status</h3>
             <div className="row ">
-              <div className="p-2">
+              <div style={{ height: "250px", width: "250px" }} className="p-2">
                 <PieChart
-                  style={{ height: "200px", width: "200px" }}
+                  animation
+                  animationDuration={500}
+                  animationEasing="ease-out"
+                  center={[50, 50]}
                   data={[
                     {
+                      color: "#E38627",
                       title: "One",
                       value: totalProperty,
-                      color: "#E38627",
                     },
                     {
+                      color: "#C13C37",
                       title: "Two",
                       value: totalProperty - leaseProperty,
-                      color: "#C13C37",
                     },
                     {
+                      color: "#6A2135",
                       title: "Three",
                       value: leaseProperty,
-                      color: "#6A2135",
                     },
                   ]}
+                  labelPosition={50}
+                  lengthAngle={360}
+                  lineWidth={40}
+                  paddingAngle={0}
+                  radius={50}
+                  animate
+                  startAngle={0}
+                  viewBoxSize={[100, 100]}
                 />
               </div>
               <div className="mt-4 ml-4 d-flex flex-column">
@@ -166,10 +205,15 @@ const Homepage = (props) => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="d-flex justify-content-between p-4 bg-white">
           {/* income piechart by month */}
 
           <div className="bg-white p-4">
-            <h3 className="text-center ">Income Status by Month</h3>
+            <h3 className="text-center ">
+              Income Status by Month <br />
+              {data?.labels[chequeDate_month - 1]}
+            </h3>
             <div className="row ">
               <div className="p-2">
                 <PieChart
@@ -251,7 +295,9 @@ const Homepage = (props) => {
           {/* pie chart by year */}
 
           <div className="bg-white p-4">
-            <h3 className="text-center ">Income Status by Year</h3>
+            <h3 className="text-center ">
+              Income Status by Year <br /> {chequeDate_year}
+            </h3>
             <div className="row ">
               <div className="p-2">
                 <PieChart
@@ -320,15 +366,49 @@ const Homepage = (props) => {
                 style={{ margin: "5px" }}
                 onClick={() => setChequeDate_year(chequeDate_year + number++)}
               >
-                prev
+                next
               </button>
               <button
                 style={{ margin: "5px" }}
                 onClick={() => setChequeDate_year(chequeDate_year - number--)}
               >
-                next
+                prev
               </button>
             </div>
+          </div>
+        </div>
+
+        {/* line bar chart */}
+        <div>
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
+            <div style={{ fontWeight: "bold", fontSize: "20px" }}>
+              Total Income :{totalYearIncome}
+            </div>
+            <div style={{ fontWeight: "bold", fontSize: "25px" }}>
+              year-{next_preYear}
+            </div>
+            <div style={{ fontWeight: "bold", fontSize: "20px" }}>
+              Total Expense :{totalYearExpense}
+            </div>
+          </div>
+          <Line data={data} />
+          <div className="d-flex justify-content-center">
+            <button
+              className="m-2"
+              type="button"
+              onClick={() => {
+                setNext_preYear(next_preYear + number++);
+              }}
+            >
+              next year
+            </button>
+            <button
+              className="m-2"
+              type="button"
+              onClick={() => setNext_preYear(next_preYear - number--)}
+            >
+              pre year
+            </button>
           </div>
         </div>
       </div>

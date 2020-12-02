@@ -18,8 +18,12 @@ const MaintananceCompanyDetailView = (props) => {
   //tanent update
   const expenseUpdate = (data, ID) => {
     const formData = new FormData();
+
     if (data.Maintanance_ticketID !== "") {
       formData.append("Maintanance_ticketID", data.Maintanance_ticketID);
+    }
+    if (data.property_ID !== "") {
+      formData.append("property_ID", data.property_ID);
     }
     formData.append("expense_list", data.expense_list);
     formData.append("expense_EntryDate", data.expense_EntryDate);
@@ -27,6 +31,11 @@ const MaintananceCompanyDetailView = (props) => {
     formData.append("expenseInvoiceNumber", data.expenseInvoiceNumber);
     formData.append("invoicePhoto", data.invoicePhoto);
     formData.append("expense_Type", data.expense_Type);
+
+    console.log(
+      "🚀 ~ file: expenseDetailView.js ~ line 21 ~ expenseUpdate ~ formData",
+      formData
+    );
 
     Axios({
       method: "put",
@@ -79,6 +88,7 @@ const MaintananceCompanyDetailView = (props) => {
         Redux_maintananceTicketData={
           props.Redux_maintananceTicketData.maintananceTicket
         }
+        redux_propertyData={props.redux_propertyData.property}
       />
     </div>
   );
@@ -87,6 +97,7 @@ const MaintananceCompanyDetailView = (props) => {
 const mapStateToProps = (state) => ({
   redux_expenseData: state.expense,
   Redux_maintananceTicketData: state.maintananceTicket,
+  redux_propertyData: state.property,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -33,6 +33,7 @@ const ExpenseEntry = (props) => {
     expenseInvoiceNumber: props?.expense?.expenseInvoiceNumber || "",
     invoicePhoto: props?.expense?.invoicePhoto || "",
     expense_Type: props?.expense?.expense_Type || "",
+    property_ID: props?.expense?.property_ID?._id || "",
   };
   return (
     <div>
@@ -41,15 +42,27 @@ const ExpenseEntry = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
-              values.expense_list = expenselist.map((arg) => {
-                return {
-                  expenseHead: arg.expenseHead,
-                  expenseAmount: arg.expenseAmount,
-                  expenseId: arg.expenseId,
-                };
-              });
+              //expense list sending
+              values.expense_list = JSON.stringify(
+                expenselist.map((arg) => {
+                  return {
+                    expenseHead: arg.expenseHead,
+                    expenseAmount: arg.expenseAmount,
+                    expenseId: arg.expenseId,
+                  };
+                })
+              );
+              values.property_ID =
+                values.expense_Type === "Maintanance" ||
+                props?.expense?.expense_Type === "Maintanance"
+                  ? values.property_ID
+                  : "";
+              values.Maintanance_ticketID =
+                values.expense_Type === "Maintanance" ||
+                props?.expense?.expense_Type === "Maintanance"
+                  ? values.Maintanance_ticketID
+                  : "";
 
-              values.expense_list = JSON.stringify(values.expense_list);
               console.log(values);
               props?.expense
                 ? props.expenseUpdate(values, props?.expense?._id)
@@ -176,14 +189,7 @@ const ExpenseEntry = (props) => {
                             options={props?.Redux_maintananceTicketData?.map(
                               (maintananceTicket) => {
                                 return {
-                                  name:
-                                    maintananceTicket?.maintananceTicket_ID +
-                                    "/" +
-                                    maintananceTicket?.MaintanancePropertyID
-                                      ?.property_type +
-                                    "-" +
-                                    maintananceTicket?.MaintanancePropertyID
-                                      ?.referenceNO,
+                                  name: maintananceTicket?.maintananceTicket_ID,
                                   id: maintananceTicket?._id,
                                 };
                               }
@@ -203,7 +209,39 @@ const ExpenseEntry = (props) => {
                       ) : (
                         ""
                       )}
+                      {values.expense_Type === "Maintanance" ? (
+                        <div className="mt-2 col-4">
+                          <Label for="exampleName">property</Label>
+                          <RegexComponent
+                            {...props}
+                            setFieldValue={setFieldValue}
+                            options={props?.redux_propertyData?.map(
+                              (property) => {
+                                return {
+                                  name:
+                                    property?.property_type +
+                                    "-" +
+                                    property?.referenceNO,
+                                  id: property?._id,
+                                };
+                              }
+                            )}
+                            name={"property_ID"}
+                          />
+                          {touched.property_ID && errors.property_ID && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.property_ID}
+                            </span>
+                          )}
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
+
                     <div style={{ marginTop: "40px" }} className="row">
                       <div className="mt-4 col-4">
                         <Label for="exampleName">expense heading</Label>
