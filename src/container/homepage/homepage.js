@@ -1,15 +1,33 @@
 import React, { useState } from "react";
 import HomepageComponent from "../../component/homepage/homepage";
 import { connect } from "react-redux";
-import { incomeCalc, expenseCalc } from "../../shared/commonFunction";
+import {
+  incomeCalc,
+  expenseCalc,
+  expenseCalculationByMonthAndType,
+  expenseCalculationByYearAndType,
+} from "../../shared/commonFunction";
 import moment from "moment";
 
 const HomepageContainer = (props) => {
-  const [next_preYear, setNext_preYear] = useState(moment().format("YYYY"));
+  //bar year change state
+  const [next_preYear, setNext_preYear] = useState(
+    parseInt(moment().format("YYYY"))
+  );
+  //pie chart year/month change state or income
+
   const [chequeDate_month, setChequeDate_month] = useState(
     parseInt(moment().format("MM"))
   );
   const [chequeDate_year, setChequeDate_year] = useState(
+    parseInt(moment().format("YYYY"))
+  );
+  //pie chart year/month change state of expense
+
+  const [ExpenseDate_month, setExpenseDate_month] = useState(
+    parseInt(moment().format("MM"))
+  );
+  const [ExpenseDate_year, setExpenseDate_year] = useState(
     parseInt(moment().format("YYYY"))
   );
 
@@ -57,6 +75,12 @@ const HomepageContainer = (props) => {
     vatIncome_Year = vatIncome_Year + clearedCheque_year[index].vat_amount;
     miscellaneousIncome_Year =
       miscellaneousIncome_Year + clearedCheque_year[index].miscellaneous_amount;
+  }
+  ////expense calculation monthly
+  if (ExpenseDate_month < 1) {
+    setExpenseDate_month(12);
+  } else if (ExpenseDate_month === 13) {
+    setExpenseDate_month(1);
   }
 
   //bardiagram data calculation by year exp and inc
@@ -176,6 +200,13 @@ const HomepageContainer = (props) => {
         miscellaneousIncome_Year={miscellaneousIncome_Year}
         chequeDate_year={chequeDate_year}
         setChequeDate_year={setChequeDate_year}
+        //expense by month/year
+        ExpenseDate_year={ExpenseDate_year}
+        setExpenseDate_year={setExpenseDate_year}
+        ExpenseDate_month={ExpenseDate_month}
+        setExpenseDate_month={setExpenseDate_month}
+        //All expense data
+        redux_ExpenseData={props?.redux_ExpenseData}
       />
     </div>
   );

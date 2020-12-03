@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { getLocalStorage } from "../const/tokenStorage";
 
-import DashbordIncomeDetail from "./../component/homepage/dashboardIncomeDescription";
+import DashbordIncomeDetail from "./../container/homepage/dashBoardIncomeDetailCont";
 import NavBar from "./../shared/navbar";
 import LoginComponent from "../container/login/login ";
 import PrivateRouter from "./privateRouter";
@@ -71,8 +71,13 @@ const RouterPage = () => {
           }
         >
           {authorize ? <TopNavBar /> : ""}
-          <DashbordIncomeDetail />
           <Switch>
+            <PrivateRouter
+              exact
+              path="/dashboardIncome"
+              component={DashbordIncomeDetail}
+            />
+
             <PrivateRouter exact path="/propertyList" component={AllProperty} />
             <PrivateRouter
               exact

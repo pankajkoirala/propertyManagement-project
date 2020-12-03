@@ -26,6 +26,7 @@ const ChequeEntryContainer = (props) => {
     formData.append("cheque_recivedDate", data.cheque_recivedDate);
     formData.append("vat_amount", data.vat_amount);
     formData.append("miscellaneous_amount", data.miscellaneous_amount);
+    formData.append("property_id", data.property_id);
 
     Axios({
       method: "post",
@@ -51,6 +52,7 @@ const ChequeEntryContainer = (props) => {
       <ChequeEntryComponent
         Redux_leaseData={props.Redux_leaseData.lease}
         ChequeeData={ChequeeData}
+        Redux_propertyData={props.Redux_propertyData.property}
       />
     </div>
   );
@@ -58,6 +60,7 @@ const ChequeEntryContainer = (props) => {
 
 const mapStateToProps = (state) => ({
   Redux_leaseData: state.lease,
+  Redux_propertyData: state.property,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

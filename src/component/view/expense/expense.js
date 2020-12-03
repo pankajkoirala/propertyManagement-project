@@ -13,26 +13,19 @@ const ExpenseDisplay = (props) => {
   let [expensesMonth, SetExpensesMonth] = useState("");
   let [expensesYear, SetExpensesYear] = useState("");
 
-  let expensesList = props?.expenseList.filter((arg) =>
-    expensesMonth === "" && expensesYear === ""
-      ? arg
-      : moment(arg.expense_EntryDate).format("YYYY-MM") ===
-        expensesYear + "-" + expensesMonth?.padStart(2, 0)
-  );
+  let expensesList = props?.expenseList;
 
   //filtering array list by month and year
   let FilterByMonthYear = () => {
     let filterArray = expenses.filter(
       (arg) =>
         moment(arg.expense_EntryDate).format("YYYY-MM") ===
-        expensesYear + "-" + expensesMonth?.padStart(2, 0)
+          expensesYear + "-" + expensesMonth?.padStart(2, 0) ||
+        moment(arg.expense_EntryDate).format("YYYY") === expensesYear ||
+        moment(arg.expense_EntryDate).format("MM") ===
+          expensesMonth?.padStart(2, 0)
     );
     filterArray?.length !== 0 ? SetExpenses(filterArray) : SetExpenses([]);
-  };
-
-  //filter by expensetype
-  let filterByType = (expenseType) => {
-    SetExpenses(expenses.filter((arg) => arg.expense_Type === expenseType));
   };
 
   if (expenses.length === 0) {
@@ -80,17 +73,7 @@ const ExpenseDisplay = (props) => {
               allData={props?.expenseList}
             />
           </div>
-          <div style={{ margin: "4px" }}>
-            <Input type="select" onClick={(e) => filterByType(e.target.value)}>
-              <option value="">expense type</option>
-              <option value="Maintanance">Maintanance</option>
-              <option value="Legal">Legal</option>
-              <option value="FMC">FMC</option>
-              <option value="Utility">Utility</option>
-              <option value="Office Expense">Office Expense</option>
-              <option value="Service Charge">Service Charge</option>
-            </Input>
-          </div>
+
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div style={{ margin: "4px" }}>
               <Input
@@ -129,8 +112,10 @@ const ExpenseDisplay = (props) => {
               </Input>
             </div>
             <button
-              style={{ margin: "4px", height: "30px", width: "50px" }}
-              onClick={() => FilterByMonthYear()}
+              style={{ margin: "4px", height: "30px", width: "80px" }}
+              onClick={() => {
+                FilterByMonthYear();
+              }}
             >
               find
             </button>

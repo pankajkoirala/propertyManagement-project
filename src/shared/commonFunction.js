@@ -1,4 +1,5 @@
 import moment from "moment";
+import React from "react";
 
 export const reloadFunction = () => {
   setTimeout(() => {
@@ -55,4 +56,76 @@ export const totalExpenseCalculation = (allExpense) => {
     }
   });
   return totalExpense;
+};
+
+//total income calculation
+export const totalIncomeCalculation = (allCheque) => {
+  let totalIncome = 0;
+  let TotalVat = 0;
+  let TotalMiscelleneous = 0;
+
+  allCheque.map((arg) => {
+    totalIncome =
+      totalIncome +
+      arg.cheque_amount +
+      arg.miscellaneous_amount +
+      arg.vat_amount;
+    TotalVat = TotalVat + arg.vat_amount;
+    TotalMiscelleneous = TotalMiscelleneous + arg.miscellaneous_amount;
+  });
+  return (
+    <div>
+      <div>Total Income : {totalIncome}</div>
+      <div>Total VAT :{TotalVat}</div>
+      <div>Total Miscelleneous :{TotalMiscelleneous}</div>
+    </div>
+  );
+};
+
+//expense calculation by month and type
+export const expenseCalculationByMonthAndType = (
+  allExpenseArray,
+  month,
+  expenseType
+) => {
+  let cost = 0;
+  let MonthlyExpenseCalculation = allExpenseArray?.filter(
+    (arg) =>
+      moment(arg?.expense_EntryDate).format("YYYY-MM") ===
+      moment().format("YYYY") + "-" + `${month}`.padStart(2, 0)
+  );
+
+  let filterByType = MonthlyExpenseCalculation.filter(
+    (arg) => arg.expense_Type === `${expenseType}`
+  );
+
+  filterByType.map((arg) =>
+    arg.expense_list.forEach((arg1) => {
+      cost = cost + arg1?.expenseAmount;
+    })
+  );
+  return cost;
+};
+
+//expense calculation by month and type
+export const expenseCalculationByYearAndType = (
+  allExpenseArray,
+  Year,
+  expenseType
+) => {
+  let cost = 0;
+  let MonthlyExpenseCalculation = allExpenseArray?.filter(
+    (arg) => moment(arg?.expense_EntryDate).format("YYYY") === `${Year}`
+  );
+
+  let filterByType = MonthlyExpenseCalculation.filter(
+    (arg) => arg.expense_Type === `${expenseType}`
+  );
+
+  filterByType.map((arg) =>
+    arg.expense_list.forEach((arg1) => {
+      cost = cost + arg1?.expenseAmount;
+    })
+  );
+  return cost;
 };

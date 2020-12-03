@@ -4,9 +4,15 @@ import { PieChart } from "react-minimal-pie-chart";
 import { Link } from "react-router-dom";
 import IncomePic from "../../assets/income.jpg";
 import ExpensePic from "../../assets/expense.jpg";
+import {
+  incomeCalc,
+  expenseCalc,
+  expenseCalculationByMonthAndType,
+  expenseCalculationByYearAndType,
+} from "../../shared/commonFunction";
 
-//import {Card, Button} from "reactstrap";
-
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { connect } from "react-redux";
 import { Line } from "react-chartjs-2";
 
@@ -34,7 +40,22 @@ const Homepage = (props) => {
     miscellaneousIncome_Year,
     chequeDate_year,
     setChequeDate_year,
+    //expense by month/year
+    ExpenseDate_year,
+    setExpenseDate_year,
+    ExpenseDate_month,
+    setExpenseDate_month,
   } = props;
+
+  let p = [];
+  console.log(
+    "🚀 ~ file: homepage.js ~ line 125 ~ HomepageContainer ~ yearlyExpense",
+    expenseCalculationByMonthAndType(
+      props?.redux_ExpenseData?.expense,
+      ExpenseDate_month,
+      "Maintanance"
+    )
+  );
 
   //bardiagram data
   let number = 1;
@@ -86,7 +107,7 @@ const Homepage = (props) => {
               src={IncomePic}
               alt=""
             />
-            <Link to="/income">
+            <Link to="/dashboardIncome">
               {" "}
               <div
                 style={{
@@ -125,7 +146,7 @@ const Homepage = (props) => {
           </div>
           {/* pie chart property */}
           <div className=" p-4">
-            <h3 className="text-center ">property Status</h3>
+            <h5 className="text-center ">property Status</h5>
             <div className="row ">
               <div style={{ height: "250px", width: "250px" }} className="p-2">
                 <PieChart
@@ -161,7 +182,7 @@ const Homepage = (props) => {
                 />
               </div>
               <div className="mt-4 ml-4 d-flex flex-column">
-                <div className=" h5 row">
+                <div className=" h6 row">
                   <div
                     style={{
                       height: "20px",
@@ -173,8 +194,8 @@ const Homepage = (props) => {
                   ></div>
                   total property unit
                 </div>
-                <h4>{totalProperty}</h4>
-                <div className=" h5 row ">
+                <h5>{totalProperty}</h5>
+                <div className=" h6 row ">
                   {" "}
                   <div
                     style={{
@@ -187,8 +208,8 @@ const Homepage = (props) => {
                   ></div>
                   free property
                 </div>
-                <h4>{totalProperty - leaseProperty}</h4>
-                <div className="h5 row">
+                <h5>{totalProperty - leaseProperty}</h5>
+                <div className="h6 row">
                   {" "}
                   <div
                     style={{
@@ -201,19 +222,464 @@ const Homepage = (props) => {
                   ></div>
                   occupied property
                 </div>
-                <h4>{leaseProperty}</h4>
+                <h5>{leaseProperty}</h5>
               </div>
             </div>
           </div>
         </div>
         <div className="d-flex justify-content-between p-4 bg-white">
+          {/* {//expense by month} */}
+          <div className="bg-white p-4">
+            <h5 className="text-center ">
+              Expense Status by Month <br />
+              {data?.labels[ExpenseDate_month - 1]}
+            </h5>
+            <div className="row ">
+              <div className="p-2">
+                <PieChart
+                  style={{ height: "200px", width: "200px" }}
+                  // [Maintanance,Legal,FMC,Utility,Office Expense,Service Charge ];
+                  data={[
+                    {
+                      title: "maintanance",
+                      value: expenseCalculationByMonthAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_month,
+                        "Maintanance"
+                      ),
+                      color: "#E38627",
+                    },
+                    {
+                      title: "Legal",
+                      value: expenseCalculationByMonthAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_month,
+                        "Legal"
+                      ),
+                      color: "#C13C37",
+                    },
+                    {
+                      title: "FMC",
+                      value: expenseCalculationByMonthAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_month,
+                        "FMC"
+                      ),
+                      color: "#6A2165",
+                    },
+                    {
+                      title: "Utility",
+                      value: expenseCalculationByMonthAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_month,
+                        "Utility"
+                      ),
+                      color: "#6A2195",
+                    },
+                    {
+                      title: "Office Expense",
+                      value: expenseCalculationByMonthAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_month,
+                        "Office Expense"
+                      ),
+                      color: "#6A6135",
+                    },
+                    {
+                      title: "Service Charge ",
+                      value: expenseCalculationByMonthAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_month,
+                        "Service Charge"
+                      ),
+                      color: "#6A2035",
+                    },
+                  ]}
+                />
+              </div>
+              <div className="mt-4 ml-4 d-flex flex-column">
+                <div className=" h6 row">
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#E38627",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Maintanance
+                  <span>
+                    Rs.
+                    {expenseCalculationByMonthAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_month,
+                      "Maintanance"
+                    )}
+                    /-
+                  </span>
+                </div>
+                <div className=" h6 row ">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#C13C37",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Legal{" "}
+                  <span>
+                    Rs.
+                    {expenseCalculationByMonthAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_month,
+                      "Legal"
+                    )}
+                    /-
+                  </span>
+                </div>
+                <div className="h6 row">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#6A2165",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  FMC
+                  <span>
+                    Rs.
+                    {expenseCalculationByMonthAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_month,
+                      "FMC"
+                    )}
+                    /-
+                  </span>
+                </div>
+                <div className="h6 row">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#6A2195",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Utility
+                  <span>
+                    Rs.
+                    {expenseCalculationByMonthAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_month,
+                      "Utility"
+                    )}
+                    /-
+                  </span>
+                </div>
+                <div className="h6 row">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#6A6135",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Office Expense
+                  <span>
+                    Rs.
+                    {expenseCalculationByMonthAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_month,
+                      "Office Expense"
+                    )}
+                    /-
+                  </span>
+                </div>
+                <div className="h6 row">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#6A2035",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Service Charge
+                  <span>
+                    Rs.
+                    {expenseCalculationByMonthAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_month,
+                      "Service Charge"
+                    )}
+                    /-
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                style={{ margin: "5px" }}
+                onClick={() =>
+                  setExpenseDate_month(ExpenseDate_month - number--)
+                }
+              >
+                <ArrowBackIosIcon />
+              </button>
+              <button
+                onClick={() =>
+                  setExpenseDate_month(ExpenseDate_month + number++)
+                }
+                style={{ margin: "5px" }}
+              >
+                <ArrowForwardIosIcon />
+              </button>
+            </div>
+          </div>
+          {/* {//expense piechart year} */}
+          <div className="bg-white p-4">
+            <h5 className="text-center ">
+              Expense Status by Year <br />
+              {ExpenseDate_year}
+            </h5>
+            <div className="row ">
+              <div className="p-2">
+                <PieChart
+                  style={{ height: "200px", width: "200px" }}
+                  // [Maintanance,Legal,FMC,Utility,Office Expense,Service Charge ];
+                  data={[
+                    {
+                      title: "maintanance",
+                      value: expenseCalculationByYearAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_year,
+                        "Maintanance"
+                      ),
+                      color: "#E38627",
+                    },
+                    {
+                      title: "Legal",
+                      value: expenseCalculationByYearAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_year,
+                        "Legal"
+                      ),
+                      color: "#C13C37",
+                    },
+                    {
+                      title: "FMC",
+                      value: expenseCalculationByYearAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_year,
+                        "FMC"
+                      ),
+                      color: "#6A2165",
+                    },
+                    {
+                      title: "Utility",
+                      value: expenseCalculationByYearAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_year,
+                        "Utility"
+                      ),
+                      color: "#6A2195",
+                    },
+                    {
+                      title: "Office Expense",
+                      value: expenseCalculationByYearAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_year,
+                        "Office Expense"
+                      ),
+                      color: "#6A6135",
+                    },
+                    {
+                      title: "Service Charge ",
+                      value: expenseCalculationByYearAndType(
+                        props?.redux_ExpenseData?.expense,
+                        ExpenseDate_year,
+                        "Service Charge"
+                      ),
+                      color: "#6A2035",
+                    },
+                  ]}
+                />
+              </div>
+              <div className="mt-4 ml-4 d-flex flex-column">
+                <div className=" h6 row">
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#E38627",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Maintanance
+                  <span>
+                    Rs.
+                    {expenseCalculationByYearAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_year,
+                      "Maintanance"
+                    )}
+                    /-
+                  </span>
+                </div>
+                <div className=" h6 row ">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#C13C37",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Legal{" "}
+                  <span>
+                    Rs.
+                    {expenseCalculationByYearAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_year,
+                      "Legal"
+                    )}
+                    /-
+                  </span>
+                </div>
+                <div className="h6 row">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#6A2165",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  FMC
+                  <span>
+                    Rs.
+                    {expenseCalculationByYearAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_year,
+                      "FMC"
+                    )}
+                    /-
+                  </span>
+                </div>
+                <div className="h6 row">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#6A2195",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Utility
+                  <span>
+                    Rs.
+                    {expenseCalculationByYearAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_year,
+                      "Utility"
+                    )}
+                    /-
+                  </span>
+                </div>
+                <div className="h6 row">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#6A6135",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Office
+                  <span>
+                    Rs.
+                    {expenseCalculationByYearAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_year,
+                      "Office Expense"
+                    )}
+                    /-
+                  </span>
+                </div>
+                <div className="h6 row">
+                  {" "}
+                  <div
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      backgroundColor: "#6A2035",
+                      borderRadius: "50%",
+                      marginRight: "10px",
+                    }}
+                  ></div>
+                  Service Charge
+                  <span>
+                    Rs.
+                    {expenseCalculationByYearAndType(
+                      props?.redux_ExpenseData?.expense,
+                      ExpenseDate_year,
+                      "Service Charge"
+                    )}
+                    /-
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                style={{ margin: "5px" }}
+                onClick={() => {
+                  setExpenseDate_year(ExpenseDate_year - number--);
+                }}
+              >
+                <ArrowBackIosIcon />
+              </button>
+              <button
+                onClick={() => {
+                  setExpenseDate_year(ExpenseDate_year + number++);
+                }}
+                style={{ margin: "5px" }}
+              >
+                <ArrowForwardIosIcon />
+              </button>
+            </div>
+          </div>
+
           {/* income piechart by month */}
 
           <div className="bg-white p-4">
-            <h3 className="text-center ">
+            <h5 className="text-center ">
               Income Status by Month <br />
               {data?.labels[chequeDate_month - 1]}
-            </h3>
+            </h5>
             <div className="row ">
               <div className="p-2">
                 <PieChart
@@ -234,7 +700,7 @@ const Homepage = (props) => {
                 />
               </div>
               <div className="mt-4 ml-4 d-flex flex-column">
-                <div className=" h5 row">
+                <div className=" h6 row">
                   <div
                     style={{
                       height: "20px",
@@ -246,8 +712,8 @@ const Homepage = (props) => {
                   ></div>
                   Rental Income
                 </div>
-                <h4>Rs.{rentalIncome_month}/-</h4>
-                <div className=" h5 row ">
+                <h5>Rs.{rentalIncome_month}/-</h5>
+                <div className=" h6 row ">
                   {" "}
                   <div
                     style={{
@@ -260,8 +726,8 @@ const Homepage = (props) => {
                   ></div>
                   Vat Income{" "}
                 </div>
-                <h4>Rs.{vatIncome_month}/-</h4>
-                <div className="h5 row">
+                <h5>Rs.{vatIncome_month}/-</h5>
+                <div className="h6 row">
                   {" "}
                   <div
                     style={{
@@ -274,7 +740,7 @@ const Homepage = (props) => {
                   ></div>
                   Other Income
                 </div>
-                <h4>Rs.{miscellaneousIncome_month}/-</h4>
+                <h5>Rs.{miscellaneousIncome_month}/-</h5>
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -282,22 +748,22 @@ const Homepage = (props) => {
                 style={{ margin: "5px" }}
                 onClick={() => setChequeDate_month(chequeDate_month - number--)}
               >
-                prev
+                <ArrowBackIosIcon />
               </button>
               <button
                 onClick={() => setChequeDate_month(chequeDate_month + number++)}
                 style={{ margin: "5px" }}
               >
-                next
+                <ArrowForwardIosIcon />
               </button>
             </div>
           </div>
           {/* pie chart by year */}
 
           <div className="bg-white p-4">
-            <h3 className="text-center ">
+            <h5 className="text-center ">
               Income Status by Year <br /> {chequeDate_year}
-            </h3>
+            </h5>
             <div className="row ">
               <div className="p-2">
                 <PieChart
@@ -318,7 +784,7 @@ const Homepage = (props) => {
                 />
               </div>
               <div className="mt-4 ml-4 d-flex flex-column">
-                <div className=" h5 row">
+                <div className=" h6 row">
                   <div
                     style={{
                       height: "20px",
@@ -330,8 +796,8 @@ const Homepage = (props) => {
                   ></div>
                   Rental Income
                 </div>
-                <h4>Rs.{rentalIncome_Year}/-</h4>
-                <div className=" h5 row ">
+                <h5>Rs.{rentalIncome_Year}/-</h5>
+                <div className=" h6 row ">
                   {" "}
                   <div
                     style={{
@@ -344,8 +810,8 @@ const Homepage = (props) => {
                   ></div>
                   Vat Income{" "}
                 </div>
-                <h4>Rs.{vatIncome_Year}/-</h4>
-                <div className="h5 row">
+                <h5>Rs.{vatIncome_Year}/-</h5>
+                <div className="h6 row">
                   {" "}
                   <div
                     style={{
@@ -358,21 +824,21 @@ const Homepage = (props) => {
                   ></div>
                   Other Income
                 </div>
-                <h4>Rs.{miscellaneousIncome_Year}/-</h4>
+                <h5>Rs.{miscellaneousIncome_Year}/-</h5>
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <button
                 style={{ margin: "5px" }}
-                onClick={() => setChequeDate_year(chequeDate_year + number++)}
+                onClick={() => setChequeDate_year(chequeDate_year - number--)}
               >
-                next
+                <ArrowBackIosIcon />
               </button>
               <button
                 style={{ margin: "5px" }}
-                onClick={() => setChequeDate_year(chequeDate_year - number--)}
+                onClick={() => setChequeDate_year(chequeDate_year + number++)}
               >
-                prev
+                <ArrowForwardIosIcon />
               </button>
             </div>
           </div>
@@ -396,18 +862,18 @@ const Homepage = (props) => {
             <button
               className="m-2"
               type="button"
-              onClick={() => {
-                setNext_preYear(next_preYear + number++);
-              }}
+              onClick={() => setNext_preYear(next_preYear - number--)}
             >
-              next year
+              <ArrowBackIosIcon />
             </button>
             <button
               className="m-2"
               type="button"
-              onClick={() => setNext_preYear(next_preYear - number--)}
+              onClick={() => {
+                setNext_preYear(next_preYear + number++);
+              }}
             >
-              pre year
+              <ArrowForwardIosIcon />
             </button>
           </div>
         </div>
