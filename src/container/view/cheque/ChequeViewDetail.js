@@ -34,6 +34,7 @@ const ChequeDetailViewCont = (props) => {
     formData.append("cheque_recivedDate", data.cheque_recivedDate);
     formData.append("vat_amount", data.vat_amount);
     formData.append("miscellaneous_amount", data.miscellaneous_amount);
+    formData.append("property_id", data.property_id);
 
     Axios({
       method: "put",
