@@ -15,6 +15,7 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { connect } from "react-redux";
 import { Line } from "react-chartjs-2";
+import {motion} from 'framer-motion';
 
 const Homepage = (props) => {
   const {
@@ -96,15 +97,23 @@ const Homepage = (props) => {
         {/* //bar income expense  */}
         <div style={{ display: "flex", flex: "wrap", justifyContent: 'space-around' }}>           
               {" "}
-              <div
+              <motion.div
+                initial={{y: -50, opacity: 0}}
+                animate={{y: 0, opacity: 1}}
+                transition={{duration: 0.3}}
                 className='dashboard-card-income-expense income-bar'
               >
                 <p>Income</p>
                 <Link to="/dashboardIncome">
                     <button className="income-detail detail">Income Details</button>
                 </Link>
-              </div>
-            <div className='dashboard-card-income-expense property-status'>
+              </motion.div>
+            <motion.div 
+               initial={{y: -50, opacity: 0}}
+               animate={{y: 0, opacity: 1}}
+               transition={{ease: 'easeIn', duration: 0.3, delay: 0.1}}
+              className='dashboard-card-income-expense property-status'
+            >
                 <p>Property Status</p>
                 <div className='status'>
                     <div className="question">
@@ -120,20 +129,28 @@ const Homepage = (props) => {
                       <p className='answer-free a'>{totalProperty - leaseProperty}</p>
                     </div>  
                 </div>
-              </div>
-            <div
+              </motion.div>
+            <motion.div
+               initial={{y: -50, opacity: 0}}
+               animate={{y: 0, opacity: 1}}
+               transition={{duration: 0.3}}
               className='dashboard-card-income-expense expense-bar'
             >
               <p>Expense</p>
               <Link to="/expensesList"><button className="income-detail detail">Expense Details</button></Link>
-            </div>
+            </motion.div>
           
         </div>
         <div className="income-expense-card-container">
          
           <div className='income-container'>
                   {/* income by month */}
-          <div className="income-expense-card income-card income-by-month-card">
+          <motion.div 
+             initial={{y: -50, opacity: 0}}
+             animate={{y: 0, opacity: 1}}
+             transition={{duration: 0.3, delay: 0.3}}
+            className="income-expense-card income-card income-by-month-card"
+          >
             <h5 className="">
               Income Status by Month 
               <span className='date-highlight'>{data?.labels[chequeDate_month - 1]}</span>
@@ -222,10 +239,15 @@ const Homepage = (props) => {
                 <ArrowForwardIosIcon />
               </button>
             </div>
-          </div>
+          </motion.div>
           {/* pie chart by year */}
 
-          <div className="income-expense-card income-card income-by-year-card">
+          <motion.div 
+             initial={{y: -50, opacity: 0}}
+             animate={{y: 0, opacity: 1}}
+             transition={{duration: 0.3, delay: 0.4}}
+            className="income-expense-card income-card income-by-year-card"
+          >
             <h5 className="">
               Income Status by Year <span className='date-highlight'> {chequeDate_year}</span>
             </h5>
@@ -312,11 +334,16 @@ const Homepage = (props) => {
                 <ArrowForwardIosIcon />
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className='expense-container'>
           {/* {//expense by month} */}
-          <div className="income-expense-card expense-card expense-by-month-card">
+          <motion.div 
+             initial={{y: -50, opacity: 0}}
+             animate={{y: 0, opacity: 1}}
+             transition={{duration: 0.3, delay: 0.5}}
+            className="income-expense-card expense-card expense-by-month-card"
+          >
             <h5>
               Expense Status by Month 
               <span className='date-highlight'>{data?.labels[ExpenseDate_month - 1]}</span>
@@ -538,9 +565,14 @@ const Homepage = (props) => {
                 <ArrowForwardIosIcon />
               </button>
             </div>
-          </div>
+          </motion.div>
           {/* {//expense piechart year} */}
-          <div className="income-expense-card expense-card expense-by-year-card">
+          <motion.div 
+             initial={{y: -50, opacity: 0}}
+             animate={{y: 0, opacity: 1}}
+             transition={{duration: 0.3, delay: 0.6}}
+            className="income-expense-card expense-card expense-by-year-card"
+          >
             <h5 className="">
               Expense Status by Year
               <span className='date-highlight'>{ExpenseDate_year}</span>
@@ -762,7 +794,7 @@ const Homepage = (props) => {
                 <ArrowForwardIosIcon />
               </button>
             </div>
-          </div>
+          </motion.div>
           </div>
 
 

@@ -149,12 +149,32 @@
 
 .income-expense-card {
   background: #fff;
-  width: 100%;
+  /* width: 100%; */
+  max-width: 320px;
+  min-width: 320px;
   /* box-shadow: 1px 1px 9px 9px rgba(0, 0, 0, 0.4); */
   margin: 0 1rem;
   padding: 1rem;
   border-radius: 0 0 10px 10px;
   position: relative;
+}
+
+@media (max-width: 1600px) {
+  .income-expense-card-container {
+    flex-direction: column;
+    /* margin: auto; */
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  /* .income-expense-card {
+    width: 500px;
+  } */
+}
+
+.income-expense-card h5 {
+  width: 100%;
+  font-size: 19px;
 }
 
 .expense-container {
