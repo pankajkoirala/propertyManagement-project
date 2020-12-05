@@ -36,13 +36,13 @@ const NavbarPage = () => {
         </h4>
       </div>
       <div className="user-avatar">
-        <Avatar
+        {/* <Avatar
           alt="user-avatar"
           variant="rounded"
           style={{ height: "90px", width: "150px" }}
         >
           <AccountCircleIcon fontSize="large" />
-        </Avatar>
+        </Avatar> */}
         <p className="user-name">John</p>
       </div>
       <Accordion defaultActiveKey="">

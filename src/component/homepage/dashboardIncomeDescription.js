@@ -50,7 +50,7 @@ let DashboardIncomeComponent = (props) => {
   );
   return (
     <div>
-      <div style={{ margin: "10px" }}>
+      <div >
         <h1>Income list</h1>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ margin: "10px" }}>

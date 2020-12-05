@@ -53,7 +53,7 @@ const RouterPage = () => {
   return (
     <div>
       <Router>
-        <div style={{ display: "block", margin: 0, width: "20%" }}>
+        <div style={{ display: "block", margin: 0, width: "18%" }}>
           {authorize ? <NavBar /> : ""}
         </div>
         <div
