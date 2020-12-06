@@ -4,6 +4,7 @@ import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
+import {MaintainanceTicketEntryForm} from "./../../../utility/validation/maintainanceTicketEntryFormValidation.js"
 
 const MaintananceTicket = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -41,7 +42,7 @@ const MaintananceTicket = (props) => {
                 : props.MaintananceTicketData(values);
               console.log(values);
             }}
-            // validationSchema={TenantEntryFormValidation}
+            // validationSchema={MaintainanceTicketEntryForm}
           >
             {({
               touched,
@@ -66,7 +67,7 @@ const MaintananceTicket = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">issue date Date</Label>
+                        <Label for="exampleName">Issue Date</Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketIssueDate}
@@ -86,7 +87,7 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">maintanance due Date</Label>
+                        <Label for="exampleName">Maintanance Due Date</Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketDueDate}
@@ -107,7 +108,7 @@ const MaintananceTicket = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">property id</Label>
+                        <Label for="exampleName">Property Id</Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -136,7 +137,7 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">maintanance Company Id</Label>
+                        <Label for="exampleName">Maintanance Company Id</Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -165,7 +166,7 @@ const MaintananceTicket = (props) => {
 
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">
-                          managementCompanyId Company Id
+                          Management Company
                         </Label>
                         <RegexComponent
                           {...props}
@@ -193,7 +194,7 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">detail message</Label>
+                        <Label for="exampleName">Detail Message</Label>
                         <Input
                           type="textarea"
                           value={values.MaintananceCompanyDetailInfo}

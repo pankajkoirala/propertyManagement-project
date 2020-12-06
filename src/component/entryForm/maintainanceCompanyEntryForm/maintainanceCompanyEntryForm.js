@@ -5,7 +5,7 @@ import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import PoopUp from "./../../../shared/popup";
 
-//import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
+import {maintainanceCompanyEntryFormValidation} from "../../../utility/validation/maintainanceCompanyEntryFormValidation.js"
 
 const MaintainanceCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -60,7 +60,7 @@ const MaintainanceCompanyComponent = (props) => {
                   )
                 : props.MaintananceCompanyData(values, allFile);
             }}
-            //validationSchema={employeeEntryFormValidation}
+            validationSchema={maintainanceCompanyEntryFormValidation}
           >
             {({
               touched,
@@ -78,7 +78,7 @@ const MaintainanceCompanyComponent = (props) => {
                     <div className="text-black font-weight-bold">
                       {" "}
                       <h3 className="form-head">
-                        Maintainance Company Entry Form{" "}
+                        Maintainance Company Entry Form
                       </h3>
                     </div>
                   </div>
@@ -149,7 +149,7 @@ const MaintainanceCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">area</Label>
+                        <Label for="exampleName">Area</Label>
                         <Input
                           type="text"
                           value={values.Company_area}
@@ -169,7 +169,7 @@ const MaintainanceCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">city</Label>
+                        <Label for="exampleName">City</Label>
                         <Input
                           type="text"
                           value={values.Company_city}
@@ -188,7 +188,7 @@ const MaintainanceCompanyComponent = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">country</Label>
+                        <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
                           value={values.Company_country}
@@ -215,7 +215,7 @@ const MaintainanceCompanyComponent = (props) => {
                           type="email"
                           value={values.Company_email}
                           name="Company_email"
-                          placeholder="Enter Email"
+                          placeholder="Email"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -230,12 +230,12 @@ const MaintainanceCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">phone Number</Label>
+                        <Label for="exampleName">Phone Number</Label>
                         <Input
                           type="number"
                           value={values.Company_phoneNo}
                           name="Company_phoneNo"
-                          placeholder="Enter your Contact Number"
+                          placeholder="Phone Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />

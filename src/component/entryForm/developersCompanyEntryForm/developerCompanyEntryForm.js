@@ -5,7 +5,7 @@ import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import PoopUp from "./../../../shared/popup";
 
-//import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
+import {developerEntryFormValidation} from "../../../utility/validation/developmentCompanyEntryFormValidation.js"
 
 const DeveloperCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -61,7 +61,7 @@ const DeveloperCompanyComponent = (props) => {
                   )
                 : props.DevelopmentCompanyData(values, allFile);
             }}
-            //validationSchema={employeeEntryFormValidation}
+            validationSchema={developerEntryFormValidation}
           >
             {({
               touched,
@@ -150,7 +150,7 @@ const DeveloperCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">area</Label>
+                        <Label for="exampleName">Area</Label>
                         <Input
                           type="text"
                           value={values.Developer_area}
@@ -170,7 +170,7 @@ const DeveloperCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">city</Label>
+                        <Label for="exampleName">City</Label>
                         <Input
                           type="text"
                           value={values.Developer_city}
@@ -189,7 +189,7 @@ const DeveloperCompanyComponent = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">country</Label>
+                        <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
                           value={values.Developer_country}
@@ -345,7 +345,7 @@ const DeveloperCompanyComponent = (props) => {
                           <tr>
                             <th>SN</th>
                             <th> Name</th>
-                            <th>image</th>
+                            <th>Image</th>
                             <th>
                               <button
                                 style={
@@ -418,8 +418,8 @@ const DeveloperCompanyComponent = (props) => {
                     buttonName={props.developerCompany ? "Update" : "Create"}
                     message={
                       props.developerCompany
-                        ? "are you sure want to update"
-                        : "are you sure want to create"
+                        ? "Are you sure want to update"
+                        : "Are you sure want to create"
                     }
                   />
                 </FormGroup>

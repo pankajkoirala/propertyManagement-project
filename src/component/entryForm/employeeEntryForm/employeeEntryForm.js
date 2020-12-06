@@ -5,7 +5,7 @@ import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import PoopUp from "./../../../shared/popup";
 
-//import { employeeEntryFormValidation } from "../../../utility/validation/employeeEntryFormValidation.js";
+import { employeeEntryFormValidation } from "../../../utility/validation/employeeEntryFormValidation.js";
 
 const TenantEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -15,7 +15,6 @@ const TenantEntry = (props) => {
 
   let initialValue = {
     employee_gender: props?.selectedEmployee?.employee_gender || "",
-
     employee_area: props?.selectedEmployee?.employee_area || "",
     employee_city: props?.selectedEmployee?.employee_city || "",
     employee_country: props?.selectedEmployee?.employee_country || "",
@@ -54,7 +53,7 @@ const TenantEntry = (props) => {
                 : props.EmployeeData(values, allFile);
               console.log(values);
             }}
-            // validationSchema={employeeEntryFormValidation}
+            validationSchema={employeeEntryFormValidation}
           >
             {({
               touched,
@@ -83,7 +82,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.employee_firstName}
                           name="employee_firstName"
-                          placeholder="Enter Your FirstName"
+                          placeholder="Enter FirstName"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -104,7 +103,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.employee_middleName}
                           name="employee_middleName"
-                          placeholder="Enter Your MiddleName"
+                          placeholder="Enter MiddleName"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -125,7 +124,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.employee_lastName}
                           name="employee_lastName"
-                          placeholder="Enter Your LastName"
+                          placeholder="Enter LastName"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -142,7 +141,7 @@ const TenantEntry = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">area</Label>
+                        <Label for="exampleName">Area</Label>
                         <Input
                           type="text"
                           value={values.employee_area}
@@ -162,7 +161,7 @@ const TenantEntry = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">city</Label>
+                        <Label for="exampleName">City</Label>
                         <Input
                           type="text"
                           value={values.employee_city}
@@ -181,7 +180,7 @@ const TenantEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">country</Label>
+                        <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
                           value={values.employee_country}
@@ -207,11 +206,11 @@ const TenantEntry = (props) => {
                           type="select"
                           value={values.employee_gender}
                           name="employee_gender"
-                          placeholder="Enter Gender"
+                          placeholder="Choose Gender"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         >
-                          <option value="">select one</option>
+                          <option value=""></option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
                           <option value="Other">Other</option>
@@ -227,7 +226,7 @@ const TenantEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleSelect">employee_DOB</Label>
+                        <Label for="exampleSelect">Date of Birth</Label>
                         <Input
                           type="date"
                           name="employee_DOB"
@@ -273,7 +272,7 @@ const TenantEntry = (props) => {
                           type="number"
                           value={values.employee_phoneNo}
                           name="employee_phoneNo"
-                          placeholder=" Contact Number"
+                          placeholder="Contact Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -370,6 +369,16 @@ const TenantEntry = (props) => {
                       </div>
                     </div>
                   </div>
+                  
+                  {touched.files_list &&
+                          errors.files_list && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.files_list}
+                            </span>
+                          )}
                   {allFile.length !== 0 ? (
                     <Table striped bordered hover size="sm">
                       <thead>

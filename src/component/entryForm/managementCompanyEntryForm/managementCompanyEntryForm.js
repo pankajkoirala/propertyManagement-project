@@ -5,7 +5,7 @@ import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import PoopUp from "./../../../shared/popup";
 
-//import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
+import {managementCompanyEntryFormValidation} from "../../../utility/validation/managementCompanyEntryFormValidation.js"
 
 const ManagementCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -63,7 +63,7 @@ const ManagementCompanyComponent = (props) => {
                 : props.ManagementCompanyData(values, allFile);
               console.log(values);
             }}
-            //validationSchema={employeeEntryFormValidation}
+            validationSchema={managementCompanyEntryFormValidation}
           >
             {({
               touched,
@@ -81,7 +81,7 @@ const ManagementCompanyComponent = (props) => {
                     <div className="text-black font-weight-bold">
                       {" "}
                       <h3 className="form-head">
-                        Management Company Entry Form{" "}
+                        Management Company Entry Form
                       </h3>
                     </div>
                   </div>
@@ -133,7 +133,7 @@ const ManagementCompanyComponent = (props) => {
                       <div className="mt-2 col-md-4">
                         <Label for="exampleName">Registration Number</Label>
                         <Input
-                          type="number"
+                          type="text"
                           value={values.managementCompany_Registeration_Number}
                           name="managementCompany_Registeration_Number"
                           placeholder="Registration Number"
@@ -154,7 +154,7 @@ const ManagementCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">area</Label>
+                        <Label for="exampleName">Area</Label>
                         <Input
                           type="text"
                           value={values.managementCompany_area}
@@ -175,7 +175,7 @@ const ManagementCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">city</Label>
+                        <Label for="exampleName">City</Label>
                         <Input
                           type="text"
                           value={values.managementCompany_city}
@@ -196,7 +196,7 @@ const ManagementCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">country</Label>
+                        <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
                           value={values.managementCompany_country}
@@ -221,7 +221,7 @@ const ManagementCompanyComponent = (props) => {
                       <div className="col-md-4">
                         <Label for="exampleName">Email</Label>
                         <Input
-                          type="email"
+                          type="text"
                           value={values.managementCompany_email}
                           name="managementCompany_email"
                           placeholder="Enter Email"
@@ -245,7 +245,7 @@ const ManagementCompanyComponent = (props) => {
                           type="number"
                           value={values.managementCompany_phoneNo}
                           name="managementCompany_phoneNo"
-                          placeholder="Enter your Contact Number"
+                          placeholder="Contact Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />

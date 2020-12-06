@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import { v4 as uuidv4 } from "uuid";
+import {expenseEntryFormValidation} from "./../../../utility/validation/expenseEntryFormValidation.js"
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import RegexComponent from "./../../../shared/regexComponent";
@@ -32,6 +33,8 @@ const ExpenseEntry = (props) => {
     Expense_Remark: props?.expense?.Expense_Remark || "",
     expenseInvoiceNumber: props?.expense?.expenseInvoiceNumber || "",
     invoicePhoto: props?.expense?.invoicePhoto || "",
+    expense_Heading: "",
+    expense_amount: "",
   };
   return (
     <div>
@@ -53,7 +56,7 @@ const ExpenseEntry = (props) => {
                 ? props.expenseUpdate(values, props?.expense?._id)
                 : props.expenseData(values);
             }}
-            // validationSchema={TenantEntryFormValidation}
+            validationSchema={expenseEntryFormValidation}
           >
             {({
               touched,
@@ -70,7 +73,7 @@ const ExpenseEntry = (props) => {
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3 className="form-head">Expense entry Form </h3>
+                      <h3 className="form-head">Expense Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -78,7 +81,7 @@ const ExpenseEntry = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">entry date</Label>
+                        <Label for="exampleName">Entry Date</Label>
                         <Input
                           type="date"
                           value={values.expense_EntryDate}
@@ -97,7 +100,7 @@ const ExpenseEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">maintanance ticket ID</Label>
+                        <Label for="exampleName">Maintanance Ticket ID</Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -123,12 +126,12 @@ const ExpenseEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">remark</Label>
+                        <Label for="exampleName">Remark</Label>
                         <Input
                           type="text"
                           value={values.Expense_Remark}
                           name="Expense_Remark"
-                          placeholder="Bank name"
+                          placeholder="Remark"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -142,13 +145,16 @@ const ExpenseEntry = (props) => {
                         )}
                       </div>
 
+                      </div>
+
+                <div className="row">
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">invoice number</Label>
+                        <Label for="exampleName">Invoice Number</Label>
                         <Input
                           type="text"
                           value={values.expenseInvoiceNumber}
                           name="expenseInvoiceNumber"
-                          placeholder="Bank name"
+                          placeholder="Invoice Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -164,12 +170,12 @@ const ExpenseEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">expense heading</Label>
+                        <Label for="exampleName">Expense Heading</Label>
                         <Input
                           type="text"
                           name="expense_Heading"
                           value={expenseHeading}
-                          placeholder="Cheque Amount"
+                          placeholder="Expense Heading"
                           onChange={(e) => setExpenseHeading(e.target.value)}
                         />
                         {touched.expense_Heading && errors.expense_Heading && (
@@ -182,10 +188,10 @@ const ExpenseEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">amount</Label>
+                        <Label for="exampleName">Amount</Label>
                         <Input
                           type="number"
-                          placeholder="Cheque Amount"
+                          placeholder="Amount"
                           value={expenseAmount}
                           onChange={(e) => setExpenseAmount(e.target.value)}
                         />
@@ -198,6 +204,7 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
+                      
                       <button
                         type="button"
                         className="btn btn-secondary btn-sm addbtn-expense"
@@ -212,7 +219,8 @@ const ExpenseEntry = (props) => {
                       >
                         add
                       </button>
-                    </div>
+                      </div>
+                    
                     <div className="col-md-6 text-left mb-2 mt-4">
                       <Label className="float-left">Upload Scan Copy</Label>
                       <Input
@@ -264,9 +272,9 @@ const ExpenseEntry = (props) => {
                         <thead>
                           <tr>
                             <th>SN</th>
-                            <th> expense heade</th>
-                            <th>expense amount</th>
-                            <th>delete</th>
+                            <th> Expense Head</th>
+                            <th>Expense Amount</th>
+                            <th>Delete</th>
                           </tr>
                         </thead>
                         {expenselist.map((arg, index) => {
