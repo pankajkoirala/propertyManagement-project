@@ -159,7 +159,7 @@
   position: relative;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 960px) {
   .income-expense-card-container {
     flex-direction: column;
     /* margin: auto; */
