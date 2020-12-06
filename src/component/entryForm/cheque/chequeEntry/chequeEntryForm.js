@@ -4,6 +4,7 @@ import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import RegexComponent from "../../../../shared/regexComponent";
+import {chequeEntryFormValidation} from "./../../../../utility/validation/chequeEntryFormValidation.js"
 import PoopUp from "./../../../../shared/popup";
 
 const ChequeEntry = (props) => {
@@ -32,6 +33,7 @@ const ChequeEntry = (props) => {
     cheque_recivedDate:
       moment(props?.Cheque?.cheque_recivedDate).format("YYYY-MM-DD") || "",
   };
+  //console.log(moment());
   return (
     <div>
       <div className="PropertyFormEntry">
@@ -44,7 +46,7 @@ const ChequeEntry = (props) => {
                 : props.ChequeeData(values);
               console.log(values);
             }}
-            // validationSchema={TenantEntryFormValidation}
+            validationSchema={chequeEntryFormValidation}
           >
             {({
               touched,
@@ -69,12 +71,12 @@ const ChequeEntry = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Cheque entry Date</Label>
+                        <Label for="exampleName">Cheque Entry Date</Label>
                         <Input
                           type="date"
                           value={values.cheque_entryDate}
                           name="cheque_entryDate"
-                          placeholder="Enter date of Cheque"
+                          placeholder="Cheque Entry Date"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -88,11 +90,11 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Cheque due Date</Label>
+                        <Label for="exampleName">Cheque Issue Date</Label>
                         <Input
                           type="date"
                           value={values.cheque_issueDate}
-                          placeholder="Enter Due date of Cheque"
+                          placeholder="Cheque Issue Date"
                           name="cheque_issueDate"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -108,7 +110,7 @@ const ChequeEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">cheque Recived Date</Label>
+                        <Label for="exampleName">Cheque Received Date</Label>
                         <Input
                           type="date"
                           value={values.cheque_recivedDate}
@@ -128,7 +130,7 @@ const ChequeEntry = (props) => {
                           )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">cheque Deposited Date</Label>
+                        <Label for="exampleName">Cheque Deposited Date</Label>
                         <Input
                           type="date"
                           value={values.cheque_depositeDate}
@@ -149,7 +151,7 @@ const ChequeEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">cheque number</Label>
+                        <Label for="exampleName">Cheque Number</Label>
                         <Input
                           type="number"
                           value={values.cheque_number}
@@ -187,7 +189,7 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Vat Amount </Label>
+                        <Label for="exampleName">VAT Amount </Label>
                         <Input
                           type="number"
                           value={values.vat_amount}
@@ -227,7 +229,7 @@ const ChequeEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName"> bank Name</Label>
+                        <Label for="exampleName"> Bank Name</Label>
                         <Input
                           type="text"
                           value={values.cheque_bankName}
@@ -276,7 +278,7 @@ const ChequeEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleSelect">lease number</Label>
+                        <Label for="exampleSelect">Lease Number</Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -336,7 +338,7 @@ const ChequeEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">cheque Hold Date</Label>
+                        <Label for="exampleName">Cheque Hold Date</Label>
                         <Input
                           type="text"
                           value={values.cheque_holdDate}
@@ -356,7 +358,7 @@ const ChequeEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">cheque cleared Date</Label>
+                        <Label for="exampleName">Cheque Cleared Date</Label>
                         <Input
                           type="text"
                           value={values.cheque_clearDate}
@@ -375,7 +377,7 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">cheque bounced Date</Label>
+                        <Label for="exampleName">Cheque Bounced Date</Label>
                         <Input
                           type="text"
                           value={values.cheque_bouncedDate}

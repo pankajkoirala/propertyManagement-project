@@ -70,7 +70,7 @@ const PropertyEntry = (props) => {
           : props.propertySend(values, allFile);
         console.log(values);
       }}
-      // validationSchema={PropertyFormValidation}
+      //validationSchema={PropertyFormValidation}
     >
       {({
         touched,

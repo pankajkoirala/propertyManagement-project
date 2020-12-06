@@ -4,6 +4,7 @@ import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
+import {MaintainanceTicketEntryForm} from "./../../../utility/validation/maintainanceTicketEntryFormValidation.js"
 
 const MaintananceTicket = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -40,7 +41,7 @@ const MaintananceTicket = (props) => {
                 : props.MaintananceTicketData(values);
               console.log(values);
             }}
-            // validationSchema={TenantEntryFormValidation}
+            // validationSchema={MaintainanceTicketEntryForm}
           >
             {({
               touched,
@@ -84,8 +85,8 @@ const MaintananceTicket = (props) => {
                             </span>
                           )}
                       </div>
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">maintanance due Date</Label>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Maintanance Due Date</Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketDueDate}
@@ -105,8 +106,8 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
 
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">property id</Label>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Property Id</Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -134,10 +135,8 @@ const MaintananceTicket = (props) => {
                             </span>
                           )}
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">maintanance Company Id</Label>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Maintanance Company Id</Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -164,8 +163,37 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
 
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">detail message</Label>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">
+                          Management Company
+                        </Label>
+                        <RegexComponent
+                          {...props}
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_managementCompanyData?.map(
+                            (managementCompany) => {
+                              return {
+                                name: managementCompany.managementCompany_name,
+
+                                id: managementCompany._id,
+                              };
+                            }
+                          )}
+                          name={"managementCompanyId"}
+                        />
+
+                        {touched.managementCompanyId &&
+                          errors.managementCompanyId && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.managementCompanyId}
+                            </span>
+                          )}
+                      </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Detail Message</Label>
                         <Input
                           type="textarea"
                           value={values.MaintananceCompanyDetailInfo}

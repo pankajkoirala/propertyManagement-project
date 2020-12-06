@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import { v4 as uuidv4 } from "uuid";
+import {expenseEntryFormValidation} from "./../../../utility/validation/expenseEntryFormValidation.js"
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import RegexComponent from "./../../../shared/regexComponent";
@@ -34,6 +35,8 @@ const ExpenseEntry = (props) => {
     invoicePhoto: props?.expense?.invoicePhoto || "",
     expense_Type: props?.expense?.expense_Type || "",
     property_ID: props?.expense?.property_ID?._id || "",
+    expense_Heading: "",
+    expense_amount: "",
   };
   return (
     <div>
@@ -68,7 +71,7 @@ const ExpenseEntry = (props) => {
                 ? props.expenseUpdate(values, props?.expense?._id)
                 : props.expenseData(values);
             }}
-            // validationSchema={TenantEntryFormValidation}
+            validationSchema={expenseEntryFormValidation}
           >
             {({
               touched,
@@ -82,10 +85,11 @@ const ExpenseEntry = (props) => {
             }) => (
               <Form className="form-group mt-5 p-4">
                 <FormGroup className="">
+                <div>
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
-                      <h3 className="form-head">Expense entry Form </h3>
+                      <h3 className="form-head">Expense Entry Form </h3>
                     </div>
                   </div>
                   <div>
@@ -93,7 +97,7 @@ const ExpenseEntry = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-4">
-                        <Label for="exampleName">entry date</Label>
+                        <Label for="exampleName">Entry date</Label>
                         <Input
                           type="date"
                           value={values.expense_EntryDate}
@@ -111,14 +115,39 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Maintanance Ticket ID</Label>
+                        <RegexComponent
+                          {...props}
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_maintananceTicketData?.map(
+                            (maintananceTicket) => {
+                              return {
+                                name: maintananceTicket.maintananceTicket_ID,
+                                id: maintananceTicket._id,
+                              };
+                            }
+                          )}
+                          name={"Maintanance_ticketID"}
+                        />
+                        {touched.Maintanance_ticketID &&
+                          errors.Maintanance_ticketID && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.Maintanance_ticketID}
+                            </span>
+                          )}
+                      </div>
 
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">remark</Label>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Remark</Label>
                         <Input
                           type="text"
                           value={values.Expense_Remark}
                           name="Expense_Remark"
-                          placeholder="Bank name"
+                          placeholder="Remark"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -132,13 +161,16 @@ const ExpenseEntry = (props) => {
                         )}
                       </div>
 
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">invoice number</Label>
+                      </div>
+
+                <div className="row">
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Invoice Number</Label>
                         <Input
                           type="text"
                           value={values.expenseInvoiceNumber}
                           name="expenseInvoiceNumber"
-                          placeholder="Bank name"
+                          placeholder="Invoice Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -242,14 +274,13 @@ const ExpenseEntry = (props) => {
                       )}
                     </div>
 
-                    <div style={{ marginTop: "40px" }} className="row">
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">expense heading</Label>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Expense Heading</Label>
                         <Input
                           type="text"
                           name="expense_Heading"
                           value={expenseHeading}
-                          placeholder="Cheque Amount"
+                          placeholder="Expense Heading"
                           onChange={(e) => setExpenseHeading(e.target.value)}
                         />
                         {touched.expense_Heading && errors.expense_Heading && (
@@ -261,11 +292,11 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">amount</Label>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Amount</Label>
                         <Input
                           type="number"
-                          placeholder="Cheque Amount"
+                          placeholder="Amount"
                           value={expenseAmount}
                           onChange={(e) => setExpenseAmount(e.target.value)}
                         />
@@ -278,6 +309,7 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
+                      
                       <button
                         type="button"
                         className="btn btn-secondary btn-sm addbtn-expense"
@@ -292,7 +324,8 @@ const ExpenseEntry = (props) => {
                       >
                         add
                       </button>
-                    </div>
+                      </div>
+                    
                     <div className="col-md-6 text-left mb-2 mt-4">
                       <Label className="float-left">Upload Scan Copy</Label>
                       <Input
@@ -344,9 +377,9 @@ const ExpenseEntry = (props) => {
                         <thead>
                           <tr>
                             <th>SN</th>
-                            <th> expense heade</th>
-                            <th>expense amount</th>
-                            <th>delete</th>
+                            <th> Expense Head</th>
+                            <th>Expense Amount</th>
+                            <th>Delete</th>
                           </tr>
                         </thead>
                         {expenselist.map((arg, index) => {

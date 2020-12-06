@@ -3,7 +3,7 @@ import "./brokerAccount.css";
 import moment from "moment";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
-//import {employeeEntryFormValidation} from "../../../utility/validation/employeeEntryFormValidation.js"
+import {brokerEntryFormValidation} from "../../../utility/validation/brokerEntryFormValidation.js"
 import PoopUp from "../../../shared/popup";
 
 const BrokerComponent = (props) => {
@@ -11,7 +11,7 @@ const BrokerComponent = (props) => {
   const [allFile, setAllFile] = useState(
     props?.BrokerCompany ? props?.BrokerCompany?.files_list : []
   );
-  console.log(allFile);
+  //console.log(allFile);
 
   let initialvalue = {
     area: props?.BrokerCompany?.area || "",
@@ -50,7 +50,7 @@ const BrokerComponent = (props) => {
                 : props.brokerData(values, allFile);
               console.log(values);
             }}
-            //validationSchema={employeeEntryFormValidation}
+            validationSchema={brokerEntryFormValidation}
           >
             {({
               touched,
@@ -79,7 +79,7 @@ const BrokerComponent = (props) => {
                           type="select"
                           name="brokerType"
                           id="exampleSelect"
-                          placeholder="Broker Broker"
+                          placeholder="Select anyone"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.brokerType}
