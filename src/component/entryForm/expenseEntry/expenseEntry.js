@@ -33,8 +33,8 @@ const ExpenseEntry = (props) => {
     Expense_Remark: props?.expense?.Expense_Remark || "",
     expenseInvoiceNumber: props?.expense?.expenseInvoiceNumber || "",
     invoicePhoto: props?.expense?.invoicePhoto || "",
-    expense_Heading: "",
-    expense_amount: "",
+    expense_Type: props?.expense?.expense_Type || "",
+    property_ID: props?.expense?.property_ID?._id || "",
   };
   return (
     <div>
@@ -43,14 +43,27 @@ const ExpenseEntry = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
-              values.expense_list = expenselist.map((arg) => {
-                return {
-                  expenseHead: arg.expenseHead,
-                  expenseAmount: arg.expenseAmount,
-                  expenseId: arg.expenseId,
-                };
-              });
-              values.expense_list = JSON.stringify(values.expense_list);
+              //expense list sending
+              values.expense_list = JSON.stringify(
+                expenselist.map((arg) => {
+                  return {
+                    expenseHead: arg.expenseHead,
+                    expenseAmount: arg.expenseAmount,
+                    expenseId: arg.expenseId,
+                  };
+                })
+              );
+              values.property_ID =
+                values.expense_Type === "Maintanance" ||
+                props?.expense?.expense_Type === "Maintanance"
+                  ? values.property_ID
+                  : "";
+              values.Maintanance_ticketID =
+                values.expense_Type === "Maintanance" ||
+                props?.expense?.expense_Type === "Maintanance"
+                  ? values.Maintanance_ticketID
+                  : "";
+
               console.log(values);
               props?.expense
                 ? props.expenseUpdate(values, props?.expense?._id)
@@ -80,8 +93,8 @@ const ExpenseEntry = (props) => {
                     {/* <div className="m-4"> */}
 
                     <div className="row ">
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Entry Date</Label>
+                      <div className="mt-4 col-4">
+                        <Label for="exampleName">Entry date</Label>
                         <Input
                           type="date"
                           value={values.expense_EntryDate}
@@ -99,6 +112,7 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
+<<<<<<< HEAD
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Maintanance Ticket ID</Label>
                         <RegexComponent
@@ -127,6 +141,11 @@ const ExpenseEntry = (props) => {
 
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Remark</Label>
+=======
+
+                      <div className="mt-4 col-4">
+                        <Label for="exampleName">remark</Label>
+>>>>>>> be08512a5612e5d904f9194705ef8f739a3c5314
                         <Input
                           type="text"
                           value={values.Expense_Remark}
@@ -145,11 +164,16 @@ const ExpenseEntry = (props) => {
                         )}
                       </div>
 
+<<<<<<< HEAD
                       </div>
 
                 <div className="row">
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Invoice Number</Label>
+=======
+                      <div className="mt-4 col-4">
+                        <Label for="exampleName">invoice number</Label>
+>>>>>>> be08512a5612e5d904f9194705ef8f739a3c5314
                         <Input
                           type="text"
                           value={values.expenseInvoiceNumber}
@@ -168,9 +192,104 @@ const ExpenseEntry = (props) => {
                             </span>
                           )}
                       </div>
+                      <div className="mt-2 col-md-4">
+                        <Label for="exampleSelect">Expense Type</Label>
+                        <Input
+                          type="select"
+                          name="expense_Type"
+                          id="exampleSelect"
+                          placeholder="Select"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.expense_Type}
+                        >
+                          <option value="">Select One </option>
+                          <option value="Maintanance">Maintanance</option>
+                          <option value="Legal">Legal</option>
+                          <option value="FMC">FMC</option>
+                          <option value="Utility">Utility</option>
+                          <option value="Office Expense">Office Expense</option>
+                          <option value="Service Charge">Service Charge</option>
+                        </Input>
+                        {touched.expense_Type && errors.expense_Type && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.expense_Type}
+                          </span>
+                        )}
+                      </div>
+                      {values.expense_Type === "Maintanance" ? (
+                        <div className="mt-2 col-4">
+                          <Label for="exampleName">maintanance ticket ID</Label>
+                          <RegexComponent
+                            {...props}
+                            setFieldValue={setFieldValue}
+                            options={props?.Redux_maintananceTicketData?.map(
+                              (maintananceTicket) => {
+                                return {
+                                  name: maintananceTicket?.maintananceTicket_ID,
+                                  id: maintananceTicket?._id,
+                                };
+                              }
+                            )}
+                            name={"Maintanance_ticketID"}
+                          />
+                          {touched.Maintanance_ticketID &&
+                            errors.Maintanance_ticketID && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.Maintanance_ticketID}
+                              </span>
+                            )}
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      {values.expense_Type === "Maintanance" ? (
+                        <div className="mt-2 col-4">
+                          <Label for="exampleName">property</Label>
+                          <RegexComponent
+                            {...props}
+                            setFieldValue={setFieldValue}
+                            options={props?.redux_propertyData?.map(
+                              (property) => {
+                                return {
+                                  name:
+                                    property?.property_type +
+                                    "-" +
+                                    property?.referenceNO,
+                                  id: property?._id,
+                                };
+                              }
+                            )}
+                            name={"property_ID"}
+                          />
+                          {touched.property_ID && errors.property_ID && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.property_ID}
+                            </span>
+                          )}
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
 
+<<<<<<< HEAD
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Expense Heading</Label>
+=======
+                    <div style={{ marginTop: "40px" }} className="row">
+                      <div className="mt-4 col-4">
+                        <Label for="exampleName">expense heading</Label>
+>>>>>>> be08512a5612e5d904f9194705ef8f739a3c5314
                         <Input
                           type="text"
                           name="expense_Heading"
@@ -187,8 +306,13 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
+<<<<<<< HEAD
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Amount</Label>
+=======
+                      <div className="mt-4 col-4">
+                        <Label for="exampleName">amount</Label>
+>>>>>>> be08512a5612e5d904f9194705ef8f739a3c5314
                         <Input
                           type="number"
                           placeholder="Amount"

@@ -13,7 +13,7 @@ let MaintananceTicketDetailViewComponent = (props) => {
   };
   return (
     <>
-      <div>
+      <div style={{ margin: "20px" }}>
         {showEditForm === false ? (
           props.selectedMaintananceTicket.map((arg, index) => {
             return (
@@ -103,96 +103,6 @@ let MaintananceTicketDetailViewComponent = (props) => {
                   </div>
                 </div>
 
-                <div className="row my-2">
-                  <div className="col-6">
-                    <img
-                      style={{
-                        height: "400px",
-                        width: "100%",
-                        borderRadius: "20px 20px 0px 0px",
-                      }}
-                      src={arg?.managementCompanyId?.files_list[0]?.file}
-                      alt="recently added"
-                    />
-                  </div>
-                  <div className="col-6">
-                    <h5 className="text-center mb-4">
-                      Management Company Information
-                    </h5>
-                    <div className="d-flex justify-content-between mr-4">
-                      <div style={{ left: "0px" }}>
-                        <div className="font-weight-bold my-2">
-                          Management Company ID
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          Company Name
-                        </div>
-                        <div className="font-weight-bold my-2">Area</div>
-                        <div className="font-weight-bold my-2">City</div>
-                        <div className="font-weight-bold my-2">Country</div>
-                        <div className="font-weight-bold my-2">
-                          Registration Number
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          Registration Date
-                        </div>
-                        <div className="font-weight-bold my-2">Email </div>
-                        <div className="font-weight-bold my-2">
-                          Phone Number
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          Mobile Number
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-weight-bold my-2">
-                          {
-                            arg?.managementCompanyId
-                              ?.managementCompany_companyID
-                          }
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.managementCompanyId?.managementCompany_name}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.managementCompanyId?.managementCompany_area}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.managementCompanyId?.managementCompany_city}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.managementCompanyId?.managementCompany_country}
-                        </div>
-
-                        <div className="font-weight-bold my-2">
-                          {
-                            arg?.managementCompanyId
-                              ?.managementCompany_Registeration_Number
-                          }
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {moment(
-                            arg?.managementCompanyId
-                              ?.managementCompany_Registeration_Date
-                          ).format("YYYY-MM-DD")}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.managementCompanyId?.managementCompany_email}
-                        </div>
-
-                        <div className="font-weight-bold my-2">
-                          {arg?.managementCompanyId?.managementCompany_phoneNo}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {
-                            arg?.managementCompanyId
-                              ?.managementCompany_MobileNumber
-                          }
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <div className="row my-4">
                   <div className="col-6">
                     <h5 className="text-center mb-4">

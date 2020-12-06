@@ -13,7 +13,7 @@ let PropertyDetailViewComponent = (props) => {
   };
   return (
     <>
-      <div>
+      <div style={{ margin: "20px" }}>
         {showEditForm === false ? (
           props.selectedone.map((arg, index) => {
             return (

@@ -18,13 +18,21 @@ let RegexConponent = (props) => {
   const { setFieldValue, name, options } = props;
 
   let filterArray = (e) => {
-    const regex = new RegExp(`^${e}`, "gi");
+    const splittedWord = e.toLowerCase().split("");
 
-    let selectedOptions =
-      e === ""
-        ? setUpdatedOptions([])
-        : options?.filter((option) => regex.test(option.name));
-    setUpdatedOptions(selectedOptions);
+    let filterArray = options?.filter((arg) =>
+      splittedWord.every((letter) => {
+        return arg.name?.toString()?.toLowerCase()?.includes(letter);
+      })
+    );
+    setUpdatedOptions(filterArray);
+    // const regex = new RegExp(`^${e}`, "gi");
+
+    // let selectedOptions =
+    //   e === ""
+    //     ? setUpdatedOptions([])
+    //     : options?.filter((option) => regex.test(option.name));
+    // setUpdatedOptions(selectedOptions);
   };
 
   //remove list on click on other place
@@ -72,7 +80,11 @@ let RegexConponent = (props) => {
               top: "0",
               bottom: "0",
               zIndex: "11",
+              border: "plain",
+              borderColor: "beige",
+              padding: "5px",
             }}
+            key={i}
             className="bg-secondary text-white font-weight-bold"
             onClick={() => {
               setFieldValue(name, arg.id);

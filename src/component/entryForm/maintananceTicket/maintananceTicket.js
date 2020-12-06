@@ -22,8 +22,7 @@ const MaintananceTicket = (props) => {
       props?.maintananceTicket?.MaintanancePropertyID?._id || "",
     MaintananceCompanyId:
       props?.maintananceTicket?.MaintananceCompanyId?._id || "",
-    managementCompanyId:
-      props?.maintananceTicket?.managementCompanyId?._id || "",
+
     MaintananceCompanyDetailInfo:
       props?.maintananceTicket?.MaintananceCompanyDetailInfo || "",
   };
@@ -66,8 +65,8 @@ const MaintananceTicket = (props) => {
                     {/* <div className="m-4"> */}
 
                     <div className="row ">
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Issue Date</Label>
+                      <div className="mt-4 col-4">
+                        <Label for="exampleName">issue date Date</Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketIssueDate}

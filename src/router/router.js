@@ -2,9 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { getLocalStorage } from "../const/tokenStorage";
 
-//regex
+import DashbordIncomeDetail from "./../container/homepage/dashBoardIncomeDetailCont";
 import NavBar from "./../shared/navbar";
-
 import LoginComponent from "../container/login/login ";
 import PrivateRouter from "./privateRouter";
 import Homepage from "../container/homepage/homepage";
@@ -54,7 +53,7 @@ const RouterPage = () => {
   return (
     <div>
       <Router>
-        <div style={{ display: "block", margin: 0, width: "20%" }}>
+        <div style={{ display: "block", margin: 0, width: "18%" }}>
           {authorize ? <NavBar /> : ""}
         </div>
         <div
@@ -73,6 +72,12 @@ const RouterPage = () => {
         >
           {authorize ? <TopNavBar /> : ""}
           <Switch>
+            <PrivateRouter
+              exact
+              path="/dashboardIncome"
+              component={DashbordIncomeDetail}
+            />
+
             <PrivateRouter exact path="/propertyList" component={AllProperty} />
             <PrivateRouter
               exact

@@ -12,7 +12,8 @@ const ModalExample = (props) => {
         return (
           arg.search1?.toString()?.toLowerCase()?.includes(letter) ||
           arg.search2?.toString()?.toLowerCase()?.includes(letter) ||
-          arg.search3?.toString()?.toLowerCase()?.includes(letter)
+          arg.search3?.toString()?.toLowerCase()?.includes(letter) ||
+          arg.search4?.toString()?.toLowerCase()?.includes(letter)
         );
       })
     );
@@ -21,7 +22,7 @@ const ModalExample = (props) => {
     filterArray.forEach((arg) => {
       selectedID.push(arg.ID);
     });
-    selectedObject = allData.filter((arg) => selectedID.includes(arg._id));
+    selectedObject = allData?.filter((arg) => selectedID?.includes(arg._id));
     setFilteredData(selectedObject);
   };
 

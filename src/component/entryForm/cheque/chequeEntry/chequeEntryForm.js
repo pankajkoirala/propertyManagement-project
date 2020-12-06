@@ -24,6 +24,7 @@ const ChequeEntry = (props) => {
     cheque_picture: props?.Cheque?.cheque_picture || "",
     cheque_number: props?.Cheque?.cheque_number || "",
     lease_property: props?.Cheque?.lease_property?._id || "",
+    property_id: props?.Cheque?.property_id?._id || "",
     cheque_depositeDate:
       moment(props?.Cheque?.cheque_depositeDate).format("YYYY-MM-DD") || "",
     cheque_clearDate: props?.Cheque?.cheque_clearDate || "YYYY-MM-DD",
@@ -73,7 +74,6 @@ const ChequeEntry = (props) => {
                         <Label for="exampleName">Cheque Entry Date</Label>
                         <Input
                           type="date"
-                          disabled={true}
                           value={values.cheque_entryDate}
                           name="cheque_entryDate"
                           placeholder="Cheque Entry Date"
@@ -276,6 +276,7 @@ const ChequeEntry = (props) => {
                           </span>
                         )}
                       </div>
+
                       <div className="mt-4 col-md-4">
                         <Label for="exampleSelect">Lease Number</Label>
                         <RegexComponent
@@ -283,7 +284,12 @@ const ChequeEntry = (props) => {
                           setFieldValue={setFieldValue}
                           options={props?.Redux_leaseData?.map((lease) => {
                             return {
-                              name: lease.LeaseId,
+                              name:
+                                lease.LeaseId +
+                                "/" +
+                                lease?.property?.property_type +
+                                "/" +
+                                lease?.property?.referenceNO,
 
                               id: lease._id,
                             };
@@ -297,6 +303,36 @@ const ChequeEntry = (props) => {
                             style={{ fontSize: 12 }}
                           >
                             {errors.lease_property}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleSelect">Property </Label>
+                        <RegexComponent
+                          {...props}
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_propertyData?.map(
+                            (property) => {
+                              return {
+                                name:
+                                  property.property_type +
+                                  "/" +
+                                  property.referenceNO,
+
+                                id: property._id,
+                              };
+                            }
+                          )}
+                          name={"property_id"}
+                        />
+
+                        {touched.property_id && errors.property_id && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.property_id}
                           </span>
                         )}
                       </div>

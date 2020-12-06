@@ -3,7 +3,6 @@ import "./tenantView.css";
 import PoopUp from "./../../../shared/popup";
 import moment from "moment";
 
-import LOGO from "../../../assets/logo.png";
 import TanentEntryForm from "../../../component/entryForm/tenantEntryForm/tenantEntryForm";
 
 const TanentDetailView = (props) => {

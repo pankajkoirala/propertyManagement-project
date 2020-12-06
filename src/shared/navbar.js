@@ -20,29 +20,33 @@ import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import {motion} from 'framer-motion';
 
 import "./navbar.css";
 
 const NavbarPage = () => {
   return (
-    <div
-      style={{ backgroundColor: "#3B4AFF", height: "100%" }}
+    <motion.div
+      initial={{opacity: 0, x: -280}}
+      animate={{opacity: 1, x: 0}}
+      transition={{ease: 'easeInOut'}}
+      style={{ backgroundColor: "#3B4AFF", height: "100%"}}
       className="menu "
     >
-      <div className="branding-section">
+      <div className="branding-section" style={{textAlign: 'center'}}>
         <h4>
           <EmojiTransportationIcon fontSize="large" />
           &nbsp;Graphine INC.
         </h4>
       </div>
       <div className="user-avatar">
-        <Avatar
+        {/* <Avatar
           alt="user-avatar"
           variant="rounded"
           style={{ height: "90px", width: "150px" }}
         >
           <AccountCircleIcon fontSize="large" />
-        </Avatar>
+        </Avatar> */}
         <p className="user-name">John</p>
       </div>
       <Accordion defaultActiveKey="">
@@ -555,7 +559,7 @@ const NavbarPage = () => {
           </Card.Header>
         </Card>
       </Accordion>
-    </div>
+    </motion.div>
   );
 };
 
