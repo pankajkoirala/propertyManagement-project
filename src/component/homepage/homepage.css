@@ -150,8 +150,8 @@
 .income-expense-card {
   background: #fff;
   /* width: 100%; */
-  max-width: 320px;
-  min-width: 320px;
+  max-width: 270px;
+  min-width: 270px;
   /* box-shadow: 1px 1px 9px 9px rgba(0, 0, 0, 0.4); */
   margin: 0 1rem;
   padding: 1rem;
@@ -174,7 +174,8 @@
 
 .income-expense-card h5 {
   width: 100%;
-  font-size: 19px;
+  font-size: 16px;
+  text-align: center;
 }
 
 .expense-container {

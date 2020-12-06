@@ -158,7 +158,7 @@ const Homepage = (props) => {
             <div className="">
               <div className="pie-container">
                 <PieChart
-                  style={{ height: "200px", width: "200px" }}
+                  style={{ height: "150px", width: "150px" }}
                   data={[
                     {
                       title: "One",
@@ -254,7 +254,7 @@ const Homepage = (props) => {
             <div className="">
               <div className="pie-container">
                 <PieChart
-                  style={{ height: "200px", width: "200px" }}
+                  style={{ height: "150px", width: "150px" }}
                   data={[
                     {
                       title: "One",
@@ -351,7 +351,7 @@ const Homepage = (props) => {
             <div className="">
               <div className="pie-container">
                 <PieChart
-                  style={{ height: "200px", width: "200px" }}
+                  style={{ height: "150px", width: "150px" }}
                   // [Maintanance,Legal,FMC,Utility,Office Expense,Service Charge ];
                   data={[
                     {
@@ -580,7 +580,7 @@ const Homepage = (props) => {
             <div className="">
               <div className="pie-container">
                 <PieChart
-                  style={{ height: "200px", width: "200px" }}
+                  style={{ height: "150px", width: "150px" }}
                   // [Maintanance,Legal,FMC,Utility,Office Expense,Service Charge ];
                   data={[
                     {
