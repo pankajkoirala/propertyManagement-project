@@ -35,6 +35,8 @@ const ExpenseEntry = (props) => {
     invoicePhoto: props?.expense?.invoicePhoto || "",
     expense_Type: props?.expense?.expense_Type || "",
     property_ID: props?.expense?.property_ID?._id || "",
+    expense_Heading: "",
+    expense_amount: "",
   };
   return (
     <div>
@@ -83,6 +85,7 @@ const ExpenseEntry = (props) => {
             }) => (
               <Form className="form-group mt-5 p-4">
                 <FormGroup className="">
+                <div>
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
                       {" "}
@@ -112,7 +115,6 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
-<<<<<<< HEAD
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Maintanance Ticket ID</Label>
                         <RegexComponent
@@ -141,11 +143,6 @@ const ExpenseEntry = (props) => {
 
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Remark</Label>
-=======
-
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">remark</Label>
->>>>>>> be08512a5612e5d904f9194705ef8f739a3c5314
                         <Input
                           type="text"
                           value={values.Expense_Remark}
@@ -164,16 +161,11 @@ const ExpenseEntry = (props) => {
                         )}
                       </div>
 
-<<<<<<< HEAD
                       </div>
 
                 <div className="row">
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Invoice Number</Label>
-=======
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">invoice number</Label>
->>>>>>> be08512a5612e5d904f9194705ef8f739a3c5314
                         <Input
                           type="text"
                           value={values.expenseInvoiceNumber}
@@ -282,14 +274,8 @@ const ExpenseEntry = (props) => {
                       )}
                     </div>
 
-<<<<<<< HEAD
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Expense Heading</Label>
-=======
-                    <div style={{ marginTop: "40px" }} className="row">
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">expense heading</Label>
->>>>>>> be08512a5612e5d904f9194705ef8f739a3c5314
                         <Input
                           type="text"
                           name="expense_Heading"
@@ -306,13 +292,8 @@ const ExpenseEntry = (props) => {
                           </span>
                         )}
                       </div>
-<<<<<<< HEAD
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Amount</Label>
-=======
-                      <div className="mt-4 col-4">
-                        <Label for="exampleName">amount</Label>
->>>>>>> be08512a5612e5d904f9194705ef8f739a3c5314
                         <Input
                           type="number"
                           placeholder="Amount"
