@@ -26,12 +26,10 @@ const LeaseEntry = (props) => {
     expirationDate:
       moment(props?.lease?.expirationDate).format("YYYY-MM-DD") || "",
     rentAmount: props?.lease?.rentAmount || "",
-    firstDueDate: moment(props?.lease?.firstDueDate).format("YYYY-MM-DD") || "",
     gracePeriod: props?.lease?.gracePeriod || "",
     lateFeeAmount: props?.lease?.lateFeeAmount || "",
     securityDeposite: props?.lease?.securityDeposite || "",
-    securityfirstDueDate:
-      moment(props?.lease?.securityfirstDueDate).format("YYYY-MM-DD") || "",
+
     fileName: "",
     file: "",
     files_list: [],
@@ -274,27 +272,7 @@ const LeaseEntry = (props) => {
                     </span>
                   )}
                 </div>
-                <div className="col-md-4">
-                  <Label for="exampleSelect">First Due Date</Label>
-                  <Input
-                    type="date"
-                    name="firstDueDate"
-                    id="exampleSelect"
-                    placeholder="Due Date"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.firstDueDate}
-                  ></Input>
 
-                  {touched.firstDueDate && errors.firstDueDate && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.firstDueDate}
-                    </span>
-                  )}
-                </div>
                 <div className="col-4">
                   <Label for="exampleName">Frequency</Label>
                   <Input
@@ -306,9 +284,19 @@ const LeaseEntry = (props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   >
-                    <option value=""> Select one</option>
-                    <option value={30}>Monthly</option>
-                    <option value={365}>Yearly</option>
+                    <option value=""> select one</option>
+                    <option value={31}>1</option>
+                    <option value={59}>2</option>
+                    <option value={90}>3</option>
+                    <option value={120}>4</option>
+                    <option value={151}>5</option>
+                    <option value={181}>6</option>
+                    <option value={212}>7</option>
+                    <option value={243}>8</option>
+                    <option value={273}>9</option>
+                    <option value={304}>10</option>
+                    <option value={334}>11</option>
+                    <option value={365}>12</option>
                   </Input>
                   {touched.frequency && errors.frequency && (
                     <span
@@ -343,27 +331,6 @@ const LeaseEntry = (props) => {
                       style={{ fontSize: 12 }}
                     >
                       {errors.securityDeposite}
-                    </span>
-                  )}
-                </div>
-                <div className="col-md-4">
-                  <Label for="exampleSelect">Deposite Due Date</Label>
-                  <Input
-                    type="date"
-                    name="securityfirstDueDate"
-                    id="exampleSelect"
-                    placeholder="Security Due Date"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.securityfirstDueDate}
-                  ></Input>
-
-                  {touched.securityfirstDueDate && errors.securityfirstDueDate && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.securityfirstDueDate}
                     </span>
                   )}
                 </div>

@@ -9,15 +9,12 @@ import PrivateRouter from "./privateRouter";
 import Homepage from "../container/homepage/homepage";
 import PropertyEntry from "../container/entryForm/propertyEntryForm/PropertyEntryForm";
 import TenantEntry from "../container/entryForm/tenantEntryForm/tenantEntryForm.js";
-import EmployeeEntry from "../container/entryForm/employeeEntryForm/employeeEntryForm";
-import EmployeeView from "../container/view/employeeView/employeeView.js";
 import TenantView from "../container/view/tenantView/tenantView.js";
 import MaintananceTicket from "../container/entryForm/maintananceTicket/maintananceTicket";
 import Chequeentry from "../container/entryForm/cheque/chequeEntry/chequeEntryForm.js";
 import OnePropertyView from "../container/view/propertyView/propertyDetailView";
 import Lease from "../container/entryForm/leaseEntryForm/leaseEntryform";
 import TanentDetailView from "../container/view/tenantView/tanentDetailView";
-import EmployeeDetailView from "../container/view/employeeView/emoloyeeViewDetail";
 import LeaseDetailView from "../container/view/lease/leaseDetailView";
 import OwnerEntry from "../container/entryForm/ownerEntry/ownerEnty.js";
 import BrokerDetailEntryForm from "../container/entryForm/brokerEntryForm/brokerDetailContainer.js";
@@ -92,16 +89,7 @@ const RouterPage = () => {
               component={PropertyEntry}
             />
             <PrivateRouter exact path="/tenantentry" component={TenantEntry} />
-            <PrivateRouter
-              exact
-              path="/employeeentry"
-              component={EmployeeEntry}
-            />
-            <PrivateRouter
-              exact
-              path="/employeeList"
-              component={EmployeeView}
-            />
+
             <PrivateRouter exact path="/tenantList" component={TenantView} />
             <PrivateRouter exact path="/chequeentry" component={Chequeentry} />
             <PrivateRouter exact path="/chequeList" component={ChequeView} />
@@ -201,11 +189,7 @@ const RouterPage = () => {
               path="/tanent/:id"
               component={TanentDetailView}
             />
-            <PrivateRouter
-              exact
-              path="/employee/:id"
-              component={EmployeeDetailView}
-            />
+
             <PrivateRouter
               exact
               path="/lease/:id"
