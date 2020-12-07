@@ -1,13 +1,14 @@
 import * as Yup from "yup";
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-export const expenseEntryFormValidation = Yup.object().shape({
-  expense_list: Yup.string().required("Required Field"),
+export const ExpenseEntryFormValidation = Yup.object().shape({
+  //expense_list: Yup.string().required("Required Field"),
   expense_EntryDate: Yup.date().required("Required Field"),
   Maintanance_ticketID:Yup.string().required("Required Field"),
   Expense_Remark: Yup.string().required("Required Field"),
+  expense_Type: Yup.string().oneOf(["Maintanance", "Legal", "FMC", "Utility", "Office Expense","Service Charge"]).required("Required Field"),
   expenseInvoiceNumber: Yup.number().required("Required Field"),
-  expense_Heading:Yup.string().required("Required Field"),
-  expense_amount:Yup.number().required("Required Field"),
-  invoicePhoto: Yup.array().required("File Required"),
+  //expense_Heading:Yup.string().required("Required Field"),
+  //expense_amount:Yup.number().required("Required Field"),
+ // invoicePhoto: Yup.array().required("File Required"),
 });

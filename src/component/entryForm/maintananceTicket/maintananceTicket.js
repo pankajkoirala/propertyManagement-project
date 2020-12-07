@@ -4,7 +4,7 @@ import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
-import {MaintainanceTicketEntryForm} from "./../../../utility/validation/maintainanceTicketEntryFormValidation.js"
+import {maintananceTicketEntryFormValidation} from "./../../../utility/validation/maintainanceTicketEntryFormValidation.js"
 
 const MaintananceTicket = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -41,7 +41,7 @@ const MaintananceTicket = (props) => {
                 : props.MaintananceTicketData(values);
               console.log(values);
             }}
-            // validationSchema={MaintainanceTicketEntryForm}
+            validationSchema={maintananceTicketEntryFormValidation}
           >
             {({
               touched,
@@ -66,7 +66,7 @@ const MaintananceTicket = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-4">
-                        <Label for="exampleName">issue date Date</Label>
+                        <Label for="exampleName">Issue Date</Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketIssueDate}
@@ -123,6 +123,7 @@ const MaintananceTicket = (props) => {
                             }
                           )}
                           name={"MaintanancePropertyID"}
+                          placeholderName="Maintainace Property"
                         />
 
                         {touched.MaintanancePropertyID &&
@@ -135,7 +136,7 @@ const MaintananceTicket = (props) => {
                             </span>
                           )}
                       </div>
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-md-4">
                         <Label for="exampleName">Maintanance Company Id</Label>
                         <RegexComponent
                           {...props}
@@ -163,7 +164,7 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
 
-                      <div className="mt-4 col-md-3">
+                      {/* <div className="mt-4 col-md-3">
                         <Label for="exampleName">
                           Management Company
                         </Label>
@@ -191,14 +192,14 @@ const MaintananceTicket = (props) => {
                               {errors.managementCompanyId}
                             </span>
                           )}
-                      </div>
-                      <div className="mt-4 col-md-3">
+                      </div> */}
+                      <div className="mt-4 col-md-7">
                         <Label for="exampleName">Detail Message</Label>
                         <Input
                           type="textarea"
                           value={values.MaintananceCompanyDetailInfo}
                           name="MaintananceCompanyDetailInfo"
-                          placeholder="Bank name"
+                          placeholder="Detain Message"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
