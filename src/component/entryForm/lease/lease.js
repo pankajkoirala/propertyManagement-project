@@ -109,7 +109,7 @@ const LeaseEntry = (props) => {
                     disabled={props.lease ? true : false}
                     value={values.lease_enterDate}
                     name="lease_enterDate"
-                    placeholder="Lease Issue Date"
+                    placeholder="Lease Entered Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -134,7 +134,7 @@ const LeaseEntry = (props) => {
                         id: tenent._id,
                       };
                     })}
-                    name={"tenants"}
+                    name={"Choose from List"}
                   />
 
                   {touched.tenants && errors.tenants && (
@@ -158,7 +158,7 @@ const LeaseEntry = (props) => {
                         id: property._id,
                       };
                     })}
-                    name={"property"}
+                    name={"Choose from list"}
                   />
 
                   {touched.property && errors.property && (

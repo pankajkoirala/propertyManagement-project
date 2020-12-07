@@ -144,7 +144,7 @@ const OwnerEntry = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">area</Label>
+                        <Label for="exampleName">Area</Label>
                         <Input
                           type="text"
                           value={values.owner_area}
@@ -164,7 +164,7 @@ const OwnerEntry = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">city</Label>
+                        <Label for="exampleName">City</Label>
                         <Input
                           type="text"
                           value={values.owner_city}
@@ -183,7 +183,7 @@ const OwnerEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">country</Label>
+                        <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
                           value={values.owner_country}
@@ -268,7 +268,7 @@ const OwnerEntry = (props) => {
                     </div>
                     <div className="row">
                       <div className="col-md-6 mb-4">
-                        <Label for="exampleName">owner property</Label>
+                        <Label for="exampleName">Owner property</Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}

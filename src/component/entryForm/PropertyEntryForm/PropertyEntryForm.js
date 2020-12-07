@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import PoopUp from "./../../../shared/popup";
 import RegexConponent from "../../../shared/regexComponent";
 
-//import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
+import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
 
 const PropertyEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -70,7 +70,7 @@ const PropertyEntry = (props) => {
           : props.propertySend(values, allFile);
         console.log(values);
       }}
-      //validationSchema={PropertyFormValidation}
+      validationSchema={PropertyFormValidation}
     >
       {({
         touched,
@@ -123,7 +123,7 @@ const PropertyEntry = (props) => {
                   <Input
                     type="number"
                     name="property_price"
-                    placeholder="Enter Price"
+                    placeholder="Investment Input"
                     value={values.property_price}
                     min={0}
                     onChange={handleChange}
@@ -164,7 +164,7 @@ const PropertyEntry = (props) => {
                     type="text"
                     value={values.city}
                     name="city"
-                    placeholder=" City"
+                    placeholder="City"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -198,7 +198,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">building Name</Label>
+                  <Label for="exampleName">Building Name</Label>
                   <Input
                     type="text"
                     value={values.building_Name}
@@ -218,7 +218,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">building Number </Label>
+                  <Label for="exampleName">Building Number</Label>
                   <Input
                     type="text"
                     value={values.building_Number}
@@ -238,7 +238,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">plot Number</Label>
+                  <Label for="exampleName">Plot Number</Label>
                   <Input
                     type="text"
                     value={values.plot_Number}
@@ -258,12 +258,12 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">building floor Number</Label>
+                  <Label for="exampleName">Floor Number</Label>
                   <Input
                     type="text"
                     value={values.building_floorNumber}
                     name="building_floorNumber"
-                    placeholder="Building Floor Number"
+                    placeholder="Floor Number"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -318,7 +318,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">community</Label>
+                  <Label for="exampleName">Community</Label>
                   <Input
                     type="text"
                     value={values.property_community}
@@ -343,7 +343,7 @@ const PropertyEntry = (props) => {
                     type="text"
                     value={values.Property_Premise_Number}
                     name="Property_Premise_Number"
-                    placeholder="Property Premise Number"
+                    placeholder="Dewa Premise Number"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -358,12 +358,12 @@ const PropertyEntry = (props) => {
                     )}
                 </div>
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Property Owner Name</Label>
+                  <Label for="exampleName">Owner Name</Label>
                   <Input
                     type="text"
                     value={values.Property_ownerName}
                     name="Property_ownerName"
-                    placeholder="Property Owner Name"
+                    placeholder="Owner Name"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -436,11 +436,11 @@ const PropertyEntry = (props) => {
               <Table bordered>
                 <thead>
                   <tr>
-                    <th className="bg-secondary text-white">heading</th>
-                    <th className="bg-secondary text-white">unit</th>
+                    <th className="bg-secondary text-white">Heading</th>
+                    <th className="bg-secondary text-white">Unit</th>
 
                     <th className="bg-secondary text-white">Remarks</th>
-                    <th className="bg-secondary text-white">add</th>
+                    <th className="bg-secondary text-white">Add</th>
                   </tr>
                 </thead>
                 <tbody>

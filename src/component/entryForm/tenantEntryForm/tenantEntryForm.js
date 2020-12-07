@@ -3,7 +3,7 @@ import "./tenantEntryForm.css";
 import moment from "moment";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
-//import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
+import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
 import PoopUp from "./../../../shared/popup";
 import "../styleform/styleform.css";
 
@@ -13,7 +13,7 @@ const TenantEntry = (props) => {
   const [allFile, setAllFile] = useState(
     props.selectedTenantone?.files_list || []
   );
-  console.log(allFile);
+  //console.log(allFile);
 
   let photoDelete = (name) => {
     setAllFile(allFile.filter((file) => file.fileName !== name));
@@ -48,7 +48,7 @@ const TenantEntry = (props) => {
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");
-
+console.log(values);
               props.selectedTenantone
                 ? props.tenentUpdate(
                     values,
@@ -57,7 +57,8 @@ const TenantEntry = (props) => {
                   )
                 : props.tenantData(values, allFile);
             }}
-            // validationSchema={TenantEntryFormValidation}
+
+            validationSchema={TenantEntryFormValidation}
           >
             {({
               touched,
@@ -114,7 +115,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.tenant_Name}
                           name="tenant_Name"
-                          placeholder="Tenent Name/Authorize Person Name"
+                          placeholder="Authorize Person Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -155,7 +156,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.area}
                           name="area"
-                          placeholder="Street"
+                          placeholder="Area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -313,6 +314,15 @@ const TenantEntry = (props) => {
                             value={values.fileName}
                           ></Input>
                         </div>
+                        {values.files_list.length <= 0 ? touched.files_list &&
+                          errors.files_list && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.files_list}
+                            </span>
+                          ) : ""}
                         <div className="col-md-4 text-left mb-2 mt-2">
                           <Label
                             onClick={() => console.log(values)}
@@ -369,7 +379,7 @@ const TenantEntry = (props) => {
                         </div>
                       </div>
                     </div>
-
+                   
                     <button
                       className="btn btn-primary success col-md-2 mt-5"
                       type="button"
@@ -384,8 +394,8 @@ const TenantEntry = (props) => {
                       buttonName={props.selectedTenantone ? "Update" : "Create"}
                       message={
                         props.selectedTenantone
-                          ? "are you sure want to update"
-                          : "are you sure want to create"
+                          ? "Are you sure want to update"
+                          : "Are you sure want to create"
                       }
                     />
                   </div>
@@ -397,7 +407,7 @@ const TenantEntry = (props) => {
                         <tr>
                           <th>SN</th>
                           <th> Name</th>
-                          <th>image</th>
+                          <th>Image</th>
                           <th>
                             <button
                               type="button"
