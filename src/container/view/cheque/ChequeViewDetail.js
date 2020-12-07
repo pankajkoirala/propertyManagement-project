@@ -22,7 +22,8 @@ const ChequeDetailViewCont = (props) => {
     formData.append("cheque_status", data.cheque_status);
     formData.append("cheque_remarks", data.cheque_remarks);
     formData.append("cheque_amount", data.cheque_amount);
-    formData.append("cheque_picture", data.cheque_picture);
+    formData.append("cheque_picture_back", data.cheque_picture_back);
+    formData.append("cheque_picture_front", data.cheque_picture_front);
     formData.append("lease_property", data.lease_property);
     formData.append("cheque_number", data.cheque_number);
     formData.append("cheque_entryDate", data.cheque_entryDate);

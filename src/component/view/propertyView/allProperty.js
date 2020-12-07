@@ -72,11 +72,11 @@ const PropertyView = (props) => {
                         (arg1) => arg1 === arg._id
                       ) === true ? (
                         <span className="text-danger font-weight-bold">
-                          occupied
+                          Occupied
                         </span>
                       ) : (
                         <span className="text-success font-weight-bold">
-                          free
+                          Vacant
                         </span>
                       )}
                     </td>

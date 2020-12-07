@@ -81,6 +81,12 @@ let PropertyDetailView = (props) => {
         selectedone={selectedone}
         DeleteProperty={DeleteProperty}
         leaseIdList={leaseid}
+        Redux_ManagementCompanyData={
+          props.Redux_ManagementCompanyData.managementCompany
+        }
+        redux_DeveloperCompanyData={
+          props.redux_DeveloperCompanyData.DeveloperCompany
+        }
       />
     </div>
   );
@@ -89,6 +95,8 @@ let PropertyDetailView = (props) => {
 const mapStateToProps = (state) => ({
   Redux_propertyData: state.property,
   Redux_leaseData: state.lease,
+  Redux_ManagementCompanyData: state.managementCompany,
+  redux_DeveloperCompanyData: state.DeveloperCompany,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

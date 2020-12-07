@@ -50,7 +50,7 @@ let PropertyDetailViewComponent = (props) => {
                           Municipality Number
                         </div>
                         <div className="font-weight-bold my-3">
-                          Property Premise Number
+                          Dewa Premise Number
                         </div>
                         <div className="font-weight-bold my-3">community </div>
                         <div className="font-weight-bold my-3">
@@ -97,7 +97,7 @@ let PropertyDetailViewComponent = (props) => {
                           Property Type
                         </div>
                         <div className="font-weight-bold my-2">
-                          Property Price/Rent Price
+                          Investment Input
                         </div>
                         <div className="font-weight-bold my-2">Location</div>
                       </div>
