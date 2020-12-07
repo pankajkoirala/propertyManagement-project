@@ -119,7 +119,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label>Property price</Label>
+                  <Label>Investment Input</Label>
                   <Input
                     type="number"
                     name="property_price"
@@ -338,7 +338,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Property Premise Number</Label>
+                  <Label for="exampleName">Dewa Premise Number</Label>
                   <Input
                     type="text"
                     value={values.Property_Premise_Number}

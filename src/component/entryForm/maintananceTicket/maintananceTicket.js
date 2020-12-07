@@ -4,7 +4,7 @@ import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
-import {MaintainanceTicketEntryForm} from "./../../../utility/validation/maintainanceTicketEntryFormValidation.js"
+import { MaintainanceTicketEntryForm } from "./../../../utility/validation/maintainanceTicketEntryFormValidation.js";
 
 const MaintananceTicket = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -25,6 +25,9 @@ const MaintananceTicket = (props) => {
 
     MaintananceCompanyDetailInfo:
       props?.maintananceTicket?.MaintananceCompanyDetailInfo || "",
+    maintanance_Amount: props?.maintananceTicket?.maintanance_Amount || "",
+    Maintanance_Ticket_picture:
+      props?.maintananceTicket?.Maintanance_Ticket_picture || "",
   };
   return (
     <div>
@@ -85,7 +88,7 @@ const MaintananceTicket = (props) => {
                             </span>
                           )}
                       </div>
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-md-4">
                         <Label for="exampleName">Maintanance Due Date</Label>
                         <Input
                           type="date"
@@ -106,7 +109,29 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
 
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleName">Maintanance Amount</Label>
+                        <Input
+                          type="text"
+                          value={values.maintanance_Amount}
+                          name="maintanance_Amount"
+                          placeholder="Enter date of Cheque"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.maintanance_Amount &&
+                          errors.maintanance_Amount && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.maintanance_Amount}
+                            </span>
+                          )}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="mt-4 col-md-4">
                         <Label for="exampleName">Property Id</Label>
                         <RegexComponent
                           {...props}
@@ -135,7 +160,7 @@ const MaintananceTicket = (props) => {
                             </span>
                           )}
                       </div>
-                      <div className="mt-4 col-md-3">
+                      <div className="mt-4 col-md-4">
                         <Label for="exampleName">Maintanance Company Id</Label>
                         <RegexComponent
                           {...props}
@@ -163,10 +188,9 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
 
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">
-                          Management Company
-                        </Label>
+                      {/* <div className="mt-4 col-md-4">
+                        {console.log(props?.Redux_managementCompanyData)}
+                        <Label for="exampleName">Management Company</Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -191,8 +215,10 @@ const MaintananceTicket = (props) => {
                               {errors.managementCompanyId}
                             </span>
                           )}
-                      </div>
-                      <div className="mt-4 col-md-3">
+                      </div> */}
+                    </div>
+                    <div style={{ marginTop: "50px" }}>
+                      <div className=" col-6">
                         <Label for="exampleName">Detail Message</Label>
                         <Input
                           type="textarea"
@@ -214,7 +240,37 @@ const MaintananceTicket = (props) => {
                       </div>
                     </div>
 
-                    <div className="row">
+                    <div className="">
+                      <div className="col-md-6 text-left mb-2 mt-4">
+                        <Label className="float-left">Picture</Label>
+                        <Input
+                          type="file"
+                          name="Maintanance_Ticket_picture"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "Maintanance_Ticket_picture",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
+
+                        {touched.Maintanance_Ticket_picture &&
+                          values.Maintanance_Ticket_picture && (
+                            <img
+                              src={
+                                typeof values.Maintanance_Ticket_picture ===
+                                "string"
+                                  ? values.Maintanance_Ticket_picture
+                                  : URL.createObjectURL(
+                                      values.Maintanance_Ticket_picture
+                                    )
+                              }
+                              alt="no file"
+                              height="20"
+                            />
+                          )}
+                      </div>
                       <button
                         className="btn btn-primary Success col-2 mt-5 ml-3"
                         type="button"

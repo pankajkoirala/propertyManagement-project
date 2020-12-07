@@ -8,10 +8,29 @@ import { reloadFunction } from "../../../shared/commonFunction";
 
 const MaintananceTicketContainer = (props) => {
   const MaintananceTicketData = (data) => {
+    const formData = new FormData();
+
+    formData.append(
+      "maintananceTicketIssueDate",
+      data.maintananceTicketIssueDate
+    );
+    formData.append("maintananceTicketDueDate", data.maintananceTicketDueDate);
+    formData.append("MaintanancePropertyID", data.MaintanancePropertyID);
+    formData.append("MaintananceCompanyId", data.MaintananceCompanyId);
+    formData.append(
+      "MaintananceCompanyDetailInfo",
+      data.MaintananceCompanyDetailInfo
+    );
+    formData.append(
+      "Maintanance_Ticket_picture",
+      data.Maintanance_Ticket_picture
+    );
+    formData.append("maintanance_Amount", data.maintanance_Amount);
+
     Axios({
       method: "post",
       url: base_URL + "/api/MaintananceTicket",
-      data: data,
+      data: formData,
       config: {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
