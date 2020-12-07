@@ -111,7 +111,7 @@ const LeaseEntry = (props) => {
                     disabled={props.lease ? true : false}
                     value={values.lease_enterDate}
                     name="lease_enterDate"
-                    placeholder="Lease Issue Date"
+                    placeholder="Lease Entered Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -136,7 +136,7 @@ const LeaseEntry = (props) => {
                         id: tenent._id,
                       };
                     })}
-                    name={"tenants"}
+                    name={"Choose from List"}
                   />
 
                   {touched.tenants && errors.tenants && (
@@ -160,7 +160,7 @@ const LeaseEntry = (props) => {
                         id: property._id,
                       };
                     })}
-                    name={"property"}
+                    name={"Choose from list"}
                   />
 
                   {touched.property && errors.property && (
@@ -306,11 +306,8 @@ const LeaseEntry = (props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   >
-                    <option value=""> select one</option>
-                    <option value={7}>Weekly</option>
-                    <option value={14}>Bi-Weekly</option>
+                    <option value=""> Select one</option>
                     <option value={30}>Monthly</option>
-                    <option value={90}>Quartely</option>
                     <option value={365}>Yearly</option>
                   </Input>
                   {touched.frequency && errors.frequency && (
