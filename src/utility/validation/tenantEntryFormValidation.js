@@ -2,33 +2,31 @@ import * as Yup from "yup";
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 export const TenantEntryFormValidation = Yup.object().shape({
-  tenant_firstName: Yup.string().required("Please enter First Name"),
-  tenant_middleName: Yup.string().required("Please enter Last Name"),
-  tenant_lastName: Yup.string().required("Please enter Last Name"),
-  tenant_photo: Yup.string().required("Please upload Photo"),
-  tenant_phoneNo: Yup.number().required("Required Field"),
-  assignedProperty: Yup.string().required("Please select property assigned"),
-  tenant_GovIdNo: Yup.string().required("Please Enter Government ID number"),
+  TenentType:  Yup.string()
+  .oneOf(["Person", "Company"])
+  .required("Required"),
+  tenant_Name: Yup.string().required("Required"),
+  
+  //tenant_photo: Yup.string().required("Please upload Photo"),
+  tenant_phoneNo: Yup.number().required("Required"),
+  DateOfBirth_registrationDate: Yup.date().required("Required"),
+  tenant_GovIdNo: Yup.string().required("Required"),
   tenant_DrivingLicenceNo: Yup.string().required(
-    "Please Enter Driving Licence number"
+    "Required"
   ),
-  tenant_DOB: Yup.date().required("Please Enter Date of Birth"),
-  tenant_email: Yup.string().required("Please enter Email"),
+  
+  tenant_email: Yup.string().required("Required"),
   city: Yup.string()
     .min(1, "Too Short")
     .max(50, "Too long")
-    .required("Required Field"),
-  street: Yup.string()
+    .required("Required"),
+    area: Yup.string()
     .min(1, "Too Short")
     .max(50, "Too long")
     .required("Required"),
-  provience: Yup.string()
-    .min(1, "Too Short")
-    .max(50, "Too long")
-    .required("Required"),
-  ZipCode: Yup.number().required("Required"),
   country: Yup.string()
     .min(1, "Too Short")
     .max(50, "Too long")
-    .required("Required Field"),
+    .required("Required"),
+  //files_list: Yup.string().required("Required"),
 });

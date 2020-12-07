@@ -419,8 +419,8 @@ const BrokerComponent = (props) => {
                     buttonName={props.BrokerCompany ? "Update" : "Create"}
                     message={
                       props.BrokerCompany
-                        ? "are you sure want to update"
-                        : "are you sure want to create"
+                      ? "Are you sure want to update"
+                      : "Are you sure want to create"
                     }
                   />
                 </FormGroup>
