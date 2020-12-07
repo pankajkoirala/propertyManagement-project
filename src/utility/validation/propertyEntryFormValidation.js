@@ -2,27 +2,33 @@ import * as Yup from "yup";
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 export const PropertyFormValidation = Yup.object().shape({
-  property_type: Yup.string()
-    .oneOf(["villa", "house", "flat"])
-    .required("Required"),
-  property_price: Yup.number().required("Please enter price"),
-  property_status: Yup.string()
-    .oneOf(["Occupied", "Repair and Maintanance", "free"])
-    .required("Required"),
-  BHK: Yup.string().required("Please enter price"),
-  toilet: Yup.number().required("Please enter price"),
-
+  Property_ownerName: Yup.string().required("Required"),
   city: Yup.string()
     .min(1, "Too Short")
     .max(50, "Too long")
     .required("Required Field"),
-  street: Yup.string()
-    .min(1, "Too Short")
-    .max(50, "Too long")
-    .required("Required"),
-  //  photo: Yup.string().required("Required Field"),
+  area: Yup.string().required("Required"),
   country: Yup.string()
     .min(1, "Too Short")
     .max(50, "Too long")
     .required("Required Field"),
+  property_type: Yup.string()
+    .oneOf(["Residential", "Commericial", "Land"])
+    .required("Required"),
+  property_price: Yup.number().required("Required"),
+  property_community: Yup.string().required("Required"),
+  building_Name: Yup.string().required("Required"),
+  building_Number: Yup.string().required("Required"),
+  plot_Number: Yup.string().required("Required"),
+  building_floorNumber: Yup.string().required("Required"),
+  Muncipality_Number: Yup.string().required("Required"),
+  Property_Area: Yup.string().required("Required"),
+  Property_Premise_Number: Yup.string().required("Required"),
+  developerCompany: Yup.string().required("Required"),
+  managementCompany: Yup.string().required("Required"),
+  
+  // files_list:
+  // photo: Yup.string().required("Required Field"),
+  // facilities: Yup.string().required("Required"),
+
 });
