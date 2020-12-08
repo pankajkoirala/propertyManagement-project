@@ -843,103 +843,110 @@ const Homepage = (props) => {
           {/* </div> */}
         </div>
         {/* line bar chart */}
-        <div style={{ borderTop: "4px solid #fff", padding: "1rem" }}>
-          <div style={{ display: "flex", justifyContent: "space-around" }}>
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: "20px",
-                background: "#fff",
-                padding: "1rem",
-                borderTop: "3px solid green",
-              }}
-            >
-              Total Income{" "}
-              <span
-                style={{
-                  marginLeft: "1rem",
-                  fontWeight: "lighter",
-                  color: "green",
-                  fontSize: "28px",
-                }}
-              >
-                {totalYearIncome}
-              </span>
-            </div>
-            <div style={{ fontWeight: "bold", fontSize: "25px" }}>
-              Year-<span className="date-highlight">{next_preYear}</span>
-            </div>
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: "20px",
-                background: "#fff",
-                padding: "1rem",
-                borderTop: "3px solid red",
-              }}
-            >
-              Total Expense
-              <span
-                style={{
-                  marginLeft: "1rem",
-                  fontWeight: "lighter",
-                  color: "red",
-                  fontSize: "28px",
-                }}
-              >
-                {totalYearExpense}
-              </span>
-            </div>
-          </div>
+        <div className="income-expense-wrapper">
           <div
             style={{
-              height: "700px",
-              width: "800px",
-              margin: "1rem auto",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              fontWeight: "bold",
+              fontSize: "25px",
+              textAlign: "center",
             }}
           >
-            <Line data={data} responsive={true} maintainAspectRatio={false} />
-            <div>
-              <button
+            Year-<span className="date-highlight">{next_preYear}</span>
+          </div>
+
+          <div style={{ borderTop: "4px solid #fff", padding: "1rem" }}>
+            <div
+              className="income-expense-child"
+              style={{ display: "flex", justifyContent: "space-around" }}
+            >
+              <div
                 style={{
-                  border: "none",
-                  background: "#ccc",
-                  borderRadius: "50%",
-                  height: "40px",
-                  width: "40px",
-                  color: "#fff",
-                  margin: "5px",
-                  outline: "none !important",
-                }}
-                className="m-2"
-                type="button"
-                onClick={() => setNext_preYear(next_preYear - number--)}
-              >
-                <ArrowBackIosIcon />
-              </button>
-              <button
-                style={{
-                  border: "none",
-                  background: "#ccc",
-                  borderRadius: "50%",
-                  height: "40px",
-                  width: "40px",
-                  color: "#fff",
-                  margin: "5px",
-                  outline: "none !important",
-                }}
-                className="m-2"
-                type="button"
-                onClick={() => {
-                  setNext_preYear(next_preYear + number++);
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                  background: "#fff",
+                  padding: "1rem",
+                  borderTop: "3px solid green",
                 }}
               >
-                <ArrowForwardIosIcon />
-              </button>
+                Total Income{" "}
+                <span
+                  style={{
+                    marginLeft: "1rem",
+                    fontWeight: "lighter",
+                    color: "green",
+                    fontSize: "28px",
+                  }}
+                >
+                  {totalYearIncome}
+                </span>
+              </div>
+
+              <div
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                  background: "#fff",
+                  padding: "1rem",
+                  borderTop: "3px solid red",
+                }}
+              >
+                Total Expense
+                <span
+                  style={{
+                    marginLeft: "1rem",
+                    fontWeight: "lighter",
+                    color: "red",
+                    fontSize: "28px",
+                  }}
+                >
+                  {totalYearExpense}
+                </span>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <div className="canvas-container">
+          <div className="line-container">
+            <Line data={data} responsive={true} maintainAspectRatio={true} />
+          </div>
+          <div>
+            <button
+              style={{
+                border: "none",
+                background: "#ccc",
+                borderRadius: "50%",
+                height: "40px",
+                width: "40px",
+                color: "#fff",
+                margin: "5px",
+                outline: "none !important",
+              }}
+              className="m-2"
+              type="button"
+              onClick={() => setNext_preYear(next_preYear - number--)}
+            >
+              <ArrowBackIosIcon />
+            </button>
+            <button
+              style={{
+                border: "none",
+                background: "#ccc",
+                borderRadius: "50%",
+                height: "40px",
+                width: "40px",
+                color: "#fff",
+                margin: "5px",
+                outline: "none !important",
+              }}
+              className="m-2"
+              type="button"
+              onClick={() => {
+                setNext_preYear(next_preYear + number++);
+              }}
+            >
+              <ArrowForwardIosIcon />
+            </button>
           </div>
         </div>
       </div>

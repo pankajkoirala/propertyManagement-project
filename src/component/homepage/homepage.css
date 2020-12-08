@@ -180,6 +180,12 @@
   /* .income-expense-card {
     width: 500px;
   } */
+
+  .income-expense-child {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .income-expense-card h5 {
@@ -267,4 +273,17 @@
   width: 100%;
   text-align: center;
   padding: 1rem 0 2rem 0;
+}
+
+.line-container {
+  height: 800px !important;
+}
+
+.canvas-container {
+  height: 600px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  /* align-items: center; */
 }
