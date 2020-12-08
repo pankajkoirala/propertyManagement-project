@@ -366,8 +366,7 @@ const PropertyEntry = (props) => {
                     </span>
                   )}
                 </div>
-
-                <div className="col-sm-4 my-1">
+                <div className="col-4 my-1">
                   <Label for="exampleName">Dewa Premise Number</Label>
                   <Input
                     type="text"
@@ -387,7 +386,35 @@ const PropertyEntry = (props) => {
                       </span>
                     )}
                 </div>
-                <div style={{ width: "auto" }} className="col-sm-4 my-1">
+
+                <div className="col-4">
+                  <Label for="exampleSelect">Management Company</Label>
+
+                  <RegexConponent
+                    setFieldValue={setFieldValue}
+                    options={props?.Redux_ManagementCompanyData?.map(
+                      (management) => {
+                        return {
+                          name: management.managementCompany_name,
+                          id: management._id,
+                        };
+                      }
+                    )}
+                    name={"managementCompany"}
+                  />
+
+                  <div style={{ marginTop: "40px" }}>
+                    {touched.managementCompany && errors.managementCompany && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.managementCompany}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div style={{ width: "auto" }} className="col-4 my-1">
                   <Label for="exampleName">Owner Name </Label>
 
                   <RegexConponent
@@ -407,8 +434,18 @@ const PropertyEntry = (props) => {
                       };
                     })}
                   />
+                  <div style={{ marginTop: "40px" }}>
+                    {touched.Property_ownerName && errors.Property_ownerName && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.Property_ownerName}
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <div className="col-md-">
+                <div className="col-4">
                   <Label for="exampleSelect">Developer Company</Label>
 
                   <RegexConponent
@@ -423,164 +460,157 @@ const PropertyEntry = (props) => {
                     )}
                     name={"developerCompany"}
                   />
-
-                  {touched.developerCompany && errors.developerCompany && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.developerCompany}
-                    </span>
-                  )}
+                  <div style={{ marginTop: "40px" }}>
+                    {touched.developerCompany && errors.developerCompany && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.developerCompany}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
-              <div className="col-md-">
-                <Label for="exampleSelect">Management Company</Label>
 
-                <RegexConponent
-                  setFieldValue={setFieldValue}
-                  options={props?.Redux_ManagementCompanyData?.map(
-                    (management) => {
-                      return {
-                        name: management.managementCompany_name,
-                        id: management._id,
-                      };
-                    }
-                  )}
-                  name={"managementCompany"}
-                />
-
-                {touched.managementCompany && errors.managementCompany && (
-                  <span
-                    className="text-danger col-md-12 text-left mb-2"
-                    style={{ fontSize: 12 }}
-                  >
-                    {errors.managementCompany}
-                  </span>
+              {/* {//owner selected list} */}
+              <div style={{ marginTop: "50px", width: "30%" }}>
+                {selectedOwner.length !== 0 ? (
+                  <h5 className="form-head">Owner List</h5>
+                ) : (
+                  ""
                 )}
-              </div>
 
-              {selectedOwner.map((arg) => {
-                return (
-                  <div>
-                    <div>
-                      {arg.owner_firstName +
-                        " " +
-                        arg.owner_middleName +
-                        " " +
-                        arg.owner_lastName}
-                      <button onClick={() => deleteOwner(arg._id)}>
+                {selectedOwner.map((arg) => {
+                  return (
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div>
+                        {arg.owner_firstName +
+                          " " +
+                          arg.owner_middleName +
+                          " " +
+                          arg.owner_lastName}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => deleteOwner(arg._id)}
+                      >
                         delete
                       </button>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
               <div className="">
                 <Label for="exampleName">
                   <h3 className="form-head">Facilities</h3>
                 </Label>
-              </div>
 
-              <Table bordered>
-                <thead>
-                  <tr>
-                    <th className="bg-secondary text-white">Heading</th>
-                    <th className="bg-secondary text-white">Unit</th>
-
-                    <th className="bg-secondary text-white">Remarks</th>
-                    <th className="bg-secondary text-white">Add</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <Input
-                        type="text"
-                        value={heading}
-                        placeholder="Heading"
-                        onChange={(e) => {
-                          setHeading(e.target.value);
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <Input
-                        type="number"
-                        placeholder="unit"
-                        value={unit}
-                        onChange={(e) => {
-                          setUnit(e.target.value);
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <Input
-                        type="text"
-                        value={remark}
-                        placeholder="Remark"
-                        onChange={(e) => {
-                          setRemark(e.target.value);
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <button
-                        disabled={!heading || !unit || !remark}
-                        onClick={() =>
-                          addFacilities({
-                            heading: heading,
-                            unit: unit,
-                            remark: remark,
-                            facilitiesId: uuidv4(),
-                          })
-                        }
-                        type="button"
-                        className="font-weight-bold"
-                      >
-                        Add Facilities
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-              {facilities.length > 0 ? (
                 <Table bordered>
                   <thead>
                     <tr>
-                      <th className="bg-secondary text-white">SN</th>
-                      <th className="bg-secondary text-white">heading</th>
-                      <th className="bg-secondary text-white">unit</th>
+                      <th className="bg-secondary text-white">Heading</th>
+                      <th className="bg-secondary text-white">Unit</th>
+
                       <th className="bg-secondary text-white">Remarks</th>
-                      <th className="bg-secondary text-white">delete</th>
+                      <th className="bg-secondary text-white">Add</th>
                     </tr>
                   </thead>
-                  {facilities.map((arg, index) => {
-                    return (
-                      <tbody key={index}>
-                        <tr>
-                          <td>{index + 1}</td>
-                          <td>{arg.heading}</td>
-                          <td>{arg.unit}</td>
-                          <td>{arg.remark}</td>
-
-                          <td>
-                            <button
-                              type="button"
-                              className="font-weight-bold"
-                              onClick={() => removeFacilite(arg.facilitiesId)}
-                            >
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    );
-                  })}
+                  <tbody>
+                    <tr>
+                      <td>
+                        <Input
+                          type="text"
+                          value={heading}
+                          placeholder="Heading"
+                          onChange={(e) => {
+                            setHeading(e.target.value);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <Input
+                          type="number"
+                          placeholder="unit"
+                          value={unit}
+                          onChange={(e) => {
+                            setUnit(e.target.value);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <Input
+                          type="text"
+                          value={remark}
+                          placeholder="Remark"
+                          onChange={(e) => {
+                            setRemark(e.target.value);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <button
+                          disabled={!heading || !unit || !remark}
+                          onClick={() =>
+                            addFacilities({
+                              heading: heading,
+                              unit: unit,
+                              remark: remark,
+                              facilitiesId: uuidv4(),
+                            })
+                          }
+                          type="button"
+                          className="font-weight-bold"
+                        >
+                          Add Facilities
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
                 </Table>
-              ) : (
-                ""
-              )}
+                {facilities.length > 0 ? (
+                  <Table bordered>
+                    <thead>
+                      <tr>
+                        <th className="bg-secondary text-white">SN</th>
+                        <th className="bg-secondary text-white">heading</th>
+                        <th className="bg-secondary text-white">unit</th>
+                        <th className="bg-secondary text-white">Remarks</th>
+                        <th className="bg-secondary text-white">delete</th>
+                      </tr>
+                    </thead>
+                    {facilities.map((arg, index) => {
+                      return (
+                        <tbody key={index}>
+                          <tr>
+                            <td>{index + 1}</td>
+                            <td>{arg.heading}</td>
+                            <td>{arg.unit}</td>
+                            <td>{arg.remark}</td>
+
+                            <td>
+                              <button
+                                type="button"
+                                className="font-weight-bold"
+                                onClick={() => removeFacilite(arg.facilitiesId)}
+                              >
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      );
+                    })}
+                  </Table>
+                ) : (
+                  ""
+                )}
+              </div>
               <div style={{ marginTop: "20px" }}>
                 <h4 className="form-head">Document Field</h4>
                 <div className="row">
@@ -709,6 +739,7 @@ const PropertyEntry = (props) => {
 
             <button
               type="button"
+              disabled={allFile.length === 0 ? true : false}
               className="btn btn-primary col-md-2 ml-3 mt-5"
               onClick={() => setShowPopUp(true)}
             >

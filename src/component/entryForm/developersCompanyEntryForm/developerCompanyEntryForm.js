@@ -5,7 +5,7 @@ import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import PoopUp from "./../../../shared/popup";
 
-import {developerEntryFormValidation} from "../../../utility/validation/developmentCompanyEntryFormValidation.js"
+import { developerEntryFormValidation } from "../../../utility/validation/developmentCompanyEntryFormValidation.js";
 
 const DeveloperCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -405,6 +405,7 @@ const DeveloperCompanyComponent = (props) => {
                     )}
                   </div>
                   <button
+                    disabled={allFile.length === 0 ? true : false}
                     className="btn btn-primary col-2 success mt-5"
                     type="button"
                     onClick={() => setShowPopUp(true)}

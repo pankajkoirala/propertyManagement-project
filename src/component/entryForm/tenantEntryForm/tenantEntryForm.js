@@ -13,7 +13,10 @@ const TenantEntry = (props) => {
   const [allFile, setAllFile] = useState(
     props.selectedTenantone?.files_list || []
   );
-  //console.log(allFile);
+  console.log(
+    "🚀 ~ file: tenantEntryForm.js ~ line 14 ~ TenantEntry ~ allFile",
+    allFile
+  );
 
   let photoDelete = (name) => {
     setAllFile(allFile.filter((file) => file.fileName !== name));
@@ -48,7 +51,7 @@ const TenantEntry = (props) => {
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");
-console.log(values);
+              console.log(values);
               props.selectedTenantone
                 ? props.tenentUpdate(
                     values,
@@ -57,7 +60,6 @@ console.log(values);
                   )
                 : props.tenantData(values, allFile);
             }}
-
             validationSchema={TenantEntryFormValidation}
           >
             {({
@@ -314,22 +316,19 @@ console.log(values);
                             value={values.fileName}
                           ></Input>
                         </div>
-                        {values.files_list.length <= 0 ? touched.files_list &&
-                          errors.files_list && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.files_list}
-                            </span>
-                          ) : ""}
+                        {values.files_list.length <= 0
+                          ? touched.files_list &&
+                            errors.files_list && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.files_list}
+                              </span>
+                            )
+                          : ""}
                         <div className="col-md-4 text-left mb-2 mt-2">
-                          <Label
-                            onClick={() => console.log(values)}
-                            className="float-left"
-                          >
-                            Upload Scan Copy
-                          </Label>
+                          <Label className="float-left">Upload Scan Copy</Label>
                           <Input
                             type="file"
                             alt="no file"
@@ -379,25 +378,6 @@ console.log(values);
                         </div>
                       </div>
                     </div>
-                   
-                    <button
-                      className="btn btn-primary success col-md-2 mt-5"
-                      type="button"
-                      onClick={() => setShowPopUp(true)}
-                    >
-                      Add
-                    </button>
-                    <PoopUp
-                      isOpen={showPopup}
-                      isClose={setShowPopUp}
-                      CRUD_Function={handleSubmit}
-                      buttonName={props.selectedTenantone ? "Update" : "Create"}
-                      message={
-                        props.selectedTenantone
-                          ? "Are you sure want to update"
-                          : "Are you sure want to create"
-                      }
-                    />
                   </div>
 
                   {props?.selectedTenantone?.files_list ||
@@ -467,6 +447,25 @@ console.log(values);
                   ) : (
                     ""
                   )}
+                  <button
+                    className="btn btn-primary success col-md-2 mt-5"
+                    type="button"
+                    disabled={allFile.length === 0 ? true : false}
+                    onClick={() => setShowPopUp(true)}
+                  >
+                    Add
+                  </button>
+                  <PoopUp
+                    isOpen={showPopup}
+                    isClose={setShowPopUp}
+                    CRUD_Function={handleSubmit}
+                    buttonName={props.selectedTenantone ? "Update" : "Create"}
+                    message={
+                      props.selectedTenantone
+                        ? "Are you sure want to update"
+                        : "Are you sure want to create"
+                    }
+                  />
                 </FormGroup>
               </Form>
             )}

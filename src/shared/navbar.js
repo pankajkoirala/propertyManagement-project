@@ -256,6 +256,12 @@ const NavbarPage = () => {
                 </Button>
               </Link>
               <br />
+              <Link to="/chequeUpdateInfo">
+                <Button variant="success" className="button-size">
+                  <VisibilityIcon />
+                  Cheque Info
+                </Button>
+              </Link>
             </Card.Body>
           </Accordion.Collapse>
         </Card>

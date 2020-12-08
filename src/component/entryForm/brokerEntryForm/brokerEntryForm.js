@@ -3,7 +3,7 @@ import "./brokerAccount.css";
 import moment from "moment";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
-import {brokerEntryFormValidation} from "../../../utility/validation/brokerEntryFormValidation.js"
+import { brokerEntryFormValidation } from "../../../utility/validation/brokerEntryFormValidation.js";
 import PoopUp from "../../../shared/popup";
 
 const BrokerComponent = (props) => {
@@ -407,6 +407,7 @@ const BrokerComponent = (props) => {
                   </div>
                   <button
                     className="btn btn-primary col-md-2 success mt-5"
+                    disabled={allFile.length === 0 ? true : false}
                     type="button"
                     onClick={() => setShowPopUp(true)}
                   >
@@ -419,8 +420,8 @@ const BrokerComponent = (props) => {
                     buttonName={props.BrokerCompany ? "Update" : "Create"}
                     message={
                       props.BrokerCompany
-                      ? "Are you sure want to update"
-                      : "Are you sure want to create"
+                        ? "Are you sure want to update"
+                        : "Are you sure want to create"
                     }
                   />
                 </FormGroup>

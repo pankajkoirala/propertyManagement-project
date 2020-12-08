@@ -54,11 +54,9 @@ let RegexConponent = (props) => {
           position: "relative",
           top: "0",
           bottom: "0",
-          zIndex: "999",
-          width: "90%",
+          width: "130%",
         }}
         type="text"
-        placeholder={placeholderName}
         onClick={() => {
           setOptionDisplay(!optionDisplay);
           optionDisplay === true
@@ -72,7 +70,6 @@ let RegexConponent = (props) => {
           setValue(e.target.value);
         }}
       ></Input>
-      
 
       {updatedOptions?.map((arg, i) => {
         return (
@@ -85,6 +82,7 @@ let RegexConponent = (props) => {
               border: "plain",
               borderColor: "beige",
               padding: "5px",
+              zIndex: "99999",
             }}
             key={i}
             className="bg-secondary text-white font-weight-bold"
