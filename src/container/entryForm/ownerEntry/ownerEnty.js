@@ -22,7 +22,7 @@ const OwnerEntryContainer = (props) => {
     formData.append("owner_Type", data.owner_Type);
     formData.append("owner_GovID_RegNo", data.owner_GovID_RegNo);
     formData.append("owner_email", data.owner_email);
-    formData.append("owner_property", data.owner_property);
+    //  formData.append("owner_property", data.owner_property);
 
     Axios({
       method: "post",
