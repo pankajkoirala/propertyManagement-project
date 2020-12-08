@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import RegexComponent from "./../../../shared/regexComponent";
-import {OwnerEntryFormValidation} from "../../../utility/validation/ownerEntryFormValidation.js"
+import { OwnerEntryFormValidation } from "../../../utility/validation/ownerEntryFormValidation.js";
 
 const OwnerEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -425,6 +425,7 @@ const OwnerEntry = (props) => {
                   )}
                   <button
                     className="btn btn-primary col-sm-2 mt-5"
+                    disabled={allFile.length === 0 ? true : false}
                     type="button"
                     onClick={() => setShowPopUp(true)}
                   >

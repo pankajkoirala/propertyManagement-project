@@ -150,16 +150,17 @@ const MaintananceTicket = (props) => {
                           name={"MaintanancePropertyID"}
                           placeholderName="Maintainace Property"
                         />
-
-                        {touched.MaintanancePropertyID &&
-                          errors.MaintanancePropertyID && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.MaintanancePropertyID}
-                            </span>
-                          )}
+                        <div style={{ marginTop: "35px" }}>
+                          {touched.MaintanancePropertyID &&
+                            errors.MaintanancePropertyID && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.MaintanancePropertyID}
+                              </span>
+                            )}
+                        </div>
                       </div>
                       <div className="mt-4 col-md-4">
                         <Label for="exampleName">Maintanance Company Id</Label>
@@ -177,16 +178,17 @@ const MaintananceTicket = (props) => {
                           )}
                           name={"MaintananceCompanyId"}
                         />
-
-                        {touched.MaintananceCompanyId &&
-                          errors.MaintananceCompanyId && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.MaintananceCompanyId}
-                            </span>
-                          )}
+                        <div style={{ marginTop: "35px" }}>
+                          {touched.MaintananceCompanyId &&
+                            errors.MaintananceCompanyId && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.MaintananceCompanyId}
+                              </span>
+                            )}
+                        </div>
                       </div>
 
                       {/* <div className="mt-4 col-md-4">
