@@ -15,7 +15,7 @@ let RegexConponent = (props) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const { setFieldValue, name, options, placeholderName } = props;
+  const { setFieldValue, name, options, OwnerFunction } = props;
 
   let filterArray = (e) => {
     const splittedWord = e.toLowerCase().split("");
@@ -55,7 +55,7 @@ let RegexConponent = (props) => {
           top: "0",
           bottom: "0",
           zIndex: "999",
-          width: "400px",
+          width: "90%",
         }}
         type="text"
         placeholder={placeholderName}
@@ -68,6 +68,7 @@ let RegexConponent = (props) => {
         value={value}
         onChange={(e) => {
           filterArray(e.target.value);
+
           setValue(e.target.value);
         }}
       ></Input>
@@ -89,8 +90,10 @@ let RegexConponent = (props) => {
             className="bg-secondary text-white font-weight-bold"
             onClick={() => {
               setFieldValue(name, arg.id);
-
               setValue(arg.name);
+              if (OwnerFunction) {
+                OwnerFunction(arg.id);
+              }
               setUpdatedOptions([]);
             }}
             key={i}

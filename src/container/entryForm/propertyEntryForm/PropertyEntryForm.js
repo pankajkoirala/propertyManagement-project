@@ -60,6 +60,7 @@ const PropertyEntry = (props) => {
         redux_DeveloperCompanyData={
           props.redux_DeveloperCompanyData.DeveloperCompany
         }
+        Redux_OwnerData={props.Redux_OwnerData.owner}
       />
     </div>
   );
@@ -68,6 +69,7 @@ const PropertyEntry = (props) => {
 const mapStateToProps = (state) => ({
   Redux_ManagementCompanyData: state.managementCompany,
   redux_DeveloperCompanyData: state.DeveloperCompany,
+  Redux_OwnerData: state.owner,
 });
 
 const mapDispatchToProps = (dispatch) => ({

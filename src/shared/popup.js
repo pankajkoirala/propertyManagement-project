@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const ModalExample = (props) => {
   const {
@@ -15,7 +16,10 @@ const ModalExample = (props) => {
   return (
     <div>
       <Modal isOpen={isOpen} className={className}>
-        <ModalBody>{message}</ModalBody>
+        <ModalBody>{message} </ModalBody>
+        <span>
+          <CircularProgress disableShrink />
+        </span>
         <ModalFooter>
           <Button color="primary" onClick={() => CRUD_Function(id)}>
             {buttonName}
