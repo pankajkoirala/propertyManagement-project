@@ -169,14 +169,14 @@ const NavbarPage = () => {
               <Link to="/lease">
                 <Button variant="primary" className="button-size">
                   <AddBoxIcon />
-                  lease entry
+                  Lease entry
                 </Button>
               </Link>
 
               <Link to="/leasePropertyList">
                 <Button variant="success" className="button-size">
                   <VisibilityIcon />
-                  leased property
+                  Leased Property
                 </Button>
               </Link>
             </Card.Body>

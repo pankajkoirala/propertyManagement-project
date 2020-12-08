@@ -34,7 +34,11 @@ const ChequeEntry = (props) => {
     cheque_holdDate: props?.Cheque?.cheque_holdDate || "YYYY-MM-DD",
     cheque_recivedDate:
       moment(props?.Cheque?.cheque_recivedDate).format("YYYY-MM-DD") || "",
-  };
+    
+      chequeUpdate_remarks:" ",
+      chequeUpdate:" ",
+      chequeUpdate_date:" ",
+    };
   //console.log(moment());
   return (
     <div>
@@ -232,7 +236,7 @@ const ChequeEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName"> Bank Name</Label>
+                        <Label for="exampleName">Bank Name</Label>
                         <Input
                           type="text"
                           value={values.cheque_bankName}
@@ -420,9 +424,9 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                     </div>
-
-                    <div className="col-md-6 text-left mb-2 mt-4">
-                      <Label className="float-left">cheque Front</Label>
+                    <div className="row">
+                    <div className="col-5 text-left mb-2 mt-4">
+                      <Label className="float-left">Cheque Front Photo</Label>
                       <Input
                         type="file"
                         name="cheque_picture_front"
@@ -450,8 +454,8 @@ const ChequeEntry = (props) => {
                           />
                         )}
                     </div>
-                    <div className="col-md-6 text-left mb-2 mt-4">
-                      <Label className="float-left">Cheque back</Label>
+                    <div className="col-5 text-left mb-2 mt-4">
+                      <Label className="float-left">Cheque Back Photo</Label>
                       <Input
                         type="file"
                         name="cheque_picture_back"
@@ -479,6 +483,7 @@ const ChequeEntry = (props) => {
                           />
                         )}
                     </div>
+                    </div>
 
                     <button
                       className="btn btn-primary col-md-2 cheque-btn"
@@ -494,10 +499,79 @@ const ChequeEntry = (props) => {
                       buttonName={props.Cheque ? "Update" : "Create"}
                       message={
                         props.Cheque
-                          ? "are you sure want to update"
-                          : "are you sure want to create"
+                          ? "Are you sure want to update"
+                          : "Are you sure want to create"
                       }
                     />
+                  </div>
+                  <br/>
+                        {/* Cheque Update Information */}
+                        <div className="m-2 text-center"><h3>Cheque Update Information</h3></div>
+                  <div className="row">
+                  <div className="mt-4 col-3">
+                        <Label for="exampleName">Date</Label>
+                        <Input
+                          type="date"
+                          value={values.chequeUpdate_date}
+                          name="date"
+                          placeholder="Enter Date"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.chequeUpdate_date && errors.chequeUpdate_date && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.chequeUpdate_date}
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-4 col-3">
+                        <Label for="exampleName">Update</Label>
+                        <Input
+                          type="text"
+                          value={values.chequeUpdate}
+                          name="date"
+                          placeholder="Update"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.chequeUpdate && errors.chequeUpdate && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.chequeUpdate}
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-4 col-3">
+                        <Label for="exampleName">Remarks</Label>
+                        <Input
+                          type="text"
+                          value={values.chequeUpdate_remarks}
+                          name="date"
+                          placeholder="Remarks"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.chequeUpdate_remarks && errors.chequeUpdate_remarks && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.chequeUpdate_remarks}
+                          </span>
+                        )}
+                      </div>
+                      <button
+                      className="btn btn-primary col-2 cheque-btn"
+                      type="button"
+                      onClick={() => setShowPopUp(true)}
+                    >
+                      Update Information
+                    </button>
                   </div>
                 </FormGroup>
               </Form>
