@@ -267,7 +267,7 @@ const OwnerEntry = (props) => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-md-6 mb-4">
+                      {/* <div className="col-md-6 mb-4">
                         <Label for="exampleName">Owner property</Label>
                         <RegexComponent
                           {...props}
@@ -293,7 +293,7 @@ const OwnerEntry = (props) => {
                             {errors.owner_property}
                           </span>
                         )}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   <div style={{ marginTop: "40px" }}>

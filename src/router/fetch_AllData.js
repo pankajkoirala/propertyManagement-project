@@ -124,6 +124,7 @@ let FetchData = (props) => {
       },
     })
       .then((res) => {
+        console.log("pankajjajshdkjahsdhahdshjda", res.data);
         props.redux_Add_Property(res.data);
       })
       .catch((err) => {

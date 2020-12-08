@@ -8,6 +8,7 @@ import PoopUp from "./../../../shared/popup";
 import RegexConponent from "../../../shared/regexComponent";
 
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
+import { array } from "yup";
 
 const PropertyEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -18,6 +19,8 @@ const PropertyEntry = (props) => {
   const [heading, setHeading] = useState("");
   const [unit, setUnit] = useState("");
   const [remark, setRemark] = useState("");
+  const [OwnerId, setOwnerId] = useState([]);
+
   const [facilities, setFacilities] = useState(
     props?.property?.facilities || []
   );
@@ -35,7 +38,7 @@ const PropertyEntry = (props) => {
     setFacilities(facilities.filter((arg) => arg.facilitiesId !== id));
 
   let initialValue = {
-    Property_ownerName: props?.property?.Property_ownerName || "",
+    Property_ownerName: props?.property?.Property_ownerName || [],
     city: props?.property?.city || "",
     area: props?.property?.area || "",
     country: props?.property?.country || "",
@@ -57,14 +60,41 @@ const PropertyEntry = (props) => {
     file: "",
     files_list: [],
   };
+
+  //owner list edit delete
+  let ownerIdList = (owner_id) => {
+    setOwnerId([...OwnerId, owner_id]);
+  };
+  //deleteOwnerID
+  let deleteOwner = (ownerId) => {
+    setOwnerId(OwnerId.filter((arg) => arg !== ownerId));
+  };
+  //remove duplicate from array
+  let uniqueArray = OwnerId.filter(function (item, pos, self) {
+    return self.indexOf(item) == pos;
+  });
+  let selectedOwner = [];
+  selectedOwner = props?.Redux_OwnerData.filter((arg) =>
+    uniqueArray.includes(arg._id)
+  );
+
+  console.log(
+    "🚀 ~ file: PropertyEntryForm.js ~ line 75 ~ uniqueArray ~ uniqueArray",
+    uniqueArray
+  );
+
   return (
     <Formik
       initialValues={initialValue}
       onSubmit={(values) => {
+        //facilities convert to string
         values.facilities = JSON.stringify(facilities);
         typeof allFile[0].file === "string"
           ? (values.files_list = JSON.stringify(allFile))
           : (values.files_list = "");
+        //
+        values.Property_ownerName = JSON.stringify(uniqueArray);
+        //data sending function
         props.property
           ? props.propertyUpdate(values, props?.property?._id, allFile)
           : props.propertySend(values, allFile);
@@ -357,24 +387,26 @@ const PropertyEntry = (props) => {
                       </span>
                     )}
                 </div>
-                <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Owner Name</Label>
-                  <Input
-                    type="text"
-                    value={values.Property_ownerName}
-                    name="Property_ownerName"
-                    placeholder="Owner Name"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
+                <div style={{ width: "auto" }} className="col-sm-4 my-1">
+                  <Label for="exampleName">Owner Name </Label>
+
+                  <RegexConponent
+                    {...props}
+                    setFieldValue={setFieldValue}
+                    OwnerFunction={ownerIdList}
+                    name={"Property_ownerName"}
+                    options={props?.Redux_OwnerData?.map((owner) => {
+                      return {
+                        name:
+                          owner.owner_firstName +
+                          owner.owner_middleName +
+                          owner.owner_lastName +
+                          "-" +
+                          owner.owner_ID,
+                        id: owner._id,
+                      };
+                    })}
                   />
-                  {touched.Property_ownerName && errors.Property_ownerName && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.Property_ownerName}
-                    </span>
-                  )}
                 </div>
                 <div className="col-md-">
                   <Label for="exampleSelect">Developer Company</Label>
@@ -427,6 +459,23 @@ const PropertyEntry = (props) => {
                   </span>
                 )}
               </div>
+
+              {selectedOwner.map((arg) => {
+                return (
+                  <div>
+                    <div>
+                      {arg.owner_firstName +
+                        " " +
+                        arg.owner_middleName +
+                        " " +
+                        arg.owner_lastName}
+                      <button onClick={() => deleteOwner(arg._id)}>
+                        delete
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
               <div className="">
                 <Label for="exampleName">
                   <h3 className="form-head">Facilities</h3>
