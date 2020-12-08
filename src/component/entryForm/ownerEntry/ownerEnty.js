@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import RegexComponent from "./../../../shared/regexComponent";
+import {OwnerEntryFormValidation} from "../../../utility/validation/ownerEntryFormValidation.js"
 
 const OwnerEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -45,7 +46,7 @@ const OwnerEntry = (props) => {
                 : props.ownerData(values, allFile);
               console.log(values);
             }}
-            // validationSchema={ownerEntryFormValidation}
+            validationSchema={OwnerEntryFormValidation}
           >
             {({
               touched,

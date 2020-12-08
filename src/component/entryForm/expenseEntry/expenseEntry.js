@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import { v4 as uuidv4 } from "uuid";
-import { expenseEntryFormValidation } from "./../../../utility/validation/expenseEntryFormValidation.js";
+import {ExpenseEntryFormValidation} from "./../../../utility/validation/expenseEntryFormValidation.js"
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import RegexComponent from "./../../../shared/regexComponent";
@@ -71,7 +71,7 @@ const ExpenseEntry = (props) => {
                 ? props.expenseUpdate(values, props?.expense?._id)
                 : props.expenseData(values);
             }}
-            validationSchema={expenseEntryFormValidation}
+           validationSchema={ExpenseEntryFormValidation}
           >
             {({
               touched,
@@ -372,8 +372,8 @@ const ExpenseEntry = (props) => {
                         buttonName={props.expense ? "Update" : "Create"}
                         message={
                           props.expense
-                            ? "are you sure want to update"
-                            : "are you sure want to create"
+                            ? "Are you sure want to update"
+                            : "Are you sure want to create"
                         }
                       />
 

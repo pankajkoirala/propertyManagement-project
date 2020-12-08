@@ -44,7 +44,7 @@ const MaintananceTicket = (props) => {
                 : props.MaintananceTicketData(values);
               console.log(values);
             }}
-            // validationSchema={MaintainanceTicketEntryForm}
+            validationSchema={MaintainanceTicketEntryForm}
           >
             {({
               touched,
@@ -69,7 +69,7 @@ const MaintananceTicket = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-4">
-                        <Label for="exampleName">issue date Date</Label>
+                        <Label for="exampleName">Issue Date</Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketIssueDate}
@@ -148,6 +148,7 @@ const MaintananceTicket = (props) => {
                             }
                           )}
                           name={"MaintanancePropertyID"}
+                          placeholderName="Maintainace Property"
                         />
 
                         {touched.MaintanancePropertyID &&
@@ -224,7 +225,7 @@ const MaintananceTicket = (props) => {
                           type="textarea"
                           value={values.MaintananceCompanyDetailInfo}
                           name="MaintananceCompanyDetailInfo"
-                          placeholder="Bank name"
+                          placeholder="Detain Message"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />

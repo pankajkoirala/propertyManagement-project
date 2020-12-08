@@ -58,7 +58,7 @@ let RegexConponent = (props) => {
           width: "90%",
         }}
         type="text"
-        placeholder={name}
+        placeholder={placeholderName}
         onClick={() => {
           setOptionDisplay(!optionDisplay);
           optionDisplay === true
@@ -72,6 +72,7 @@ let RegexConponent = (props) => {
           setValue(e.target.value);
         }}
       ></Input>
+      
 
       {updatedOptions?.map((arg, i) => {
         return (
