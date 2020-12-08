@@ -48,20 +48,20 @@ import TopNavBar from "./../shared/topNavBar";
 const RouterPage = () => {
   let authorize = getLocalStorage("token");
   return (
-    <div>
+    <div style={{ display: "flex", width: "100%", overflowX: "hidden" }}>
       <Router>
         <div style={{ display: "block", margin: 0, width: "18%" }}>
           {authorize ? <NavBar /> : ""}
         </div>
         <div
-          className="col-10"
+          // className="col-10"
           style={
             authorize
               ? {
-                  right: "0",
-                  top: "0",
-                  position: "absolute",
-                  width: "80%",
+                  // right: "0",
+                  // top: "0",
+                  // position: "absolute",
+                  width: "100%",
                   padding: "0px",
                 }
               : { position: "relative" }
