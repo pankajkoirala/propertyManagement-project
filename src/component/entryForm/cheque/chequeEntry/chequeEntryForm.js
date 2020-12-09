@@ -34,8 +34,11 @@ const ChequeEntry = (props) => {
     cheque_holdDate: props?.Cheque?.cheque_holdDate || "YYYY-MM-DD",
     cheque_recivedDate:
       moment(props?.Cheque?.cheque_recivedDate).format("YYYY-MM-DD") || "",
+    //cheque information
+    chequeUpdate_remarks: "",
+    chequeUpdate: "",
+    chequeUpdate_date: "",
   };
-  //console.log(moment());
   return (
     <div>
       <div className="PropertyFormEntry">
@@ -48,7 +51,7 @@ const ChequeEntry = (props) => {
                 : props.ChequeeData(values);
               console.log(values);
             }}
-            // validationSchema={chequeEntryFormValidation}
+            validationSchema={chequeEntryFormValidation}
           >
             {({
               touched,
@@ -232,7 +235,7 @@ const ChequeEntry = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName"> Bank Name</Label>
+                        <Label for="exampleName">Bank Name</Label>
                         <Input
                           type="text"
                           value={values.cheque_bankName}
@@ -299,15 +302,16 @@ const ChequeEntry = (props) => {
                           })}
                           name={"lease_property"}
                         />
-
-                        {touched.lease_property && errors.lease_property && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.lease_property}
-                          </span>
-                        )}
+                        <div style={{ marginTop: "35px" }}>
+                          {touched.lease_property && errors.lease_property && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.lease_property}
+                            </span>
+                          )}
+                        </div>
                       </div>
 
                       <div className="mt-4 col-md-4">
@@ -329,15 +333,16 @@ const ChequeEntry = (props) => {
                           )}
                           name={"property_id"}
                         />
-
-                        {touched.property_id && errors.property_id && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.property_id}
-                          </span>
-                        )}
+                        <div style={{ marginTop: "30px" }}>
+                          {touched.property_id && errors.property_id && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.property_id}
+                            </span>
+                          )}
+                        </div>
                       </div>
 
                       <div className="mt-4 col-md-3">
@@ -420,64 +425,65 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                     </div>
+                    <div className="row">
+                      <div className="col-5 text-left mb-2 mt-4">
+                        <Label className="float-left">Cheque Front Photo</Label>
+                        <Input
+                          type="file"
+                          name="cheque_picture_front"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "cheque_picture_front",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
 
-                    <div className="col-md-6 text-left mb-2 mt-4">
-                      <Label className="float-left">cheque Front</Label>
-                      <Input
-                        type="file"
-                        name="cheque_picture_front"
-                        accept="image/*"
-                        onChange={(event) => {
-                          setFieldValue(
-                            "cheque_picture_front",
-                            event.currentTarget.files[0]
-                          );
-                        }}
-                      />
+                        {touched.cheque_picture_front &&
+                          values.cheque_picture_front && (
+                            <img
+                              src={
+                                typeof values.cheque_picture_front === "string"
+                                  ? values.cheque_picture_front
+                                  : URL.createObjectURL(
+                                      values.cheque_picture_front
+                                    )
+                              }
+                              alt="no file"
+                              height="20"
+                            />
+                          )}
+                      </div>
+                      <div className="col-5 text-left mb-2 mt-4">
+                        <Label className="float-left">Cheque Back Photo</Label>
+                        <Input
+                          type="file"
+                          name="cheque_picture_back"
+                          accept="image/*"
+                          onChange={(event) => {
+                            setFieldValue(
+                              "cheque_picture_back",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                        />
 
-                      {touched.cheque_picture_front &&
-                        values.cheque_picture_front && (
-                          <img
-                            src={
-                              typeof values.cheque_picture_front === "string"
-                                ? values.cheque_picture_front
-                                : URL.createObjectURL(
-                                    values.cheque_picture_front
-                                  )
-                            }
-                            alt="no file"
-                            height="20"
-                          />
-                        )}
-                    </div>
-                    <div className="col-md-6 text-left mb-2 mt-4">
-                      <Label className="float-left">Cheque back</Label>
-                      <Input
-                        type="file"
-                        name="cheque_picture_back"
-                        accept="image/*"
-                        onChange={(event) => {
-                          setFieldValue(
-                            "cheque_picture_back",
-                            event.currentTarget.files[0]
-                          );
-                        }}
-                      />
-
-                      {touched.cheque_picture_back &&
-                        values.cheque_picture_back && (
-                          <img
-                            src={
-                              typeof values.cheque_picture_back === "string"
-                                ? values.cheque_picture_back
-                                : URL.createObjectURL(
-                                    values.cheque_picture_back
-                                  )
-                            }
-                            alt="no file"
-                            height="20"
-                          />
-                        )}
+                        {touched.cheque_picture_back &&
+                          values.cheque_picture_back && (
+                            <img
+                              src={
+                                typeof values.cheque_picture_back === "string"
+                                  ? values.cheque_picture_back
+                                  : URL.createObjectURL(
+                                      values.cheque_picture_back
+                                    )
+                              }
+                              alt="no file"
+                              height="20"
+                            />
+                          )}
+                      </div>
                     </div>
 
                     <button
@@ -494,8 +500,8 @@ const ChequeEntry = (props) => {
                       buttonName={props.Cheque ? "Update" : "Create"}
                       message={
                         props.Cheque
-                          ? "are you sure want to update"
-                          : "are you sure want to create"
+                          ? "Are you sure want to update"
+                          : "Are you sure want to create"
                       }
                     />
                   </div>

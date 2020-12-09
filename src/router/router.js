@@ -44,6 +44,7 @@ import OwnerDetailView from "../container/view/owner/ownerDetailView";
 import InvoiceDetailView from "../container/view/invoice/invoiceDetailView";
 
 import TopNavBar from "./../shared/topNavBar";
+import ChequeInfo from "./../container/entryForm/cheque/chequeEntry/chequeInfo";
 
 const RouterPage = () => {
   let authorize = getLocalStorage("token");
@@ -88,6 +89,12 @@ const RouterPage = () => {
               path="/propertentry"
               component={PropertyEntry}
             />
+            <PrivateRouter
+              exact
+              path="/chequeUpdateInfo"
+              component={ChequeInfo}
+            />
+
             <PrivateRouter exact path="/tenantentry" component={TenantEntry} />
 
             <PrivateRouter exact path="/tenantList" component={TenantView} />

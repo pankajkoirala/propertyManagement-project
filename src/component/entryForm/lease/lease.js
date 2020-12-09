@@ -3,7 +3,7 @@ import "./lease.css";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
-//import LeaseEntryFormValidation from "../../../utility/validation/leaseEntryFormValidation.js";
+import { leaseEntryFormValidation } from "../../../utility/validation/leaseEntryFormValidation";
 import RegexConponent from "../../../shared/regexComponent";
 import PoopUp from "./../../../shared/popup";
 
@@ -15,7 +15,6 @@ const LeaseEntry = (props) => {
   const [paymentTime, setpaymentTime] = useState(0);
 
   let initialvalue = {
-    late_feeType: props?.lease?.late_feeType || "",
     frequency: props?.lease?.frequency || "",
     lease_enterDate:
       moment(props?.lease?.lease_enterDate).format("YYYY-MM-DD") || "",
@@ -26,8 +25,6 @@ const LeaseEntry = (props) => {
     expirationDate:
       moment(props?.lease?.expirationDate).format("YYYY-MM-DD") || "",
     rentAmount: props?.lease?.rentAmount || "",
-    gracePeriod: props?.lease?.gracePeriod || "",
-    lateFeeAmount: props?.lease?.lateFeeAmount || "",
     securityDeposite: props?.lease?.securityDeposite || "",
 
     fileName: "",
@@ -81,7 +78,7 @@ const LeaseEntry = (props) => {
             : props.leaseData(values, allFile);
           console.log(values);
         }}
-        //validationSchema={LeaseEntryFormValidation}
+        validationSchema={leaseEntryFormValidation}
       >
         {({
           touched,
@@ -134,17 +131,18 @@ const LeaseEntry = (props) => {
                         id: tenent._id,
                       };
                     })}
-                    name={"Choose from List"}
+                    name={"tenants"}
                   />
-
-                  {touched.tenants && errors.tenants && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.tenants}
-                    </span>
-                  )}
+                  <div style={{ marginTop: "40px" }}>
+                    {touched.tenants && errors.tenants && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.tenants}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="col-md-4">
                   <Label for="exampleSelect">Property</Label>
@@ -158,22 +156,22 @@ const LeaseEntry = (props) => {
                         id: property._id,
                       };
                     })}
-                    name={"Choose from list"}
+                    name={"property"}
                   />
 
-                  {touched.property && errors.property && (
-                    <span
-                      className="text-danger col-md-12 text-left mb-2"
-                      style={{ fontSize: 12 }}
-                    >
-                      {errors.property}
-                    </span>
-                  )}
+                  <div style={{ marginTop: "40px" }}>
+                    {touched.property && errors.property && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.property}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
-              <div className="col-md-12 m-2">
-                <b>Terms of Tendency</b>
-              </div>
+
               <div className="row ">
                 <div className="col-md-4">
                   <Label for="exampleSelect">Lease Terms</Label>
@@ -247,9 +245,7 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
               </div>
-              <div className="col-md-12 form-head">
-                <b>Amount and Schedule of Rent Payment</b>
-              </div>
+
               <div className="row">
                 <div className="col-md-4">
                   <Label for="exampleSelect">Rent Amount</Label>
@@ -309,9 +305,6 @@ const LeaseEntry = (props) => {
                 </div>
               </div>
 
-              <div className="col-md-12">
-                <b className="form-head">Security Deposit</b>
-              </div>
               <div className="row">
                 <div className="col-md-4">
                   <Label for="exampleSelect">Security Deposit</Label>
@@ -461,6 +454,7 @@ const LeaseEntry = (props) => {
               )}
               <div>
                 <button
+                  disabled={allFile.length === 0 ? true : false}
                   className="btn btn-primary Success col-3 mt-5"
                   type="button"
                   onClick={() => setShowPopUp(true)}

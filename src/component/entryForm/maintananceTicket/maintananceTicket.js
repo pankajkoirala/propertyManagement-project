@@ -44,7 +44,7 @@ const MaintananceTicket = (props) => {
                 : props.MaintananceTicketData(values);
               console.log(values);
             }}
-            // validationSchema={MaintainanceTicketEntryForm}
+            validationSchema={MaintainanceTicketEntryForm}
           >
             {({
               touched,
@@ -69,7 +69,7 @@ const MaintananceTicket = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-4">
-                        <Label for="exampleName">issue date Date</Label>
+                        <Label for="exampleName">Issue Date</Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketIssueDate}
@@ -148,17 +148,19 @@ const MaintananceTicket = (props) => {
                             }
                           )}
                           name={"MaintanancePropertyID"}
+                          placeholderName="Maintainace Property"
                         />
-
-                        {touched.MaintanancePropertyID &&
-                          errors.MaintanancePropertyID && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.MaintanancePropertyID}
-                            </span>
-                          )}
+                        <div style={{ marginTop: "35px" }}>
+                          {touched.MaintanancePropertyID &&
+                            errors.MaintanancePropertyID && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.MaintanancePropertyID}
+                              </span>
+                            )}
+                        </div>
                       </div>
                       <div className="mt-4 col-md-4">
                         <Label for="exampleName">Maintanance Company Id</Label>
@@ -176,16 +178,17 @@ const MaintananceTicket = (props) => {
                           )}
                           name={"MaintananceCompanyId"}
                         />
-
-                        {touched.MaintananceCompanyId &&
-                          errors.MaintananceCompanyId && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.MaintananceCompanyId}
-                            </span>
-                          )}
+                        <div style={{ marginTop: "35px" }}>
+                          {touched.MaintananceCompanyId &&
+                            errors.MaintananceCompanyId && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.MaintananceCompanyId}
+                              </span>
+                            )}
+                        </div>
                       </div>
 
                       {/* <div className="mt-4 col-md-4">
@@ -224,7 +227,7 @@ const MaintananceTicket = (props) => {
                           type="textarea"
                           value={values.MaintananceCompanyDetailInfo}
                           name="MaintananceCompanyDetailInfo"
-                          placeholder="Bank name"
+                          placeholder="Detain Message"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />

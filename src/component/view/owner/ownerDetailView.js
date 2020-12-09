@@ -95,7 +95,7 @@ let OwnerDetailViewComponent = (props) => {
                     </div>
                   </div>
                 </div>
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-6">
                     <img
                       style={{
@@ -183,7 +183,7 @@ let OwnerDetailViewComponent = (props) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div>
                   <h5 className="mt4 ">Owner Document</h5>
                   <div className="d-flex flex-wrap">

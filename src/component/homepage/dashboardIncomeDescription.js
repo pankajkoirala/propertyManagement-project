@@ -78,7 +78,7 @@ let DashboardIncomeComponent = (props) => {
                 type="select"
                 onClick={(e) => setIncomeMonth(e.target.value)}
               >
-                <option value="">select Month</option>
+                <option value="">Select Month</option>
                 <option value={1}>January</option>
                 <option value={2}>February</option>
                 <option value={3}>March</option>
@@ -128,14 +128,14 @@ let DashboardIncomeComponent = (props) => {
             <tr>
               <th>SN</th>
               <th> Cheque ID</th>
-              <th>entry Date</th>
+              <th>Entry Date</th>
               <th>Issue Date</th>
               <th>Cheque Amount</th>
               <th>VAT Amount</th>
               <th>Miscellaneous Amount </th>
               <th>Property</th>
               <th>Lease Property</th>
-              <th>detail view</th>
+              <th>Detail view</th>
             </tr>
           </thead>
           {income?.map((arg, index) => {
