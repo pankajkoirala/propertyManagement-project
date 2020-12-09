@@ -11,7 +11,7 @@ const TanentDetailView = (props) => {
 
   return (
     <>
-      <div>
+      <div style={{ margin: "25px" }}>
         {showEditForm === false ? (
           props.selectedTenantone.map((arg, index) => {
             return (

@@ -14,7 +14,7 @@ let ChequeDetailViewComponent = (props) => {
   };
 
   return (
-    <div>
+    <div style={{ margin: "25px" }}>
       {printInvoice === false ? (
         showEditForm === false ? (
           props.selectedCheque.map((arg, index) => {
