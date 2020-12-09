@@ -157,7 +157,7 @@ let PropertyDetailViewComponent = (props) => {
                   <div className="d-flex flex-wrap">
                     {arg?.files_list?.map((file, index) => {
                       return (
-                        <div className="m-4">
+                        <div key={index} className="m-4">
                           <div>
                             <a href={file.file} target={file.file}>
                               <img

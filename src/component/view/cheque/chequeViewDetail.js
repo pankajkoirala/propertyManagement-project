@@ -25,11 +25,20 @@ let ChequeDetailViewComponent = (props) => {
                   <div className="col-7">
                     <img
                       style={{
-                        height: "400px",
+                        height: "300px",
                         width: "100%",
                         borderRadius: "20px",
                       }}
-                      src={arg.cheque_picture}
+                      src={arg.cheque_picture_front}
+                      alt="recently added"
+                    />
+                    <img
+                      style={{
+                        height: "300px",
+                        width: "100%",
+                        borderRadius: "20px",
+                      }}
+                      src={arg.cheque_picture_back}
                       alt="recently added"
                     />
                   </div>

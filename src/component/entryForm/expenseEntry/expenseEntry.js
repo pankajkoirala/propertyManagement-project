@@ -69,8 +69,6 @@ const ExpenseEntry = (props) => {
                   ? values.Maintanance_ticketID
                   : "";
 
-              console.log(values);
-
               props?.expense
                 ? props.expenseUpdate(values, props?.expense?._id)
                 : props.expenseData(values);

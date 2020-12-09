@@ -45,7 +45,6 @@ const MaintananceTicket = (props) => {
                     props?.maintananceTicket?._id
                   )
                 : props.MaintananceTicketData(values);
-              console.log(values);
             }}
             validationSchema={MaintainanceTicketEntryForm}
           >

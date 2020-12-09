@@ -8,7 +8,6 @@ let BrokerCompanyDetailViewComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
 
   let showHide = () => {
-    console.log(props.history);
     setShowEditForm(!showEditForm);
   };
   return (

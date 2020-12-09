@@ -47,7 +47,6 @@ const ChequeEntry = (props) => {
               props?.Cheque
                 ? props.ChequeUpdate(values, props?.Cheque?._id)
                 : props.ChequeeData(values);
-              console.log(values);
               setLoadingState(true);
             }}
             validationSchema={chequeEntryFormValidation}

@@ -49,7 +49,6 @@ const TenantEntry = (props) => {
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");
-              console.log(values);
               props.selectedTenantone
                 ? props.tenentUpdate(
                     values,

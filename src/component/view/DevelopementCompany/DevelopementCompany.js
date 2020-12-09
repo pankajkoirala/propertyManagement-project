@@ -60,8 +60,6 @@ const DevelopementCompanyView = (props) => {
                   </td>
                   <td>{arg.DeveloperCompany_phoneNo}</td>
                   <td>{arg.DeveloperCompany_email}</td>
-
-                  <h1>{props.nameMatra_number}</h1>
                   <td>
                     <Link to={`/DeveloperCompany/${arg._id}`}>
                       {" "}

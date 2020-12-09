@@ -51,7 +51,6 @@ const DeveloperCompanyComponent = (props) => {
             onSubmit={(values) => {
               setLoadingState(true);
 
-              console.log(values);
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");
@@ -91,7 +90,6 @@ const DeveloperCompanyComponent = (props) => {
                         <Input
                           type="text"
                           value={values.DeveloperCompany_Name}
-                          s
                           name="DeveloperCompany_Name"
                           placeholder="Company Name"
                           onChange={handleChange}

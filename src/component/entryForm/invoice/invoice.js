@@ -8,7 +8,7 @@ let InvoiceComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
   const [loadingState, setLoadingState] = useState(false);
   const [inWord, setInWord] = useState("");
-  const [invoiceID, setInvoiceID] = useState(
+  const [invoiceID] = useState(
     "INVOICE-" + (Math.random() * 900000).toFixed(0)
   );
 
@@ -98,7 +98,6 @@ let InvoiceComponent = (props) => {
               initialValues={initialvalue}
               onSubmit={(values) => {
                 props.invoicePost(values);
-                console.log(values);
                 setLoadingState(true);
               }}
               // validationSchema={TenantEntryFormValidation}

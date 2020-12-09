@@ -8,8 +8,6 @@ let ExpenseDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showPopup, setShowPopUp] = useState(false);
 
-  console.log(props);
-
   let showHide = () => {
     setShowEditForm(!showEditForm);
   };
