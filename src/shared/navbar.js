@@ -33,7 +33,7 @@ const NavbarPage = () => {
       style={{ backgroundColor: "#3B4AFF", height: "100%" }}
       className="menu "
     >
-      <div className="branding-section" style={{ textAlign: "center" }}>
+      <div className="branding-section" style={{}}>
         <h4>
           <EmojiTransportationIcon fontSize="large" />
           &nbsp;Graphine INC.
@@ -47,24 +47,30 @@ const NavbarPage = () => {
         >
           <AccountCircleIcon fontSize="large" />
         </Avatar> */}
-        <p className="user-name">John</p>
+        {/* <p className="user-name">John</p> */}
       </div>
-      <Accordion defaultActiveKey="">
-        <Card style={{ border: "none" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+      <Accordion style={{ marginTop: "10px" }} defaultActiveKey="">
+        <Card
+          style={{
+            border: "none",
+            display: "flex",
+            justifyContent: "flex-start",
+          }}
+        >
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Link to="/">
               <Accordion.Toggle
                 style={{
                   borderRadius: "50px",
                   border: "none",
-                  backgroundColor: "#66b2ff",
-                  borderRadius: "50px",
+                  // backgroundColor: "#66b2ff",
+                  // borderRadius: "50px",
                 }}
                 as={Card.Header}
                 variant="link"
               >
                 <b className="text-white">
-                  <ExploreIcon />
+                  <ExploreIcon className="nav-icons" />
                   Dashboard
                 </b>
               </Accordion.Toggle>
@@ -74,19 +80,19 @@ const NavbarPage = () => {
         <Card
           style={{ border: "none", backgroundColor: "#022B39", height: "auto" }}
         >
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="0"
             >
               <b>
-                <HouseIcon />
+                <HouseIcon className="nav-icons" />
                 Property
               </b>
             </Accordion.Toggle>
@@ -110,19 +116,19 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="1"
             >
               <b>
-                <PersonIcon />
+                <PersonIcon className="nav-icons" />
                 Tenant
               </b>
             </Accordion.Toggle>
@@ -147,19 +153,19 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="3"
             >
               <b>
-                <AssignmentIcon />
+                <AssignmentIcon className="nav-icons" />
                 Lease
               </b>
             </Accordion.Toggle>
@@ -220,19 +226,19 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card> */}
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="5"
             >
               <b>
-                <LocalAtmIcon />
+                <LocalAtmIcon className="nav-icons" />
                 Cheque
               </b>
             </Accordion.Toggle>
@@ -242,7 +248,7 @@ const NavbarPage = () => {
               <Link to="/chequeentry">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  <AddBoxIcon />
+                  <AddBoxIcon className="nav-icons" />
                   Cheque Entry
                 </Button>
               </Link>
@@ -251,14 +257,14 @@ const NavbarPage = () => {
               <Link to="/chequeList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  <VisibilityIcon />
+                  <VisibilityIcon className="nav-icons" />
                   Cheque View
                 </Button>
               </Link>
               <br />
               <Link to="/chequeUpdateInfo">
                 <Button variant="success" className="button-size">
-                  <VisibilityIcon />
+                  <VisibilityIcon className="nav-icons" />
                   Cheque Info
                 </Button>
               </Link>
@@ -266,19 +272,19 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="6"
             >
               <b>
-                <BugReportIcon />
+                <BugReportIcon className="nav-icons" />
                 Maintainance Ticket
               </b>
             </Accordion.Toggle>
@@ -288,7 +294,7 @@ const NavbarPage = () => {
               <Link to="/maintananceTicket">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  <AddBoxIcon />
+                  <AddBoxIcon className="nav-icons" />
                   Maintanance Ticket Form
                 </Button>
               </Link>
@@ -306,19 +312,19 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="7"
             >
               <b>
-                <PermIdentityIcon />
+                <PermIdentityIcon className="nav-icons" />
                 Owner
               </b>
             </Accordion.Toggle>
@@ -337,7 +343,7 @@ const NavbarPage = () => {
               <Link to="/ownerList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  <VisibilityIcon />
+                  <VisibilityIcon className="nav-icons" />
                   Owner List{" "}
                 </Button>
               </Link>
@@ -345,19 +351,19 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="8"
             >
               <b>
-                <BusinessIcon />
+                <BusinessIcon className="nav-icons" />
                 Broker Company{" "}
               </b>
             </Accordion.Toggle>
@@ -376,7 +382,7 @@ const NavbarPage = () => {
               <Link to="/brokerCompanyList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  <VisibilityIcon />
+                  <VisibilityIcon className="nav-icons" />
                   Broker Company List{" "}
                 </Button>
               </Link>
@@ -385,19 +391,19 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="9"
             >
               <b>
-                <DevicesIcon />
+                <DevicesIcon className="nav-icons" />
                 Developer Company{" "}
               </b>
             </Accordion.Toggle>
@@ -407,7 +413,7 @@ const NavbarPage = () => {
               <Link to="/developerDetail">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  <AddBoxIcon />
+                  <AddBoxIcon className="nav-icons" />
                   Developer Company Entry
                 </Button>
               </Link>
@@ -416,7 +422,7 @@ const NavbarPage = () => {
               <Link to="/developerCompanyList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  <VisibilityIcon />
+                  <VisibilityIcon className="nav-icons" />
                   Developer Company List
                 </Button>
               </Link>
@@ -425,19 +431,19 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>{" "}
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="10"
             >
               <b>
-                <SettingsApplicationsIcon />
+                <SettingsApplicationsIcon className="nav-icons" />
                 Maintanance Company{" "}
               </b>
             </Accordion.Toggle>
@@ -447,7 +453,7 @@ const NavbarPage = () => {
               <Link to="/maintainanceCompanyForm">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  <AddBoxIcon />
+                  <AddBoxIcon className="nav-icons" />
                   Maintanance Company Entry
                 </Button>
               </Link>
@@ -456,7 +462,7 @@ const NavbarPage = () => {
               <Link to="/maintananceCompanyList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  <VisibilityIcon />
+                  <VisibilityIcon className="nav-icons" />
                   Maintanance Company List
                 </Button>
               </Link>
@@ -465,19 +471,19 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="11"
             >
               <b>
-                <SubjectIcon />
+                <SubjectIcon className="nav-icons" />
                 Management Company{" "}
               </b>
             </Accordion.Toggle>
@@ -496,7 +502,7 @@ const NavbarPage = () => {
               <Link to="/managementCompanyList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  <VisibilityIcon />
+                  <VisibilityIcon className="nav-icons" />
                   Maintanance Company List
                 </Button>
               </Link>
@@ -505,19 +511,19 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Accordion.Toggle
               style={{
                 border: "none",
-                backgroundColor: "#66b2ff",
-                borderRadius: "50px",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
               }}
               as={Card.Header}
               variant="link"
               eventKey="12"
             >
               <b>
-                <AttachMoneyIcon />
+                <AttachMoneyIcon className="nav-icons" />
                 Expense{" "}
               </b>
             </Accordion.Toggle>
@@ -527,7 +533,7 @@ const NavbarPage = () => {
               <Link to="/expenseEntryForm">
                 {" "}
                 <Button variant="primary" className="button-size">
-                  <AddBoxIcon />
+                  <AddBoxIcon className="nav-icons" />
                   Expense Entry
                 </Button>
               </Link>
@@ -536,7 +542,7 @@ const NavbarPage = () => {
               <Link to="/expensesList">
                 {" "}
                 <Button variant="success" className="button-size">
-                  <VisibilityIcon /> Expense List
+                  <VisibilityIcon className="nav-icons" /> Expense List
                 </Button>
               </Link>
               <br />
@@ -544,20 +550,20 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>
         <Card style={{ border: "none" }}>
-          <Card.Header style={{ backgroundColor: "#3B4AFF" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
             <Link to="/invoiceList">
               <Accordion.Toggle
                 style={{
                   borderRadius: "50px",
                   border: "none",
-                  backgroundColor: "#66b2ff",
-                  borderRadius: "50px",
+                  // backgroundColor: "#66b2ff",
+                  // borderRadius: "50px",
                 }}
                 as={Card.Header}
                 variant="link"
               >
                 <b className="text-white">
-                  <ExploreIcon />
+                  <ExploreIcon className="nav-icons" />
                   Invoice Detail
                 </b>
               </Accordion.Toggle>

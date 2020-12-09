@@ -51,7 +51,7 @@ const RouterPage = () => {
   return (
     <div style={{ display: "flex", width: "100%", overflowX: "hidden" }}>
       <Router>
-        <div style={{ display: "block", margin: 0, width: "18%" }}>
+        <div style={{ display: "block", margin: 0, width: "25%" }}>
           {authorize ? <NavBar /> : ""}
         </div>
         <div

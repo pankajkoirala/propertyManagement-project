@@ -16,8 +16,9 @@
   height: 60px;
   display: flex;
   margin-bottom: 20px;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: #ffffff;
+  padding: 0px 20px;
 }
 
 .dashboard-card-income-expense {
@@ -151,9 +152,10 @@
   /* display: flex;
   justify-content: space-between; */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   grid-gap: 20px;
   margin: 2rem 0;
+  padding: 0px 20px;
 }
 
 .income-expense-card {
@@ -269,8 +271,8 @@
 }
 
 .chartjs-render-monitor {
-  height: 300px;
-  width: 500px;
+  height: 550px;
+  width: 920px;
 }
 
 @media (max-width: 960px) {
