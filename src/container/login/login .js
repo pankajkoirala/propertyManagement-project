@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Axios from "axios";
 import LoginComponent from "../../component/login/login";
 import { setLocalStorage } from "../../const/tokenStorage";
 import { base_URL } from "../../const/base_URL";
 import "./Back.css";
 const LoginContainer = (props) => {
-  const [response, setResponse] = useState("");
-
   const login = (data) => {
     Axios({
       method: "post",
@@ -20,7 +18,6 @@ const LoginContainer = (props) => {
       },
     })
       .then((res) => {
-        setResponse(res.data.message);
         setLocalStorage("token", res.data.token);
         //push to other page after login
         props.history.push("/");
@@ -28,7 +25,6 @@ const LoginContainer = (props) => {
       })
       .catch((err) => {
         console.log(err);
-        setResponse("username and password doesn't match");
       });
   };
   return (

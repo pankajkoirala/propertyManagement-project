@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import LeaseEntryForm from "../../entryForm/lease/lease";
 import PoopUp from "./../../../shared/popup";
-import { Table } from "reactstrap";
 import moment from "moment";
 
 let LeaseDetailViewComponent = (props) => {

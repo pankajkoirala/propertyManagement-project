@@ -81,7 +81,9 @@ let PropertyDetailViewComponent = (props) => {
                           {arg.property_community}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {/* {arg.Property_ownerName} */}
+                          {arg.Property_ownerName.map((owner, index) => {
+                            return <li key={index}>{owner.owner_Name}</li>;
+                          })}
                         </div>
                       </div>
                     </div>

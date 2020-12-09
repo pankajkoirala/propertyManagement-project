@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import { Form } from "reactstrap";
 import SearchInput from "./../../../shared/filterListData";
 
 const LeaseDisplay = (props) => {

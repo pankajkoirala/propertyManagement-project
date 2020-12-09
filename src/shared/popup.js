@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { object } from "yup";
 
 const ModalExample = (props) => {
   const {

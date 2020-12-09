@@ -3,7 +3,6 @@ import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
-import RegexComponent from "./../../../shared/regexComponent";
 import { OwnerEntryFormValidation } from "../../../utility/validation/ownerEntryFormValidation.js";
 
 const OwnerEntry = (props) => {

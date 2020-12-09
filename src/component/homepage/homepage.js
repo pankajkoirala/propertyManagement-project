@@ -2,11 +2,8 @@ import React from "react";
 import "./homepage.css";
 import { PieChart } from "react-minimal-pie-chart";
 import { Link } from "react-router-dom";
-import IncomePic from "../../assets/income.jpg";
-import ExpensePic from "../../assets/expense.jpg";
+
 import {
-  incomeCalc,
-  expenseCalc,
   expenseCalculationByMonthAndType,
   expenseCalculationByYearAndType,
 } from "../../shared/commonFunction";
