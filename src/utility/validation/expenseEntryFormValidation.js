@@ -1,6 +1,5 @@
 import * as Yup from "yup";
 
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 export const ExpenseEntryFormValidation = Yup.object().shape({
   //expense_list: Yup.string().required("Required Field"),
   expense_EntryDate: Yup.date().required("Required Field"),

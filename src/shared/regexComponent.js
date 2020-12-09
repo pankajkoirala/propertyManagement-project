@@ -78,14 +78,12 @@ let RegexConponent = (props) => {
               position: "relative",
               top: "0",
               bottom: "0",
-              zIndex: "11",
               border: "plain",
               borderColor: "beige",
               padding: "5px",
               zIndex: "99999",
               width: "130%",
             }}
-            key={i}
             className="bg-secondary text-white font-weight-bold"
             onClick={() => {
               setFieldValue(name, arg.id);

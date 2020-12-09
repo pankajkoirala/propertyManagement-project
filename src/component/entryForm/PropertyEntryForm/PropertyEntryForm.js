@@ -6,9 +6,7 @@ import { Formik } from "formik";
 import { v4 as uuidv4 } from "uuid";
 import PoopUp from "./../../../shared/popup";
 import RegexConponent from "../../../shared/regexComponent";
-
 import { PropertyFormValidation } from "../../../utility/validation/propertyEntryFormValidation.js";
-import { array } from "yup";
 
 const PropertyEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -19,11 +17,11 @@ const PropertyEntry = (props) => {
   const [heading, setHeading] = useState("");
   const [unit, setUnit] = useState("");
   const [remark, setRemark] = useState("");
-  const [OwnerId, setOwnerId] = useState([]);
-
   const [facilities, setFacilities] = useState(
     props?.property?.facilities || []
   );
+  //owner id unigue
+  const [OwnerId, setOwnerId] = useState([]);
 
   let addFacilities = (data) => {
     setFacilities([...facilities, data]);
@@ -38,7 +36,8 @@ const PropertyEntry = (props) => {
     setFacilities(facilities.filter((arg) => arg.facilitiesId !== id));
 
   let initialValue = {
-    Property_ownerName: props?.property?.Property_ownerName || [],
+    Property_ownerName:
+      props?.property?.Property_ownerName?.map((arg) => arg._id) || [],
     city: props?.property?.city || "",
     area: props?.property?.area || "",
     country: props?.property?.country || "",
@@ -71,16 +70,11 @@ const PropertyEntry = (props) => {
   };
   //remove duplicate from array
   let uniqueArray = OwnerId.filter(function (item, pos, self) {
-    return self.indexOf(item) == pos;
+    return self.indexOf(item) === pos;
   });
   let selectedOwner = [];
   selectedOwner = props?.Redux_OwnerData?.filter((arg) =>
     uniqueArray.includes(arg._id)
-  );
-
-  console.log(
-    "🚀 ~ file: PropertyEntryForm.js ~ line 75 ~ uniqueArray ~ uniqueArray",
-    uniqueArray
   );
 
   return (
@@ -88,14 +82,17 @@ const PropertyEntry = (props) => {
       initialValues={initialValue}
       onSubmit={(values) => {
         setLoadingState(true);
-
         //facilities convert to string
         values.facilities = JSON.stringify(facilities);
         typeof allFile[0].file === "string"
           ? (values.files_list = JSON.stringify(allFile))
           : (values.files_list = "");
         //
-        values.Property_ownerName = JSON.stringify(uniqueArray);
+        values.Property_ownerName = JSON.stringify(
+          uniqueArray.length === 0
+            ? props?.property?.Property_ownerName?.map((arg) => arg._id)
+            : uniqueArray
+        );
         //data sending function
         props.property
           ? props.propertyUpdate(values, props?.property?._id, allFile)

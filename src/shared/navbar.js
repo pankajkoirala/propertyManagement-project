@@ -2,16 +2,12 @@ import React from "react";
 import { Accordion, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import EmojiTransportationIcon from "@material-ui/icons/EmojiTransportation";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import { Avatar } from "@material-ui/core";
 import ExploreIcon from "@material-ui/icons/Explore";
 import HouseIcon from "@material-ui/icons/House";
 import PersonIcon from "@material-ui/icons/Person";
-import GroupsIcon from "@material-ui/icons/Group";
 import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import SubjectIcon from "@material-ui/icons/Subject";
-import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import BugReportIcon from "@material-ui/icons/BugReport";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import BusinessIcon from "@material-ui/icons/Business";
@@ -55,7 +51,6 @@ const NavbarPage = () => {
             <Link to="/">
               <Accordion.Toggle
                 style={{
-                  borderRadius: "50px",
                   border: "none",
                   backgroundColor: "#66b2ff",
                   borderRadius: "50px",
@@ -548,7 +543,6 @@ const NavbarPage = () => {
             <Link to="/invoiceList">
               <Accordion.Toggle
                 style={{
-                  borderRadius: "50px",
                   border: "none",
                   backgroundColor: "#66b2ff",
                   borderRadius: "50px",
