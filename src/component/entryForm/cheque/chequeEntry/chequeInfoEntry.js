@@ -5,16 +5,12 @@ import moment from "moment";
 
 let ChequeInfo = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
-
-  let reverseArrayOfChequeinfo = props.allCheckInfo.reverse(
-    props.allCheckInfo.length
-  );
-
-  let reverseArray = props.allCheckInfo.slice().reverse();
-
+  const [loadingState, setLoadingState] = useState(false);
   const [date, setDate] = useState("");
   const [updateInfo, setUpdateInfo] = useState("");
   const [remark, setRemark] = useState("");
+
+  let reverseArray = props.allCheckInfo.slice().reverse();
 
   let InfoData = () => {
     props.ChequeeInfoData({
@@ -22,6 +18,7 @@ let ChequeInfo = (props) => {
       chequeUpdate: updateInfo,
       chequeUpdate_remarks: remark,
     });
+    setLoadingState(true);
   };
 
   return (
@@ -69,6 +66,7 @@ let ChequeInfo = (props) => {
           Update Information
         </button>
         <PoopUp
+          loadingIconState={loadingState}
           isOpen={showPopup}
           isClose={setShowPopUp}
           CRUD_Function={InfoData}

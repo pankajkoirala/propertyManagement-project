@@ -8,6 +8,7 @@ import { MaintainanceTicketEntryForm } from "./../../../utility/validation/maint
 
 const MaintananceTicket = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
 
   let initialvalue = {
     maintananceTicketIssueDate:
@@ -36,6 +37,8 @@ const MaintananceTicket = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
+              setLoadingState(true);
+
               props?.maintananceTicket
                 ? props.maintananceTicketUpdate(
                     values,
@@ -282,6 +285,7 @@ const MaintananceTicket = (props) => {
                         Submit
                       </button>
                       <PoopUp
+                        loadingIconState={loadingState}
                         isOpen={showPopup}
                         isClose={setShowPopUp}
                         CRUD_Function={handleSubmit}

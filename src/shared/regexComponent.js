@@ -83,6 +83,7 @@ let RegexConponent = (props) => {
               borderColor: "beige",
               padding: "5px",
               zIndex: "99999",
+              width: "130%",
             }}
             key={i}
             className="bg-secondary text-white font-weight-bold"

@@ -8,6 +8,7 @@ import { OwnerEntryFormValidation } from "../../../utility/validation/ownerEntry
 
 const OwnerEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
   const [allFile, setAllFile] = useState(
     props?.owner ? props?.owner?.files_list : []
   );
@@ -38,6 +39,8 @@ const OwnerEntry = (props) => {
           <Formik
             initialValues={initialValue}
             onSubmit={(values) => {
+              setLoadingState(true);
+
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");
@@ -432,6 +435,7 @@ const OwnerEntry = (props) => {
                     Submit
                   </button>
                   <PoopUp
+                    loadingIconState={loadingState}
                     isOpen={showPopup}
                     isClose={setShowPopUp}
                     CRUD_Function={handleSubmit}

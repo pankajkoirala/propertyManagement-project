@@ -9,6 +9,7 @@ import { managementCompanyEntryFormValidation } from "../../../utility/validatio
 
 const ManagementCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
   const [allFile, setAllFile] = useState(
     props?.managementCompany ? props?.managementCompany?.files_list : []
   );
@@ -51,6 +52,8 @@ const ManagementCompanyComponent = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
+              setLoadingState(true);
+
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");
@@ -282,10 +285,10 @@ const ManagementCompanyComponent = (props) => {
                     </div>
                   </div>
                   <div style={{ marginTop: "20px" }}>
-                    <h4>Document Field</h4>
+                    <h4 className="form-head">Document Field</h4>
                     <div className="row">
                       <div className="col-md-4 text-left mb-2 ">
-                        <p className="form-head">Document Name</p>
+                        <p>Document Name</p>
                         <Input
                           name="fileName"
                           type="text"
@@ -417,6 +420,7 @@ const ManagementCompanyComponent = (props) => {
                     Add
                   </button>
                   <PoopUp
+                    loadingIconState={loadingState}
                     isOpen={showPopup}
                     isClose={setShowPopUp}
                     CRUD_Function={handleSubmit}

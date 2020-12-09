@@ -9,6 +9,7 @@ import PoopUp from "./../../../shared/popup";
 
 const LeaseEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
   const [allFile, setAllFile] = useState(props?.lease?.files_list || []);
   const [commerceDate, setCommerceDate] = useState("");
   const [expireDate, setExpireDate] = useState("");
@@ -54,10 +55,6 @@ const LeaseEntry = (props) => {
     let days = paymentTime * index;
     addedDays.push(days);
   }
-  console.log(
-    "🚀 ~ file: lease.js ~ line 60 ~ LeaseEntry ~ addedDays",
-    addedDays
-  );
 
   return (
     <div className="form-group m-5 p-4">
@@ -70,6 +67,8 @@ const LeaseEntry = (props) => {
       <Formik
         initialValues={initialvalue}
         onSubmit={(values) => {
+          setLoadingState(true);
+
           typeof allFile[0].file === "string"
             ? (values.files_list = JSON.stringify(allFile))
             : (values.files_list = "");
@@ -178,7 +177,6 @@ const LeaseEntry = (props) => {
                   <Input
                     type="select"
                     name="lease_Term"
-                    id="exampleSelect"
                     placeholder="Select"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -203,7 +201,6 @@ const LeaseEntry = (props) => {
                   <Input
                     type="date"
                     name="commenceDate"
-                    id="exampleSelect"
                     placeholder=" Commence Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -252,7 +249,6 @@ const LeaseEntry = (props) => {
                   <Input
                     type="number"
                     name="rentAmount"
-                    id="exampleSelect"
                     placeholder="Rent Amount"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -274,7 +270,6 @@ const LeaseEntry = (props) => {
                   <Input
                     type="select"
                     name="frequency"
-                    id="exampleSelect"
                     placeholder="Frequencyt"
                     value={(setpaymentTime(values.frequency), values.frequency)}
                     onChange={handleChange}
@@ -311,7 +306,6 @@ const LeaseEntry = (props) => {
                   <Input
                     type="number"
                     name="securityDeposite"
-                    id="exampleSelect"
                     placeholder="Security Deposite"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -462,6 +456,7 @@ const LeaseEntry = (props) => {
                   Save
                 </button>
                 <PoopUp
+                  loadingIconState={loadingState}
                   isOpen={showPopup}
                   isClose={setShowPopUp}
                   CRUD_Function={handleSubmit}

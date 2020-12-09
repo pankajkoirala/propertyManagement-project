@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import { v4 as uuidv4 } from "uuid";
-import {ExpenseEntryFormValidation} from "./../../../utility/validation/expenseEntryFormValidation.js"
+import { ExpenseEntryFormValidation } from "./../../../utility/validation/expenseEntryFormValidation.js";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import RegexComponent from "./../../../shared/regexComponent";
 
 const ExpenseEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
   const [expenseHeading, setExpenseHeading] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expenselist, setexpenselist] = useState(
@@ -45,6 +46,8 @@ const ExpenseEntry = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
+              setLoadingState(true);
+
               //expense list sending
               values.expense_list = JSON.stringify(
                 expenselist.map((arg) => {
@@ -67,11 +70,12 @@ const ExpenseEntry = (props) => {
                   : "";
 
               console.log(values);
+
               props?.expense
                 ? props.expenseUpdate(values, props?.expense?._id)
                 : props.expenseData(values);
             }}
-           validationSchema={ExpenseEntryFormValidation}
+            validationSchema={ExpenseEntryFormValidation}
           >
             {({
               touched,
@@ -113,31 +117,6 @@ const ExpenseEntry = (props) => {
                                 style={{ fontSize: 12 }}
                               >
                                 {errors.expense_EntryDate}
-                              </span>
-                            )}
-                        </div>
-                        <div className="mt-4 col-md-3">
-                          <Label for="exampleName">Maintanance Ticket ID</Label>
-                          <RegexComponent
-                            {...props}
-                            setFieldValue={setFieldValue}
-                            options={props?.Redux_maintananceTicketData?.map(
-                              (maintananceTicket) => {
-                                return {
-                                  name: maintananceTicket.maintananceTicket_ID,
-                                  id: maintananceTicket._id,
-                                };
-                              }
-                            )}
-                            name={"Maintanance_ticketID"}
-                          />
-                          {touched.Maintanance_ticketID &&
-                            errors.Maintanance_ticketID && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.Maintanance_ticketID}
                               </span>
                             )}
                         </div>
@@ -366,6 +345,7 @@ const ExpenseEntry = (props) => {
                         Submit
                       </button>
                       <PoopUp
+                        loadingIconState={loadingState}
                         isOpen={showPopup}
                         isClose={setShowPopUp}
                         CRUD_Function={handleSubmit}
