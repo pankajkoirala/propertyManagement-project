@@ -81,7 +81,9 @@ let PropertyDetailViewComponent = (props) => {
                           {arg.property_community}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.Property_ownerName}
+                          {arg.Property_ownerName.map((owner, index) => {
+                            return <li key={index}>{owner.owner_Name}</li>;
+                          })}
                         </div>
                       </div>
                     </div>
@@ -155,7 +157,7 @@ let PropertyDetailViewComponent = (props) => {
                   <div className="d-flex flex-wrap">
                     {arg?.files_list?.map((file, index) => {
                       return (
-                        <div className="m-4">
+                        <div key={index} className="m-4">
                           <div>
                             <a href={file.file} target={file.file}>
                               <img

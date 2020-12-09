@@ -6,7 +6,7 @@ import SearchInput from "./../../../shared/filterListData";
 
 const TenantView = (props) => {
   let [tenents, setTenents] = useState([]);
-  let tenentList = props.tenant;
+  let tenentList = props.tenant.slice().reverse();
 
   if (tenents.length === 0) {
     tenents = tenentList;
@@ -28,7 +28,7 @@ const TenantView = (props) => {
             };
           })}
           setFilteredData={setTenents}
-          allData={props.tenant}
+          allData={props.tenant.slice().reverse()}
         />
         <Table striped bordered hover size="sm">
           <thead>
@@ -36,8 +36,8 @@ const TenantView = (props) => {
               <th>ID Number</th>
               <th>tenent ID</th>
               <th> Name</th>
+              <th>Tenant Type</th>
               <th>Company Name</th>
-              <th>Contact Number</th>
               <th>Contact Email</th>
               <th>Remarks</th>
             </tr>
@@ -49,8 +49,8 @@ const TenantView = (props) => {
                   <td>{index + 1}</td>
                   <td>{arg.TenantId}</td>
 
+                  <td>{arg.TenentType}</td>
                   <td>{arg.tenant_Name}</td>
-                  <td>{arg.company_Name}</td>
                   <td>{arg.tenant_phoneNo}</td>
                   <td>{arg.tenant_email}</td>
 

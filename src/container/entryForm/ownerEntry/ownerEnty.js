@@ -43,7 +43,6 @@ const OwnerEntryContainer = (props) => {
         notification("error", "ERROR");
       });
   };
-  console.log(ownerData);
   return (
     <div>
       <OwnerContainer

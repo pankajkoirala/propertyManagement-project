@@ -11,17 +11,33 @@ const ModalExample = (props) => {
     id,
     message,
     buttonName,
+    loadingIconState,
   } = props;
 
   return (
     <div>
       <Modal isOpen={isOpen} className={className}>
-        <ModalBody>{message} </ModalBody>
-        <span>
-          <CircularProgress disableShrink />
-        </span>
+        <ModalBody
+          className="form-head"
+          style={{ fontSize: "20px", fontWeight: "bold" }}
+        >
+          {message}{" "}
+        </ModalBody>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div>
+            {loadingIconState === true ? (
+              <CircularProgress disableShrink />
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
         <ModalFooter>
-          <Button color="primary" onClick={() => CRUD_Function(id)}>
+          <Button
+            color="primary"
+            disabled={loadingIconState === true ? true : false}
+            onClick={() => CRUD_Function(id)}
+          >
             {buttonName}
           </Button>
           <Button color="secondary" onClick={() => isClose(false)}>

@@ -32,11 +32,6 @@ const MaintananceCompanyDetailView = (props) => {
     formData.append("invoicePhoto", data.invoicePhoto);
     formData.append("expense_Type", data.expense_Type);
 
-    console.log(
-      "🚀 ~ file: expenseDetailView.js ~ line 21 ~ expenseUpdate ~ formData",
-      formData
-    );
-
     Axios({
       method: "put",
       url: base_URL + "/api/expense/" + ID,

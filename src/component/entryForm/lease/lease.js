@@ -9,6 +9,7 @@ import PoopUp from "./../../../shared/popup";
 
 const LeaseEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
   const [allFile, setAllFile] = useState(props?.lease?.files_list || []);
   const [commerceDate, setCommerceDate] = useState("");
   const [expireDate, setExpireDate] = useState("");
@@ -54,10 +55,6 @@ const LeaseEntry = (props) => {
     let days = paymentTime * index;
     addedDays.push(days);
   }
-  console.log(
-    "🚀 ~ file: lease.js ~ line 60 ~ LeaseEntry ~ addedDays",
-    addedDays
-  );
 
   return (
     <div className="form-group m-5 p-4">
@@ -70,13 +67,14 @@ const LeaseEntry = (props) => {
       <Formik
         initialValues={initialvalue}
         onSubmit={(values) => {
+          setLoadingState(true);
+
           typeof allFile[0].file === "string"
             ? (values.files_list = JSON.stringify(allFile))
             : (values.files_list = "");
           props?.lease
             ? props.LeaseUpdate(values, props.lease._id, allFile)
             : props.leaseData(values, allFile);
-          console.log(values);
         }}
         validationSchema={leaseEntryFormValidation}
       >
@@ -178,7 +176,6 @@ const LeaseEntry = (props) => {
                   <Input
                     type="select"
                     name="lease_Term"
-                    id="exampleSelect"
                     placeholder="Select"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -203,7 +200,6 @@ const LeaseEntry = (props) => {
                   <Input
                     type="date"
                     name="commenceDate"
-                    id="exampleSelect"
                     placeholder=" Commence Date"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -252,7 +248,6 @@ const LeaseEntry = (props) => {
                   <Input
                     type="number"
                     name="rentAmount"
-                    id="exampleSelect"
                     placeholder="Rent Amount"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -274,7 +269,6 @@ const LeaseEntry = (props) => {
                   <Input
                     type="select"
                     name="frequency"
-                    id="exampleSelect"
                     placeholder="Frequencyt"
                     value={(setpaymentTime(values.frequency), values.frequency)}
                     onChange={handleChange}
@@ -311,7 +305,6 @@ const LeaseEntry = (props) => {
                   <Input
                     type="number"
                     name="securityDeposite"
-                    id="exampleSelect"
                     placeholder="Security Deposite"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -391,64 +384,66 @@ const LeaseEntry = (props) => {
                 </div>
               </div>
               {allFile.length !== 0 ? (
-                <Table striped bordered hover size="sm">
-                  <thead>
-                    <tr>
-                      <th>SN</th>
-                      <th> Name</th>
-                      <th>image</th>
-                      <th>
-                        <button
-                          style={
-                            props?.lease
-                              ? { display: "inline" }
-                              : { display: "none" }
-                          }
-                          onClick={() => setAllFile([])}
-                        >
-                          delete All
-                        </button>
-                      </th>
-                    </tr>
-                  </thead>
-                  {allFile.map((arg, index) => {
-                    return (
-                      <tbody key={index}>
-                        <tr>
-                          <td>{index + 1}</td>
+                <table striped bordered hover size="sm">
+                  <tbody>
+                    <thead>
+                      <tr>
+                        <th>SN</th>
+                        <th> Name</th>
+                        <th>image</th>
+                        <th>
+                          <button
+                            style={
+                              props?.lease
+                                ? { display: "inline" }
+                                : { display: "none" }
+                            }
+                            onClick={() => setAllFile([])}
+                          >
+                            delete All
+                          </button>
+                        </th>
+                      </tr>
+                    </thead>
+                    {allFile.map((arg, index) => {
+                      return (
+                        <tbody key={index}>
+                          <tr>
+                            <td>{index + 1}</td>
 
-                          <td className="font-weight-bold">{arg.fileName}</td>
-                          <td>
-                            <img
-                              src={
-                                typeof arg.file === "string"
-                                  ? arg.file
-                                  : URL.createObjectURL(arg.file)
-                              }
-                              alt="no file"
-                              height="80px"
-                            />
-                          </td>
-                          <td>
-                            <button
-                              style={
-                                props?.lease
-                                  ? { display: "none" }
-                                  : { display: "inline" }
-                              }
-                              type="button"
-                              onClick={() => {
-                                photoDelete(arg.fileName);
-                              }}
-                            >
-                              delete
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    );
-                  })}
-                </Table>
+                            <td className="font-weight-bold">{arg.fileName}</td>
+                            <td>
+                              <img
+                                src={
+                                  typeof arg.file === "string"
+                                    ? arg.file
+                                    : URL.createObjectURL(arg.file)
+                                }
+                                alt="no file"
+                                height="80px"
+                              />
+                            </td>
+                            <td>
+                              <button
+                                style={
+                                  props?.lease
+                                    ? { display: "none" }
+                                    : { display: "inline" }
+                                }
+                                type="button"
+                                onClick={() => {
+                                  photoDelete(arg.fileName);
+                                }}
+                              >
+                                delete
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      );
+                    })}
+                  </tbody>
+                </table>
               ) : (
                 ""
               )}
@@ -462,6 +457,7 @@ const LeaseEntry = (props) => {
                   Save
                 </button>
                 <PoopUp
+                  loadingIconState={loadingState}
                   isOpen={showPopup}
                   isClose={setShowPopUp}
                   CRUD_Function={handleSubmit}
@@ -473,51 +469,53 @@ const LeaseEntry = (props) => {
                   }
                 />
               </div>
-            </FormGroup>
-            <Table striped bordered hover size="sm">
-              {props?.lease?.commenceDate ||
-              (commerceDate && props?.lease?.expirationDate) ||
-              (expireDate && props?.lease?.frequency) ||
-              paymentTime ? (
-                <thead>
-                  <tr>
-                    <th>SN</th>
-                    <th>date of payment</th>
-                    <th>remark</th>
-                  </tr>
-                </thead>
-              ) : (
-                ""
-              )}
+              <Table striped bordered hover size="sm">
+                <tbody>
+                  {props?.lease?.commenceDate ||
+                  (commerceDate && props?.lease?.expirationDate) ||
+                  (expireDate && props?.lease?.frequency) ||
+                  paymentTime ? (
+                    <thead>
+                      <tr>
+                        <th>SN</th>
+                        <th>date of payment</th>
+                        <th>remark</th>
+                      </tr>
+                    </thead>
+                  ) : (
+                    ""
+                  )}
 
-              {props?.lease?.commenceDate ||
-              (commerceDate && props?.lease?.expirationDate) ||
-              (expireDate && props?.lease?.frequency) ||
-              paymentTime
-                ? addedDays.map((arg, index) => {
-                    return (
-                      <tbody key={index}>
-                        <tr>
-                          <td>{index + 1}</td>
-                          <td>
-                            {moment(commerceDate)
-                              .add(arg, "days")
-                              .format("DD-MM-YYYY")}
-                          </td>
-                          <td
-                            style={{
-                              height: "10px",
-                              width: "10px",
-                              backgroundColor: "red",
-                              borderRadius: "50%",
-                            }}
-                          ></td>
-                        </tr>
-                      </tbody>
-                    );
-                  })
-                : ""}
-            </Table>
+                  {props?.lease?.commenceDate ||
+                  (commerceDate && props?.lease?.expirationDate) ||
+                  (expireDate && props?.lease?.frequency) ||
+                  paymentTime
+                    ? addedDays.map((arg, index) => {
+                        return (
+                          <tbody key={index}>
+                            <tr>
+                              <td>{index + 1}</td>
+                              <td>
+                                {moment(commerceDate)
+                                  .add(arg, "days")
+                                  .format("DD-MM-YYYY")}
+                              </td>
+                              <td
+                                style={{
+                                  height: "10px",
+                                  width: "10px",
+                                  backgroundColor: "red",
+                                  borderRadius: "50%",
+                                }}
+                              ></td>
+                            </tr>
+                          </tbody>
+                        );
+                      })
+                    : ""}
+                </tbody>
+              </Table>
+            </FormGroup>
           </Form>
         )}
       </Formik>

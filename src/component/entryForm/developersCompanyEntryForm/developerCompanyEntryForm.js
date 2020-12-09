@@ -9,6 +9,8 @@ import { developerEntryFormValidation } from "../../../utility/validation/develo
 
 const DeveloperCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
+
   const [allFile, setAllFile] = useState(
     props?.developerCompany ? props?.developerCompany?.files_list : []
   );
@@ -16,9 +18,7 @@ const DeveloperCompanyComponent = (props) => {
   let initialValue = {
     Developer_area: props?.developerCompany?.Developer_area || "",
     Developer_city: props?.developerCompany?.Developer_city || "",
-    Developer_provience: props?.developerCompany?.Developer_provience || "",
     Developer_country: props?.developerCompany?.Developer_country || "",
-    Developer_ZipCode: props?.developerCompany?.Developer_ZipCode || "",
     DeveloperCompany_phoneNo:
       props?.developerCompany?.DeveloperCompany_phoneNo || "",
     DeveloperCompany_Name: props?.developerCompany?.DeveloperCompany_Name || "",
@@ -49,7 +49,8 @@ const DeveloperCompanyComponent = (props) => {
           <Formik
             initialValues={initialValue}
             onSubmit={(values) => {
-              console.log(values);
+              setLoadingState(true);
+
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");
@@ -89,7 +90,6 @@ const DeveloperCompanyComponent = (props) => {
                         <Input
                           type="text"
                           value={values.DeveloperCompany_Name}
-                          s
                           name="DeveloperCompany_Name"
                           placeholder="Company Name"
                           onChange={handleChange}
@@ -129,7 +129,7 @@ const DeveloperCompanyComponent = (props) => {
                       <div className="mt-2 col-md-4">
                         <Label for="exampleName">Registration Number</Label>
                         <Input
-                          type="number"
+                          type="text"
                           value={values.DeveloperCompany_RegisterationNumber}
                           name="DeveloperCompany_RegisterationNumber"
                           placeholder="Registration Number"
@@ -413,6 +413,7 @@ const DeveloperCompanyComponent = (props) => {
                     Add
                   </button>
                   <PoopUp
+                    loadingIconState={loadingState}
                     isOpen={showPopup}
                     isClose={setShowPopUp}
                     CRUD_Function={handleSubmit}

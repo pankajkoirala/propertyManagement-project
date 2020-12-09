@@ -8,6 +8,8 @@ import PoopUp from "../../../shared/popup";
 
 const BrokerComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
+
   const [allFile, setAllFile] = useState(
     props?.BrokerCompany ? props?.BrokerCompany?.files_list : []
   );
@@ -48,7 +50,7 @@ const BrokerComponent = (props) => {
               props.BrokerCompany
                 ? props.BrokerUpdate(values, props.BrokerCompany._id, allFile)
                 : props.brokerData(values, allFile);
-              console.log(values);
+              setLoadingState(true);
             }}
             validationSchema={brokerEntryFormValidation}
           >
@@ -414,6 +416,7 @@ const BrokerComponent = (props) => {
                     Submit
                   </button>
                   <PoopUp
+                    loadingIconState={loadingState}
                     isOpen={showPopup}
                     isClose={setShowPopUp}
                     CRUD_Function={handleSubmit}

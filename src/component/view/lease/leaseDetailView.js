@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import LeaseEntryForm from "../../entryForm/lease/lease";
 import PoopUp from "./../../../shared/popup";
-import { Table } from "reactstrap";
 import moment from "moment";
 
 let LeaseDetailViewComponent = (props) => {
@@ -14,7 +13,7 @@ let LeaseDetailViewComponent = (props) => {
 
   return (
     <>
-      <div>
+      <div style={{ margin: "25px" }}>
         {showEditForm === false ? (
           props.selecteOneLease.map((arg, index) => {
             return (

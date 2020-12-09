@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import HomepageComponent from "../../component/homepage/homepage";
 import { connect } from "react-redux";
-import {
-  incomeCalc,
-  expenseCalc,
-  expenseCalculationByMonthAndType,
-  expenseCalculationByYearAndType,
-} from "../../shared/commonFunction";
+import { incomeCalc, expenseCalc } from "../../shared/commonFunction";
 import moment from "moment";
 
 const HomepageContainer = (props) => {

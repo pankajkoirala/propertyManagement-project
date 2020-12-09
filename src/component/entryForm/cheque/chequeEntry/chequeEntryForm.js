@@ -9,6 +9,7 @@ import PoopUp from "./../../../../shared/popup";
 
 const ChequeEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
 
   let initialvalue = {
     miscellaneous_amount: props?.Cheque?.miscellaneous_amount || "",
@@ -35,9 +36,6 @@ const ChequeEntry = (props) => {
     cheque_recivedDate:
       moment(props?.Cheque?.cheque_recivedDate).format("YYYY-MM-DD") || "",
     //cheque information
-    chequeUpdate_remarks: "",
-    chequeUpdate: "",
-    chequeUpdate_date: "",
   };
   return (
     <div>
@@ -49,7 +47,7 @@ const ChequeEntry = (props) => {
               props?.Cheque
                 ? props.ChequeUpdate(values, props?.Cheque?._id)
                 : props.ChequeeData(values);
-              console.log(values);
+              setLoadingState(true);
             }}
             validationSchema={chequeEntryFormValidation}
           >
@@ -282,69 +280,6 @@ const ChequeEntry = (props) => {
                           </span>
                         )}
                       </div>
-
-                      <div className="mt-4 col-md-4">
-                        <Label for="exampleSelect">Lease Number</Label>
-                        <RegexComponent
-                          {...props}
-                          setFieldValue={setFieldValue}
-                          options={props?.Redux_leaseData?.map((lease) => {
-                            return {
-                              name:
-                                lease.LeaseId +
-                                "/" +
-                                lease?.property?.property_type +
-                                "/" +
-                                lease?.property?.referenceNO,
-
-                              id: lease._id,
-                            };
-                          })}
-                          name={"lease_property"}
-                        />
-                        <div style={{ marginTop: "35px" }}>
-                          {touched.lease_property && errors.lease_property && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.lease_property}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="mt-4 col-md-4">
-                        <Label for="exampleSelect">Property </Label>
-                        <RegexComponent
-                          {...props}
-                          setFieldValue={setFieldValue}
-                          options={props?.Redux_propertyData?.map(
-                            (property) => {
-                              return {
-                                name:
-                                  property.property_type +
-                                  "/" +
-                                  property.referenceNO,
-
-                                id: property._id,
-                              };
-                            }
-                          )}
-                          name={"property_id"}
-                        />
-                        <div style={{ marginTop: "30px" }}>
-                          {touched.property_id && errors.property_id && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.property_id}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Cheque Hold Date</Label>
                         <Input
@@ -384,6 +319,68 @@ const ChequeEntry = (props) => {
                           </span>
                         )}
                       </div>
+
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleSelect">Lease Number</Label>
+                        <RegexComponent
+                          {...props}
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_leaseData?.map((lease) => {
+                            return {
+                              name:
+                                lease.LeaseId +
+                                "/" +
+                                lease?.property?.property_type +
+                                "/" +
+                                lease?.property?.referenceNO,
+
+                              id: lease._id,
+                            };
+                          })}
+                          name={"lease_property"}
+                        />
+                        <div style={{ marginTop: "35px" }}>
+                          {touched.lease_property && errors.lease_property && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.lease_property}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleSelect">Property </Label>
+                        <RegexComponent
+                          {...props}
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_propertyData?.map(
+                            (property) => {
+                              return {
+                                name:
+                                  property.property_type +
+                                  "/" +
+                                  property.referenceNO,
+
+                                id: property._id,
+                              };
+                            }
+                          )}
+                          name={"property_id"}
+                        />
+                        <div style={{ marginTop: "30px" }}>
+                          {touched.property_id && errors.property_id && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.property_id}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Cheque Bounced Date</Label>
                         <Input
@@ -479,7 +476,7 @@ const ChequeEntry = (props) => {
                                       values.cheque_picture_back
                                     )
                               }
-                              alt="no file"
+                              alt="span no file"
                               height="20"
                             />
                           )}
@@ -494,6 +491,7 @@ const ChequeEntry = (props) => {
                       Add Cheque
                     </button>
                     <PoopUp
+                      loadingIconState={loadingState}
                       isOpen={showPopup}
                       isClose={setShowPopUp}
                       CRUD_Function={handleSubmit}

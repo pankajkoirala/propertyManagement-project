@@ -3,11 +3,11 @@ import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
-import RegexComponent from "./../../../shared/regexComponent";
 import { OwnerEntryFormValidation } from "../../../utility/validation/ownerEntryFormValidation.js";
 
 const OwnerEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
   const [allFile, setAllFile] = useState(
     props?.owner ? props?.owner?.files_list : []
   );
@@ -38,13 +38,14 @@ const OwnerEntry = (props) => {
           <Formik
             initialValues={initialValue}
             onSubmit={(values) => {
+              setLoadingState(true);
+
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");
               props?.owner
                 ? props.ownerUpdate(values, props?.owner?._id, allFile)
                 : props.ownerData(values, allFile);
-              console.log(values);
             }}
             validationSchema={OwnerEntryFormValidation}
           >
@@ -74,7 +75,6 @@ const OwnerEntry = (props) => {
                         <Input
                           type="select"
                           name="owner_Type"
-                          id="exampleSelect"
                           placeholder="Select"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -214,7 +214,6 @@ const OwnerEntry = (props) => {
                           type="date"
                           name="owner_DOB"
                           value={values.owner_DOB}
-                          id="exampleSelect"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         ></Input>
@@ -432,6 +431,7 @@ const OwnerEntry = (props) => {
                     Submit
                   </button>
                   <PoopUp
+                    loadingIconState={loadingState}
                     isOpen={showPopup}
                     isClose={setShowPopUp}
                     CRUD_Function={handleSubmit}

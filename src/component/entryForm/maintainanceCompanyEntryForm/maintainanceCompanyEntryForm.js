@@ -9,12 +9,9 @@ import { maintainanceCompanyEntryFormValidation } from "../../../utility/validat
 
 const MaintainanceCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
   const [allFile, setAllFile] = useState(
     props?.maintananceCompany ? props?.maintananceCompany?.files_list : []
-  );
-  console.log(
-    "MaintainanceCompanyComponent -> props.maintananceCompany",
-    props.maintananceCompany
   );
 
   let initialvalue = {
@@ -48,7 +45,7 @@ const MaintainanceCompanyComponent = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
-              console.log(values);
+              setLoadingState(true);
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");
@@ -128,7 +125,7 @@ const MaintainanceCompanyComponent = (props) => {
                       <div className="mt-2 col-md-4">
                         <Label for="exampleName">Registration Number</Label>
                         <Input
-                          type="number"
+                          type="text"
                           value={values.Company_Registration_Number}
                           name="Company_Registration_Number"
                           placeholder="Registration Number"
@@ -405,6 +402,7 @@ const MaintainanceCompanyComponent = (props) => {
                     Add
                   </button>
                   <PoopUp
+                    loadingIconState={loadingState}
                     isOpen={showPopup}
                     isClose={setShowPopUp}
                     CRUD_Function={handleSubmit}

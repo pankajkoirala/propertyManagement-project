@@ -9,13 +9,9 @@ import "../styleform/styleform.css";
 
 const TenantEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
-
+  const [loadingState, setLoadingState] = useState(false);
   const [allFile, setAllFile] = useState(
     props.selectedTenantone?.files_list || []
-  );
-  console.log(
-    "🚀 ~ file: tenantEntryForm.js ~ line 14 ~ TenantEntry ~ allFile",
-    allFile
   );
 
   let photoDelete = (name) => {
@@ -48,10 +44,11 @@ const TenantEntry = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
+              setLoadingState(true);
+
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");
-              console.log(values);
               props.selectedTenantone
                 ? props.tenentUpdate(
                     values,
@@ -456,6 +453,7 @@ const TenantEntry = (props) => {
                     Add
                   </button>
                   <PoopUp
+                    loadingIconState={loadingState}
                     isOpen={showPopup}
                     isClose={setShowPopUp}
                     CRUD_Function={handleSubmit}

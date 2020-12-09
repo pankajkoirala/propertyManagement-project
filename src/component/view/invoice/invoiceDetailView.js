@@ -1,17 +1,28 @@
 import React from "react";
 
 let InvoiceDetailComponent = (props) => {
-  console.log(
-    "🚀 ~ file: invoiceDetailView.js ~ line 13 ~ InvoiceDetailContainer ~ selectedEmployee",
-    props.selectedInvoice
-  );
   return (
-    <div>
-      <img
-        src={props.selectedInvoice?.invoicePhoto}
-        style={{ height: "600px", width: "1000px" }}
-        alt=""
-      />
+    <div
+      style={{
+        margin: "20px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div>
+        <h2 className="text-center">Invoice Picture</h2>
+        <img
+          src={props.selectedInvoice?.invoicePhoto}
+          style={{
+            height: "500px",
+            width: "80%",
+            marginTop: "40px",
+            alignItems: "center",
+          }}
+          alt=""
+        />
+      </div>
     </div>
   );
 };

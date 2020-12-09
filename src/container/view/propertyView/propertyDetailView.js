@@ -77,6 +77,7 @@ let PropertyDetailView = (props) => {
   return (
     <div>
       <PropertyDetailViewComp
+        Redux_OwnerData={props.Redux_OwnerData.owner}
         propertyUpdate={propertyUpdate}
         selectedone={selectedone}
         DeleteProperty={DeleteProperty}
@@ -97,6 +98,7 @@ const mapStateToProps = (state) => ({
   Redux_leaseData: state.lease,
   Redux_ManagementCompanyData: state.managementCompany,
   redux_DeveloperCompanyData: state.DeveloperCompany,
+  Redux_OwnerData: state.owner,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

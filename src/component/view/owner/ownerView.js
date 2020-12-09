@@ -5,7 +5,7 @@ import SearchInput from "./../../../shared/filterListData";
 
 const OwnerView = (props) => {
   let [owners, setOwners] = useState([]);
-  let ownerList = props.ownersData;
+  let ownerList = props.ownersData.slice().reverse();
 
   if (owners.length === 0) {
     owners = ownerList;
@@ -17,17 +17,16 @@ const OwnerView = (props) => {
       <div className="tenantview">
         <h1 className="text-center">owner List</h1>
         <SearchInput
-          filteringData={props.ownersData.map((arg) => {
+          filteringData={props?.ownersData.map((arg) => {
             return {
-              search1:
-                arg.owner_firstName + arg.owner_middleName + arg.owner_lastName,
+              search1: arg.owner_Name,
               search2: arg.owner_phoneNo,
               search3: arg.owner_ID,
               ID: arg._id,
             };
           })}
           setFilteredData={setOwners}
-          allData={props.ownersData}
+          allData={props.ownersData.slice().reverse()}
         />
 
         <Table striped bordered hover size="sm">
@@ -38,7 +37,6 @@ const OwnerView = (props) => {
               <th>Name</th>
               <th>contact no</th>
               <th>email ID</th>
-              <th>property</th>
               <th>detail view</th>
             </tr>
           </thead>
@@ -48,21 +46,10 @@ const OwnerView = (props) => {
                 <tr>
                   <td>{index + 1}</td>
                   <td>{arg?.owner_ID}</td>
-                  <td>
-                    {arg?.owner_firstName +
-                      " " +
-                      arg?.owner_middleName +
-                      " " +
-                      arg?.owner_lastName}
-                  </td>
+                  <td>{arg?.owner_Name}</td>
 
                   <td>{arg?.owner_phoneNo}</td>
                   <td>{arg?.owner_email}</td>
-                  <td>
-                    {arg?.owner_property?.property_type +
-                      "-" +
-                      arg?.owner_property?.referenceNO}
-                  </td>
 
                   <td>
                     <Link to={`/ownerDetail/${arg._id}`}>

@@ -8,8 +8,6 @@ import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
 
 const TanentDetailViewCont = (props) => {
-  console.log(props);
-
   const { id } = useParams();
 
   //using params and select one tanent to see detail

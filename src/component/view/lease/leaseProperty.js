@@ -1,25 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import SearchInput from "./../../../shared/filterListData";
 
 const LeaseDisplay = (props) => {
+  let [lease, setLease] = useState([]);
+  let leaseList = props.lease.slice().reverse();
+
+  if (lease.length === 0) {
+    lease = leaseList;
+  } else {
+    leaseList = lease;
+  }
   return (
     <>
       <div>
         <h1>lease list</h1>
-        <Form inline>
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-            <Input
-              type="search"
-              name="password"
-              id="search"
-              placeholder="search!"
-            />
-          </FormGroup>
-          <Button>Submit</Button>
-        </Form>
+        <SearchInput
+          filteringData={props.lease.map((arg) => {
+            return {
+              search1: arg?.tenants?.tenant_Name,
+              search2:
+                arg?.property?.property_type + "/" + arg.property?.referenceNO,
+              search3: arg?.LeaseId,
+              ID: arg._id,
+            };
+          })}
+          setFilteredData={setLease}
+          allData={props.lease.slice().reverse()}
+        />
 
         <Table striped bordered hover size="sm">
           <thead>
@@ -30,26 +40,23 @@ const LeaseDisplay = (props) => {
               <th>Lease term</th>
               <th>commerce date</th>
               <th>expire date</th>
-              <th>aggrement photo</th>
+              <th> lease Property</th>
             </tr>
           </thead>
-          {props.lease.map((arg, index) => {
+          {leaseList.map((arg, index) => {
             return (
               <tbody key={index}>
                 <tr>
                   <td>{index + 1}</td>
                   <td>{arg.LeaseId}</td>
-                  <td>
-                    {arg?.tenants?.tenant_lastName}{" "}
-                    {arg?.tenants?.tenant_firstName}
-                  </td>
+                  <td>{arg?.tenants?.tenant_Name}</td>
                   <td>{arg.lease_Term}</td>
                   <td>{moment(arg?.commenceDate).format("YYYY-MM-DD")}</td>
                   <td>{moment(arg?.expirationDate).format("YYYY-MM-DD")}</td>
                   <td>
-                    <a href={arg.photo} target={arg.photo}>
-                      aggrement photo
-                    </a>
+                    {arg?.property?.property_type +
+                      "/" +
+                      arg.property?.referenceNO}
                   </td>
 
                   <td>

@@ -1,25 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import SearchInput from "./../../../shared/filterListData";
 
 const MaintananceTicketView = (props) => {
+  let [maintananceTicket, setMaintananceTicket] = useState([]);
+  let maintananceTicketList = props.maintananceTicket.slice().reverse();
+
+  if (maintananceTicket.length === 0) {
+    maintananceTicket = maintananceTicketList;
+  } else {
+    maintananceTicketList = maintananceTicket;
+  }
+
   return (
     <>
       <div className="tenantview">
         <h1 className="text-center">Maintanance Ticket List</h1>
-        <Form inline>
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-            <Input
-              type="search"
-              name="password"
-              id="search"
-              placeholder="search!"
-            />
-          </FormGroup>
-          <Button>Submit</Button>
-        </Form>
+
+        <SearchInput
+          filteringData={props.maintananceTicket.map((arg) => {
+            return {
+              search1: arg?.maintananceTicket_ID,
+              search2:
+                arg?.MaintanancePropertyID?.property_type +
+                "/" +
+                arg?.MaintanancePropertyID?.referenceNO,
+              search3: "",
+              ID: arg._id,
+            };
+          })}
+          setFilteredData={setMaintananceTicket}
+          allData={props.maintananceTicket.slice().reverse()}
+        />
 
         <Table striped bordered hover size="sm">
           <thead>
@@ -31,10 +45,9 @@ const MaintananceTicketView = (props) => {
               <th>Maintanance Company Id</th>
               <th>Maintanance Property ID</th>
               <th>Maintanance Company DetailInfo</th>
-              <th>detail view</th>
             </tr>
           </thead>
-          {props.maintananceTicket.map((arg, index) => {
+          {maintananceTicketList.map((arg, index) => {
             return (
               <tbody key={index}>
                 <tr>
@@ -50,8 +63,11 @@ const MaintananceTicketView = (props) => {
                   </td>
                   <td>{arg?.MaintananceCompanyId?.Company_ID}</td>
 
-                  <td>{arg?.MaintanancePropertyID?.referenceNO}</td>
-                  <td>{arg?.MaintananceCompanyDetailInfo}</td>
+                  <td>
+                    {arg.MaintanancePropertyID?.property_type +
+                      "/" +
+                      arg.MaintanancePropertyID?.referenceNO}
+                  </td>
 
                   <td>
                     <Link to={`/maintananceTicket/${arg._id}`}>

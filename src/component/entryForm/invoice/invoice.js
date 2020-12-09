@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
-import { Form, Input, Label, Table } from "reactstrap";
+import { Form, Input, Label } from "reactstrap";
 import moment from "moment";
+import PoopUp from "../../../shared/popup";
 
 let InvoiceComponent = (props) => {
+  const [showPopup, setShowPopUp] = useState(false);
+  const [loadingState, setLoadingState] = useState(false);
   const [inWord, setInWord] = useState("");
-  const [invoiceID, setInvoiceID] = useState(
+  const [invoiceID] = useState(
     "INVOICE-" + (Math.random() * 900000).toFixed(0)
   );
 
-  console.log(
-    "🚀 ~ file: invoice.js ~ line 15 ~ InvoiceComponent ~ INVOICE",
-    props
-  );
   let initialvalue = {
     chequeMongoId: props.Cheque._id,
     invoicePhoto: "",
@@ -99,7 +98,7 @@ let InvoiceComponent = (props) => {
               initialValues={initialvalue}
               onSubmit={(values) => {
                 props.invoicePost(values);
-                console.log(values);
+                setLoadingState(true);
               }}
               // validationSchema={TenantEntryFormValidation}
             >
@@ -374,11 +373,23 @@ let InvoiceComponent = (props) => {
                             fontWeight: "bold",
                           }
                     }
-                    type="submit"
-                    onClick={handleSubmit}
+                    type="button"
+                    onClick={() => setShowPopUp(true)}
                   >
                     save
                   </button>
+                  <PoopUp
+                    loadingIconState={loadingState}
+                    isOpen={showPopup}
+                    isClose={setShowPopUp}
+                    CRUD_Function={handleSubmit}
+                    buttonName={props.BrokerCompany ? "Update" : "Create"}
+                    message={
+                      props.BrokerCompany
+                        ? "Are you sure want to update"
+                        : "Are you sure want to create"
+                    }
+                  />
                 </Form>
               )}
             </Formik>
