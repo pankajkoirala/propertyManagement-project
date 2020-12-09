@@ -25,11 +25,11 @@ const MaintananceTicketView = (props) => {
         <SearchInput
           filteringData={props.maintananceTicket.map((arg) => {
             return {
-              search1: arg.maintananceTicket_ID,
+              search1: arg?.maintananceTicket_ID,
               search2:
-                arg.MaintanancePropertyID.property_type +
+                arg?.MaintanancePropertyID?.property_type +
                 "/" +
-                arg.MaintanancePropertyID.referenceNO,
+                arg?.MaintanancePropertyID?.referenceNO,
               search3: "",
               ID: arg._id,
             };

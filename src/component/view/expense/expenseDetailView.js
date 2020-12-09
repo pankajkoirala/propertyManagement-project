@@ -15,7 +15,7 @@ let ExpenseDetailViewComponent = (props) => {
   };
   return (
     <>
-      <div>
+      <div style={{ margin: "25px" }}>
         {showEditForm === false ? (
           props.selectedExpense.map((arg, index) => {
             return (

@@ -12,7 +12,7 @@ let OwnerDetailViewComponent = (props) => {
   };
   return (
     <>
-      <div>
+      <div style={{ margin: "25px" }}>
         {showEditForm === false ? (
           props.selectedOwner.map((arg, index) => {
             return (

@@ -13,7 +13,7 @@ let ManagementCompanyDetailViewComponent = (props) => {
   };
   return (
     <>
-      <div>
+      <div style={{ margin: "25px" }}>
         {showEditForm === false ? (
           props.selectedManagementCompany.map((arg, index) => {
             return (

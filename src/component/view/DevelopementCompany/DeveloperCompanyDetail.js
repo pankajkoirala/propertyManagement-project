@@ -13,7 +13,7 @@ let DeveloperCompanyDetailViewComponent = (props) => {
   };
   return (
     <>
-      <div>
+      <div style={{ margin: "25px" }}>
         {showEditForm === false ? (
           props.selectedDeveloperCompany.map((arg, index) => {
             return (
