@@ -151,7 +151,7 @@
   /* display: flex;
   justify-content: space-between; */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   grid-gap: 20px;
   margin: 2rem 0;
 }
@@ -166,26 +166,6 @@
   padding: 1rem;
   border-radius: 0 0 10px 10px;
   position: relative;
-}
-
-@media (max-width: 960px) {
-  .income-expense-card-container {
-    /* flex-direction: column; */
-    /* margin: auto; */
-    /* justify-content: flex-end;
-    align-items: center; */
-    /* display: flex; */
-  }
-
-  /* .income-expense-card {
-    width: 500px;
-  } */
-
-  .income-expense-child {
-    flex-direction: column;
-    display: flex;
-    justify-content: space-between;
-  }
 }
 
 .income-expense-card h5 {
@@ -275,9 +255,9 @@
   padding: 1rem 0 2rem 0;
 }
 
-.line-container {
+/* .line-container {
   height: 800px !important;
-}
+} */
 
 .canvas-container {
   height: 600px;
@@ -285,5 +265,54 @@
   display: flex;
   flex-direction: column;
   margin: 1rem auto;
-  /* align-items: center; */
+  align-items: center;
+}
+
+.chartjs-render-monitor {
+  height: 300px;
+  width: 500px;
+}
+
+@media (max-width: 960px) {
+  .income-expense-child {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 414px) {
+  .canvas-container {
+    height: 300px !important;
+    width: 400px !important;
+    align-items: flex-start !important;
+  }
+  .chartjs-render-monitor {
+    height: 200px !important;
+    width: 400px !important;
+  }
+
+  /* Centering prev and next btns */
+  .prevnext-btn-group {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .chartjs-render-monitor {
+    height: 200px !important;
+    width: 350px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .canvas-container {
+    height: 300px !important;
+    width: 320px !important;
+    align-items: flex-start !important;
+  }
+  .chartjs-render-monitor {
+    height: 200px !important;
+    width: 300px !important;
+  }
 }

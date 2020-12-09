@@ -910,7 +910,7 @@ const Homepage = (props) => {
           <div className="line-container">
             <Line data={data} responsive={true} maintainAspectRatio={true} />
           </div>
-          <div>
+          <div className="prevnext-btn-group">
             <button
               style={{
                 border: "none",
