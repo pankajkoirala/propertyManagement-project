@@ -64,15 +64,27 @@ export const totalIncomeCalculation = (allCheque) => {
   let TotalVat = 0;
   let TotalMiscelleneous = 0;
 
-  allCheque.map((arg) => {
+  for (let index = 0; index < allCheque.length; index++) {
     totalIncome =
       totalIncome +
-      arg.cheque_amount +
-      arg.miscellaneous_amount +
-      arg.vat_amount;
-    TotalVat = TotalVat + arg.vat_amount;
-    TotalMiscelleneous = TotalMiscelleneous + arg.miscellaneous_amount;
-  });
+      allCheque[index].cheque_amount +
+      allCheque[index].miscellaneous_amount +
+      allCheque[index].vat_amount;
+
+    TotalVat = TotalVat + allCheque[index].vat_amount;
+    TotalMiscelleneous =
+      TotalMiscelleneous + allCheque[index].miscellaneous_amount;
+  }
+
+  // allCheque.map((arg) => {
+  //   totalIncome =
+  //     totalIncome +
+  //     arg.cheque_amount +
+  //     arg.miscellaneous_amount +
+  //     arg.vat_amount;
+  //   TotalVat = TotalVat + arg.vat_amount;
+  //   TotalMiscelleneous = TotalMiscelleneous + arg.miscellaneous_amount;
+  // });
   return (
     <div>
       <div>Total Income : {totalIncome}</div>

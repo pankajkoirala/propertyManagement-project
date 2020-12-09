@@ -46,7 +46,6 @@ const OwnerEntry = (props) => {
               props?.owner
                 ? props.ownerUpdate(values, props?.owner?._id, allFile)
                 : props.ownerData(values, allFile);
-              console.log(values);
             }}
             validationSchema={OwnerEntryFormValidation}
           >
@@ -76,7 +75,6 @@ const OwnerEntry = (props) => {
                         <Input
                           type="select"
                           name="owner_Type"
-                          id="exampleSelect"
                           placeholder="Select"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -216,7 +214,6 @@ const OwnerEntry = (props) => {
                           type="date"
                           name="owner_DOB"
                           value={values.owner_DOB}
-                          id="exampleSelect"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         ></Input>

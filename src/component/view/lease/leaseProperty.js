@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
-import { Form } from "reactstrap";
 import SearchInput from "./../../../shared/filterListData";
 
 const LeaseDisplay = (props) => {
@@ -18,23 +17,19 @@ const LeaseDisplay = (props) => {
     <>
       <div>
         <h1>lease list</h1>
-        <Form inline>
-          <SearchInput
-            filteringData={props.lease.map((arg) => {
-              return {
-                search1: arg?.tenants?.tenant_Name,
-                search2:
-                  arg?.property?.property_type +
-                  "/" +
-                  arg.property?.referenceNO,
-                search3: arg?.LeaseId,
-                ID: arg._id,
-              };
-            })}
-            setFilteredData={setLease}
-            allData={props.lease.slice().reverse()}
-          />
-        </Form>
+        <SearchInput
+          filteringData={props.lease.map((arg) => {
+            return {
+              search1: arg?.tenants?.tenant_Name,
+              search2:
+                arg?.property?.property_type + "/" + arg.property?.referenceNO,
+              search3: arg?.LeaseId,
+              ID: arg._id,
+            };
+          })}
+          setFilteredData={setLease}
+          allData={props.lease.slice().reverse()}
+        />
 
         <Table striped bordered hover size="sm">
           <thead>

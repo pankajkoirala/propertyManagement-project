@@ -50,7 +50,6 @@ const BrokerComponent = (props) => {
               props.BrokerCompany
                 ? props.BrokerUpdate(values, props.BrokerCompany._id, allFile)
                 : props.brokerData(values, allFile);
-              console.log(values);
               setLoadingState(true);
             }}
             validationSchema={brokerEntryFormValidation}

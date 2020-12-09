@@ -46,14 +46,6 @@ const Homepage = (props) => {
   } = props;
 
   let p = [];
-  console.log(
-    "🚀 ~ file: homepage.js ~ line 125 ~ HomepageContainer ~ yearlyExpense",
-    expenseCalculationByMonthAndType(
-      props?.redux_ExpenseData?.expense,
-      ExpenseDate_month,
-      "Maintanance"
-    )
-  );
 
   //bardiagram data
   let number = 1;

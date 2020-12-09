@@ -2,6 +2,7 @@ import React from "react";
 import "./../component/homepage/homepage.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Link } from "@material-ui/core";
 
 const TopNavBar = () => {
   let logout = () => {
@@ -21,14 +22,13 @@ const TopNavBar = () => {
       <div className="dashboard-link">
         <ul>
           <li style={{ margin: "15px" }}>
-            <a href="#">Profile</a>
+            <div>Profile</div>
           </li>
           <li style={{ margin: "15px" }}>
-            <a href="#" onClick={() => logout()}>
-              {" "}
+            <Link href="" onClick={() => logout()}>
               <ExitToAppIcon />
               Logout
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

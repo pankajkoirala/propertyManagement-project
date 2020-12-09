@@ -15,8 +15,8 @@ const TanentDetailView = (props) => {
         {showEditForm === false ? (
           props.selectedTenantone.map((arg, index) => {
             return (
-              <div>
-                <div key={index} className="row pbox">
+              <div key={index}>
+                <div className="row pbox">
                   <div className="row mt-4">
                     <div className="col-4">
                       <img
@@ -103,7 +103,7 @@ const TanentDetailView = (props) => {
                   <div className="d-flex flex-wrap">
                     {arg?.files_list?.map((file, index) => {
                       return (
-                        <div className="m-4">
+                        <div key={index} className="m-4">
                           <div>
                             <a href={file.file} target={file.file}>
                               <img

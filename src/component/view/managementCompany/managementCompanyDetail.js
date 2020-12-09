@@ -6,8 +6,6 @@ let ManagementCompanyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showPopup, setShowPopUp] = useState(false);
 
-  console.log("selectedManagementCompany", props.selectedManagementCompany);
-
   let showHide = () => {
     setShowEditForm(!showEditForm);
   };
@@ -105,7 +103,7 @@ let ManagementCompanyDetailViewComponent = (props) => {
                     <div className="d-flex flex-wrap">
                       {arg?.files_list?.map((file, index) => {
                         return (
-                          <div className="m-4">
+                          <div key={index} className="m-4">
                             <div>
                               <a href={file.file} target={file.file}>
                                 <img

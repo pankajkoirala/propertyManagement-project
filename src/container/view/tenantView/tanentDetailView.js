@@ -17,7 +17,6 @@ const TanentDetailViewCont = (props) => {
 
   //tanent update
   const tenentUpdate = (data, ID, file) => {
-    console.log(data);
     const formData = new FormData();
     if (typeof file[0].file !== "string") {
       file.forEach((element) => {

@@ -13,10 +13,7 @@ const MaintananceTicketView = (props) => {
   } else {
     maintananceTicketList = maintananceTicket;
   }
-  console.log(
-    "🚀 ~ file: maintananceTicket.js ~ line 24 ~ filteringData={props?.maintananceTicket?.map ~ props?.maintananceTicket",
-    props?.maintananceTicket
-  );
+
   return (
     <>
       <div className="tenantview">

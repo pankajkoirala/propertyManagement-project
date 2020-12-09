@@ -97,7 +97,6 @@ const PropertyEntry = (props) => {
         props.property
           ? props.propertyUpdate(values, props?.property?._id, allFile)
           : props.propertySend(values, allFile);
-        console.log(values);
       }}
       validationSchema={PropertyFormValidation}
     >

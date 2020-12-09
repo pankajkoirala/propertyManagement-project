@@ -13,10 +13,6 @@ const MaintainanceCompanyComponent = (props) => {
   const [allFile, setAllFile] = useState(
     props?.maintananceCompany ? props?.maintananceCompany?.files_list : []
   );
-  console.log(
-    "MaintainanceCompanyComponent -> props.maintananceCompany",
-    props.maintananceCompany
-  );
 
   let initialvalue = {
     Company_area: props?.maintananceCompany?.Company_area || "",
@@ -50,7 +46,6 @@ const MaintainanceCompanyComponent = (props) => {
             initialValues={initialvalue}
             onSubmit={(values) => {
               setLoadingState(true);
-              console.log(values);
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))
                 : (values.files_list = "");

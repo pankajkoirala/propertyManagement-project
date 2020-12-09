@@ -20,7 +20,7 @@ let InvoiceDetailComponent = (props) => {
             marginTop: "40px",
             alignItems: "center",
           }}
-          alt={props.selectedInvoice?.invoicePhoto}
+          alt=""
         />
       </div>
     </div>

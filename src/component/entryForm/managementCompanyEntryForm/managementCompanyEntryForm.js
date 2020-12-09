@@ -64,7 +64,6 @@ const ManagementCompanyComponent = (props) => {
                     allFile
                   )
                 : props.ManagementCompanyData(values, allFile);
-              console.log(values);
             }}
             validationSchema={managementCompanyEntryFormValidation}
           >
