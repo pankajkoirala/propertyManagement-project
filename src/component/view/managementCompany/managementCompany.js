@@ -5,7 +5,7 @@ import SearchInput from "./../../../shared/filterListData";
 
 const ManagementCompanyView = (props) => {
   let [managementCompany, setManagementCompany] = useState([]);
-  let managementCompanyList = props.ManagementCompany;
+  let managementCompanyList = props.ManagementCompany.slice().reverse();
 
   if (managementCompany.length === 0) {
     managementCompany = managementCompanyList;
@@ -27,7 +27,7 @@ const ManagementCompanyView = (props) => {
             };
           })}
           setFilteredData={setManagementCompany}
-          allData={props.ManagementCompany}
+          allData={props.ManagementCompany.slice().reverse()}
         />
 
         <Table striped bordered hover size="sm">

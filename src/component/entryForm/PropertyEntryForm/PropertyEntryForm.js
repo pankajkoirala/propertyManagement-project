@@ -12,7 +12,7 @@ import { array } from "yup";
 
 const PropertyEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
-
+  const [loadingState, setLoadingState] = useState(false);
   const [allFile, setAllFile] = useState(
     props?.property ? props?.property?.files_list : []
   );
@@ -74,7 +74,7 @@ const PropertyEntry = (props) => {
     return self.indexOf(item) == pos;
   });
   let selectedOwner = [];
-  selectedOwner = props?.Redux_OwnerData.filter((arg) =>
+  selectedOwner = props?.Redux_OwnerData?.filter((arg) =>
     uniqueArray.includes(arg._id)
   );
 
@@ -87,6 +87,8 @@ const PropertyEntry = (props) => {
     <Formik
       initialValues={initialValue}
       onSubmit={(values) => {
+        setLoadingState(true);
+
         //facilities convert to string
         values.facilities = JSON.stringify(facilities);
         typeof allFile[0].file === "string"
@@ -424,12 +426,7 @@ const PropertyEntry = (props) => {
                     name={"Property_ownerName"}
                     options={props?.Redux_OwnerData?.map((owner) => {
                       return {
-                        name:
-                          owner.owner_firstName +
-                          owner.owner_middleName +
-                          owner.owner_lastName +
-                          "-" +
-                          owner.owner_ID,
+                        name: owner.owner_Name + "-" + owner.owner_ID,
                         id: owner._id,
                       };
                     })}
@@ -489,13 +486,7 @@ const PropertyEntry = (props) => {
                         justifyContent: "space-between",
                       }}
                     >
-                      <div>
-                        {arg.owner_firstName +
-                          " " +
-                          arg.owner_middleName +
-                          " " +
-                          arg.owner_lastName}
-                      </div>
+                      <div>{arg.owner_Name}</div>
                       <button
                         type="button"
                         onClick={() => deleteOwner(arg._id)}
@@ -746,6 +737,7 @@ const PropertyEntry = (props) => {
               Submit
             </button>
             <PoopUp
+              loadingIconState={loadingState}
               isOpen={showPopup}
               isClose={setShowPopUp}
               CRUD_Function={handleSubmit}

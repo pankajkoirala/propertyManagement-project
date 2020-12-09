@@ -33,11 +33,9 @@ let LeaseDetailView = (props) => {
     formData.append("commenceDate", data.commenceDate);
     formData.append("expirationDate", data.expirationDate);
     formData.append("rentAmount", data.rentAmount);
-    formData.append("firstDueDate", data.firstDueDate);
     formData.append("frequency", data.frequency);
 
     formData.append("securityDeposite", data.securityDeposite);
-    formData.append("securityfirstDueDate", data.securityfirstDueDate);
     formData.append("property", data.property);
 
     Axios({

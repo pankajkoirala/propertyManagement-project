@@ -18,7 +18,7 @@ const PropertyView = (props) => {
   let [properties, setProperties] = useState([]);
   let [propertySort, setPropertySort] = useState(true);
 
-  let propertyList = props.propertyData;
+  let propertyList = props.propertyData.slice().reverse();
 
   if (properties.length === 0) {
     properties = propertyList;

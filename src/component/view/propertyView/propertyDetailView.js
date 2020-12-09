@@ -81,7 +81,7 @@ let PropertyDetailViewComponent = (props) => {
                           {arg.property_community}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.Property_ownerName}
+                          {/* {arg.Property_ownerName} */}
                         </div>
                       </div>
                     </div>

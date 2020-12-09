@@ -13,7 +13,7 @@ const ExpenseDisplay = (props) => {
   let [expensesMonth, SetExpensesMonth] = useState("");
   let [expensesYear, SetExpensesYear] = useState("");
 
-  let expensesList = props?.expenseList;
+  let expensesList = props?.expenseList.slice().reverse();
 
   //filtering array list by month and year
   let FilterByMonthYear = () => {
@@ -148,13 +148,13 @@ const ExpenseDisplay = (props) => {
                   <td>{moment(arg?.expense_EntryDate).format("YYYY-MM-DD")}</td>
                   <td>{arg?.expenseInvoiceNumber}</td>
                   <td>{arg?.expense_Type}</td>
-                  <th>
+                  <td>
                     {arg.expense_Type === "Maintanance"
                       ? arg?.property_ID?.property_type +
                         "-" +
                         arg?.property_ID?.referenceNO
                       : "-"}
-                  </th>
+                  </td>
                   <td>{expenseCalculationPerHead(arg?.expense_list)}</td>
                   <td>
                     <Link to={`/expense/${arg._id}`}>

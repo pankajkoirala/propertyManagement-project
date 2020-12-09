@@ -6,7 +6,7 @@ import SearchInput from "./../../../shared/filterListData";
 
 const DevelopementCompanyView = (props) => {
   let [developerCompanys, SetDeveloperCompanys] = useState([]);
-  let developerCompanyList = props.allDevelopementCompany;
+  let developerCompanyList = props.allDevelopementCompany.slice().reverse();
 
   if (developerCompanys.length === 0) {
     developerCompanys = developerCompanyList;
@@ -28,7 +28,7 @@ const DevelopementCompanyView = (props) => {
             };
           })}
           setFilteredData={SetDeveloperCompanys}
-          allData={props.allDevelopementCompany}
+          allData={props.allDevelopementCompany.slice().reverse()}
         />
 
         <Table striped bordered hover size="sm">
