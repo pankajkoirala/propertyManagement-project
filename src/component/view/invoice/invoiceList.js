@@ -7,13 +7,13 @@ import moment from "moment";
 let InvoiceListComponent = (props) => {
   let [invoice, SetInvoice] = useState([]);
   let invoiceList = props.invoiceList.slice().reverse();
-  console.log("asdasfasdasfafafs", props);
 
   if (invoice.length === 0) {
     invoice = invoiceList;
   } else {
     invoiceList = invoice;
   }
+
   return (
     <>
       <div className="tenantview">
@@ -40,7 +40,8 @@ let InvoiceListComponent = (props) => {
               <th> lease id</th>
               <th>Property</th>
               <th>Cheque No</th>
-              <th> edit</th>
+              <th>Invoice Photo</th>
+              {/* <th> edit</th> */}
               <th>Delete</th>
             </tr>
           </thead>
@@ -54,13 +55,18 @@ let InvoiceListComponent = (props) => {
                   <td>{arg.lease_id}</td>
                   <td>{arg.propertyId}</td>
                   <td>{arg.chequeNumber}</td>
-
                   <td>
+                    <a target={arg?.invoicePhoto} href={arg?.invoicePhoto}>
+                      Download
+                    </a>{" "}
+                  </td>
+
+                  {/* <td>
                     <Link to={`/invoice/${arg._id}`}>
                       {" "}
                       <button className="success ml-3">View Detail</button>
                     </Link>{" "}
-                  </td>
+                  </td> */}
                   <td>
                     <button
                       style={{ height: "auto", width: "auto" }}
