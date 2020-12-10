@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import SearchInput from "./../../../shared/filterListData";
 
+import "./leaseProperty.css";
 const LeaseDisplay = (props) => {
   let [lease, setLease] = useState([]);
   let leaseList = props.lease.slice().reverse();
@@ -15,8 +16,10 @@ const LeaseDisplay = (props) => {
   }
   return (
     <>
-      <div>
-        <h1>lease list</h1>
+      <div className="leaseProperty">
+        <div className="page-title">
+          <h1>lease list</h1>
+        </div>
         <SearchInput
           filteringData={props.lease.map((arg) => {
             return {
@@ -31,7 +34,7 @@ const LeaseDisplay = (props) => {
           allData={props.lease.slice().reverse()}
         />
 
-        <Table striped bordered hover size="sm">
+        <table id="lease-table">
           <thead>
             <tr>
               <th>SN</th>
@@ -62,14 +65,14 @@ const LeaseDisplay = (props) => {
                   <td>
                     <Link to={`/lease/${arg._id}`}>
                       {" "}
-                      <button className="success ml-3">View Detail</button>
+                      <button className="view-btn">View Detail</button>
                     </Link>{" "}
                   </td>
                 </tr>
               </tbody>
             );
           })}
-        </Table>
+        </table>
       </div>
     </>
   );

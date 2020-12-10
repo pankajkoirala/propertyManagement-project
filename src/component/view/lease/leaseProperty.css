@@ -1,3 +1,6 @@
+.leaseProperty {
+  padding: 20px;
+}
 /* Styling page title */
 .page-title {
   width: 100%;
@@ -9,29 +12,29 @@
 }
 
 /* Table */
-#expense-table {
+#lease-table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 10px;
 }
 
-#expense-table td,
-#expense-table th {
+#lease-table td,
+#lease-table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#expense-table tr {
+#lease-table tr {
   /* background-color: #f2f2f2; */
   background-color: rgb(245, 245, 245);
   font-size: 12px;
 }
 
-#expense-table tr:hover {
+#lease-table tr:hover {
   background-color: rgb(245, 241, 241);
 }
 
-#expense-table th {
+#lease-table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
