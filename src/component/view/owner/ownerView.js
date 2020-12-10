@@ -3,6 +3,8 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SearchInput from "./../../../shared/filterListData";
 
+import "./ownerview.css";
+
 const OwnerView = (props) => {
   let [owners, setOwners] = useState([]);
   let ownerList = props.ownersData.slice().reverse();
@@ -15,7 +17,7 @@ const OwnerView = (props) => {
   return (
     <>
       <div className="tenantview">
-        <h1 className="text-center">owner List</h1>
+        <h1 className="page-title">Owner List</h1>
         <SearchInput
           filteringData={props?.ownersData.map((arg) => {
             return {
@@ -29,7 +31,7 @@ const OwnerView = (props) => {
           allData={props.ownersData.slice().reverse()}
         />
 
-        <Table striped bordered hover size="sm">
+        <table id="ownerview-table">
           <thead>
             <tr>
               <th>SN</th>
@@ -54,14 +56,14 @@ const OwnerView = (props) => {
                   <td>
                     <Link to={`/ownerDetail/${arg._id}`}>
                       {" "}
-                      <button className="success ml-3">View Detail</button>
+                      <button className="view-btn">View Detail</button>
                     </Link>{" "}
                   </td>
                 </tr>
               </tbody>
             );
           })}
-        </Table>
+        </table>
       </div>
     </>
   );

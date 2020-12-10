@@ -31,9 +31,10 @@ const ModalExample = (props) => {
       <Form inline>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Input
+            style={{ borderRadius: "32px" }}
             type="text"
             onChange={(e) => filterByName_Id_Number(e.target.value)}
-            placeholder="search!"
+            placeholder="Search"
           />
         </FormGroup>
       </Form>

@@ -4,6 +4,7 @@ import { Table } from "reactstrap";
 import SearchInput from "./../../../shared/filterListData";
 import moment from "moment";
 
+import "./invoiceList.css";
 let InvoiceListComponent = (props) => {
   let [invoice, SetInvoice] = useState([]);
   let invoiceList = props.invoiceList.slice().reverse();
@@ -16,7 +17,9 @@ let InvoiceListComponent = (props) => {
   return (
     <>
       <div className="tenantview">
-        <h1 className="text-center">Invoice list</h1>
+        <div className="page-title">
+          <h1>Invoice List</h1>
+        </div>
         <SearchInput
           filteringData={props?.invoiceList?.map((arg) => {
             return {
@@ -30,7 +33,7 @@ let InvoiceListComponent = (props) => {
           allData={props.invoiceList.slice().reverse()}
         />
 
-        <Table striped bordered hover size="sm">
+        <table id="invoice-table">
           <thead>
             <tr>
               <th>SN</th>
@@ -55,12 +58,12 @@ let InvoiceListComponent = (props) => {
                   <td>
                     <Link to={`/invoice/${arg._id}`}>
                       {" "}
-                      <button className="success ml-3">View Detail</button>
+                      <button className="view-btn">View Detail</button>
                     </Link>{" "}
                   </td>
                   <td>
                     <button
-                      style={{ height: "auto", width: "auto" }}
+                      className="delete-btn"
                       onClick={() => props.InvoiceDelete(arg._id)}
                     >
                       Delete
@@ -70,7 +73,7 @@ let InvoiceListComponent = (props) => {
               </tbody>
             );
           })}
-        </Table>
+        </table>
       </div>
     </>
   );

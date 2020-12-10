@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import SearchInput from "./../../../shared/filterListData";
 
+import "./developerCompany.css";
 const DevelopementCompanyView = (props) => {
   let [developerCompanys, SetDeveloperCompanys] = useState([]);
   let developerCompanyList = props.allDevelopementCompany.slice().reverse();
@@ -17,7 +18,7 @@ const DevelopementCompanyView = (props) => {
   return (
     <>
       <div className="tenantview">
-        <h1 className="text-center">Developer company list</h1>
+        <h1 className="page-title">Developer company list</h1>
         <SearchInput
           filteringData={props.allDevelopementCompany.map((arg) => {
             return {
@@ -31,7 +32,7 @@ const DevelopementCompanyView = (props) => {
           allData={props.allDevelopementCompany.slice().reverse()}
         />
 
-        <Table striped bordered hover size="sm">
+        <table id="developercompany-table">
           <thead>
             <tr>
               <th>SN</th>
@@ -63,14 +64,14 @@ const DevelopementCompanyView = (props) => {
                   <td>
                     <Link to={`/DeveloperCompany/${arg._id}`}>
                       {" "}
-                      <button className="success ml-3">View Detail</button>
+                      <button className="view-btn">View Detail</button>
                     </Link>{" "}
                   </td>
                 </tr>
               </tbody>
             );
           })}
-        </Table>
+        </table>
       </div>
     </>
   );

@@ -3,6 +3,8 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SearchInput from "./../../../shared/filterListData";
 
+import "./brokerCompany.css";
+
 const BrokerCompanyView = (props) => {
   let [BrokerCompanyList, SetBrokerCompanyList] = useState([]);
   let brokerCompanyList = props.allBrokerCompany.slice().reverse();
@@ -16,7 +18,7 @@ const BrokerCompanyView = (props) => {
   return (
     <>
       <div className="tenantview">
-        <h1 className="text-center">broker Company List</h1>
+        <h1 className="page-title">broker Company List</h1>
         <SearchInput
           filteringData={props.allBrokerCompany.map((arg) => {
             return {
@@ -30,7 +32,7 @@ const BrokerCompanyView = (props) => {
           allData={props.allBrokerCompany.slice().reverse()}
         />
 
-        <Table striped bordered hover size="sm">
+        <table id="brokercompany-table">
           <thead>
             <tr>
               <th>ID Number</th>
@@ -56,14 +58,14 @@ const BrokerCompanyView = (props) => {
                   <td>
                     <Link to={`/brokerCompany/${arg._id}`}>
                       {" "}
-                      <button className="success ml-3">View Detail</button>
+                      <button className="view-btn">View Detail</button>
                     </Link>{" "}
                   </td>
                 </tr>
               </tbody>
             );
           })}
-        </Table>
+        </table>
       </div>
     </>
   );

@@ -379,7 +379,7 @@ const TenantEntry = (props) => {
 
                   {props?.selectedTenantone?.files_list ||
                   allFile?.length !== 0 ? (
-                    <Table striped bordered hover size="sm">
+                    <table>
                       <thead>
                         <tr>
                           <th>SN</th>
@@ -440,7 +440,7 @@ const TenantEntry = (props) => {
                           </tbody>
                         );
                       })}
-                    </Table>
+                    </table>
                   ) : (
                     ""
                   )}

@@ -7,3 +7,43 @@
   width: 300px;
   margin: 20px;
 }
+
+/* Table */
+#propertyview-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#propertyview-table td,
+#propertyview-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#propertyview-table tr {
+  /* background-color: #f2f2f2; */
+  background-color: rgb(245, 245, 245);
+}
+
+#propertyview-table tr:hover {
+  background-color: rgb(245, 241, 241);
+}
+
+#propertyview-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: white;
+  color: #222;
+}
+
+/* Button */
+.view-btn {
+  border: none;
+  background-color: rgb(59, 74, 255);
+  padding: 7px 10px;
+  color: white;
+  border-radius: 30px;
+  font-size: 13px;
+}
