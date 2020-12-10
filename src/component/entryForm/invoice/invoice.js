@@ -18,7 +18,7 @@ let InvoiceComponent = (props) => {
     invoiceIssueDate: moment().format("YYYY-MM-DD"),
     chequeNumber: props?.Cheque?.cheque_number,
     lease_id: props?.Cheque?.lease_property?.LeaseId,
-    InvoiceId: invoiceID,
+    InvoiceId: "INVOICE-",
   };
   let Invoices = [1];
   //total amount in words function
@@ -63,7 +63,6 @@ let InvoiceComponent = (props) => {
       .substr(-9)
       .match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
     if (!n) return;
-    console.log(n[1]);
     var str = "";
     str +=
       n[1] !== "0".padStart(2, 0)
@@ -320,31 +319,54 @@ let InvoiceComponent = (props) => {
                       </div>
                     );
                   })}
-
-                  <div style={{ margin: "10px" }} className=" text-left ">
-                    <Label className="float-left font-weight-bold">
-                      Upload Scan Copy Of Invoice
-                    </Label>
-                    <Input
-                      style={{ padding: "20px" }}
-                      type="file"
-                      name="invoicePhoto"
-                      accept="image/*"
-                      onChange={(event) => {
-                        setFieldValue(
-                          "invoicePhoto",
-                          event.currentTarget.files[0]
-                        );
-                      }}
-                    />
-
-                    {touched.invoicePhoto && values.invoicePhoto && (
-                      <img
-                        src={URL.createObjectURL(values.invoicePhoto)}
-                        alt="no file"
-                        height="20"
+                  <div className="row">
+                    <div className="mt-4 col-5">
+                      <Label className="font-weight-bold">Invoice No</Label>
+                      <Input
+                        type="text"
+                        name="InvoiceId"
+                        value={values.InvoiceId}
+                        placeholder="Expense Heading"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                       />
-                    )}
+                      {touched.InvoiceId && errors.InvoiceId && (
+                        <span
+                          className="text-danger col-md-12 text-left mb-2"
+                          style={{ fontSize: 12 }}
+                        >
+                          {errors.InvoiceId}
+                        </span>
+                      )}
+                    </div>
+                    <div
+                      style={{ margin: "10px" }}
+                      className=" text-left col-5 "
+                    >
+                      <Label className="float-left font-weight-bold">
+                        Upload Scan Copy Of Invoice
+                      </Label>
+                      <Input
+                        style={{ padding: "20px" }}
+                        type="file"
+                        name="invoicePhoto"
+                        accept="image/*"
+                        onChange={(event) => {
+                          setFieldValue(
+                            "invoicePhoto",
+                            event.currentTarget.files[0]
+                          );
+                        }}
+                      />
+
+                      {touched.invoicePhoto && values.invoicePhoto && (
+                        <img
+                          src={URL.createObjectURL(values.invoicePhoto)}
+                          alt="no file"
+                          height="20"
+                        />
+                      )}
+                    </div>
                   </div>
 
                   <button
