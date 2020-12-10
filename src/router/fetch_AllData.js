@@ -22,7 +22,7 @@ let FetchData = (props) => {
   };
   useEffect(() => {
     allData();
-  }, []);
+  }, [allData]);
 
   let BrokerCompanyData = () => {
     Axios({
