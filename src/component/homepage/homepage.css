@@ -23,7 +23,7 @@
 
 .dashboard-card-income-expense {
   height: 220px;
-  /* width: 300px; */
+  width: 100%;
   color: #000;
   background: #fff;
   border-radius: 10px;
@@ -147,22 +147,23 @@
 
 .income-expense-card-container {
   /* min-height: 500px; */
-  width: 100%;
+  width: 80%;
   /* background: orange; */
   /* display: flex;
   justify-content: space-between; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  /* justify-self: center; */
   grid-gap: 20px;
-  margin: 2rem 0;
+  margin: 2rem auto;
   padding: 0px 20px;
 }
 
 .income-expense-card {
   background: #fff;
   /* width: 100%; */
-  /* max-width: 270px;
-  min-width: 270px; */
+  /* max-width: 270px;*/
+  /* min-width: 270px; */
   /* box-shadow: 1px 1px 9px 9px rgba(0, 0, 0, 0.4); */
   /* margin: 0 1rem; */
   padding: 1rem;
@@ -262,8 +263,8 @@
 } */
 
 .canvas-container {
-  height: 600px;
-  width: 600px;
+  height: 900px;
+  width: 900px;
   display: flex;
   flex-direction: column;
   margin: 1rem auto;
