@@ -285,7 +285,7 @@
 }
 
 @media (max-width: 414px) {
-  .canvas-container {
+  /* .canvas-container {
     height: 300px !important;
     width: 400px !important;
     align-items: flex-start !important;
@@ -293,7 +293,7 @@
   .chartjs-render-monitor {
     height: 200px !important;
     width: 400px !important;
-  }
+  } */
 
   /* Centering prev and next btns */
   .prevnext-btn-group {
@@ -302,14 +302,14 @@
 }
 
 @media (max-width: 375px) {
-  .chartjs-render-monitor {
+  /* .chartjs-render-monitor {
     height: 200px !important;
     width: 350px !important;
-  }
+  } */
 }
 
 @media (max-width: 360px) {
-  .canvas-container {
+  /* .canvas-container {
     height: 300px !important;
     width: 320px !important;
     align-items: flex-start !important;
@@ -317,5 +317,5 @@
   .chartjs-render-monitor {
     height: 200px !important;
     width: 300px !important;
-  }
+  } */
 }
