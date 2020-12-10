@@ -5,7 +5,7 @@ import Axios from "axios";
 import { connect } from "react-redux";
 
 let FetchData = (props) => {
-  let allData = () => {
+  useEffect(() => {
     Invoice();
     Owner();
     BrokerCompanyData();
@@ -19,9 +19,7 @@ let FetchData = (props) => {
     DevelopementCompanyData();
     MaintananceTicketData();
     ExpensesData();
-  };
-  useEffect(() => {
-    allData();
+    // eslint-disable-next-line
   }, []);
 
   let BrokerCompanyData = () => {

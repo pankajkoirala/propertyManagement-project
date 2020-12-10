@@ -126,7 +126,7 @@ const ExpenseDisplay = (props) => {
           </div>
           <div style={{ margin: "10px", fontWeight: "bold" }}>
             <span>Total Expense :</span>
-            {totalExpenseCalculation(expensesList)}
+            AED. {totalExpenseCalculation(expensesList)}
           </div>
         </div>
 
@@ -159,7 +159,7 @@ const ExpenseDisplay = (props) => {
                         arg?.property_ID?.referenceNO
                       : "-"}
                   </td>
-                  <td>{expenseCalculationPerHead(arg?.expense_list)}</td>
+                  <td> AED.{expenseCalculationPerHead(arg?.expense_list)}</td>
                   <td>
                     <Link to={`/expense/${arg._id}`}>
                       <button className="view-btn">View Detail</button>

@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import { Form, Input, Label } from "reactstrap";
 import moment from "moment";
 import PoopUp from "../../../shared/popup";
+import { Link } from "@material-ui/core";
 
 let InvoiceComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -11,14 +12,17 @@ let InvoiceComponent = (props) => {
   const [invoiceID] = useState(
     "INVOICE-" + (Math.random() * 900000).toFixed(0)
   );
-
   let initialvalue = {
     chequeMongoId: props.Cheque._id,
     invoicePhoto: "",
     invoiceIssueDate: moment().format("YYYY-MM-DD"),
     chequeNumber: props?.Cheque?.cheque_number,
     lease_id: props?.Cheque?.lease_property?.LeaseId,
-    InvoiceId: invoiceID,
+    InvoiceId: "INVOICE-",
+    propertyId:
+      props?.Cheque?.property_id?.property_type +
+      "/" +
+      props?.Cheque?.property_id?.referenceNO,
   };
   let Invoices = [1];
   //total amount in words function
@@ -65,29 +69,33 @@ let InvoiceComponent = (props) => {
     if (!n) return;
     var str = "";
     str +=
-      n[1] !== 0
+      n[1] !== "0".padStart(2, 0)
         ? (a[Number(n[1])] || b[n[1][0]] + " " + a[n[1][1]]) + "crore "
         : "";
+
     str +=
-      n[2] !== 0
+      n[2] !== "0".padStart(2, 0)
         ? (a[Number(n[2])] || b[n[2][0]] + " " + a[n[2][1]]) + "lakh "
         : "";
     str +=
-      n[3] !== 0
+      n[3] !== "0".padStart(2, 0)
         ? (a[Number(n[3])] || b[n[3][0]] + " " + a[n[3][1]]) + "thousand "
         : "";
     str +=
-      n[4] !== 0
+      n[4] !== "0".padStart(2, 0)
         ? (a[Number(n[4])] || b[n[4][0]] + " " + a[n[4][1]]) + "hundred "
         : "";
     str +=
-      n[5] !== 0
+      (n[5] !== "0".padStart(2, 0)
         ? (str !== "" ? "and " : "") +
-          (a[Number(n[5])] || b[n[5][0]] + " " + a[n[5][1]]) +
-          "only "
-        : "";
+          (a[Number(n[5])] || b[n[5][0]] + " " + a[n[5][1]])
+        : "") + "Only";
     return setInWord(str);
   }
+
+  let downloadPDF = () => {
+    window.print();
+  };
 
   return (
     <div>
@@ -113,35 +121,21 @@ let InvoiceComponent = (props) => {
                 isSubmitting,
               }) => (
                 <Form className="">
-                  <div className="col-md-6 text-left mb-2 mt-4">
-                    <Label className="float-left">Upload Scan Copy</Label>
-                    <Input
-                      type="file"
-                      name="invoicePhoto"
-                      accept="image/*"
-                      onChange={(event) => {
-                        setFieldValue(
-                          "invoicePhoto",
-                          event.currentTarget.files[0]
-                        );
-                      }}
-                    />
-
-                    {touched.invoicePhoto && values.invoicePhoto && (
-                      <img
-                        src={URL.createObjectURL(values.invoicePhoto)}
-                        alt="no file"
-                        height="20"
-                      />
-                    )}
-                  </div>
                   {Invoices.map((inv, index) => {
                     return (
                       <div
                         style={{ marginTop: "30px", marginBottom: "30px" }}
                         key={index}
                       >
-                        <div>
+                        <div style={{ marginTop: "50px" }}>
+                          <Link
+                            style={{ float: "right" }}
+                            onClick={() => downloadPDF()}
+                          >
+                            download
+                          </Link>
+                        </div>
+                        <div style={{ marginTop: "40px" }}>
                           <h1 className="text-center">Graphene</h1>
                           <div className="text-center font-weight-bold">
                             Head Office : Graphene Pvt.Ltd,-Tripureshwor
@@ -201,6 +195,16 @@ let InvoiceComponent = (props) => {
                                   </span>
                                   <span className="font-weight-bold mx-1">
                                     {props?.Cheque?.lease_property?.LeaseId}
+                                  </span>
+                                </div>
+                                <div>
+                                  <span className="font-weight-bold mx-1">
+                                    Property :
+                                  </span>
+                                  <span className="font-weight-bold mx-1">
+                                    {props?.Cheque?.property_id?.property_type +
+                                      "/" +
+                                      props?.Cheque?.property_id?.referenceNO}
                                   </span>
                                 </div>
                               </div>
@@ -284,6 +288,7 @@ let InvoiceComponent = (props) => {
                             Total Amount
                           </b>
                           <b className="col-2  border-dark  border-bottom ">
+                            AED.
                             {props?.Cheque?.miscellaneous_amount +
                               props?.Cheque?.cheque_amount}
                           </b>
@@ -297,7 +302,7 @@ let InvoiceComponent = (props) => {
                             Vat Amount(5%)
                           </b>
                           <b className="col-2  border-dark border-bottom ">
-                            {props?.Cheque?.vat_amount}
+                            AED.{props?.Cheque?.vat_amount}
                           </b>
                         </div>
                         <div
@@ -309,6 +314,7 @@ let InvoiceComponent = (props) => {
                             Amount With VAT
                           </b>
                           <b className="col-2 border-dark">
+                            AED.{" "}
                             {
                               (inWords(
                                 props?.Cheque?.vat_amount +
@@ -325,7 +331,7 @@ let InvoiceComponent = (props) => {
                           style={{ height: "auto" }}
                           className="row mx-1 border-left border-dark border-right border-bottom"
                         >
-                          <b className="col-12 ">InWord Rs {inWord}</b>
+                          <b className="col-12 ">In Word Rs: {inWord}</b>
                         </div>
                         <div
                           style={{
@@ -339,6 +345,55 @@ let InvoiceComponent = (props) => {
                       </div>
                     );
                   })}
+                  <div style={{ marginTop: "100px" }} className="row">
+                    <div className="mt-4 col-5">
+                      <Label className="font-weight-bold">Invoice No</Label>
+                      <Input
+                        type="text"
+                        name="InvoiceId"
+                        value={values.InvoiceId}
+                        placeholder="Expense Heading"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.InvoiceId && errors.InvoiceId && (
+                        <span
+                          className="text-danger col-md-12 text-left mb-2"
+                          style={{ fontSize: 12 }}
+                        >
+                          {errors.InvoiceId}
+                        </span>
+                      )}
+                    </div>
+                    <div
+                      style={{ margin: "10px" }}
+                      className=" text-left col-5 "
+                    >
+                      <Label className="float-left font-weight-bold">
+                        Upload Scan Copy Of Invoice
+                      </Label>
+                      <Input
+                        style={{ padding: "20px" }}
+                        type="file"
+                        name="invoicePhoto"
+                        accept="image/*"
+                        onChange={(event) => {
+                          setFieldValue(
+                            "invoicePhoto",
+                            event.currentTarget.files[0]
+                          );
+                        }}
+                      />
+
+                      {touched.invoicePhoto && values.invoicePhoto && (
+                        <img
+                          src={URL.createObjectURL(values.invoicePhoto)}
+                          alt="no file"
+                          height="20"
+                        />
+                      )}
+                    </div>
+                  </div>
 
                   <button
                     type="button"

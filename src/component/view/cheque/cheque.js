@@ -214,7 +214,7 @@ const ChequeView = (props) => {
                   <td>{arg?.lease_property?.LeaseId}</td>
                   <td>{arg.cheque_number}</td>
                   <td>{moment(arg?.cheque_issueDate).format("YYYY-MM-DD")}</td>
-                  <td>{arg.cheque_amount}</td>
+                  <td>AED. {arg.cheque_amount}</td>
                   <td>{arg.cheque_remarks}</td>
                   <td
                     className={

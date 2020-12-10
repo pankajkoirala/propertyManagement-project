@@ -14,6 +14,7 @@ let InvoiceListComponent = (props) => {
   } else {
     invoiceList = invoice;
   }
+
   return (
     <>
       <div className="tenantview">
@@ -40,8 +41,10 @@ let InvoiceListComponent = (props) => {
               <th>ID Number</th>
               <th>Invoice Issue Date</th>
               <th> lease id</th>
+              <th>Property</th>
               <th>Cheque No</th>
-              <th> edit</th>
+              <th>Invoice Photo</th>
+              {/* <th> edit</th> */}
               <th>Delete</th>
             </tr>
           </thead>
@@ -53,14 +56,20 @@ let InvoiceListComponent = (props) => {
                   <td>{arg.InvoiceId}</td>
                   <td>{moment(arg.invoiceIssueDate).format("YYYY-MM-DD")}</td>
                   <td>{arg.lease_id}</td>
+                  <td>{arg.propertyId}</td>
                   <td>{arg.chequeNumber}</td>
-
                   <td>
+                    <a target={arg?.invoicePhoto} href={arg?.invoicePhoto}>
+                      Download
+                    </a>{" "}
+                  </td>
+
+                  {/* <td>
                     <Link to={`/invoice/${arg._id}`}>
                       {" "}
                       <button className="view-btn">View Detail</button>
                     </Link>{" "}
-                  </td>
+                  </td> */}
                   <td>
                     <button
                       className="delete-btn"

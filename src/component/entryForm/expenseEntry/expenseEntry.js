@@ -138,9 +138,7 @@ const ExpenseEntry = (props) => {
                             </span>
                           )}
                         </div>
-                      </div>
 
-                      <div className="row">
                         <div className="mt-4 col-md-3">
                           <Label for="exampleName">Invoice Number</Label>
                           <Input
@@ -254,57 +252,58 @@ const ExpenseEntry = (props) => {
                           ""
                         )}
                       </div>
+                      <div className="row">
+                        <div className="mt-4 col-md-3">
+                          <Label for="exampleName">Expense Heading</Label>
+                          <Input
+                            type="text"
+                            name="expense_Heading"
+                            value={expenseHeading}
+                            placeholder="Expense Heading"
+                            onChange={(e) => setExpenseHeading(e.target.value)}
+                          />
+                          {touched.expense_Heading && errors.expense_Heading && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.expense_Heading}
+                            </span>
+                          )}
+                        </div>
+                        <div className="mt-4 col-md-3">
+                          <Label for="exampleName">Amount</Label>
+                          <Input
+                            type="number"
+                            placeholder="Amount"
+                            value={expenseAmount}
+                            onChange={(e) => setExpenseAmount(e.target.value)}
+                          />
+                          {touched.expense_amount && errors.expense_amount && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.expense_amount}
+                            </span>
+                          )}
+                        </div>
 
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Expense Heading</Label>
-                        <Input
-                          type="text"
-                          name="expense_Heading"
-                          value={expenseHeading}
-                          placeholder="Expense Heading"
-                          onChange={(e) => setExpenseHeading(e.target.value)}
-                        />
-                        {touched.expense_Heading && errors.expense_Heading && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.expense_Heading}
-                          </span>
-                        )}
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-sm addbtn-expense"
+                          disabled={!expenseHeading || !expenseAmount}
+                          onClick={() =>
+                            addExpense({
+                              expenseHead: expenseHeading,
+                              expenseAmount: expenseAmount,
+                              expenseId: uuidv4(),
+                            })
+                          }
+                        >
+                          add
+                        </button>
                       </div>
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Amount</Label>
-                        <Input
-                          type="number"
-                          placeholder="Amount"
-                          value={expenseAmount}
-                          onChange={(e) => setExpenseAmount(e.target.value)}
-                        />
-                        {touched.expense_amount && errors.expense_amount && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.expense_amount}
-                          </span>
-                        )}
-                      </div>
-
-                      <button
-                        type="button"
-                        className="btn btn-secondary btn-sm addbtn-expense"
-                        disabled={!expenseHeading || !expenseAmount}
-                        onClick={() =>
-                          addExpense({
-                            expenseHead: expenseHeading,
-                            expenseAmount: expenseAmount,
-                            expenseId: uuidv4(),
-                          })
-                        }
-                      >
-                        add
-                      </button>
                     </div>
 
                     <div className="col-md-6 text-left mb-2 mt-4">
