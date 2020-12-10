@@ -22,8 +22,6 @@ let FetchData = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  console.log("hgadsadghjaaljsalkdjksjkdjaskjdlkajsdkajdlkad");
-
   let BrokerCompanyData = () => {
     Axios({
       method: "get",
