@@ -5,7 +5,7 @@ import Axios from "axios";
 import { connect } from "react-redux";
 
 let FetchData = (props) => {
-  let allData = () => {
+  useEffect(() => {
     Invoice();
     Owner();
     BrokerCompanyData();
@@ -19,10 +19,10 @@ let FetchData = (props) => {
     DevelopementCompanyData();
     MaintananceTicketData();
     ExpensesData();
-  };
-  useEffect(() => {
-    allData();
-  }, [allData]);
+    // eslint-disable-next-line
+  }, []);
+
+  console.log("hgadsadghjaaljsalkdjksjkdjaskjdlkajsdkajdlkad");
 
   let BrokerCompanyData = () => {
     Axios({
