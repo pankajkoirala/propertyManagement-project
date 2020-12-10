@@ -11,7 +11,6 @@ let InvoiceComponent = (props) => {
   const [invoiceID] = useState(
     "INVOICE-" + (Math.random() * 900000).toFixed(0)
   );
-
   let initialvalue = {
     chequeMongoId: props.Cheque._id,
     invoicePhoto: "",
@@ -19,6 +18,10 @@ let InvoiceComponent = (props) => {
     chequeNumber: props?.Cheque?.cheque_number,
     lease_id: props?.Cheque?.lease_property?.LeaseId,
     InvoiceId: "INVOICE-",
+    propertyId:
+      props?.Cheque?.property_id?.property_type +
+      "/" +
+      props?.Cheque?.property_id?.referenceNO,
   };
   let Invoices = [1];
   //total amount in words function
@@ -179,6 +182,16 @@ let InvoiceComponent = (props) => {
                                   </span>
                                   <span className="font-weight-bold mx-1">
                                     {props?.Cheque?.lease_property?.LeaseId}
+                                  </span>
+                                </div>
+                                <div>
+                                  <span className="font-weight-bold mx-1">
+                                    Property :
+                                  </span>
+                                  <span className="font-weight-bold mx-1">
+                                    {props?.Cheque?.property_id?.property_type +
+                                      "/" +
+                                      props?.Cheque?.property_id?.referenceNO}
                                   </span>
                                 </div>
                               </div>

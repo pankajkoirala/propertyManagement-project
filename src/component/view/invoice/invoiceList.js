@@ -7,6 +7,7 @@ import moment from "moment";
 let InvoiceListComponent = (props) => {
   let [invoice, SetInvoice] = useState([]);
   let invoiceList = props.invoiceList.slice().reverse();
+  console.log("asdasfasdasfafafs", props);
 
   if (invoice.length === 0) {
     invoice = invoiceList;
@@ -37,6 +38,7 @@ let InvoiceListComponent = (props) => {
               <th>ID Number</th>
               <th>Invoice Issue Date</th>
               <th> lease id</th>
+              <th>Property</th>
               <th>Cheque No</th>
               <th> edit</th>
               <th>Delete</th>
@@ -50,6 +52,7 @@ let InvoiceListComponent = (props) => {
                   <td>{arg.InvoiceId}</td>
                   <td>{moment(arg.invoiceIssueDate).format("YYYY-MM-DD")}</td>
                   <td>{arg.lease_id}</td>
+                  <td>{arg.propertyId}</td>
                   <td>{arg.chequeNumber}</td>
 
                   <td>
