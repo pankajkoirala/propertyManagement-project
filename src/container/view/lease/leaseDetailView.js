@@ -11,6 +11,7 @@ let LeaseDetailView = (props) => {
   const [property, setProperty] = useState([]);
   useEffect(() => {
     unreserveProperty();
+    // eslint-disable-next-line
   }, []);
   const { id } = useParams();
 
