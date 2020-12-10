@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import { Form, Input, Label } from "reactstrap";
 import moment from "moment";
 import PoopUp from "../../../shared/popup";
+import { Link } from "@material-ui/core";
 
 let InvoiceComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -92,6 +93,10 @@ let InvoiceComponent = (props) => {
     return setInWord(str);
   }
 
+  let downloadPDF = () => {
+    window.print();
+  };
+
   return (
     <div>
       <div>
@@ -122,7 +127,15 @@ let InvoiceComponent = (props) => {
                         style={{ marginTop: "30px", marginBottom: "30px" }}
                         key={index}
                       >
-                        <div>
+                        <div style={{ marginTop: "50px" }}>
+                          <Link
+                            style={{ float: "right" }}
+                            onClick={() => downloadPDF()}
+                          >
+                            download
+                          </Link>
+                        </div>
+                        <div style={{ marginTop: "40px" }}>
                           <h1 className="text-center">Graphene</h1>
                           <div className="text-center font-weight-bold">
                             Head Office : Graphene Pvt.Ltd,-Tripureshwor
@@ -332,7 +345,7 @@ let InvoiceComponent = (props) => {
                       </div>
                     );
                   })}
-                  <div className="row">
+                  <div style={{ marginTop: "100px" }} className="row">
                     <div className="mt-4 col-5">
                       <Label className="font-weight-bold">Invoice No</Label>
                       <Input
