@@ -98,13 +98,13 @@ let ChequeDetailViewComponent = (props) => {
                           {arg.cheque_number}
                         </div>
                         <div className="font-weight-bold my-1">
-                          {arg.cheque_amount}
+                          AED. {arg.cheque_amount}
                         </div>
                         <div className="font-weight-bold my-1">
-                          {arg.vat_amount}
+                          AED. {arg.vat_amount}
                         </div>
                         <div className="font-weight-bold my-1">
-                          {arg.miscellaneous_amount}
+                          AED. {arg.miscellaneous_amount}
                         </div>
                         <div className="font-weight-bold my-1">
                           {moment(arg.cheque_issueDate).format("YYYY-MM-DD")}

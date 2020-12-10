@@ -49,8 +49,8 @@ let DashboardIncomeComponent = (props) => {
     IncreasingYears
   );
   return (
-    <div>
-      <div >
+    <div style={{ margin: "20px" }}>
+      <div>
         <h1>Income list</h1>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ margin: "10px" }}>
@@ -147,9 +147,9 @@ let DashboardIncomeComponent = (props) => {
                   <td>{moment(arg?.cheque_entryDate).format("YYYY-MM-DD")}</td>
                   <td>{moment(arg?.cheque_issueDate).format("YYYY-MM-DD")}</td>
 
-                  <td>{arg?.cheque_amount}</td>
-                  <td>{arg?.vat_amount}</td>
-                  <td>{arg?.miscellaneous_amount}</td>
+                  <td>AED. {arg?.cheque_amount}</td>
+                  <td>AED. {arg?.vat_amount}</td>
+                  <td>AED. {arg?.miscellaneous_amount}</td>
                   <td>
                     {arg?.property_id?.property_type +
                       "/" +

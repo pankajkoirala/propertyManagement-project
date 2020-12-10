@@ -1,5 +1,5 @@
 import React from "react";
-import LeaseEntryFormComponent from "../../../component/entryForm/lease/lease";
+import LeaseEntryFormComp from "../../../component/entryForm/lease/lease";
 import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { connect } from "react-redux";
@@ -19,7 +19,6 @@ const LeaseEntry = (props) => {
     formData.append("expirationDate", data.expirationDate);
     formData.append("rentAmount", data.rentAmount);
     formData.append("frequency", data.frequency);
-
     formData.append("securityDeposite", data.securityDeposite);
     formData.append("property", data.property);
 
@@ -56,7 +55,7 @@ const LeaseEntry = (props) => {
 
   return (
     <div>
-      <LeaseEntryFormComponent
+      <LeaseEntryFormComp
         leaseData={leaseData}
         unReserveProperty={unReserveProperty}
         redux_tenantData={props.redux_tenantData}
