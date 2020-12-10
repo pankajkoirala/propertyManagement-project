@@ -89,6 +89,7 @@ const Homepage = (props) => {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr) )",
             gridGap: "20px",
+            padding: "0px 20px",
             // display: "flex",
             // justifyContent: "space-between",
           }}
