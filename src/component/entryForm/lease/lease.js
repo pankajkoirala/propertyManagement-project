@@ -50,7 +50,6 @@ const LeaseEntry = (props) => {
     ) / 100;
 
   let addedDays = [];
-
   for (let index = 0; index < noOfPayment.toFixed(0); index++) {
     let days = paymentTime * index;
     addedDays.push(days);
@@ -58,17 +57,10 @@ const LeaseEntry = (props) => {
 
   return (
     <div className="form-group m-5 p-4">
-      <div className="row">
-        <div className="col-12 text-center">
-          <h3 className="form-head">Lease Term Detail </h3>
-        </div>
-        <br />
-      </div>
       <Formik
         initialValues={initialvalue}
         onSubmit={(values) => {
           setLoadingState(true);
-
           typeof allFile[0].file === "string"
             ? (values.files_list = JSON.stringify(allFile))
             : (values.files_list = "");
@@ -91,11 +83,16 @@ const LeaseEntry = (props) => {
           <Form>
             <FormGroup>
               <div className="row">
+                <div className="col-12 text-center">
+                  <h3 className="form-head">Lease Term Detail </h3>
+                </div>
+                <br />
+              </div>
+              <div className="row">
                 <h4 className="col-12 mt-2 ml-2 mr-2 form-head">
                   General Information
                 </h4>
               </div>
-
               <div className="row ">
                 <div className="col-md-4">
                   <Label for="exampleName">Lease Entered On</Label>
@@ -119,7 +116,6 @@ const LeaseEntry = (props) => {
                 </div>
                 <div className="col-md-4">
                   <Label for="exampleSelect">Tenants(s)</Label>
-
                   <RegexConponent
                     {...props}
                     setFieldValue={setFieldValue}
@@ -144,7 +140,6 @@ const LeaseEntry = (props) => {
                 </div>
                 <div className="col-md-4">
                   <Label for="exampleSelect">Property</Label>
-
                   <RegexConponent
                     setFieldValue={setFieldValue}
                     options={props.unReserveProperty.map((property) => {
@@ -156,7 +151,6 @@ const LeaseEntry = (props) => {
                     })}
                     name={"property"}
                   />
-
                   <div style={{ marginTop: "40px" }}>
                     {touched.property && errors.property && (
                       <span
@@ -169,7 +163,6 @@ const LeaseEntry = (props) => {
                   </div>
                 </div>
               </div>
-
               <div className="row ">
                 <div className="col-md-4">
                   <Label for="exampleSelect">Lease Terms</Label>
@@ -185,7 +178,6 @@ const LeaseEntry = (props) => {
                     <option value="monthToMonth">Month to Month</option>
                     <option value="fixedTerm">Fixed Terms</option>
                   </Input>
-
                   {touched.lease_Term && errors.lease_Term && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -208,7 +200,6 @@ const LeaseEntry = (props) => {
                       values.commenceDate)
                     }
                   ></Input>
-
                   {touched.commenceDate && errors.commenceDate && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -253,7 +244,6 @@ const LeaseEntry = (props) => {
                     onBlur={handleBlur}
                     value={values.rentAmount}
                   ></Input>
-
                   {touched.rentAmount && errors.rentAmount && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -263,7 +253,6 @@ const LeaseEntry = (props) => {
                     </span>
                   )}
                 </div>
-
                 <div className="col-4">
                   <Label for="exampleName">Frequency</Label>
                   <Input
@@ -298,7 +287,6 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
               </div>
-
               <div className="row">
                 <div className="col-md-4">
                   <Label for="exampleSelect">Security Deposit</Label>
@@ -310,7 +298,6 @@ const LeaseEntry = (props) => {
                     onBlur={handleBlur}
                     value={values.securityDeposite}
                   ></Input>
-
                   {touched.securityDeposite && errors.securityDeposite && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -410,7 +397,6 @@ const LeaseEntry = (props) => {
                         <tbody key={index}>
                           <tr>
                             <td>{index + 1}</td>
-
                             <td className="font-weight-bold">{arg.fileName}</td>
                             <td>
                               <img
@@ -482,10 +468,7 @@ const LeaseEntry = (props) => {
                         <th>remark</th>
                       </tr>
                     </thead>
-                  ) : (
-                    ""
-                  )}
-
+                  ) : null}
                   {props?.lease?.commenceDate ||
                   (commerceDate && props?.lease?.expirationDate) ||
                   (expireDate && props?.lease?.frequency) ||
@@ -500,19 +483,11 @@ const LeaseEntry = (props) => {
                                   .add(arg, "days")
                                   .format("DD-MM-YYYY")}
                               </td>
-                              <td
-                                style={{
-                                  height: "10px",
-                                  width: "10px",
-                                  backgroundColor: "red",
-                                  borderRadius: "50%",
-                                }}
-                              ></td>
                             </tr>
                           </tbody>
                         );
                       })
-                    : ""}
+                    : null}
                 </tbody>
               </Table>
             </FormGroup>

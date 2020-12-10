@@ -121,7 +121,7 @@ let ExpenseDetailViewComponent = (props) => {
                           <tr>
                             <th scope="row">{index + 1}</th>
                             <td>{exp?.expenseHead}</td>
-                            <td>{exp?.expenseAmount}</td>
+                            <td>AED.{exp?.expenseAmount}</td>
                           </tr>
                         </tbody>
                       </Table>

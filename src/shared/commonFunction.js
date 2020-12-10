@@ -87,9 +87,9 @@ export const totalIncomeCalculation = (allCheque) => {
   // });
   return (
     <div>
-      <div>Total Income : {totalIncome}</div>
-      <div>Total VAT :{TotalVat}</div>
-      <div>Total Miscelleneous :{TotalMiscelleneous}</div>
+      <div>Total Income : AED.{totalIncome}</div>
+      <div>Total VAT : AED.{TotalVat}</div>
+      <div>Total Miscelleneous : AED.{TotalMiscelleneous}</div>
     </div>
   );
 };

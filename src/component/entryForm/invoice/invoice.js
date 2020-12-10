@@ -63,29 +63,30 @@ let InvoiceComponent = (props) => {
       .substr(-9)
       .match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
     if (!n) return;
+    console.log(n[1]);
     var str = "";
     str +=
-      n[1] !== 0
+      n[1] !== "0".padStart(2, 0)
         ? (a[Number(n[1])] || b[n[1][0]] + " " + a[n[1][1]]) + "crore "
         : "";
+
     str +=
-      n[2] !== 0
+      n[2] !== "0".padStart(2, 0)
         ? (a[Number(n[2])] || b[n[2][0]] + " " + a[n[2][1]]) + "lakh "
         : "";
     str +=
-      n[3] !== 0
+      n[3] !== "0".padStart(2, 0)
         ? (a[Number(n[3])] || b[n[3][0]] + " " + a[n[3][1]]) + "thousand "
         : "";
     str +=
-      n[4] !== 0
+      n[4] !== "0".padStart(2, 0)
         ? (a[Number(n[4])] || b[n[4][0]] + " " + a[n[4][1]]) + "hundred "
         : "";
     str +=
-      n[5] !== 0
+      (n[5] !== "0".padStart(2, 0)
         ? (str !== "" ? "and " : "") +
-          (a[Number(n[5])] || b[n[5][0]] + " " + a[n[5][1]]) +
-          "only "
-        : "";
+          (a[Number(n[5])] || b[n[5][0]] + " " + a[n[5][1]])
+        : "") + "Only";
     return setInWord(str);
   }
 
@@ -113,28 +114,6 @@ let InvoiceComponent = (props) => {
                 isSubmitting,
               }) => (
                 <Form className="">
-                  <div className="col-md-6 text-left mb-2 mt-4">
-                    <Label className="float-left">Upload Scan Copy</Label>
-                    <Input
-                      type="file"
-                      name="invoicePhoto"
-                      accept="image/*"
-                      onChange={(event) => {
-                        setFieldValue(
-                          "invoicePhoto",
-                          event.currentTarget.files[0]
-                        );
-                      }}
-                    />
-
-                    {touched.invoicePhoto && values.invoicePhoto && (
-                      <img
-                        src={URL.createObjectURL(values.invoicePhoto)}
-                        alt="no file"
-                        height="20"
-                      />
-                    )}
-                  </div>
                   {Invoices.map((inv, index) => {
                     return (
                       <div
@@ -284,6 +263,7 @@ let InvoiceComponent = (props) => {
                             Total Amount
                           </b>
                           <b className="col-2  border-dark  border-bottom ">
+                            AED.
                             {props?.Cheque?.miscellaneous_amount +
                               props?.Cheque?.cheque_amount}
                           </b>
@@ -297,7 +277,7 @@ let InvoiceComponent = (props) => {
                             Vat Amount(5%)
                           </b>
                           <b className="col-2  border-dark border-bottom ">
-                            {props?.Cheque?.vat_amount}
+                            AED.{props?.Cheque?.vat_amount}
                           </b>
                         </div>
                         <div
@@ -309,6 +289,7 @@ let InvoiceComponent = (props) => {
                             Amount With VAT
                           </b>
                           <b className="col-2 border-dark">
+                            AED.{" "}
                             {
                               (inWords(
                                 props?.Cheque?.vat_amount +
@@ -325,7 +306,7 @@ let InvoiceComponent = (props) => {
                           style={{ height: "auto" }}
                           className="row mx-1 border-left border-dark border-right border-bottom"
                         >
-                          <b className="col-12 ">InWord Rs {inWord}</b>
+                          <b className="col-12 ">In Word Rs: {inWord}</b>
                         </div>
                         <div
                           style={{
@@ -339,6 +320,32 @@ let InvoiceComponent = (props) => {
                       </div>
                     );
                   })}
+
+                  <div style={{ margin: "10px" }} className=" text-left ">
+                    <Label className="float-left font-weight-bold">
+                      Upload Scan Copy Of Invoice
+                    </Label>
+                    <Input
+                      style={{ padding: "20px" }}
+                      type="file"
+                      name="invoicePhoto"
+                      accept="image/*"
+                      onChange={(event) => {
+                        setFieldValue(
+                          "invoicePhoto",
+                          event.currentTarget.files[0]
+                        );
+                      }}
+                    />
+
+                    {touched.invoicePhoto && values.invoicePhoto && (
+                      <img
+                        src={URL.createObjectURL(values.invoicePhoto)}
+                        alt="no file"
+                        height="20"
+                      />
+                    )}
+                  </div>
 
                   <button
                     type="button"

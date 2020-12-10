@@ -191,7 +191,7 @@ const Homepage = (props) => {
                   ></div>
                   <div className="key-value">
                     <p className="key">Rental Income</p>
-                    <p className="value">Rs.{rentalIncome_month}/-</p>
+                    <p className="value">AED.{rentalIncome_month}/-</p>
                   </div>
                 </div>
                 <div className="one-line">
@@ -207,7 +207,7 @@ const Homepage = (props) => {
                   ></div>
                   <div className="key-value">
                     <p className="key"> Vat Income</p>
-                    <p className="value">Rs.{vatIncome_month}/-</p>
+                    <p className="value">AED.{vatIncome_month}/-</p>
                   </div>
                 </div>
 
@@ -224,7 +224,7 @@ const Homepage = (props) => {
                   ></div>
                   <div className="key-value">
                     <p className="key">Other Income</p>
-                    <p className="value">Rs.{miscellaneousIncome_month}/-</p>
+                    <p className="value">AED.{miscellaneousIncome_month}/-</p>
                   </div>
                 </div>
               </div>
@@ -288,7 +288,7 @@ const Homepage = (props) => {
                   ></div>
                   <div className="key-value">
                     <p className="key">Rental Income</p>
-                    <p className="value">Rs.{rentalIncome_Year}/-</p>
+                    <p className="value">AED.{rentalIncome_Year}/-</p>
                   </div>
                 </div>
                 <div className="one-line">
@@ -304,7 +304,7 @@ const Homepage = (props) => {
                   ></div>
                   <div className="key-value">
                     <p className="key">Vat Income</p>
-                    <p className="value">Rs.{vatIncome_Year}/-</p>
+                    <p className="value">AED.{vatIncome_Year}/-</p>
                   </div>
                 </div>
                 <div className="one-line">
@@ -320,7 +320,7 @@ const Homepage = (props) => {
                   ></div>
                   <div className="key-value">
                     <p className="key">Other Income</p>
-                    <p className="value">Rs.{miscellaneousIncome_Year}/-</p>
+                    <p className="value">AED.{miscellaneousIncome_Year}/-</p>
                   </div>
                 </div>
               </div>
@@ -432,7 +432,7 @@ const Homepage = (props) => {
                   <div className="key-value">
                     <p className="key">Maintanance</p>
                     <p className="value">
-                      Rs.
+                      AED.
                       {expenseCalculationByMonthAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_month,
@@ -456,7 +456,7 @@ const Homepage = (props) => {
                   <div className="key-value">
                     <p className="key">Legal</p>
                     <p className="value">
-                      Rs.
+                      AED.
                       {expenseCalculationByMonthAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_month,
@@ -480,7 +480,7 @@ const Homepage = (props) => {
                   <div className="key-value">
                     <p className="key">FMC</p>
                     <p className="value">
-                      Rs.
+                      AED.
                       {expenseCalculationByMonthAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_month,
@@ -505,7 +505,7 @@ const Homepage = (props) => {
                     <p className="key">Utility</p>
                     <p className="value">
                       {" "}
-                      Rs.
+                      AED.
                       {expenseCalculationByMonthAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_month,
@@ -530,7 +530,7 @@ const Homepage = (props) => {
                     <p className="key">Office Expense</p>
                     <p className="value">
                       {" "}
-                      Rs.
+                      AED.
                       {expenseCalculationByMonthAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_month,
@@ -554,7 +554,7 @@ const Homepage = (props) => {
                   <div className="key-value">
                     <p className="key">Service Charge</p>
                     <p className="value">
-                      Rs.
+                      AED.
                       {expenseCalculationByMonthAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_month,
@@ -676,7 +676,7 @@ const Homepage = (props) => {
                     <p className="key">Maintanance</p>
                     <p className="value">
                       {" "}
-                      Rs.
+                      AED.
                       {expenseCalculationByYearAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_year,
@@ -700,7 +700,7 @@ const Homepage = (props) => {
                   <div className="key-value">
                     <p className="key">Legal</p>
                     <p className="value">
-                      Rs.
+                      AED.
                       {expenseCalculationByYearAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_year,
@@ -725,7 +725,7 @@ const Homepage = (props) => {
                     <p className="key">FMC</p>
                     <p className="value">
                       {" "}
-                      Rs.
+                      AED.
                       {expenseCalculationByYearAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_year,
@@ -749,7 +749,7 @@ const Homepage = (props) => {
                   <div className="key-value">
                     <p className="key">Utility</p>
                     <p className="value">
-                      Rs.
+                      AED.
                       {expenseCalculationByYearAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_year,
@@ -773,7 +773,7 @@ const Homepage = (props) => {
                   <div className="key-value">
                     <p className="key">Office</p>
                     <p className="value">
-                      Rs.
+                      AED.
                       {expenseCalculationByYearAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_year,
@@ -797,7 +797,7 @@ const Homepage = (props) => {
                   <div className="key-value">
                     <p className="key">Service Charge</p>
                     <p className="value">
-                      Rs.
+                      AED.
                       {expenseCalculationByYearAndType(
                         props?.redux_ExpenseData?.expense,
                         ExpenseDate_year,
@@ -867,7 +867,7 @@ const Homepage = (props) => {
                     fontSize: "28px",
                   }}
                 >
-                  {totalYearIncome}
+                  AED. {totalYearIncome}
                 </span>
               </div>
 
@@ -889,7 +889,7 @@ const Homepage = (props) => {
                     fontSize: "28px",
                   }}
                 >
-                  {totalYearExpense}
+                  AED. {totalYearExpense}
                 </span>
               </div>
             </div>
