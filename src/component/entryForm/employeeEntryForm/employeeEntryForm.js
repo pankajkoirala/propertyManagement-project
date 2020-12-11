@@ -34,7 +34,7 @@ const TenantEntry = (props) => {
     setAllFile(allFile.filter((file) => file.fileName !== name));
   };
   return (
-    <div>
+    <div style={{ margin: "40px" }}>
       <div>
         <div>
           <Formik
@@ -369,16 +369,15 @@ const TenantEntry = (props) => {
                       </div>
                     </div>
                   </div>
-                  
-                  {touched.files_list &&
-                          errors.files_list && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.files_list}
-                            </span>
-                          )}
+
+                  {touched.files_list && errors.files_list && (
+                    <span
+                      className="text-danger col-md-12 text-left mb-2"
+                      style={{ fontSize: 12 }}
+                    >
+                      {errors.files_list}
+                    </span>
+                  )}
                   {allFile.length !== 0 ? (
                     <Table striped bordered hover size="sm">
                       <thead>

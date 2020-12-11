@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Table } from "reactstrap";
 import SearchInput from "./../../../shared/filterListData";
 import moment from "moment";
-
 import "./invoiceList.css";
+import PoopUp from "./../../../shared/popup";
+
 let InvoiceListComponent = (props) => {
   let [invoice, SetInvoice] = useState([]);
+  const [showPopup, setShowPopUp] = useState(false);
+
   let invoiceList = props.invoiceList.slice().reverse();
 
   if (invoice.length === 0) {
@@ -61,7 +62,7 @@ let InvoiceListComponent = (props) => {
                   <td>
                     <a target={arg?.invoicePhoto} href={arg?.invoicePhoto}>
                       Download
-                    </a>{" "}
+                    </a>
                   </td>
 
                   {/* <td>
@@ -73,10 +74,18 @@ let InvoiceListComponent = (props) => {
                   <td>
                     <button
                       className="delete-btn"
-                      onClick={() => props.InvoiceDelete(arg._id)}
+                      onClick={() => setShowPopUp(true)}
                     >
                       Delete
                     </button>
+                    <PoopUp
+                      isOpen={showPopup}
+                      isClose={setShowPopUp}
+                      CRUD_Function={props.InvoiceDelete}
+                      id={arg._id}
+                      buttonName={"Delete"}
+                      message={"are you sure want to delete"}
+                    />
                   </td>
                 </tr>
               </tbody>

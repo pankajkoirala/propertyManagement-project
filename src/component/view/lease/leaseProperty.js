@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { Table } from "react-bootstrap";
 import SearchInput from "./../../../shared/filterListData";
 
 import "./leaseProperty.css";

@@ -150,12 +150,9 @@ const Homepage = (props) => {
             className="income-expense-card income-card income-by-month-card"
           >
             <h5 className="">
-<<<<<<< HEAD
-              Income Status by Month<br/><br/>
-=======
-              Income Status by Month <br />
+              Income Status by Month
               <br />
->>>>>>> c4ce41f9a26a06400cc04ebb5d80de13dfb85853
+              <br />
               <span className="date-highlight">
                 {data?.labels[chequeDate_month - 1]}
               </span>
@@ -258,12 +255,8 @@ const Homepage = (props) => {
             className="income-expense-card income-card income-by-year-card"
           >
             <h5 className="">
-<<<<<<< HEAD
-              Income Status by Year{" "}<br/><br/>
-=======
               Income Status by Year <br />
               <br />
->>>>>>> c4ce41f9a26a06400cc04ebb5d80de13dfb85853
               <span className="date-highlight"> {chequeDate_year}</span>
             </h5>
             <div className="">
@@ -360,12 +353,9 @@ const Homepage = (props) => {
             className="income-expense-card expense-card expense-by-month-card"
           >
             <h5>
-<<<<<<< HEAD
-              Expense Status by Month<br/><br/>
-=======
-              Expense Status by Month <br />
+              Expense Status by Month
               <br />
->>>>>>> c4ce41f9a26a06400cc04ebb5d80de13dfb85853
+              <br />
               <span className="date-highlight">
                 {data?.labels[ExpenseDate_month - 1]}
               </span>
@@ -610,12 +600,9 @@ const Homepage = (props) => {
             className="income-expense-card expense-card expense-by-year-card"
           >
             <h5 className="">
-<<<<<<< HEAD
-              Expense Status by Year<br/><br/>
-=======
-              Expense Status by Year <br />
+              Expense Status by Year
               <br />
->>>>>>> c4ce41f9a26a06400cc04ebb5d80de13dfb85853
+              <br />
               <span className="date-highlight">{ExpenseDate_year}</span>
             </h5>
             <div className="">

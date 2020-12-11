@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { Table, Input } from "reactstrap";
+import { Input } from "reactstrap";
 import SearchInput from "./../../../shared/filterListData";
 
 import "./expense.css";
