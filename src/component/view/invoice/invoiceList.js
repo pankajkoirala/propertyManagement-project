@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import SearchInput from "./../../../shared/filterListData";
 import moment from "moment";
 import "./invoiceList.css";
-import PoopUp from "./../../../shared/popup";
 
 let InvoiceListComponent = (props) => {
   let [invoice, SetInvoice] = useState([]);
-  const [showPopup, setShowPopUp] = useState(false);
 
   let invoiceList = props.invoiceList.slice().reverse();
 
@@ -74,18 +72,10 @@ let InvoiceListComponent = (props) => {
                   <td>
                     <button
                       className="delete-btn"
-                      onClick={() => setShowPopUp(true)}
+                      onClick={() => props.InvoiceDelete(arg._id)}
                     >
                       Delete
                     </button>
-                    <PoopUp
-                      isOpen={showPopup}
-                      isClose={setShowPopUp}
-                      CRUD_Function={props.InvoiceDelete}
-                      id={arg._id}
-                      buttonName={"Delete"}
-                      message={"are you sure want to delete"}
-                    />
                   </td>
                 </tr>
               </tbody>
