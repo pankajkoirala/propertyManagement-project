@@ -42,56 +42,69 @@ const PropertyView = (props) => {
             setFilteredData={setProperties}
             allData={props.propertyData}
           />
-          <Button onClick={() => setPropertySort(!propertySort)}>Sort</Button>
+          <button
+            style={{
+              backgroundColor: "#28a745",
+              border: "none",
+              color: "white",
+              width: "80px",
+              borderRadius: "32px",
+            }}
+            onClick={() => setPropertySort(!propertySort)}
+          >
+            Sort
+          </button>
         </div>
 
         {propertySort === true ? (
-          <table id="propertyview-table">
-            <thead>
-              <tr>
-                <th>ID Number</th>
-                <th>Property ID</th>
-                <th> Property Type</th>
-                <th>Investment</th>
-                <th>Community</th>
-                <th>Status</th>
-                <th>Remarks</th>
-              </tr>
-            </thead>
-            {propertyList.map((arg, index) => {
-              return (
-                <tbody key={index}>
-                  <tr>
-                    <td>{index + 1}</td>
-                    <td>{arg.referenceNO}</td>
-                    <td>{arg.property_type}</td>
-                    <td>{arg.property_price}</td>
-                    <td>{arg.property_community}</td>
-                    <td>
-                      {props.LeasePropertyId.some(
-                        (arg1) => arg1 === arg._id
-                      ) === true ? (
-                        <span className="text-danger font-weight-bold">
-                          Occupied
-                        </span>
-                      ) : (
-                        <span className="text-success font-weight-bold">
-                          Vacant
-                        </span>
-                      )}
-                    </td>
+          <div style={{ overflowX: "auto" }}>
+            <table id="propertyview-table">
+              <thead>
+                <tr>
+                  <th>ID Number</th>
+                  <th>Property ID</th>
+                  <th> Property Type</th>
+                  <th>Investment</th>
+                  <th>Community</th>
+                  <th>Status</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              {propertyList.map((arg, index) => {
+                return (
+                  <tbody key={index}>
+                    <tr>
+                      <td>{index + 1}</td>
+                      <td>{arg.referenceNO}</td>
+                      <td>{arg.property_type}</td>
+                      <td>{arg.property_price}</td>
+                      <td>{arg.property_community}</td>
+                      <td>
+                        {props.LeasePropertyId.some(
+                          (arg1) => arg1 === arg._id
+                        ) === true ? (
+                          <span className="text-danger font-weight-bold">
+                            Occupied
+                          </span>
+                        ) : (
+                          <span className="text-success font-weight-bold">
+                            Vacant
+                          </span>
+                        )}
+                      </td>
 
-                    <td>
-                      <Link to={`/propertyDetail/${arg._id}`}>
-                        {" "}
-                        <button className="view-btn">View Detail</button>
-                      </Link>{" "}
-                    </td>
-                  </tr>
-                </tbody>
-              );
-            })}
-          </table>
+                      <td>
+                        <Link to={`/propertyDetail/${arg._id}`}>
+                          {" "}
+                          <button className="view-btn">View Detail</button>
+                        </Link>{" "}
+                      </td>
+                    </tr>
+                  </tbody>
+                );
+              })}
+            </table>
+          </div>
         ) : (
           <div className="d-flex flex-wrap">
             {propertyList.map((arg1) => {

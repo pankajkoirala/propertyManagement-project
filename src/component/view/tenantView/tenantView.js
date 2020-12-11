@@ -33,40 +33,42 @@ const TenantView = (props) => {
           setFilteredData={setTenents}
           allData={props.tenant.slice().reverse()}
         />
-        <table id="tenantview-table">
-          <thead>
-            <tr>
-              <th>ID Number</th>
-              <th>tenent ID</th>
-              <th> Name</th>
-              <th>Tenant Type</th>
-              <th>Company Name</th>
-              <th>Contact Email</th>
-              <th>Remarks</th>
-            </tr>
-          </thead>
-          {tenentList.map((arg, index) => {
-            return (
-              <tbody key={index}>
-                <tr>
-                  <td>{index + 1}</td>
-                  <td>{arg.TenantId}</td>
+        <div style={{ overflowX: "auto" }}>
+          <table id="tenantview-table">
+            <thead>
+              <tr>
+                <th>ID Number</th>
+                <th>tenent ID</th>
+                <th> Name</th>
+                <th>Tenant Type</th>
+                <th>Company Name</th>
+                <th>Contact Email</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            {tenentList.map((arg, index) => {
+              return (
+                <tbody key={index}>
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{arg.TenantId}</td>
 
-                  <td>{arg.TenentType}</td>
-                  <td>{arg.tenant_Name}</td>
-                  <td>{arg.tenant_phoneNo}</td>
-                  <td>{arg.tenant_email}</td>
+                    <td>{arg.TenentType}</td>
+                    <td>{arg.tenant_Name}</td>
+                    <td>{arg.tenant_phoneNo}</td>
+                    <td>{arg.tenant_email}</td>
 
-                  <td>
-                    <Link to={`/tanent/${arg._id}`}>
-                      <button className="view-btn">View Detail</button>
-                    </Link>
-                  </td>
-                </tr>
-              </tbody>
-            );
-          })}
-        </table>
+                    <td>
+                      <Link to={`/tanent/${arg._id}`}>
+                        <button className="view-btn">View Detail</button>
+                      </Link>
+                    </td>
+                  </tr>
+                </tbody>
+              );
+            })}
+          </table>
+        </div>
       </div>
     </>
   );

@@ -32,40 +32,42 @@ const BrokerCompanyView = (props) => {
           allData={props.allBrokerCompany.slice().reverse()}
         />
 
-        <table id="brokercompany-table">
-          <thead>
-            <tr>
-              <th>ID Number</th>
-              <th>broker company id</th>
-              <th>broker company name</th>
-              <th>broker registration num</th>
-              <th>broker Contact Number</th>
-              <th>broker Contact Email</th>
-              <th>Remarks</th>
-            </tr>
-          </thead>
-          {brokerCompanyList.map((arg, index) => {
-            return (
-              <tbody key={index}>
-                <tr>
-                  <td>{index + 1}</td>
-                  <td>{arg.brokerId}</td>
-                  <td>{arg.broker_companyName}</td>
-                  <td>{arg.broker_RegistrationNumber}</td>
-                  <td>{arg.broker_phoneNo}</td>
-                  <td>{arg.broker_email}</td>
+        <div style={{ overflowX: "auto" }}>
+          <table id="brokercompany-table">
+            <thead>
+              <tr>
+                <th>ID Number</th>
+                <th>broker company id</th>
+                <th>broker company name</th>
+                <th>broker registration num</th>
+                <th>broker Contact Number</th>
+                <th>broker Contact Email</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            {brokerCompanyList.map((arg, index) => {
+              return (
+                <tbody key={index}>
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{arg.brokerId}</td>
+                    <td>{arg.broker_companyName}</td>
+                    <td>{arg.broker_RegistrationNumber}</td>
+                    <td>{arg.broker_phoneNo}</td>
+                    <td>{arg.broker_email}</td>
 
-                  <td>
-                    <Link to={`/brokerCompany/${arg._id}`}>
-                      {" "}
-                      <button className="view-btn">View Detail</button>
-                    </Link>{" "}
-                  </td>
-                </tr>
-              </tbody>
-            );
-          })}
-        </table>
+                    <td>
+                      <Link to={`/brokerCompany/${arg._id}`}>
+                        {" "}
+                        <button className="view-btn">View Detail</button>
+                      </Link>{" "}
+                    </td>
+                  </tr>
+                </tbody>
+              );
+            })}
+          </table>
+        </div>
       </div>
     </>
   );

@@ -34,45 +34,47 @@ const LeaseDisplay = (props) => {
           allData={props.lease.slice().reverse()}
         />
 
-        <table id="lease-table">
-          <thead>
-            <tr>
-              <th>SN</th>
-              <th> lease ID</th>
-              <th>tenent name</th>
-              <th>Lease term</th>
-              <th>commerce date</th>
-              <th>expire date</th>
-              <th> lease Property</th>
-            </tr>
-          </thead>
-          {leaseList.map((arg, index) => {
-            return (
-              <tbody key={index}>
-                <tr>
-                  <td>{index + 1}</td>
-                  <td>{arg.LeaseId}</td>
-                  <td>{arg?.tenants?.tenant_Name}</td>
-                  <td>{arg.lease_Term}</td>
-                  <td>{moment(arg?.commenceDate).format("YYYY-MM-DD")}</td>
-                  <td>{moment(arg?.expirationDate).format("YYYY-MM-DD")}</td>
-                  <td>
-                    {arg?.property?.property_type +
-                      "/" +
-                      arg.property?.referenceNO}
-                  </td>
+        <div style={{ overflowX: "auto" }}>
+          <table id="lease-table">
+            <thead>
+              <tr>
+                <th>SN</th>
+                <th> lease ID</th>
+                <th>tenent name</th>
+                <th>Lease term</th>
+                <th>commerce date</th>
+                <th>expire date</th>
+                <th> lease Property</th>
+              </tr>
+            </thead>
+            {leaseList.map((arg, index) => {
+              return (
+                <tbody key={index}>
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{arg.LeaseId}</td>
+                    <td>{arg?.tenants?.tenant_Name}</td>
+                    <td>{arg.lease_Term}</td>
+                    <td>{moment(arg?.commenceDate).format("YYYY-MM-DD")}</td>
+                    <td>{moment(arg?.expirationDate).format("YYYY-MM-DD")}</td>
+                    <td>
+                      {arg?.property?.property_type +
+                        "/" +
+                        arg.property?.referenceNO}
+                    </td>
 
-                  <td>
-                    <Link to={`/lease/${arg._id}`}>
-                      {" "}
-                      <button className="view-btn">View Detail</button>
-                    </Link>{" "}
-                  </td>
-                </tr>
-              </tbody>
-            );
-          })}
-        </table>
+                    <td>
+                      <Link to={`/lease/${arg._id}`}>
+                        {" "}
+                        <button className="view-btn">View Detail</button>
+                      </Link>{" "}
+                    </td>
+                  </tr>
+                </tbody>
+              );
+            })}
+          </table>
+        </div>
       </div>
     </>
   );

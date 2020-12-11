@@ -52,12 +52,18 @@ const ExpenseDisplay = (props) => {
 
   return (
     <>
-      <div style={{ margin: "10px" }}>
+      <div style={{ padding: "20px" }}>
         <div className="page-title">
           <h1>Expense list</h1>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ margin: "10px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div style={{}}>
             <SearchInput
               filteringData={props?.expenseList?.map((arg) => {
                 return {
@@ -78,7 +84,13 @@ const ExpenseDisplay = (props) => {
             />
           </div>
 
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <div style={{ margin: "4px" }}>
               <Input
                 type="select"
@@ -116,7 +128,15 @@ const ExpenseDisplay = (props) => {
               </Input>
             </div>
             <button
-              style={{ margin: "4px", height: "30px", width: "80px" }}
+              style={{
+                margin: "4px",
+                height: "34px",
+                width: "80px",
+                border: "none",
+                background: "#28a745",
+                textTransform: "capitalize",
+                color: "white",
+              }}
               onClick={() => {
                 FilterByMonthYear();
               }}
@@ -124,52 +144,56 @@ const ExpenseDisplay = (props) => {
               find
             </button>
           </div>
-          <div style={{ margin: "10px", fontWeight: "bold" }}>
+          <div style={{ fontWeight: "bold" }}>
             <span>Total Expense :</span>
             AED. {totalExpenseCalculation(expensesList)}
           </div>
         </div>
 
-        <table id="expense-table">
-          <thead>
-            <tr>
-              <th>SN</th>
-              <th> Expense ID</th>
-              <th>entry date</th>
-              <th>invoice number</th>
-              <th>Expense Type</th>
-              <th>Property </th>
-              <th>Amount</th>
-              <th>detail view</th>
-            </tr>
-          </thead>
-          {expenses?.map((arg, index) => {
-            return (
-              <tbody key={index}>
-                <tr>
-                  <td>{index + 1}</td>
-                  <td>{arg.Expense_ID}</td>
-                  <td>{moment(arg?.expense_EntryDate).format("YYYY-MM-DD")}</td>
-                  <td>{arg?.expenseInvoiceNumber}</td>
-                  <td>{arg?.expense_Type}</td>
-                  <td>
-                    {arg.expense_Type === "Maintanance"
-                      ? arg?.property_ID?.property_type +
-                        "-" +
-                        arg?.property_ID?.referenceNO
-                      : "-"}
-                  </td>
-                  <td> AED.{expenseCalculationPerHead(arg?.expense_list)}</td>
-                  <td>
-                    <Link to={`/expense/${arg._id}`}>
-                      <button className="view-btn">View Detail</button>
-                    </Link>
-                  </td>
-                </tr>
-              </tbody>
-            );
-          })}
-        </table>
+        <div style={{ overflowX: "auto" }}>
+          <table id="expense-table">
+            <thead>
+              <tr>
+                <th>SN</th>
+                <th> Expense ID</th>
+                <th>entry date</th>
+                <th>invoice number</th>
+                <th>Expense Type</th>
+                <th>Property </th>
+                <th>Amount</th>
+                <th>detail view</th>
+              </tr>
+            </thead>
+            {expenses?.map((arg, index) => {
+              return (
+                <tbody key={index}>
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{arg.Expense_ID}</td>
+                    <td>
+                      {moment(arg?.expense_EntryDate).format("YYYY-MM-DD")}
+                    </td>
+                    <td>{arg?.expenseInvoiceNumber}</td>
+                    <td>{arg?.expense_Type}</td>
+                    <td>
+                      {arg.expense_Type === "Maintanance"
+                        ? arg?.property_ID?.property_type +
+                          "-" +
+                          arg?.property_ID?.referenceNO
+                        : "-"}
+                    </td>
+                    <td> AED.{expenseCalculationPerHead(arg?.expense_list)}</td>
+                    <td>
+                      <Link to={`/expense/${arg._id}`}>
+                        <button className="view-btn">View Detail</button>
+                      </Link>
+                    </td>
+                  </tr>
+                </tbody>
+              );
+            })}
+          </table>
+        </div>
       </div>
     </>
   );

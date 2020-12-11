@@ -1,3 +1,6 @@
+.leaseProperty {
+  padding: 20px;
+}
 /* Styling page title */
 .page-title {
   width: 100%;
@@ -8,30 +11,42 @@
   font-size: 30px !important;
 }
 
+/* Styling cheque buttons */
+.cheque-btns {
+  margin: 0px 5px;
+  border: none;
+  background-color: #28a745;
+  font-size: 12px;
+  height: 40px;
+  width: 100%;
+  color: white;
+  text-transform: capitalize;
+  border-radius: 5px;
+}
 /* Table */
-#brokercompany-table {
+#cheque-table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 10px;
 }
 
-#brokercompany-table td,
-#brokercompany-table th {
+#cheque-table td,
+#cheque-table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#brokercompany-table tr {
+#cheque-table tr {
   /* background-color: #f2f2f2; */
   background-color: rgb(245, 245, 245);
   font-size: 12px;
 }
 
-#brokercompany-table tr:hover {
+#cheque-table tr:hover {
   background-color: rgb(245, 241, 241);
 }
 
-#brokercompany-table th {
+#cheque-table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;

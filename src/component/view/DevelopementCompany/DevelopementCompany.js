@@ -32,46 +32,48 @@ const DevelopementCompanyView = (props) => {
           allData={props.allDevelopementCompany.slice().reverse()}
         />
 
-        <table id="developercompany-table">
-          <thead>
-            <tr>
-              <th>SN</th>
-              <th>ID Number</th>
-              <th>Company name</th>
-              <th>registration number</th>
-              <th>registration date</th>
-              <th>Contact Number</th>
-              <th>Contact Email</th>
-              <th>Remarks</th>
-            </tr>
-          </thead>
-          {developerCompanyList.map((arg, index) => {
-            return (
-              <tbody key={index}>
-                <tr>
-                  <td>{index + 1}</td>
-                  <td>{arg.DeveloperCompany_ID}</td>
+        <div style={{ overflowX: "auto" }}>
+          <table id="developercompany-table">
+            <thead>
+              <tr>
+                <th>SN</th>
+                <th>ID Number</th>
+                <th>Company name</th>
+                <th>registration number</th>
+                <th>registration date</th>
+                <th>Contact Number</th>
+                <th>Contact Email</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            {developerCompanyList.map((arg, index) => {
+              return (
+                <tbody key={index}>
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{arg.DeveloperCompany_ID}</td>
 
-                  <td>{arg.DeveloperCompany_Name}</td>
-                  <td>{arg.DeveloperCompany_RegisterationNumber}</td>
-                  <td>
-                    {moment(arg?.DeveloperCompany_RegisterationDate).format(
-                      "YYYY-MM-DD"
-                    )}
-                  </td>
-                  <td>{arg.DeveloperCompany_phoneNo}</td>
-                  <td>{arg.DeveloperCompany_email}</td>
-                  <td>
-                    <Link to={`/DeveloperCompany/${arg._id}`}>
-                      {" "}
-                      <button className="view-btn">View Detail</button>
-                    </Link>{" "}
-                  </td>
-                </tr>
-              </tbody>
-            );
-          })}
-        </table>
+                    <td>{arg.DeveloperCompany_Name}</td>
+                    <td>{arg.DeveloperCompany_RegisterationNumber}</td>
+                    <td>
+                      {moment(arg?.DeveloperCompany_RegisterationDate).format(
+                        "YYYY-MM-DD"
+                      )}
+                    </td>
+                    <td>{arg.DeveloperCompany_phoneNo}</td>
+                    <td>{arg.DeveloperCompany_email}</td>
+                    <td>
+                      <Link to={`/DeveloperCompany/${arg._id}`}>
+                        {" "}
+                        <button className="view-btn">View Detail</button>
+                      </Link>{" "}
+                    </td>
+                  </tr>
+                </tbody>
+              );
+            })}
+          </table>
+        </div>
       </div>
     </>
   );

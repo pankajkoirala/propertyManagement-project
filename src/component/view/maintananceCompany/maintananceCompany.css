@@ -1,3 +1,6 @@
+.leaseProperty {
+  padding: 20px;
+}
 /* Styling page title */
 .page-title {
   width: 100%;
@@ -9,29 +12,29 @@
 }
 
 /* Table */
-#brokercompany-table {
+#maintanancecompany-table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 10px;
 }
 
-#brokercompany-table td,
-#brokercompany-table th {
+#maintanancecompany-table td,
+#maintanancecompany-table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#brokercompany-table tr {
+#maintanancecompany-table tr {
   /* background-color: #f2f2f2; */
   background-color: rgb(245, 245, 245);
   font-size: 12px;
 }
 
-#brokercompany-table tr:hover {
+#maintanancecompany-table tr:hover {
   background-color: rgb(245, 241, 241);
 }
 
-#brokercompany-table th {
+#maintanancecompany-table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
