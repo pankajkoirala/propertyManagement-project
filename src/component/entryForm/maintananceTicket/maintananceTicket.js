@@ -32,7 +32,7 @@ const MaintananceTicket = (props) => {
   };
   return (
     <div>
-      <div className="PropertyFormEntry mt-5">
+      <div style={{ margin: "20px" }} className="PropertyFormEntry mt-5">
         <div>
           <Formik
             initialValues={initialvalue}

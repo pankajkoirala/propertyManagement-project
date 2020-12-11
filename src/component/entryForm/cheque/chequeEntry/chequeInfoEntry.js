@@ -22,7 +22,7 @@ let ChequeInfo = (props) => {
   };
 
   return (
-    <div>
+    <div style={{ margin: "20px" }}>
       {/* Cheque Update Information */}
       <div className="m-2 text-center">
         <h3>Cheque Update Information</h3>

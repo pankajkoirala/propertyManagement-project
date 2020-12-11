@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./tenantView.css";
-import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SearchInput from "./../../../shared/filterListData";
 

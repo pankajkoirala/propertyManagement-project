@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import SearchInput from "./../../../shared/filterListData";
 
 import {
-  Table,
   Card,
   CardText,
   CardBody,

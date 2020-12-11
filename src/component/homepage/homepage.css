@@ -52,10 +52,6 @@
   background: #4b9ae9;
 }
 
-.property-status {
-  /* width: 400px; */
-}
-
 .income-bar p {
   border-bottom: 3px solid green;
   width: 140px;
@@ -290,7 +286,7 @@
 }
 
 @media (max-width: 414px) {
-  .canvas-container {
+  /* .canvas-container {
     height: 300px !important;
     width: 400px !important;
     align-items: flex-start !important;
@@ -298,22 +294,22 @@
   .chartjs-render-monitor {
     height: 200px !important;
     width: 400px !important;
-  }
-} */
+  } */
 
 /* Centering prev and next btns */
 .prevnext-btn-group {
   margin: 0 auto;
 }
-/* @media (max-width: 375px) {
-  .chartjs-render-monitor {
+
+@media (max-width: 375px) {
+  /* .chartjs-render-monitor {
     height: 200px !important;
     width: 350px !important;
-  }
+  } */
 }
 
 @media (max-width: 360px) {
-  .canvas-container {
+  /* .canvas-container {
     height: 300px !important;
     width: 320px !important;
     align-items: flex-start !important;
@@ -321,5 +317,5 @@
   .chartjs-render-monitor {
     height: 200px !important;
     width: 300px !important;
-  }
-} */
+  } */
+}

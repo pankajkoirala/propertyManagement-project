@@ -150,7 +150,8 @@ const Homepage = (props) => {
             className="income-expense-card income-card income-by-month-card"
           >
             <h5 className="">
-              Income Status by Month <br />
+              Income Status by Month
+              <br />
               <br />
               <span className="date-highlight">
                 {data?.labels[chequeDate_month - 1]}
@@ -352,7 +353,8 @@ const Homepage = (props) => {
             className="income-expense-card expense-card expense-by-month-card"
           >
             <h5>
-              Expense Status by Month <br />
+              Expense Status by Month
+              <br />
               <br />
               <span className="date-highlight">
                 {data?.labels[ExpenseDate_month - 1]}
@@ -598,7 +600,8 @@ const Homepage = (props) => {
             className="income-expense-card expense-card expense-by-year-card"
           >
             <h5 className="">
-              Expense Status by Year <br />
+              Expense Status by Year
+              <br />
               <br />
               <span className="date-highlight">{ExpenseDate_year}</span>
             </h5>
