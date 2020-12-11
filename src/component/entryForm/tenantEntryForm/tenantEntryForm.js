@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./tenantEntryForm.css";
 import moment from "moment";
-import { FormGroup, Label, Input, Form, Table } from "reactstrap";
+import { FormGroup, Label, Input, Form } from "reactstrap";
 import { Formik } from "formik";
 import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
 import PoopUp from "./../../../shared/popup";

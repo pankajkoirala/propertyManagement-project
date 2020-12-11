@@ -38,7 +38,7 @@ const BrokerComponent = (props) => {
     setAllFile(allFile.filter((file) => file.fileName !== name));
   };
   return (
-    <div>
+    <div style={{ margin: "20px" }}>
       <div>
         <div>
           <Formik

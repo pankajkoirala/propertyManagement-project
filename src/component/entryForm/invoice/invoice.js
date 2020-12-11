@@ -4,6 +4,7 @@ import { Form, Input, Label } from "reactstrap";
 import moment from "moment";
 import PoopUp from "../../../shared/popup";
 import { Link } from "@material-ui/core";
+import ReactToPdf from "react-to-pdf";
 
 let InvoiceComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -82,9 +83,10 @@ let InvoiceComponent = (props) => {
         ? (a[Number(n[3])] || b[n[3][0]] + " " + a[n[3][1]]) + "thousand "
         : "";
     str +=
-      n[4] !== "0".padStart(2, 0)
+      n[4] !== "0"
         ? (a[Number(n[4])] || b[n[4][0]] + " " + a[n[4][1]]) + "hundred "
         : "";
+    console.log("🚀 ~ file: invoice.js ~ line 87 ~ inWords ~  n[4]", n[4]);
     str +=
       (n[5] !== "0".padStart(2, 0)
         ? (str !== "" ? "and " : "") +
@@ -93,8 +95,10 @@ let InvoiceComponent = (props) => {
     return setInWord(str);
   }
 
-  let downloadPDF = () => {
-    window.print();
+  const options = {
+    orientation: "landscape",
+
+    format: [900, 900],
   };
 
   return (
@@ -121,228 +125,260 @@ let InvoiceComponent = (props) => {
                 isSubmitting,
               }) => (
                 <Form className="">
+                  {/* .................................. */}
                   {Invoices.map((inv, index) => {
                     return (
-                      <div
-                        style={{ marginTop: "30px", marginBottom: "30px" }}
-                        key={index}
-                      >
-                        <div style={{ marginTop: "50px" }}>
-                          <Link
-                            style={{ float: "right" }}
-                            onClick={() => downloadPDF()}
+                      <ReactToPdf options={options}>
+                        {({ toPdf, targetRef }) => (
+                          <div
+                            style={{
+                              marginTop: "30px",
+                              height: 700,
+                              width: 1150,
+                            }}
+                            ref={targetRef}
                           >
-                            download
-                          </Link>
-                        </div>
-                        <div style={{ marginTop: "40px" }}>
-                          <h1 className="text-center">Graphene</h1>
-                          <div className="text-center font-weight-bold">
-                            Head Office : Graphene Pvt.Ltd,-Tripureshwor
-                          </div>
-                          <div className="text-center font-weight-bold">
-                            Kathmandu,Nepal
-                            Tel:01-2345678,9864537676,Website:Graphene@info.com.np
-                          </div>
-                          <div className="d-flex justify-content-between mx-1 mt-4">
-                            <div>
-                              <div>
-                                <div>
-                                  <span className="font-weight-bold mx-1">
-                                    Invoice No :
-                                  </span>
-                                  <span className="font-weight-bold mx-1">
-                                    {props?.redux_InvoiceData?.some(
-                                      (invoice) =>
-                                        invoice?.chequeMongoId ===
-                                        props?.Cheque?._id
-                                    ) === true
-                                      ? "Invoice Already Printed"
-                                      : invoiceID}
-                                  </span>
+                            <Link
+                              style={{ float: "right", marginLeft: "10px" }}
+                              type="button"
+                              onClick={toPdf}
+                            >
+                              Download
+                            </Link>
+                            <div
+                              style={{
+                                marginTop: "30px",
+                                marginBottom: "30px",
+                              }}
+                              key={index}
+                            >
+                              <div style={{ marginTop: "40px" }}>
+                                <h1 className="text-center">Graphene</h1>
+                                <div className="text-center font-weight-bold">
+                                  Head Office : Graphene Pvt.Ltd,-Tripureshwor
                                 </div>
-                                <div>
-                                  <span className="font-weight-bold mx-1">
-                                    Vat Regd No :
-                                  </span>
-                                  <span className="font-weight-bold mx-1">
-                                    123
-                                  </span>
+                                <div className="text-center font-weight-bold">
+                                  Kathmandu,Nepal
+                                  Tel:01-2345678,9864537676,Website:Graphene@info.com.np
                                 </div>
-                                <div>
-                                  <span className="font-weight-bold mx-1">
-                                    Tanent Name :
-                                  </span>
-                                  <span className="font-weight-bold mx-1">
-                                    {props?.tenant?.tenant_Name}
-                                  </span>
-                                </div>
-                                <div>
-                                  <span className="font-weight-bold mx-1">
-                                    Location :
-                                  </span>
-                                  <span className="font-weight-bold mx-1">
-                                    {props?.tenant?.area +
-                                      "," +
-                                      props?.tenant?.city +
-                                      "," +
-                                      props?.tenant?.country}
-                                  </span>
-                                </div>
-                                <div>
-                                  <span className="font-weight-bold mx-1">
-                                    Lease Id :
-                                  </span>
-                                  <span className="font-weight-bold mx-1">
-                                    {props?.Cheque?.lease_property?.LeaseId}
-                                  </span>
-                                </div>
-                                <div>
-                                  <span className="font-weight-bold mx-1">
-                                    Property :
-                                  </span>
-                                  <span className="font-weight-bold mx-1">
-                                    {props?.Cheque?.property_id?.property_type +
-                                      "/" +
-                                      props?.Cheque?.property_id?.referenceNO}
-                                  </span>
+                                <div className="d-flex justify-content-between mx-1 mt-4">
+                                  <div>
+                                    <div>
+                                      <div>
+                                        <span className="font-weight-bold mx-1">
+                                          Invoice No :
+                                        </span>
+                                        <span className="font-weight-bold mx-1">
+                                          {props?.redux_InvoiceData?.some(
+                                            (invoice) =>
+                                              invoice?.chequeMongoId ===
+                                              props?.Cheque?._id
+                                          ) === true
+                                            ? "Invoice Already Printed"
+                                            : invoiceID}
+                                        </span>
+                                      </div>
+                                      <div>
+                                        <span className="font-weight-bold mx-1">
+                                          Vat Regd No :
+                                        </span>
+                                        <span className="font-weight-bold mx-1">
+                                          123
+                                        </span>
+                                      </div>
+                                      <div>
+                                        <span className="font-weight-bold mx-1">
+                                          Tanent Name :
+                                        </span>
+                                        <span className="font-weight-bold mx-1">
+                                          {props?.tenant?.tenant_Name}
+                                        </span>
+                                      </div>
+                                      <div>
+                                        <span className="font-weight-bold mx-1">
+                                          Location :
+                                        </span>
+                                        <span className="font-weight-bold mx-1">
+                                          {props?.tenant?.area +
+                                            "," +
+                                            props?.tenant?.city +
+                                            "," +
+                                            props?.tenant?.country}
+                                        </span>
+                                      </div>
+                                      <div>
+                                        <span className="font-weight-bold mx-1">
+                                          Lease Id :
+                                        </span>
+                                        <span className="font-weight-bold mx-1">
+                                          {
+                                            props?.Cheque?.lease_property
+                                              ?.LeaseId
+                                          }
+                                        </span>
+                                      </div>
+                                      <div>
+                                        <span className="font-weight-bold mx-1">
+                                          Property :
+                                        </span>
+                                        <span className="font-weight-bold mx-1">
+                                          {props?.Cheque?.property_id
+                                            ?.property_type +
+                                            "/" +
+                                            props?.Cheque?.property_id
+                                              ?.referenceNO}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <div>
+                                      <div>
+                                        <span className="font-weight-bold mx-1">
+                                          Invoice Issue Date :
+                                        </span>
+                                        <span className="font-weight-bold mx-1">
+                                          {moment().format("YYYY-MM-DD")}
+                                        </span>
+                                      </div>
+                                      <div>
+                                        <span className="font-weight-bold mx-1">
+                                          Cheque Cleared Date :
+                                        </span>
+                                        <span className="font-weight-bold mx-1">
+                                          {props?.Cheque?.cheque_clearDate}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div>
-                              <div>
-                                <div>
-                                  <span className="font-weight-bold mx-1">
-                                    Invoice Issue Date :
-                                  </span>
-                                  <span className="font-weight-bold mx-1">
-                                    {moment().format("YYYY-MM-DD")}
-                                  </span>
-                                </div>
-                                <div>
-                                  <span className="font-weight-bold mx-1">
-                                    Cheque Cleared Date :
-                                  </span>
-                                  <span className="font-weight-bold mx-1">
-                                    {props?.Cheque?.cheque_clearDate}
-                                  </span>
-                                </div>
+                              <div
+                                style={{ height: "auto" }}
+                                className="row mx-1"
+                              >
+                                <b className="col-1  border-left border-dark border-bottom border-top">
+                                  SN
+                                </b>
+                                <b className="col-5  border-left border-dark border-bottom border-top">
+                                  particular
+                                </b>
+                                <b className="col-2 border-left border-dark border-bottom border-top">
+                                  Basic Amount
+                                </b>
+                                <b className="col-2  border-left border-dark border-bottom border-top">
+                                  Discount
+                                </b>
+                                <b className="col-2  border-left border-right border-dark border-bottom border-top">
+                                  Amount
+                                </b>
                               </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div style={{ height: "auto" }} className="row mx-1">
-                          <b className="col-1  border-left border-dark border-bottom border-top">
-                            SN
-                          </b>
-                          <b className="col-5  border-left border-dark border-bottom border-top">
-                            particular
-                          </b>
-                          <b className="col-2 border-left border-dark border-bottom border-top">
-                            Basic Amount
-                          </b>
-                          <b className="col-2  border-left border-dark border-bottom border-top">
-                            Discount
-                          </b>
-                          <b className="col-2  border-left border-right border-dark border-bottom border-top">
-                            Amount
-                          </b>
-                        </div>
-                        <div className="row mx-1 ">
-                          <b className="col-1 border-left border-dark  ">1</b>
-                          <b className="col-5 border-left border-dark   ">
-                            Rent Amount
-                          </b>
-                          <b className="col-2 border-left border-dark  ">
-                            {props?.Cheque?.cheque_amount}
-                          </b>
-                          <b className="col-2 border-left border-dark   ">0 </b>
-                          <b className="col-2 border-left border-right  border-dark ">
-                            {props?.Cheque?.cheque_amount}
-                          </b>
-                        </div>
-                        <div style={{ height: "200px" }} className="row mx-1 ">
-                          <b className="col-1  border-left border-dark border-bottom ">
-                            2
-                          </b>
+                              <div className="row mx-1 ">
+                                <b className="col-1 border-left border-dark  ">
+                                  1
+                                </b>
+                                <b className="col-5 border-left border-dark   ">
+                                  Rent Amount
+                                </b>
+                                <b className="col-2 border-left border-dark  ">
+                                  {props?.Cheque?.cheque_amount}
+                                </b>
+                                <b className="col-2 border-left border-dark   ">
+                                  0{" "}
+                                </b>
+                                <b className="col-2 border-left border-right  border-dark ">
+                                  {props?.Cheque?.cheque_amount}
+                                </b>
+                              </div>
+                              <div
+                                style={{ height: "200px" }}
+                                className="row mx-1 "
+                              >
+                                <b className="col-1  border-left border-dark border-bottom ">
+                                  2
+                                </b>
 
-                          <b className="col-5 border-left border-dark  border-bottom ">
-                            Miscelleneous Amount
-                          </b>
-                          <b className="col-2  border-left border-dark  border-bottom ">
-                            {props?.Cheque?.miscellaneous_amount}
-                          </b>
-                          <b className="col-2  border-left border-dark border-bottom ">
-                            0
-                          </b>
-                          <b className="col-2  border-left border-dark border-right border-bottom ">
-                            {props?.Cheque?.miscellaneous_amount}
-                          </b>
-                        </div>
-                        <div
-                          style={{ height: "auto" }}
-                          className="row mx-1 border-left border-dark border-right "
-                        >
-                          <b className="col-6 "></b>
-                          <b className="col-4  border-left border-dark border-right border-bottom ">
-                            Total Amount
-                          </b>
-                          <b className="col-2  border-dark  border-bottom ">
-                            AED.
-                            {props?.Cheque?.miscellaneous_amount +
-                              props?.Cheque?.cheque_amount}
-                          </b>
-                        </div>
-                        <div
-                          style={{ height: "auto" }}
-                          className="row mx-1 border-left border-dark border-right "
-                        >
-                          <b className="col-6 "></b>
-                          <b className="col-4 border-left border-dark border-right border-bottom ">
-                            Vat Amount(5%)
-                          </b>
-                          <b className="col-2  border-dark border-bottom ">
-                            AED.{props?.Cheque?.vat_amount}
-                          </b>
-                        </div>
-                        <div
-                          style={{ height: "auto" }}
-                          className="row mx-1 border-left border-dark border-right border-bottom"
-                        >
-                          <b className="col-6 "></b>
-                          <b className="col-4  border-left border-dark border-right  ">
-                            Amount With VAT
-                          </b>
-                          <b className="col-2 border-dark">
-                            AED.{" "}
-                            {
-                              (inWords(
-                                props?.Cheque?.vat_amount +
-                                  props?.Cheque?.miscellaneous_amount +
-                                  props?.Cheque?.cheque_amount
-                              ),
-                              props?.Cheque?.vat_amount +
-                                props?.Cheque?.miscellaneous_amount +
-                                props?.Cheque?.cheque_amount)
-                            }
-                          </b>
-                        </div>
-                        <div
-                          style={{ height: "auto" }}
-                          className="row mx-1 border-left border-dark border-right border-bottom"
-                        >
-                          <b className="col-12 ">In Word Rs: {inWord}</b>
-                        </div>
-                        <div
-                          style={{
-                            fontWeight: "bold",
-                            marginTop: "100px",
-                          }}
-                        >
-                          <div>.................</div>
-                          <div>Signature</div>
-                        </div>
-                      </div>
+                                <b className="col-5 border-left border-dark  border-bottom ">
+                                  Miscelleneous Amount
+                                </b>
+                                <b className="col-2  border-left border-dark  border-bottom ">
+                                  {props?.Cheque?.miscellaneous_amount}
+                                </b>
+                                <b className="col-2  border-left border-dark border-bottom ">
+                                  0
+                                </b>
+                                <b className="col-2  border-left border-dark border-right border-bottom ">
+                                  {props?.Cheque?.miscellaneous_amount}
+                                </b>
+                              </div>
+                              <div
+                                style={{ height: "auto" }}
+                                className="row mx-1 border-left border-dark border-right "
+                              >
+                                <b className="col-6 "></b>
+                                <b className="col-4  border-left border-dark border-right border-bottom ">
+                                  Total Amount
+                                </b>
+                                <b className="col-2  border-dark  border-bottom ">
+                                  AED.
+                                  {props?.Cheque?.miscellaneous_amount +
+                                    props?.Cheque?.cheque_amount}
+                                </b>
+                              </div>
+                              <div
+                                style={{ height: "auto" }}
+                                className="row mx-1 border-left border-dark border-right "
+                              >
+                                <b className="col-6 "></b>
+                                <b className="col-4 border-left border-dark border-right border-bottom ">
+                                  Vat Amount(5%)
+                                </b>
+                                <b className="col-2  border-dark border-bottom ">
+                                  AED.{props?.Cheque?.vat_amount}
+                                </b>
+                              </div>
+                              <div
+                                style={{ height: "auto" }}
+                                className="row mx-1 border-left border-dark border-right border-bottom"
+                              >
+                                <b className="col-6 "></b>
+                                <b className="col-4  border-left border-dark border-right  ">
+                                  Amount With VAT
+                                </b>
+                                <b className="col-2 border-dark">
+                                  AED.{" "}
+                                  {
+                                    (inWords(
+                                      props?.Cheque?.vat_amount +
+                                        props?.Cheque?.miscellaneous_amount +
+                                        props?.Cheque?.cheque_amount
+                                    ),
+                                    props?.Cheque?.vat_amount +
+                                      props?.Cheque?.miscellaneous_amount +
+                                      props?.Cheque?.cheque_amount)
+                                  }
+                                </b>
+                              </div>
+                              <div
+                                style={{ height: "auto" }}
+                                className="row mx-1 border-left border-dark border-right border-bottom"
+                              >
+                                <b className="col-12 ">In Word Rs: {inWord}</b>
+                              </div>
+                              <div
+                                style={{
+                                  fontWeight: "bold",
+                                  marginTop: "100px",
+                                  marginLeft: "40px",
+                                }}
+                              >
+                                <div>.................</div>
+                                <div>Signature</div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </ReactToPdf>
                     );
                   })}
                   <div style={{ marginTop: "100px" }} className="row">
