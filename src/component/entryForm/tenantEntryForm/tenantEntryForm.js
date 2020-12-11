@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./tenantEntryForm.css";
 import moment from "moment";
-import { FormGroup, Label, Input, Form } from "reactstrap";
+import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import { TenantEntryFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
 import PoopUp from "./../../../shared/popup";
@@ -379,7 +379,7 @@ const TenantEntry = (props) => {
 
                   {props?.selectedTenantone?.files_list ||
                   allFile?.length !== 0 ? (
-                    <table>
+                    <Table>
                       <thead>
                         <tr>
                           <th>SN</th>
@@ -440,7 +440,7 @@ const TenantEntry = (props) => {
                           </tbody>
                         );
                       })}
-                    </table>
+                    </Table>
                   ) : (
                     ""
                   )}
