@@ -24,6 +24,7 @@ let Invoice = (props) => {
     formData.append("chequeNumber", data.chequeNumber);
     formData.append("lease_id", data.lease_id);
     formData.append("InvoiceId", data.InvoiceId);
+    formData.append("propertyId", data.propertyId);
 
     Axios({
       method: "post",

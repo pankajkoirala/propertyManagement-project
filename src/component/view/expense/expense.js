@@ -3,6 +3,8 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { Table, Input } from "reactstrap";
 import SearchInput from "./../../../shared/filterListData";
+
+import "./expense.css";
 import {
   expenseCalculationPerHead,
   totalExpenseCalculation,
@@ -51,7 +53,9 @@ const ExpenseDisplay = (props) => {
   return (
     <>
       <div style={{ margin: "10px" }}>
-        <h1>Expense list</h1>
+        <div className="page-title">
+          <h1>Expense list</h1>
+        </div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ margin: "10px" }}>
             <SearchInput
@@ -122,11 +126,11 @@ const ExpenseDisplay = (props) => {
           </div>
           <div style={{ margin: "10px", fontWeight: "bold" }}>
             <span>Total Expense :</span>
-            {totalExpenseCalculation(expensesList)}
+            AED. {totalExpenseCalculation(expensesList)}
           </div>
         </div>
 
-        <Table striped bordered hover size="sm">
+        <table id="expense-table">
           <thead>
             <tr>
               <th>SN</th>
@@ -155,17 +159,17 @@ const ExpenseDisplay = (props) => {
                         arg?.property_ID?.referenceNO
                       : "-"}
                   </td>
-                  <td>{expenseCalculationPerHead(arg?.expense_list)}</td>
+                  <td> AED.{expenseCalculationPerHead(arg?.expense_list)}</td>
                   <td>
                     <Link to={`/expense/${arg._id}`}>
-                      <button className="success ml-3">View Detail</button>
+                      <button className="view-btn">View Detail</button>
                     </Link>
                   </td>
                 </tr>
               </tbody>
             );
           })}
-        </Table>
+        </table>
       </div>
     </>
   );

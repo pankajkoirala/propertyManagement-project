@@ -46,7 +46,7 @@ const PropertyView = (props) => {
         </div>
 
         {propertySort === true ? (
-          <Table striped bordered hover size="sm">
+          <table id="propertyview-table">
             <thead>
               <tr>
                 <th>ID Number</th>
@@ -84,14 +84,14 @@ const PropertyView = (props) => {
                     <td>
                       <Link to={`/propertyDetail/${arg._id}`}>
                         {" "}
-                        <button className="success ml-3">View Detail</button>
+                        <button className="view-btn">View Detail</button>
                       </Link>{" "}
                     </td>
                   </tr>
                 </tbody>
               );
             })}
-          </Table>
+          </table>
         ) : (
           <div className="d-flex flex-wrap">
             {propertyList.map((arg1) => {

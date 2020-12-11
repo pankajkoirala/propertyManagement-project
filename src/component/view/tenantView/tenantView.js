@@ -17,8 +17,11 @@ const TenantView = (props) => {
   return (
     <>
       <div className="tenantview">
-        <h1 className="text-center">Tenant View</h1>
+        <div className="page-title">
+          <h1>Tenant View</h1>
+        </div>
         <SearchInput
+          className="search-field"
           filteringData={props.tenant.map((arg) => {
             return {
               search1: arg.tenant_Name,
@@ -30,7 +33,7 @@ const TenantView = (props) => {
           setFilteredData={setTenents}
           allData={props.tenant.slice().reverse()}
         />
-        <Table striped bordered hover size="sm">
+        <table id="tenantview-table">
           <thead>
             <tr>
               <th>ID Number</th>
@@ -56,14 +59,14 @@ const TenantView = (props) => {
 
                   <td>
                     <Link to={`/tanent/${arg._id}`}>
-                      <button className="success ml-3">View Detail</button>
+                      <button className="view-btn">View Detail</button>
                     </Link>
                   </td>
                 </tr>
               </tbody>
             );
           })}
-        </Table>
+        </table>
       </div>
     </>
   );

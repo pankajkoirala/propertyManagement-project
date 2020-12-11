@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import SearchInput from "./../../../shared/filterListData";
 
+import "./maintananceTicket.css";
+
 const MaintananceTicketView = (props) => {
   let [maintananceTicket, setMaintananceTicket] = useState([]);
   let maintananceTicketList = props.maintananceTicket.slice().reverse();
@@ -17,7 +19,7 @@ const MaintananceTicketView = (props) => {
   return (
     <>
       <div className="tenantview">
-        <h1 className="text-center">Maintanance Ticket List</h1>
+        <h1 className="page-title">Maintanance Ticket List</h1>
 
         <SearchInput
           filteringData={props.maintananceTicket.map((arg) => {
@@ -35,7 +37,7 @@ const MaintananceTicketView = (props) => {
           allData={props.maintananceTicket.slice().reverse()}
         />
 
-        <Table striped bordered hover size="sm">
+        <table id="maintananceticket-table">
           <thead>
             <tr>
               <th>ID Number</th>
@@ -72,14 +74,14 @@ const MaintananceTicketView = (props) => {
                   <td>
                     <Link to={`/maintananceTicket/${arg._id}`}>
                       {" "}
-                      <button className="success ml-3">View Detail</button>
+                      <button className="view-btn">View Detail</button>
                     </Link>{" "}
                   </td>
                 </tr>
               </tbody>
             );
           })}
-        </Table>
+        </table>
       </div>
     </>
   );

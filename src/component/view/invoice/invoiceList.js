@@ -4,6 +4,7 @@ import { Table } from "reactstrap";
 import SearchInput from "./../../../shared/filterListData";
 import moment from "moment";
 
+import "./invoiceList.css";
 let InvoiceListComponent = (props) => {
   let [invoice, SetInvoice] = useState([]);
   let invoiceList = props.invoiceList.slice().reverse();
@@ -13,10 +14,13 @@ let InvoiceListComponent = (props) => {
   } else {
     invoiceList = invoice;
   }
+
   return (
     <>
       <div className="tenantview">
-        <h1 className="text-center">Invoice list</h1>
+        <div className="page-title">
+          <h1>Invoice List</h1>
+        </div>
         <SearchInput
           filteringData={props?.invoiceList?.map((arg) => {
             return {
@@ -30,15 +34,17 @@ let InvoiceListComponent = (props) => {
           allData={props.invoiceList.slice().reverse()}
         />
 
-        <Table striped bordered hover size="sm">
+        <table id="invoice-table">
           <thead>
             <tr>
               <th>SN</th>
               <th>ID Number</th>
               <th>Invoice Issue Date</th>
               <th> lease id</th>
+              <th>Property</th>
               <th>Cheque No</th>
-              <th> edit</th>
+              <th>Invoice Photo</th>
+              {/* <th> edit</th> */}
               <th>Delete</th>
             </tr>
           </thead>
@@ -50,17 +56,23 @@ let InvoiceListComponent = (props) => {
                   <td>{arg.InvoiceId}</td>
                   <td>{moment(arg.invoiceIssueDate).format("YYYY-MM-DD")}</td>
                   <td>{arg.lease_id}</td>
+                  <td>{arg.propertyId}</td>
                   <td>{arg.chequeNumber}</td>
-
                   <td>
+                    <a target={arg?.invoicePhoto} href={arg?.invoicePhoto}>
+                      Download
+                    </a>{" "}
+                  </td>
+
+                  {/* <td>
                     <Link to={`/invoice/${arg._id}`}>
                       {" "}
-                      <button className="success ml-3">View Detail</button>
+                      <button className="view-btn">View Detail</button>
                     </Link>{" "}
-                  </td>
+                  </td> */}
                   <td>
                     <button
-                      style={{ height: "auto", width: "auto" }}
+                      className="delete-btn"
                       onClick={() => props.InvoiceDelete(arg._id)}
                     >
                       Delete
@@ -70,7 +82,7 @@ let InvoiceListComponent = (props) => {
               </tbody>
             );
           })}
-        </Table>
+        </table>
       </div>
     </>
   );

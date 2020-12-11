@@ -1,55 +1,37 @@
-.tenantview {
-  padding: 20px;
-}
-.tenantImg {
-  border-radius: 80%;
-  width: 300px;
-  height: 300px;
-}
-
-.logo {
-  width: 80px;
-  height: 80px;
-}
-.printer {
-  width: 80px;
-  height: 80px;
-}
-
+/* Styling page title */
 .page-title {
-  /* background-color: white; */
   width: 100%;
-  /* padding: 10px; */
   margin-bottom: 35px;
 }
 
 .page-title h1 {
-  font-size: 30px;
+  font-size: 30px !important;
 }
 
 /* Table */
-#tenantview-table {
+#expense-table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 10px;
 }
 
-#tenantview-table td,
-#tenantview-table th {
+#expense-table td,
+#expense-table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#tenantview-table tr {
+#expense-table tr {
   /* background-color: #f2f2f2; */
   background-color: rgb(245, 245, 245);
+  font-size: 12px;
 }
 
-#tenantview-table tr:hover {
+#expense-table tr:hover {
   background-color: rgb(245, 241, 241);
 }
 
-#tenantview-table th {
+#expense-table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
