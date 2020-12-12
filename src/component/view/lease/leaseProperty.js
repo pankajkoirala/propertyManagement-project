@@ -44,6 +44,7 @@ const LeaseDisplay = (props) => {
                 <th>commerce date</th>
                 <th>expire date</th>
                 <th> lease Property</th>
+                <th> Detail</th>
               </tr>
             </thead>
             {leaseList.map((arg, index) => {
