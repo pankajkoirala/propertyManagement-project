@@ -174,7 +174,6 @@ const HomepageContainer = (props) => {
 
   return (
     <div>
-      <FetchAllData />
       <HomepageComponent
         totalProperty={props.redux_propertyData?.property?.length}
         leaseProperty={props?.redux_leaseData?.lease.length}

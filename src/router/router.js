@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { getLocalStorage } from "../const/tokenStorage";
 import { token_key } from "../const/base_URL";
-
-
+import FetchAllData from "./../router/fetch_AllData";
 
 import DashbordIncomeDetail from "./../container/homepage/dashBoardIncomeDetailCont";
 import NavBar from "./../shared/navbar";
@@ -238,6 +237,7 @@ const RouterPage = () => {
           </Switch>
         </div>
       </Router>
+      <FetchAllData />
     </div>
   );
 };
