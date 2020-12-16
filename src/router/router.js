@@ -1,6 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { getLocalStorage } from "../const/tokenStorage";
+import { token_key } from "../const/base_URL";
+
+
 
 import DashbordIncomeDetail from "./../container/homepage/dashBoardIncomeDetailCont";
 import NavBar from "./../shared/navbar";
@@ -47,7 +50,7 @@ import TopNavBar from "./../shared/topNavBar";
 import ChequeInfo from "./../container/entryForm/cheque/chequeEntry/chequeInfo";
 
 const RouterPage = () => {
-  let authorize = getLocalStorage("token");
+  let authorize = getLocalStorage(token_key);
   return (
     <div style={{ display: "flex", width: "100%", overflowX: "hidden" }}>
       <Router>

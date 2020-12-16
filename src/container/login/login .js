@@ -2,7 +2,7 @@ import React from "react";
 import Axios from "axios";
 import LoginComponent from "../../component/login/login";
 import { setLocalStorage } from "../../const/tokenStorage";
-import { base_URL } from "../../const/base_URL";
+import { base_URL,token_key } from "../../const/base_URL";
 import "./Back.css";
 const LoginContainer = (props) => {
   const login = (data) => {
@@ -18,7 +18,7 @@ const LoginContainer = (props) => {
       },
     })
       .then((res) => {
-        setLocalStorage("token", res.data.token);
+        setLocalStorage(token_key, res.data.token);
         //push to other page after login
         props.history.push("/");
         window.location.reload();

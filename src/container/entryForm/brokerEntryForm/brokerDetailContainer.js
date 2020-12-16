@@ -4,6 +4,8 @@ import { base_URL } from "../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 const BrokerDetailContainer = () => {
   const brokerData = (data, file) => {
@@ -27,17 +29,12 @@ const BrokerDetailContainer = () => {
     formData.append("broker_email", data.broker_email);
     formData.append("brokerType", data.brokerType);
 
-    Axios({
-      method: "post",
-      url: base_URL + "/api/brokerCompany",
-      data: formData,
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.post(base_URL + "/api/brokerCompany",formData,{
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
+     
       .then((res) => {
         notification("Created successfully", "SUCCESS");
         reloadFunction();

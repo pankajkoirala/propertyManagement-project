@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
 
+
 const TanentDetailViewCont = (props) => {
   const { id } = useParams();
 

@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 const MaintananceTicketDetailView = (props) => {
   const { id } = useParams();
@@ -36,15 +38,9 @@ const MaintananceTicketDetailView = (props) => {
     );
     formData.append("maintanance_Amount", data.maintanance_Amount);
 
-    Axios({
-      method: "put",
-      url: base_URL + "/api/MaintananceTicket/" + ID,
-      data: formData,
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.put(base_URL + "/api/MaintananceTicket/" + ID, formData, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {

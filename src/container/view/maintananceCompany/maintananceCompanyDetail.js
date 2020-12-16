@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 const MaintananceCompanyDetailView = (props) => {
   const { id } = useParams();
@@ -41,15 +43,9 @@ const MaintananceCompanyDetailView = (props) => {
     formData.append("Company_email", data.Company_email);
     formData.append("Company_Mobile_Number", data.Company_Mobile_Number);
 
-    Axios({
-      method: "put",
-      url: base_URL + "/api/maintananceCompany/" + ID,
-      data: formData,
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.put(base_URL + "/api/maintananceCompany/" + ID, formData, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {

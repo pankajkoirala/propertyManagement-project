@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 let LeaseDetailView = (props) => {
   const [property, setProperty] = useState([]);
@@ -39,15 +41,9 @@ let LeaseDetailView = (props) => {
     formData.append("securityDeposite", data.securityDeposite);
     formData.append("property", data.property);
 
-    Axios({
-      method: "put",
-      url: base_URL + "/api/lease/" + ID,
-      data: formData,
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.put(base_URL + "/api/lease/" + ID, formData, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {

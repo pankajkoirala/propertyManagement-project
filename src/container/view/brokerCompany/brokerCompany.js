@@ -1,38 +1,22 @@
-import React, { useState, useEffect } from "react";
-
+import React from "react";
+import { connect } from "react-redux";
 import BrokerCompanyViews from "../../../component/view/brokerCompany/brokerCompany";
-import Axios from "axios";
-import { base_URL } from "../../../const/base_URL";
 
-const BrokerCompany = () => {
-  const [allBrokerCompany, setallBrokerCompany] = useState([]);
-  useEffect(() => {
-    BrokerCompanyData();
-  }, []);
-
-  let BrokerCompanyData = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/brokerCompany",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
-      },
-    })
-      .then((res) => {
-        setallBrokerCompany(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+const BrokerCompany = (props) => {
   return (
     <div>
-      <BrokerCompanyViews allBrokerCompany={allBrokerCompany} />
+      <BrokerCompanyViews
+        allBrokerCompany={props.redux_BrokerData.brokerCompany}
+      />
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  redux_BrokerData: state.brokerCompany,
+});
 
-export default BrokerCompany;
+const mapDispatchToProps = (dispatch) => ({
+  //redux_Add_Tenant: (arg) => dispatch({ type: "ADD_ALL_MAINTANANCE_COMPANY", payload: arg }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrokerCompany);

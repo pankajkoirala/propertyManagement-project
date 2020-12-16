@@ -5,6 +5,8 @@ import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction.js";
 import { connect } from "react-redux";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 let Invoice = (props) => {
   let propertyFilter = props.Redux_propertyData.property.filter(
@@ -26,15 +28,9 @@ let Invoice = (props) => {
     formData.append("InvoiceId", data.InvoiceId);
     formData.append("propertyId", data.propertyId);
 
-    Axios({
-      method: "post",
-      url: base_URL + "/api/invoice",
-      data: formData,
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.post(base_URL + "/api/invoice", formData, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {

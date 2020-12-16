@@ -1,39 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ManagementCompanyViews from "../../../component/view/managementCompany/managementCompany";
-import { base_URL } from "../../../const/base_URL";
-import Axios from "axios";
+import { connect } from "react-redux";
 
 const ManagementCompanyView = (props) => {
-  const [ManagementCompany, setManagementCompany] = useState([]);
-
-  useEffect(() => {
-    AllManagementCompany();
-  }, []);
-
-  let AllManagementCompany = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/managementCompany",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
-      },
-    })
-      .then((res) => {
-        setManagementCompany(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div>
-      <ManagementCompanyViews ManagementCompany={ManagementCompany} />
+      <ManagementCompanyViews
+        ManagementCompany={props.redux_ManagementCompanyData.managementCompany}
+      />
     </div>
   );
 };
 
-export default ManagementCompanyView;
+const mapStateToProps = (state) => ({
+  redux_ManagementCompanyData: state.managementCompany,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  //redux_Add_Tenant: (arg) => dispatch({ type: "ADD_ALL_MAINTANANCE_COMPANY", payload: arg }),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ManagementCompanyView);

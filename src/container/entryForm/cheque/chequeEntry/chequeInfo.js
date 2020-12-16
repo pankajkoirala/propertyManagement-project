@@ -4,6 +4,8 @@ import { base_URL } from "../../../../const/base_URL";
 import Axios from "axios";
 import { notification } from "../../../../shared/notification.js";
 import { reloadFunction } from "../../../../shared/commonFunction.js";
+import { getLocalStorage } from "./../../../../const/tokenStorage";
+import { token_key } from "./../../../../const/base_URL";
 
 let ChequeInfoContainer = () => {
   const [allCheckInfo, setAllChequeInfo] = useState([]);
@@ -13,15 +15,9 @@ let ChequeInfoContainer = () => {
   }, []);
 
   const ChequeeInfoData = (data) => {
-    Axios({
-      method: "post",
-      url: base_URL + "/api/chequeInfo",
-      data: data,
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.post(base_URL + "/api/chequeInfo", data, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -34,14 +30,9 @@ let ChequeInfoContainer = () => {
   };
 
   const ChequeeInfo = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/chequeInfo",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/chequeInfo", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {

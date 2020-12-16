@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 const MaintananceCompanyDetailView = (props) => {
   const { id } = useParams();
@@ -32,17 +34,13 @@ const MaintananceCompanyDetailView = (props) => {
     formData.append("invoicePhoto", data.invoicePhoto);
     formData.append("expense_Type", data.expense_Type);
 
-    Axios({
-      method: "put",
-      url: base_URL + "/api/expense/" + ID,
-      data: formData,
-      config: {
+    
+     
+      Axios.put( base_URL + "/api/expense/" + ID,formData,{
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
+          [token_key]: getLocalStorage(token_key),
         },
-      },
-    })
+      })
       .then((res) => {
         notification("Updated successfully", "SUCCESS");
         reloadFunction();

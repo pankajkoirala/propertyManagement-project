@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 const BrokerDetailViewCont = (props) => {
   const { id } = useParams();
@@ -41,15 +43,10 @@ const BrokerDetailViewCont = (props) => {
     formData.append("broker_email", data.broker_email);
     formData.append("brokerType", data.brokerType);
 
-    Axios({
-      method: "put",
-      url: base_URL + "/api/brokerCompany/" + ID,
-      data: formData,
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+   
+    Axios.put(base_URL + "/api/brokerCompany/"+ ID,formData,{
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {

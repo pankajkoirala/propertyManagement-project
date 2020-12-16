@@ -1,5 +1,5 @@
 import React from "react";
-import FetchDataPage from "./router/fetch_AllData";
+import RouterPage from "./router/router";
 //import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 //redux
@@ -22,7 +22,7 @@ function App() {
       <Provider store={store}>
         <ToastContainer />
         <div className="">
-          <FetchDataPage />
+          <RouterPage />
         </div>
       </Provider>
     </div>

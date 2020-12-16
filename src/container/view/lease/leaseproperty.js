@@ -1,39 +1,21 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import React from "react";
 import LeaseProperty from "../../../component/view/lease/leaseProperty";
-import { base_URL } from "../../../const/base_URL";
+import { connect } from "react-redux";
 
 const LeasePropertyView = (props) => {
-  const [lease, setLease] = useState([]);
-
-  useEffect(() => {
-    leaseData();
-  }, []);
-
-  let leaseData = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/lease",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
-      },
-    })
-      .then((res) => {
-        setLease(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div>
-      <LeaseProperty lease={lease} />
+      <LeaseProperty lease={props.redux_LeaseData.lease} />
     </div>
   );
 };
 
-export default LeasePropertyView;
+const mapStateToProps = (state) => ({
+  redux_LeaseData: state.lease,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  //redux_Add_Tenant: (arg) => dispatch({ type: "ADD_ALL_MAINTANANCE_COMPANY", payload: arg }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LeasePropertyView);

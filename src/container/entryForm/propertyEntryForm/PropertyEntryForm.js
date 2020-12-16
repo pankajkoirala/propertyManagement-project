@@ -5,6 +5,8 @@ import Axios from "axios";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
 import { connect } from "react-redux";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 const PropertyEntry = (props) => {
   const propertySend = (data, file) => {
@@ -30,17 +32,14 @@ const PropertyEntry = (props) => {
     formData.append("developerCompany", data.developerCompany);
     formData.append("managementCompany", data.managementCompany);
 
-    Axios({
-      method: "post",
-      url: base_URL + "/api/property",
-      data: formData,
-      config: {
+
+      
+      Axios.post( base_URL + "/api/property", formData,{
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
+          [token_key]: getLocalStorage(token_key),
         },
-      },
-    })
+      })
+   
       .then((res) => {
         notification("Created successfully", "SUCCESS");
         reloadFunction();

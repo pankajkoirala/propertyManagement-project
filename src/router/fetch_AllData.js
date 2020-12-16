@@ -1,8 +1,13 @@
 import React, { useEffect } from "react";
-import RouterPage from "./router";
 import { base_URL } from "./../const/base_URL";
 import Axios from "axios";
 import { connect } from "react-redux";
+import { getLocalStorage } from "./../const/tokenStorage";
+import { token_key } from "./../const/base_URL";
+console.log(
+  "🚀 ~ file: fetch_AllData.js ~ line 8 ~ token_key",
+  getLocalStorage(token_key)
+);
 
 let FetchData = (props) => {
   useEffect(() => {
@@ -23,14 +28,9 @@ let FetchData = (props) => {
   }, []);
 
   let BrokerCompanyData = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/brokerCompany",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/brokerCompany", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -60,14 +60,9 @@ let FetchData = (props) => {
   };
 
   let leaseData = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/lease",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/lease", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -78,16 +73,12 @@ let FetchData = (props) => {
       });
   };
   let AllMaintananceCompany = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/maintananceCompany",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/maintananceCompany", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
+
       .then((res) => {
         props.redux_Add_maintananceCompany(res.data);
       })
@@ -96,14 +87,9 @@ let FetchData = (props) => {
       });
   };
   let AllManagementCompany = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/managementCompany",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/managementCompany", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -114,14 +100,9 @@ let FetchData = (props) => {
       });
   };
   let propertyData = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/property",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/property", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -132,14 +113,9 @@ let FetchData = (props) => {
       });
   };
   let TenantData = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/tenant",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/tenant", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -151,14 +127,9 @@ let FetchData = (props) => {
   };
 
   let ChequeData = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/cheque",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/cheque", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -170,14 +141,9 @@ let FetchData = (props) => {
   };
 
   let DevelopementCompanyData = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/DeveloperCompany",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/DeveloperCompany", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -189,14 +155,9 @@ let FetchData = (props) => {
   };
 
   let MaintananceTicketData = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/MaintananceTicket",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/MaintananceTicket", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -208,14 +169,9 @@ let FetchData = (props) => {
   };
 
   let ExpensesData = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/expense",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/expense", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -226,14 +182,9 @@ let FetchData = (props) => {
       });
   };
   let Owner = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/owner",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/owner", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -245,14 +196,9 @@ let FetchData = (props) => {
   };
 
   let Invoice = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/invoice",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.get(base_URL + "/api/invoice", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
@@ -263,11 +209,7 @@ let FetchData = (props) => {
       });
   };
 
-  return (
-    <div>
-      <RouterPage />
-    </div>
-  );
+  return <div></div>;
 };
 
 const mapStateToProps = (state) => ({});

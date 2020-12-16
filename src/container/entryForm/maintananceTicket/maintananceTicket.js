@@ -5,6 +5,8 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 const MaintananceTicketContainer = (props) => {
   const MaintananceTicketData = (data) => {
@@ -26,16 +28,9 @@ const MaintananceTicketContainer = (props) => {
       data.Maintanance_Ticket_picture
     );
     formData.append("maintanance_Amount", data.maintanance_Amount);
-
-    Axios({
-      method: "post",
-      url: base_URL + "/api/MaintananceTicket",
-      data: formData,
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.post(base_URL + "/api/MaintananceTicket", formData, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {

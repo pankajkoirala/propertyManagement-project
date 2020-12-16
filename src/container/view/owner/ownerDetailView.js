@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 const OwnerViewCont = (props) => {
   const { id } = useParams();
@@ -33,19 +35,12 @@ const OwnerViewCont = (props) => {
     formData.append("owner_Name", data.owner_Name);
     formData.append("owner_Type", data.owner_Type);
     formData.append("owner_GovID_RegNo", data.owner_GovID_RegNo);
-    formData.append("owner_email", data.owner_email);
-
-    Axios({
-      method: "put",
-      url: base_URL + "/api/owner/" + ID,
-      data: formData,
-      config: {
+    
+      Axios.put(base_URL + "/api/owner/" + ID,formData,{
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
+          [token_key]: getLocalStorage(token_key),
         },
-      },
-    })
+      })
       .then((res) => {
         notification("Updated successfully", "SUCCESS");
         reloadFunction();

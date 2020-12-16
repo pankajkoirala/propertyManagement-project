@@ -3,6 +3,7 @@ import HomepageComponent from "../../component/homepage/homepage";
 import { connect } from "react-redux";
 import { incomeCalc, expenseCalc } from "../../shared/commonFunction";
 import moment from "moment";
+import FetchAllData from "./../../router/fetch_AllData";
 
 const HomepageContainer = (props) => {
   //bar year change state
@@ -173,6 +174,7 @@ const HomepageContainer = (props) => {
 
   return (
     <div>
+      <FetchAllData />
       <HomepageComponent
         totalProperty={props.redux_propertyData?.property?.length}
         leaseProperty={props?.redux_leaseData?.lease.length}

@@ -1,39 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MaintananceCompanyViews from "../../../component/view/maintananceCompany/maintananceCompany";
-import { base_URL } from "../../../const/base_URL";
-import Axios from "axios";
+import { connect } from "react-redux";
 
 const MaintananceCompanyView = (props) => {
-  const [MaintananceCompany, setMaintananceCompany] = useState([]);
-
-  useEffect(() => {
-    AllMaintananceCompany();
-  }, []);
-
-  let AllMaintananceCompany = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/maintananceCompany",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
-      },
-    })
-      .then((res) => {
-        setMaintananceCompany(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div>
-      <MaintananceCompanyViews MaintananceCompany={MaintananceCompany} />
+      <MaintananceCompanyViews
+        MaintananceCompany={
+          props.redux_maintananceCompanyData.maintananceCompany
+        }
+      />
     </div>
   );
 };
 
-export default MaintananceCompanyView;
+const mapStateToProps = (state) => ({
+  redux_maintananceCompanyData: state.maintananceCompany,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  //redux_Add_Tenant: (arg) => dispatch({ type: "ADD_ALL_MAINTANANCE_COMPANY", payload: arg }),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MaintananceCompanyView);

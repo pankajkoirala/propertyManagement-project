@@ -1,39 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MintananceTicketViews from "../../../component/view/maintananceTicket/maintananceTicket";
-import { base_URL } from "../../../const/base_URL";
-import Axios from "axios";
+import { connect } from "react-redux";
 
 const MaintananceTicketView = (props) => {
-  const [maintananceTicket, setMaintananceTicket] = useState([]);
-
-  useEffect(() => {
-    AllManagementCompany();
-  }, []);
-
-  let AllManagementCompany = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/MaintananceTicket",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
-      },
-    })
-      .then((res) => {
-        setMaintananceTicket(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div>
-      <MintananceTicketViews maintananceTicket={maintananceTicket} />
+      <MintananceTicketViews
+        maintananceTicket={props.redux_maintananceTicketData.maintananceTicket}
+      />
     </div>
   );
 };
 
-export default MaintananceTicketView;
+const mapStateToProps = (state) => ({
+  redux_maintananceTicketData: state.maintananceTicket,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  //redux_Add_Tenant: (arg) => dispatch({ type: "ADD_ALL_MAINTANANCE_COMPANY", payload: arg }),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MaintananceTicketView);

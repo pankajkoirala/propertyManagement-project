@@ -1,39 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import OwnerView from "../../../component/view/owner/ownerView";
-import { base_URL } from "../../../const/base_URL";
-import Axios from "axios";
+import { connect } from "react-redux";
 
 const OwnerViews = (props) => {
-  const [ownersData, setOwnersData] = useState([]);
-
-  useEffect(() => {
-    Owner();
-  }, []);
-
-  let Owner = () => {
-    Axios({
-      method: "get",
-      url: base_URL + "/api/owner",
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
-      },
-    })
-      .then((res) => {
-        setOwnersData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div>
-      <OwnerView ownersData={ownersData} />
+      <OwnerView ownersData={props.redux_OwnerData.owner} />
     </div>
   );
 };
 
-export default OwnerViews;
+const mapStateToProps = (state) => ({
+  redux_OwnerData: state.owner,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  //redux_Add_Tenant: (arg) => dispatch({ type: "ADD_ALL_MAINTANANCE_COMPANY", payload: arg }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(OwnerViews);

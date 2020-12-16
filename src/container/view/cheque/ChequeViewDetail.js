@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { notification } from "../../../shared/notification.js";
 import { reloadFunction } from "../../../shared/commonFunction";
+import { getLocalStorage } from "./../../../const/tokenStorage";
+import { token_key } from "./../../../const/base_URL";
 
 const ChequeDetailViewCont = (props) => {
   const { id } = useParams();
@@ -37,15 +39,9 @@ const ChequeDetailViewCont = (props) => {
     formData.append("miscellaneous_amount", data.miscellaneous_amount);
     formData.append("property_id", data.property_id);
 
-    Axios({
-      method: "put",
-      url: base_URL + "/api/cheque/" + ID,
-      data: formData,
-      config: {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
-        },
+    Axios.put(base_URL + "/api/cheque/" + ID, formData, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
