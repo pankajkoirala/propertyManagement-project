@@ -19,6 +19,10 @@ const ExpenseEntry = (props) => {
   let removeExpense = (id) =>
     setexpenselist(expenselist.filter((arg) => arg.expenseId !== id));
 
+  console.log(
+    "🚀 ~ file: expenseEntry.js ~ line 20 ~ ExpenseEntry ~ removeExpense",
+    props?.Redux_maintananceTicketData
+  );
   //add expense
   let addExpense = (data) => {
     setexpenselist([...expenselist, data]);
@@ -175,9 +179,7 @@ const ExpenseEntry = (props) => {
                             <option value="Legal">Legal</option>
                             <option value="FMC">FMC</option>
                             <option value="Utility">Utility</option>
-                            <option value="Office Expense">
-                              Office Expense
-                            </option>
+                            <option value="Miscellaneous">Miscellaneous</option>
                           </Input>
                           {touched.expense_Type && errors.expense_Type && (
                             <span
@@ -188,7 +190,9 @@ const ExpenseEntry = (props) => {
                             </span>
                           )}
                         </div>
-                        {values.expense_Type === "Maintanance" ? (
+                        {values.expense_Type === "Maintanance" ||
+                        values.expense_Type === "FMC" ||
+                        values.expense_Type === "Utility" ? (
                           <div className="mt-2 col-4">
                             <Label for="exampleName">
                               maintanance ticket ID
@@ -220,7 +224,9 @@ const ExpenseEntry = (props) => {
                         ) : (
                           ""
                         )}
-                        {values.expense_Type === "Maintanance" ? (
+                        {values.expense_Type === "Maintanance" ||
+                        values.expense_Type === "FMC" ||
+                        values.expense_Type === "Utility" ? (
                           <div className="mt-2 col-4">
                             <Label for="exampleName">property</Label>
                             <RegexComponent

@@ -10,12 +10,13 @@ let RegexConponent = (props) => {
   const [value, setValue] = useState("");
   const [optionDisplay, setOptionDisplay] = useState(false);
 
+  
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const { setFieldValue, name, options, OwnerFunction } = props;
+  const { setFieldValue, name, options, OwnerFunction,editSelectedName } = props;
 
   let filterArray = (e) => {
     const splittedWord = e.toLowerCase().split("");
@@ -63,7 +64,7 @@ let RegexConponent = (props) => {
             ? setUpdatedOptions([])
             : setUpdatedOptions(options);
         }}
-        value={value}
+        value={value||editSelectedName}
         onChange={(e) => {
           filterArray(e.target.value);
 

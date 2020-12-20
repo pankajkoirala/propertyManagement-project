@@ -390,6 +390,8 @@ const PropertyEntry = (props) => {
 
                   <RegexConponent
                     setFieldValue={setFieldValue}
+                    editSelectedName={props?.property?.managementCompany?.managementCompany_name}
+
                     options={props?.Redux_ManagementCompanyData?.map(
                       (management) => {
                         return {
@@ -417,6 +419,8 @@ const PropertyEntry = (props) => {
 
                   <RegexConponent
                     {...props}
+                    editSelectedName={props?.property?.Property_ownerName?.owner_Name}
+
                     setFieldValue={setFieldValue}
                     OwnerFunction={ownerIdList}
                     name={"Property_ownerName"}
@@ -442,6 +446,8 @@ const PropertyEntry = (props) => {
                   <Label for="exampleSelect">Developer Company</Label>
 
                   <RegexConponent
+                    editSelectedName={props?.property?.developerCompany?.DeveloperCompany_Name}
+
                     setFieldValue={setFieldValue}
                     options={props?.redux_DeveloperCompanyData?.map(
                       (developer) => {

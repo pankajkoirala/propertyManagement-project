@@ -71,7 +71,9 @@ const ExpenseDisplay = (props) => {
                   search2: arg.expense_Type,
                   search3: arg.expenseInvoiceNumber,
                   search4:
-                    arg.expense_Type === "Maintanance"
+                    arg.expense_Type === "Maintanance" ||
+                    arg.expense_Type === "FMC" ||
+                    arg.expense_Type === "Utility"
                       ? arg?.property_ID?.property_type +
                         "-" +
                         arg?.property_ID?.referenceNO

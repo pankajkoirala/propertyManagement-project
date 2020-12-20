@@ -7,7 +7,7 @@ import moment from "moment";
 let MaintananceTicketDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showPopup, setShowPopUp] = useState(false);
-
+  
   let showHide = () => {
     setShowEditForm(!showEditForm);
   };
@@ -160,6 +160,29 @@ let MaintananceTicketDetailViewComponent = (props) => {
                         </tr>
                       </tbody>
                     </Table>
+                  </div>
+                </div>
+                <div>
+                  <h5 className="mt4 ">MaintananceTicket Document</h5>
+                  <div className="d-flex flex-wrap">
+                    {arg?.files_list?.map((file, index) => {
+                      return (
+                        <div key={index} className="m-4">
+                          <div>
+                            <a href={file.file} target={file.file}>
+                              <img
+                                style={{ height: "100px", width: "100px" }}
+                                src={file.file}
+                                alt={file.file}
+                              />
+                            </a>
+                          </div>
+                          <div className="font-weight-bold text-center">
+                            {file.fileName}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
                 <button

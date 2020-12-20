@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import RegexComponent from "../../../shared/regexComponent";
-import { FormGroup, Label, Input, Form } from "reactstrap";
+import { FormGroup, Label, Input, Form,Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import { MaintainanceTicketEntryForm } from "./../../../utility/validation/maintainanceTicketEntryFormValidation.js";
 
+
+
 const MaintananceTicket = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
   const [loadingState, setLoadingState] = useState(false);
+  const [allFile, setAllFile] = useState(
+    props?.maintananceTicket ? props?.maintananceTicket?.files_list : []
+    );
+
+  let photoDelete = (name) => {
+    setAllFile(allFile.filter((file) => file.fileName !== name));
+  };
 
   let initialvalue = {
     maintananceTicketIssueDate:
@@ -27,8 +36,10 @@ const MaintananceTicket = (props) => {
     MaintananceCompanyDetailInfo:
       props?.maintananceTicket?.MaintananceCompanyDetailInfo || "",
     maintanance_Amount: props?.maintananceTicket?.maintanance_Amount || "",
-    Maintanance_Ticket_picture:
-      props?.maintananceTicket?.Maintanance_Ticket_picture || "",
+
+      fileName: "",
+      file: "",
+      files_list: [],
   };
   return (
     <div>
@@ -39,14 +50,18 @@ const MaintananceTicket = (props) => {
             onSubmit={(values) => {
               setLoadingState(true);
 
+              typeof allFile[0].file === "string"
+              ? (values.files_list = JSON.stringify(allFile))
+              : (values.files_list = "");
+
               props?.maintananceTicket
                 ? props.maintananceTicketUpdate(
                     values,
-                    props?.maintananceTicket?._id
+                    props?.maintananceTicket?._id,allFile
                   )
-                : props.MaintananceTicketData(values);
+                : props.MaintananceTicketData(values,allFile);
             }}
-            validationSchema={MaintainanceTicketEntryForm}
+             validationSchema={MaintainanceTicketEntryForm}
           >
             {({
               touched,
@@ -138,6 +153,7 @@ const MaintananceTicket = (props) => {
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
+                          editSelectedName={props?.maintananceTicket?.MaintanancePropertyID?.referenceNO}
                           options={props?.Redux_propertyData?.map(
                             (property) => {
                               return {
@@ -169,6 +185,7 @@ const MaintananceTicket = (props) => {
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
+                          editSelectedName={props?.maintananceTicket?.MaintananceCompanyId?.Company_Name}
                           options={props?.Redux_maintananceCompanyData?.map(
                             (maintananceCompany) => {
                               return {
@@ -245,41 +262,139 @@ const MaintananceTicket = (props) => {
                       </div>
                     </div>
 
-                    <div className="">
-                      <div className="col-md-6 text-left mb-2 mt-4">
-                        <Label className="float-left">Picture</Label>
+                    <div style={{ marginTop: "40px" }}>
+                    <h4 className="form-head">Document Field</h4>
+                    <div className="row ">
+                      <div className="col-md-4 text-left mb-2 ">
+                        <p>Document Name</p>
+                        <Input
+                          name="fileName"
+                          type="text"
+                          placeholder="Select Status of Cheque"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.fileName}
+                        ></Input>
+                      </div>
+                      <div className="col-md-4 text-left mb-2 mt-2">
+                        <Label className="float-left">Upload Scan Copy</Label>
                         <Input
                           type="file"
-                          name="Maintanance_Ticket_picture"
+                          alt="no file"
+                          name="file"
                           accept="image/*"
                           onChange={(event) => {
-                            setFieldValue(
-                              "Maintanance_Ticket_picture",
-                              event.currentTarget.files[0]
-                            );
+                            setFieldValue("file", event.currentTarget.files[0]);
                           }}
                         />
-
-                        {touched.Maintanance_Ticket_picture &&
-                          values.Maintanance_Ticket_picture && (
-                            <img
-                              src={
-                                typeof values.Maintanance_Ticket_picture ===
-                                "string"
-                                  ? values.Maintanance_Ticket_picture
-                                  : URL.createObjectURL(
-                                      values.Maintanance_Ticket_picture
-                                    )
-                              }
-                              alt="no file"
-                              height="20"
-                            />
-                          )}
                       </div>
+                      <div className="col-md-4 text-left mb-2 mt-4">
+                        <button
+                          disabled={!values.fileName || !values.file}
+                          onClick={() => {
+                            let filterData = allFile.find(
+                              (a) => a.fileName === values.fileName
+                            );
+                            if (filterData) {
+                              let afterRemoveSameData = allFile.filter(
+                                (arg) => arg.fileName !== filterData.fileName
+                              );
+                              setAllFile([
+                                ...afterRemoveSameData,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
+                            } else {
+                              setAllFile([
+                                ...allFile,
+                                {
+                                  fileName: values.fileName,
+                                  file: values.file,
+                                },
+                              ]);
+                            }
+                          }}
+                          type="button"
+                          className="btn btn-secondary btn-sm"
+                        >
+                          Add File
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  {allFile.length !== 0 ? (
+                    <Table striped bordered hover size="sm">
+                      <thead>
+                        <tr>
+                          <th>SN</th>
+                          <th> Name</th>
+                          <th>image</th>
+                          <th>
+                            <button
+                              style={
+                                props?.owner
+                                  ? { display: "inline" }
+                                  : { display: "none" }
+                              }
+                              onClick={() => setAllFile([])}
+                            >
+                              delete All
+                            </button>
+                          </th>
+                        </tr>
+                      </thead>
+                      {allFile.map((arg, index) => {
+                        return (
+                          <tbody key={index}>
+                            <tr>
+                              <td>{index + 1}</td>
+                              <td className="font-weight-bold">
+                                {arg.fileName}
+                              </td>
+                              <td>
+                                <img
+                                  src={
+                                    typeof arg.file === "string"
+                                      ? arg.file
+                                      : URL.createObjectURL(arg.file)
+                                  }
+                                  alt="no file"
+                                  height="80px"
+                                />
+                              </td>
+                              <td>
+                                <button
+                                  style={
+                                    props?.owner
+                                      ? { display: "none" }
+                                      : { display: "inline" }
+                                  }
+                                  type="button"
+                                  onClick={() => {
+                                    photoDelete(arg.fileName);
+                                  }}
+                                >
+                                  delete
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        );
+                      })}
+                    </Table>
+                  ) : (
+                    ""
+                  )}
+                    <div className="">
+                      
+
                       <button
                         className="btn btn-primary Success col-2 mt-5 ml-3"
                         type="button"
                         onClick={() => setShowPopUp(true)}
+                        disabled={allFile.length === 0 ? true : false}
                       >
                         Submit
                       </button>

@@ -9,8 +9,11 @@ import { getLocalStorage } from "./../../../const/tokenStorage";
 import { token_key } from "./../../../const/base_URL";
 
 const MaintananceTicketContainer = (props) => {
-  const MaintananceTicketData = (data) => {
+  const MaintananceTicketData = (data,file) => {
     const formData = new FormData();
+    file.forEach((element) => {
+      formData.append(element.fileName, element.file);
+    });
 
     formData.append(
       "maintananceTicketIssueDate",
@@ -23,10 +26,7 @@ const MaintananceTicketContainer = (props) => {
       "MaintananceCompanyDetailInfo",
       data.MaintananceCompanyDetailInfo
     );
-    formData.append(
-      "Maintanance_Ticket_picture",
-      data.Maintanance_Ticket_picture
-    );
+ 
     formData.append("maintanance_Amount", data.maintanance_Amount);
     Axios.post(base_URL + "/api/MaintananceTicket", formData, {
       headers: {

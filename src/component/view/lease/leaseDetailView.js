@@ -26,7 +26,7 @@ let LeaseDetailViewComponent = (props) => {
                         width: "100%",
                         borderRadius: "20px 20px 0px 0px",
                       }}
-                      src={arg?.property?.files_list[0]?.file}
+                      src={arg?.files_list[0]?.file}
                       alt="recently added"
                     />
                   </div>

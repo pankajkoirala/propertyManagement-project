@@ -118,6 +118,7 @@ const LeaseEntry = (props) => {
                   <Label for="exampleSelect">Tenants(s)</Label>
                   <RegexConponent
                     {...props}
+                    editSelectedName={props?.lease?.tenants?.tenant_Name}
                     setFieldValue={setFieldValue}
                     options={props?.redux_tenantData?.tenant?.map((tenent) => {
                       return {
@@ -142,6 +143,8 @@ const LeaseEntry = (props) => {
                   <Label for="exampleSelect">Property</Label>
                   <RegexConponent
                     setFieldValue={setFieldValue}
+                    editSelectedName={props?.lease?.property?.referenceNO}
+
                     options={props.unReserveProperty.map((property) => {
                       return {
                         name:

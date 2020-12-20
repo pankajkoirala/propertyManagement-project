@@ -18,8 +18,15 @@ const MaintananceTicketDetailView = (props) => {
   );
 
   //tanent update
-  const maintananceTicketUpdate = (data, ID) => {
+  const maintananceTicketUpdate = (data, ID,file) => {
     const formData = new FormData();
+    if (typeof file[0].file !== "string") {
+      file.forEach((element) => {
+        formData.append(element.fileName, element.file);
+      });
+    } else {
+      formData.append("files_list", data.files_list);
+    }
 
     formData.append(
       "maintananceTicketIssueDate",
@@ -32,10 +39,7 @@ const MaintananceTicketDetailView = (props) => {
       "MaintananceCompanyDetailInfo",
       data.MaintananceCompanyDetailInfo
     );
-    formData.append(
-      "Maintanance_Ticket_picture",
-      data.Maintanance_Ticket_picture
-    );
+ 
     formData.append("maintanance_Amount", data.maintanance_Amount);
 
     Axios.put(base_URL + "/api/MaintananceTicket/" + ID, formData, {

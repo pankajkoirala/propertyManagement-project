@@ -21,6 +21,10 @@ const ChequeView = (props) => {
           moment(to, "YYYY-MM-DD").add(1, "day")
         )
   );
+  console.log(
+    "🚀 ~ file: cheque.js ~ line 24 ~ ChequeView ~ filterChequeList",
+    filterChequeList
+  );
   //filter by check no
   let filterArray = (cheqNo) => {
     const splittedWord = cheqNo.split("");
@@ -207,13 +211,13 @@ const ChequeView = (props) => {
               <tr>
                 <th>SN</th>
                 <th>lease no</th>
-
+                <th>Property Name</th>
                 <th>Cheque no</th>
                 <th>Cheque issue Date</th>
-                <th>cheque amount</th>
-                <th>remark</th>
-                <th>cheque cheque_status</th>
-                <th>view detail</th>
+                <th>Cheque amount</th>
+                <th>Remark</th>
+                <th>Cheque cheque_status</th>
+                <th>View detail</th>
               </tr>
             </thead>
             {filterChequeList.map((arg, index) => {
@@ -222,6 +226,11 @@ const ChequeView = (props) => {
                   <tr>
                     <td>{index + 1}</td>
                     <td>{arg?.lease_property?.LeaseId}</td>
+                    <td>
+                      {arg?.property_id?.property_type +
+                        "/" +
+                        arg?.property_id?.referenceNO}
+                    </td>
                     <td>{arg.cheque_number}</td>
                     <td>
                       {moment(arg?.cheque_issueDate).format("YYYY-MM-DD")}

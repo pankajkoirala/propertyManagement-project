@@ -10,7 +10,7 @@ import PoopUp from "./../../../../shared/popup";
 const ChequeEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
   const [loadingState, setLoadingState] = useState(false);
-
+  
   let initialvalue = {
     miscellaneous_amount: props?.Cheque?.miscellaneous_amount || "",
     vat_amount: props?.Cheque?.vat_amount || "",
@@ -324,6 +324,8 @@ const ChequeEntry = (props) => {
                         <Label for="exampleSelect">Lease Number</Label>
                         <RegexComponent
                           {...props}
+                          editSelectedName={props?.Cheque?.lease_property?.LeaseId}
+
                           setFieldValue={setFieldValue}
                           options={props?.Redux_leaseData?.map((lease) => {
                             return {
@@ -354,6 +356,7 @@ const ChequeEntry = (props) => {
                         <Label for="exampleSelect">Property </Label>
                         <RegexComponent
                           {...props}
+                          editSelectedName={props?.Cheque?.property_id?.referenceNO}
                           setFieldValue={setFieldValue}
                           options={props?.Redux_propertyData?.map(
                             (property) => {
