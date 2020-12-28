@@ -86,7 +86,6 @@ let InvoiceComponent = (props) => {
       n[4] !== "0"
         ? (a[Number(n[4])] || b[n[4][0]] + " " + a[n[4][1]]) + "hundred "
         : "";
-    console.log("🚀 ~ file: invoice.js ~ line 87 ~ inWords ~  n[4]", n[4]);
     str +=
       (n[5] !== "0".padStart(2, 0)
         ? (str !== "" ? "and " : "") +

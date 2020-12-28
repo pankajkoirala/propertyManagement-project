@@ -167,7 +167,6 @@ const ExpenseDisplay = (props) => {
             {expenses?.map((arg, index) => {
               return (
                 <tbody key={index}>
-                  {console.log("asjdgafjaf",arg)}
                   <tr>
                     <td>{index + 1}</td>
                     <td>{arg.Expense_ID}</td>

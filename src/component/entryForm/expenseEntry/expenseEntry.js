@@ -51,7 +51,6 @@ const ExpenseEntry = (props) => {
             initialValues={initialvalue}
             onSubmit={(values) => {
               setLoadingState(true);
-console.log(values);
               //expense list sending
               values.expense_list = JSON.stringify(
                 expenselist.map((arg) => {
@@ -185,7 +184,6 @@ console.log(values);
                             <Label for="exampleName">
                               maintanance ticket ID
                             </Label>
-                            {console.log(values.Maintanance_ticketID,values.property_ID)}
                             <RegexComponent
                               {...props}
                               setFieldValue={setFieldValue}

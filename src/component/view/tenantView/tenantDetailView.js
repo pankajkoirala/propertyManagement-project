@@ -6,7 +6,6 @@ import moment from "moment";
 import TanentEntryForm from "../../../component/entryForm/tenantEntryForm/tenantEntryForm";
 
 const TanentDetailView = (props) => {
-console.log("🚀 ~ file: tenantDetailView.js ~ line 9 ~ TanentDetailView ~ props", props)
   const [showEditForm, setShowEditForm] = useState(false);
   const [showPopup, setShowPopUp] = useState(false);
 

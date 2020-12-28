@@ -13,7 +13,6 @@ const BrokerComponent = (props) => {
   const [allFile, setAllFile] = useState(
     props?.BrokerCompany ? props?.BrokerCompany?.files_list : []
   );
-  //console.log(allFile);
 
   let initialvalue = {
     residence: props?.BrokerCompany?.residence || "",
@@ -51,7 +50,6 @@ const BrokerComponent = (props) => {
                 ? props.BrokerUpdate(values, props.BrokerCompany._id, allFile)
                 : props.brokerData(values, allFile);
               setLoadingState(true);
-              console.log(values);
             }}
             validationSchema={brokerEntryFormValidation}
           >

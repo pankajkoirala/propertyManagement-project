@@ -70,7 +70,7 @@ let RegexConponent = (props) => {
 
           setValue(e.target.value);
         }}
-      ></Input>
+      />
 
       {updatedOptions?.map((arg, i) => {
         return (

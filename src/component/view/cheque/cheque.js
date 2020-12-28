@@ -21,10 +21,7 @@ const ChequeView = (props) => {
           moment(to, "YYYY-MM-DD").add(1, "day")
         )
   );
-  console.log(
-    "🚀 ~ file: cheque.js ~ line 24 ~ ChequeView ~ filterChequeList",
-    filterChequeList
-  );
+ 
   //filter by check no
   let filterArray = (cheqNo) => {
     const splittedWord = cheqNo.split("");

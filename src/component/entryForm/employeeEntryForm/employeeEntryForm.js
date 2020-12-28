@@ -51,7 +51,6 @@ const TenantEntry = (props) => {
                     allFile
                   )
                 : props.EmployeeData(values, allFile);
-              console.log(values);
             }}
             validationSchema={employeeEntryFormValidation}
           >
