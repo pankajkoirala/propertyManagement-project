@@ -19,10 +19,7 @@ const ExpenseEntry = (props) => {
   let removeExpense = (id) =>
     setexpenselist(expenselist.filter((arg) => arg.expenseId !== id));
 
-  console.log(
-    "🚀 ~ file: expenseEntry.js ~ line 20 ~ ExpenseEntry ~ removeExpense",
-    props?.Redux_maintananceTicketData
-  );
+ 
   //add expense
   let addExpense = (data) => {
     setexpenselist([...expenselist, data]);
