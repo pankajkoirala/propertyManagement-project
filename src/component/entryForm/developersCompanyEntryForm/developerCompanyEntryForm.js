@@ -16,7 +16,7 @@ const DeveloperCompanyComponent = (props) => {
   );
 
   let initialValue = {
-    Developer_area: props?.developerCompany?.Developer_area || "",
+    Developer_residence: props?.developerCompany?.Developer_residence || "",
     Developer_city: props?.developerCompany?.Developer_city || "",
     Developer_country: props?.developerCompany?.Developer_country || "",
     DeveloperCompany_phoneNo:
@@ -150,21 +150,21 @@ const DeveloperCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Area</Label>
+                        <Label for="exampleName">residence</Label>
                         <Input
                           type="text"
-                          value={values.Developer_area}
-                          name="Developer_area"
-                          placeholder="Location Area"
+                          value={values.Developer_residence}
+                          name="Developer_residence"
+                          placeholder="Location residence"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.Developer_area && errors?.Developer_area && (
+                        {touched?.Developer_residence && errors?.Developer_residence && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.Developer_area}
+                            {errors?.Developer_residence}
                           </span>
                         )}
                       </div>
@@ -172,13 +172,18 @@ const DeveloperCompanyComponent = (props) => {
                       <div className="col-md-4">
                         <Label for="exampleName">City</Label>
                         <Input
-                          type="text"
+                          type="select"
                           value={values.Developer_city}
                           name="Developer_city"
-                          placeholder="Enter your city"
+                          placeholder=" City"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                        />
+                        >
+                          <option value="">Select One</option>
+                          <option value="ABU DHABI">ABU DHABI</option>
+                          <option value="DUBAI">DUBAI</option>
+                          <option value="SHARJHA">SHARJHA</option>
+                        </Input>
                         {touched?.Developer_city && errors?.Developer_city && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
@@ -192,11 +197,12 @@ const DeveloperCompanyComponent = (props) => {
                         <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
-                          value={values.Developer_country}
+                          value={"DUBAI"}
                           name="Developer_country"
                           placeholder="Enter the name of country"
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          disabled
                         />
                         {touched?.Developer_country &&
                           errors?.Developer_country && (

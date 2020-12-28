@@ -13,7 +13,7 @@ const BankAccountContainer = () => {
     file.forEach((element) => {
       formData.append(element.fileName, element.file);
     });
-    formData.append("Developer_area", data.Developer_area);
+    formData.append("Developer_residence", data.Developer_residence);
     formData.append("Developer_city", data.Developer_city);
     formData.append("Developer_country", data.Developer_country);
     formData.append("DeveloperCompany_phoneNo", data.DeveloperCompany_phoneNo);

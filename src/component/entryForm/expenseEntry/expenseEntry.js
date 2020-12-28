@@ -51,7 +51,7 @@ const ExpenseEntry = (props) => {
             initialValues={initialvalue}
             onSubmit={(values) => {
               setLoadingState(true);
-
+console.log(values);
               //expense list sending
               values.expense_list = JSON.stringify(
                 expenselist.map((arg) => {
@@ -62,16 +62,6 @@ const ExpenseEntry = (props) => {
                   };
                 })
               );
-              values.property_ID =
-                values.expense_Type === "Maintanance" ||
-                props?.expense?.expense_Type === "Maintanance"
-                  ? values.property_ID
-                  : "";
-              values.Maintanance_ticketID =
-                values.expense_Type === "Maintanance" ||
-                props?.expense?.expense_Type === "Maintanance"
-                  ? values.Maintanance_ticketID
-                  : "";
 
               props?.expense
                 ? props.expenseUpdate(values, props?.expense?._id)
@@ -190,13 +180,12 @@ const ExpenseEntry = (props) => {
                             </span>
                           )}
                         </div>
-                        {values.expense_Type === "Maintanance" ||
-                        values.expense_Type === "FMC" ||
-                        values.expense_Type === "Utility" ? (
+                        {values.expense_Type !== "Miscellaneous"  ? (
                           <div className="mt-2 col-4">
                             <Label for="exampleName">
                               maintanance ticket ID
                             </Label>
+                            {console.log(values.Maintanance_ticketID,values.property_ID)}
                             <RegexComponent
                               {...props}
                               setFieldValue={setFieldValue}
@@ -224,9 +213,8 @@ const ExpenseEntry = (props) => {
                         ) : (
                           ""
                         )}
-                        {values.expense_Type === "Maintanance" ||
-                        values.expense_Type === "FMC" ||
-                        values.expense_Type === "Utility" ? (
+                        {values.expense_Type !== "Miscellaneous" 
+                         ? (
                           <div className="mt-2 col-4">
                             <Label for="exampleName">property</Label>
                             <RegexComponent
@@ -374,7 +362,6 @@ const ExpenseEntry = (props) => {
                             <tbody key={index}>
                               <tr>
                                 <td>{index + 1}</td>
-
                                 <td>{arg.expenseHead}</td>
                                 <td>{arg.expenseAmount}</td>
                                 <td>

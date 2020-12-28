@@ -39,7 +39,7 @@ let LeaseDetailViewComponent = (props) => {
                           Propety Type
                         </div>
 
-                        <div className="font-weight-bold my-2">Area</div>
+                        <div className="font-weight-bold my-2">residence</div>
                         <div className="font-weight-bold my-2">
                           Building Name
                         </div>
@@ -62,7 +62,7 @@ let LeaseDetailViewComponent = (props) => {
                           Property Owner Name
                         </div>
                         <div className="font-weight-bold my-2">
-                          Property Area
+                          Property residence
                         </div>
                       </div>
                       <div>
@@ -74,7 +74,7 @@ let LeaseDetailViewComponent = (props) => {
                         </div>
 
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.area}
+                          {arg?.property?.residence}
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.property?.building_Name}
@@ -168,15 +168,27 @@ let LeaseDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">Tenant ID</div>
                         <div className="font-weight-bold my-2">Tenant Name</div>
                         <div className="font-weight-bold my-2">
-                          Date Of Birth/Company Registration Date
+                        {arg?.tenants?.TenentType === "Person"
+                              ? "Emirates Id No"
+                              : "Registration Number"}
                         </div>
                         <div className="font-weight-bold my-2">Address</div>
                         <div className="font-weight-bold my-2">Email </div>
                         <div className="font-weight-bold my-2">Contact</div>
                         <div className="font-weight-bold my-2">Gov Id No</div>
-                        <div className="font-weight-bold my-2">
-                          Driving License
-                        </div>
+                        <div className="font-weight-bold my-1">
+                            Passport No
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            Passport expire Date
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            Visa No
+                          </div>
+                          <div className="font-weight-bold my-1">
+                          Visa expire Date
+                          </div>
+                       
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
@@ -191,7 +203,7 @@ let LeaseDetailViewComponent = (props) => {
                           ).format("YYYY-MM-DD")}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.tenants?.area +
+                          {arg?.tenants?.residence +
                             "," +
                             arg?.tenants?.city +
                             "," +
@@ -206,9 +218,19 @@ let LeaseDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">
                           {arg?.tenants?.tenant_GovIdNo}
                         </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.tenants?.tenant_DrivingLicenceNo}
-                        </div>
+                        <div className="font-weight-bold my-1">
+                            {arg?.tenants?.tenant_passportNo?arg?.tenants?.tenant_passportNo:"-"}
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            {arg?.tenants?.tenant_passport_expireDate}
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            {arg?.tenants?.tenant_visaNo?arg?.tenants?.tenant_visaNo:"-"}
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            {arg?.tenants?.tenant_visa_expireDate}
+                          </div>
+                        
                       </div>
                     </div>
                   </div>

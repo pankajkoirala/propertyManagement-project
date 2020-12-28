@@ -34,7 +34,7 @@ let PropertyDetailViewComponent = (props) => {
                     <h5 className="text-center mb-2">Additional Information</h5>
                     <div className="d-flex justify-content-between mr-4">
                       <div style={{ left: "0px" }}>
-                        <div className="font-weight-bold my-3">Area</div>
+                        <div className="font-weight-bold my-3">residence</div>
                         <div className="font-weight-bold my-3">
                           Building Name
                         </div>
@@ -58,7 +58,7 @@ let PropertyDetailViewComponent = (props) => {
                         </div>
                       </div>
                       <div>
-                        <div className="font-weight-bold my-3">{arg.area}</div>
+                        <div className="font-weight-bold my-3">{arg.residence}</div>
                         <div className="font-weight-bold my-3">
                           {arg.building_Name}
                         </div>
@@ -107,7 +107,7 @@ let PropertyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">
                           {arg.referenceNO}
                         </div>
-                        <div className="font-weight-bold my-2">{arg.area}</div>
+                        <div className="font-weight-bold my-2">{arg.residence}</div>
                         <div className="font-weight-bold my-2">
                           {arg.property_type}
                         </div>

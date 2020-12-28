@@ -42,7 +42,7 @@ let OwnerDetailViewComponent = (props) => {
                             ? " Date Of Birth"
                             : "Company Registration Date"}
                         </div>
-                        <div className="font-weight-bold my-2">Area</div>
+                        <div className="font-weight-bold my-2">residence</div>
                         <div className="font-weight-bold my-2">City</div>
                         <div className="font-weight-bold my-2">Country</div>
 
@@ -68,7 +68,7 @@ let OwnerDetailViewComponent = (props) => {
                           {moment(arg?.owner_DOB).format("YYYY-MM-DD")}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_area}
+                          {arg?.owner_residence}
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.owner_city}
@@ -95,95 +95,6 @@ let OwnerDetailViewComponent = (props) => {
                     </div>
                   </div>
                 </div>
-                {/* <div className="row">
-                  <div className="col-6">
-                    <img
-                      style={{
-                        height: "400px",
-                        width: "100%",
-                        borderRadius: "20px 20px 0px 0px",
-                      }}
-                      src={arg?.owner_property?.files_list[0].file}
-                      alt="recently added"
-                    />
-                  </div>
-                  <div className="col-6">
-                    <h5 className="text-center mb-2">Property Information</h5>
-                    <div className="d-flex justify-content-between mr-4">
-                      <div style={{ left: "0px" }}>
-                        <div className="font-weight-bold my-2">Propety Id</div>
-                        <div className="font-weight-bold my-2">
-                          Propety Type
-                        </div>
-
-                        <div className="font-weight-bold my-2">Area</div>
-                        <div className="font-weight-bold my-2">
-                          Building Name
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          Building Number
-                        </div>
-                        <div className="font-weight-bold my-2">Plot Number</div>
-                        <div className="font-weight-bold my-2">
-                          {" "}
-                          Building Floor Number
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          Municipality Number
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          Property Premise Number
-                        </div>
-                        <div className="font-weight-bold my-2">community </div>
-                        <div className="font-weight-bold my-2">
-                          Property Owner Name
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          Property Area
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.referenceNO}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.property_type}
-                        </div>
-
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.area}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.building_Name}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.building_Number}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.plot_Number}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.building_floorNumber}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.Muncipality_Number}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.Property_Premise_Number}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.property_community}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.Property_ownerName}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.owner_property?.Property_Area}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
                 <div>
                   <h5 className="mt4 ">Owner Document</h5>
                   <div className="d-flex flex-wrap">

@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
 export const maintainanceCompanyEntryFormValidation = Yup.object().shape({
-  Company_area: Yup.string().required("Required Field"),
+  Company_residence: Yup.string().required("Required Field"),
   Company_city: Yup.string().required("Required Field"),
   Company_country: Yup.string().required("Required Field"),
   Company_Registration_Number: Yup.string().required("Required Field"),

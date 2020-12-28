@@ -15,8 +15,8 @@ const ManagementCompanyComponent = (props) => {
   );
 
   let initialvalue = {
-    managementCompany_area:
-      props?.managementCompany?.managementCompany_area || "",
+    managementCompany_residence:
+      props?.managementCompany?.managementCompany_residence || "",
     managementCompany_city:
       props?.managementCompany?.managementCompany_city || "",
 
@@ -156,22 +156,22 @@ const ManagementCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Area</Label>
+                        <Label for="exampleName">residence</Label>
                         <Input
                           type="text"
-                          value={values.managementCompany_area}
-                          name="managementCompany_area"
-                          placeholder="Location Area"
+                          value={values.managementCompany_residence}
+                          name="managementCompany_residence"
+                          placeholder="Location residence"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.managementCompany_area &&
-                          errors?.managementCompany_area && (
+                        {touched?.managementCompany_residence &&
+                          errors?.managementCompany_residence && (
                             <span
                               className="text-danger col-md-12 text-left mb-2"
                               style={{ fontSize: 12 }}
                             >
-                              {errors?.managementCompany_area}
+                              {errors?.managementCompany_residence}
                             </span>
                           )}
                       </div>
@@ -179,13 +179,18 @@ const ManagementCompanyComponent = (props) => {
                       <div className="col-md-4">
                         <Label for="exampleName">City</Label>
                         <Input
-                          type="text"
+                          type="select"
                           value={values.managementCompany_city}
                           name="managementCompany_city"
-                          placeholder="City"
+                          placeholder=" City"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                        />
+                        >
+                          <option value="">Select One</option>
+                          <option value="ABU DHABI">ABU DHABI</option>
+                          <option value="DUBAI">DUBAI</option>
+                          <option value="SHARJHA">SHARJHA</option>
+                        </Input>
                         {touched?.managementCompany_city &&
                           errors?.managementCompany_city && (
                             <span
@@ -201,11 +206,12 @@ const ManagementCompanyComponent = (props) => {
                         <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
-                          value={values.managementCompany_country}
+                          value={"DUBAI"}
                           name="managementCompany_country"
                           placeholder="Country"
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          disabled
                         />
                         {touched?.managementCompany_country &&
                           errors?.managementCompany_country && (

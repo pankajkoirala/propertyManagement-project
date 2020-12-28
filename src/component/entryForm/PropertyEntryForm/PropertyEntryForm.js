@@ -39,7 +39,7 @@ const PropertyEntry = (props) => {
     Property_ownerName:
       props?.property?.Property_ownerName?.map((arg) => arg._id) || [],
     city: props?.property?.city || "",
-    area: props?.property?.area || "",
+    residence: props?.property?.residence || "",
     country: props?.property?.country || "",
     property_type: props?.property?.property_type || "",
     property_price: props?.property?.property_price || "",
@@ -47,13 +47,15 @@ const PropertyEntry = (props) => {
     property_community: props?.property?.property_community || "",
     building_Name: props?.property?.building_Name || "",
     building_Number: props?.property?.building_Number || "",
-    plot_Number: props?.property?.plot_Number || "",
+    flat_Number: props?.property?.flat_Number || "",
     building_floorNumber: props?.property?.building_floorNumber || "",
     Muncipality_Number: props?.property?.Muncipality_Number || "",
     Property_Area: props?.property?.Property_Area || "",
     Property_Premise_Number: props?.property?.Property_Premise_Number || "",
     developerCompany: props?.property?.developerCompany?._id || "",
     managementCompany: props?.property?.managementCompany?._id || "",
+    unitNo: props?.property?.unitNo || "",
+
 
     fileName: "",
     file: "",
@@ -147,11 +149,11 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label>Investment Input</Label>
+                  <Label>Investment Capital</Label>
                   <Input
                     type="number"
                     name="property_price"
-                    placeholder="Investment Input"
+                    placeholder="Investment Capital"
                     value={values.property_price}
                     min={0}
                     onChange={handleChange}
@@ -170,11 +172,12 @@ const PropertyEntry = (props) => {
                   <Label for="exampleName">Country</Label>
                   <Input
                     type="text"
-                    value={values.country}
+                    value={"DUBAI"}
                     name="country"
                     placeholder="Country"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    disabled
                   />
                   {touched.country && errors.country && (
                     <span
@@ -189,13 +192,18 @@ const PropertyEntry = (props) => {
                 <div className="col-sm-4 my-1">
                   <Label for="exampleName">City</Label>
                   <Input
-                    type="text"
-                    value={values.city}
-                    name="city"
-                    placeholder="City"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
+                          type="select"
+                          value={values.city}
+                          name="city"
+                          placeholder=" City"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        >
+                          <option value="">Select One</option>
+                          <option value="ABU DHABI">ABU DHABI</option>
+                          <option value="DUBAI">DUBAI</option>
+                          <option value="SHARJHA">SHARJHA</option>
+                        </Input>
                   {touched.city && errors.city && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -206,21 +214,21 @@ const PropertyEntry = (props) => {
                   )}
                 </div>
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Area</Label>
+                  <Label for="exampleName">residence</Label>
                   <Input
-                    type="area"
-                    value={values.area}
-                    name="area"
-                    placeholder="Location Area"
+                    type="text"
+                    value={values.residence}
+                    name="residence"
+                    placeholder="Location residence"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {touched.area && errors.area && (
+                  {touched.residence && errors.residence && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.area}
+                      {errors.residence}
                     </span>
                   )}
                 </div>
@@ -266,21 +274,21 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Plot Number</Label>
+                  <Label for="exampleName">Flat Number</Label>
                   <Input
                     type="text"
-                    value={values.plot_Number}
-                    name="plot_Number"
-                    placeholder="Plot Number"
+                    value={values.flat_Number}
+                    name="flat_Number"
+                    placeholder="flat Number"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {touched.plot_Number && errors.plot_Number && (
+                  {touched.flat_Number && errors.flat_Number && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.plot_Number}
+                      {errors.flat_Number}
                     </span>
                   )}
                 </div>
@@ -365,7 +373,7 @@ const PropertyEntry = (props) => {
                   )}
                 </div>
                 <div className="col-4 my-1">
-                  <Label for="exampleName">Dewa Premise Number</Label>
+                  <Label for="exampleName">DEWA Premise Number</Label>
                   <Input
                     type="text"
                     value={values.Property_Premise_Number}
@@ -381,6 +389,27 @@ const PropertyEntry = (props) => {
                         style={{ fontSize: 12 }}
                       >
                         {errors.Property_Premise_Number}
+                      </span>
+                    )}
+                </div>
+                
+                <div className="col-4 my-1">
+                  <Label for="exampleName">Unit No</Label>
+                  <Input
+                    type="text"
+                    value={values.unitNo}
+                    name="unitNo"
+                    placeholder="Dewa Premise Number"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.unitNo &&
+                    errors.unitNo && (
+                      <span
+                        className="text-danger col-md-12 text-left mb-2"
+                        style={{ fontSize: 12 }}
+                      >
+                        {errors.unitNo}
                       </span>
                     )}
                 </div>

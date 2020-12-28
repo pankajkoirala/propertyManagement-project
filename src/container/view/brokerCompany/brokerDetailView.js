@@ -27,7 +27,7 @@ const BrokerDetailViewCont = (props) => {
     } else {
       formData.append("files_list", data.files_list);
     }
-    formData.append("area", data.area);
+    formData.append("residence", data.residence);
     formData.append("city", data.city);
     formData.append("country", data.country);
     formData.append("broker_phoneNo", data.broker_phoneNo);

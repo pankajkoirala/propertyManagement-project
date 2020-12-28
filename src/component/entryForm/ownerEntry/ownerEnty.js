@@ -13,7 +13,7 @@ const OwnerEntry = (props) => {
   );
 
   let initialValue = {
-    owner_area: props?.owner?.owner_area || "",
+    owner_residence: props?.owner?.owner_residence || "",
     owner_city: props?.owner?.owner_city || "",
     owner_country: props?.owner?.owner_country || "",
     owner_DOB: moment(props?.owner?.owner_DOB).format("YYYY-MM-DD") || "",
@@ -145,21 +145,21 @@ const OwnerEntry = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Area</Label>
+                        <Label for="exampleName">residence</Label>
                         <Input
                           type="text"
-                          value={values.owner_area}
-                          name="owner_area"
-                          placeholder="Location Area"
+                          value={values.owner_residence}
+                          name="owner_residence"
+                          placeholder="Location residence"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.owner_area && errors?.owner_area && (
+                        {touched?.owner_residence && errors?.owner_residence && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.owner_area}
+                            {errors?.owner_residence}
                           </span>
                         )}
                       </div>
@@ -167,13 +167,18 @@ const OwnerEntry = (props) => {
                       <div className="col-md-4">
                         <Label for="exampleName">City</Label>
                         <Input
-                          type="text"
+                          type="select"
                           value={values.owner_city}
                           name="owner_city"
-                          placeholder="City"
+                          placeholder=" City"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                        />
+                        >
+                          <option value="">Select One</option>
+                          <option value="ABU DHABI">ABU DHABI</option>
+                          <option value="DUBAI">DUBAI</option>
+                          <option value="SHARJHA">SHARJHA</option>
+                        </Input>
                         {touched?.owner_city && errors?.owner_city && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
@@ -187,11 +192,12 @@ const OwnerEntry = (props) => {
                         <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
-                          value={values.owner_country}
+                          value={"DUBAI"}
                           name="owner_country"
                           placeholder="Country"
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          disabled
                         />
                         {touched?.owner_country && errors?.owner_country && (
                           <span

@@ -43,7 +43,7 @@ const MaintananceCompanyDetailView = (props) => {
       })
       .then((res) => {
         notification("Updated successfully", "SUCCESS");
-        reloadFunction();
+        //reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

@@ -27,7 +27,7 @@ const ManagementCompanyDetailView = (props) => {
     } else {
       formData.append("files_list", data.files_list);
     }
-    formData.append("managementCompany_area", data.managementCompany_area);
+    formData.append("managementCompany_residence", data.managementCompany_residence);
     formData.append("managementCompany_city", data.managementCompany_city);
 
     formData.append(

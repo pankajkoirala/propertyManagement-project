@@ -16,7 +16,7 @@ const BrokerComponent = (props) => {
   //console.log(allFile);
 
   let initialvalue = {
-    area: props?.BrokerCompany?.area || "",
+    residence: props?.BrokerCompany?.residence || "",
     city: props?.BrokerCompany?.city || "",
     country: props?.BrokerCompany?.country || "",
     broker_phoneNo: props?.BrokerCompany?.broker_phoneNo || "",
@@ -51,6 +51,7 @@ const BrokerComponent = (props) => {
                 ? props.BrokerUpdate(values, props.BrokerCompany._id, allFile)
                 : props.brokerData(values, allFile);
               setLoadingState(true);
+              console.log(values);
             }}
             validationSchema={brokerEntryFormValidation}
           >
@@ -152,21 +153,21 @@ const BrokerComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">area</Label>
+                        <Label for="exampleName">residence</Label>
                         <Input
                           type="text"
-                          value={values.area}
-                          name="area"
-                          placeholder="Location area"
+                          value={values.residence}
+                          name="residence"
+                          placeholder="Location residence"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.area && errors?.area && (
+                        {touched?.residence && errors?.residence && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.area}
+                            {errors?.residence}
                           </span>
                         )}
                       </div>
@@ -174,13 +175,19 @@ const BrokerComponent = (props) => {
                       <div className="col-md-4">
                         <Label for="exampleName">City</Label>
                         <Input
-                          type="text"
+                          type="select"
                           value={values.city}
                           name="city"
                           placeholder=" City"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                        />
+                        >
+                          <option value="">Select One</option>
+                          <option value="ABU DHABI">ABU DHABI</option>
+                          <option value="DUBAI">DUBAI</option>
+                          <option value="SHARJHA">SHARJHA</option>
+                        </Input>
+
                         {touched?.city && errors?.city && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
@@ -194,11 +201,12 @@ const BrokerComponent = (props) => {
                         <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
-                          value={values.country}
+                          value={"DUBAI"}
                           name="country"
                           placeholder=" Country"
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          disabled
                         />
                         {touched?.country && errors?.country && (
                           <span

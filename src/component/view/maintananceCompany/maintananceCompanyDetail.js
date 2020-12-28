@@ -41,7 +41,7 @@ let MaintananceCompanyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">
                           Company Name
                         </div>
-                        <div className="font-weight-bold my-2">Area</div>
+                        <div className="font-weight-bold my-2">residence</div>
                         <div className="font-weight-bold my-2">City</div>
                         <div className="font-weight-bold my-2">Country</div>
                         <div className="font-weight-bold my-2">
@@ -66,7 +66,7 @@ let MaintananceCompanyDetailViewComponent = (props) => {
                           {arg?.Company_Name}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Company_area}
+                          {arg?.Company_residence}
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.Company_city}

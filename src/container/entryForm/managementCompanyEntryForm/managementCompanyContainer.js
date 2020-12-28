@@ -13,7 +13,7 @@ const ManagementCompanyContainer = () => {
     file.forEach((element) => {
       formData.append(element.fileName, element.file);
     });
-    formData.append("managementCompany_area", data.managementCompany_area);
+    formData.append("managementCompany_residence", data.managementCompany_residence);
     formData.append("managementCompany_city", data.managementCompany_city);
 
     formData.append(

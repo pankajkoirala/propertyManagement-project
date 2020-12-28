@@ -13,7 +13,27 @@ const TenantEntry = () => {
     file.forEach((element) => {
       formData.append(element.fileName, element.file);
     });
-    formData.append("area", data.area);
+    if (data.tenant_passport_expireDate !== "") {
+      formData.append(
+        "tenant_passport_expireDate",
+        data.tenant_passport_expireDate
+      );
+    }
+    if (data.tenant_passportNo !== "") {
+      formData.append("tenant_passportNo", data.tenant_passportNo);
+    }
+    if (data.tenant_visaNo !== "") {
+      formData.append("tenant_visaNo", data.tenant_visaNo);
+    }
+    if (data.tenant_visa_expireDate !== "") {
+      formData.append("tenant_visa_expireDate", data.tenant_visa_expireDate);
+    }
+
+    formData.append(
+      "tenant_GovIdNo_expireDate",
+      data.tenant_GovIdNo_expireDate
+    );
+    formData.append("residence", data.residence);
     formData.append("city", data.city);
     formData.append("country", data.country);
     formData.append("tenant_Name", data.tenant_Name);
@@ -26,16 +46,13 @@ const TenantEntry = () => {
       "DateOfBirth_registrationDate",
       data.DateOfBirth_registrationDate
     );
-    formData.append("tenant_DrivingLicenceNo", data.tenant_DrivingLicenceNo);
 
-   
-     
-      Axios.post(base_URL + "/api/tenant", formData,{
-        headers: {
-          [token_key]: getLocalStorage(token_key),
-        },
-      })
-    
+    Axios.post(base_URL + "/api/tenant", formData, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
+      },
+    })
+
       .then((res) => {
         notification("Created successfully", "SUCCESS");
         reloadFunction();

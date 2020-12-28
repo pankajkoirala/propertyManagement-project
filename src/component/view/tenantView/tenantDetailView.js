@@ -6,6 +6,7 @@ import moment from "moment";
 import TanentEntryForm from "../../../component/entryForm/tenantEntryForm/tenantEntryForm";
 
 const TanentDetailView = (props) => {
+console.log("🚀 ~ file: tenantDetailView.js ~ line 9 ~ TanentDetailView ~ props", props)
   const [showEditForm, setShowEditForm] = useState(false);
   const [showPopup, setShowPopUp] = useState(false);
 
@@ -16,90 +17,113 @@ const TanentDetailView = (props) => {
           props.selectedTenantone.map((arg, index) => {
             return (
               <div key={index}>
-                <div className="row pbox">
-                  <div className="row mt-4">
-                    <div className="col-4">
+                <div className="d-flex justify-content-between ">
+                    <div className="col-3">
                       <img
                         style={{
                           height: "400px",
-                          width: "100%",
+                          width: "300px",
                           borderRadius: "20px 20px 0px 0px",
                         }}
                         src={arg?.files_list[0]?.file}
                         alt="recently added"
                       />
                     </div>
-                    <div style={{ marginLeft: "100px" }} className="col-5 ">
+                    <div style={{ marginLeft: "100px" }} className="col-7 ">
                       <h5 className="text-center mb-2">Tenant Information</h5>
-                      <div className="d-flex justify-content-between mr-4">
-                        <div style={{ left: "0px" }}>
-                          <div className="font-weight-bold my-2">Tenant Id</div>
-                          <div className="font-weight-bold my-2">
+                      <div className="row mr-4">
+                        <div className="col-6" style={{ left: "0px" }}>
+                          <div className="font-weight-bold my-1">Tenant Id</div>
+                          <div className="font-weight-bold my-1">
                             Tenant Name
                           </div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             Tenant Type
                           </div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             {arg.TenentType === "Person"
                               ? "Date Of Birth"
                               : "Registration Date"}
                           </div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             {arg.TenentType === "Person"
-                              ? "Government Id No"
+                              ? "Emirates Id No"
                               : "Registration Number"}
                           </div>
 
-                          <div className="font-weight-bold my-2">Area</div>
-                          <div className="font-weight-bold my-2"> City</div>
-                          <div className="font-weight-bold my-2">Country </div>
-                          <div className="font-weight-bold my-2">Email</div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">residence</div>
+                          <div className="font-weight-bold my-1"> City</div>
+                          <div className="font-weight-bold my-1">Country </div>
+                          <div className="font-weight-bold my-1">Email</div>
+                          <div className="font-weight-bold my-1">
                             Contact No
                           </div>
+                          <div className="font-weight-bold my-1">
+                            Passport No
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            Passport expire Date
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            Visa No
+                          </div>
+                          <div className="font-weight-bold my-1">
+                          Visa expire Date
+                          </div>
                         </div>
-                        <div>
-                          <div className="font-weight-bold my-2">
+                        <div className="col-6">
+                          <div className="font-weight-bold my-1">
                             {arg?.TenantId}
                           </div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             {arg?.tenant_Name}
                           </div>
 
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             {arg?.TenentType}
                           </div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             {moment(arg?.DateOfBirth_registrationDate).format(
                               "YYYY-MM-DD"
                             )}
                           </div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             {arg?.tenant_GovIdNo}
                           </div>
-                          <div className="font-weight-bold my-2">
-                            {arg?.area}
+                          <div className="font-weight-bold my-1">
+                            {arg?.residence}
                           </div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             {arg?.city}
                           </div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             {arg?.country}
                           </div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             {arg?.tenant_email}
                           </div>
-                          <div className="font-weight-bold my-2">
+                          <div className="font-weight-bold my-1">
                             {arg?.tenant_phoneNo}
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            {arg?.tenant_passportNo}
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            {arg?.tenant_passport_expireDate}
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            {arg?.tenant_visaNo}
+                          </div>
+                          <div className="font-weight-bold my-1">
+                            {arg?.tenant_visa_expireDate}
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+             
                 </div>
-                <div>
-                  <h5 className="mt4 text-center">Employee Document</h5>
+                <div style={{marginTop:'20px'}}>
+                  <h5 className="mt4 text-center">Tenant Document</h5>
                   <div className="d-flex flex-wrap">
                     {arg?.files_list?.map((file, index) => {
                       return (

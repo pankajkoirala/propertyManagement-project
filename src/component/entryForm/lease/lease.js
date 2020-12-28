@@ -191,7 +191,7 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
                 <div className="col-md-4">
-                  <Label for="exampleSelect">Commencement Date</Label>
+                  <Label for="exampleSelect">Contract Commencement Date</Label>
                   <Input
                     type="date"
                     name="commenceDate"
@@ -267,18 +267,18 @@ const LeaseEntry = (props) => {
                     onBlur={handleBlur}
                   >
                     <option value=""> select one</option>
-                    <option value={31}>1</option>
-                    <option value={59}>2</option>
-                    <option value={90}>3</option>
-                    <option value={120}>4</option>
-                    <option value={151}>5</option>
-                    <option value={181}>6</option>
-                    <option value={212}>7</option>
-                    <option value={243}>8</option>
-                    <option value={273}>9</option>
-                    <option value={304}>10</option>
-                    <option value={334}>11</option>
-                    <option value={365}>12</option>
+                    <option value={31}>1 Month</option>
+                    <option value={59}>2 Month</option>
+                    <option value={90}>3 Month</option>
+                    <option value={120}>4 Month</option>
+                    <option value={151}>5 Month</option>
+                    <option value={181}>6 Month</option>
+                    <option value={212}>7 Month</option>
+                    <option value={243}>8 Month</option>
+                    <option value={273}>9 Month</option>
+                    <option value={304}>10 Month</option>
+                    <option value={334}>11 Month</option>
+                    <option value={365}>12 Month</option>
                   </Input>
                   {touched.frequency && errors.frequency && (
                     <span
@@ -445,7 +445,6 @@ const LeaseEntry = (props) => {
                       <tr>
                         <th>SN</th>
                         <th>date of payment</th>
-                        <th>remark</th>
                       </tr>
                     </thead>
                   ) : (

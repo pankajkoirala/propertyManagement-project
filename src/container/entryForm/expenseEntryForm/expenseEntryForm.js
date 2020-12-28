@@ -12,10 +12,10 @@ const ExpenseEntryForm = (props) => {
   const expenseData = (data) => {
     const formData = new FormData();
 
-    if (data.expense_Type === "Maintanance") {
+    if (data.Maintanance_ticketID !== "") {
       formData.append("Maintanance_ticketID", data.Maintanance_ticketID);
     }
-    if (data.expense_Type === "Maintanance") {
+    if (data.property_ID !== "") {
       formData.append("property_ID", data.property_ID);
     }
 
@@ -35,7 +35,7 @@ const ExpenseEntryForm = (props) => {
       })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
-        reloadFunction();
+        //reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

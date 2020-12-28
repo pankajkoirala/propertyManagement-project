@@ -13,7 +13,7 @@ const BrokerDetailContainer = () => {
     file.forEach((element) => {
       formData.append(element.fileName, element.file);
     });
-    formData.append("area", data.area);
+    formData.append("residence", data.residence);
     formData.append("city", data.city);
     formData.append("country", data.country);
     formData.append("broker_phoneNo", data.broker_phoneNo);

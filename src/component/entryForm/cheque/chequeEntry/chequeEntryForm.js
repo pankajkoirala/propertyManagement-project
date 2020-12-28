@@ -10,7 +10,7 @@ import PoopUp from "./../../../../shared/popup";
 const ChequeEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
   const [loadingState, setLoadingState] = useState(false);
-  
+
   let initialvalue = {
     miscellaneous_amount: props?.Cheque?.miscellaneous_amount || "",
     vat_amount: props?.Cheque?.vat_amount || "",
@@ -35,7 +35,7 @@ const ChequeEntry = (props) => {
     cheque_holdDate: props?.Cheque?.cheque_holdDate || "YYYY-MM-DD",
     cheque_recivedDate:
       moment(props?.Cheque?.cheque_recivedDate).format("YYYY-MM-DD") || "",
-    //cheque information
+    ChequeListNo: props?.Cheque?.cheque_holdDate || "",
   };
   return (
     <div>
@@ -324,8 +324,9 @@ const ChequeEntry = (props) => {
                         <Label for="exampleSelect">Lease Number</Label>
                         <RegexComponent
                           {...props}
-                          editSelectedName={props?.Cheque?.lease_property?.LeaseId}
-
+                          editSelectedName={
+                            props?.Cheque?.lease_property?.LeaseId
+                          }
                           setFieldValue={setFieldValue}
                           options={props?.Redux_leaseData?.map((lease) => {
                             return {
@@ -356,7 +357,9 @@ const ChequeEntry = (props) => {
                         <Label for="exampleSelect">Property </Label>
                         <RegexComponent
                           {...props}
-                          editSelectedName={props?.Cheque?.property_id?.referenceNO}
+                          editSelectedName={
+                            props?.Cheque?.property_id?.referenceNO
+                          }
                           setFieldValue={setFieldValue}
                           options={props?.Redux_propertyData?.map(
                             (property) => {
@@ -405,6 +408,39 @@ const ChequeEntry = (props) => {
                           )}
                       </div>
 
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Cheque List No</Label>
+                        <Input
+                          type="select"
+                          value={values.ChequeListNo}
+                          name="ChequeListNo"
+                          placeholder="Remarks"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        >
+                          <option value=""> select one</option>
+                          <option value="First"> First</option>
+                          <option value=" Second"> Second</option>
+                          <option value=" Third"> Third</option>
+                          <option value=" Fourth"> Fourth</option>
+                          <option value=" Fifth"> Fifth</option>
+                          <option value=" Sixth"> Sixth</option>
+                          <option value=" Seventh"> Seventh</option>
+                          <option value=" Eighth"> Eighth</option>
+                          <option value=" Ninth"> Ninth</option>
+                          <option value=" Tenth"> Tenth</option>
+                          <option value=" Eleven"> Eleventh</option>
+                          <option value=" Twelft"> Twelfth</option>{" "}
+                        </Input>
+                        {touched.ChequeListNo && errors.ChequeListNo && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.ChequeListNo}
+                          </span>
+                        )}
+                      </div>
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Remarks</Label>
                         <Input

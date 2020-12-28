@@ -20,9 +20,7 @@ const TenantEntry = (props) => {
 
   let initialvalue = {
     tenant_GovIdNo: props.selectedTenantone?.tenant_GovIdNo || "",
-    tenant_DrivingLicenceNo:
-      props.selectedTenantone?.tenant_DrivingLicenceNo || "",
-    area: props.selectedTenantone?.area || "",
+    residence: props.selectedTenantone?.residence || "",
     city: props.selectedTenantone?.city || "",
     country: props.selectedTenantone?.country || "",
     tenant_phoneNo: props.selectedTenantone?.tenant_phoneNo || "",
@@ -36,6 +34,16 @@ const TenantEntry = (props) => {
     fileName: "",
     file: "",
     TenentType: props?.selectedTenantone?.TenentType || "",
+    tenant_GovIdNo_expireDate:
+      moment(props?.selectedTenantone?.tenant_GovIdNo_expireDate).format(
+        "YYYY-MM-DD"
+      ) || "",
+    tenant_passport_expireDate:
+      props?.selectedTenantone?.tenant_passport_expireDate || "YYYY/MM/DD",
+    tenant_passportNo: props?.selectedTenantone?.tenant_passportNo || "",
+    tenant_visaNo: props?.selectedTenantone?.tenant_visaNo || "",
+    tenant_visa_expireDate:
+     props?.selectedTenantone?.tenant_visa_expireDate || "YYYY/MM/DD",
   };
   return (
     <div className="form-page">
@@ -150,21 +158,21 @@ const TenantEntry = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Area</Label>
+                        <Label for="exampleName">residence</Label>
                         <Input
                           type="text"
-                          value={values.area}
-                          name="area"
-                          placeholder="Area"
+                          value={values.residence}
+                          name="residence"
+                          placeholder="residence"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.area && errors?.area && (
+                        {touched?.residence && errors?.residence && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.area}
+                            {errors?.residence}
                           </span>
                         )}
                       </div>
@@ -259,13 +267,13 @@ const TenantEntry = (props) => {
                         <Label for="exampleName">
                           {values.TenentType === "Company"
                             ? " Registration Number "
-                            : " Government Issue Card Number"}
+                            : " Emirates ID Number"}
                         </Label>
                         <Input
                           type="number"
                           value={values.tenant_GovIdNo}
                           name="tenant_GovIdNo"
-                          placeholder="Enter Government Id Number"
+                          placeholder="Emirates ID Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -279,22 +287,104 @@ const TenantEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-6">
-                        <Label for="exampleName">Driving Licence Number</Label>
+                        <Label for="exampleName">Emirates ID ExpireDate</Label>
                         <Input
-                          type="number"
-                          value={values.tenant_DrivingLicenceNo}
-                          name="tenant_DrivingLicenceNo"
-                          placeholder="Enter your Driving Licence Number"
+                          type="date"
+                          value={values.tenant_GovIdNo_expireDate}
+                          name="tenant_GovIdNo_expireDate"
+                          placeholder="Emirates ID Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched.tenant_DrivingLicenceNo &&
-                          errors.tenant_DrivingLicenceNo && (
+                        {touched.tenant_GovIdNo_expireDate &&
+                          errors.tenant_GovIdNo_expireDate && (
                             <span
                               className="text-danger col-md-12 text-left mb-2"
                               style={{ fontSize: 12 }}
                             >
-                              {errors.tenant_DrivingLicenceNo}
+                              {errors.tenant_GovIdNo_expireDate}
+                            </span>
+                          )}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <Label for="exampleName">Passport No</Label>
+                        <Input
+                          type="number"
+                          value={values.tenant_passportNo}
+                          name="tenant_passportNo"
+                          placeholder="Passport No"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.tenant_passportNo && errors.tenant_passportNo && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.tenant_passportNo}
+                          </span>
+                        )}
+                      </div>
+                      <div className="col-md-6">
+                        <Label for="exampleName">Passport ExpireDate</Label>
+                        <Input
+                          type="text"
+                          value={values.tenant_passport_expireDate}
+                          name="tenant_passport_expireDate"
+                          placeholder="Passport expire date"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.tenant_passport_expireDate &&
+                          errors.tenant_passport_expireDate && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.tenant_passport_expireDate}
+                            </span>
+                          )}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <Label for="exampleName">Visa No</Label>
+                        <Input
+                          type="text"
+                          value={values.tenant_visaNo}
+                          name="tenant_visaNo"
+                          placeholder="Visa No"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.tenant_visaNo && errors.tenant_visaNo && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.tenant_visaNo}
+                          </span>
+                        )}
+                      </div>
+                      <div className="col-md-6">
+                        <Label for="exampleName">Visa ExpireDate</Label>
+                        <Input
+                          type="text"
+                          value={values.tenant_visa_expireDate}
+                          name="tenant_visa_expireDate"
+                          placeholder="Visa expire date"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.tenant_visa_expireDate &&
+                          errors.tenant_visa_expireDate && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.tenant_visa_expireDate}
                             </span>
                           )}
                       </div>

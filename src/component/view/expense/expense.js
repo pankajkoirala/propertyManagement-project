@@ -71,9 +71,7 @@ const ExpenseDisplay = (props) => {
                   search2: arg.expense_Type,
                   search3: arg.expenseInvoiceNumber,
                   search4:
-                    arg.expense_Type === "Maintanance" ||
-                    arg.expense_Type === "FMC" ||
-                    arg.expense_Type === "Utility"
+                    arg.expense_Type !== "Miscellaneous"
                       ? arg?.property_ID?.property_type +
                         "-" +
                         arg?.property_ID?.referenceNO
@@ -169,6 +167,7 @@ const ExpenseDisplay = (props) => {
             {expenses?.map((arg, index) => {
               return (
                 <tbody key={index}>
+                  {console.log("asjdgafjaf",arg)}
                   <tr>
                     <td>{index + 1}</td>
                     <td>{arg.Expense_ID}</td>
@@ -178,10 +177,10 @@ const ExpenseDisplay = (props) => {
                     <td>{arg?.expenseInvoiceNumber}</td>
                     <td>{arg?.expense_Type}</td>
                     <td>
-                      {arg.expense_Type === "Maintanance"
-                        ? arg?.property_ID?.property_type +
+                      {arg.expense_Type !== "Miscellaneous"
+                        ?( arg?.property_ID?.property_type +
                           "-" +
-                          arg?.property_ID?.referenceNO
+                          arg?.property_ID?.referenceNO)
                         : "-"}
                     </td>
                     <td> AED.{expenseCalculationPerHead(arg?.expense_list)}</td>

@@ -30,6 +30,8 @@ const ChequeEntryContainer = (props) => {
     formData.append("vat_amount", data.vat_amount);
     formData.append("miscellaneous_amount", data.miscellaneous_amount);
     formData.append("property_id", data.property_id);
+    formData.append("ChequeListNo", data.ChequeListNo);
+
 
  
   

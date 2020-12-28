@@ -168,13 +168,18 @@ const MaintainanceCompanyComponent = (props) => {
                       <div className="col-md-4">
                         <Label for="exampleName">City</Label>
                         <Input
-                          type="text"
+                          type="select"
                           value={values.Company_city}
                           name="Company_city"
-                          placeholder="City"
+                          placeholder=" City"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                        />
+                        >
+                          <option value="">Select One</option>
+                          <option value="ABU DHABI">ABU DHABI</option>
+                          <option value="DUBAI">DUBAI</option>
+                          <option value="SHARJHA">SHARJHA</option>
+                        </Input>
                         {touched?.Company_city && errors?.Company_city && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
@@ -188,11 +193,12 @@ const MaintainanceCompanyComponent = (props) => {
                         <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
-                          value={values.Company_country}
+                          value={"DUBAI"}
                           name="Company_country"
                           placeholder="Country"
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          disabled
                         />
                         {touched?.Company_country && errors?.Company_country && (
                           <span
