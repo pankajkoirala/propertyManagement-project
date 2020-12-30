@@ -399,7 +399,7 @@ const PropertyEntry = (props) => {
                     type="text"
                     value={values.unitNo}
                     name="unitNo"
-                    placeholder="Dewa Premise Number"
+                    placeholder="unit no"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
