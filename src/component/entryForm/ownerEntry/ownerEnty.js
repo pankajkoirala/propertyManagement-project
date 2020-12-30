@@ -177,7 +177,7 @@ const OwnerEntry = (props) => {
                           <option value="">Select One</option>
                           <option value="ABU DHABI">ABU DHABI</option>
                           <option value="DUBAI">DUBAI</option>
-                          <option value="SHARJHA">SHARJHA</option>
+                          <option value="SHARJAH">SHARJAH</option>
                         </Input>
                         {touched?.owner_city && errors?.owner_city && (
                           <span
@@ -192,7 +192,7 @@ const OwnerEntry = (props) => {
                         <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
-                          value={"DUBAI"}
+                          value={"U.A.E"}
                           name="owner_country"
                           placeholder="Country"
                           onChange={handleChange}

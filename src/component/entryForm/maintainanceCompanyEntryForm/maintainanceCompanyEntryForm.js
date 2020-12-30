@@ -178,7 +178,7 @@ const MaintainanceCompanyComponent = (props) => {
                           <option value="">Select One</option>
                           <option value="ABU DHABI">ABU DHABI</option>
                           <option value="DUBAI">DUBAI</option>
-                          <option value="SHARJHA">SHARJHA</option>
+                          <option value="SHARJAH">SHARJAH</option>
                         </Input>
                         {touched?.Company_city && errors?.Company_city && (
                           <span
@@ -193,7 +193,7 @@ const MaintainanceCompanyComponent = (props) => {
                         <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
-                          value={"DUBAI"}
+                          value={"U.A.E"}
                           name="Company_country"
                           placeholder="Country"
                           onChange={handleChange}

@@ -182,7 +182,7 @@ const DeveloperCompanyComponent = (props) => {
                           <option value="">Select One</option>
                           <option value="ABU DHABI">ABU DHABI</option>
                           <option value="DUBAI">DUBAI</option>
-                          <option value="SHARJHA">SHARJHA</option>
+                          <option value="SHARJAH">SHARJAH</option>
                         </Input>
                         {touched?.Developer_city && errors?.Developer_city && (
                           <span
@@ -197,7 +197,7 @@ const DeveloperCompanyComponent = (props) => {
                         <Label for="exampleName">Country</Label>
                         <Input
                           type="text"
-                          value={"DUBAI"}
+                          value={"U.A.E"}
                           name="Developer_country"
                           placeholder="Enter the name of country"
                           onChange={handleChange}
