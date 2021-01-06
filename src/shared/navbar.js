@@ -32,7 +32,7 @@ const NavbarPage = () => {
       <div className="branding-section" style={{}}>
         <h4>
           <EmojiTransportationIcon fontSize="large" />
-          &nbsp;Graphine INC.
+          &nbsp;GRAPHENE
         </h4>
       </div>
       <div className="user-avatar">
