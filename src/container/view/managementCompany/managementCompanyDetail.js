@@ -39,15 +39,7 @@ const ManagementCompanyDetailView = (props) => {
       "managementCompany_phoneNo",
       data.managementCompany_phoneNo
     );
-    formData.append(
-      "managementCompany_Registeration_Number",
-      data.managementCompany_Registeration_Number
-    );
     formData.append("managementCompany_name", data.managementCompany_name);
-    formData.append(
-      "managementCompany_Registeration_Date",
-      data.managementCompany_Registeration_Date
-    );
     formData.append("managementCompany_email", data.managementCompany_email);
     formData.append(
       "managementCompany_MobileNumber",

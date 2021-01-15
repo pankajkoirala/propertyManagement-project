@@ -4,10 +4,7 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import { getLocalStorage } from "./../const/tokenStorage";
 import { token_key } from "./../const/base_URL";
-console.log(
-  "🚀 ~ file: fetch_AllData.js ~ line 8 ~ token_key",
-  getLocalStorage(token_key)
-);
+
 
 let FetchData = (props) => {
   useEffect(() => {

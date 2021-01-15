@@ -40,7 +40,7 @@ const PropertyEntry = (props) => {
       props?.property?.Property_ownerName?.map((arg) => arg._id) || [],
     city: props?.property?.city || "",
     residence: props?.property?.residence || "",
-    country: props?.property?.country || "",
+    country: props?.property?.country ||  "U.A.E",
     property_type: props?.property?.property_type || "",
     property_price: props?.property?.property_price || "",
     facilities: props?.property?.facilities || [],

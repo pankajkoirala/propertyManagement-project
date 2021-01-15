@@ -18,7 +18,7 @@ const DeveloperCompanyComponent = (props) => {
   let initialValue = {
     Developer_residence: props?.developerCompany?.Developer_residence || "",
     Developer_city: props?.developerCompany?.Developer_city || "",
-    Developer_country: props?.developerCompany?.Developer_country || "",
+    Developer_country: props?.developerCompany?.Developer_country ||  "U.A.E",
     DeveloperCompany_phoneNo:
       props?.developerCompany?.DeveloperCompany_phoneNo || "",
     DeveloperCompany_Name: props?.developerCompany?.DeveloperCompany_Name || "",

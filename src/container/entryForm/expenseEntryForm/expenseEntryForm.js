@@ -35,7 +35,7 @@ const ExpenseEntryForm = (props) => {
       })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
-        //reloadFunction();
+        reloadFunction();
       })
       .catch((err) => {
         notification("error", "ERROR");

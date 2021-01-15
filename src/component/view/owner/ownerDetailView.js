@@ -50,7 +50,7 @@ let OwnerDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">Contact</div>
                         <div className="font-weight-bold my-2">
                           {arg.owner_Type === "Person"
-                            ? "Government Id No"
+                            ? "Emirates ID Number"
                             : "Company Registration Number"}
                         </div>
                       </div>

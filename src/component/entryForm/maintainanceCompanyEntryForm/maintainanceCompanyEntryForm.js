@@ -17,7 +17,7 @@ const MaintainanceCompanyComponent = (props) => {
   let initialvalue = {
     Company_area: props?.maintananceCompany?.Company_area || "",
     Company_city: props?.maintananceCompany?.Company_city || "",
-    Company_country: props?.maintananceCompany?.Company_country || "",
+    Company_country: props?.maintananceCompany?.Company_country ||  "U.A.E",
     Company_phoneNo: props?.maintananceCompany?.Company_phoneNo || "",
     Company_Registration_Number:
       props?.maintananceCompany?.Company_Registration_Number || "",

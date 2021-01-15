@@ -17,7 +17,7 @@ const BrokerComponent = (props) => {
   let initialvalue = {
     residence: props?.BrokerCompany?.residence || "",
     city: props?.BrokerCompany?.city || "",
-    country: props?.BrokerCompany?.country || "",
+    country: props?.BrokerCompany?.country ||  "U.A.E",
     broker_phoneNo: props?.BrokerCompany?.broker_phoneNo || "",
     broker_RegistrationNumber:
       props?.BrokerCompany?.broker_RegistrationNumber || "",

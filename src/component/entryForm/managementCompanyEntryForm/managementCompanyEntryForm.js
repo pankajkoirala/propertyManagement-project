@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./managementCompany.css";
-import moment from "moment";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import PoopUp from "./../../../shared/popup";
@@ -21,18 +20,13 @@ const ManagementCompanyComponent = (props) => {
       props?.managementCompany?.managementCompany_city || "",
 
     managementCompany_country:
-      props?.managementCompany?.managementCompany_country || "",
+      props?.managementCompany?.managementCompany_country ||  "U.A.E",
 
     managementCompany_phoneNo:
       props?.managementCompany?.managementCompany_phoneNo || "",
-    managementCompany_Registeration_Number:
-      props?.managementCompany?.managementCompany_Registeration_Number || "",
+   
     managementCompany_name:
       props?.managementCompany?.managementCompany_name || "",
-    managementCompany_Registeration_Date:
-      moment(
-        props.managementCompany?.managementCompany_Registeration_Date
-      ).format("YYYY-MM-DD") || "",
     managementCompany_email:
       props?.managementCompany?.managementCompany_email || "",
     managementCompany_MobileNumber:
@@ -111,50 +105,6 @@ const ManagementCompanyComponent = (props) => {
                             </span>
                           )}
                       </div>
-
-                      <div className="mt-2 col-md-4">
-                        <Label for="exampleName">Registeration Date</Label>
-                        <Input
-                          type="date"
-                          value={values.managementCompany_Registeration_Date}
-                          name="managementCompany_Registeration_Date"
-                          placeholder="Registeration Date"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.managementCompany_Registeration_Date &&
-                          errors.managementCompany_Registeration_Date && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.managementCompany_Registeration_Date}
-                            </span>
-                          )}
-                      </div>
-                      <div className="mt-2 col-md-4">
-                        <Label for="exampleName">Registration Number</Label>
-                        <Input
-                          type="text"
-                          value={values.managementCompany_Registeration_Number}
-                          name="managementCompany_Registeration_Number"
-                          placeholder="Registration Number"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.managementCompany_Registeration_Number &&
-                          errors.managementCompany_Registeration_Number && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.managementCompany_Registeration_Number}
-                            </span>
-                          )}
-                      </div>
-                    </div>
-
-                    <div className="row">
                       <div className="col-md-4">
                         <Label for="exampleName">residence</Label>
                         <Input
@@ -201,6 +151,10 @@ const ManagementCompanyComponent = (props) => {
                             </span>
                           )}
                       </div>
+                    </div>
+
+                    <div className="row">
+                 
 
                       <div className="col-md-4">
                         <Label for="exampleName">Country</Label>
@@ -223,9 +177,6 @@ const ManagementCompanyComponent = (props) => {
                             </span>
                           )}
                       </div>
-                    </div>
-
-                    <div className="row">
                       <div className="col-md-4">
                         <Label for="exampleName">Email</Label>
                         <Input
@@ -267,6 +218,9 @@ const ManagementCompanyComponent = (props) => {
                             </span>
                           )}
                       </div>
+                    </div>
+
+                    <div className="row">
                       <div className="col-md-4">
                         <Label for="exampleName">Mobile Number</Label>
                         <Input

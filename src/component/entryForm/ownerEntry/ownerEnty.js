@@ -15,7 +15,7 @@ const OwnerEntry = (props) => {
   let initialValue = {
     owner_residence: props?.owner?.owner_residence || "",
     owner_city: props?.owner?.owner_city || "",
-    owner_country: props?.owner?.owner_country || "",
+    owner_country: props?.owner?.owner_country || "U.A.E",
     owner_DOB: moment(props?.owner?.owner_DOB).format("YYYY-MM-DD") || "",
     owner_phoneNo: props?.owner?.owner_phoneNo || "",
     owner_Name: props?.owner?.owner_Name || "",
@@ -122,7 +122,7 @@ const OwnerEntry = (props) => {
                         <Label for="exampleName">
                           {values.owner_Type === "Company"
                             ? "Company Registration No"
-                            : " Government Id No "}
+                            : " Emirates ID Number"}
                         </Label>
                         <Input
                           type="text"
@@ -310,7 +310,7 @@ const OwnerEntry = (props) => {
                         <Input
                           name="fileName"
                           type="text"
-                          placeholder="Select Status of Cheque"
+                          placeholder="File Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.fileName}

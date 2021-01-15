@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ManagementCompanyEntryForm from "../../entryForm/managementCompanyEntryForm/managementCompanyEntryForm";
 import PoopUp from "./../../../shared/popup";
-import moment from "moment";
 let ManagementCompanyDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showPopup, setShowPopUp] = useState(false);
@@ -43,12 +42,7 @@ let ManagementCompanyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">residence</div>
                         <div className="font-weight-bold my-2">City</div>
                         <div className="font-weight-bold my-2">Country</div>
-                        <div className="font-weight-bold my-2">
-                          Registration Number
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          Registration Date
-                        </div>
+                      
                         <div className="font-weight-bold my-2">Email </div>
                         <div className="font-weight-bold my-2">
                           Phone Number
@@ -72,16 +66,6 @@ let ManagementCompanyDetailViewComponent = (props) => {
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.managementCompany_country}
-                        </div>
-
-                        <div className="font-weight-bold my-2">
-                          {arg?.managementCompany_Registeration_Number}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {moment(
-                            arg?.managementCompanyId
-                              ?.managementCompany_Registeration_Date
-                          ).format("YYYY-MM-DD")}
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.managementCompany_email}
