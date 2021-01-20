@@ -18,7 +18,6 @@ export const PropertyFormValidation = Yup.object().shape({
   property_community: Yup.string().required("Required"),
   building_Name: Yup.string().required("Required"),
   building_Number: Yup.string().required("Required"),
-  plot_Number: Yup.string().required("Required"),
   building_floorNumber: Yup.string().required("Required"),
   Muncipality_Number: Yup.string().required("Required"),
   Property_Area: Yup.string().required("Required"),

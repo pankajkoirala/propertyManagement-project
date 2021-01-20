@@ -55,8 +55,6 @@ const PropertyEntry = (props) => {
     developerCompany: props?.property?.developerCompany?._id || "",
     managementCompany: props?.property?.managementCompany?._id || "",
     unitNo: props?.property?.unitNo || "",
-
-
     fileName: "",
     file: "",
     files_list: [],
@@ -100,7 +98,7 @@ const PropertyEntry = (props) => {
           ? props.propertyUpdate(values, props?.property?._id, allFile)
           : props.propertySend(values, allFile);
       }}
-      validationSchema={PropertyFormValidation}
+      //validationSchema={PropertyFormValidation}
     >
       {({
         touched,
