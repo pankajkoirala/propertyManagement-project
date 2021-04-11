@@ -6,14 +6,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer } from "react-toastify";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import logger from "redux-logger";
+// import { composeWithDevTools } from "redux-devtools-extension";
+// import logger from "redux-logger";
 import { rootReducer } from "./redux/rootReducer";
 
 //store
 let store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(logger))
+  // composeWithDevTools(applyMiddleware(logger))
 );
 
 function App() {

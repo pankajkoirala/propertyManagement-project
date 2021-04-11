@@ -77,7 +77,7 @@ let MaintananceCompanyDetailViewComponent = (props) => {
 
                         <div className="font-weight-bold my-2">
                           {
-                            arg?.MaintananceCompanyId
+                            arg
                               ?.Company_Registration_Number
                           }
                         </div>

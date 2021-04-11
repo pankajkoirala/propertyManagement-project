@@ -40,7 +40,7 @@ const PropertyEntry = (props) => {
       props?.property?.Property_ownerName?.map((arg) => arg._id) || [],
     city: props?.property?.city || "",
     residence: props?.property?.residence || "",
-    country: props?.property?.country ||  "U.A.E",
+    country: props?.property?.country || "U.A.E",
     property_type: props?.property?.property_type || "",
     property_price: props?.property?.property_price || "",
     facilities: props?.property?.facilities || [],
@@ -190,18 +190,18 @@ const PropertyEntry = (props) => {
                 <div className="col-sm-4 my-1">
                   <Label for="exampleName">City</Label>
                   <Input
-                          type="select"
-                          value={values.city}
-                          name="city"
-                          placeholder=" City"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        >
-                          <option value="">Select One</option>
-                          <option value="ABU DHABI">ABU DHABI</option>
-                          <option value="DUBAI">DUBAI</option>
-                          <option value="SHARJAH">SHARJAH</option>
-                        </Input>
+                    type="select"
+                    value={values.city}
+                    name="city"
+                    placeholder=" City"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  >
+                    <option value="">Select One</option>
+                    <option value="ABU DHABI">ABU DHABI</option>
+                    <option value="DUBAI">DUBAI</option>
+                    <option value="SHARJAH">SHARJAH</option>
+                  </Input>
                   {touched.city && errors.city && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
@@ -390,7 +390,7 @@ const PropertyEntry = (props) => {
                       </span>
                     )}
                 </div>
-                
+
                 <div className="col-4 my-1">
                   <Label for="exampleName">Unit No</Label>
                   <Input
@@ -401,15 +401,14 @@ const PropertyEntry = (props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {touched.unitNo &&
-                    errors.unitNo && (
-                      <span
-                        className="text-danger col-md-12 text-left mb-2"
-                        style={{ fontSize: 12 }}
-                      >
-                        {errors.unitNo}
-                      </span>
-                    )}
+                  {touched.unitNo && errors.unitNo && (
+                    <span
+                      className="text-danger col-md-12 text-left mb-2"
+                      style={{ fontSize: 12 }}
+                    >
+                      {errors.unitNo}
+                    </span>
+                  )}
                 </div>
 
                 <div className="col-4">
@@ -417,8 +416,9 @@ const PropertyEntry = (props) => {
 
                   <RegexConponent
                     setFieldValue={setFieldValue}
-                    editSelectedName={props?.property?.managementCompany?.managementCompany_name}
-
+                    editSelectedName={
+                      props?.property?.managementCompany?.managementCompany_name
+                    }
                     options={props?.Redux_ManagementCompanyData?.map(
                       (management) => {
                         return {
@@ -446,8 +446,9 @@ const PropertyEntry = (props) => {
 
                   <RegexConponent
                     {...props}
-                    editSelectedName={props?.property?.Property_ownerName?.owner_Name}
-
+                    editSelectedName={
+                      props?.property?.Property_ownerName?.owner_Name
+                    }
                     setFieldValue={setFieldValue}
                     OwnerFunction={ownerIdList}
                     name={"Property_ownerName"}
@@ -473,8 +474,9 @@ const PropertyEntry = (props) => {
                   <Label for="exampleSelect">Developer Company</Label>
 
                   <RegexConponent
-                    editSelectedName={props?.property?.developerCompany?.DeveloperCompany_Name}
-
+                    editSelectedName={
+                      props?.property?.developerCompany?.DeveloperCompany_Name
+                    }
                     setFieldValue={setFieldValue}
                     options={props?.redux_DeveloperCompanyData?.map(
                       (developer) => {
