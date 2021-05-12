@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-
+import PrintIcon from "@material-ui/icons/Print";
 import "./cheque.css";
 
 const ChequeView = (props) => {
@@ -21,7 +21,7 @@ const ChequeView = (props) => {
           moment(to, "YYYY-MM-DD").add(1, "day")
         )
   );
- 
+
   //filter by check no
   let filterArray = (cheqNo) => {
     const splittedWord = cheqNo.split("");
@@ -64,10 +64,34 @@ const ChequeView = (props) => {
     updatedOptions = filterChequeList;
   }
 
+  function createPDF() {
+    var sTable = document.getElementById("tab").innerHTML;
+
+    var style = "<style>";
+    style = style + "table {width: 100%;font: 17px Calibri;}";
+    style =
+      style +
+      "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+    style = style + "padding: 2px 3px;text-align: center;}";
+    style = style + "</style>";
+
+    // CREATE A WINDOW OBJECT.
+    var win = window.open("", "", "height=700,width=700");
+
+    win.document.write(style); // ADD STYLE INSIDE THE HEAD TAG.
+
+    win.document.write(sTable); // THE TABLE CONTENTS INSIDE THE BODY TAG.
+
+    win.document.close(); // CLOSE THE CURRENT WINDOW.
+
+    win.print(); // PRINT THE CONTENTS.
+  }
+
   return (
     <>
       <div className="tenantview">
         <h1 className="page-title">Cheque list</h1>
+
         <div className="d-flex justify-content-center">
           <div>
             <Form inline>
@@ -197,12 +221,21 @@ const ChequeView = (props) => {
             Not Deposited
           </button>
         </div>
-        {chequeState === true ? (
-          <div className="h5">{noOfCheque}</div>
-        ) : (
-          <div className="h5">Number of Cheque:{filterChequeList.length}</div>
-        )}
-        <div style={{ overlfowX: "auto" }}>
+        <div className="printcheque">
+          {chequeState === true ? (
+            <div className="h5">{noOfCheque}</div>
+          ) : (
+            <div className="h5">Number of Cheque:{filterChequeList.length}</div>
+          )}
+          <PrintIcon
+            style={{
+              float: "right",
+              margin: "20px",
+            }}
+            onClick={() => createPDF()}
+          />
+        </div>
+        <div id="tab" style={{ overlfowX: "auto" }}>
           <table id="cheque-table">
             <thead>
               <tr>
