@@ -42,7 +42,7 @@ let OwnerDetailViewComponent = (props) => {
                             ? " Date Of Birth"
                             : "Company Registration Date"}
                         </div>
-                        <div className="font-weight-bold my-2">residence</div>
+                        <div className="font-weight-bold my-2">area</div>
                         <div className="font-weight-bold my-2">City</div>
                         <div className="font-weight-bold my-2">Country</div>
 
@@ -68,7 +68,7 @@ let OwnerDetailViewComponent = (props) => {
                           {moment(arg?.owner_DOB).format("YYYY-MM-DD")}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_residence}
+                          {arg?.owner_area}
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.owner_city}

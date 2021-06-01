@@ -21,4 +21,5 @@ export const chequeEntryFormValidation = Yup.object().shape({
   property_id: Yup.string().required("Required Field"),
   cheque_picture_back: Yup.string().required("Required Field"),
   cheque_picture_front: Yup.string().required("Required Field"),
+  securityDeposite: Yup.number().required("Required Field"),
 });

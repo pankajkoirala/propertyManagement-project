@@ -15,7 +15,7 @@ const OwnerEntryContainer = (props) => {
       formData.append(element.fileName, element.file);
     });
 
-    formData.append("owner_residence", data.owner_residence);
+    formData.append("owner_area", data.owner_area);
     formData.append("owner_city", data.owner_city);
     formData.append("owner_country", data.owner_country);
     formData.append("owner_DOB", data.owner_DOB);

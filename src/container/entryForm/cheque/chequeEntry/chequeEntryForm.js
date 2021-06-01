@@ -20,6 +20,7 @@ const ChequeEntryContainer = (props) => {
     formData.append("cheque_picture_front", data.cheque_picture_front);
     formData.append("lease_property", data.lease_property);
     formData.append("cheque_number", data.cheque_number);
+    formData.append("securityDeposite", data.securityDeposite);
     formData.append("cheque_entryDate", data.cheque_entryDate);
     formData.append("cheque_bankName", data.cheque_bankName);
     formData.append("cheque_depositeDate", data.cheque_depositeDate);

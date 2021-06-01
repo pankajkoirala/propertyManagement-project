@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
 export const brokerEntryFormValidation = Yup.object().shape({
-  residence: Yup.string().required("Required Field"),
+  area: Yup.string().required("Required Field"),
   city: Yup.string().required("Required Field"),
   country: Yup.string()
     .min(2, "Too Short")

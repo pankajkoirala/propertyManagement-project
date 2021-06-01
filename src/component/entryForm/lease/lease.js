@@ -25,7 +25,9 @@ const LeaseEntry = (props) => {
     commenceDate: moment(props?.lease?.commenceDate).format("YYYY-MM-DD") || "",
     expirationDate:
       moment(props?.lease?.expirationDate).format("YYYY-MM-DD") || "",
+      totalAmount:props?.lease?.totalAmount||'',
     rentAmount: props?.lease?.rentAmount || "",
+    VAT_Amount: props?.lease?.VAT_Amount || "",
     securityDeposite: props?.lease?.securityDeposite || "",
 
     fileName: "",
@@ -237,6 +239,25 @@ const LeaseEntry = (props) => {
               </div>
 
               <div className="row">
+              <div className="col-md-4">
+                  <Label for="exampleSelect">Total Amount</Label>
+                  <Input
+                    type="number"
+                    name="totalAmount"
+                    placeholder="Total Amount"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.totalAmount}
+                  ></Input>
+                  {touched.totalAmount && errors.totalAmount && (
+                    <span
+                      className="text-danger col-md-12 text-left mb-2"
+                      style={{ fontSize: 12 }}
+                    >
+                      {errors.totalAmount}
+                    </span>
+                  )}
+                </div>
                 <div className="col-md-4">
                   <Label for="exampleSelect">Rent Amount</Label>
                   <Input
@@ -256,42 +277,28 @@ const LeaseEntry = (props) => {
                     </span>
                   )}
                 </div>
-                <div className="col-4">
-                  <Label for="exampleName">Frequency</Label>
+                <div className="col-md-4">
+                  <Label for="exampleSelect">VAT Amount</Label>
                   <Input
-                    type="select"
-                    name="frequency"
-                    placeholder="Frequencyt"
-                    value={(setpaymentTime(values.frequency), values.frequency)}
+                    type="number"
+                    name="VAT_Amount"
+                    placeholder="VAT Amount"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                  >
-                    <option value=""> select one</option>
-                    <option value={31}>1 Month</option>
-                    <option value={59}>2 Month</option>
-                    <option value={90}>3 Month</option>
-                    <option value={120}>4 Month</option>
-                    <option value={151}>5 Month</option>
-                    <option value={181}>6 Month</option>
-                    <option value={212}>7 Month</option>
-                    <option value={243}>8 Month</option>
-                    <option value={273}>9 Month</option>
-                    <option value={304}>10 Month</option>
-                    <option value={334}>11 Month</option>
-                    <option value={365}>12 Month</option>
-                  </Input>
-                  {touched.frequency && errors.frequency && (
+                    value={values.VAT_Amount}
+                  ></Input>
+                  {touched.VAT_Amount && errors.VAT_Amount && (
                     <span
                       className="text-danger col-md-12 text-left mb-2"
                       style={{ fontSize: 12 }}
                     >
-                      {errors.frequency}
+                      {errors.VAT_Amount}
                     </span>
                   )}
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-4">
+              <div className="col-md-4">
                   <Label for="exampleSelect">Security Deposit</Label>
                   <Input
                     type="number"
@@ -307,6 +314,31 @@ const LeaseEntry = (props) => {
                       style={{ fontSize: 12 }}
                     >
                       {errors.securityDeposite}
+                    </span>
+                  )}
+                </div>
+                <div className="col-4">
+                  <Label for="exampleName">TERMS OF THE CONTRACT</Label>
+                  <Input
+                    type="select"
+                    name="frequency"
+                    placeholder="ERMS OF THE CONTRACT"
+                    value={(setpaymentTime(values.frequency), values.frequency)}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  >
+                    <option value=""> select one</option>
+                    <option value={30}> Monthly</option>
+                    <option value={90}>Quartely</option>
+                    <option value={181}>Semi Annualy</option>
+                    <option value={365}>yearly</option>
+                  </Input>
+                  {touched.frequency && errors.frequency && (
+                    <span
+                      className="text-danger col-md-12 text-left mb-2"
+                      style={{ fontSize: 12 }}
+                    >
+                      {errors.frequency}
                     </span>
                   )}
                 </div>

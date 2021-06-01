@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
 export const OwnerEntryFormValidation = Yup.object().shape({
-  owner_residence: Yup.string().required("Required"),
+  owner_area: Yup.string().required("Required"),
   owner_city: Yup.string().required("Required"),
   owner_country: Yup.string().required("Required"),
   owner_DOB: Yup.date().required("Required"),

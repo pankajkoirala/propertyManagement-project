@@ -14,8 +14,8 @@ const ManagementCompanyComponent = (props) => {
   );
 
   let initialvalue = {
-    managementCompany_residence:
-      props?.managementCompany?.managementCompany_residence || "",
+    managementCompany_area:
+      props?.managementCompany?.managementCompany_area || "",
     managementCompany_city:
       props?.managementCompany?.managementCompany_city || "",
 
@@ -106,22 +106,22 @@ const ManagementCompanyComponent = (props) => {
                           )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">residence</Label>
+                        <Label for="exampleName">Area</Label>
                         <Input
                           type="text"
-                          value={values.managementCompany_residence}
-                          name="managementCompany_residence"
-                          placeholder="Location residence"
+                          value={values.managementCompany_area}
+                          name="managementCompany_area"
+                          placeholder="Location Area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.managementCompany_residence &&
-                          errors?.managementCompany_residence && (
+                        {touched?.managementCompany_area &&
+                          errors?.managementCompany_area && (
                             <span
                               className="text-danger col-md-12 text-left mb-2"
                               style={{ fontSize: 12 }}
                             >
-                              {errors?.managementCompany_residence}
+                              {errors?.managementCompany_area}
                             </span>
                           )}
                       </div>

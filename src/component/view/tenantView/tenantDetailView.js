@@ -50,7 +50,7 @@ const TanentDetailView = (props) => {
                               : "Registration Number"}
                           </div>
 
-                          <div className="font-weight-bold my-1">residence</div>
+                          <div className="font-weight-bold my-1">area</div>
                           <div className="font-weight-bold my-1"> City</div>
                           <div className="font-weight-bold my-1">Country </div>
                           <div className="font-weight-bold my-1">Email</div>
@@ -90,7 +90,7 @@ const TanentDetailView = (props) => {
                             {arg?.tenant_GovIdNo}
                           </div>
                           <div className="font-weight-bold my-1">
-                            {arg?.residence}
+                            {arg?.area}
                           </div>
                           <div className="font-weight-bold my-1">
                             {arg?.city}

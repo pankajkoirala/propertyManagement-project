@@ -23,8 +23,11 @@ const LeaseEntry = (props) => {
     formData.append("frequency", data.frequency);
     formData.append("securityDeposite", data.securityDeposite);
     formData.append("property", data.property);
+    formData.append("totalAmount", data.totalAmount);
+      formData.append("VAT_Amount", data.VAT_Amount);
 
   
+
      
       Axios.post(base_URL + "/api/lease", formData,{
         headers: {

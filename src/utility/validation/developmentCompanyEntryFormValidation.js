@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
 export const developerEntryFormValidation = Yup.object().shape({
-  Developer_residence: Yup.string().required("Required Field"),
+  Developer_area: Yup.string().required("Required Field"),
   Developer_city: Yup.string().required("Required Field"),
   Developer_country: Yup.string().required("Required Field"),
   DeveloperCompany_phoneNo: Yup.number().required("Required Field"),

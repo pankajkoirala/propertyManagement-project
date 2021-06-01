@@ -13,40 +13,70 @@ const TenantEntry = () => {
     file.forEach((element) => {
       formData.append(element.fileName, element.file);
     });
-    if (data.tenant_passport_expireDate !== "") {
+
+    if (data.TenentType === "Person") {
+      formData.append("TenentType", data.TenentType);
+      formData.append("tenant_Name", data.tenant_Name);
+      formData.append("tenant_phoneNo", data.tenant_phoneNo);
+      formData.append(
+        "DateOfBirth_registrationDate",
+        data.DateOfBirth_registrationDate
+      );
+      formData.append("tenant_GovIdNo", data.tenant_GovIdNo);
+      formData.append("tenant_email", data.tenant_email);
+      formData.append("city", data.city);
+      formData.append("area", data.area);
+      formData.append("country", data.country);
+      formData.append(
+        "tenant_GovIdNo_expireDate",
+        data.tenant_GovIdNo_expireDate
+      );
       formData.append(
         "tenant_passport_expireDate",
         data.tenant_passport_expireDate
       );
-    }
-    if (data.tenant_passportNo !== "") {
+      formData.append("tenant_passportNo", data.tenant_passportNo);
+    } else {
+
+      formData.append("TenentType", data.TenentType);
+      formData.append("tenant_companyName", data.tenant_companyName);
+      formData.append(
+        "tenant_companyAuthorizePerson",
+        data.tenant_companyAuthorizePerson
+      );
+      formData.append("tenant_GovIdNo", data.tenant_GovIdNo);
+      formData.append(
+        "tenant_companyIssuingDate",
+        data.tenant_companyIssuingDate
+      );
+      formData.append(
+        "tenant_companyExpireDate",
+        data.tenant_companyExpireDate
+      );
+      formData.append(
+        "tenant_companyAuthorizePersonDesignation",
+        data.tenant_companyAuthorizePersonDesignation
+      );
+      formData.append(
+        "tenant_companyTradeLicenseNo",
+        data.tenant_companyTradeLicenseNo
+      );
+      formData.append("tenant_email", data.tenant_email);
+      formData.append("city", data.city);
+      formData.append("area", data.area);
+      formData.append("country", data.country);
+      formData.append(
+        "tenant_GovIdNo_expireDate",
+        data.tenant_GovIdNo_expireDate
+      );
+      formData.append(
+        "tenant_passport_expireDate",
+        data.tenant_passport_expireDate
+      );
       formData.append("tenant_passportNo", data.tenant_passportNo);
     }
-    if (data.tenant_visaNo !== "") {
-      formData.append("tenant_visaNo", data.tenant_visaNo);
-    }
-    if (data.tenant_visa_expireDate !== "") {
-      formData.append("tenant_visa_expireDate", data.tenant_visa_expireDate);
-    }
 
-    formData.append(
-      "tenant_GovIdNo_expireDate",
-      data.tenant_GovIdNo_expireDate
-    );
-    formData.append("residence", data.residence);
-    formData.append("city", data.city);
-    formData.append("country", data.country);
-    formData.append("tenant_Name", data.tenant_Name);
-    formData.append("TenentType", data.TenentType);
-    formData.append("tenant_phoneNo", data.tenant_phoneNo);
-    formData.append("tenant_email", data.tenant_email);
-
-    formData.append("tenant_GovIdNo", data.tenant_GovIdNo);
-    formData.append(
-      "DateOfBirth_registrationDate",
-      data.DateOfBirth_registrationDate
-    );
-
+    
     Axios.post(base_URL + "/api/tenant", formData, {
       headers: {
         [token_key]: getLocalStorage(token_key),

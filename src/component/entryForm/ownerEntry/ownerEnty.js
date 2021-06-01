@@ -13,7 +13,7 @@ const OwnerEntry = (props) => {
   );
 
   let initialValue = {
-    owner_residence: props?.owner?.owner_residence || "",
+    owner_area: props?.owner?.owner_area || "",
     owner_city: props?.owner?.owner_city || "",
     owner_country: props?.owner?.owner_country || "U.A.E",
     owner_DOB: moment(props?.owner?.owner_DOB).format("YYYY-MM-DD") || "",
@@ -145,21 +145,21 @@ const OwnerEntry = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">residence</Label>
+                        <Label for="exampleName">Area</Label>
                         <Input
                           type="text"
-                          value={values.owner_residence}
-                          name="owner_residence"
-                          placeholder="Location residence"
+                          value={values.owner_area}
+                          name="owner_area"
+                          placeholder="Location Area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.owner_residence && errors?.owner_residence && (
+                        {touched?.owner_area && errors?.owner_area && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.owner_residence}
+                            {errors?.owner_area}
                           </span>
                         )}
                       </div>

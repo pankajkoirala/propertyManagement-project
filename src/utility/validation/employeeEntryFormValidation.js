@@ -4,7 +4,7 @@ export const employeeEntryFormValidation = Yup.object().shape({
   employee_firstName: Yup.string().required("Required Field"),
   employee_middleName: Yup.string(),
   employee_lastName: Yup.string().required("Required Field"),
-  employee_residence: Yup.string().required("Required Field"),
+  employee_area: Yup.string().required("Required Field"),
   employee_gender: Yup.string()
     .oneOf(["Male", "Female", "Other"])
     .required("Please select gender"),

@@ -39,7 +39,7 @@ let LeaseDetailViewComponent = (props) => {
                           Propety Type
                         </div>
 
-                        <div className="font-weight-bold my-2">residence</div>
+                        <div className="font-weight-bold my-2">area</div>
                         <div className="font-weight-bold my-2">
                           Building Name
                         </div>
@@ -62,7 +62,7 @@ let LeaseDetailViewComponent = (props) => {
                           Property Owner Name
                         </div>
                         <div className="font-weight-bold my-2">
-                          Property residence
+                          Property area
                         </div>
                       </div>
                       <div>
@@ -74,7 +74,7 @@ let LeaseDetailViewComponent = (props) => {
                         </div>
 
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.residence}
+                          {arg?.property?.area}
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.property?.building_Name}
@@ -203,7 +203,7 @@ let LeaseDetailViewComponent = (props) => {
                           ).format("YYYY-MM-DD")}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.tenants?.residence +
+                          {arg?.tenants?.area +
                             "," +
                             arg?.tenants?.city +
                             "," +

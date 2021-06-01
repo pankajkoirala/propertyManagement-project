@@ -6,7 +6,7 @@ export const PropertyFormValidation = Yup.object().shape({
     .min(1, "Too Short")
     .max(50, "Too long")
     .required("Required Field"),
-    residence: Yup.string().required("Required"),
+    area: Yup.string().required("Required"),
   country: Yup.string()
     .min(1, "Too Short")
     .max(50, "Too long")
@@ -16,10 +16,10 @@ export const PropertyFormValidation = Yup.object().shape({
     .required("Required"),
   property_price: Yup.number().required("Required"),
   property_community: Yup.string().required("Required"),
-  building_Name: Yup.string().required("Required"),
+  plot_no: Yup.string().required("Required"),
   building_Number: Yup.string().required("Required"),
   building_floorNumber: Yup.string().required("Required"),
-  Muncipality_Number: Yup.string().required("Required"),
+  Makani_Number: Yup.string().required("Required"),
   Property_Area: Yup.string().required("Required"),
   Property_Premise_Number: Yup.string().required("Required"),
   developerCompany: Yup.string().required("Required"),

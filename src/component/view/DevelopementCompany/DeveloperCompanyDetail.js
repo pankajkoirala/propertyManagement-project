@@ -38,7 +38,7 @@ let DeveloperCompanyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">
                           Company Name
                         </div>
-                        <div className="font-weight-bold my-2">residence</div>
+                        <div className="font-weight-bold my-2">area</div>
                         <div className="font-weight-bold my-2">City</div>
                         <div className="font-weight-bold my-2">Country</div>
                         <div className="font-weight-bold my-2">
@@ -63,7 +63,7 @@ let DeveloperCompanyDetailViewComponent = (props) => {
                           {arg?.DeveloperCompany_Name}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Developer_residence}
+                          {arg?.Developer_area}
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.Developer_city}

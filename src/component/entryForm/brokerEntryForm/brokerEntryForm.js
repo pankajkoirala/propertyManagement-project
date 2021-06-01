@@ -15,7 +15,7 @@ const BrokerComponent = (props) => {
   );
 
   let initialvalue = {
-    residence: props?.BrokerCompany?.residence || "",
+    area: props?.BrokerCompany?.area || "",
     city: props?.BrokerCompany?.city || "",
     country: props?.BrokerCompany?.country ||  "U.A.E",
     broker_phoneNo: props?.BrokerCompany?.broker_phoneNo || "",
@@ -151,21 +151,21 @@ const BrokerComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">residence</Label>
+                        <Label for="exampleName">Area</Label>
                         <Input
                           type="text"
-                          value={values.residence}
-                          name="residence"
-                          placeholder="Location residence"
+                          value={values.area}
+                          name="area"
+                          placeholder="Location Area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {touched?.residence && errors?.residence && (
+                        {touched?.area && errors?.area && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
                             style={{ fontSize: 12 }}
                           >
-                            {errors?.residence}
+                            {errors?.area}
                           </span>
                         )}
                       </div>

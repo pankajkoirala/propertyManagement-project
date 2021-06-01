@@ -22,6 +22,7 @@ const ChequeEntry = (props) => {
     cheque_status: props?.Cheque?.cheque_status || "",
     cheque_remarks: props?.Cheque?.cheque_remarks || "",
     cheque_amount: props?.Cheque?.cheque_amount || "",
+    securityDeposite: props?.Cheque?.securityDeposite || "",
     cheque_picture_front: props?.Cheque?.cheque_picture_front || "",
     cheque_picture_back: props?.Cheque?.cheque_picture_back || "",
 
@@ -73,26 +74,6 @@ const ChequeEntry = (props) => {
                     {/* <div className="m-4"> */}
 
                     <div className="row ">
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Cheque Received Date</Label>
-                        <Input
-                          type="date"
-                          value={values.cheque_recivedDate}
-                          name="cheque_recivedDate"
-                          placeholder="Enter Recived Date"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.cheque_recivedDate &&
-                          errors.cheque_recivedDate && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.cheque_recivedDate}
-                            </span>
-                          )}
-                      </div>
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Cheque Entry Date</Label>
                         <Input
@@ -153,7 +134,6 @@ const ChequeEntry = (props) => {
                             </span>
                           )}
                       </div>
-
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Cheque Number</Label>
                         <Input
@@ -173,6 +153,27 @@ const ChequeEntry = (props) => {
                           </span>
                         )}
                       </div>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Cheque Date</Label>
+                        <Input
+                          type="date"
+                          value={values.cheque_recivedDate}
+                          name="cheque_recivedDate"
+                          placeholder="Enter Recived Date"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.cheque_recivedDate &&
+                          errors.cheque_recivedDate && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.cheque_recivedDate}
+                            </span>
+                          )}
+                      </div>
+
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Cheque Amount</Label>
                         <Input
@@ -231,7 +232,25 @@ const ChequeEntry = (props) => {
                             </span>
                           )}
                       </div>
-
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleSelect">Security Deposit</Label>
+                        <Input
+                          type="number"
+                          name="securityDeposite"
+                          placeholder="Security Deposite"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.securityDeposite}
+                        ></Input>
+                        {touched.securityDeposite && errors.securityDeposite && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.securityDeposite}
+                          </span>
+                        )}
+                      </div>
                       <div className="mt-4 col-md-3">
                         <Label for="exampleName">Bank Name</Label>
                         <Input

@@ -3,17 +3,9 @@ import * as Yup from "yup";
 export const leaseEntryFormValidation = Yup.object().shape({
   frequency: Yup.string()
     .oneOf([
-      "31",
-      "59",
+      "30",
       "90",
-      "120",
-      "151",
       "181",
-      "212",
-      "243",
-      "273",
-      "304",
-      "334",
       "365",
     ])
     .required("Select any one"),
@@ -30,4 +22,7 @@ export const leaseEntryFormValidation = Yup.object().shape({
   expirationDate: Yup.date().required("Select Expiration Date"),
   rentAmount: Yup.number().required("Enter Rent Amount"),
   securityDeposite: Yup.number().required("Required"),
+  totalAmount: Yup.number().required("Required"),
+  VAT_Amount: Yup.number().required("Required"),
+
 });
