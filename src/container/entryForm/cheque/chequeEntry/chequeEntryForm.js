@@ -10,6 +10,7 @@ import { token_key } from "./../../../../const/base_URL";
 
 const ChequeEntryContainer = (props) => {
   const ChequeeData = (data) => {
+  console.log("🚀 ~ file: chequeEntryForm.js ~ line 13 ~ ChequeeData ~ data", data)
     const formData = new FormData();
 
     formData.append("cheque_issueDate", data.cheque_issueDate);
@@ -21,7 +22,7 @@ const ChequeEntryContainer = (props) => {
     formData.append("lease_property", data.lease_property);
     formData.append("cheque_number", data.cheque_number);
     formData.append("securityDeposite", data.securityDeposite);
-    formData.append("cheque_entryDate", data.cheque_entryDate);
+    formData.append("entryDate", data.entryDate);
     formData.append("cheque_bankName", data.cheque_bankName);
     formData.append("cheque_depositeDate", data.cheque_depositeDate);
     formData.append("cheque_clearDate", data.cheque_clearDate);
@@ -36,7 +37,7 @@ const ChequeEntryContainer = (props) => {
 
  
   
-      Axios.post( base_URL + "/api/cheque",formData,{
+     /* Axios.post( base_URL + "/api/cheque",formData,{
         headers: {
           [token_key]: getLocalStorage(token_key),
         },
@@ -47,7 +48,7 @@ const ChequeEntryContainer = (props) => {
       })
       .catch((err) => {
         notification("error", "ERROR");
-      });
+      });*/
   };
   return (
     <div>

@@ -6,6 +6,7 @@ import SearchInput from "./../../../shared/filterListData";
 const TenantView = (props) => {
   let [tenents, setTenents] = useState([]);
   let tenentList = props.tenant.slice().reverse();
+  console.log("🚀 ~ file: tenantView.js ~ line 9 ~ TenantView ~ tenentList", tenentList)
 
   if (tenents.length === 0) {
     tenents = tenentList;
@@ -38,9 +39,9 @@ const TenantView = (props) => {
               <tr>
                 <th>ID Number</th>
                 <th>tenent ID</th>
-                <th> Name</th>
                 <th>Tenant Type</th>
-                <th>Company Name</th>
+                <th> Name/Authorize Person</th>
+                <th>Address</th>
                 <th>Contact Email</th>
                 <th>Remarks</th>
               </tr>
@@ -53,8 +54,8 @@ const TenantView = (props) => {
                     <td>{arg.TenantId}</td>
 
                     <td>{arg.TenentType}</td>
-                    <td>{arg.tenant_Name}</td>
-                    <td>{arg.tenant_phoneNo}</td>
+                    <td>{arg.tenant_Name||arg.tenant_companyAuthorizePerson}</td>
+                    <td>{arg.area+","+arg.city}</td>
                     <td>{arg.tenant_email}</td>
 
                     <td>

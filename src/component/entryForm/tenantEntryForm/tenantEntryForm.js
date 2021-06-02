@@ -3,7 +3,10 @@ import "./tenantEntryForm.css";
 import moment from "moment";
 import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
-import { TenantEntryFormValidation,TenantEntryCompanyFormValidation } from "../../../utility/validation/tenantEntryFormValidation.js";
+import {
+  TenantEntryFormValidation,
+  TenantEntryCompanyFormValidation,
+} from "../../../utility/validation/tenantEntryFormValidation.js";
 import PoopUp from "./../../../shared/popup";
 import "../styleform/styleform.css";
 
@@ -40,21 +43,26 @@ const TenantEntry = (props) => {
         "YYYY-MM-DD"
       ) || "",
     tenant_passport_expireDate:
-    moment(props?.selectedTenantone?.tenant_passport_expireDate).format(
-      "YYYY-MM-DD"
-    ) || "",
+      moment(props?.selectedTenantone?.tenant_passport_expireDate).format(
+        "YYYY-MM-DD"
+      ) || "",
     tenant_passportNo: props?.selectedTenantone?.tenant_passportNo || "",
 
     tenant_companyName: props?.selectedTenantone?.tenant_companyName || "",
-    tenant_companyAuthorizePerson:props?.selectedTenantone?.tenant_companyAuthorizePerson || "",
-    tenant_companyIssuingDate:   moment(props?.selectedTenantone?.tenant_companyIssuingDate).format(
-      "YYYY-MM-DD"
-    )  || "",
-    tenant_companyExpireDate:   moment(props?.selectedTenantone?.tenant_companyExpireDate).format(
-      "YYYY-MM-DD"
-    )  || "",
-    tenant_companyAuthorizePersonDesignation:props?.selectedTenantone?.tenant_companyAuthorizePersonDesignation || "",
-    tenant_companyTradeLicenseNo:props?.selectedTenantone?.tenant_companyTradeLicenseNo || "",
+    tenant_companyAuthorizePerson:
+      props?.selectedTenantone?.tenant_companyAuthorizePerson || "",
+    tenant_companyIssuingDate:
+      moment(props?.selectedTenantone?.tenant_companyIssuingDate).format(
+        "YYYY-MM-DD"
+      ) || "",
+    tenant_companyExpireDate:
+      moment(props?.selectedTenantone?.tenant_companyExpireDate).format(
+        "YYYY-MM-DD"
+      ) || "",
+    tenant_companyAuthorizePersonDesignation:
+      props?.selectedTenantone?.tenant_companyAuthorizePersonDesignation || "",
+    tenant_companyTradeLicenseNo:
+      props?.selectedTenantone?.tenant_companyTradeLicenseNo || "",
   };
   return (
     <div className="form-page">
@@ -75,7 +83,13 @@ const TenantEntry = (props) => {
                   )
                 : props.tenantData(values, allFile);
             }}
-            validationSchema={tenentType==='Person'?TenantEntryFormValidation:TenantEntryCompanyFormValidation}
+            validationSchema={
+              (props?.selectedTenantone
+                ? props?.selectedTenantone?.TenentType
+                : tenentType) === "Person"
+                ? TenantEntryFormValidation
+                : TenantEntryCompanyFormValidation
+            }
           >
             {({
               touched,
@@ -122,88 +136,95 @@ const TenantEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      {values.TenentType === "Company" ? (<>
-                        <div className="mt-2 col-md-4">
-                          <Label for="exampleName">Company Name</Label>
-                          <Input
-                            type="text"
-                            value={values.tenant_companyName}
-                            name="tenant_companyName"
-                            placeholder="Authorize Person Name"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
-                          {touched.tenant_companyName &&
-                            errors.tenant_companyName && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.tenant_companyName}
-                              </span>
-                            )}
-                        </div>
-                           <div className="mt-2 col-md-4">
-                           <Label for="exampleName">Authorize person Name</Label>
-                           <Input
-                             type="text"
-                             value={values.tenant_companyAuthorizePerson}
-                             name="tenant_companyAuthorizePerson"
-                             placeholder="Authorize Person Name"
-                             onChange={handleChange}
-                             onBlur={handleBlur}
-                           />
-                           {touched.tenant_companyAuthorizePerson &&
-                             errors.tenant_companyAuthorizePerson && (
-                               <span
-                                 className="text-danger col-md-12 text-left mb-2"
-                                 style={{ fontSize: 12 }}
-                               >
-                                 {errors.tenant_companyAuthorizePerson}
-                               </span>
-                             )}
-                         </div>
-                         <div className="mt-2 col-md-4">
-                           <Label for="exampleName">Designation</Label>
-                           <Input
-                             type="text"
-                             value={values.tenant_companyAuthorizePersonDesignation}
-                             name="tenant_companyAuthorizePersonDesignation"
-                             placeholder="Designation"
-                             onChange={handleChange}
-                             onBlur={handleBlur}
-                           />
-                           {touched.tenant_companyAuthorizePersonDesignation &&
-                             errors.tenant_companyAuthorizePersonDesignation && (
-                               <span
-                                 className="text-danger col-md-12 text-left mb-2"
-                                 style={{ fontSize: 12 }}
-                               >
-                                 {errors.tenant_companyAuthorizePersonDesignation}
-                               </span>
-                             )}
-                         </div>
-                         <div className="mt-2 col-md-4">
-                           <Label for="exampleName">Trade License No</Label>
-                           <Input
-                             type="text"
-                             value={values.tenant_companyTradeLicenseNo}
-                             name="tenant_companyTradeLicenseNo"
-                             placeholder="Trade License No"
-                             onChange={handleChange}
-                             onBlur={handleBlur}
-                           />
-                           {touched.tenant_companyTradeLicenseNo &&
-                             errors.tenant_companyTradeLicenseNo && (
-                               <span
-                                 className="text-danger col-md-12 text-left mb-2"
-                                 style={{ fontSize: 12 }}
-                               >
-                                 {errors.tenant_companyTradeLicenseNo}
-                               </span>
-                             )}
-                         </div>
-                         </>
+                      {values.TenentType === "Company" ? (
+                        <>
+                          <div className="mt-2 col-md-4">
+                            <Label for="exampleName">Company Name</Label>
+                            <Input
+                              type="text"
+                              value={values.tenant_companyName}
+                              name="tenant_companyName"
+                              placeholder="Authorize Person Name"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.tenant_companyName &&
+                              errors.tenant_companyName && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors.tenant_companyName}
+                                </span>
+                              )}
+                          </div>
+                          <div className="mt-2 col-md-4">
+                            <Label for="exampleName">
+                              Authorize person Name
+                            </Label>
+                            <Input
+                              type="text"
+                              value={values.tenant_companyAuthorizePerson}
+                              name="tenant_companyAuthorizePerson"
+                              placeholder="Authorize Person Name"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.tenant_companyAuthorizePerson &&
+                              errors.tenant_companyAuthorizePerson && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors.tenant_companyAuthorizePerson}
+                                </span>
+                              )}
+                          </div>
+                          <div className="mt-2 col-md-4">
+                            <Label for="exampleName">Designation</Label>
+                            <Input
+                              type="text"
+                              value={
+                                values.tenant_companyAuthorizePersonDesignation
+                              }
+                              name="tenant_companyAuthorizePersonDesignation"
+                              placeholder="Designation"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.tenant_companyAuthorizePersonDesignation &&
+                              errors.tenant_companyAuthorizePersonDesignation && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {
+                                    errors.tenant_companyAuthorizePersonDesignation
+                                  }
+                                </span>
+                              )}
+                          </div>
+                          <div className="mt-2 col-md-4">
+                            <Label for="exampleName">Trade License No</Label>
+                            <Input
+                              type="text"
+                              value={values.tenant_companyTradeLicenseNo}
+                              name="tenant_companyTradeLicenseNo"
+                              placeholder="Trade License No"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.tenant_companyTradeLicenseNo &&
+                              errors.tenant_companyTradeLicenseNo && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors.tenant_companyTradeLicenseNo}
+                                </span>
+                              )}
+                          </div>
+                        </>
                       ) : (
                         <div className="mt-2 col-md-4">
                           <Label for="exampleName">Tenant Name</Label>
@@ -244,7 +265,7 @@ const TenantEntry = (props) => {
                           </span>
                         )}
                       </div>
-                  
+
                       <div className="col-md-4">
                         <Label for="exampleName">Area</Label>
                         <Input
@@ -305,88 +326,93 @@ const TenantEntry = (props) => {
                         )}
                       </div>
                     </div>
-                    {values.TenentType==='Company'&& <div className="row">
-                      <div className="col-md-6">
-                        <Label for="exampleName">Issuing Date</Label>
-                        <Input
-                          type="Date"
-                          value={values.tenant_companyIssuingDate}
-                          name="tenant_companyIssuingDate"
-                          placeholder="Issuing Date"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.tenant_companyIssuingDate && errors.tenant_companyIssuingDate && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.tenant_companyIssuingDate}
-                          </span>
-                        )}
+                    {values.TenentType === "Company" && (
+                      <div className="row">
+                        <div className="col-md-6">
+                          <Label for="exampleName">Issuing Date</Label>
+                          <Input
+                            type="Date"
+                            value={values.tenant_companyIssuingDate}
+                            name="tenant_companyIssuingDate"
+                            placeholder="Issuing Date"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                          {touched.tenant_companyIssuingDate &&
+                            errors.tenant_companyIssuingDate && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.tenant_companyIssuingDate}
+                              </span>
+                            )}
+                        </div>
+                        <div className="col-md-6">
+                          <Label for="exampleName">Expire Date</Label>
+                          <Input
+                            type="Date"
+                            value={values.tenant_companyExpireDate}
+                            name="tenant_companyExpireDate"
+                            placeholder="Expire Date"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                          {touched.tenant_companyExpireDate &&
+                            errors.tenant_companyExpireDate && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.tenant_companyExpireDate}
+                              </span>
+                            )}
+                        </div>
                       </div>
-                      <div className="col-md-6">
-                        <Label for="exampleName">Expire Date</Label>
-                        <Input
-                          type="Date"
-                          value={values.tenant_companyExpireDate}
-                          name="tenant_companyExpireDate"
-                          placeholder="Expire Date"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.tenant_companyExpireDate &&
-                          errors.tenant_companyExpireDate && (
+                    )}
+                    {values.TenentType === "Person" && (
+                      <div className="row">
+                        <div className="col-md-6">
+                          <Label for="exampleName">Contact Number</Label>
+                          <Input
+                            type="number"
+                            value={values.tenant_phoneNo}
+                            name="tenant_phoneNo"
+                            placeholder="Enter your Contact Number"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                          {touched.tenant_phoneNo && errors.tenant_phoneNo && (
                             <span
                               className="text-danger col-md-12 text-left mb-2"
                               style={{ fontSize: 12 }}
                             >
-                              {errors.tenant_companyExpireDate}
+                              {errors.tenant_phoneNo}
                             </span>
                           )}
+                        </div>
+                        <div className="col-md-6">
+                          <Label for="exampleName">Date of Birth</Label>
+                          <Input
+                            type="date"
+                            value={values.DateOfBirth_registrationDate}
+                            name="DateOfBirth_registrationDate"
+                            placeholder="Enter DOB"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                          {touched.DateOfBirth_registrationDate &&
+                            errors.DateOfBirth_registrationDate && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.DateOfBirth_registrationDate}
+                              </span>
+                            )}
+                        </div>
                       </div>
-                    </div>}
-                  {tenentType==='Person'&&  <div className="row">
-                      <div className="col-md-6">
-                        <Label for="exampleName">Contact Number</Label>
-                        <Input
-                          type="number"
-                          value={values.tenant_phoneNo}
-                          name="tenant_phoneNo"
-                          placeholder="Enter your Contact Number"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.tenant_phoneNo && errors.tenant_phoneNo && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.tenant_phoneNo}
-                          </span>
-                        )}
-                      </div>
-                      <div className="col-md-6">
-                        <Label for="exampleName">Date of Birth</Label>
-                        <Input
-                          type="date"
-                          value={values.DateOfBirth_registrationDate}
-                          name="DateOfBirth_registrationDate"
-                          placeholder="Enter DOB"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.DateOfBirth_registrationDate &&
-                          errors.DateOfBirth_registrationDate && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.DateOfBirth_registrationDate}
-                            </span>
-                          )}
-                      </div>
-                    </div>}
+                    )}
                     <div className="row">
                       <div className="col-md-6">
                         <Label for="exampleName">Emirates ID Number</Label>
