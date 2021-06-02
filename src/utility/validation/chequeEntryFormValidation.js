@@ -23,9 +23,14 @@ export const chequeEntryFormValidation = Yup.object().shape({
   cheque_picture_front: Yup.string().required("Required Field"),
   securityDeposite: Yup.number().required("Required Field"),
   depositeBank: Yup.string().required("Required Field"),
+  Transaction_Type: Yup.string()
+  .oneOf(["Cash", "Cheque"])
+  .required("Required Field"),
 });
 export const cashEntryFormValidation = Yup.object().shape({
-  Transaction_Type: Yup.string().required("Required Field"),
+  Transaction_Type: Yup.string()
+    .oneOf(["Cash", "Cheque"])
+    .required("Required Field"),
   miscellaneous_amount: Yup.number().required("Required Field"),
   vat_amount: Yup.number().required("Required Field"),
   entryDate: Yup.date().required("Required Field"),
@@ -35,5 +40,4 @@ export const cashEntryFormValidation = Yup.object().shape({
   property_id: Yup.string().required("Required Field"),
   securityDeposite: Yup.number().required("Required Field"),
   depositeBank: Yup.string().required("Required Field"),
-
 });

@@ -27,7 +27,6 @@ const ChequeEntry = (props) => {
     securityDeposite: props?.Cheque?.securityDeposite || "",
     cheque_picture_front: props?.Cheque?.cheque_picture_front || "",
     cheque_picture_back: props?.Cheque?.cheque_picture_back || "",
-
     cheque_number: props?.Cheque?.cheque_number || "",
     lease_property: props?.Cheque?.lease_property?._id || "",
     property_id: props?.Cheque?.property_id?._id || "",
@@ -52,7 +51,9 @@ const ChequeEntry = (props) => {
                 : props.ChequeeData(values);
               setLoadingState(true);
             }}
-            validationSchema={chequeEntryFormValidation}
+            validationSchema={ (props?.Cheque
+              ? props?.Cheque?.Transaction_Type
+              : transectionType) ==='Cash'?cashEntryFormValidation:chequeEntryFormValidation}
           >
             {({
               touched,
@@ -97,6 +98,7 @@ const ChequeEntry = (props) => {
                             style={{ fontSize: 12 }}
                           >
                             {errors.Transaction_Type}
+                            
                           </span>
                         )}
                       </div>

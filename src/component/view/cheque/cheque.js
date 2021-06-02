@@ -28,23 +28,21 @@ const ChequeView = (props) => {
     setUpdatedOptions(
       filterChequeList.filter((cheque) =>
         splittedWord.every((letter) => {
-          return cheque.cheque_number.toString().includes(letter);
+          return cheque.cheque_number?.toString()?.startsWith(letter?.toString());
         })
       )
     );
   };
   //filter by lease
   let FilterByLease = (Id) => {
-    const splittedWord = Id.split("");
     setUpdatedOptions(
       filterChequeList.filter((cheque) =>
-        splittedWord.every((letter) => {
-          return cheque?.lease_property?.LeaseId?.toString().includes(letter);
-        })
+      cheque?.lease_property?.LeaseId?.toLowerCase().startsWith(Id.toLowerCase())
       )
     );
   };
 
+  
   //filter cheque by cheque status
   let FilterByChequeStatus = (status) => {
     let filterCheque = filterChequeList.filter(
