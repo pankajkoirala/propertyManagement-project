@@ -27,7 +27,7 @@ const DeveloperCompanyDetailViewCont = (props) => {
     } else {
       formData.append("files_list", data.files_list);
     }
-    formData.append("Developer_residence", data.Developer_residence);
+    formData.append("Developer_area", data.Developer_area);
     formData.append("Developer_city", data.Developer_city);
     formData.append("Developer_country", data.Developer_country);
     formData.append("DeveloperCompany_phoneNo", data.DeveloperCompany_phoneNo);
@@ -46,6 +46,9 @@ const DeveloperCompanyDetailViewCont = (props) => {
       "DeveloperCompany_MobileNumber",
       data.DeveloperCompany_MobileNumber
     );
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
 
     Axios.put(base_URL + "/api/DeveloperCompany/" + ID, formData, {
       headers: {

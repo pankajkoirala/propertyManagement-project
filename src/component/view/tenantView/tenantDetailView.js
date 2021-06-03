@@ -157,6 +157,9 @@ const TanentDetailView = (props) => {
                             <div className="font-weight-bold my-1">
                               Passport expire Date
                             </div>
+                            <div className="font-weight-bold my-1">
+                             Remark
+                            </div>
                           </div>
                           <div className="col-6">
                             <div className="font-weight-bold my-1">
@@ -207,6 +210,9 @@ const TanentDetailView = (props) => {
                             </div>
                             <div className="font-weight-bold my-1">
                               {moment (arg?.tenant_passport_expireDate).format('YYYY-MM-DD')}
+                            </div>
+                            <div className="font-weight-bold my-1">
+                              {arg?.remark}
                             </div>
                           </div>
                         </>

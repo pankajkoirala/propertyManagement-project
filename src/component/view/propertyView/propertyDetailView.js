@@ -16,6 +16,8 @@ let PropertyDetailViewComponent = (props) => {
       <div style={{ margin: "20px" }}>
         {showEditForm === false ? (
           props.selectedone.map((arg, index) => {
+          console.log("🚀 ~ file: propertyDetailView.js ~ line 19 ~ props.selectedone.map ~ arg", arg)
+            
             return (
               <div key={index}>
                 <div className="row">
@@ -35,19 +37,16 @@ let PropertyDetailViewComponent = (props) => {
                     <div className="d-flex justify-content-between mr-4">
                       <div style={{ left: "0px" }}>
                         <div className="font-weight-bold my-3">area</div>
-                        <div className="font-weight-bold my-3">
-                          Building Name
-                        </div>
+                       
                         <div className="font-weight-bold my-3">
                           Building Number
                         </div>
                         <div className="font-weight-bold my-3">Plot Number</div>
                         <div className="font-weight-bold my-3">
-                          {" "}
                           Building Floor Number
                         </div>
                         <div className="font-weight-bold my-3">
-                          Municipality Number
+                          Makani Number
                         </div>
                         <div className="font-weight-bold my-3">
                           Dewa Premise Number
@@ -56,23 +55,22 @@ let PropertyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-3">
                           Property Owner Name
                         </div>
+                        <div className="font-weight-bold my-3">Remark </div>
                       </div>
                       <div>
                         <div className="font-weight-bold my-3">{arg.area}</div>
-                        <div className="font-weight-bold my-3">
-                          {arg.building_Name}
-                        </div>
+                     
                         <div className="font-weight-bold my-3">
                           {arg.building_Number}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.plot_Number}
+                          {arg.plot_no}
                         </div>
                         <div className="font-weight-bold my-3">
                           {arg.building_floorNumber}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.Muncipality_Number}
+                          {arg.Makani_Number}
                         </div>
                         <div className="font-weight-bold my-3">
                           {arg.Property_Premise_Number}
@@ -80,10 +78,14 @@ let PropertyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-3">
                           {arg.property_community}
                         </div>
+                      
                         <div className="font-weight-bold my-3">
                           {arg.Property_ownerName.map((owner, index) => {
                             return <li key={index}>{owner.owner_Name}</li>;
                           })}
+                        </div>
+                        <div className="font-weight-bold my-3">
+                          {arg.remark}
                         </div>
                       </div>
                     </div>

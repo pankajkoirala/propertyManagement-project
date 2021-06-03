@@ -28,6 +28,7 @@ const TenantEntry = (props) => {
     city: props.selectedTenantone?.city || "",
     country: props.selectedTenantone?.country || "",
     tenant_phoneNo: props.selectedTenantone?.tenant_phoneNo || "",
+    remark: props.selectedTenantone?.remark || "",
     tenant_Name: props.selectedTenantone?.tenant_Name || "",
     tenant_email: props.selectedTenantone?.tenant_email || "",
     DateOfBirth_registrationDate:
@@ -112,7 +113,7 @@ const TenantEntry = (props) => {
                     <h4 className="form-head">General Information</h4>
                     <div className="row ">
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleSelect">Tenent Type</Label>
+                        <Label for="exampleSelect">Tenent Type<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="select"
                           name="TenentType"
@@ -139,7 +140,7 @@ const TenantEntry = (props) => {
                       {values.TenentType === "Company" ? (
                         <>
                           <div className="mt-2 col-md-4">
-                            <Label for="exampleName">Company Name</Label>
+                            <Label for="exampleName">Company Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="text"
                               value={values.tenant_companyName}
@@ -161,7 +162,7 @@ const TenantEntry = (props) => {
                           <div className="mt-2 col-md-4">
                             <Label for="exampleName">
                               Authorize person Name
-                            </Label>
+                            <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="text"
                               value={values.tenant_companyAuthorizePerson}
@@ -181,7 +182,7 @@ const TenantEntry = (props) => {
                               )}
                           </div>
                           <div className="mt-2 col-md-4">
-                            <Label for="exampleName">Designation</Label>
+                            <Label for="exampleName">Designation<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="text"
                               value={
@@ -205,7 +206,7 @@ const TenantEntry = (props) => {
                               )}
                           </div>
                           <div className="mt-2 col-md-4">
-                            <Label for="exampleName">Trade License No</Label>
+                            <Label for="exampleName">Trade License No<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="text"
                               value={values.tenant_companyTradeLicenseNo}
@@ -227,7 +228,7 @@ const TenantEntry = (props) => {
                         </>
                       ) : (
                         <div className="mt-2 col-md-4">
-                          <Label for="exampleName">Tenant Name</Label>
+                          <Label for="exampleName">Tenant Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="text"
                             value={values.tenant_Name}
@@ -247,7 +248,7 @@ const TenantEntry = (props) => {
                         </div>
                       )}
                       <div className=" mt-2 col-md-4">
-                        <Label for="exampleName">Email</Label>
+                        <Label for="exampleName">Email<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="email"
                           value={values.tenant_email}
@@ -267,7 +268,7 @@ const TenantEntry = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">Area</Label>
+                        <Label for="exampleName">Area<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.area}
@@ -287,7 +288,7 @@ const TenantEntry = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">City</Label>
+                        <Label for="exampleName">City<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.city}
@@ -307,7 +308,7 @@ const TenantEntry = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">Country</Label>
+                        <Label for="exampleName">Country<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.country}
@@ -329,7 +330,7 @@ const TenantEntry = (props) => {
                     {values.TenentType === "Company" && (
                       <div className="row">
                         <div className="col-md-6">
-                          <Label for="exampleName">Issuing Date</Label>
+                          <Label for="exampleName">Issuing Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="Date"
                             value={values.tenant_companyIssuingDate}
@@ -349,7 +350,7 @@ const TenantEntry = (props) => {
                             )}
                         </div>
                         <div className="col-md-6">
-                          <Label for="exampleName">Expire Date</Label>
+                          <Label for="exampleName">Expire Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="Date"
                             value={values.tenant_companyExpireDate}
@@ -373,7 +374,7 @@ const TenantEntry = (props) => {
                     {values.TenentType === "Person" && (
                       <div className="row">
                         <div className="col-md-6">
-                          <Label for="exampleName">Contact Number</Label>
+                          <Label for="exampleName">Contact Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="number"
                             value={values.tenant_phoneNo}
@@ -392,7 +393,7 @@ const TenantEntry = (props) => {
                           )}
                         </div>
                         <div className="col-md-6">
-                          <Label for="exampleName">Date of Birth</Label>
+                          <Label for="exampleName">Date of Birth<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="date"
                             value={values.DateOfBirth_registrationDate}
@@ -415,7 +416,7 @@ const TenantEntry = (props) => {
                     )}
                     <div className="row">
                       <div className="col-md-6">
-                        <Label for="exampleName">Emirates ID Number</Label>
+                        <Label for="exampleName">Emirates ID Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.tenant_GovIdNo}
@@ -434,7 +435,7 @@ const TenantEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-6">
-                        <Label for="exampleName">Emirates ID ExpireDate</Label>
+                        <Label for="exampleName">Emirates ID ExpireDate<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="Date"
                           value={values.tenant_GovIdNo_expireDate}
@@ -456,7 +457,7 @@ const TenantEntry = (props) => {
                     </div>
                     <div className="row">
                       <div className="col-md-6">
-                        <Label for="exampleName">Passport No</Label>
+                        <Label for="exampleName">Passport No<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.tenant_passportNo}
@@ -475,7 +476,7 @@ const TenantEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-6">
-                        <Label for="exampleName">Passport ExpireDate</Label>
+                        <Label for="exampleName">Passport ExpireDate<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="date"
                           value={values.tenant_passport_expireDate}
@@ -494,13 +495,33 @@ const TenantEntry = (props) => {
                             </span>
                           )}
                       </div>
+                    <div className="col-md-6">
+                      <Label for="exampleName">Remark</Label>
+                      <Input
+                        type="number"
+                        value={values.remark}
+                        name="remark"
+                        placeholder="remark"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.remark && errors.remark && (
+                        <span
+                          className="text-danger col-md-12 text-left mb-2"
+                          style={{ fontSize: 12 }}
+                        >
+                          {errors.remark}
+                        </span>
+                      )}
                     </div>
+                    </div>
+
 
                     <div style={{ marginTop: "20px" }}>
                       <h4 className="form-head">Document Field</h4>
                       <div className="row">
                         <div className="col-md-4 text-left mb-2 ">
-                          <p>Document Name</p>
+                          <p>Document Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></p>
                           <Input
                             name="fileName"
                             type="text"
@@ -522,7 +543,7 @@ const TenantEntry = (props) => {
                             )
                           : ""}
                         <div className="col-md-4 text-left mb-2 mt-2">
-                          <Label className="float-left">Upload Scan Copy</Label>
+                          <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="file"
                             alt="no file"

@@ -77,7 +77,7 @@ const ChequeEntry = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleSelect">Transaction Type</Label>
+                        <Label for="exampleSelect">Transaction Type<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="select"
                           name="Transaction_Type"
@@ -103,7 +103,7 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName"> Entry Date</Label>
+                        <Label for="exampleName"> Entry Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="date"
                           value={moment(values.entryDate).format("YYYY-MM-DD")}
@@ -125,7 +125,7 @@ const ChequeEntry = (props) => {
                       {values.Transaction_Type === "Cheque" && (
                         <>
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleName">Cheque Issue Date</Label>
+                            <Label for="exampleName">Cheque Issue Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="date"
                               value={moment(values.cheque_issueDate).format(
@@ -150,7 +150,7 @@ const ChequeEntry = (props) => {
                           <div className="mt-4 col-md-3">
                             <Label for="exampleName">
                               Cheque Deposited Date
-                            </Label>
+                            <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="date"
                               value={moment(values.cheque_depositeDate).format(
@@ -172,7 +172,7 @@ const ChequeEntry = (props) => {
                               )}
                           </div>
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleName">Cheque Number</Label>
+                            <Label for="exampleName">Cheque Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="number"
                               value={values.cheque_number}
@@ -191,7 +191,7 @@ const ChequeEntry = (props) => {
                             )}
                           </div>
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleName">Cheque Date</Label>
+                            <Label for="exampleName">Cheque Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="date"
                               value={moment(values.cheque_recivedDate).format(
@@ -213,7 +213,7 @@ const ChequeEntry = (props) => {
                               )}
                           </div>
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleName">Bank Name</Label>
+                            <Label for="exampleName">Bank Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="text"
                               value={values.cheque_bankName}
@@ -234,7 +234,7 @@ const ChequeEntry = (props) => {
                         </>
                       )}
                         <div className="mt-4 col-md-3">
-                          <Label for="exampleName"> Deposite Bank</Label>
+                          <Label for="exampleName"> Deposite Bank<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="text"
                             value={values.depositeBank}
@@ -254,7 +254,7 @@ const ChequeEntry = (props) => {
                         </div>
 
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName"> Amount</Label>
+                        <Label for="exampleName"> Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.cheque_amount}
@@ -273,7 +273,7 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">VAT Amount </Label>
+                        <Label for="exampleName">VAT Amount <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.vat_amount}
@@ -292,7 +292,7 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Miscellaneous Amount</Label>
+                        <Label for="exampleName">Miscellaneous Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.miscellaneous_amount}
@@ -312,7 +312,7 @@ const ChequeEntry = (props) => {
                           )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleSelect">Security Deposit</Label>
+                        <Label for="exampleSelect">Security Deposit<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           name="securityDeposite"
@@ -334,7 +334,7 @@ const ChequeEntry = (props) => {
                       {values.Transaction_Type === "Cheque" && (
                         <>
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleSelect">Status</Label>
+                            <Label for="exampleSelect">Status<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="select"
                               name="cheque_status"
@@ -363,7 +363,7 @@ const ChequeEntry = (props) => {
                           </div>
                           {values.cheque_status === "Hold" && (
                             <div className="mt-4 col-md-3">
-                              <Label for="exampleName">Cheque Hold Date</Label>
+                              <Label for="exampleName">Cheque Hold Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                               <Input
                                 type="date"
                                 value={moment(values.cheque_holdDate).format(
@@ -390,7 +390,7 @@ const ChequeEntry = (props) => {
                             <div className="mt-4 col-md-3">
                               <Label for="exampleName">
                                 Cheque Cleared Date
-                              </Label>
+                              <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                               <Input
                                 type="date"
                                 value={moment(values.cheque_clearDate).format(
@@ -420,7 +420,7 @@ const ChequeEntry = (props) => {
                             <div className="mt-4 col-md-3">
                               <Label for="exampleName">
                                 Cheque Bounced Date
-                              </Label>
+                              <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                               <Input
                                 type="date"
                                 value={moment(values.cheque_bouncedDate).format(
@@ -443,12 +443,12 @@ const ChequeEntry = (props) => {
                             </div>
                           )}
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleName">Cheque List No</Label>
+                            <Label for="exampleName">Cheque List No<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="select"
                               value={values.ChequeListNo}
                               name="ChequeListNo"
-                              placeholder="Remarks"
+                              placeholder="select cheque Position"
                               onChange={handleChange}
                               onBlur={handleBlur}
                             >
@@ -477,8 +477,8 @@ const ChequeEntry = (props) => {
                           </div>
                         </>
                       )}
-                      <div className="mt-4 col-md-4">
-                        <Label for="exampleSelect">Lease Number</Label>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleSelect">Lease Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <RegexComponent
                           {...props}
                           editSelectedName={
@@ -510,8 +510,8 @@ const ChequeEntry = (props) => {
                           )}
                         </div>
                       </div>
-                      <div className="mt-4 col-md-4">
-                        <Label for="exampleSelect">Property </Label>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleSelect">Property <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <RegexComponent
                           {...props}
                           editSelectedName={
@@ -569,7 +569,7 @@ const ChequeEntry = (props) => {
                         <div className="col-5 text-left mb-2 mt-4">
                           <Label className="float-left">
                             Cheque Front Photo
-                          </Label>
+                          <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="file"
                             name="cheque_picture_front"
@@ -601,7 +601,7 @@ const ChequeEntry = (props) => {
                         <div className="col-5 text-left mb-2 mt-4">
                           <Label className="float-left">
                             Cheque Back Photo
-                          </Label>
+                          <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="file"
                             name="cheque_picture_back"

@@ -11,4 +11,6 @@ export const developerEntryFormValidation = Yup.object().shape({
   DeveloperCompany_MobileNumber: Yup.number().required("Required Field"),
   DeveloperCompany_RegisterationNumber: Yup.string().required("Required Field"),
   // files_list: Yup.array().required("File Required"),
+  remark: Yup.string(),
+
 });

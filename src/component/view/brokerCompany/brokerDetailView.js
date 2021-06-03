@@ -59,6 +59,9 @@ let BrokerCompanyDetailViewComponent = (props) => {
                           <div className="font-weight-bold my-2">
                             Contact No
                           </div>
+                          <div className="font-weight-bold my-2">
+                           Remark
+                          </div>
                         </div>
                         <div>
                           <div className="font-weight-bold my-2">
@@ -94,12 +97,15 @@ let BrokerCompanyDetailViewComponent = (props) => {
                           <div className="font-weight-bold my-2">
                             {arg?.broker_phoneNo}
                           </div>
+                          <div className="font-weight-bold my-2">
+                            {arg?.remark}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div>
-                    <h5 className="mt4 text-center">Employee Document</h5>
+                    <h5 className="mt4 text-center">Broker Document</h5>
                     <div className="d-flex flex-wrap">
                       {arg?.files_list?.map((file, index) => {
                         return (

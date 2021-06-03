@@ -32,6 +32,9 @@ const BankAccountContainer = () => {
       "DeveloperCompany_MobileNumber",
       data.DeveloperCompany_MobileNumber
     );
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
     
       Axios.post( base_URL + "/api/DeveloperCompany" ,formData,{
         headers: {

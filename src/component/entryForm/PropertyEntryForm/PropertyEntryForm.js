@@ -53,6 +53,7 @@ const PropertyEntry = (props) => {
     Property_Premise_Number: props?.property?.Property_Premise_Number || "",
     developerCompany: props?.property?.developerCompany?._id || "",
     managementCompany: props?.property?.managementCompany?._id || "",
+    remark: props?.property?.remark || "",
     unitNo: props?.property?.unitNo || "",
     fileName: "",
     file: "",
@@ -118,7 +119,7 @@ const PropertyEntry = (props) => {
               <h4 className="form-head">General Information</h4>
               <div className="d-flex flex-wrap">
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleSelect">Property Type</Label>
+                  <Label for="exampleSelect">Property Type<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
 
                   <Input
                     type="select"
@@ -146,7 +147,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label>Investment Capital</Label>
+                  <Label>Investment Capital<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="number"
                     name="property_price"
@@ -166,7 +167,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Country</Label>
+                  <Label for="exampleName">Country<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="text"
                     value={"U.A.E"}
@@ -187,7 +188,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">City</Label>
+                  <Label for="exampleName">City<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="select"
                     value={values.city}
@@ -211,7 +212,7 @@ const PropertyEntry = (props) => {
                   )}
                 </div>
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Area</Label>
+                  <Label for="exampleName">Area<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="text"
                     value={values.area}
@@ -231,7 +232,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Plot Number</Label>
+                  <Label for="exampleName">Plot Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="text"
                     value={values.plot_no}
@@ -251,7 +252,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Building Number</Label>
+                  <Label for="exampleName">Building Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="text"
                     value={values.building_Number}
@@ -273,7 +274,7 @@ const PropertyEntry = (props) => {
             
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Floor Number</Label>
+                  <Label for="exampleName">Floor Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="text"
                     value={values.building_floorNumber}
@@ -313,7 +314,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Property Area</Label>
+                  <Label for="exampleName">Property Area<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="number"
                     value={values.Property_Area}
@@ -333,7 +334,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
-                  <Label for="exampleName">Community</Label>
+                  <Label for="exampleName">Community<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="text"
                     value={values.property_community}
@@ -352,7 +353,7 @@ const PropertyEntry = (props) => {
                   )}
                 </div>
                 <div className="col-4 my-1">
-                  <Label for="exampleName">DEWA Premise Number</Label>
+                  <Label for="exampleName">DEWA Premise Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="text"
                     value={values.Property_Premise_Number}
@@ -373,7 +374,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-4 my-1">
-                  <Label for="exampleName">Unit No</Label>
+                  <Label for="exampleName">Unit No<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                   <Input
                     type="text"
                     value={values.unitNo}
@@ -393,7 +394,7 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-4">
-                  <Label for="exampleSelect">Management Company</Label>
+                  <Label for="exampleSelect">Management Company<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
 
                   <RegexConponent
                     setFieldValue={setFieldValue}
@@ -423,7 +424,7 @@ const PropertyEntry = (props) => {
                   </div>
                 </div>
                 <div style={{ width: "auto" }} className="col-4 my-1">
-                  <Label for="exampleName">Owner Name </Label>
+                  <Label for="exampleName">Owner Name <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
 
                   <RegexConponent
                     {...props}
@@ -452,7 +453,7 @@ const PropertyEntry = (props) => {
                   </div>
                 </div>
                 <div className="col-4">
-                  <Label for="exampleSelect">Developer Company</Label>
+                  <Label for="exampleSelect">Developer Company<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
 
                   <RegexConponent
                     editSelectedName={
@@ -480,6 +481,25 @@ const PropertyEntry = (props) => {
                     )}
                   </div>
                 </div>
+                <div className="col-md-4">
+                        <Label for="exampleName">Remark</Label>
+                        <Input
+                          type="number"
+                          value={values.remark}
+                          name="remark"
+                          placeholder="remark"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.remark && errors.remark && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.remark}
+                          </span>
+                        )}
+                      </div>
               </div>
 
               {/* {//owner selected list} */}
@@ -512,7 +532,7 @@ const PropertyEntry = (props) => {
               <div className="">
                 <Label for="exampleName">
                   <h3 className="form-head">Facilities</h3>
-                </Label>
+               </Label>
 
                 <Table bordered>
                   <thead>
@@ -617,7 +637,7 @@ const PropertyEntry = (props) => {
                 <h4 className="form-head">Document Field</h4>
                 <div className="row">
                   <div className="col-md-4 text-left mb-2 ">
-                    <p>Document Name</p>
+                    <p>Document Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></p>
                     <Input
                       name="fileName"
                       type="text"
@@ -628,7 +648,7 @@ const PropertyEntry = (props) => {
                     ></Input>
                   </div>
                   <div className="col-md-4 text-left mb-2 mt-2">
-                    <Label className="float-left">Upload Scan Copy</Label>
+                    <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                     <Input
                       type="file"
                       alt="no file"

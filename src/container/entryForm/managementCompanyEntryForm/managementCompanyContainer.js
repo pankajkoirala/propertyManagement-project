@@ -33,6 +33,9 @@ const ManagementCompanyContainer = () => {
       "managementCompany_MobileNumber",
       data.managementCompany_MobileNumber
     );
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
 
      
       Axios.post( base_URL + "/api/managementCompany",formData,{

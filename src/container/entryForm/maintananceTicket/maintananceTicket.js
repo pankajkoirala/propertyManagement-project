@@ -26,6 +26,9 @@ const MaintananceTicketContainer = (props) => {
       "MaintananceCompanyDetailInfo",
       data.MaintananceCompanyDetailInfo
     );
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
  
     formData.append("maintanance_Amount", data.maintanance_Amount);
     Axios.post(base_URL + "/api/MaintananceTicket", formData, {

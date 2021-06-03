@@ -31,6 +31,7 @@ const BrokerComponent = (props) => {
     file: "",
     files_list: [],
     brokerType: props?.BrokerCompany?.brokerType || "",
+    remark: props?.BrokerCompany?.remark || "",
   };
 
   let photoDelete = (name) => {
@@ -67,7 +68,6 @@ const BrokerComponent = (props) => {
                 <FormGroup className="form-group p-4  m-2">
                   <div className="text-center">
                     <div className="text-black font-weight-bold">
-                      {" "}
                       <h3 className="form-head">Broker Entry Form </h3>
                     </div>
                   </div>
@@ -75,7 +75,7 @@ const BrokerComponent = (props) => {
                     <h4 className="form-head">General Information</h4>
                     <div className="row">
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleSelect">Broker Type</Label>
+                        <Label for="exampleSelect">Broker Type <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="select"
                           name="brokerType"
@@ -103,7 +103,7 @@ const BrokerComponent = (props) => {
                           {values.brokerType === "Company"
                             ? "Company Name"
                             : "Person Name"}
-                        </Label>
+                        <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.broker_companyName}
@@ -128,7 +128,7 @@ const BrokerComponent = (props) => {
                           {values.brokerType === "Company"
                             ? "Company Registeration Date "
                             : "Date of Birth"}
-                        </Label>
+                        <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="date"
                           value={values.broker_companyRegisterDate}
@@ -151,7 +151,7 @@ const BrokerComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Area</Label>
+                        <Label for="exampleName">Area<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.area}
@@ -171,7 +171,7 @@ const BrokerComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">City</Label>
+                        <Label for="exampleName">City<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="select"
                           value={values.city}
@@ -196,7 +196,7 @@ const BrokerComponent = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Country</Label>
+                        <Label for="exampleName">Country<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={"U.A.E"}
@@ -219,7 +219,7 @@ const BrokerComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Email</Label>
+                        <Label for="exampleName">Email<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="email"
                           value={values.broker_email}
@@ -239,7 +239,7 @@ const BrokerComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">Contact Number</Label>
+                        <Label for="exampleName">Contact Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.broker_phoneNo}
@@ -263,7 +263,7 @@ const BrokerComponent = (props) => {
                           {values.brokerType === "Company"
                             ? "Company Registration Number "
                             : "Mobile No."}
-                        </Label>
+                        <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.broker_RegistrationNumber}
@@ -282,12 +282,31 @@ const BrokerComponent = (props) => {
                             </span>
                           )}
                       </div>
+                      <div className="col-md-4">
+                        <Label for="exampleName">Remark</Label>
+                        <Input
+                          type="number"
+                          value={values.remark}
+                          name="remark"
+                          placeholder="remark"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.remark && errors.remark && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.remark}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <div style={{ marginTop: "20px" }}>
                       <h4 className="form-head">Document Field</h4>
                       <div className="row">
                         <div className="col-md-4 text-left mb-2 mt-2">
-                          <p>Document Name</p>
+                          <p>Document Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></p>
                           <Input
                             name="fileName"
                             type="text"
@@ -298,7 +317,7 @@ const BrokerComponent = (props) => {
                           ></Input>
                         </div>
                         <div className="col-md-4 text-left mb-2 ">
-                          <Label className="float-left">Upload Scan Copy</Label>
+                          <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="file"
                             alt="no file"

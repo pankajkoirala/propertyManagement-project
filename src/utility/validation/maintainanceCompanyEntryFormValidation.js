@@ -11,4 +11,6 @@ export const maintainanceCompanyEntryFormValidation = Yup.object().shape({
   Company_Registeration_Date: Yup.date().required("Required Field"),
   Company_email: Yup.string().required("Required Field"),
   //files_list: Yup.array().required("File Required"),
+  remark: Yup.string(),
+
 });

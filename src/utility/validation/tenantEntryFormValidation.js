@@ -26,6 +26,8 @@ export const TenantEntryFormValidation = Yup.object().shape({
   tenant_GovIdNo_expireDate: Yup.date().required("Required"),
   tenant_passport_expireDate: Yup.string().required("Required"),
   tenant_passportNo: Yup.string().required("Required"),
+  remark: Yup.string(),
+
 });
 export const TenantEntryCompanyFormValidation = Yup.object().shape({
   TenentType: Yup.string().oneOf(["Person", "Company"]).required("Required"),
@@ -53,6 +55,8 @@ export const TenantEntryCompanyFormValidation = Yup.object().shape({
   tenant_GovIdNo_expireDate: Yup.date().required("Required"),
   tenant_passport_expireDate: Yup.date().required("Required"),
   tenant_passportNo: Yup.string().required("Required"),
+  remark: Yup.string(),
+
 });
 
 /*tenant_GovIdNo

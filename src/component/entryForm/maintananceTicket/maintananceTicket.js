@@ -32,6 +32,8 @@ const MaintananceTicket = (props) => {
       props?.maintananceTicket?.MaintanancePropertyID?._id || "",
     MaintananceCompanyId:
       props?.maintananceTicket?.MaintananceCompanyId?._id || "",
+    remark:
+      props?.maintananceTicket?.remark|| "",
 
     MaintananceCompanyDetailInfo:
       props?.maintananceTicket?.MaintananceCompanyDetailInfo || "",
@@ -86,7 +88,7 @@ const MaintananceTicket = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-4">
-                        <Label for="exampleName">Issue Date</Label>
+                        <Label for="exampleName">Issue Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketIssueDate}
@@ -106,7 +108,7 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Maintanance Due Date</Label>
+                        <Label for="exampleName">Maintanance Due Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketDueDate}
@@ -127,7 +129,7 @@ const MaintananceTicket = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Maintanance Amount</Label>
+                        <Label for="exampleName">Maintanance Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.maintanance_Amount}
@@ -149,7 +151,7 @@ const MaintananceTicket = (props) => {
                     </div>
                     <div className="row">
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Property Id</Label>
+                        <Label for="exampleName">Property Id<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -181,7 +183,7 @@ const MaintananceTicket = (props) => {
                         </div>
                       </div>
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Maintanance Company Id</Label>
+                        <Label for="exampleName">Maintanance Company Id<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -209,10 +211,28 @@ const MaintananceTicket = (props) => {
                             )}
                         </div>
                       </div>
-
+                      <div className="mt-4 col-md-4">
+                        <Label for="exampleName">Remark</Label>
+                        <Input
+                          type="number"
+                          value={values.remark}
+                          name="remark"
+                          placeholder="remark"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.remark && errors.remark && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.remark}
+                          </span>
+                        )}
+                      </div>
                       {/* <div className="mt-4 col-md-4">
                         {console.log(props?.Redux_managementCompanyData)}
-                        <Label for="exampleName">Management Company</Label>
+                        <Label for="exampleName">Management Company<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -241,7 +261,7 @@ const MaintananceTicket = (props) => {
                     </div>
                     <div style={{ marginTop: "50px" }}>
                       <div className=" col-6">
-                        <Label for="exampleName">Detail Message</Label>
+                        <Label for="exampleName">Detail Message<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="textarea"
                           value={values.MaintananceCompanyDetailInfo}
@@ -266,7 +286,7 @@ const MaintananceTicket = (props) => {
                     <h4 className="form-head">Document Field</h4>
                     <div className="row ">
                       <div className="col-md-4 text-left mb-2 ">
-                        <p>Document Name</p>
+                        <p>Document Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></p>
                         <Input
                           name="fileName"
                           type="text"
@@ -277,7 +297,7 @@ const MaintananceTicket = (props) => {
                         ></Input>
                       </div>
                       <div className="col-md-4 text-left mb-2 mt-2">
-                        <Label className="float-left">Upload Scan Copy</Label>
+                        <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="file"
                           alt="no file"

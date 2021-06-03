@@ -53,6 +53,8 @@ let OwnerDetailViewComponent = (props) => {
                             ? "Emirates ID Number"
                             : "Company Registration Number"}
                         </div>
+                        <div className="font-weight-bold my-2">Remark</div>
+
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
@@ -90,6 +92,9 @@ let OwnerDetailViewComponent = (props) => {
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.owner_GovID_RegNo}
+                        </div>
+                        <div className="font-weight-bold my-2">
+                          {arg?.remark}
                         </div>
                       </div>
                     </div>

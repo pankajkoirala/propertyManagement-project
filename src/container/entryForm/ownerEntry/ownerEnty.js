@@ -24,7 +24,9 @@ const OwnerEntryContainer = (props) => {
     formData.append("owner_Type", data.owner_Type);
     formData.append("owner_GovID_RegNo", data.owner_GovID_RegNo);
     formData.append("owner_email", data.owner_email);
-
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
 
     
       Axios.post( base_URL + "/api/owner",formData,{

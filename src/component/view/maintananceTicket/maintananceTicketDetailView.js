@@ -58,6 +58,9 @@ let MaintananceTicketDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">
                           Mobile Number
                         </div>
+                        <div className="font-weight-bold my-2">
+                         Remark
+                        </div>
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
@@ -98,6 +101,9 @@ let MaintananceTicketDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">
                           {arg?.MaintananceCompanyId?.Company_Mobile_Number}
                         </div>
+                        <div className="font-weight-bold my-2">
+                          {arg?.MaintananceCompanyId?.remark}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -122,6 +128,7 @@ let MaintananceTicketDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">
                           Property To Be Maintained
                         </div>
+                       
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
@@ -142,6 +149,7 @@ let MaintananceTicketDetailViewComponent = (props) => {
                             "," +
                             arg?.MaintanancePropertyID?.referenceNO}
                         </div>
+                        
                       </div>
                     </div>
                   </div>

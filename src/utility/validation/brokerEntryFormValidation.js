@@ -15,6 +15,7 @@ export const brokerEntryFormValidation = Yup.object().shape({
   brokerType: Yup.string()
     .oneOf(["Person", "Company"])
     .required("Required Field"),
+    remark: Yup.string(),
 
   //files_list: Yup.array().required("File Required"),
 });

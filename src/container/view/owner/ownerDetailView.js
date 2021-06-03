@@ -27,7 +27,7 @@ const OwnerViewCont = (props) => {
     } else {
       formData.append("files_list", data.files_list);
     }
-    formData.append("owner_residence", data.owner_residence);
+    formData.append("owner_area", data.owner_residence);
     formData.append("owner_city", data.owner_city);
     formData.append("owner_country", data.owner_country);
     formData.append("owner_DOB", data.owner_DOB);
@@ -36,7 +36,9 @@ const OwnerViewCont = (props) => {
     formData.append("owner_Type", data.owner_Type);
     formData.append("owner_GovID_RegNo", data.owner_GovID_RegNo);
     formData.append("owner_email", data.owner_email);
-
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
     
       Axios.put(base_URL + "/api/owner/" + ID,formData,{
         headers: {

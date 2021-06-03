@@ -125,6 +125,7 @@ let LeaseDetailViewComponent = (props) => {
                         </div>
                         <div className="font-weight-bold my-2">Lease Term</div>
                         <div className="font-weight-bold my-2">Frequency</div>
+                        <div className="font-weight-bold my-2">Remark</div>
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
@@ -148,15 +149,16 @@ let LeaseDetailViewComponent = (props) => {
                           {arg.lease_Term}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg.frequency === "7"
-                            ? "Weekly"
-                            : arg.frequency === "14"
-                            ? "Bi-Weekly"
-                            : arg.frequency === "30"
+                          {arg.frequency === "30"
                             ? "Monthly"
                             : arg.frequency === "90"
                             ? "Quartely"
+                            : arg.frequency === "181"
+                            ? "Semi Annualy"
                             : "Yearly"}
+                        </div>
+                        <div className="font-weight-bold my-2">
+                          {arg.remark}
                         </div>
                       </div>
                     </div>

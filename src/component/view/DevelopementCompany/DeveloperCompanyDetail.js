@@ -54,6 +54,9 @@ let DeveloperCompanyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">
                           Mobile Number
                         </div>
+                        <div className="font-weight-bold my-2">
+                          Remark 
+                        </div>
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
@@ -90,6 +93,9 @@ let DeveloperCompanyDetailViewComponent = (props) => {
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.DeveloperCompany_MobileNumber}
+                        </div>
+                        <div className="font-weight-bold my-2">
+                          {arg?.remark}
                         </div>
                       </div>
                     </div>

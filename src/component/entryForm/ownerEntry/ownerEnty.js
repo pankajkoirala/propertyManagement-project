@@ -24,6 +24,7 @@ const OwnerEntry = (props) => {
 
     owner_email: props?.owner?.owner_email || "",
     owner_property: props?.owner?.owner_property?._id || "",
+    remark: props?.owner?.remark || "",
     fileName: "",
     file: "",
     files_list: [],
@@ -71,7 +72,7 @@ const OwnerEntry = (props) => {
                     <h4 className="form-head">General Information</h4>
                     <div className="row ">
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleSelect">Owner Type</Label>
+                        <Label for="exampleSelect">Owner Type<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="select"
                           name="owner_Type"
@@ -99,7 +100,7 @@ const OwnerEntry = (props) => {
                           {values.owner_Type === "Company"
                             ? "Company Name"
                             : " Name "}
-                        </Label>
+                        <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.owner_Name}
@@ -123,7 +124,7 @@ const OwnerEntry = (props) => {
                           {values.owner_Type === "Company"
                             ? "Company Registration No"
                             : " Emirates ID Number"}
-                        </Label>
+                        <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.owner_GovID_RegNo}
@@ -145,7 +146,7 @@ const OwnerEntry = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Area</Label>
+                        <Label for="exampleName">Area<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.owner_area}
@@ -165,7 +166,7 @@ const OwnerEntry = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">City</Label>
+                        <Label for="exampleName">City<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="select"
                           value={values.owner_city}
@@ -189,7 +190,7 @@ const OwnerEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Country</Label>
+                        <Label for="exampleName">Country<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={"U.A.E"}
@@ -215,7 +216,7 @@ const OwnerEntry = (props) => {
                           {values.owner_Type === "Company"
                             ? "Company Registration Date"
                             : " Date Of Birth "}
-                        </Label>
+                        <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="date"
                           name="owner_DOB"
@@ -233,7 +234,7 @@ const OwnerEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Email</Label>
+                        <Label for="exampleName">Email<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="email"
                           value={values.owner_email}
@@ -253,7 +254,7 @@ const OwnerEntry = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">Contact Number</Label>
+                        <Label for="exampleName">Contact Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.owner_phoneNo}
@@ -271,10 +272,29 @@ const OwnerEntry = (props) => {
                           </span>
                         )}
                       </div>
+                      <div className="col-md-4">
+                        <Label for="exampleName">Remark</Label>
+                        <Input
+                          type="number"
+                          value={values.remark}
+                          name="remark"
+                          placeholder="remark"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.remark && errors.remark && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.remark}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <div className="row">
                       {/* <div className="col-md-6 mb-4">
-                        <Label for="exampleName">Owner property</Label>
+                        <Label for="exampleName">Owner property<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
@@ -306,7 +326,7 @@ const OwnerEntry = (props) => {
                     <h4 className="form-head">Document Field</h4>
                     <div className="row ">
                       <div className="col-md-4 text-left mb-2 ">
-                        <p>Document Name</p>
+                        <p>Document Name <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></p>
                         <Input
                           name="fileName"
                           type="text"
@@ -317,7 +337,7 @@ const OwnerEntry = (props) => {
                         ></Input>
                       </div>
                       <div className="col-md-4 text-left mb-2 mt-2">
-                        <Label className="float-left">Upload Scan Copy</Label>
+                        <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="file"
                           alt="no file"

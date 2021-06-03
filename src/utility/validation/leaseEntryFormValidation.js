@@ -24,5 +24,7 @@ export const leaseEntryFormValidation = Yup.object().shape({
   securityDeposite: Yup.number().required("Required"),
   totalAmount: Yup.number().required("Required"),
   VAT_Amount: Yup.number().required("Required"),
+  remark: Yup.string(),
+
 
 });

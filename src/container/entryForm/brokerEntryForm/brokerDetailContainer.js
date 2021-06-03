@@ -28,13 +28,16 @@ const BrokerDetailContainer = () => {
     );
     formData.append("broker_email", data.broker_email);
     formData.append("brokerType", data.brokerType);
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
 
-    Axios.post(base_URL + "/api/brokerCompany",formData,{
+    Axios.post(base_URL + "/api/brokerCompany", formData, {
       headers: {
         [token_key]: getLocalStorage(token_key),
       },
     })
-     
+
       .then((res) => {
         notification("Created successfully", "SUCCESS");
         reloadFunction();

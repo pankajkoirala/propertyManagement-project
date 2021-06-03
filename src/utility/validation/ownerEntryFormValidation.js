@@ -11,5 +11,7 @@ export const OwnerEntryFormValidation = Yup.object().shape({
   owner_GovID_RegNo: Yup.string().required("Required"),
   owner_email: Yup.string().required("Required"),
   // owner_property: Yup.string().required("Required"),
+  remark: Yup.string(),
+
   //files_list:
 });

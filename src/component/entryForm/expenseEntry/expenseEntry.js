@@ -89,7 +89,7 @@ const ExpenseEntry = (props) => {
 
                       <div className="row ">
                         <div className="mt-4 col-4">
-                          <Label for="exampleName">Entry date</Label>
+                          <Label for="exampleName">Entry date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="date"
                             value={values.expense_EntryDate}
@@ -130,7 +130,7 @@ const ExpenseEntry = (props) => {
                         </div>
 
                         <div className="mt-4 col-md-3">
-                          <Label for="exampleName">Invoice Number</Label>
+                          <Label for="exampleName">Invoice Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="text"
                             value={values.expenseInvoiceNumber}
@@ -150,7 +150,7 @@ const ExpenseEntry = (props) => {
                             )}
                         </div>
                         <div className="mt-2 col-md-4">
-                          <Label for="exampleSelect">Expense Type</Label>
+                          <Label for="exampleSelect">Expense Type<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="select"
                             name="expense_Type"
@@ -180,7 +180,7 @@ const ExpenseEntry = (props) => {
                           <div className="mt-2 col-4">
                             <Label for="exampleName">
                               maintanance ticket ID
-                            </Label>
+                            <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <RegexComponent
                               {...props}
                               setFieldValue={setFieldValue}
@@ -211,7 +211,7 @@ const ExpenseEntry = (props) => {
                         {values.expense_Type !== "Miscellaneous" 
                          ? (
                           <div className="mt-2 col-4">
-                            <Label for="exampleName">property</Label>
+                            <Label for="exampleName">property<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <RegexComponent
                               {...props}
                               setFieldValue={setFieldValue}
@@ -243,7 +243,7 @@ const ExpenseEntry = (props) => {
                       </div>
                       <div className="row">
                         <div className="mt-4 col-md-3">
-                          <Label for="exampleName">Expense Heading</Label>
+                          <Label for="exampleName">Expense Heading<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="text"
                             name="expense_Heading"
@@ -261,7 +261,7 @@ const ExpenseEntry = (props) => {
                           )}
                         </div>
                         <div className="mt-4 col-md-3">
-                          <Label for="exampleName">Amount</Label>
+                          <Label for="exampleName">Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                           <Input
                             type="number"
                             placeholder="Amount"
@@ -296,7 +296,7 @@ const ExpenseEntry = (props) => {
                     </div>
 
                     <div className="col-md-6 text-left mb-2 mt-4">
-                      <Label className="float-left">Upload Scan Copy</Label>
+                      <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                       <Input
                         type="file"
                         name="invoicePhoto"

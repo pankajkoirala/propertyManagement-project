@@ -19,12 +19,13 @@ export const PropertyFormValidation = Yup.object().shape({
   plot_no: Yup.string().required("Required"),
   building_Number: Yup.string().required("Required"),
   building_floorNumber: Yup.string().required("Required"),
-  Makani_Number: Yup.string().required("Required"),
+  Makani_Number: Yup.string(),
   Property_Area: Yup.string().required("Required"),
   Property_Premise_Number: Yup.string().required("Required"),
   developerCompany: Yup.string().required("Required"),
     unitNo: Yup.string().required("Required"),
     managementCompany: Yup.string().required("Required"),
+    remark: Yup.string(),
 
   // files_list:
   // photo: Yup.string().required("Required Field"),

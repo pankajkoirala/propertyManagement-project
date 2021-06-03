@@ -23,7 +23,12 @@ const PropertyEntry = (props) => {
     formData.append("plot_no", data.plot_no);
     formData.append("building_Number", data.building_Number);
     formData.append("building_floorNumber", data.building_floorNumber);
-    formData.append("Makani_Number", data.Makani_Number);
+    if (data.Makani_Number) {
+      formData.append("Makani_Number", data.Makani_Number);
+    }else{
+      formData.append("Makani_Number", 'not available');
+
+    }
     formData.append("Property_Area", data.Property_Area);
     formData.append("Property_Premise_Number", data.Property_Premise_Number);
     formData.append("area", data.area);
@@ -31,7 +36,9 @@ const PropertyEntry = (props) => {
     formData.append("developerCompany", data.developerCompany);
     formData.append("managementCompany", data.managementCompany);
     formData.append("unitNo", data.unitNo);
-
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
 
 
       

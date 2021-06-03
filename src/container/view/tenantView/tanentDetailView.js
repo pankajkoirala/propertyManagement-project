@@ -51,6 +51,9 @@ const TanentDetailViewCont = (props) => {
         data.tenant_passport_expireDate
       );
       formData.append("tenant_passportNo", data.tenant_passportNo);
+      if (data.remark) {
+        formData.append("remark", data.remark);
+      }
     } else {
 
       formData.append("TenentType", data.TenentType);
@@ -89,6 +92,9 @@ const TanentDetailViewCont = (props) => {
         data.tenant_passport_expireDate
       );
       formData.append("tenant_passportNo", data.tenant_passportNo);
+      if (data.remark) {
+        formData.append("remark", data.remark);
+      }
     }
 
 

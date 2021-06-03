@@ -27,7 +27,7 @@ const ManagementCompanyDetailView = (props) => {
     } else {
       formData.append("files_list", data.files_list);
     }
-    formData.append("managementCompany_residence", data.managementCompany_residence);
+    formData.append("managementCompany_area", data.managementCompany_area);
     formData.append("managementCompany_city", data.managementCompany_city);
 
     formData.append(
@@ -45,6 +45,9 @@ const ManagementCompanyDetailView = (props) => {
       "managementCompany_MobileNumber",
       data.managementCompany_MobileNumber
     );
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
 
     Axios.put(base_URL + "/api/managementCompany/" + ID, formData, {
       headers: {

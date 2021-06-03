@@ -26,7 +26,9 @@ const LeaseEntry = (props) => {
     formData.append("totalAmount", data.totalAmount);
       formData.append("VAT_Amount", data.VAT_Amount);
 
-  
+      if (data.remark) {
+        formData.append("remark", data.remark);
+      }
 
      
       Axios.post(base_URL + "/api/lease", formData,{

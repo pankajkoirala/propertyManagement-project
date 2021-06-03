@@ -37,9 +37,14 @@ let LeaseDetailView = (props) => {
     formData.append("expirationDate", data.expirationDate);
     formData.append("rentAmount", data.rentAmount);
     formData.append("frequency", data.frequency);
-
     formData.append("securityDeposite", data.securityDeposite);
     formData.append("property", data.property);
+    formData.append("totalAmount", data.totalAmount);
+      formData.append("VAT_Amount", data.VAT_Amount);
+
+      if (data.remark) {
+        formData.append("remark", data.remark);
+      }
 
     Axios.put(base_URL + "/api/lease/" + ID, formData, {
       headers: {

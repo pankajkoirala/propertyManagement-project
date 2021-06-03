@@ -18,11 +18,12 @@ let ChequeDetailViewComponent = (props) => {
       {printInvoice === false ? (
         showEditForm === false ? (
           props.selectedCheque.map((arg, index) => {
+            console.log("🚀 ~ file: chequeViewDetail.js ~ line 21 ~ props.selectedCheque.map ~ arg", arg)
             return (
               <div key={index} className="property-card">
-                <h5 className="text-center my-4"> Cheque Information</h5>
+                <h5 className="text-center my-4"> {arg.Transaction_Type} Information</h5>
                 <div className="row">
-                  <div className="col-7">
+              { arg.Transaction_Type==='Cheque'&&   <div className="col-7">
                     <img
                       style={{
                         height: "300px",
@@ -41,9 +42,9 @@ let ChequeDetailViewComponent = (props) => {
                       src={arg.cheque_picture_back}
                       alt="recently added"
                     />
-                  </div>
+                  </div>}
                   <div className="col-5">
-                    <div className="d-flex justify-content-between mr-4">
+                 {arg.Transaction_Type==='Cheque'?   <div className="d-flex justify-content-between mr-4">
                       <div style={{ left: "0px" }}>
                         <div className="font-weight-bold my-1">Cheque ID</div>
                         <div className="font-weight-bold my-1">
@@ -81,7 +82,7 @@ let ChequeDetailViewComponent = (props) => {
                           Cheque Bounce Date
                         </div>
                         <div className="font-weight-bold my-1">
-                          Cheque Remark{" "}
+                          Cheque Remark
                         </div>
                       </div>
                       <div>
@@ -128,7 +129,81 @@ let ChequeDetailViewComponent = (props) => {
                           {arg.cheque_remarks}
                         </div>
                       </div>
-                    </div>
+                    </div>:<div className="d-flex justify-content-between mr-4">
+                      <div style={{ left: "0px" }}>
+                        <div className="font-weight-bold my-1"> ID</div>
+                        <div className="font-weight-bold my-1">
+                           Entry Date
+                        </div>
+                        <div className="font-weight-bold my-1">
+                         Transaction Type
+                        </div>
+                     
+                        <div className="font-weight-bold my-1">
+                           Amount
+                        </div>
+                        <div className="font-weight-bold my-1">Vat Amount</div>
+                        <div className="font-weight-bold my-1">
+                          Miscelleneous Amount
+                        </div>
+                        
+                       
+                        <div className="font-weight-bold my-1">
+                        Security Deposite
+                        </div>
+                        <div className="font-weight-bold my-1">
+                       Lease ID
+                        </div>
+                        <div className="font-weight-bold my-1">
+                        Property Type
+                        </div>
+                        <div className="font-weight-bold my-1">
+                        Remark
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-weight-bold my-1">
+                          {arg.Cheque_ID}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {moment(arg.entryDate).format("YYYY-MM-DD")}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg.Transaction_Type}
+                        </div>
+                        
+                        <div className="font-weight-bold my-1">
+                          AED. {arg.cheque_amount}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          AED. {arg.vat_amount}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          AED. {arg.miscellaneous_amount}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg.securityDeposite}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg.lease_property?.LeaseId}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg.property_id?.property_type}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg.cheque_clearDate}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg.cheque_holdDate}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg.cheque_bouncedDate}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg.cheque_remarks}
+                        </div>
+                      </div>
+                    </div>}
                   </div>
                 </div>
 

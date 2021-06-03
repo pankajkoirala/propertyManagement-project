@@ -28,7 +28,9 @@ const MaintainanceCompanyContainer = () => {
     );
     formData.append("Company_email", data.Company_email);
     formData.append("Company_Mobile_Number", data.Company_Mobile_Number);
-
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
  
     
       Axios.post(base_URL + "/api/maintananceCompany",formData,{

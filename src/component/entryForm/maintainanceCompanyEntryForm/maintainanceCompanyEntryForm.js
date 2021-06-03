@@ -19,6 +19,7 @@ const MaintainanceCompanyComponent = (props) => {
     Company_city: props?.maintananceCompany?.Company_city || "",
     Company_country: props?.maintananceCompany?.Company_country ||  "U.A.E",
     Company_phoneNo: props?.maintananceCompany?.Company_phoneNo || "",
+    remark: props?.maintananceCompany?.remark || "",
     Company_Registration_Number:
       props?.maintananceCompany?.Company_Registration_Number || "",
     Company_Name: props?.maintananceCompany?.Company_Name || "",
@@ -84,7 +85,7 @@ const MaintainanceCompanyComponent = (props) => {
                     <h4 className="form-head">General Information</h4>
                     <div className="row">
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleName">Company Name</Label>
+                        <Label for="exampleName">Company Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.Company_Name}
@@ -104,7 +105,7 @@ const MaintainanceCompanyComponent = (props) => {
                       </div>
 
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleName">Registeration Date</Label>
+                        <Label for="exampleName">Registeration Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="date"
                           value={values.Company_Registeration_Date}
@@ -124,7 +125,7 @@ const MaintainanceCompanyComponent = (props) => {
                           )}
                       </div>
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleName">Registration Number</Label>
+                        <Label for="exampleName">Registration Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.Company_Registration_Number}
@@ -147,7 +148,7 @@ const MaintainanceCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Area</Label>
+                        <Label for="exampleName">Area<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.Company_area}
@@ -167,7 +168,7 @@ const MaintainanceCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">City</Label>
+                        <Label for="exampleName">City<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="select"
                           value={values.Company_city}
@@ -191,7 +192,7 @@ const MaintainanceCompanyComponent = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Country</Label>
+                        <Label for="exampleName">Country<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={"U.A.E"}
@@ -214,7 +215,7 @@ const MaintainanceCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Email</Label>
+                        <Label for="exampleName">Email<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="email"
                           value={values.Company_email}
@@ -234,7 +235,7 @@ const MaintainanceCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">Phone Number</Label>
+                        <Label for="exampleName">Phone Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.Company_phoneNo}
@@ -253,7 +254,7 @@ const MaintainanceCompanyComponent = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Mobile Number</Label>
+                        <Label for="exampleName">Mobile Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.Company_Mobile_Number}
@@ -272,13 +273,32 @@ const MaintainanceCompanyComponent = (props) => {
                             </span>
                           )}
                       </div>
+                      <div className="col-md-4">
+                        <Label for="exampleName">Remark</Label>
+                        <Input
+                          type="number"
+                          value={values.remark}
+                          name="remark"
+                          placeholder="remark"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.remark && errors.remark && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.remark}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <div style={{ marginTop: "20px" }}>
                     <h4 className="form-head">Document Field</h4>
                     <div className="row">
                       <div className="col-md-4 text-left mb-2 ">
-                        <p>Document Name</p>
+                        <p>Document Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></p>
                         <Input
                           name="fileName"
                           type="text"
@@ -289,7 +309,7 @@ const MaintainanceCompanyComponent = (props) => {
                         ></Input>
                       </div>
                       <div className="col-md-4 text-left mb-2 mt-4">
-                        <Label className="float-left">Upload Scan Copy</Label>
+                        <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="file"
                           alt="no file"

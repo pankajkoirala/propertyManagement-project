@@ -31,27 +31,28 @@ let PropertyDetailView = (props) => {
     formData.append("property_price", data.property_price);
     formData.append("facilities", data.facilities);
     formData.append("property_community", data.property_community);
-    formData.append("building_Name", data.building_Name);
+    formData.append("plot_no", data.plot_no);
     formData.append("building_Number", data.building_Number);
-    formData.append("flat_Number", data.flat_Number);
     formData.append("building_floorNumber", data.building_floorNumber);
-    formData.append("Muncipality_Number", data.Muncipality_Number);
+    if (data.Makani_Number) {
+      formData.append("Makani_Number", data.Makani_Number);
+    }
     formData.append("Property_Area", data.Property_Area);
     formData.append("Property_Premise_Number", data.Property_Premise_Number);
-    formData.append("residence", data.residence);
+    formData.append("area", data.area);
+    formData.append("Property_ownerName", data.Property_ownerName);
     formData.append("developerCompany", data.developerCompany);
     formData.append("managementCompany", data.managementCompany);
-    formData.append("Property_ownerName", data.Property_ownerName);
     formData.append("unitNo", data.unitNo);
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
 
-
-  
-     
-      Axios.put( base_URL + "/api/property/" + ID,formData,{
-        headers: {
-          [token_key]: getLocalStorage(token_key),
-        },
-      })
+    Axios.put(base_URL + "/api/property/" + ID, formData, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
+      },
+    })
       .then((res) => {
         notification("Updated successfully", "SUCCESS");
         reloadFunction();

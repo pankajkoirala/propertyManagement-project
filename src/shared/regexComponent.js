@@ -46,16 +46,17 @@ let RegexConponent = (props) => {
     }
   };
   return (
-    <div
+    <div className="col-12"
       ref={wrapperref}
-      style={{ position: "absolute", marginTop: "0", marginBottom: "0" }}
+      style={{ position: "absolute", marginLeft:'-12px', marginTop: "0", marginBottom: "0" }}
     >
       <Input
+      className="col-12"
         style={{
           position: "relative",
           top: "0",
           bottom: "0",
-          width: "130%",
+          
         }}
         type="text"
         onClick={() => {
@@ -75,6 +76,7 @@ let RegexConponent = (props) => {
       {updatedOptions?.map((arg, i) => {
         return (
           <div
+          className="col-12"
             style={{
               position: "relative",
               top: "0",
@@ -83,7 +85,7 @@ let RegexConponent = (props) => {
               borderColor: "beige",
               padding: "5px",
               zIndex: "99999",
-              width: "130%",
+             
             }}
             className="bg-secondary text-white font-weight-bold"
             onClick={() => {

@@ -39,7 +39,9 @@ const MaintananceTicketDetailView = (props) => {
       "MaintananceCompanyDetailInfo",
       data.MaintananceCompanyDetailInfo
     );
- 
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
     formData.append("maintanance_Amount", data.maintanance_Amount);
 
     Axios.put(base_URL + "/api/MaintananceTicket/" + ID, formData, {

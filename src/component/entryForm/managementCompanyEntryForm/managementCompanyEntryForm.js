@@ -24,6 +24,8 @@ const ManagementCompanyComponent = (props) => {
 
     managementCompany_phoneNo:
       props?.managementCompany?.managementCompany_phoneNo || "",
+    remark:
+      props?.managementCompany?.remark || "",
    
     managementCompany_name:
       props?.managementCompany?.managementCompany_name || "",
@@ -86,7 +88,7 @@ const ManagementCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleName">Company Name</Label>
+                        <Label for="exampleName">Company Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.managementCompany_name}
@@ -106,7 +108,7 @@ const ManagementCompanyComponent = (props) => {
                           )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Area</Label>
+                        <Label for="exampleName">Area<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.managementCompany_area}
@@ -127,7 +129,7 @@ const ManagementCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">City</Label>
+                        <Label for="exampleName">City<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="select"
                           value={values.managementCompany_city}
@@ -157,7 +159,7 @@ const ManagementCompanyComponent = (props) => {
                  
 
                       <div className="col-md-4">
-                        <Label for="exampleName">Country</Label>
+                        <Label for="exampleName">Country<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={"U.A.E"}
@@ -178,7 +180,7 @@ const ManagementCompanyComponent = (props) => {
                           )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Email</Label>
+                        <Label for="exampleName">Email<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
                           value={values.managementCompany_email}
@@ -199,7 +201,7 @@ const ManagementCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">Contact Number</Label>
+                        <Label for="exampleName">Contact Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.managementCompany_phoneNo}
@@ -222,7 +224,7 @@ const ManagementCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Mobile Number</Label>
+                        <Label for="exampleName">Mobile Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.managementCompany_MobileNumber}
@@ -241,13 +243,32 @@ const ManagementCompanyComponent = (props) => {
                             </span>
                           )}
                       </div>
+                      <div className="col-md-4">
+                        <Label for="exampleName">Remark</Label>
+                        <Input
+                          type="number"
+                          value={values.remark}
+                          name="remark"
+                          placeholder="remark"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.remark && errors.remark && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.remark}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <div style={{ marginTop: "20px" }}>
                     <h4 className="form-head">Document Field</h4>
                     <div className="row">
                       <div className="col-md-4 text-left mb-2 ">
-                        <p>Document Name</p>
+                        <p>Document Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></p>
                         <Input
                           name="fileName"
                           type="text"
@@ -258,7 +279,7 @@ const ManagementCompanyComponent = (props) => {
                         ></Input>
                       </div>
                       <div className="col-md-4 text-left mb-2 mt-2">
-                        <Label className="float-left">Upload Scan Copy</Label>
+                        <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="file"
                           alt="no file"

@@ -11,7 +11,7 @@ const ChequeView = (props) => {
   const [to, setTo] = useState("YYYY-MM-DD");
   const [chequeState, setchequeState] = useState(false);
   let [updatedOptions, setUpdatedOptions] = useState([]);
-
+  
   //check filter from to
   let filterChequeList = props?.sortChequeByDate?.filter((arg) =>
     from === "YYYY-MM-DD" && to === "YYYY-MM-DD"
@@ -19,29 +19,30 @@ const ChequeView = (props) => {
       : moment(arg.cheque_issueDate).isBetween(
           moment(from, "YYYY-MM-DD"),
           moment(to, "YYYY-MM-DD").add(1, "day")
-        )
+          )
   );
-
+  
   //filter by check no
   let filterArray = (cheqNo) => {
     const splittedWord = cheqNo.split("");
     setUpdatedOptions(
       filterChequeList.filter((cheque) =>
-        splittedWord.every((letter) => {
-          return cheque.cheque_number?.toString()?.startsWith(letter?.toString());
+      splittedWord.every((letter) => {
+        return cheque.cheque_number?.toString()?.startsWith(letter?.toString());
         })
       )
-    );
-  };
-  //filter by lease
-  let FilterByLease = (Id) => {
-    setUpdatedOptions(
+      );
+    };
+    //filter by lease
+    let FilterByLease = (Id) => {
+      setUpdatedOptions(
       filterChequeList.filter((cheque) =>
       cheque?.lease_property?.LeaseId?.toLowerCase().startsWith(Id.toLowerCase())
       )
-    );
-  };
-
+      );
+    };
+    
+    console.log("🚀 ~ file: cheque.js ~ line 14 ~ ChequeView ~ updatedOptions", updatedOptions)
   
   //filter cheque by cheque status
   let FilterByChequeStatus = (status) => {
@@ -243,7 +244,7 @@ const ChequeView = (props) => {
                 <th>Cheque no</th>
                 <th>Cheque issue Date</th>
                 <th>Cheque amount</th>
-                <th>Remark</th>
+                <th>Transaction Type</th>
                 <th>Cheque cheque_status</th>
                 <th>View detail</th>
               </tr>
@@ -259,12 +260,12 @@ const ChequeView = (props) => {
                         "/" +
                         arg?.property_id?.referenceNO}
                     </td>
-                    <td>{arg.cheque_number}</td>
+                    <td>{arg.cheque_number||'-'}</td>
                     <td>
                       {moment(arg?.cheque_issueDate).format("YYYY-MM-DD")}
                     </td>
                     <td>AED. {arg.cheque_amount}</td>
-                    <td>{arg.cheque_remarks}</td>
+                    <td>{arg.Transaction_Type}</td>
                     <td
                       className={
                         arg.cheque_status === "Pending"
@@ -278,7 +279,7 @@ const ChequeView = (props) => {
                           : " text-info font-weight-bold"
                       }
                     >
-                      {arg.cheque_status}
+                      {arg.Transaction_Type==='Cheque'?arg.cheque_status:'-'}
                     </td>
 
                     <td>

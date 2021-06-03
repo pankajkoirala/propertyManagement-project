@@ -27,7 +27,7 @@ const BrokerDetailViewCont = (props) => {
     } else {
       formData.append("files_list", data.files_list);
     }
-    formData.append("residence", data.residence);
+    formData.append("area", data.residence);
     formData.append("city", data.city);
     formData.append("country", data.country);
     formData.append("broker_phoneNo", data.broker_phoneNo);
@@ -42,7 +42,9 @@ const BrokerDetailViewCont = (props) => {
     );
     formData.append("broker_email", data.broker_email);
     formData.append("brokerType", data.brokerType);
-
+    if (data.remark) {
+      formData.append("remark", data.remark);
+    }
    
     Axios.put(base_URL + "/api/brokerCompany/"+ ID,formData,{
       headers: {
