@@ -125,7 +125,7 @@ let LeaseDetailViewComponent = (props) => {
                         </div>
                         <div className="font-weight-bold my-2">Lease Term</div>
                         <div className="font-weight-bold my-2">Frequency</div>
-                        <div className="font-weight-bold my-2">Remark</div>
+                        <div className="font-weight-bold my-2">Remarks</div>
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">

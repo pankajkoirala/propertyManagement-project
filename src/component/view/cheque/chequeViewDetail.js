@@ -82,7 +82,7 @@ let ChequeDetailViewComponent = (props) => {
                           Cheque Bounce Date
                         </div>
                         <div className="font-weight-bold my-1">
-                          Cheque Remark
+                          Cheque Remarks
                         </div>
                       </div>
                       <div>
@@ -158,7 +158,7 @@ let ChequeDetailViewComponent = (props) => {
                         Property Type
                         </div>
                         <div className="font-weight-bold my-1">
-                        Remark
+                        Remarks
                         </div>
                       </div>
                       <div>

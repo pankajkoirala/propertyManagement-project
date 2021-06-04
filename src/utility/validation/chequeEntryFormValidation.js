@@ -26,6 +26,7 @@ export const chequeEntryFormValidation = Yup.object().shape({
   Transaction_Type: Yup.string()
   .oneOf(["Cash", "Cheque"])
   .required("Required Field"),
+  total_amount: Yup.number().required("Required Field"),
 });
 export const cashEntryFormValidation = Yup.object().shape({
   Transaction_Type: Yup.string()
@@ -40,4 +41,6 @@ export const cashEntryFormValidation = Yup.object().shape({
   property_id: Yup.string().required("Required Field"),
   securityDeposite: Yup.number().required("Required Field"),
   depositeBank: Yup.string().required("Required Field"),
+  total_amount: Yup.number().required("Required Field"),
+
 });

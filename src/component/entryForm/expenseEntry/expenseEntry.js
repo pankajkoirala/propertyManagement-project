@@ -110,12 +110,12 @@ const ExpenseEntry = (props) => {
                         </div>
 
                         <div className="mt-4 col-md-3">
-                          <Label for="exampleName">Remark</Label>
+                          <Label for="exampleName">Remarks</Label>
                           <Input
                             type="text"
                             value={values.Expense_Remark}
                             name="Expense_Remark"
-                            placeholder="Remark"
+                            placeholder="Remarks"
                             onChange={handleChange}
                             onBlur={handleBlur}
                           />

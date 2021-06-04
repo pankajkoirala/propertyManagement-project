@@ -53,7 +53,7 @@ let OwnerDetailViewComponent = (props) => {
                             ? "Emirates ID Number"
                             : "Company Registration Number"}
                         </div>
-                        <div className="font-weight-bold my-2">Remark</div>
+                        <div className="font-weight-bold my-2">Remarks</div>
 
                       </div>
                       <div>

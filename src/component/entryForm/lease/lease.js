@@ -332,7 +332,7 @@ const LeaseEntry = (props) => {
                     <option value={30}> Monthly</option>
                     <option value={90}>Quartely</option>
                     <option value={181}>Semi Annualy</option>
-                    <option value={365}>yearly</option>
+                    <option value={365}>Yearly</option>
                   </Input>
                   {touched.frequency && errors.frequency && (
                     <span
@@ -344,12 +344,12 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
               <div className="col-md-4">
-                        <Label for="exampleName">Remark</Label>
+                        <Label for="exampleName">Remarks</Label>
                         <Input
-                          type="number"
+                          type="text"
                           value={values.remark}
                           name="remark"
-                          placeholder="remark"
+                          placeholder="remarks"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />

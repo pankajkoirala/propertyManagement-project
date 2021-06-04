@@ -158,7 +158,7 @@ const TanentDetailView = (props) => {
                               Passport expire Date
                             </div>
                             <div className="font-weight-bold my-1">
-                             Remark
+                             Remarks
                             </div>
                           </div>
                           <div className="col-6">

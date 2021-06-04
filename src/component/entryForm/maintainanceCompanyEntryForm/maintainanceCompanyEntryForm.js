@@ -274,11 +274,11 @@ const MaintainanceCompanyComponent = (props) => {
                           )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Remark</Label>
+                        <Label for="exampleName">Remarks</Label>
                         <Input
-                          type="number"
+                          type="text"
                           value={values.remark}
-                          name="remark"
+                          name="remarks"
                           placeholder="remark"
                           onChange={handleChange}
                           onBlur={handleBlur}

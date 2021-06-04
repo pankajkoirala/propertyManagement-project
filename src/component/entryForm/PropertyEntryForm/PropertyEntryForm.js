@@ -379,7 +379,7 @@ const PropertyEntry = (props) => {
                     type="text"
                     value={values.unitNo}
                     name="unitNo"
-                    placeholder="unit no"
+                    placeholder="Unit no"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -482,12 +482,12 @@ const PropertyEntry = (props) => {
                   </div>
                 </div>
                 <div className="col-md-4">
-                        <Label for="exampleName">Remark</Label>
+                        <Label for="exampleName">Remarks</Label>
                         <Input
-                          type="number"
+                          type="text"
                           value={values.remark}
                           name="remark"
-                          placeholder="remark"
+                          placeholder="Remarks"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -569,7 +569,7 @@ const PropertyEntry = (props) => {
                         <Input
                           type="text"
                           value={remark}
-                          placeholder="Remark"
+                          placeholder="Remarks"
                           onChange={(e) => {
                             setRemark(e.target.value);
                           }}

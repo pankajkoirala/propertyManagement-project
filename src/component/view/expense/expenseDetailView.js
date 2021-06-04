@@ -42,7 +42,7 @@ let ExpenseDetailViewComponent = (props) => {
                           Expense Invoice No
                         </div>
                         <div className="font-weight-bold my-3">
-                          Expense Remark
+                           Remarks
                         </div>
                         <div className="font-weight-bold my-3">
                           Maintanance Ticket ID

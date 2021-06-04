@@ -26,7 +26,7 @@ const TenantEntry = (props) => {
     tenant_GovIdNo: props.selectedTenantone?.tenant_GovIdNo || "",
     area: props.selectedTenantone?.area || "",
     city: props.selectedTenantone?.city || "",
-    country: props.selectedTenantone?.country || "",
+    country: props.selectedTenantone?.country || "U.A.E",
     tenant_phoneNo: props.selectedTenantone?.tenant_phoneNo || "",
     remark: props.selectedTenantone?.remark || "",
     tenant_Name: props.selectedTenantone?.tenant_Name || "",
@@ -64,6 +64,8 @@ const TenantEntry = (props) => {
       props?.selectedTenantone?.tenant_companyAuthorizePersonDesignation || "",
     tenant_companyTradeLicenseNo:
       props?.selectedTenantone?.tenant_companyTradeLicenseNo || "",
+      tenant_companyTradeLicenseIssuingAuthority:
+      props?.selectedTenantone?.tenant_companyTradeLicenseIssuingAuthority || "",
   };
   return (
     <div className="form-page">
@@ -145,7 +147,7 @@ const TenantEntry = (props) => {
                               type="text"
                               value={values.tenant_companyName}
                               name="tenant_companyName"
-                              placeholder="Authorize Person Name"
+                              placeholder="Company Name"
                               onChange={handleChange}
                               onBlur={handleBlur}
                             />
@@ -160,14 +162,94 @@ const TenantEntry = (props) => {
                               )}
                           </div>
                           <div className="mt-2 col-md-4">
+                            <Label for="exampleName">Trade License No<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                            <Input
+                              type="text"
+                              value={values.tenant_companyTradeLicenseNo}
+                              name="tenant_companyTradeLicenseNo"
+                              placeholder="Trade License No"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.tenant_companyTradeLicenseNo &&
+                              errors.tenant_companyTradeLicenseNo && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors.tenant_companyTradeLicenseNo}
+                                </span>
+                              )}
+                          </div>
+                          <div className="mt-2 col-md-4">
+                            <Label for="exampleName">Issuing Authority<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                            <Input
+                              type="text"
+                              value={values.tenant_companyTradeLicenseIssuingAuthority}
+                              name="tenant_companyTradeLicenseIssuingAuthority"
+                              placeholder="Issuing Authority"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.tenant_companyTradeLicenseIssuingAuthority &&
+                              errors.tenant_companyTradeLicenseIssuingAuthority && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors.tenant_companyTradeLicenseIssuingAuthority}
+                                </span>
+                              )}
+                          </div>
+                          <div className="col-md-4">
+                          <Label for="exampleName">Issuing Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                          <Input
+                            type="Date"
+                            value={values.tenant_companyIssuingDate}
+                            name="tenant_companyIssuingDate"
+                            placeholder="Issuing Date"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                          {touched.tenant_companyIssuingDate &&
+                            errors.tenant_companyIssuingDate && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.tenant_companyIssuingDate}
+                              </span>
+                            )}
+                        </div>
+                        <div className="col-md-4">
+                          <Label for="exampleName">Expire Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                          <Input
+                            type="Date"
+                            value={values.tenant_companyExpireDate}
+                            name="tenant_companyExpireDate"
+                            placeholder="Expire Date"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                          {touched.tenant_companyExpireDate &&
+                            errors.tenant_companyExpireDate && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.tenant_companyExpireDate}
+                              </span>
+                            )}
+                        </div>
+                          <div className="mt-2 col-md-4">
                             <Label for="exampleName">
-                              Authorize person Name
+                              Authorized person Name
                             <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
                               type="text"
                               value={values.tenant_companyAuthorizePerson}
                               name="tenant_companyAuthorizePerson"
-                              placeholder="Authorize Person Name"
+                              placeholder="Authorized Person Name"
                               onChange={handleChange}
                               onBlur={handleBlur}
                             />
@@ -205,26 +287,7 @@ const TenantEntry = (props) => {
                                 </span>
                               )}
                           </div>
-                          <div className="mt-2 col-md-4">
-                            <Label for="exampleName">Trade License No<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
-                            <Input
-                              type="text"
-                              value={values.tenant_companyTradeLicenseNo}
-                              name="tenant_companyTradeLicenseNo"
-                              placeholder="Trade License No"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched.tenant_companyTradeLicenseNo &&
-                              errors.tenant_companyTradeLicenseNo && (
-                                <span
-                                  className="text-danger col-md-12 text-left mb-2"
-                                  style={{ fontSize: 12 }}
-                                >
-                                  {errors.tenant_companyTradeLicenseNo}
-                                </span>
-                              )}
-                          </div>
+                         
                         </>
                       ) : (
                         <div className="mt-2 col-md-4">
@@ -233,7 +296,7 @@ const TenantEntry = (props) => {
                             type="text"
                             value={values.tenant_Name}
                             name="tenant_Name"
-                            placeholder="Authorize Person Name"
+                            placeholder="Name"
                             onChange={handleChange}
                             onBlur={handleBlur}
                           />
@@ -253,7 +316,7 @@ const TenantEntry = (props) => {
                           type="email"
                           value={values.tenant_email}
                           name="tenant_email"
-                          placeholder="Enter Email"
+                          placeholder=" Email"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -273,7 +336,7 @@ const TenantEntry = (props) => {
                           type="text"
                           value={values.area}
                           name="area"
-                          placeholder="area"
+                          placeholder="Area"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -290,13 +353,18 @@ const TenantEntry = (props) => {
                       <div className="col-md-4">
                         <Label for="exampleName">City<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
-                          type="text"
+                          type="select"
                           value={values.city}
                           name="city"
-                          placeholder="City"
+                          placeholder=" City"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                        />
+                        >
+                          <option value="">Select One</option>
+                          <option value="ABU DHABI">ABU DHABI</option>
+                          <option value="DUBAI">DUBAI</option>
+                          <option value="SHARJAH">SHARJAH</option>
+                        </Input>
                         {touched?.city && errors?.city && (
                           <span
                             className="text-danger col-md-12 text-left mb-2"
@@ -311,11 +379,12 @@ const TenantEntry = (props) => {
                         <Label for="exampleName">Country<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="text"
-                          value={values.country}
+                          value={'U.A.E'}
                           name="country"
                           placeholder=" Country"
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          disabled
                         />
                         {touched?.country && errors?.country && (
                           <span
@@ -327,50 +396,7 @@ const TenantEntry = (props) => {
                         )}
                       </div>
                     </div>
-                    {values.TenentType === "Company" && (
-                      <div className="row">
-                        <div className="col-md-6">
-                          <Label for="exampleName">Issuing Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
-                          <Input
-                            type="Date"
-                            value={values.tenant_companyIssuingDate}
-                            name="tenant_companyIssuingDate"
-                            placeholder="Issuing Date"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
-                          {touched.tenant_companyIssuingDate &&
-                            errors.tenant_companyIssuingDate && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.tenant_companyIssuingDate}
-                              </span>
-                            )}
-                        </div>
-                        <div className="col-md-6">
-                          <Label for="exampleName">Expire Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
-                          <Input
-                            type="Date"
-                            value={values.tenant_companyExpireDate}
-                            name="tenant_companyExpireDate"
-                            placeholder="Expire Date"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
-                          {touched.tenant_companyExpireDate &&
-                            errors.tenant_companyExpireDate && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.tenant_companyExpireDate}
-                              </span>
-                            )}
-                        </div>
-                      </div>
-                    )}
+                  
                     {values.TenentType === "Person" && (
                       <div className="row">
                         <div className="col-md-6">
@@ -416,9 +442,9 @@ const TenantEntry = (props) => {
                     )}
                     <div className="row">
                       <div className="col-md-6">
-                        <Label for="exampleName">Emirates ID Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">Emirates ID Number</Label>
                         <Input
-                          type="number"
+                          type="text"
                           value={values.tenant_GovIdNo}
                           name="tenant_GovIdNo"
                           placeholder="Emirates ID Number"
@@ -435,7 +461,7 @@ const TenantEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-6">
-                        <Label for="exampleName">Emirates ID ExpireDate<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">Emirates ID ExpireDate</Label>
                         <Input
                           type="Date"
                           value={values.tenant_GovIdNo_expireDate}
@@ -457,9 +483,9 @@ const TenantEntry = (props) => {
                     </div>
                     <div className="row">
                       <div className="col-md-6">
-                        <Label for="exampleName">Passport No<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">Passport No</Label>
                         <Input
-                          type="number"
+                          type="text"
                           value={values.tenant_passportNo}
                           name="tenant_passportNo"
                           placeholder="Passport No"
@@ -476,7 +502,7 @@ const TenantEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-6">
-                        <Label for="exampleName">Passport ExpireDate<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">Passport ExpireDate</Label>
                         <Input
                           type="date"
                           value={values.tenant_passport_expireDate}
@@ -496,12 +522,12 @@ const TenantEntry = (props) => {
                           )}
                       </div>
                     <div className="col-md-6">
-                      <Label for="exampleName">Remark</Label>
+                      <Label for="exampleName">Remarks</Label>
                       <Input
-                        type="number"
+                        type="text"
                         value={values.remark}
                         name="remark"
-                        placeholder="remark"
+                        placeholder="Remarks"
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />

@@ -59,7 +59,7 @@ let MaintananceTicketDetailViewComponent = (props) => {
                           Mobile Number
                         </div>
                         <div className="font-weight-bold my-2">
-                         Remark
+                         Remarks
                         </div>
                       </div>
                       <div>

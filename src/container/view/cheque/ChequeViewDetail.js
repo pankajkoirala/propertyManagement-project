@@ -32,6 +32,7 @@ const ChequeDetailViewCont = (props) => {
       formData.append("securityDeposite", data.securityDeposite);
       formData.append("depositeBank", data.depositeBank);
       formData.append("cheque_status", "Cleared");
+      formData.append("total_amount", data.total_amount);
 
     }else{
       formData.append("miscellaneous_amount", data.miscellaneous_amount);
@@ -55,6 +56,8 @@ const ChequeDetailViewCont = (props) => {
       formData.append("securityDeposite", data.securityDeposite);
       formData.append("depositeBank", data.depositeBank);
       formData.append("Transaction_Type", data.Transaction_Type);
+      formData.append("total_amount", data.total_amount);
+
     }
 
     Axios.put(base_URL + "/api/cheque/" + ID, formData, {

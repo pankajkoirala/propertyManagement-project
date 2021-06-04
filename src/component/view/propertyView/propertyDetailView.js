@@ -55,7 +55,7 @@ let PropertyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-3">
                           Property Owner Name
                         </div>
-                        <div className="font-weight-bold my-3">Remark </div>
+                        <div className="font-weight-bold my-3">Remarks </div>
                       </div>
                       <div>
                         <div className="font-weight-bold my-3">{arg.area}</div>

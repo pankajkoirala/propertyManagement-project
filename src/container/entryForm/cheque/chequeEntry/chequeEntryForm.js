@@ -17,13 +17,17 @@ const ChequeEntryContainer = (props) => {
       formData.append("miscellaneous_amount", data.miscellaneous_amount);
       formData.append("vat_amount", data.vat_amount);
       formData.append("entryDate", data.entryDate);
-      formData.append("cheque_remarks", data.cheque_remarks);
-      formData.append("cheque_amount", data.cheque_amount);
+      if (data.cheque_remarks) {
+        
+        formData.append("cheque_remarks", data.cheque_remarks);
+      }      formData.append("cheque_amount", data.cheque_amount);
       formData.append("lease_property", data.lease_property);
       formData.append("property_id", data.property_id);
       formData.append("securityDeposite", data.securityDeposite);
       formData.append("depositeBank", data.depositeBank);
       formData.append("cheque_status", "Cleared");
+      formData.append("total_amount", data.total_amount);
+
 
     }else{
       formData.append("miscellaneous_amount", data.miscellaneous_amount);
@@ -32,7 +36,10 @@ const ChequeEntryContainer = (props) => {
       formData.append("cheque_issueDate", data.cheque_issueDate);
       formData.append("entryDate", data.entryDate);
       formData.append("cheque_status", data.cheque_status);
-      formData.append("cheque_remarks", data.cheque_remarks);
+      if (data.cheque_remarks) {
+        
+        formData.append("cheque_remarks", data.cheque_remarks);
+      }
       formData.append("cheque_amount", data.cheque_amount);
       formData.append("cheque_number", data.cheque_number);
       formData.append("lease_property", data.lease_property);
@@ -47,6 +54,8 @@ const ChequeEntryContainer = (props) => {
       formData.append("securityDeposite", data.securityDeposite);
       formData.append("depositeBank", data.depositeBank);
       formData.append("Transaction_Type", data.Transaction_Type);
+      formData.append("total_amount", data.total_amount);
+
     }
 
    

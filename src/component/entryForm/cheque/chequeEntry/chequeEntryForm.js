@@ -16,7 +16,7 @@ const ChequeEntry = (props) => {
   const [transectionType, setTransectionType] = useState("Cash");
 
   let initialvalue = {
-    miscellaneous_amount: props?.Cheque?.miscellaneous_amount || "",
+    miscellaneous_amount: props?.Cheque?.miscellaneous_amount || 0,
     vat_amount: props?.Cheque?.vat_amount || "",
     cheque_bankName: props?.Cheque?.cheque_bankName || "",
     cheque_issueDate: props?.Cheque?.cheque_issueDate || "",
@@ -38,6 +38,7 @@ const ChequeEntry = (props) => {
     ChequeListNo: props?.Cheque?.cheque_holdDate || "",
     Transaction_Type: props?.Cheque?.Transaction_Type || "",
     depositeBank: props?.Cheque?.depositeBank || "",
+    total_amount: props?.Cheque?.total_amount || "",
   };
   return (
     <div>
@@ -174,7 +175,7 @@ const ChequeEntry = (props) => {
                           <div className="mt-4 col-md-3">
                             <Label for="exampleName">Cheque Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                             <Input
-                              type="number"
+                              type="text"
                               value={values.cheque_number}
                               name="cheque_number"
                               placeholder="Cheque Number"
@@ -252,9 +253,28 @@ const ChequeEntry = (props) => {
                             </span>
                           )}
                         </div>
-
+                        
+                        <div className="mt-4 col-md-3">
+                        <Label for="exampleName">Total Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Input
+                          type="number"
+                          value={values.total_amount}
+                          name="total_amount"
+                          placeholder="Total Amount"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.total_amount && errors.total_amount && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.total_amount}
+                          </span>
+                        )}
+                      </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName"> Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">Rent Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
                           type="number"
                           value={values.cheque_amount}
@@ -291,26 +311,7 @@ const ChequeEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Miscellaneous Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
-                        <Input
-                          type="number"
-                          value={values.miscellaneous_amount}
-                          name="miscellaneous_amount"
-                          placeholder="Miscellaneous Amount"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.miscellaneous_amount &&
-                          errors.miscellaneous_amount && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.miscellaneous_amount}
-                            </span>
-                          )}
-                      </div>
+                
                       <div className="mt-4 col-md-3">
                         <Label for="exampleSelect">Security Deposit<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
                         <Input
