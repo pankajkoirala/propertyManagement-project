@@ -19,7 +19,6 @@ const ExpenseEntry = (props) => {
   let removeExpense = (id) =>
     setexpenselist(expenselist.filter((arg) => arg.expenseId !== id));
 
- 
   //add expense
   let addExpense = (data) => {
     setexpenselist([...expenselist, data]);
@@ -86,10 +85,20 @@ const ExpenseEntry = (props) => {
                     </div>
                     <div>
                       {/* <div className="m-4"> */}
-
                       <div className="row ">
                         <div className="mt-4 col-4">
-                          <Label for="exampleName">Entry date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                          <Label for="exampleName">
+                            Entry date
+                            <span
+                              style={{
+                                fontSize: "20px",
+                                marginTop: "20px",
+                                color: "red",
+                              }}
+                            >
+                              *
+                            </span>
+                          </Label>
                           <Input
                             type="date"
                             value={values.expense_EntryDate}
@@ -109,28 +118,19 @@ const ExpenseEntry = (props) => {
                             )}
                         </div>
 
-                        <div className="mt-4 col-md-3">
-                          <Label for="exampleName">Remarks</Label>
-                          <Input
-                            type="text"
-                            value={values.Expense_Remark}
-                            name="Expense_Remark"
-                            placeholder="Remarks"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
-                          {touched.Expense_Remark && errors.Expense_Remark && (
+                        <div className="mt-4 col-md-4">
+                          <Label for="exampleName">
+                            Invoice Number
                             <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
+                              style={{
+                                fontSize: "20px",
+                                marginTop: "20px",
+                                color: "red",
+                              }}
                             >
-                              {errors.Expense_Remark}
+                              *
                             </span>
-                          )}
-                        </div>
-
-                        <div className="mt-4 col-md-3">
-                          <Label for="exampleName">Invoice Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                          </Label>
                           <Input
                             type="text"
                             value={values.expenseInvoiceNumber}
@@ -149,8 +149,19 @@ const ExpenseEntry = (props) => {
                               </span>
                             )}
                         </div>
-                        <div className="mt-2 col-md-4">
-                          <Label for="exampleSelect">Expense Type<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <div className="mt-4 col-md-4">
+                          <Label for="exampleSelect">
+                            Expense Type
+                            <span
+                              style={{
+                                fontSize: "20px",
+                                marginTop: "20px",
+                                color: "red",
+                              }}
+                            >
+                              *
+                            </span>
+                          </Label>
                           <Input
                             type="select"
                             name="expense_Type"
@@ -176,19 +187,27 @@ const ExpenseEntry = (props) => {
                             </span>
                           )}
                         </div>
-                        {values.expense_Type !== "Miscellaneous"  ? (
-                          <div className="mt-2 col-4">
+                        {values.expense_Type !== "Miscellaneous" ? (
+                          <div className="mt-4 col-4">
                             <Label for="exampleName">
                               maintanance ticket ID
-                            <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                              <span
+                                style={{
+                                  fontSize: "20px",
+                                  marginTop: "20px",
+                                  color: "red",
+                                }}
+                              >
+                                *
+                              </span>
+                            </Label>
                             <RegexComponent
                               {...props}
                               setFieldValue={setFieldValue}
                               options={props?.Redux_maintananceTicketData?.map(
                                 (maintananceTicket) => {
                                   return {
-                                    name:
-                                      maintananceTicket?.maintananceTicket_ID,
+                                    name: maintananceTicket?.maintananceTicket_ID,
                                     id: maintananceTicket?._id,
                                   };
                                 }
@@ -208,42 +227,82 @@ const ExpenseEntry = (props) => {
                         ) : (
                           ""
                         )}
-                        {values.expense_Type !== "Miscellaneous" 
-                         ? (
-                          <div className="mt-2 col-4">
-                            <Label for="exampleName">property<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
-                            <RegexComponent
-                              {...props}
-                              setFieldValue={setFieldValue}
-                              options={props?.redux_propertyData?.map(
-                                (property) => {
-                                  return {
-                                    name:
-                                      property?.property_type +
-                                      "-" +
-                                      property?.referenceNO,
-                                    id: property?._id,
-                                  };
-                                }
+                        {values.expense_Type !== "Miscellaneous" ? (
+                          <>
+                            <div className="mt-4 col-4">
+                              <Label for="exampleName">
+                                property
+                                <span
+                                  style={{
+                                    fontSize: "20px",
+                                    marginTop: "20px",
+                                    color: "red",
+                                  }}
+                                >
+                                  *
+                                </span>
+                              </Label>
+                              <RegexComponent
+                                {...props}
+                                setFieldValue={setFieldValue}
+                                options={props?.redux_propertyData?.map(
+                                  (property) => {
+                                    return {
+                                      name:
+                                        property?.property_type +
+                                        "-" +
+                                        property?.referenceNO,
+                                      id: property?._id,
+                                    };
+                                  }
+                                )}
+                                name={"property_ID"}
+                              />
+                              {touched.property_ID && errors.property_ID && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors.property_ID}
+                                </span>
                               )}
-                              name={"property_ID"}
-                            />
-                            {touched.property_ID && errors.property_ID && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.property_ID}
-                              </span>
-                            )}
-                          </div>
+                            </div>
+                          </>
                         ) : (
                           ""
                         )}
-                      </div>
-                      <div className="row">
+                        <div className="mt-4 col-md-4">
+                          <Label for="exampleName">Remarks</Label>
+                          <Input
+                            type="text"
+                            value={values.Expense_Remark}
+                            name="Expense_Remark"
+                            placeholder="Remarks"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                          {touched.Expense_Remark && errors.Expense_Remark && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.Expense_Remark}
+                            </span>
+                          )}
+                        </div>
                         <div className="mt-4 col-md-3">
-                          <Label for="exampleName">Expense Heading<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                          <Label for="exampleName">
+                            Expense Heading
+                            <span
+                              style={{
+                                fontSize: "20px",
+                                marginTop: "20px",
+                                color: "red",
+                              }}
+                            >
+                              *
+                            </span>
+                          </Label>
                           <Input
                             type="text"
                             name="expense_Heading"
@@ -261,7 +320,18 @@ const ExpenseEntry = (props) => {
                           )}
                         </div>
                         <div className="mt-4 col-md-3">
-                          <Label for="exampleName">Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                          <Label for="exampleName">
+                            Amount
+                            <span
+                              style={{
+                                fontSize: "20px",
+                                marginTop: "20px",
+                                color: "red",
+                              }}
+                            >
+                              *
+                            </span>
+                          </Label>
                           <Input
                             type="number"
                             placeholder="Amount"
@@ -296,7 +366,18 @@ const ExpenseEntry = (props) => {
                     </div>
 
                     <div className="col-md-6 text-left mb-2 mt-4">
-                      <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                      <Label className="float-left">
+                        Upload Scan Copy
+                        <span
+                          style={{
+                            fontSize: "20px",
+                            marginTop: "20px",
+                            color: "red",
+                          }}
+                        >
+                          *
+                        </span>
+                      </Label>
                       <Input
                         type="file"
                         name="invoicePhoto"
