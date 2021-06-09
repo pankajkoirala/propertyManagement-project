@@ -7,7 +7,7 @@ export const brokerEntryFormValidation = Yup.object().shape({
     .min(2, "Too Short")
     .max(50, "Too long")
     .required("Required Field"),
-  broker_phoneNo: Yup.number().required("Required Field"),
+  broker_phoneNo: Yup.string().required("Required Field"),
   broker_RegistrationNumber: Yup.string().required("Required Field"),
   broker_companyRegisterDate: Yup.date().required("Required Field"),
   broker_companyName: Yup.string().required("Required Field"),
@@ -15,7 +15,7 @@ export const brokerEntryFormValidation = Yup.object().shape({
   brokerType: Yup.string()
     .oneOf(["Person", "Company"])
     .required("Required Field"),
-    remark: Yup.string(),
+  remark: Yup.string(),
 
   //files_list: Yup.array().required("File Required"),
 });

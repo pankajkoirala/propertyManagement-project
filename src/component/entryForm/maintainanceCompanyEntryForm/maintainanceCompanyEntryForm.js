@@ -6,6 +6,7 @@ import { Formik } from "formik";
 import PoopUp from "./../../../shared/popup";
 
 import { maintainanceCompanyEntryFormValidation } from "../../../utility/validation/maintainanceCompanyEntryFormValidation.js";
+import { notification } from "../../../shared/notification";
 
 const MaintainanceCompanyComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -17,7 +18,7 @@ const MaintainanceCompanyComponent = (props) => {
   let initialvalue = {
     Company_area: props?.maintananceCompany?.Company_area || "",
     Company_city: props?.maintananceCompany?.Company_city || "",
-    Company_country: props?.maintananceCompany?.Company_country ||  "U.A.E",
+    Company_country: props?.maintananceCompany?.Company_country || "U.A.E",
     Company_phoneNo: props?.maintananceCompany?.Company_phoneNo || "",
     remark: props?.maintananceCompany?.remark || "",
     Company_Registration_Number:
@@ -85,7 +86,18 @@ const MaintainanceCompanyComponent = (props) => {
                     <h4 className="form-head">General Information</h4>
                     <div className="row">
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleName">Company Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Company Name
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="text"
                           value={values.Company_Name}
@@ -105,7 +117,18 @@ const MaintainanceCompanyComponent = (props) => {
                       </div>
 
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleName">Registeration Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Registeration Date
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="date"
                           value={values.Company_Registeration_Date}
@@ -125,7 +148,18 @@ const MaintainanceCompanyComponent = (props) => {
                           )}
                       </div>
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleName">Registration Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Registration Number
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="text"
                           value={values.Company_Registration_Number}
@@ -148,7 +182,18 @@ const MaintainanceCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Area<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Area
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="text"
                           value={values.Company_area}
@@ -168,7 +213,18 @@ const MaintainanceCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">City<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          City
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="select"
                           value={values.Company_city}
@@ -192,7 +248,18 @@ const MaintainanceCompanyComponent = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Country<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Country
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="text"
                           value={"U.A.E"}
@@ -215,7 +282,18 @@ const MaintainanceCompanyComponent = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Email<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Email
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="email"
                           value={values.Company_email}
@@ -235,9 +313,20 @@ const MaintainanceCompanyComponent = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">Phone Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Phone Number
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
-                          type="number"
+                          type="text"
                           value={values.Company_phoneNo}
                           name="Company_phoneNo"
                           placeholder="Phone Number"
@@ -254,9 +343,20 @@ const MaintainanceCompanyComponent = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Mobile Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Mobile Number
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
-                          type="number"
+                          type="text"
                           value={values.Company_Mobile_Number}
                           name="Company_Mobile_Number"
                           placeholder="Mobile Number"
@@ -298,7 +398,18 @@ const MaintainanceCompanyComponent = (props) => {
                     <h4 className="form-head">Document Field</h4>
                     <div className="row">
                       <div className="col-md-4 text-left mb-2 ">
-                        <p>Document Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></p>
+                        <p>
+                          Document Name
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </p>
                         <Input
                           name="fileName"
                           type="text"
@@ -309,14 +420,58 @@ const MaintainanceCompanyComponent = (props) => {
                         ></Input>
                       </div>
                       <div className="col-md-4 text-left mb-2 mt-4">
-                        <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label className="float-left">
+                          Upload Scan Copy
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="file"
                           alt="no file"
                           name="file"
                           accept="image/*"
                           onChange={(event) => {
-                            setFieldValue("file", event.currentTarget.files[0]);
+                            if (event.currentTarget.files[0]) {
+                              let rn = event.currentTarget.files[0].name;
+                              let bn = rn?.split(".");
+                              bn = bn[bn?.length - 1];
+                              if (
+                                bn === "jpg" ||
+                                bn === "jpeg" ||
+                                bn === "png" ||
+                                bn === "JPG" ||
+                                bn === "JPEG" ||
+                                bn === "PNG"
+                              ) {
+                                if (
+                                  event.currentTarget.files[0].size > 1048576
+                                ) {
+                                  notification(
+                                    "File Size Shouldn't exceed 1.5 MB",
+                                    "ERROR"
+                                  );
+                                } else {
+                                  setFieldValue(
+                                    "file",
+                                    event.currentTarget.files[0]
+                                  );
+                                }
+                              } else {
+                                notification(
+                                  "Please Select JPG, JPEG or PNG Format Only",
+                                  "ERROR"
+                                );
+                              }
+                            } else {
+                              notification("Please Select image", "ERROR");
+                            }
                           }}
                         />
                       </div>

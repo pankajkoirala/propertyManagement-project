@@ -5,7 +5,7 @@ export const TenantEntryFormValidation = Yup.object().shape({
   tenant_Name: Yup.string().required("Required"),
 
   //tenant_photo: Yup.string().required("Please upload Photo"),
-  tenant_phoneNo: Yup.number().required("Required"),
+  tenant_phoneNo: Yup.string().required("Required"),
   DateOfBirth_registrationDate: Yup.date().required("Required"),
   tenant_GovIdNo: Yup.string(),
 
@@ -27,7 +27,6 @@ export const TenantEntryFormValidation = Yup.object().shape({
   tenant_passport_expireDate: Yup.string(),
   tenant_passportNo: Yup.string(),
   remark: Yup.string(),
-
 });
 export const TenantEntryCompanyFormValidation = Yup.object().shape({
   TenentType: Yup.string().oneOf(["Person", "Company"]).required("Required"),
@@ -38,7 +37,7 @@ export const TenantEntryCompanyFormValidation = Yup.object().shape({
   tenant_companyIssuingDate: Yup.date().required("Required"),
   tenant_companyExpireDate: Yup.date().required("Required"),
   tenant_companyAuthorizePersonDesignation: Yup.string().required("Required"),
-  tenant_companyTradeLicenseNo:Yup.string().required("Required"),
+  tenant_companyTradeLicenseNo: Yup.string().required("Required"),
   tenant_email: Yup.string().required("Required"),
   tenant_companyTradeLicenseIssuingAuthority: Yup.string().required("Required"),
   city: Yup.string()
@@ -57,25 +56,4 @@ export const TenantEntryCompanyFormValidation = Yup.object().shape({
   tenant_passport_expireDate: Yup.date(),
   tenant_passportNo: Yup.string(),
   remark: Yup.string(),
-
 });
-
-/*tenant_GovIdNo
-area
-city
-country
-tenant_phoneNo
-tenant_Name
-tenant_email
-DateOfBirth_registrationDate
-TenentType
-tenant_GovIdNo_expireDate
-tenant_passport_expireDate
-tenant_passportNo
-tenant_companyAuthorizePerson
-tenant_companyIssuingDate
-tenant_companyExpireDate
-tenant_companyAuthorizePersonDesignation
-tenant_companyTradeLicenseNo*/
-
-

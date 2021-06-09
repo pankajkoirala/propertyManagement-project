@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 export const notification = (message, type) => {
   let config = {
     position: "top-center",
-    autoClose: 1000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,

@@ -6,6 +6,7 @@ import { ExpenseEntryFormValidation } from "./../../../utility/validation/expens
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import RegexComponent from "./../../../shared/regexComponent";
+import { notification } from "../../../shared/notification.js";
 
 const ExpenseEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -383,10 +384,38 @@ const ExpenseEntry = (props) => {
                         name="invoicePhoto"
                         accept="image/*"
                         onChange={(event) => {
-                          setFieldValue(
-                            "invoicePhoto",
-                            event.currentTarget.files[0]
-                          );
+                          if (event.currentTarget.files[0]) {
+                            let rn = event.currentTarget.files[0].name;
+                            let bn = rn?.split(".");
+                            bn = bn[bn?.length - 1];
+                            if (
+                              bn === "jpg" ||
+                              bn === "jpeg" ||
+                              bn === "png" ||
+                              bn === "JPG" ||
+                              bn === "JPEG" ||
+                              bn === "PNG"
+                            ) {
+                              if (event.currentTarget.files[0].size > 1048576) {
+                                notification(
+                                  "File Size Shouldn't exceed 1.5 MB",
+                                  "ERROR"
+                                );
+                              } else {
+                                setFieldValue(
+                                  "invoicePhoto",
+                                  event.currentTarget.files[0]
+                                );
+                              }
+                            } else {
+                              notification(
+                                "Please Select JPG, JPEG or PNG Format Only",
+                                "ERROR"
+                              );
+                            }
+                          } else {
+                            notification("Please Select image", "ERROR");
+                          }
                         }}
                       />
 

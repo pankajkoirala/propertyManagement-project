@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import { OwnerEntryFormValidation } from "../../../utility/validation/ownerEntryFormValidation.js";
+import { notification } from "../../../shared/notification";
 
 const OwnerEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -72,7 +73,18 @@ const OwnerEntry = (props) => {
                     <h4 className="form-head">General Information</h4>
                     <div className="row ">
                       <div className="mt-2 col-md-4">
-                        <Label for="exampleSelect">Owner Type<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleSelect">
+                          Owner Type
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="select"
                           name="owner_Type"
@@ -100,7 +112,16 @@ const OwnerEntry = (props) => {
                           {values.owner_Type === "Company"
                             ? "Company Name"
                             : " Name "}
-                        <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="text"
                           value={values.owner_Name}
@@ -124,7 +145,16 @@ const OwnerEntry = (props) => {
                           {values.owner_Type === "Company"
                             ? "Company Registration No"
                             : " Emirates ID Number"}
-                        <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="text"
                           value={values.owner_GovID_RegNo}
@@ -146,7 +176,18 @@ const OwnerEntry = (props) => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <Label for="exampleName">Area<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Area
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="text"
                           value={values.owner_area}
@@ -166,7 +207,18 @@ const OwnerEntry = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">City<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          City
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="select"
                           value={values.owner_city}
@@ -190,7 +242,18 @@ const OwnerEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Country<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Country
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="text"
                           value={"U.A.E"}
@@ -216,7 +279,16 @@ const OwnerEntry = (props) => {
                           {values.owner_Type === "Company"
                             ? "Company Registration Date"
                             : " Date Of Birth "}
-                        <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="date"
                           name="owner_DOB"
@@ -234,7 +306,18 @@ const OwnerEntry = (props) => {
                         )}
                       </div>
                       <div className="col-md-4">
-                        <Label for="exampleName">Email<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Email
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="email"
                           value={values.owner_email}
@@ -254,9 +337,20 @@ const OwnerEntry = (props) => {
                       </div>
 
                       <div className="col-md-4">
-                        <Label for="exampleName">Contact Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Contact Number
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
-                          type="number"
+                          type="string"
                           value={values.owner_phoneNo}
                           name="owner_phoneNo"
                           placeholder=" Contact Number"
@@ -326,7 +420,18 @@ const OwnerEntry = (props) => {
                     <h4 className="form-head">Document Field</h4>
                     <div className="row ">
                       <div className="col-md-4 text-left mb-2 ">
-                        <p>Document Name <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></p>
+                        <p>
+                          Document Name{" "}
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </p>
                         <Input
                           name="fileName"
                           type="text"
@@ -337,14 +442,58 @@ const OwnerEntry = (props) => {
                         ></Input>
                       </div>
                       <div className="col-md-4 text-left mb-2 mt-2">
-                        <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label className="float-left">
+                          Upload Scan Copy
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="file"
                           alt="no file"
                           name="file"
                           accept="image/*"
                           onChange={(event) => {
-                            setFieldValue("file", event.currentTarget.files[0]);
+                            if (event.currentTarget.files[0]) {
+                              let rn = event.currentTarget.files[0].name;
+                              let bn = rn?.split(".");
+                              bn = bn[bn?.length - 1];
+                              if (
+                                bn === "jpg" ||
+                                bn === "jpeg" ||
+                                bn === "png" ||
+                                bn === "JPG" ||
+                                bn === "JPEG" ||
+                                bn === "PNG"
+                              ) {
+                                if (
+                                  event.currentTarget.files[0].size > 1048576
+                                ) {
+                                  notification(
+                                    "File Size Shouldn't exceed 1.5 MB",
+                                    "ERROR"
+                                  );
+                                } else {
+                                  setFieldValue(
+                                    "file",
+                                    event.currentTarget.files[0]
+                                  );
+                                }
+                              } else {
+                                notification(
+                                  "Please Select JPG, JPEG or PNG Format Only",
+                                  "ERROR"
+                                );
+                              }
+                            } else {
+                              notification("Please Select image", "ERROR");
+                            }
                           }}
                         />
                       </div>

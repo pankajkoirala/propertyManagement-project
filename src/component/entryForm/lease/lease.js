@@ -6,6 +6,7 @@ import moment from "moment";
 import { leaseEntryFormValidation } from "../../../utility/validation/leaseEntryFormValidation";
 import RegexConponent from "../../../shared/regexComponent";
 import PoopUp from "./../../../shared/popup";
+import { notification } from "../../../shared/notification";
 
 const LeaseEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -25,7 +26,7 @@ const LeaseEntry = (props) => {
     commenceDate: moment(props?.lease?.commenceDate).format("YYYY-MM-DD") || "",
     expirationDate:
       moment(props?.lease?.expirationDate).format("YYYY-MM-DD") || "",
-      totalAmount:props?.lease?.totalAmount||'',
+    totalAmount: props?.lease?.totalAmount || "",
     rentAmount: props?.lease?.rentAmount || "",
     VAT_Amount: props?.lease?.VAT_Amount || "",
     securityDeposite: props?.lease?.securityDeposite || "",
@@ -98,7 +99,18 @@ const LeaseEntry = (props) => {
               </div>
               <div className="row ">
                 <div className="col-md-4">
-                  <Label for="exampleName">Lease Entered On<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                  <Label for="exampleName">
+                    Lease Entered On
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <Input
                     type="date"
                     disabled={props.lease ? true : false}
@@ -118,7 +130,18 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
                 <div className="col-md-4">
-                  <Label for="exampleSelect">Tenants(s)<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                  <Label for="exampleSelect">
+                    Tenants(s)
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <RegexConponent
                     {...props}
                     editSelectedName={props?.lease?.tenants?.tenant_Name}
@@ -143,11 +166,21 @@ const LeaseEntry = (props) => {
                   </div>
                 </div>
                 <div className="col-md-4">
-                  <Label for="exampleSelect">Property<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                  <Label for="exampleSelect">
+                    Property
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <RegexConponent
                     setFieldValue={setFieldValue}
                     editSelectedName={props?.lease?.property?.referenceNO}
-
                     options={props.unReserveProperty.map((property) => {
                       return {
                         name:
@@ -171,7 +204,18 @@ const LeaseEntry = (props) => {
               </div>
               <div className="row ">
                 <div className="col-md-4">
-                  <Label for="exampleSelect">Lease Terms<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                  <Label for="exampleSelect">
+                    Lease Terms
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <Input
                     type="select"
                     name="lease_Term"
@@ -194,7 +238,18 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
                 <div className="col-md-4">
-                  <Label for="exampleSelect">Contract Commencement Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                  <Label for="exampleSelect">
+                    Contract Commencement Date
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <Input
                     type="date"
                     name="commenceDate"
@@ -216,7 +271,18 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
                 <div className="col-4">
-                  <Label for="exampleName">Expiration Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                  <Label for="exampleName">
+                    Expiration Date
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <Input
                     type="date"
                     value={
@@ -240,8 +306,19 @@ const LeaseEntry = (props) => {
               </div>
 
               <div className="row">
-              <div className="col-md-4">
-                  <Label for="exampleSelect">Total Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                <div className="col-md-4">
+                  <Label for="exampleSelect">
+                    Total Amount
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <Input
                     type="number"
                     name="totalAmount"
@@ -260,7 +337,18 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
                 <div className="col-md-4">
-                  <Label for="exampleSelect">Rent Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                  <Label for="exampleSelect">
+                    Rent Amount
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <Input
                     type="number"
                     name="rentAmount"
@@ -279,7 +367,18 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
                 <div className="col-md-4">
-                  <Label for="exampleSelect">VAT Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                  <Label for="exampleSelect">
+                    VAT Amount
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <Input
                     type="number"
                     name="VAT_Amount"
@@ -299,8 +398,19 @@ const LeaseEntry = (props) => {
                 </div>
               </div>
               <div className="row">
-              <div className="col-md-4">
-                  <Label for="exampleSelect">Security Deposit<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                <div className="col-md-4">
+                  <Label for="exampleSelect">
+                    Security Deposit
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <Input
                     type="number"
                     name="securityDeposite"
@@ -319,7 +429,18 @@ const LeaseEntry = (props) => {
                   )}
                 </div>
                 <div className="col-4">
-                  <Label for="exampleName">TERMS OF THE CONTRACT<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                  <Label for="exampleName">
+                    TERMS OF THE CONTRACT
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
                   <Input
                     type="select"
                     name="frequency"
@@ -343,25 +464,25 @@ const LeaseEntry = (props) => {
                     </span>
                   )}
                 </div>
-              <div className="col-md-4">
-                        <Label for="exampleName">Remarks</Label>
-                        <Input
-                          type="text"
-                          value={values.remark}
-                          name="remark"
-                          placeholder="remarks"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.remark && errors.remark && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.remark}
-                          </span>
-                        )}
-                      </div>
+                <div className="col-md-4">
+                  <Label for="exampleName">Remarks</Label>
+                  <Input
+                    type="text"
+                    value={values.remark}
+                    name="remark"
+                    placeholder="remarks"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.remark && errors.remark && (
+                    <span
+                      className="text-danger col-md-12 text-left mb-2"
+                      style={{ fontSize: 12 }}
+                    >
+                      {errors.remark}
+                    </span>
+                  )}
+                </div>
               </div>
               <div style={{ marginTop: "20px" }}>
                 <h4 className="form-head">Document Field</h4>
@@ -378,14 +499,56 @@ const LeaseEntry = (props) => {
                     ></Input>
                   </div>
                   <div className="col-md-4 text-left mb-2 mt-4">
-                    <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                    <Label className="float-left">
+                      Upload Scan Copy
+                      <span
+                        style={{
+                          fontSize: "20px",
+                          marginTop: "20px",
+                          color: "red",
+                        }}
+                      >
+                        *
+                      </span>
+                    </Label>
                     <Input
                       type="file"
                       alt="no file"
                       name="file"
                       accept="image/*"
                       onChange={(event) => {
-                        setFieldValue("file", event.currentTarget.files[0]);
+                        if (event.currentTarget.files[0]) {
+                          let rn = event.currentTarget.files[0].name;
+                          let bn = rn?.split(".");
+                          bn = bn[bn?.length - 1];
+                          if (
+                            bn === "jpg" ||
+                            bn === "jpeg" ||
+                            bn === "png" ||
+                            bn === "JPG" ||
+                            bn === "JPEG" ||
+                            bn === "PNG"
+                          ) {
+                            if (event.currentTarget.files[0].size > 1048576) {
+                              notification(
+                                "File Size Shouldn't exceed 1.5 MB",
+                                "ERROR"
+                              );
+                            } else {
+                              setFieldValue(
+                                "file",
+                                event.currentTarget.files[0]
+                              );
+                            }
+                          } else {
+                            notification(
+                              "Please Select JPG, JPEG or PNG Format Only",
+                              "ERROR"
+                            );
+                          }
+                        } else {
+                          notification("Please Select image", "ERROR");
+                        }
                       }}
                     />
                   </div>

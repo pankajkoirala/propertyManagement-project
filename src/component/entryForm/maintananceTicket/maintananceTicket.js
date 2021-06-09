@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import RegexComponent from "../../../shared/regexComponent";
-import { FormGroup, Label, Input, Form,Table } from "reactstrap";
+import { FormGroup, Label, Input, Form, Table } from "reactstrap";
 import { Formik } from "formik";
 import moment from "moment";
 import PoopUp from "./../../../shared/popup";
 import { MaintainanceTicketEntryForm } from "./../../../utility/validation/maintainanceTicketEntryFormValidation.js";
-
-
+import { notification } from "../../../shared/notification";
 
 const MaintananceTicket = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
   const [loadingState, setLoadingState] = useState(false);
   const [allFile, setAllFile] = useState(
     props?.maintananceTicket ? props?.maintananceTicket?.files_list : []
-    );
+  );
 
   let photoDelete = (name) => {
     setAllFile(allFile.filter((file) => file.fileName !== name));
@@ -32,16 +31,15 @@ const MaintananceTicket = (props) => {
       props?.maintananceTicket?.MaintanancePropertyID?._id || "",
     MaintananceCompanyId:
       props?.maintananceTicket?.MaintananceCompanyId?._id || "",
-    remark:
-      props?.maintananceTicket?.remark|| "",
+    remark: props?.maintananceTicket?.remark || "",
 
     MaintananceCompanyDetailInfo:
       props?.maintananceTicket?.MaintananceCompanyDetailInfo || "",
     maintanance_Amount: props?.maintananceTicket?.maintanance_Amount || "",
 
-      fileName: "",
-      file: "",
-      files_list: [],
+    fileName: "",
+    file: "",
+    files_list: [],
   };
   return (
     <div>
@@ -53,17 +51,18 @@ const MaintananceTicket = (props) => {
               setLoadingState(true);
 
               typeof allFile[0].file === "string"
-              ? (values.files_list = JSON.stringify(allFile))
-              : (values.files_list = "");
+                ? (values.files_list = JSON.stringify(allFile))
+                : (values.files_list = "");
 
               props?.maintananceTicket
                 ? props.maintananceTicketUpdate(
                     values,
-                    props?.maintananceTicket?._id,allFile
+                    props?.maintananceTicket?._id,
+                    allFile
                   )
-                : props.MaintananceTicketData(values,allFile);
+                : props.MaintananceTicketData(values, allFile);
             }}
-             validationSchema={MaintainanceTicketEntryForm}
+            validationSchema={MaintainanceTicketEntryForm}
           >
             {({
               touched,
@@ -88,7 +87,18 @@ const MaintananceTicket = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-4">
-                        <Label for="exampleName">Issue Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Issue Date
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketIssueDate}
@@ -108,7 +118,18 @@ const MaintananceTicket = (props) => {
                           )}
                       </div>
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Maintanance Due Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Maintanance Due Date
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="date"
                           value={values.maintananceTicketDueDate}
@@ -129,7 +150,18 @@ const MaintananceTicket = (props) => {
                       </div>
 
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Maintanance Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Maintanance Amount
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="text"
                           value={values.maintanance_Amount}
@@ -151,11 +183,25 @@ const MaintananceTicket = (props) => {
                     </div>
                     <div className="row">
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Property Id<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Property Id
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
-                          editSelectedName={props?.maintananceTicket?.MaintanancePropertyID?.referenceNO}
+                          editSelectedName={
+                            props?.maintananceTicket?.MaintanancePropertyID
+                              ?.referenceNO
+                          }
                           options={props?.Redux_propertyData?.map(
                             (property) => {
                               return {
@@ -183,11 +229,25 @@ const MaintananceTicket = (props) => {
                         </div>
                       </div>
                       <div className="mt-4 col-md-4">
-                        <Label for="exampleName">Maintanance Company Id<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Maintanance Company Id
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <RegexComponent
                           {...props}
                           setFieldValue={setFieldValue}
-                          editSelectedName={props?.maintananceTicket?.MaintananceCompanyId?.Company_Name}
+                          editSelectedName={
+                            props?.maintananceTicket?.MaintananceCompanyId
+                              ?.Company_Name
+                          }
                           options={props?.Redux_maintananceCompanyData?.map(
                             (maintananceCompany) => {
                               return {
@@ -261,7 +321,18 @@ const MaintananceTicket = (props) => {
                     </div>
                     <div style={{ marginTop: "50px" }}>
                       <div className=" col-6">
-                        <Label for="exampleName">Detail Message<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Detail Message
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="textarea"
                           value={values.MaintananceCompanyDetailInfo}
@@ -283,133 +354,186 @@ const MaintananceTicket = (props) => {
                     </div>
 
                     <div style={{ marginTop: "40px" }}>
-                    <h4 className="form-head">Document Field</h4>
-                    <div className="row ">
-                      <div className="col-md-4 text-left mb-2 ">
-                        <p>Document Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></p>
-                        <Input
-                          name="fileName"
-                          type="text"
-                          placeholder="Select Status of Cheque"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.fileName}
-                        ></Input>
-                      </div>
-                      <div className="col-md-4 text-left mb-2 mt-2">
-                        <Label className="float-left">Upload Scan Copy<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
-                        <Input
-                          type="file"
-                          alt="no file"
-                          name="file"
-                          accept="image/*"
-                          onChange={(event) => {
-                            setFieldValue("file", event.currentTarget.files[0]);
-                          }}
-                        />
-                      </div>
-                      <div className="col-md-4 text-left mb-2 mt-4">
-                        <button
-                          disabled={!values.fileName || !values.file}
-                          onClick={() => {
-                            let filterData = allFile.find(
-                              (a) => a.fileName === values.fileName
-                            );
-                            if (filterData) {
-                              let afterRemoveSameData = allFile.filter(
-                                (arg) => arg.fileName !== filterData.fileName
+                      <h4 className="form-head">Document Field</h4>
+                      <div className="row ">
+                        <div className="col-md-4 text-left mb-2 ">
+                          <p>
+                            Document Name
+                            <span
+                              style={{
+                                fontSize: "20px",
+                                marginTop: "20px",
+                                color: "red",
+                              }}
+                            >
+                              *
+                            </span>
+                          </p>
+                          <Input
+                            name="fileName"
+                            type="text"
+                            placeholder="Select Status of Cheque"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.fileName}
+                          ></Input>
+                        </div>
+                        <div className="col-md-4 text-left mb-2 mt-2">
+                          <Label className="float-left">
+                            Upload Scan Copy
+                            <span
+                              style={{
+                                fontSize: "20px",
+                                marginTop: "20px",
+                                color: "red",
+                              }}
+                            >
+                              *
+                            </span>
+                          </Label>
+                          <Input
+                            type="file"
+                            alt="no file"
+                            name="file"
+                            accept="image/*"
+                            onChange={(event) => {
+                              if (event.currentTarget.files[0]) {
+                                let rn = event.currentTarget.files[0].name;
+                                let bn = rn?.split(".");
+                                bn = bn[bn?.length - 1];
+                                if (
+                                  bn === "jpg" ||
+                                  bn === "jpeg" ||
+                                  bn === "png" ||
+                                  bn === "JPG" ||
+                                  bn === "JPEG" ||
+                                  bn === "PNG"
+                                ) {
+                                  if (
+                                    event.currentTarget.files[0].size > 1048576
+                                  ) {
+                                    notification(
+                                      "File Size Shouldn't exceed 1.5 MB",
+                                      "ERROR"
+                                    );
+                                  } else {
+                                    setFieldValue(
+                                      "file",
+                                      event.currentTarget.files[0]
+                                    );
+                                  }
+                                } else {
+                                  notification(
+                                    "Please Select JPG, JPEG or PNG Format Only",
+                                    "ERROR"
+                                  );
+                                }
+                              } else {
+                                notification("Please Select image", "ERROR");
+                              }
+                            }}
+                          />
+                        </div>
+                        <div className="col-md-4 text-left mb-2 mt-4">
+                          <button
+                            disabled={!values.fileName || !values.file}
+                            onClick={() => {
+                              let filterData = allFile.find(
+                                (a) => a.fileName === values.fileName
                               );
-                              setAllFile([
-                                ...afterRemoveSameData,
-                                {
-                                  fileName: values.fileName,
-                                  file: values.file,
-                                },
-                              ]);
-                            } else {
-                              setAllFile([
-                                ...allFile,
-                                {
-                                  fileName: values.fileName,
-                                  file: values.file,
-                                },
-                              ]);
-                            }
-                          }}
-                          type="button"
-                          className="btn btn-secondary btn-sm"
-                        >
-                          Add File
-                        </button>
+                              if (filterData) {
+                                let afterRemoveSameData = allFile.filter(
+                                  (arg) => arg.fileName !== filterData.fileName
+                                );
+                                setAllFile([
+                                  ...afterRemoveSameData,
+                                  {
+                                    fileName: values.fileName,
+                                    file: values.file,
+                                  },
+                                ]);
+                              } else {
+                                setAllFile([
+                                  ...allFile,
+                                  {
+                                    fileName: values.fileName,
+                                    file: values.file,
+                                  },
+                                ]);
+                              }
+                            }}
+                            type="button"
+                            className="btn btn-secondary btn-sm"
+                          >
+                            Add File
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  {allFile.length !== 0 ? (
-                    <Table striped bordered hover size="sm">
-                      <thead>
-                        <tr>
-                          <th>SN</th>
-                          <th> Name</th>
-                          <th>image</th>
-                          <th>
-                            <button
-                              style={
-                                props?.owner
-                                  ? { display: "inline" }
-                                  : { display: "none" }
-                              }
-                              onClick={() => setAllFile([])}
-                            >
-                              delete All
-                            </button>
-                          </th>
-                        </tr>
-                      </thead>
-                      {allFile.map((arg, index) => {
-                        return (
-                          <tbody key={index}>
-                            <tr>
-                              <td>{index + 1}</td>
-                              <td className="font-weight-bold">
-                                {arg.fileName}
-                              </td>
-                              <td>
-                                <img
-                                  src={
-                                    typeof arg.file === "string"
-                                      ? arg.file
-                                      : URL.createObjectURL(arg.file)
-                                  }
-                                  alt="no file"
-                                  height="80px"
-                                />
-                              </td>
-                              <td>
-                                <button
-                                  style={
-                                    props?.owner
-                                      ? { display: "none" }
-                                      : { display: "inline" }
-                                  }
-                                  type="button"
-                                  onClick={() => {
-                                    photoDelete(arg.fileName);
-                                  }}
-                                >
-                                  delete
-                                </button>
-                              </td>
-                            </tr>
-                          </tbody>
-                        );
-                      })}
-                    </Table>
-                  ) : (
-                    ""
-                  )}
+                    {allFile.length !== 0 ? (
+                      <Table striped bordered hover size="sm">
+                        <thead>
+                          <tr>
+                            <th>SN</th>
+                            <th> Name</th>
+                            <th>image</th>
+                            <th>
+                              <button
+                                style={
+                                  props?.owner
+                                    ? { display: "inline" }
+                                    : { display: "none" }
+                                }
+                                onClick={() => setAllFile([])}
+                              >
+                                delete All
+                              </button>
+                            </th>
+                          </tr>
+                        </thead>
+                        {allFile.map((arg, index) => {
+                          return (
+                            <tbody key={index}>
+                              <tr>
+                                <td>{index + 1}</td>
+                                <td className="font-weight-bold">
+                                  {arg.fileName}
+                                </td>
+                                <td>
+                                  <img
+                                    src={
+                                      typeof arg.file === "string"
+                                        ? arg.file
+                                        : URL.createObjectURL(arg.file)
+                                    }
+                                    alt="no file"
+                                    height="80px"
+                                  />
+                                </td>
+                                <td>
+                                  <button
+                                    style={
+                                      props?.owner
+                                        ? { display: "none" }
+                                        : { display: "inline" }
+                                    }
+                                    type="button"
+                                    onClick={() => {
+                                      photoDelete(arg.fileName);
+                                    }}
+                                  >
+                                    delete
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          );
+                        })}
+                      </Table>
+                    ) : (
+                      ""
+                    )}
                     <div className="">
-                      
-
                       <button
                         className="btn btn-primary Success col-2 mt-5 ml-3"
                         type="button"

@@ -5,7 +5,7 @@ export const managementCompanyEntryFormValidation = Yup.object().shape({
   managementCompany_city: Yup.string().required("Required Field"),
   managementCompany_country: Yup.string().required("Required Field"),
   managementCompany_name: Yup.string().required("Required Field"),
-  managementCompany_phoneNo: Yup.number().required("Required Field"),
+  managementCompany_phoneNo: Yup.string().required("Required Field"),
   managementCompany_MobileNumber: Yup.string().required("Required Field"),
   remark: Yup.string(),
 

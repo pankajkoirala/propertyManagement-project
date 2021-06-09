@@ -9,6 +9,7 @@ import {
   cashEntryFormValidation,
 } from "./../../../../utility/validation/chequeEntryFormValidation.js";
 import PoopUp from "./../../../../shared/popup";
+import { notification } from "../../../../shared/notification";
 
 const ChequeEntry = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -52,9 +53,13 @@ const ChequeEntry = (props) => {
                 : props.ChequeeData(values);
               setLoadingState(true);
             }}
-            validationSchema={ (props?.Cheque
-              ? props?.Cheque?.Transaction_Type
-              : transectionType) ==='Cash'?cashEntryFormValidation:chequeEntryFormValidation}
+            validationSchema={
+              (props?.Cheque
+                ? props?.Cheque?.Transaction_Type
+                : transectionType) === "Cash"
+                ? cashEntryFormValidation
+                : chequeEntryFormValidation
+            }
           >
             {({
               touched,
@@ -78,7 +83,18 @@ const ChequeEntry = (props) => {
 
                     <div className="row ">
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleSelect">Transaction Type<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleSelect">
+                          Transaction Type
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="select"
                           name="Transaction_Type"
@@ -99,12 +115,23 @@ const ChequeEntry = (props) => {
                             style={{ fontSize: 12 }}
                           >
                             {errors.Transaction_Type}
-                            
                           </span>
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName"> Entry Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          {" "}
+                          Entry Date
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="date"
                           value={moment(values.entryDate).format("YYYY-MM-DD")}
@@ -126,7 +153,18 @@ const ChequeEntry = (props) => {
                       {values.Transaction_Type === "Cheque" && (
                         <>
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleName">Cheque Issue Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                            <Label for="exampleName">
+                              Cheque Issue Date
+                              <span
+                                style={{
+                                  fontSize: "20px",
+                                  marginTop: "20px",
+                                  color: "red",
+                                }}
+                              >
+                                *
+                              </span>
+                            </Label>
                             <Input
                               type="date"
                               value={moment(values.cheque_issueDate).format(
@@ -151,7 +189,16 @@ const ChequeEntry = (props) => {
                           <div className="mt-4 col-md-3">
                             <Label for="exampleName">
                               Cheque Deposited Date
-                            <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                              <span
+                                style={{
+                                  fontSize: "20px",
+                                  marginTop: "20px",
+                                  color: "red",
+                                }}
+                              >
+                                *
+                              </span>
+                            </Label>
                             <Input
                               type="date"
                               value={moment(values.cheque_depositeDate).format(
@@ -173,7 +220,18 @@ const ChequeEntry = (props) => {
                               )}
                           </div>
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleName">Cheque Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                            <Label for="exampleName">
+                              Cheque Number
+                              <span
+                                style={{
+                                  fontSize: "20px",
+                                  marginTop: "20px",
+                                  color: "red",
+                                }}
+                              >
+                                *
+                              </span>
+                            </Label>
                             <Input
                               type="text"
                               value={values.cheque_number}
@@ -192,7 +250,18 @@ const ChequeEntry = (props) => {
                             )}
                           </div>
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleName">Cheque Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                            <Label for="exampleName">
+                              Cheque Date
+                              <span
+                                style={{
+                                  fontSize: "20px",
+                                  marginTop: "20px",
+                                  color: "red",
+                                }}
+                              >
+                                *
+                              </span>
+                            </Label>
                             <Input
                               type="date"
                               value={moment(values.cheque_recivedDate).format(
@@ -214,7 +283,18 @@ const ChequeEntry = (props) => {
                               )}
                           </div>
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleName">Bank Name<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                            <Label for="exampleName">
+                              Bank Name
+                              <span
+                                style={{
+                                  fontSize: "20px",
+                                  marginTop: "20px",
+                                  color: "red",
+                                }}
+                              >
+                                *
+                              </span>
+                            </Label>
                             <Input
                               type="text"
                               value={values.cheque_bankName}
@@ -234,28 +314,51 @@ const ChequeEntry = (props) => {
                           </div>
                         </>
                       )}
-                        <div className="mt-4 col-md-3">
-                          <Label for="exampleName"> Deposite Bank<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
-                          <Input
-                            type="text"
-                            value={values.depositeBank}
-                            name="depositeBank"
-                            placeholder="Deposite Bank"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
-                          {touched.depositeBank && errors.depositeBank && (
-                            <span
-                              className="text-danger col-md-12 text-left mb-2"
-                              style={{ fontSize: 12 }}
-                            >
-                              {errors.depositeBank}
-                            </span>
-                          )}
-                        </div>
-                        
-                        <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Total Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">
+                          {" "}
+                          Deposite Bank
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
+                        <Input
+                          type="text"
+                          value={values.depositeBank}
+                          name="depositeBank"
+                          placeholder="Deposite Bank"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.depositeBank && errors.depositeBank && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.depositeBank}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="mt-4 col-md-3">
+                        <Label for="exampleName">
+                          Total Amount
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="number"
                           value={values.total_amount}
@@ -274,7 +377,18 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">Rent Amount<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          Rent Amount
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="number"
                           value={values.cheque_amount}
@@ -293,7 +407,18 @@ const ChequeEntry = (props) => {
                         )}
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleName">VAT Amount <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleName">
+                          VAT Amount{" "}
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="number"
                           value={values.vat_amount}
@@ -311,9 +436,20 @@ const ChequeEntry = (props) => {
                           </span>
                         )}
                       </div>
-                
+
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleSelect">Security Deposit<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleSelect">
+                          Security Deposit
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <Input
                           type="number"
                           name="securityDeposite"
@@ -335,7 +471,18 @@ const ChequeEntry = (props) => {
                       {values.Transaction_Type === "Cheque" && (
                         <>
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleSelect">Status<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                            <Label for="exampleSelect">
+                              Status
+                              <span
+                                style={{
+                                  fontSize: "20px",
+                                  marginTop: "20px",
+                                  color: "red",
+                                }}
+                              >
+                                *
+                              </span>
+                            </Label>
                             <Input
                               type="select"
                               name="cheque_status"
@@ -364,7 +511,18 @@ const ChequeEntry = (props) => {
                           </div>
                           {values.cheque_status === "Hold" && (
                             <div className="mt-4 col-md-3">
-                              <Label for="exampleName">Cheque Hold Date<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                              <Label for="exampleName">
+                                Cheque Hold Date
+                                <span
+                                  style={{
+                                    fontSize: "20px",
+                                    marginTop: "20px",
+                                    color: "red",
+                                  }}
+                                >
+                                  *
+                                </span>
+                              </Label>
                               <Input
                                 type="date"
                                 value={moment(values.cheque_holdDate).format(
@@ -391,7 +549,16 @@ const ChequeEntry = (props) => {
                             <div className="mt-4 col-md-3">
                               <Label for="exampleName">
                                 Cheque Cleared Date
-                              <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                                <span
+                                  style={{
+                                    fontSize: "20px",
+                                    marginTop: "20px",
+                                    color: "red",
+                                  }}
+                                >
+                                  *
+                                </span>
+                              </Label>
                               <Input
                                 type="date"
                                 value={moment(values.cheque_clearDate).format(
@@ -421,7 +588,16 @@ const ChequeEntry = (props) => {
                             <div className="mt-4 col-md-3">
                               <Label for="exampleName">
                                 Cheque Bounced Date
-                              <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                                <span
+                                  style={{
+                                    fontSize: "20px",
+                                    marginTop: "20px",
+                                    color: "red",
+                                  }}
+                                >
+                                  *
+                                </span>
+                              </Label>
                               <Input
                                 type="date"
                                 value={moment(values.cheque_bouncedDate).format(
@@ -444,7 +620,18 @@ const ChequeEntry = (props) => {
                             </div>
                           )}
                           <div className="mt-4 col-md-3">
-                            <Label for="exampleName">Cheque List No<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                            <Label for="exampleName">
+                              Cheque List No
+                              <span
+                                style={{
+                                  fontSize: "20px",
+                                  marginTop: "20px",
+                                  color: "red",
+                                }}
+                              >
+                                *
+                              </span>
+                            </Label>
                             <Input
                               type="select"
                               value={values.ChequeListNo}
@@ -479,7 +666,18 @@ const ChequeEntry = (props) => {
                         </>
                       )}
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleSelect">Lease Number<span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleSelect">
+                          Lease Number
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <RegexComponent
                           {...props}
                           editSelectedName={
@@ -512,7 +710,18 @@ const ChequeEntry = (props) => {
                         </div>
                       </div>
                       <div className="mt-4 col-md-3">
-                        <Label for="exampleSelect">Property <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                        <Label for="exampleSelect">
+                          Property{" "}
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
                         <RegexComponent
                           {...props}
                           editSelectedName={
@@ -570,16 +779,55 @@ const ChequeEntry = (props) => {
                         <div className="col-5 text-left mb-2 mt-4">
                           <Label className="float-left">
                             Cheque Front Photo
-                          <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                            <span
+                              style={{
+                                fontSize: "20px",
+                                marginTop: "20px",
+                                color: "red",
+                              }}
+                            >
+                              *
+                            </span>
+                          </Label>
                           <Input
                             type="file"
                             name="cheque_picture_front"
                             accept="image/*"
                             onChange={(event) => {
-                              setFieldValue(
-                                "cheque_picture_front",
-                                event.currentTarget.files[0]
-                              );
+                              if (event.currentTarget.files[0]) {
+                                let rn = event.currentTarget.files[0].name;
+                                let bn = rn?.split(".");
+                                bn = bn[bn?.length - 1];
+                                if (
+                                  bn === "jpg" ||
+                                  bn === "jpeg" ||
+                                  bn === "png" ||
+                                  bn === "JPG" ||
+                                  bn === "JPEG" ||
+                                  bn === "PNG"
+                                ) {
+                                  if (
+                                    event.currentTarget.files[0].size > 1048576
+                                  ) {
+                                    notification(
+                                      "File Size Shouldn't exceed 1.5 MB",
+                                      "ERROR"
+                                    );
+                                  } else {
+                                    setFieldValue(
+                                      "cheque_picture_front",
+                                      event.currentTarget.files[0]
+                                    );
+                                  }
+                                } else {
+                                  notification(
+                                    "Please Select JPG, JPEG or PNG Format Only",
+                                    "ERROR"
+                                  );
+                                }
+                              } else {
+                                notification("Please Select image ", "ERROR");
+                              }
                             }}
                           />
 
@@ -602,16 +850,55 @@ const ChequeEntry = (props) => {
                         <div className="col-5 text-left mb-2 mt-4">
                           <Label className="float-left">
                             Cheque Back Photo
-                          <span style={{fontSize:'20px',marginTop:'20px',color:'red'}} >*</span></Label>
+                            <span
+                              style={{
+                                fontSize: "20px",
+                                marginTop: "20px",
+                                color: "red",
+                              }}
+                            >
+                              *
+                            </span>
+                          </Label>
                           <Input
                             type="file"
                             name="cheque_picture_back"
                             accept="image/*"
                             onChange={(event) => {
-                              setFieldValue(
-                                "cheque_picture_back",
-                                event.currentTarget.files[0]
-                              );
+                              if (event.currentTarget.files[0]) {
+                                let rn = event.currentTarget.files[0].name;
+                                let bn = rn?.split(".");
+                                bn = bn[bn?.length - 1];
+                                if (
+                                  bn === "jpg" ||
+                                  bn === "jpeg" ||
+                                  bn === "png" ||
+                                  bn === "JPG" ||
+                                  bn === "JPEG" ||
+                                  bn === "PNG"
+                                ) {
+                                  if (
+                                    event.currentTarget.files[0].size > 1048576
+                                  ) {
+                                    notification(
+                                      "File Size Shouldn't exceed 1.5 MB",
+                                      "ERROR"
+                                    );
+                                  } else {
+                                    setFieldValue(
+                                      "cheque_picture_back",
+                                      event.currentTarget.files[0]
+                                    );
+                                  }
+                                } else {
+                                  notification(
+                                    "Please Select JPG, JPEG or PNG Format Only",
+                                    "ERROR"
+                                  );
+                                }
+                              } else {
+                                notification("Please Select image ", "ERROR");
+                              }
                             }}
                           />
 
