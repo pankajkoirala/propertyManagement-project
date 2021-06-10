@@ -46,11 +46,9 @@ const TanentDetailView = (props) => {
                             </div>
                             <div className="font-weight-bold my-1">
                               Date Of Birth
-                              
                             </div>
                             <div className="font-weight-bold my-1">
                               Emirates Id No
-                               
                             </div>
 
                             <div className="font-weight-bold my-1">area</div>
@@ -81,33 +79,39 @@ const TanentDetailView = (props) => {
                               {arg?.TenentType}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {moment(arg?.DateOfBirth_registrationDate).format(
-                                "YYYY-MM-DD"
-                              )}
+                              {arg?.DateOfBirth_registrationDate
+                                ? moment(
+                                    arg?.DateOfBirth_registrationDate
+                                  ).format("YYYY-MM-DD")
+                                : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_GovIdNo}
+                              {arg?.tenant_GovIdNo ? arg?.tenant_GovIdNo : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.area}
+                              {arg?.area ? arg?.area : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.city}
+                              {arg?.city ? arg?.city : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.country}
+                              {arg?.country ? arg?.country : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_email}
+                              {arg?.tenant_email ? arg?.tenant_email : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_phoneNo}
+                              {arg?.tenant_phoneNo ? arg?.tenant_phoneNo : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_passportNo}
+                              {arg?.tenant_passportNo
+                                ? arg?.tenant_passportNo
+                                : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_passport_expireDate}
+                              {arg?.tenant_passportNo
+                                ? arg?.tenant_passport_expireDate
+                                : "-"}
                             </div>
                           </div>
                         </>
@@ -121,35 +125,33 @@ const TanentDetailView = (props) => {
                               Tenant Type
                             </div>
                             <div className="font-weight-bold my-1">
-                             Company Name
+                              Company Name
                             </div>
                             <div className="font-weight-bold my-1">
                               Authorize Person
                             </div>
                             <div className="font-weight-bold my-1">
-                             Designation
+                              Designation
                             </div>
 
                             <div className="font-weight-bold my-1">area</div>
                             <div className="font-weight-bold my-1"> City</div>
-                            <div className="font-weight-bold my-1">
-                              Country
-                            </div>
+                            <div className="font-weight-bold my-1">Country</div>
                             <div className="font-weight-bold my-1">Email</div>
                             <div className="font-weight-bold my-1">
-                             Trade License No
+                              Trade License No
                             </div>
                             <div className="font-weight-bold my-1">
-                             issuing Date
+                              issuing Date
                             </div>
                             <div className="font-weight-bold my-1">
-                             ExpireDate
+                              ExpireDate
                             </div>
                             <div className="font-weight-bold my-1">
-                            Emirates ID No
+                              Emirates ID No
                             </div>
                             <div className="font-weight-bold my-1">
-                            Emirates ID Expire Date
+                              Emirates ID Expire Date
                             </div>
                             <div className="font-weight-bold my-1">
                               Passport No
@@ -157,62 +159,86 @@ const TanentDetailView = (props) => {
                             <div className="font-weight-bold my-1">
                               Passport expire Date
                             </div>
-                            <div className="font-weight-bold my-1">
-                             Remarks
-                            </div>
+                            <div className="font-weight-bold my-1">Remarks</div>
                           </div>
                           <div className="col-6">
                             <div className="font-weight-bold my-1">
-                              {arg?.TenantId}
+                              {arg?.TenantId ? arg?.TenantId : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.TenentType}
+                              {arg?.TenentType ? arg?.TenentType : "-"}
                             </div>
 
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_companyName}
+                              {arg?.tenant_companyName
+                                ? arg?.tenant_companyName
+                                : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_companyAuthorizePerson}
+                              {arg?.tenant_companyAuthorizePerson
+                                ? arg?.tenant_companyAuthorizePerson
+                                : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_companyAuthorizePersonDesignation}
+                              {arg?.tenant_companyAuthorizePersonDesignation
+                                ? arg?.tenant_companyAuthorizePersonDesignation
+                                : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.area}
+                              {arg?.area ? arg?.area : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.city}
+                              {arg?.city ? arg?.city : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.country}
+                              {arg?.country ? arg?.country : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_email}
+                              {arg?.tenant_email ? arg?.tenant_email : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_companyTradeLicenseNo}
+                              {arg?.tenant_companyTradeLicenseNo
+                                ? arg?.tenant_companyTradeLicenseNo
+                                : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {moment (arg?.tenant_companyIssuingDate).format('YYYY-MM-DD')}
-                            </div> 
-                            <div className="font-weight-bold my-1">
-                              {moment (arg?.tenant_companyExpireDate).format('YYYY-MM-DD')}
+                              {arg?.tenant_companyIssuingDate
+                                ? moment(arg?.tenant_companyIssuingDate).format(
+                                    "YYYY-MM-DD"
+                                  )
+                                : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_GovIdNo}
+                              {arg?.tenant_companyExpireDate
+                                ? moment(arg?.tenant_companyExpireDate).format(
+                                    "YYYY-MM-DD"
+                                  )
+                                : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {moment (arg?.tenant_GovIdNo_expireDate).format('YYYY-MM-DD')}
+                              {arg?.tenant_GovIdNo ? arg?.tenant_GovIdNo : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.tenant_passportNo}
+                              {arg?.tenant_GovIdNo
+                                ? moment(arg?.tenant_GovIdNo_expireDate).format(
+                                    "YYYY-MM-DD"
+                                  )
+                                : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {moment (arg?.tenant_passport_expireDate).format('YYYY-MM-DD')}
+                              {arg?.tenant_passportNo
+                                ? arg?.tenant_passportNo
+                                : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
-                              {arg?.remark}
+                              {arg?.tenant_passportNo
+                                ? moment(
+                                    arg?.tenant_passport_expireDate
+                                  ).format("YYYY-MM-DD")
+                                : "-"}
+                            </div>
+                            <div className="font-weight-bold my-1">
+                              {arg?.remark ? arg?.remark : "-"}
                             </div>
                           </div>
                         </>
