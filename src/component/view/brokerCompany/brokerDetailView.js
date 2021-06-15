@@ -60,7 +60,7 @@ let BrokerCompanyDetailViewComponent = (props) => {
                             Contact No
                           </div>
                           <div className="font-weight-bold my-2">
-                           Remarks
+                            Remarks
                           </div>
                         </div>
                         <div>
@@ -166,7 +166,7 @@ let BrokerCompanyDetailViewComponent = (props) => {
                   CRUD_Function={props.BrokerDelete}
                   id={arg._id}
                   buttonName={"Delete"}
-                  message={"are you sure want to delete"}
+                  message={"Are you sure you want to delete"}
                 />
               </div>
             );

@@ -56,10 +56,10 @@ const MaintananceTicket = (props) => {
 
               props?.maintananceTicket
                 ? props.maintananceTicketUpdate(
-                    values,
-                    props?.maintananceTicket?._id,
-                    allFile
-                  )
+                  values,
+                  props?.maintananceTicket?._id,
+                  allFile
+                )
                 : props.MaintananceTicketData(values, allFile);
             }}
             validationSchema={MaintainanceTicketEntryForm}
@@ -552,8 +552,8 @@ const MaintananceTicket = (props) => {
                         }
                         message={
                           props.maintananceTicket
-                            ? "are you sure want to update"
-                            : "are you sure want to create"
+                            ? "Are you sure you want to update"
+                            : "Are you sure you want to create"
                         }
                       />
                     </div>

@@ -16,8 +16,8 @@ let PropertyDetailViewComponent = (props) => {
       <div style={{ margin: "20px" }}>
         {showEditForm === false ? (
           props.selectedone.map((arg, index) => {
-          console.log("🚀 ~ file: propertyDetailView.js ~ line 19 ~ props.selectedone.map ~ arg", arg)
-            
+            console.log("🚀 ~ file: propertyDetailView.js ~ line 19 ~ props.selectedone.map ~ arg", arg)
+
             return (
               <div key={index}>
                 <div className="row">
@@ -37,7 +37,7 @@ let PropertyDetailViewComponent = (props) => {
                     <div className="d-flex justify-content-between mr-4">
                       <div style={{ left: "0px" }}>
                         <div className="font-weight-bold my-3">area</div>
-                       
+
                         <div className="font-weight-bold my-3">
                           Building Number
                         </div>
@@ -59,7 +59,7 @@ let PropertyDetailViewComponent = (props) => {
                       </div>
                       <div>
                         <div className="font-weight-bold my-3">{arg.area}</div>
-                     
+
                         <div className="font-weight-bold my-3">
                           {arg.building_Number}
                         </div>
@@ -78,7 +78,7 @@ let PropertyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-3">
                           {arg.property_community}
                         </div>
-                      
+
                         <div className="font-weight-bold my-3">
                           {arg.Property_ownerName.map((owner, index) => {
                             return <li key={index}>{owner.owner_Name}</li>;
@@ -196,14 +196,14 @@ let PropertyDetailViewComponent = (props) => {
                     props.leaseIdList.some((ID) => ID === arg._id) === true
                       ? { visibility: "hidden" }
                       : {
-                          backgroundColor: "blue",
-                          borderRadius: "20px",
-                          margin: "10px",
-                          height: "40px",
-                          width: "100px",
-                          color: "white",
-                          fontWeight: "bold",
-                        }
+                        backgroundColor: "blue",
+                        borderRadius: "20px",
+                        margin: "10px",
+                        height: "40px",
+                        width: "100px",
+                        color: "white",
+                        fontWeight: "bold",
+                      }
                   }
                   type="button"
                   onClick={() => setShowPopUp(true)}
@@ -216,7 +216,7 @@ let PropertyDetailViewComponent = (props) => {
                   CRUD_Function={props.DeleteProperty}
                   id={arg._id}
                   buttonName={"Delete"}
-                  message={"are you sure want to delete"}
+                  message={"Are you sure you want to delete"}
                 />
               </div>
             );

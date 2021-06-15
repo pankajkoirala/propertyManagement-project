@@ -613,8 +613,8 @@ const OwnerEntry = (props) => {
                     buttonName={props.owner ? "Update" : "Create"}
                     message={
                       props.owner
-                        ? "are you sure want to update"
-                        : "are you sure want to create"
+                        ? "Are you sure you want to update"
+                        : "Are you sure you want to create"
                     }
                   />
                 </FormGroup>

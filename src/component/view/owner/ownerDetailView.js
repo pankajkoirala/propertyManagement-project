@@ -161,7 +161,7 @@ let OwnerDetailViewComponent = (props) => {
                   CRUD_Function={props.ownerDelete}
                   buttonName={"Delete"}
                   id={arg._id}
-                  message={"are you sure want to delete"}
+                  message={"Are you sure you want to delete"}
                 />
               </div>
             );

@@ -455,8 +455,8 @@ const TenantEntry = (props) => {
                     buttonName={props.selectedEmployee ? "Update" : "Create"}
                     message={
                       props.selectedEmployee
-                        ? "are you sure want to update"
-                        : "are you sure want to create"
+                        ? "Are you sure you want to update"
+                        : "Are you sure you want to create"
                     }
                   />
                 </FormGroup>

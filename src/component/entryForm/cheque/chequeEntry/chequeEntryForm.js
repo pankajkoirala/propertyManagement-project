@@ -935,8 +935,8 @@ const ChequeEntry = (props) => {
                       buttonName={props.Cheque ? "Update" : "Create"}
                       message={
                         props.Cheque
-                          ? "Are you sure want to update"
-                          : "Are you sure want to create"
+                          ? "Are you sure you want to update"
+                          : "Are you sure you want to create"
                       }
                     />
                   </div>

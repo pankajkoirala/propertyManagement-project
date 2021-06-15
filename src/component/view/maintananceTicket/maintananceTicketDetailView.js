@@ -7,7 +7,7 @@ import moment from "moment";
 let MaintananceTicketDetailViewComponent = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showPopup, setShowPopUp] = useState(false);
-  
+
   let showHide = () => {
     setShowEditForm(!showEditForm);
   };
@@ -59,7 +59,7 @@ let MaintananceTicketDetailViewComponent = (props) => {
                           Mobile Number
                         </div>
                         <div className="font-weight-bold my-2">
-                         Remarks
+                          Remarks
                         </div>
                       </div>
                       <div>
@@ -128,7 +128,7 @@ let MaintananceTicketDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">
                           Property To Be Maintained
                         </div>
-                       
+
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
@@ -149,7 +149,7 @@ let MaintananceTicketDetailViewComponent = (props) => {
                             "," +
                             arg?.MaintanancePropertyID?.referenceNO}
                         </div>
-                        
+
                       </div>
                     </div>
                   </div>
@@ -230,7 +230,7 @@ let MaintananceTicketDetailViewComponent = (props) => {
                   CRUD_Function={props.maintananceTicketDelete}
                   id={arg._id}
                   buttonName={"Delete"}
-                  message={"are you sure want to delete"}
+                  message={"Are you sure you want to delete"}
                 />
               </div>
             );

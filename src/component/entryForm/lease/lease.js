@@ -50,7 +50,7 @@ const LeaseEntry = (props) => {
     Math.round(
       (difference /
         (paymentTime ? paymentTime : 1 || props?.lease?.frequency)) *
-        100
+      100
     ) / 100;
 
   let addedDays = [];
@@ -116,7 +116,8 @@ const LeaseEntry = (props) => {
                     disabled={props.lease ? true : false}
                     value={values.lease_enterDate}
                     name="lease_enterDate"
-                    placeholder="Lease Entered Date"
+                    placeholder="YYYY-MM-DD"
+                    dateFormat="YYYY-MM-DD"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -258,7 +259,7 @@ const LeaseEntry = (props) => {
                     onBlur={handleBlur}
                     value={
                       (setCommerceDate(values.commenceDate),
-                      values.commenceDate)
+                        values.commenceDate)
                     }
                   ></Input>
                   {touched.commenceDate && errors.commenceDate && (
@@ -287,7 +288,7 @@ const LeaseEntry = (props) => {
                     type="date"
                     value={
                       (setExpireDate(values.expirationDate),
-                      values.expirationDate)
+                        values.expirationDate)
                     }
                     name="expirationDate"
                     placeholder="ExpirationDate"
@@ -653,9 +654,9 @@ const LeaseEntry = (props) => {
               <div>
                 <Table>
                   {props?.lease?.commenceDate ||
-                  (commerceDate && props?.lease?.expirationDate) ||
-                  (expireDate && props?.lease?.frequency) ||
-                  paymentTime ? (
+                    (commerceDate && props?.lease?.expirationDate) ||
+                    (expireDate && props?.lease?.frequency) ||
+                    paymentTime ? (
                     <thead>
                       <tr>
                         <th>SN</th>
@@ -666,23 +667,23 @@ const LeaseEntry = (props) => {
                     ""
                   )}
                   {props?.lease?.commenceDate ||
-                  (commerceDate && props?.lease?.expirationDate) ||
-                  (expireDate && props?.lease?.frequency) ||
-                  paymentTime
+                    (commerceDate && props?.lease?.expirationDate) ||
+                    (expireDate && props?.lease?.frequency) ||
+                    paymentTime
                     ? addedDays.map((arg, index) => {
-                        return (
-                          <tbody key={index}>
-                            <tr>
-                              <td>{index + 1}</td>
-                              <td>
-                                {moment(commerceDate)
-                                  .add(arg, "days")
-                                  .format("DD-MM-YYYY")}
-                              </td>
-                            </tr>
-                          </tbody>
-                        );
-                      })
+                      return (
+                        <tbody key={index}>
+                          <tr>
+                            <td>{index + 1}</td>
+                            <td>
+                              {moment(commerceDate)
+                                .add(arg, "days")
+                                .format("DD-MM-YYYY")}
+                            </td>
+                          </tr>
+                        </tbody>
+                      );
+                    })
                     : ""}
                 </Table>
               </div>
@@ -703,8 +704,8 @@ const LeaseEntry = (props) => {
                   buttonName={props.lease ? "Update" : "Create"}
                   message={
                     props.lease
-                      ? "are you sure want to update"
-                      : "are you sure want to create"
+                      ? "Are you sure you want to update"
+                      : "Are you sure you want to create"
                   }
                 />
               </div>

@@ -81,8 +81,8 @@ const TanentDetailView = (props) => {
                             <div className="font-weight-bold my-1">
                               {arg?.DateOfBirth_registrationDate
                                 ? moment(
-                                    arg?.DateOfBirth_registrationDate
-                                  ).format("YYYY-MM-DD")
+                                  arg?.DateOfBirth_registrationDate
+                                ).format("YYYY-MM-DD")
                                 : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
@@ -204,15 +204,15 @@ const TanentDetailView = (props) => {
                             <div className="font-weight-bold my-1">
                               {arg?.tenant_companyIssuingDate
                                 ? moment(arg?.tenant_companyIssuingDate).format(
-                                    "YYYY-MM-DD"
-                                  )
+                                  "YYYY-MM-DD"
+                                )
                                 : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
                               {arg?.tenant_companyExpireDate
                                 ? moment(arg?.tenant_companyExpireDate).format(
-                                    "YYYY-MM-DD"
-                                  )
+                                  "YYYY-MM-DD"
+                                )
                                 : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
@@ -221,8 +221,8 @@ const TanentDetailView = (props) => {
                             <div className="font-weight-bold my-1">
                               {arg?.tenant_GovIdNo
                                 ? moment(arg?.tenant_GovIdNo_expireDate).format(
-                                    "YYYY-MM-DD"
-                                  )
+                                  "YYYY-MM-DD"
+                                )
                                 : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
@@ -233,8 +233,8 @@ const TanentDetailView = (props) => {
                             <div className="font-weight-bold my-1">
                               {arg?.tenant_passportNo
                                 ? moment(
-                                    arg?.tenant_passport_expireDate
-                                  ).format("YYYY-MM-DD")
+                                  arg?.tenant_passport_expireDate
+                                ).format("YYYY-MM-DD")
                                 : "-"}
                             </div>
                             <div className="font-weight-bold my-1">
@@ -288,14 +288,14 @@ const TanentDetailView = (props) => {
                     props?.leasedTanentId?.some((ID) => ID === arg._id) === true
                       ? { visibility: "hidden" }
                       : {
-                          backgroundColor: "blue",
-                          borderRadius: "20px",
-                          margin: "10px",
-                          height: "40px",
-                          width: "100px",
-                          color: "white",
-                          fontWeight: "bold",
-                        }
+                        backgroundColor: "blue",
+                        borderRadius: "20px",
+                        margin: "10px",
+                        height: "40px",
+                        width: "100px",
+                        color: "white",
+                        fontWeight: "bold",
+                      }
                   }
                   className="danger ml-2"
                   onClick={() => {
@@ -310,7 +310,7 @@ const TanentDetailView = (props) => {
                   CRUD_Function={props.tenentDelete}
                   id={arg._id}
                   buttonName={"Delete"}
-                  message={"are you sure want to delete"}
+                  message={"Are you sure you want to delete"}
                 />
               </div>
             );

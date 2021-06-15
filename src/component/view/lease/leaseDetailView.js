@@ -152,10 +152,10 @@ let LeaseDetailViewComponent = (props) => {
                           {arg.frequency === "30"
                             ? "Monthly"
                             : arg.frequency === "90"
-                            ? "Quartely"
-                            : arg.frequency === "181"
-                            ? "Semi Annualy"
-                            : "Yearly"}
+                              ? "Quartely"
+                              : arg.frequency === "181"
+                                ? "Semi Annualy"
+                                : "Yearly"}
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg.remark}
@@ -170,27 +170,27 @@ let LeaseDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">Tenant ID</div>
                         <div className="font-weight-bold my-2">Tenant Name</div>
                         <div className="font-weight-bold my-2">
-                        {arg?.tenants?.TenentType === "Person"
-                              ? "Emirates Id No"
-                              : "Registration Number"}
+                          {arg?.tenants?.TenentType === "Person"
+                            ? "Emirates Id No"
+                            : "Registration Number"}
                         </div>
                         <div className="font-weight-bold my-2">Address</div>
                         <div className="font-weight-bold my-2">Email </div>
                         <div className="font-weight-bold my-2">Contact</div>
                         <div className="font-weight-bold my-2">Gov Id No</div>
                         <div className="font-weight-bold my-1">
-                            Passport No
-                          </div>
-                          <div className="font-weight-bold my-1">
-                            Passport expire Date
-                          </div>
-                          <div className="font-weight-bold my-1">
-                            Visa No
-                          </div>
-                          <div className="font-weight-bold my-1">
+                          Passport No
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          Passport expire Date
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          Visa No
+                        </div>
+                        <div className="font-weight-bold my-1">
                           Visa expire Date
-                          </div>
-                       
+                        </div>
+
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
@@ -221,18 +221,18 @@ let LeaseDetailViewComponent = (props) => {
                           {arg?.tenants?.tenant_GovIdNo}
                         </div>
                         <div className="font-weight-bold my-1">
-                            {arg?.tenants?.tenant_passportNo?arg?.tenants?.tenant_passportNo:"-"}
-                          </div>
-                          <div className="font-weight-bold my-1">
-                            {arg?.tenants?.tenant_passport_expireDate}
-                          </div>
-                          <div className="font-weight-bold my-1">
-                            {arg?.tenants?.tenant_visaNo?arg?.tenants?.tenant_visaNo:"-"}
-                          </div>
-                          <div className="font-weight-bold my-1">
-                            {arg?.tenants?.tenant_visa_expireDate}
-                          </div>
-                        
+                          {arg?.tenants?.tenant_passportNo ? arg?.tenants?.tenant_passportNo : "-"}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg?.tenants?.tenant_passport_expireDate}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg?.tenants?.tenant_visaNo ? arg?.tenants?.tenant_visaNo : "-"}
+                        </div>
+                        <div className="font-weight-bold my-1">
+                          {arg?.tenants?.tenant_visa_expireDate}
+                        </div>
+
                       </div>
                     </div>
                   </div>
@@ -295,7 +295,7 @@ let LeaseDetailViewComponent = (props) => {
                   CRUD_Function={props.LeaseDelete}
                   id={arg._id}
                   buttonName={"Delete"}
-                  message={"are you sure want to delete"}
+                  message={"Are you sure you want to delete"}
                 />
               </div>
             );

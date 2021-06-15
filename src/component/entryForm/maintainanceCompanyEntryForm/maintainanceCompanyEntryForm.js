@@ -54,10 +54,10 @@ const MaintainanceCompanyComponent = (props) => {
                 : (values.files_list = "");
               props.maintananceCompany
                 ? props.maintananceCompanyUpdate(
-                    values,
-                    props?.maintananceCompany?._id,
-                    allFile
-                  )
+                  values,
+                  props?.maintananceCompany?._id,
+                  allFile
+                )
                 : props.MaintananceCompanyData(values, allFile);
             }}
             validationSchema={maintainanceCompanyEntryFormValidation}
@@ -591,8 +591,8 @@ const MaintainanceCompanyComponent = (props) => {
                     buttonName={props.maintananceCompany ? "Update" : "Create"}
                     message={
                       props.maintananceCompany
-                        ? "are you sure want to update"
-                        : "are you sure want to create"
+                        ? "Are you sure you want to update"
+                        : "Are you sure you want to create"
                     }
                   />
                 </FormGroup>

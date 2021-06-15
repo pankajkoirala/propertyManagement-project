@@ -598,8 +598,8 @@ const DeveloperCompanyComponent = (props) => {
                     buttonName={props.developerCompany ? "Update" : "Create"}
                     message={
                       props.developerCompany
-                        ? "Are you sure want to update"
-                        : "Are you sure want to create"
+                        ? "Are you sure you want to update"
+                        : "Are you sure you want to create"
                     }
                   />
                 </FormGroup>

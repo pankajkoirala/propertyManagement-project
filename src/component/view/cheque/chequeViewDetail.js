@@ -23,7 +23,7 @@ let ChequeDetailViewComponent = (props) => {
               <div key={index} className="property-card">
                 <h5 className="text-center my-4"> {arg.Transaction_Type} Information</h5>
                 <div className="row">
-              { arg.Transaction_Type==='Cheque'&&   <div className="col-7">
+                  {arg.Transaction_Type === 'Cheque' && <div className="col-7">
                     <img
                       style={{
                         height: "300px",
@@ -44,7 +44,7 @@ let ChequeDetailViewComponent = (props) => {
                     />
                   </div>}
                   <div className="col-5">
-                 {arg.Transaction_Type==='Cheque'?   <div className="d-flex justify-content-between mr-4">
+                    {arg.Transaction_Type === 'Cheque' ? <div className="d-flex justify-content-between mr-4">
                       <div style={{ left: "0px" }}>
                         <div className="font-weight-bold my-1">Cheque ID</div>
                         <div className="font-weight-bold my-1">
@@ -129,36 +129,36 @@ let ChequeDetailViewComponent = (props) => {
                           {arg.cheque_remarks}
                         </div>
                       </div>
-                    </div>:<div className="d-flex justify-content-between mr-4">
+                    </div> : <div className="d-flex justify-content-between mr-4">
                       <div style={{ left: "0px" }}>
                         <div className="font-weight-bold my-1"> ID</div>
                         <div className="font-weight-bold my-1">
-                           Entry Date
+                          Entry Date
                         </div>
                         <div className="font-weight-bold my-1">
-                         Transaction Type
+                          Transaction Type
                         </div>
-                     
+
                         <div className="font-weight-bold my-1">
-                           Amount
+                          Amount
                         </div>
                         <div className="font-weight-bold my-1">Vat Amount</div>
                         <div className="font-weight-bold my-1">
                           Miscelleneous Amount
                         </div>
-                        
-                       
+
+
                         <div className="font-weight-bold my-1">
-                        Security Deposite
+                          Security Deposite
                         </div>
                         <div className="font-weight-bold my-1">
-                       Lease ID
+                          Lease ID
                         </div>
                         <div className="font-weight-bold my-1">
-                        Property Type
+                          Property Type
                         </div>
                         <div className="font-weight-bold my-1">
-                        Remarks
+                          Remarks
                         </div>
                       </div>
                       <div>
@@ -171,7 +171,7 @@ let ChequeDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-1">
                           {arg.Transaction_Type}
                         </div>
-                        
+
                         <div className="font-weight-bold my-1">
                           AED. {arg.cheque_amount}
                         </div>
@@ -227,14 +227,14 @@ let ChequeDetailViewComponent = (props) => {
                       (ID) => ID === arg?.lease_property?._id
                     ) !== true
                       ? {
-                          backgroundColor: "blue",
-                          borderRadius: "20px",
-                          margin: "10px",
-                          height: "40px",
-                          width: "100px",
-                          color: "white",
-                          fontWeight: "bold",
-                        }
+                        backgroundColor: "blue",
+                        borderRadius: "20px",
+                        margin: "10px",
+                        height: "40px",
+                        width: "100px",
+                        color: "white",
+                        fontWeight: "bold",
+                      }
                       : { display: "none" }
                   }
                   className="danger ml-2"
@@ -247,14 +247,14 @@ let ChequeDetailViewComponent = (props) => {
                     arg.cheque_status !== "Cleared"
                       ? { display: "none" }
                       : {
-                          backgroundColor: "blue",
-                          borderRadius: "20px",
-                          margin: "10px",
-                          height: "40px",
-                          width: "150px",
-                          color: "white",
-                          fontWeight: "bold",
-                        }
+                        backgroundColor: "blue",
+                        borderRadius: "20px",
+                        margin: "10px",
+                        height: "40px",
+                        width: "150px",
+                        color: "white",
+                        fontWeight: "bold",
+                      }
                   }
                   onClick={() => setPrintInvoice(!printInvoice)}
                 >
@@ -265,7 +265,7 @@ let ChequeDetailViewComponent = (props) => {
                   isClose={setShowPopUp}
                   CRUD_Function={props.ChequeDelete}
                   id={arg._id}
-                  message={"are you sure want to delete"}
+                  message={"Are you sure you want to delete"}
                   buttonName={"Delete"}
                 />
               </div>

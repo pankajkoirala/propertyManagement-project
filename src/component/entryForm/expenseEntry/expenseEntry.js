@@ -448,8 +448,8 @@ const ExpenseEntry = (props) => {
                         buttonName={props.expense ? "Update" : "Create"}
                         message={
                           props.expense
-                            ? "Are you sure want to update"
-                            : "Are you sure want to create"
+                            ? "Are you sure you want to update"
+                            : "Are you sure you want to create"
                         }
                       />
 

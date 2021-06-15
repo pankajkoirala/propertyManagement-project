@@ -55,10 +55,10 @@ const ManagementCompanyComponent = (props) => {
                 : (values.files_list = "");
               props.managementCompany
                 ? props.managementCompanyUpdate(
-                    values,
-                    props?.managementCompany._id,
-                    allFile
-                  )
+                  values,
+                  props?.managementCompany._id,
+                  allFile
+                )
                 : props.ManagementCompanyData(values, allFile);
             }}
             validationSchema={managementCompanyEntryFormValidation}
@@ -537,8 +537,8 @@ const ManagementCompanyComponent = (props) => {
                     buttonName={props.managementCompany ? "Update" : "Create"}
                     message={
                       props.managementCompany
-                        ? "are you sure want to update"
-                        : "are you sure want to create"
+                        ? "Are you sure you want to update"
+                        : "Are you sure you want to create"
                     }
                   />
                 </FormGroup>

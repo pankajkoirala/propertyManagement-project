@@ -154,14 +154,14 @@ let MaintananceCompanyDetailViewComponent = (props) => {
                     ) === true
                       ? { visibility: "hidden" }
                       : {
-                          backgroundColor: "blue",
-                          borderRadius: "20px",
-                          margin: "10px",
-                          height: "40px",
-                          width: "100px",
-                          color: "white",
-                          fontWeight: "bold",
-                        }
+                        backgroundColor: "blue",
+                        borderRadius: "20px",
+                        margin: "10px",
+                        height: "40px",
+                        width: "100px",
+                        color: "white",
+                        fontWeight: "bold",
+                      }
                   }
                   className="danger ml-2"
                   onClick={() => {
@@ -176,7 +176,7 @@ let MaintananceCompanyDetailViewComponent = (props) => {
                   CRUD_Function={props.maintananceCompanyDelete}
                   buttonName={"Delete"}
                   id={arg._id}
-                  message={"are you sure want to delete"}
+                  message={"Are you sure you want to delete"}
                 />
               </div>
             );

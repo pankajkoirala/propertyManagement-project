@@ -42,7 +42,7 @@ let ManagementCompanyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-2">area</div>
                         <div className="font-weight-bold my-2">City</div>
                         <div className="font-weight-bold my-2">Country</div>
-                      
+
                         <div className="font-weight-bold my-2">Email </div>
                         <div className="font-weight-bold my-2">
                           Phone Number
@@ -51,7 +51,7 @@ let ManagementCompanyDetailViewComponent = (props) => {
                           Mobile Number
                         </div>
                         <div className="font-weight-bold my-2">
-                         Remarks
+                          Remarks
                         </div>
                       </div>
                       <div>
@@ -130,17 +130,17 @@ let ManagementCompanyDetailViewComponent = (props) => {
                 <button
                   style={
                     props?.managementCompanyIDs.some((ID) => ID === arg._id) ===
-                    true
+                      true
                       ? { visibility: "hidden" }
                       : {
-                          backgroundColor: "blue",
-                          borderRadius: "20px",
-                          margin: "10px",
-                          height: "40px",
-                          width: "100px",
-                          color: "white",
-                          fontWeight: "bold",
-                        }
+                        backgroundColor: "blue",
+                        borderRadius: "20px",
+                        margin: "10px",
+                        height: "40px",
+                        width: "100px",
+                        color: "white",
+                        fontWeight: "bold",
+                      }
                   }
                   className="danger ml-2"
                   onClick={() => {
@@ -155,7 +155,7 @@ let ManagementCompanyDetailViewComponent = (props) => {
                   CRUD_Function={props.managementCompanyDelete}
                   buttonName={"Delete"}
                   id={arg._id}
-                  message={"are you sure want to delete"}
+                  message={"Are you sure you want to delete"}
                 />
               </div>
             );

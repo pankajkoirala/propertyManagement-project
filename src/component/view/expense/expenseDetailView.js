@@ -42,7 +42,7 @@ let ExpenseDetailViewComponent = (props) => {
                           Expense Invoice No
                         </div>
                         <div className="font-weight-bold my-3">
-                           Remarks
+                          Remarks
                         </div>
                         <div className="font-weight-bold my-3">
                           Maintanance Ticket ID
@@ -165,7 +165,7 @@ let ExpenseDetailViewComponent = (props) => {
                   CRUD_Function={props.expenseDelete}
                   id={arg._id}
                   buttonName={"Delete"}
-                  message={"are you sure want to delete"}
+                  message={"Are you sure you want to delete"}
                 />
               </div>
             );
