@@ -310,7 +310,7 @@ const TanentDetailView = (props) => {
                   CRUD_Function={props.tenentDelete}
                   id={arg._id}
                   buttonName={"Delete"}
-                  message={"Are you sure you want to delete"}
+                  message={"Are you sure you want to Delete"}
                 />
               </div>
             );

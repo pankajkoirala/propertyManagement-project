@@ -992,8 +992,8 @@ const PropertyEntry = (props) => {
               buttonName={props.property ? "Update" : "Create"}
               message={
                 props.property
-                  ? "Are you sure you want to update"
-                  : "Are you sure you want to create"
+                  ? "Are you sure you want to Update this Form"
+                  : "Are you sure you want to create this Form"
               }
             />
           </FormGroup>

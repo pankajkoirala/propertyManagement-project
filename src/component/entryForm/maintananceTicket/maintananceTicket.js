@@ -552,8 +552,8 @@ const MaintananceTicket = (props) => {
                         }
                         message={
                           props.maintananceTicket
-                            ? "Are you sure you want to update"
-                            : "Are you sure you want to create"
+                            ? "Are you sure you want to Update this Form"
+                            : "Are you sure you want to create this Form"
                         }
                       />
                     </div>

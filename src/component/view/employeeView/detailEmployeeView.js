@@ -155,7 +155,7 @@ let EmployeeDetailViewComponent = (props) => {
                   isClose={setShowPopUp}
                   CRUD_Function={props.employeeDelete}
                   id={arg._id}
-                  message={"Are you sure you want to delete"}
+                  message={"Are you sure you want to Delete"}
                   buttonName={"Delete"}
                 />
               </div>

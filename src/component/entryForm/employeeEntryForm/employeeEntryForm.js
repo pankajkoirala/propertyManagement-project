@@ -46,10 +46,10 @@ const TenantEntry = (props) => {
 
               props.selectedEmployee
                 ? props.EmployeeUpdate(
-                    values,
-                    props?.selectedEmployee?._id,
-                    allFile
-                  )
+                  values,
+                  props?.selectedEmployee?._id,
+                  allFile
+                )
                 : props.EmployeeData(values, allFile);
             }}
             validationSchema={employeeEntryFormValidation}
@@ -455,8 +455,8 @@ const TenantEntry = (props) => {
                     buttonName={props.selectedEmployee ? "Update" : "Create"}
                     message={
                       props.selectedEmployee
-                        ? "Are you sure you want to update"
-                        : "Are you sure you want to create"
+                        ? "Are you sure you want to Update this Form"
+                        : "Are you sure you want to create this Form"
                     }
                   />
                 </FormGroup>

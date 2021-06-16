@@ -704,8 +704,8 @@ const LeaseEntry = (props) => {
                   buttonName={props.lease ? "Update" : "Create"}
                   message={
                     props.lease
-                      ? "Are you sure you want to update"
-                      : "Are you sure you want to create"
+                      ? "Are you sure you want to Update this Form"
+                      : "Are you sure you want to create this Form"
                   }
                 />
               </div>

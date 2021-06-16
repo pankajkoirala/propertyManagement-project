@@ -836,11 +836,11 @@ const ChequeEntry = (props) => {
                               <img
                                 src={
                                   typeof values.cheque_picture_front ===
-                                  "string"
+                                    "string"
                                     ? values.cheque_picture_front
                                     : URL.createObjectURL(
-                                        values.cheque_picture_front
-                                      )
+                                      values.cheque_picture_front
+                                    )
                                 }
                                 alt="no file"
                                 height="20"
@@ -909,8 +909,8 @@ const ChequeEntry = (props) => {
                                   typeof values.cheque_picture_back === "string"
                                     ? values.cheque_picture_back
                                     : URL.createObjectURL(
-                                        values.cheque_picture_back
-                                      )
+                                      values.cheque_picture_back
+                                    )
                                 }
                                 alt="span no file"
                                 height="20"
@@ -935,8 +935,8 @@ const ChequeEntry = (props) => {
                       buttonName={props.Cheque ? "Update" : "Create"}
                       message={
                         props.Cheque
-                          ? "Are you sure you want to update"
-                          : "Are you sure you want to create"
+                          ? "Are you sure you want to Update this Form"
+                          : "Are you sure you want to create this Form"
                       }
                     />
                   </div>

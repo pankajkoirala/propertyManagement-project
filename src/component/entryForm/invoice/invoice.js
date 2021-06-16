@@ -89,7 +89,7 @@ let InvoiceComponent = (props) => {
     str +=
       (n[5] !== "0".padStart(2, 0)
         ? (str !== "" ? "and " : "") +
-          (a[Number(n[5])] || b[n[5][0]] + " " + a[n[5][1]])
+        (a[Number(n[5])] || b[n[5][0]] + " " + a[n[5][1]])
         : "") + "Only";
     return setInWord(str);
   }
@@ -111,7 +111,7 @@ let InvoiceComponent = (props) => {
                 props.invoicePost(values);
                 setLoadingState(true);
               }}
-              // validationSchema={TenantEntryFormValidation}
+            // validationSchema={TenantEntryFormValidation}
             >
               {({
                 touched,
@@ -349,10 +349,10 @@ let InvoiceComponent = (props) => {
                                   {
                                     (inWords(
                                       props?.Cheque?.vat_amount +
-                                        props?.Cheque?.miscellaneous_amount +
-                                        props?.Cheque?.cheque_amount
+                                      props?.Cheque?.miscellaneous_amount +
+                                      props?.Cheque?.cheque_amount
                                     ),
-                                    props?.Cheque?.vat_amount +
+                                      props?.Cheque?.vat_amount +
                                       props?.Cheque?.miscellaneous_amount +
                                       props?.Cheque?.cheque_amount)
                                   }
@@ -453,15 +453,15 @@ let InvoiceComponent = (props) => {
                       ) === true
                         ? { visibility: "hidden" }
                         : {
-                            visibility: "visible",
-                            backgroundColor: "blue",
-                            borderRadius: "20px",
-                            margin: "10px",
-                            height: "40px",
-                            width: "150px",
-                            color: "white",
-                            fontWeight: "bold",
-                          }
+                          visibility: "visible",
+                          backgroundColor: "blue",
+                          borderRadius: "20px",
+                          margin: "10px",
+                          height: "40px",
+                          width: "150px",
+                          color: "white",
+                          fontWeight: "bold",
+                        }
                     }
                     type="button"
                     onClick={() => setShowPopUp(true)}
@@ -476,8 +476,8 @@ let InvoiceComponent = (props) => {
                     buttonName={props.BrokerCompany ? "Update" : "Create"}
                     message={
                       props.BrokerCompany
-                        ? "Are you sure you want to update"
-                        : "Are you sure you want to create"
+                        ? "Are you sure you want to Update this Form"
+                        : "Are you sure you want to create this Form"
                     }
                   />
                 </Form>

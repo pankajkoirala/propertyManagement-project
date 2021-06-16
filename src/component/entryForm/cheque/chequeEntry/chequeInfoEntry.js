@@ -71,7 +71,7 @@ let ChequeInfo = (props) => {
           isClose={setShowPopUp}
           CRUD_Function={InfoData}
           buttonName={"Create"}
-          message={"Are you sure you want to create"}
+          message={"Are you sure you want to create this Form"}
         />
       </div>
 

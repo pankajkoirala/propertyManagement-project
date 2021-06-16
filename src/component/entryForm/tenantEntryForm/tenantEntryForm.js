@@ -82,10 +82,10 @@ const TenantEntry = (props) => {
                 : (values.files_list = "");
               props.selectedTenantone
                 ? props.tenentUpdate(
-                    values,
-                    props?.selectedTenantone?._id,
-                    allFile
-                  )
+                  values,
+                  props?.selectedTenantone?._id,
+                  allFile
+                )
                 : props.tenantData(values, allFile);
             }}
             validationSchema={
@@ -737,14 +737,14 @@ const TenantEntry = (props) => {
                         </div>
                         {values.files_list.length <= 0
                           ? touched.files_list &&
-                            errors.files_list && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.files_list}
-                              </span>
-                            )
+                          errors.files_list && (
+                            <span
+                              className="text-danger col-md-12 text-left mb-2"
+                              style={{ fontSize: 12 }}
+                            >
+                              {errors.files_list}
+                            </span>
+                          )
                           : ""}
                         <div className="col-md-4 text-left mb-2 mt-2">
                           <Label className="float-left">
@@ -841,7 +841,7 @@ const TenantEntry = (props) => {
                   </div>
 
                   {props?.selectedTenantone?.files_list ||
-                  allFile?.length !== 0 ? (
+                    allFile?.length !== 0 ? (
                     <Table>
                       <thead>
                         <tr>
@@ -923,8 +923,8 @@ const TenantEntry = (props) => {
                     buttonName={props.selectedTenantone ? "Update" : "Create"}
                     message={
                       props.selectedTenantone
-                        ? "Are you sure want to update"
-                        : "Are you sure want to create"
+                        ? "Are you sure you want to Update this Form"
+                        : "Are you sure you want to create this Form"
                     }
                   />
                 </FormGroup>

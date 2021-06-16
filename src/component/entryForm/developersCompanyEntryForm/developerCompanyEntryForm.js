@@ -58,10 +58,10 @@ const DeveloperCompanyComponent = (props) => {
                 : (values.files_list = "");
               props?.developerCompany
                 ? props.DeveloperCompanyUpdate(
-                    values,
-                    props?.developerCompany?._id,
-                    allFile
-                  )
+                  values,
+                  props?.developerCompany?._id,
+                  allFile
+                )
                 : props.DevelopmentCompanyData(values, allFile);
             }}
             validationSchema={developerEntryFormValidation}
@@ -598,8 +598,8 @@ const DeveloperCompanyComponent = (props) => {
                     buttonName={props.developerCompany ? "Update" : "Create"}
                     message={
                       props.developerCompany
-                        ? "Are you sure you want to update"
-                        : "Are you sure you want to create"
+                        ? "Are you sure you want to Update this Form"
+                        : "Are you sure you want to create this Form"
                     }
                   />
                 </FormGroup>
