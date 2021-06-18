@@ -11,7 +11,7 @@ export const chequeEntryFormValidation = Yup.object().shape({
     .required("Required"),
   cheque_remarks: Yup.string(),
   cheque_amount: Yup.number().required("Required Field"),
-  cheque_number: Yup.number().required("Required Field"),
+  cheque_number: Yup.string().required("Required Field"),
   lease_property: Yup.string().required("Required Field"),
   cheque_depositeDate: Yup.date().required("Required"),
   cheque_clearDate: Yup.string(),

@@ -687,11 +687,12 @@ const ChequeEntry = (props) => {
                           options={props?.Redux_leaseData?.map((lease) => {
                             return {
                               name:
-                                lease.LeaseId +
-                                "/" +
-                                lease?.property?.property_type +
-                                "/" +
-                                lease?.property?.referenceNO,
+                                lease.LeaseId,
+                              //  +
+                              // "/" +
+                              // lease?.property?.property_type +
+                              // "/" +
+                              // lease?.property?.referenceNO,
 
                               id: lease._id,
                             };
@@ -711,7 +712,7 @@ const ChequeEntry = (props) => {
                       </div>
                       <div className="mt-4 col-md-3">
                         <Label for="exampleSelect">
-                          Property{" "}
+                          Property
                           <span
                             style={{
                               fontSize: "20px",

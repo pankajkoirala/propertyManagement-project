@@ -103,7 +103,7 @@ const MaintananceTicket = (props) => {
                           type="date"
                           value={values.maintananceTicketIssueDate}
                           name="maintananceTicketIssueDate"
-                          placeholder="Enter date of Cheque"
+                          placeholder="date"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -134,7 +134,7 @@ const MaintananceTicket = (props) => {
                           type="date"
                           value={values.maintananceTicketDueDate}
                           name="maintananceTicketDueDate"
-                          placeholder="Enter date of Cheque"
+                          placeholder="Date"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -166,7 +166,7 @@ const MaintananceTicket = (props) => {
                           type="text"
                           value={values.maintanance_Amount}
                           name="maintanance_Amount"
-                          placeholder="Enter date of Cheque"
+                          placeholder="Maintanance Amount"
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
@@ -372,7 +372,7 @@ const MaintananceTicket = (props) => {
                           <Input
                             name="fileName"
                             type="text"
-                            placeholder="Select Status of Cheque"
+                            placeholder=" Document Name"
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.fileName}
