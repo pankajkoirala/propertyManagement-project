@@ -10,17 +10,17 @@ import { token_key } from "./../../../../const/base_URL";
 
 const ChequeEntryContainer = (props) => {
   const ChequeeData = (data) => {
-  console.log("🚀 ~ file: chequeEntryForm.js ~ line 13 ~ ChequeeData ~ data", data)
+    console.log("🚀 ~ file: chequeEntryForm.js ~ line 13 ~ ChequeeData ~ data", data)
     const formData = new FormData();
-    if (data.Transaction_Type==='Cash') {
+    if (data.Transaction_Type === 'Cash') {
       formData.append("Transaction_Type", data.Transaction_Type);
       formData.append("miscellaneous_amount", data.miscellaneous_amount);
       formData.append("vat_amount", data.vat_amount);
       formData.append("entryDate", data.entryDate);
       if (data.cheque_remarks) {
-        
+
         formData.append("cheque_remarks", data.cheque_remarks);
-      }      formData.append("cheque_amount", data.cheque_amount);
+      } formData.append("cheque_amount", data.cheque_amount);
       formData.append("lease_property", data.lease_property);
       formData.append("property_id", data.property_id);
       formData.append("securityDeposite", data.securityDeposite);
@@ -29,15 +29,14 @@ const ChequeEntryContainer = (props) => {
       formData.append("total_amount", data.total_amount);
 
 
-    }else{
+    } else {
       formData.append("miscellaneous_amount", data.miscellaneous_amount);
       formData.append("vat_amount", data.vat_amount);
       formData.append("cheque_bankName", data.cheque_bankName);
-      formData.append("cheque_issueDate", data.cheque_issueDate);
       formData.append("entryDate", data.entryDate);
       formData.append("cheque_status", data.cheque_status);
       if (data.cheque_remarks) {
-        
+
         formData.append("cheque_remarks", data.cheque_remarks);
       }
       formData.append("cheque_amount", data.cheque_amount);
@@ -58,16 +57,16 @@ const ChequeEntryContainer = (props) => {
 
     }
 
-   
 
 
- 
-  
-     Axios.post( base_URL + "/api/cheque",formData,{
-        headers: {
-          [token_key]: getLocalStorage(token_key),
-        },
-      })
+
+
+
+    Axios.post(base_URL + "/api/cheque", formData, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
+      },
+    })
       .then((res) => {
         notification("Created successfully", "SUCCESS");
         reloadFunction();

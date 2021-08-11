@@ -20,8 +20,7 @@ const ChequeEntry = (props) => {
     miscellaneous_amount: props?.Cheque?.miscellaneous_amount || 0,
     vat_amount: props?.Cheque?.vat_amount || "",
     cheque_bankName: props?.Cheque?.cheque_bankName || "",
-    cheque_issueDate: props?.Cheque?.cheque_issueDate || "",
-    entryDate: props?.Cheque?.entryDate || "",
+    entryDate: props?.Cheque?.entryDate || new Date(),
     cheque_status: props?.Cheque?.cheque_status || "",
     cheque_remarks: props?.Cheque?.cheque_remarks || "",
     cheque_amount: props?.Cheque?.cheque_amount || "",
@@ -118,73 +117,11 @@ const ChequeEntry = (props) => {
                           </span>
                         )}
                       </div>
-                      <div className="mt-4 col-md-3">
-                        <Label for="exampleName">
-                          {" "}
-                          Entry Date
-                          <span
-                            style={{
-                              fontSize: "20px",
-                              marginTop: "20px",
-                              color: "red",
-                            }}
-                          >
-                            *
-                          </span>
-                        </Label>
-                        <Input
-                          type="date"
-                          value={moment(values.entryDate).format("YYYY-MM-DD")}
-                          name="entryDate"
-                          placeholder="Cheque Entry Date"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.entryDate && errors.entryDate && (
-                          <span
-                            className="text-danger col-md-12 text-left mb-2"
-                            style={{ fontSize: 12 }}
-                          >
-                            {errors.entryDate}
-                          </span>
-                        )}
-                      </div>
+
 
                       {values.Transaction_Type === "Cheque" && (
                         <>
-                          <div className="mt-4 col-md-3">
-                            <Label for="exampleName">
-                              Cheque Issue Date
-                              <span
-                                style={{
-                                  fontSize: "20px",
-                                  marginTop: "20px",
-                                  color: "red",
-                                }}
-                              >
-                                *
-                              </span>
-                            </Label>
-                            <Input
-                              type="date"
-                              value={moment(values.cheque_issueDate).format(
-                                "YYYY-MM-DD"
-                              )}
-                              placeholder="Cheque Issue Date"
-                              name="cheque_issueDate"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched.cheque_issueDate &&
-                              errors.cheque_issueDate && (
-                                <span
-                                  className="text-danger col-md-12 text-left mb-2"
-                                  style={{ fontSize: 12 }}
-                                >
-                                  {errors.cheque_issueDate}
-                                </span>
-                              )}
-                          </div>
+
 
                           <div className="mt-4 col-md-3">
                             <Label for="exampleName">
@@ -284,7 +221,7 @@ const ChequeEntry = (props) => {
                           </div>
                           <div className="mt-4 col-md-3">
                             <Label for="exampleName">
-                              Bank Name
+                              Issue Bank
                               <span
                                 style={{
                                   fontSize: "20px",
@@ -687,7 +624,7 @@ const ChequeEntry = (props) => {
                           options={props?.Redux_leaseData?.map((lease) => {
                             return {
                               name:
-                                lease.LeaseId,
+                                lease.property.property_type + '/' + lease.property.unitNo,
                               //  +
                               // "/" +
                               // lease?.property?.property_type +
@@ -735,7 +672,7 @@ const ChequeEntry = (props) => {
                                 name:
                                   property.property_type +
                                   "/" +
-                                  property.referenceNO,
+                                  property.unitNo,
 
                                 id: property._id,
                               };

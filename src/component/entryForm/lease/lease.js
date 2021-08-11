@@ -148,8 +148,9 @@ const LeaseEntry = (props) => {
                     editSelectedName={props?.lease?.tenants?.tenant_Name}
                     setFieldValue={setFieldValue}
                     options={props?.redux_tenantData?.tenant?.map((tenent) => {
+
                       return {
-                        name: tenent.tenant_Name + "-" + tenent.TenantId,
+                        name: tenent.tenant_Name || tenent.tenant_companyName,
                         id: tenent._id,
                       };
                     })}
@@ -183,9 +184,10 @@ const LeaseEntry = (props) => {
                     setFieldValue={setFieldValue}
                     editSelectedName={props?.lease?.property?.referenceNO}
                     options={props.unReserveProperty.map((property) => {
+                      console.log('asdadasdsad', property);
                       return {
                         name:
-                          property.property_type + "-" + property.referenceNO,
+                          property.property_type + "-" + property.unitNo,
                         id: property._id,
                       };
                     })}

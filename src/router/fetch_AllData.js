@@ -34,6 +34,7 @@ let FetchData = (props) => {
         props.redux_Add_BrokerCompany(res.data);
       })
       .catch((err) => {
+        localStorage.clear()
         console.log(err);
       });
   };

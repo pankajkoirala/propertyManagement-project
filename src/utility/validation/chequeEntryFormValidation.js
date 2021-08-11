@@ -4,7 +4,6 @@ export const chequeEntryFormValidation = Yup.object().shape({
   miscellaneous_amount: Yup.number().required("Required Field"),
   vat_amount: Yup.number().required("Required Field"),
   cheque_bankName: Yup.string().required("Required Field"),
-  cheque_issueDate: Yup.date().required("Required Field"),
   entryDate: Yup.date().required("Required Field"),
   cheque_status: Yup.string()
     .oneOf(["PDC Cheque", "Pending", "Hold", "Cleared", "Bounce"])
@@ -24,8 +23,8 @@ export const chequeEntryFormValidation = Yup.object().shape({
   securityDeposite: Yup.number().required("Required Field"),
   depositeBank: Yup.string().required("Required Field"),
   Transaction_Type: Yup.string()
-  .oneOf(["Cash", "Cheque"])
-  .required("Required Field"),
+    .oneOf(["Cash", "Cheque"])
+    .required("Required Field"),
   total_amount: Yup.number().required("Required Field"),
 });
 export const cashEntryFormValidation = Yup.object().shape({

@@ -20,7 +20,7 @@ const ChequeDetailViewCont = (props) => {
   //tanent update
   const ChequeUpdate = (data, ID) => {
     const formData = new FormData();
-    if (data.Transaction_Type==='Cash') {
+    if (data.Transaction_Type === 'Cash') {
       formData.append("Transaction_Type", data.Transaction_Type);
       formData.append("miscellaneous_amount", data.miscellaneous_amount);
       formData.append("vat_amount", data.vat_amount);
@@ -34,11 +34,10 @@ const ChequeDetailViewCont = (props) => {
       formData.append("cheque_status", "Cleared");
       formData.append("total_amount", data.total_amount);
 
-    }else{
+    } else {
       formData.append("miscellaneous_amount", data.miscellaneous_amount);
       formData.append("vat_amount", data.vat_amount);
       formData.append("cheque_bankName", data.cheque_bankName);
-      formData.append("cheque_issueDate", data.cheque_issueDate);
       formData.append("entryDate", data.entryDate);
       formData.append("cheque_status", data.cheque_status);
       formData.append("cheque_remarks", data.cheque_remarks);
