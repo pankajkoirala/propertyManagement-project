@@ -18,8 +18,8 @@ let BrokerCompanyDetailViewComponent = (props) => {
             return (
               <div key={index} className="property-card">
                 <div key={index} className="row pbox">
-                  <div className="row mt-4">
-                    <div className="col-6">
+                  <div style={{ marginLeft: "20px" }} className="row mt-4">
+                    <div className="col-5">
                       <img
                         style={{
                           height: "400px",
@@ -30,7 +30,7 @@ let BrokerCompanyDetailViewComponent = (props) => {
                         alt="recently added"
                       />
                     </div>
-                    <div style={{ marginLeft: "10px" }} className="col-5 ">
+                    <div style={{ marginLeft: "10px" }} className="col-6 ">
                       <h5 className="text-center mb-2">Broker Information</h5>
                       <div className="d-flex justify-content-between mr-4">
                         <div style={{ left: "0px" }}>
@@ -65,40 +65,40 @@ let BrokerCompanyDetailViewComponent = (props) => {
                         </div>
                         <div>
                           <div className="font-weight-bold my-2">
-                            {arg?.brokerId}
+                            {arg?.brokerId || '-'}
                           </div>
                           <div className="font-weight-bold my-2">
-                            {arg?.broker_companyName}
+                            {arg?.broker_companyName || '-'}
                           </div>
 
                           <div className="font-weight-bold my-2">
-                            {arg?.brokerType}
+                            {arg?.brokerType || '-'}
                           </div>
                           <div className="font-weight-bold my-2">
                             {moment(arg?.broker_companyRegisterDate).format(
                               "YYYY-MM-DD"
-                            )}
+                            ) || '-'}
                           </div>
                           <div className="font-weight-bold my-2">
-                            {arg?.broker_RegistrationNumber}
+                            {arg?.broker_RegistrationNumber || '-'}
                           </div>
                           <div className="font-weight-bold my-2">
-                            {arg?.area}
+                            {arg?.area || '-'}
                           </div>
                           <div className="font-weight-bold my-2">
-                            {arg?.city}
+                            {arg?.city || '-'}
                           </div>
                           <div className="font-weight-bold my-2">
-                            {arg?.country}
+                            {arg?.country || '-'}
                           </div>
                           <div className="font-weight-bold my-2">
-                            {arg?.broker_email}
+                            {arg?.broker_email || '-'}
                           </div>
                           <div className="font-weight-bold my-2">
-                            {arg?.broker_phoneNo}
+                            {arg?.broker_phoneNo || '-'}
                           </div>
                           <div className="font-weight-bold my-2">
-                            {arg?.remark}
+                            {arg?.remark || '-'}
                           </div>
                         </div>
                       </div>

@@ -43,36 +43,40 @@ const MaintananceTicketView = (props) => {
                 <th>ID Number</th>
                 <th>Ticket id</th>
                 <th>Ticket Issue Date</th>
-                <th>Ticket Issue Date</th>
-                <th>Maintanance Company Id</th>
-                <th>Maintanance Property ID</th>
+                <th>Ticket Due Date</th>
+                <th>Maintanance Company Name</th>
+                <th>Maintanance Property </th>
+                <th>Status</th>
                 <th>Maintanance Company DetailInfo</th>
               </tr>
             </thead>
             {maintananceTicketList.map((arg, index) => {
+              console.log("🚀 ~ file: maintananceTicket.js ~ line 54 ~ {maintananceTicketList.map ~ arg", arg)
               return (
                 <tbody key={index}>
                   <tr>
                     <td>{index + 1}</td>
-                    <td>{arg?.maintananceTicket_ID}</td>
+                    <td>{arg?.maintananceTicket_ID || '-'}</td>
                     <td>
                       {moment(arg?.maintananceTicketIssueDate).format(
                         "YYYY-MM-DD"
-                      )}
+                      ) || '-'}
                     </td>
                     <td>
                       {moment(arg?.maintananceTicketDueDate).format(
                         "YYYY-MM-DD"
-                      )}
+                      ) || '-'}
                     </td>
-                    <td>{arg?.MaintananceCompanyId?.Company_ID}</td>
+                    <td>{arg?.MaintananceCompanyId?.Company_Name || '-'}</td>
 
                     <td>
                       {arg.MaintanancePropertyID?.property_type +
-                        "/" +
-                        arg.MaintanancePropertyID?.referenceNO}
+                        " " + 'PU No ' +
+                        arg.MaintanancePropertyID?.unitNo || '-'}
                     </td>
-
+                    <td>
+                      {moment(arg?.maintananceTicketDueDate).format("YYYY-MM-DD") >= moment().format("YYYY-MM-DD") ? 'Runing' : 'expire'}
+                    </td>
                     <td>
                       <Link to={`/maintananceTicket/${arg._id}`}>
                         {" "}

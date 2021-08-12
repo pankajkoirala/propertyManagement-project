@@ -63,45 +63,45 @@ let MaintananceCompanyDetailViewComponent = (props) => {
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Company_ID}
+                          {arg?.Company_ID || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Company_Name}
+                          {arg?.Company_Name || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Company_area}
+                          {arg?.Company_area || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Company_city}
+                          {arg?.Company_city || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Company_country}
+                          {arg?.Company_country || '-'}
                         </div>
 
                         <div className="font-weight-bold my-2">
                           {
                             arg
                               ?.Company_Registration_Number
-                          }
+                            || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
                           {moment(
                             arg?.MaintananceCompanyId
                               ?.Company_Registeration_Date
-                          ).format("YYYY-MM-DD")}
+                          ).format("YYYY-MM-DD") || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Company_email}
+                          {arg?.Company_email || '-'}
                         </div>
 
                         <div className="font-weight-bold my-2">
-                          {arg?.Company_phoneNo}
+                          {arg?.Company_phoneNo || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Company_Mobile_Number}
+                          {arg?.Company_Mobile_Number || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.remark}
+                          {arg?.remark || '-'}
                         </div>
                       </div>
                     </div>

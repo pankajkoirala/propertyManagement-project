@@ -59,34 +59,34 @@ let ExpenseDetailViewComponent = (props) => {
                       </div>
                       <div className="col-6">
                         <div className="font-weight-bold my-3">
-                          {arg.Expense_ID}
+                          {arg.Expense_ID || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {moment(arg.expense_EntryDate).format("YYYY-MM-DD")}
+                          {moment(arg.expense_EntryDate).format("YYYY-MM-DD") || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.expenseInvoiceNumber}
+                          {arg.expenseInvoiceNumber || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.Expense_Remark}
+                          {arg.Expense_Remark || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.cheque_amount}
+                          {arg.cheque_amount || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg?.Maintanance_ticketID?.maintananceTicket_ID}
+                          {arg?.Maintanance_ticketID?.maintananceTicket_ID || '-'}
                         </div>
 
                         <div className="font-weight-bold my-3">
                           {moment(
                             arg?.Maintanance_ticketID
                               ?.maintananceTicketIssueDate
-                          ).format("YYYY-MM-DD")}
+                          ).format("YYYY-MM-DD") || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
                           {moment(
                             arg?.Maintanance_ticketID?.maintananceTicketDueDate
-                          ).format("YYYY-MM-DD")}
+                          ).format("YYYY-MM-DD") || '-'}
                         </div>
                         <div
                           style={{
@@ -100,7 +100,7 @@ let ExpenseDetailViewComponent = (props) => {
                           {
                             arg?.Maintanance_ticketID
                               ?.MaintananceCompanyDetailInfo
-                          }
+                            || '-'}
                         </div>
                       </div>
                     </div>

@@ -41,12 +41,14 @@ const PropertyView = (props) => {
                 <th>Property ID</th>
                 <th> Property Type</th>
                 <th>Investment</th>
+                <th>Unit No</th>
                 <th>Community</th>
                 <th>Status</th>
                 <th>Remarks</th>
               </tr>
             </thead>
             {propertyList.map((arg, index) => {
+              console.log("🚀 ~ file: allProperty.js ~ line 51 ~ {propertyList.map ~ arg", arg)
               return (
                 <tbody key={index}>
                   <tr>
@@ -54,6 +56,7 @@ const PropertyView = (props) => {
                     <td>{arg.referenceNO}</td>
                     <td>{arg.property_type}</td>
                     <td>{arg.property_price}</td>
+                    <td>{arg.unitNo}</td>
                     <td>{arg.property_community}</td>
                     <td>
                       {props.LeasePropertyId.some(

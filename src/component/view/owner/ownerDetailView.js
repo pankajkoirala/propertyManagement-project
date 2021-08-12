@@ -58,43 +58,43 @@ let OwnerDetailViewComponent = (props) => {
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_ID}
+                          {arg?.owner_ID || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_Type}
+                          {arg?.owner_Type || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_Name}
+                          {arg?.owner_Name || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {moment(arg?.owner_DOB).format("YYYY-MM-DD")}
+                          {moment(arg?.owner_DOB).format("YYYY-MM-DD") || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_area}
+                          {arg?.owner_area || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_city}
+                          {arg?.owner_city || '-'}
                         </div>{" "}
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_country}
+                          {arg?.owner_country || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.tenants?.tenant_email}
+                          {arg?.tenants?.tenant_email || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.tenants?.tenant_phoneNo}
+                          {arg?.tenants?.tenant_phoneNo || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_email}
+                          {arg?.owner_email || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_phoneNo}
+                          {arg?.owner_phoneNo || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.owner_GovID_RegNo}
+                          {arg?.owner_GovID_RegNo || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.remark}
+                          {arg?.remark || '-'}
                         </div>
                       </div>
                     </div>

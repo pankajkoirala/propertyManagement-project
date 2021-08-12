@@ -11,39 +11,39 @@ const ChequeView = (props) => {
   const [to, setTo] = useState("YYYY-MM-DD");
   const [chequeState, setchequeState] = useState(false);
   let [updatedOptions, setUpdatedOptions] = useState([]);
-  
+
   //check filter from to
   let filterChequeList = props?.sortChequeByDate?.filter((arg) =>
     from === "YYYY-MM-DD" && to === "YYYY-MM-DD"
       ? arg
       : moment(arg.cheque_issueDate).isBetween(
-          moment(from, "YYYY-MM-DD"),
-          moment(to, "YYYY-MM-DD").add(1, "day")
-          )
+        moment(from, "YYYY-MM-DD"),
+        moment(to, "YYYY-MM-DD").add(1, "day")
+      )
   );
-  
+
   //filter by check no
   let filterArray = (cheqNo) => {
     const splittedWord = cheqNo.split("");
     setUpdatedOptions(
       filterChequeList.filter((cheque) =>
-      splittedWord.every((letter) => {
-        return cheque.cheque_number?.toString()?.startsWith(letter?.toString());
+        splittedWord.every((letter) => {
+          return cheque.cheque_number?.toString()?.startsWith(letter?.toString());
         })
       )
-      );
-    };
-    //filter by lease
-    let FilterByLease = (Id) => {
-      setUpdatedOptions(
+    );
+  };
+  //filter by lease
+  let FilterByLease = (Id) => {
+    setUpdatedOptions(
       filterChequeList.filter((cheque) =>
-      cheque?.lease_property?.LeaseId?.toLowerCase().startsWith(Id.toLowerCase())
+        cheque?.lease_property?.LeaseId?.toLowerCase().startsWith(Id.toLowerCase())
       )
-      );
-    };
-    
-    console.log("🚀 ~ file: cheque.js ~ line 14 ~ ChequeView ~ updatedOptions", updatedOptions)
-  
+    );
+  };
+
+  console.log("🚀 ~ file: cheque.js ~ line 14 ~ ChequeView ~ updatedOptions", updatedOptions)
+
   //filter cheque by cheque status
   let FilterByChequeStatus = (status) => {
     let filterCheque = filterChequeList.filter(
@@ -260,7 +260,7 @@ const ChequeView = (props) => {
                         "/" +
                         arg?.property_id?.referenceNO}
                     </td>
-                    <td>{arg.cheque_number||'-'}</td>
+                    <td>{arg.cheque_number || '-'}</td>
                     <td>
                       {moment(arg?.cheque_issueDate).format("YYYY-MM-DD")}
                     </td>
@@ -271,15 +271,15 @@ const ChequeView = (props) => {
                         arg.cheque_status === "Pending"
                           ? " text-secondary font-weight-bold"
                           : arg.cheque_status === "Cleared"
-                          ? " text-success font-weight-bold"
-                          : arg.cheque_status === "Bounce"
-                          ? " text-danger font-weight-bold"
-                          : arg.cheque_status === "Not Deposited"
-                          ? " text-warning font-weight-bold"
-                          : " text-info font-weight-bold"
+                            ? " text-success font-weight-bold"
+                            : arg.cheque_status === "Bounce"
+                              ? " text-danger font-weight-bold"
+                              : arg.cheque_status === "Not Deposited"
+                                ? " text-warning font-weight-bold"
+                                : " text-info font-weight-bold"
                       }
                     >
-                      {arg.Transaction_Type==='Cheque'?arg.cheque_status:'-'}
+                      {arg.Transaction_Type === 'Cheque' ? arg.cheque_status : '-'}
                     </td>
 
                     <td>

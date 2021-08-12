@@ -206,9 +206,9 @@ const MaintananceTicket = (props) => {
                             (property) => {
                               return {
                                 name:
-                                  property.property_type +
+                                  property?.property_type +
                                   "-" +
-                                  property.unitNo,
+                                  'PU No-' + property?.unitNo,
 
                                 id: property._id,
                               };
@@ -217,6 +217,9 @@ const MaintananceTicket = (props) => {
                           name={"MaintanancePropertyID"}
                           placeholderName="Maintainace Property"
                         />
+
+
+
                         <div style={{ marginTop: "35px" }}>
                           {touched.MaintanancePropertyID &&
                             errors.MaintanancePropertyID && (
@@ -229,6 +232,7 @@ const MaintananceTicket = (props) => {
                             )}
                         </div>
                       </div>
+
                       <div className="mt-4 col-md-4">
                         <Label for="exampleName">
                           Maintanance Company Id
@@ -260,6 +264,8 @@ const MaintananceTicket = (props) => {
                           )}
                           name={"MaintananceCompanyId"}
                         />
+
+
                         <div style={{ marginTop: "35px" }}>
                           {touched.MaintananceCompanyId &&
                             errors.MaintananceCompanyId && (

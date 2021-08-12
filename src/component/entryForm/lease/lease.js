@@ -187,7 +187,9 @@ const LeaseEntry = (props) => {
                       console.log('asdadasdsad', property);
                       return {
                         name:
-                          property.property_type + "-" + property.unitNo,
+                          property?.property_type +
+                          "-" +
+                          'PU No-' + property?.unitNo,
                         id: property._id,
                       };
                     })}

@@ -16,6 +16,7 @@ let LeaseDetailViewComponent = (props) => {
       <div style={{ margin: "25px" }}>
         {showEditForm === false ? (
           props.selecteOneLease.map((arg, index) => {
+            console.log(arg);
             return (
               <div key={index} className="property-card">
                 <div className="row">
@@ -48,7 +49,6 @@ let LeaseDetailViewComponent = (props) => {
                         </div>
                         <div className="font-weight-bold my-2">Plot Number</div>
                         <div className="font-weight-bold my-2">
-                          {" "}
                           Building Floor Number
                         </div>
                         <div className="font-weight-bold my-2">
@@ -58,50 +58,50 @@ let LeaseDetailViewComponent = (props) => {
                           Property Premise Number
                         </div>
                         <div className="font-weight-bold my-2">community </div>
-                        <div className="font-weight-bold my-2">
+                        {/* <div className="font-weight-bold my-2">
                           Property Owner Name
-                        </div>
+                        </div> */}
                         <div className="font-weight-bold my-2">
                           Property area
                         </div>
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.referenceNO}
+                          {arg?.property?.referenceNO || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.property_type}
+                          {arg?.property?.property_type || '-'}
                         </div>
 
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.area}
+                          {arg?.property?.area || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.building_Name}
+                          {arg?.property?.building_Name || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.building_Number}
+                          {arg?.property?.building_Number || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.plot_Number}
+                          {arg?.property?.plot_Number || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.building_floorNumber}
+                          {arg?.property?.building_floorNumber || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.Muncipality_Number}
+                          {arg?.property?.Muncipality_Number || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.Property_Premise_Number}
+                          {arg?.property?.Property_Premise_Number || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.property_community}
+                          {arg?.property?.property_community || '-'}
                         </div>
+                        {/* <div className="font-weight-bold my-2">
+                          {arg?.property?.Property_ownerName || '-'}
+                        </div> */}
                         <div className="font-weight-bold my-2">
-                          {arg?.property?.Property_ownerName}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg?.property?.Property_Area}
+                          {arg?.property?.Property_Area || '-'}
                         </div>
                       </div>
                     </div>
@@ -129,24 +129,24 @@ let LeaseDetailViewComponent = (props) => {
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
-                          {arg.LeaseId}
+                          {arg.LeaseId || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {moment(arg.commenceDate).format("YYYY-MM-DD")}
+                          {moment(arg.commenceDate).format("YYYY-MM-DD") || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {moment(arg.expirationDate).format("YYYY-MM-DD")}
+                          {moment(arg.expirationDate).format("YYYY-MM-DD") || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg.securityDeposite}
+                          {arg.securityDeposite || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
                           {moment(arg.securityfirstDueDate).format(
                             "YYYY-MM-DD"
-                          )}
+                          ) || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg.lease_Term}
+                          {arg.lease_Term || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg.frequency === "30"
@@ -194,43 +194,43 @@ let LeaseDetailViewComponent = (props) => {
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
-                          {arg?.tenants?.TenantId}
+                          {arg?.tenants?.TenantId || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.tenants?.tenant_Name}
+                          {arg?.tenants?.tenant_Name || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
                           {moment(
                             arg?.tenants?.DateOfBirth_registrationDate
-                          ).format("YYYY-MM-DD")}
+                          ).format("YYYY-MM-DD") || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
                           {arg?.tenants?.area +
                             "," +
                             arg?.tenants?.city +
                             "," +
-                            arg?.tenants?.country}
+                            arg?.tenants?.country || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.tenants?.tenant_email}
+                          {arg?.tenants?.tenant_email || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.tenants?.tenant_phoneNo}
+                          {arg?.tenants?.tenant_phoneNo || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.tenants?.tenant_GovIdNo}
+                          {arg?.tenants?.tenant_GovIdNo || '-'}
                         </div>
                         <div className="font-weight-bold my-1">
                           {arg?.tenants?.tenant_passportNo ? arg?.tenants?.tenant_passportNo : "-"}
                         </div>
                         <div className="font-weight-bold my-1">
-                          {arg?.tenants?.tenant_passport_expireDate}
+                          {arg?.tenants?.tenant_passportNo ? arg?.tenants?.tenant_passport_expireDate : '-'}
                         </div>
                         <div className="font-weight-bold my-1">
                           {arg?.tenants?.tenant_visaNo ? arg?.tenants?.tenant_visaNo : "-"}
                         </div>
                         <div className="font-weight-bold my-1">
-                          {arg?.tenants?.tenant_visa_expireDate}
+                          {arg?.tenants?.tenant_visa_expireDate || '-'}
                         </div>
 
                       </div>

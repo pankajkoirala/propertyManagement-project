@@ -622,9 +622,12 @@ const ChequeEntry = (props) => {
                           }
                           setFieldValue={setFieldValue}
                           options={props?.Redux_leaseData?.map((lease) => {
+                            console.log("🚀 ~ file: chequeEntryForm.js ~ line 641 ~ options={props?.Redux_leaseData?.map ~ lease", lease)
                             return {
                               name:
-                                lease.property.property_type + '/' + lease.property.unitNo,
+                                lease.property?.property_type +
+                                "-" +
+                                'PU No-' + lease.property?.unitNo,
                               //  +
                               // "/" +
                               // lease?.property?.property_type +
@@ -660,7 +663,7 @@ const ChequeEntry = (props) => {
                             *
                           </span>
                         </Label>
-                        <RegexComponent
+                        {/* <RegexComponent
                           {...props}
                           editSelectedName={
                             props?.Cheque?.property_id?.referenceNO
@@ -670,14 +673,38 @@ const ChequeEntry = (props) => {
                             (property) => {
                               return {
                                 name:
-                                  property.property_type +
-                                  "/" +
-                                  property.unitNo,
+                                  property?.property_type +
+                                  "-" +
+                                  'PU No-' + property?.unitNo,
 
                                 id: property._id,
                               };
                             }
                           )}
+                          name={"property_id"}
+                        /> */}
+                        <RegexComponent
+                          {...props}
+                          editSelectedName={
+                            props?.Cheque?.lease_property?.LeaseId
+                          }
+                          setFieldValue={setFieldValue}
+                          options={props?.Redux_leaseData?.map((lease) => {
+                            console.log("🚀 ~ file: chequeEntryForm.js ~ line 641 ~ options={props?.Redux_leaseData?.map ~ lease", lease)
+                            return {
+                              name:
+                                lease.property?.property_type +
+                                "-" +
+                                'PU No-' + lease.property?.unitNo,
+                              //  +
+                              // "/" +
+                              // lease?.property?.property_type +
+                              // "/" +
+                              // lease?.property?.referenceNO,
+
+                              id: lease.property._id,
+                            };
+                          })}
                           name={"property_id"}
                         />
                         <div style={{ marginTop: "30px" }}>

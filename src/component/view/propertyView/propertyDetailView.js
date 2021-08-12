@@ -58,25 +58,25 @@ let PropertyDetailViewComponent = (props) => {
                         <div className="font-weight-bold my-3">Remarks </div>
                       </div>
                       <div>
-                        <div className="font-weight-bold my-3">{arg.area}</div>
+                        <div className="font-weight-bold my-3">{arg.area || '-'}</div>
 
                         <div className="font-weight-bold my-3">
-                          {arg.building_Number}
+                          {arg.building_Number || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.plot_no}
+                          {arg.plot_no || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.building_floorNumber}
+                          {arg.building_floorNumber || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.Makani_Number}
+                          {arg.Makani_Number || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.Property_Premise_Number}
+                          {arg.Property_Premise_Number || '-'}
                         </div>
                         <div className="font-weight-bold my-3">
-                          {arg.property_community}
+                          {arg.property_community || '-'}
                         </div>
 
                         <div className="font-weight-bold my-3">
@@ -107,17 +107,17 @@ let PropertyDetailViewComponent = (props) => {
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
-                          {arg.referenceNO}
+                          {arg.referenceNO || '-'}
                         </div>
-                        <div className="font-weight-bold my-2">{arg.area}</div>
+                        <div className="font-weight-bold my-2">{arg.area || '-'}</div>
                         <div className="font-weight-bold my-2">
-                          {arg.property_type}
-                        </div>
-                        <div className="font-weight-bold my-2">
-                          {arg.property_price}
+                          {arg.property_type || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg.city + "," + arg.country}
+                          {arg.property_price || '-'}
+                        </div>
+                        <div className="font-weight-bold my-2">
+                          {arg.city + "," + arg.country || '-'}
                         </div>
                       </div>
                     </div>

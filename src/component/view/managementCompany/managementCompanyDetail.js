@@ -56,32 +56,32 @@ let ManagementCompanyDetailViewComponent = (props) => {
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
-                          {arg?.managementCompany_companyID}
+                          {arg?.managementCompany_companyID || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.managementCompany_name}
+                          {arg?.managementCompany_name || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.managementCompany_area}
+                          {arg?.managementCompany_area || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.managementCompany_city}
+                          {arg?.managementCompany_city || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.managementCompany_country}
+                          {arg?.managementCompany_country || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.managementCompany_email}
+                          {arg?.managementCompany_email || '-'}
                         </div>
 
                         <div className="font-weight-bold my-2">
-                          {arg?.managementCompany_phoneNo}
+                          {arg?.managementCompany_phoneNo || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.managementCompany_MobileNumber}
+                          {arg?.managementCompany_MobileNumber || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.remark}
+                          {arg?.remark || '-'}
                         </div>
                       </div>
                     </div>

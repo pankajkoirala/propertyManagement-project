@@ -175,7 +175,7 @@ const ExpenseEntry = (props) => {
                             <option value="">Select One </option>
                             <option value="Maintanance">Maintanance</option>
                             <option value="Legal">Legal</option>
-                            <option value="FMC">FMC</option>
+                            <option value="Brokerage">Brokerage</option>
                             <option value="Utility">Utility</option>
                             <option value="Miscellaneous">Miscellaneous</option>
                           </Input>
@@ -208,7 +208,7 @@ const ExpenseEntry = (props) => {
                               options={props?.Redux_maintananceTicketData?.map(
                                 (maintananceTicket) => {
                                   return {
-                                    name: maintananceTicket?.maintananceTicket_ID,
+                                    name: 'PU No-' + maintananceTicket?.MaintanancePropertyID?.unitNo + ' ' + maintananceTicket?.MaintananceCompanyId?.Company_Name,
                                     id: maintananceTicket?._id,
                                   };
                                 }
@@ -248,11 +248,13 @@ const ExpenseEntry = (props) => {
                                 setFieldValue={setFieldValue}
                                 options={props?.redux_propertyData?.map(
                                   (property) => {
+
+
                                     return {
                                       name:
                                         property?.property_type +
                                         "-" +
-                                        property?.referenceNO,
+                                        'PU No-' + property?.unitNo,
                                       id: property?._id,
                                     };
                                   }

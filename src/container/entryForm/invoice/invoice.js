@@ -41,7 +41,6 @@ let Invoice = (props) => {
         notification("error", "ERROR");
       });
   };
-
   return (
     <div>
       <InvoiceComponent

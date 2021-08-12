@@ -60,42 +60,42 @@ let DeveloperCompanyDetailViewComponent = (props) => {
                       </div>
                       <div>
                         <div className="font-weight-bold my-2">
-                          {arg?.DeveloperCompany_ID}
+                          {arg?.DeveloperCompany_ID || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.DeveloperCompany_Name}
+                          {arg?.DeveloperCompany_Name || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Developer_area}
+                          {arg?.Developer_area || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Developer_city}
+                          {arg?.Developer_city || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.Developer_country}
+                          {arg?.Developer_country || '-'}
                         </div>
 
                         <div className="font-weight-bold my-2">
-                          {arg?.DeveloperCompany_RegisterationNumber}
+                          {arg?.DeveloperCompany_RegisterationNumber || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
                           {moment(
                             arg?.managementCompanyId
                               ?.DeveloperCompany_RegisterationDate
-                          ).format("YYYY-MM-DD")}
+                          ).format("YYYY-MM-DD") || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.DeveloperCompany_email}
+                          {arg?.DeveloperCompany_email || '-'}
                         </div>
 
                         <div className="font-weight-bold my-2">
-                          {arg?.DeveloperCompany_phoneNo}
+                          {arg?.DeveloperCompany_phoneNo || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.DeveloperCompany_MobileNumber}
+                          {arg?.DeveloperCompany_MobileNumber || '-'}
                         </div>
                         <div className="font-weight-bold my-2">
-                          {arg?.remark}
+                          {arg?.remark || '-'}
                         </div>
                       </div>
                     </div>

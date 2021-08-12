@@ -38,7 +38,7 @@ const ManagementCompanyView = (props) => {
                 <th>ID Number</th>
                 <th>company id</th>
                 <th>company name</th>
-                <th>registration num</th>
+                <th>Address</th>
                 <th>Contact Number</th>
                 <th>Contact Email</th>
                 <th>Remarks</th>
@@ -51,7 +51,7 @@ const ManagementCompanyView = (props) => {
                     <td>{index + 1}</td>
                     <td>{arg.managementCompany_companyID}</td>
                     <td>{arg.managementCompany_name}</td>
-                    <td>{arg.managementCompany_Registeration_Number}</td>
+                    <td>{arg.managementCompany_area + ',' + arg.managementCompany_city}</td>
                     <td>{arg.managementCompany_phoneNo}</td>
                     <td>{arg.managementCompany_email}</td>
 
