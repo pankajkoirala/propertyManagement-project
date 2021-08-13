@@ -44,6 +44,8 @@ import MaintananceTicketList from "../container/view/maintananceTicket/maintanan
 import MaintananceTicketDetailView from "../container/view/maintananceTicket/maintananceTicketDetailView";
 import OwnerDetailView from "../container/view/owner/ownerDetailView";
 import InvoiceDetailView from "../container/view/invoice/invoiceDetailView";
+import FMCentry from "../container/entryForm/FMC/fmc";
+import FMCList from "../container/view/fmc/fmc";
 
 import TopNavBar from "./../shared/topNavBar";
 import ChequeInfo from "./../container/entryForm/cheque/chequeEntry/chequeInfo";
@@ -61,12 +63,12 @@ const RouterPage = () => {
           style={
             authorize
               ? {
-                  // right: "0",
-                  // top: "0",
-                  // position: "absolute",
-                  width: "100%",
-                  padding: "0px",
-                }
+                // right: "0",
+                // top: "0",
+                // position: "absolute",
+                width: "100%",
+                padding: "0px",
+              }
               : { position: "relative" }
           }
         >
@@ -104,6 +106,8 @@ const RouterPage = () => {
             <PrivateRouter exact path="/chequeList" component={ChequeView} />
             <PrivateRouter exact path="/ownerList" component={OwnerList} />
             <PrivateRouter exact path="/invoiceList" component={InvoiceList} />
+            <PrivateRouter exact path="/FMCentry" component={FMCentry} />
+            <PrivateRouter exact path="/FMClist" component={FMCList} />
 
             <PrivateRouter
               exact

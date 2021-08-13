@@ -12,6 +12,7 @@ import { maintananceTicketReducer } from "./maintananceTicket_redux";
 import { expenseReducer } from "./expense_redux";
 import { invoiceReducer } from "./invoice";
 import { ownerReducer } from "./owner_redux";
+import { fmcReducer } from "./FMC";
 
 export let rootReducer = combineReducers({
   property: propertyReducer,
@@ -27,4 +28,5 @@ export let rootReducer = combineReducers({
   expense: expenseReducer,
   invoice: invoiceReducer,
   owner: ownerReducer,
+  fmc: fmcReducer
 });

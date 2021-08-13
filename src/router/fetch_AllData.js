@@ -21,6 +21,7 @@ let FetchData = (props) => {
     DevelopementCompanyData();
     MaintananceTicketData();
     ExpensesData();
+    FMC()
     // eslint-disable-next-line
   }, []);
 
@@ -206,6 +207,19 @@ let FetchData = (props) => {
         console.log(err);
       });
   };
+  let FMC = () => {
+    Axios.get(base_URL + "/api/fmc", {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
+      },
+    })
+      .then((res) => {
+        props.redux_Add_fmc(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return <div></div>;
 };
@@ -234,6 +248,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: "ADD_ALL_EXPENSE", payload: arg }),
   redux_Add_invoice: (arg) =>
     dispatch({ type: "ADD_ALL_INVOICE", payload: arg }),
+  redux_Add_fmc: (arg) =>
+    dispatch({ type: "ADD_ALL_FMC", payload: arg }),
   redux_Add_owner: (arg) => dispatch({ type: "ADD_ALL_OWNER", payload: arg }),
 });
 

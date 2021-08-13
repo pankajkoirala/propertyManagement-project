@@ -505,6 +505,47 @@ const NavbarPage = () => {
           </Accordion.Collapse>
         </Card>
 
+        <Card style={{ border: "none", backgroundColor: "#022B39" }}>
+          <Card.Header style={{ backgroundColor: "#3B4AFF", padding: "0px" }}>
+            <Accordion.Toggle
+              style={{
+                border: "none",
+                // backgroundColor: "#66b2ff",
+                // borderRadius: "50px",
+              }}
+              as={Card.Header}
+              variant="link"
+              eventKey="20"
+            >
+              <b>
+                <BusinessIcon className="nav-icons" />
+                FMC
+              </b>
+            </Accordion.Toggle>
+          </Card.Header>
+          <Accordion.Collapse eventKey="20">
+            <Card.Body>
+              <Link to="/FMCentry">
+
+                <Button variant="primary" className="button-size">
+                  <AddBoxIcon />
+                  FMC Entry
+                </Button>
+              </Link>
+              <br />
+
+              <Link to="/FMClist">
+
+                <Button variant="success" className="button-size">
+                  <VisibilityIcon className="nav-icons" />
+                  FMC List
+                </Button>
+              </Link>
+              <br />
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+
 
 
         <Card style={{ border: "none", backgroundColor: "#022B39" }}>
