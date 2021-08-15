@@ -41,6 +41,7 @@ let PropertyDetailView = (props) => {
     formData.append("Property_Premise_Number", data.Property_Premise_Number);
     formData.append("area", data.area);
     formData.append("Property_ownerName", data.Property_ownerName);
+    formData.append("property_name", data.property_name);
     formData.append("developerCompany", data.developerCompany);
     formData.append("managementCompany", data.managementCompany);
     formData.append("unitNo", data.unitNo);

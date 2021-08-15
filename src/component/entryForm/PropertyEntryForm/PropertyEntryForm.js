@@ -43,6 +43,7 @@ const PropertyEntry = (props) => {
     area: props?.property?.area || "",
     country: props?.property?.country || "U.A.E",
     property_type: props?.property?.property_type || "",
+    property_name: props?.property?.property_name || "",
     property_price: props?.property?.property_price || "",
     facilities: props?.property?.facilities || [],
     property_community: props?.property?.property_community || "",
@@ -190,6 +191,36 @@ const PropertyEntry = (props) => {
                 </div>
 
                 <div className="col-sm-4 my-1">
+                  <Label>
+                    Property Name
+                    <span
+                      style={{
+                        fontSize: "20px",
+                        marginTop: "20px",
+                        color: "red",
+                      }}
+                    >
+                      *
+                    </span>
+                  </Label>
+                  <Input
+                    type="text"
+                    name="property_name"
+                    placeholder="Property Name"
+                    value={values.property_name}
+                    min={0}
+                    onChange={handleChange}
+                  />
+                  {touched.property_name && errors.property_name && (
+                    <span
+                      className="text-danger col-md-12 text-left mb-2"
+                      style={{ fontSize: 12 }}
+                    >
+                      {errors.property_name}
+                    </span>
+                  )}
+                </div>
+                <div className="col-sm-4 my-1">
                   <Label for="exampleName">
                     Country
                     <span
@@ -304,7 +335,7 @@ const PropertyEntry = (props) => {
                     type="text"
                     value={values.plot_no}
                     name="plot_no"
-                    placeholder="Building Name"
+                    placeholder="Plot Number"
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />

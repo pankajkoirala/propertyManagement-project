@@ -25,7 +25,7 @@ const PropertyEntry = (props) => {
     formData.append("building_floorNumber", data.building_floorNumber);
     if (data.Makani_Number) {
       formData.append("Makani_Number", data.Makani_Number);
-    }else{
+    } else {
       formData.append("Makani_Number", 'not available');
 
     }
@@ -35,19 +35,20 @@ const PropertyEntry = (props) => {
     formData.append("Property_ownerName", data.Property_ownerName);
     formData.append("developerCompany", data.developerCompany);
     formData.append("managementCompany", data.managementCompany);
+    formData.append("property_name", data.property_name);
     formData.append("unitNo", data.unitNo);
     if (data.remark) {
       formData.append("remark", data.remark);
     }
 
 
-      
-      Axios.post( base_URL + "/api/property", formData,{
-        headers: {
-          [token_key]: getLocalStorage(token_key),
-        },
-      })
-   
+
+    Axios.post(base_URL + "/api/property", formData, {
+      headers: {
+        [token_key]: getLocalStorage(token_key),
+      },
+    })
+
       .then((res) => {
         notification("Created successfully", "SUCCESS");
         reloadFunction();

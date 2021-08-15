@@ -80,8 +80,9 @@ const Homepage = (props) => {
     ],
   };
 
+
   return (
-    <div className="bodyWrapper">
+    <div id='my-node' className="bodyWrapper">
       <div className="bodydisplay">
         {/* //bar income expense  */}
         <div

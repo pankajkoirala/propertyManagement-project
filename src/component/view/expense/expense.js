@@ -8,6 +8,8 @@ import "./expense.css";
 import {
   expenseCalculationPerHead,
   totalExpenseCalculation,
+  fmcEexpenseCalculationPerHead,
+  // fmcTotalExpenseCalculation
 } from "../../../shared/commonFunction";
 
 const ExpenseDisplay = (props) => {
@@ -16,16 +18,18 @@ const ExpenseDisplay = (props) => {
   let [expensesYear, SetExpensesYear] = useState("");
 
   let expensesList = props?.expenseList.slice().reverse();
+  console.log(props.redux_fmc);
+
 
   //filtering array list by month and year
   let FilterByMonthYear = () => {
     let filterArray = expenses.filter(
       (arg) =>
         moment(arg.expense_EntryDate).format("YYYY-MM") ===
-          expensesYear + "-" + expensesMonth?.padStart(2, 0) ||
+        expensesYear + "-" + expensesMonth?.padStart(2, 0) ||
         moment(arg.expense_EntryDate).format("YYYY") === expensesYear ||
         moment(arg.expense_EntryDate).format("MM") ===
-          expensesMonth?.padStart(2, 0)
+        expensesMonth?.padStart(2, 0)
     );
     filterArray?.length !== 0 ? SetExpenses(filterArray) : SetExpenses([]);
   };
@@ -50,9 +54,14 @@ const ExpenseDisplay = (props) => {
     IncreasingYears
   );
 
+
+
+
+
+
   return (
     <>
-      <div style={{ padding: "20px" }}>
+      <div id='my-node' style={{ padding: "20px" }}>
         <div className="page-title">
           <h1>Expense list</h1>
         </div>
@@ -73,8 +82,8 @@ const ExpenseDisplay = (props) => {
                   search4:
                     arg.expense_Type !== "Miscellaneous"
                       ? arg?.property_ID?.property_type +
-                        "-" +
-                        arg?.property_ID?.referenceNO
+                      "-" +
+                      arg?.property_ID?.referenceNO
                       : "",
                   ID: arg._id,
                 };
@@ -151,6 +160,8 @@ const ExpenseDisplay = (props) => {
         </div>
 
         <div style={{ overflowX: "auto" }}>
+          <h3 style={{ textAlign: 'center' }}>Other Expense</h3>
+
           <table id="expense-table">
             <thead>
               <tr>
@@ -177,7 +188,7 @@ const ExpenseDisplay = (props) => {
                     <td>{arg?.expense_Type}</td>
                     <td>
                       {arg.expense_Type !== "Miscellaneous"
-                        ?( arg?.property_ID?.property_type +
+                        ? (arg?.property_ID?.property_type +
                           "-" +
                           arg?.property_ID?.referenceNO)
                         : "-"}
@@ -188,6 +199,42 @@ const ExpenseDisplay = (props) => {
                         <button className="view-btn">View Detail</button>
                       </Link>
                     </td>
+                  </tr>
+                </tbody>
+              );
+            })}
+          </table>
+        </div>
+        <div style={{ overflowX: "auto" }}>
+          <h3 style={{ textAlign: 'center' }}>FMC Expense</h3>
+          <h6 style={{ fontWeight: 'bold', float: 'right' }}>Total FMC Expense: {fmcEexpenseCalculationPerHead(props.redux_fmc)}</h6>
+          <table id="lease-table">
+            <thead>
+              <tr>
+                <th>SN</th>
+                <th>Date</th>
+                <th>Property</th>
+                <th>Management Company</th>
+                <th>Quarter</th>
+                <th> Amount</th>
+              </tr>
+            </thead>
+            {props.redux_fmc.map((arg, index) => {
+              return (
+                <tbody key={index}>
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{moment(arg?.date).format("YYYY-MM-DD")}</td>
+                    <td>{arg?.property?.property_type +
+                      "/" +
+                      arg.property?.unitNo}</td>
+                    <td>{arg.management_Companies.managementCompany_name}</td>
+                    <td>{arg.quarter}</td>
+                    <td>
+                      {'AED.' + arg.totalAmount}
+                    </td>
+
+
                   </tr>
                 </tbody>
               );

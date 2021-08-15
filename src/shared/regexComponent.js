@@ -10,13 +10,13 @@ let RegexConponent = (props) => {
   const [value, setValue] = useState("");
   const [optionDisplay, setOptionDisplay] = useState(false);
 
-  
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const { setFieldValue, name, options, OwnerFunction,editSelectedName } = props;
+  const { setFieldValue, name, options, OwnerFunction, editSelectedName } = props;
 
   let filterArray = (e) => {
     const splittedWord = e.toLowerCase().split("");
@@ -48,15 +48,15 @@ let RegexConponent = (props) => {
   return (
     <div className="col-12"
       ref={wrapperref}
-      style={{ position: "absolute", marginLeft:'-12px', marginTop: "0", marginBottom: "0" }}
+      style={{ position: "absolute", marginLeft: '-12px', marginTop: "0", marginBottom: "0" }}
     >
       <Input
-      className="col-12"
+        className="col-12"
         style={{
           position: "relative",
           top: "0",
           bottom: "0",
-          
+
         }}
         type="text"
         onClick={() => {
@@ -65,7 +65,7 @@ let RegexConponent = (props) => {
             ? setUpdatedOptions([])
             : setUpdatedOptions(options);
         }}
-        value={value||editSelectedName}
+        value={value || editSelectedName}
         onChange={(e) => {
           filterArray(e.target.value);
 
@@ -76,7 +76,7 @@ let RegexConponent = (props) => {
       {updatedOptions?.map((arg, i) => {
         return (
           <div
-          className="col-12"
+            className="col-12 bg-secondary text-white font-weight-bold"
             style={{
               position: "relative",
               top: "0",
@@ -85,9 +85,8 @@ let RegexConponent = (props) => {
               borderColor: "beige",
               padding: "5px",
               zIndex: "99999",
-             
+
             }}
-            className="bg-secondary text-white font-weight-bold"
             onClick={() => {
               setFieldValue(name, arg.id);
               setValue(arg.name);

@@ -5,6 +5,8 @@ import moment from "moment";
 import PoopUp from "../../../shared/popup";
 import { Link } from "@material-ui/core";
 import ReactToPdf from "react-to-pdf";
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import "./invoice.css";
 let InvoiceComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
@@ -20,10 +22,7 @@ let InvoiceComponent = (props) => {
     chequeNumber: props?.Cheque?.cheque_number,
     lease_id: props?.Cheque?.lease_property?.LeaseId,
     InvoiceId: "INVOICE-",
-    propertyId:
-      props?.Cheque?.property_id?.property_type +
-      "/" +
-      props?.Cheque?.property_id?.referenceNO,
+    propertyId: props?.Cheque?.property_id?.property_name,
   };
   let Invoices = [1];
   //total amount in words function
@@ -100,9 +99,53 @@ let InvoiceComponent = (props) => {
   };
 
 
+  const imageDown = (e) => {
+    var node = document.getElementById('my-node');
 
+    htmlToImage.toPng(node)
+      .then(function (dataUrl) {
+        var img = new Image();
+        img.src = dataUrl;
+        var a = document.createElement("a"); //Create <a>
+        a.href = img.src//Image Base64 Goes here
+        console.log("🚀 ~ file: invoice.js ~ line 117 ~ a.href", a.href)
+        a.download = "Image.png"; //File name Here
+        a.click(); //Downloaded file
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
+  }
+  const imageURL = async (e) => {
+    var node = document.getElementById('my-node');
+
+    const dataUrl = await htmlToImage.toPng(node)
+
+    var img = new Image();
+    img.src = dataUrl;
+    var a = document.createElement("a"); //Create <a>
+    a.href = img.src//Image Base64 Goes here
+    console.log("🚀 ~ file: invoice.js ~ line 117 ~ a.href", a.href)
+    // a.download = "Image.png"; //File name Here
+    // a.click(); //Downloaded file
+    //----------------------------------------------------
+    let value = {
+      chequeMongoId: props.Cheque._id,
+      invoicePhoto: a.href,
+      invoiceIssueDate: moment().format("YYYY-MM-DD"),
+      chequeNumber: props?.Cheque?.cheque_number,
+      lease_id: props?.Cheque?.lease_property?.LeaseId,
+      InvoiceId: invoiceID,
+      propertyId: props?.Cheque?.property_id?.property_name,
+    };
+
+    props.invoicePost(value);
+    setLoadingState(true);
+
+  }
   return (
-    <div>
+    <div id="my-node">
+
       <div>
         <div className="PropertyFormEntry">
           <div>
@@ -141,10 +184,11 @@ let InvoiceComponent = (props) => {
                             <Link
                               style={{ float: "right", marginLeft: "10px" }}
                               type="button"
-                              onClick={toPdf}
+                              onClick={(e) => imageDown(e)}
                             >
                               Download
                             </Link>
+
                             <div
                               style={{
                                 marginTop: "30px",
@@ -153,7 +197,9 @@ let InvoiceComponent = (props) => {
                               key={index}
                             >
                               <div style={{ marginTop: "40px" }}>
-                                <h1 className="text-center">Graphene</h1>
+                                <h1 className="text-center">
+
+                                  Graphene</h1>
                                 <div className="text-center font-weight-bold">
                                   Head Office : Graphene Pvt.Ltd,-Tripureshwor
                                 </div>
@@ -166,6 +212,13 @@ let InvoiceComponent = (props) => {
                                     <div>
                                       <div>
                                         <span className="font-weight-bold mx-1">
+                                          <Link
+                                            style={{ float: "right", marginLeft: "10px" }}
+                                            type="button"
+                                            onClick={(e) => imageURL(e)}
+                                          >
+                                            Save
+                                          </Link>
                                           Invoice No :
                                         </span>
                                         <span className="font-weight-bold mx-1">

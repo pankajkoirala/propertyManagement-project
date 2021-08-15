@@ -39,6 +39,7 @@ const PropertyView = (props) => {
               <tr>
                 <th>ID Number</th>
                 <th>Property ID</th>
+                <th>Property Name</th>
                 <th> Property Type</th>
                 <th>Investment</th>
                 <th>Unit No</th>
@@ -53,11 +54,12 @@ const PropertyView = (props) => {
                 <tbody key={index}>
                   <tr>
                     <td>{index + 1}</td>
-                    <td>{arg.referenceNO}</td>
-                    <td>{arg.property_type}</td>
-                    <td>{arg.property_price}</td>
-                    <td>{arg.unitNo}</td>
-                    <td>{arg.property_community}</td>
+                    <td>{arg.referenceNO || '-'}</td>
+                    <td>{arg.property_name || '-'}</td>
+                    <td>{arg.property_type || '-'}</td>
+                    <td>{arg.property_price || '-'}</td>
+                    <td>{arg.unitNo || '-'}</td>
+                    <td>{arg.property_community || '-'}</td>
                     <td>
                       {props.LeasePropertyId.some(
                         (arg1) => arg1 === arg._id

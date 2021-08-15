@@ -46,6 +46,7 @@ export const expenseCalculationPerHead = (allExpense) => {
   }
   return Expense;
 };
+
 //total expense calculation
 export const totalExpenseCalculation = (allExpense) => {
   let totalExpense = 0;
@@ -57,6 +58,33 @@ export const totalExpenseCalculation = (allExpense) => {
   });
   return totalExpense;
 };
+
+//expense per object of array
+export const fmcEexpenseCalculationPerHead = (allExpense) => {
+  let Expense = 0;
+
+  for (let index = 0; index < allExpense?.length; index++) {
+    Expense = Expense + allExpense[index].totalAmount;
+  }
+  return Expense;
+};
+
+//total expense calculation
+export const fmcTotalExpenseCalculation = (allExpense) => {
+  let totalExpense = 0;
+
+  allExpense.forEach((arg) => {
+    for (let index = 0; index < arg?.expense_list?.length; index++) {
+      totalExpense = totalExpense + arg.expense_list[index].totalAmount;
+    }
+  });
+  return totalExpense;
+};
+
+
+
+
+
 
 //total income calculation
 export const totalIncomeCalculation = (allCheque) => {

@@ -14,6 +14,7 @@ const ExpenseView = (props) => {
       <ExpensesView
         expenseList={sortExpenseByDate}
         redux_propertyData={props.redux_propertyData.property}
+        redux_fmc={props.redux_fmc}
       />
     </div>
   );
@@ -21,6 +22,7 @@ const ExpenseView = (props) => {
 const mapStateToProps = (state) => ({
   redux_expenseData: state.expense,
   redux_propertyData: state.property,
+  redux_fmc: state.fmc.fmc
 });
 
 const mapDispatchToProps = (dispatch) => ({});

@@ -206,9 +206,9 @@ const MaintananceTicket = (props) => {
                             (property) => {
                               return {
                                 name:
-                                  property?.property_type +
+                                  (property?.property_name || '') +
                                   "-" +
-                                  'PU No-' + property?.unitNo,
+                                  ('PU No-' + property?.unitNo),
 
                                 id: property._id,
                               };

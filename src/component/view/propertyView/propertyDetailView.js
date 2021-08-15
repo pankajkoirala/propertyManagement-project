@@ -97,6 +97,7 @@ let PropertyDetailViewComponent = (props) => {
                     <div className="d-flex justify-content-between mr-4">
                       <div style={{ left: "0px" }}>
                         <div className="font-weight-bold my-2">Property ID</div>
+                        <div className="font-weight-bold my-2">Property Name</div>
                         <div className="font-weight-bold my-2">
                           Property Type
                         </div>
@@ -108,6 +109,9 @@ let PropertyDetailViewComponent = (props) => {
                       <div>
                         <div className="font-weight-bold my-2">
                           {arg.referenceNO || '-'}
+                        </div>
+                        <div className="font-weight-bold my-2">
+                          {arg.property_name || '-'}
                         </div>
                         <div className="font-weight-bold my-2">{arg.area || '-'}</div>
                         <div className="font-weight-bold my-2">
