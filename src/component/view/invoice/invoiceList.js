@@ -44,11 +44,14 @@ let InvoiceListComponent = (props) => {
                 <th>Property</th>
                 <th>Cheque No</th>
                 <th>Invoice Photo</th>
+                <th>Download</th>
                 {/* <th> edit</th> */}
                 <th>Delete</th>
               </tr>
             </thead>
             {invoiceList.map((arg, index) => {
+              console.log("🚀 ~ file: invoiceList.js ~ line 52 ~ {invoiceList.map ~ arg", arg.invoicePhoto)
+
               return (
                 <tbody key={index}>
                   <tr>
@@ -59,10 +62,9 @@ let InvoiceListComponent = (props) => {
                     <td>{arg.propertyId}</td>
                     <td>{arg.chequeNumber}</td>
                     <td>
-                      <a target={arg?.invoicePhoto} href={arg?.invoicePhoto}>
-                        Download
-                      </a>{" "}
+                      <img style={{ height: "100px", width: '100px' }} src={arg?.invoicePhoto} alt="" />
                     </td>
+
 
                     {/* <td>
                     <Link to={`/invoice/${arg._id}`}>
