@@ -41,7 +41,7 @@ const FMCDisplay = (props) => {
             <thead>
               <tr>
                 <th>SN</th>
-                <th>Date</th>
+                <th>Entry Date</th>
                 <th>Property</th>
                 <th>Management Company</th>
                 <th>Quarter</th>
@@ -54,7 +54,7 @@ const FMCDisplay = (props) => {
                 <tbody key={index}>
                   <tr>
                     <td>{index + 1}</td>
-                    <td>{moment(arg?.date).format("YYYY-MM-DD")}</td>
+                    <td>{moment(arg?.entry_date).format("YYYY-MM-DD")}</td>
                     <td>{arg?.property?.property_type +
                       "/" +
                       arg.property?.unitNo}</td>

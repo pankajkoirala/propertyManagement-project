@@ -200,7 +200,7 @@ const MaintananceTicket = (props) => {
                           setFieldValue={setFieldValue}
                           editSelectedName={
                             props?.maintananceTicket?.MaintanancePropertyID
-                              ?.referenceNO
+                              ?.property_name
                           }
                           options={props?.Redux_propertyData?.map(
                             (property) => {

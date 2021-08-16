@@ -42,7 +42,7 @@ const ChequeView = (props) => {
     );
   };
 
-  console.log("🚀 ~ file: cheque.js ~ line 14 ~ ChequeView ~ updatedOptions", updatedOptions)
+
 
   //filter cheque by cheque status
   let FilterByChequeStatus = (status) => {
@@ -85,6 +85,8 @@ const ChequeView = (props) => {
 
     win.print(); // PRINT THE CONTENTS.
   }
+
+
 
   return (
     <>
@@ -241,6 +243,7 @@ const ChequeView = (props) => {
                 <th>SN</th>
                 <th>lease no</th>
                 <th>Property Name</th>
+                <th>Unit No</th>
                 <th>Cheque no</th>
                 <th>Cheque issue Date</th>
                 <th>Cheque amount</th>
@@ -249,16 +252,19 @@ const ChequeView = (props) => {
                 <th>View detail</th>
               </tr>
             </thead>
-            {filterChequeList.map((arg, index) => {
+            {updatedOptions.map((arg, index) => {
               return (
                 <tbody key={index}>
                   <tr>
                     <td>{index + 1}</td>
                     <td>{arg?.lease_property?.LeaseId}</td>
                     <td>
-                      {arg?.property_id?.property_type +
-                        "/" +
-                        arg?.property_id?.referenceNO}
+                      {arg?.property_id?.property_name
+                      }
+                    </td>
+                    <td>
+                      {arg?.property_id?.unitNo
+                      }
                     </td>
                     <td>{arg.cheque_number || '-'}</td>
                     <td>
@@ -299,3 +305,11 @@ const ChequeView = (props) => {
 };
 
 export default ChequeView;
+
+
+// useEffect(() => {
+//   const w = props?.sortChequeByDate.filter((arg) => arg.property_id.property_name.toLowerCase().includes(e.toLowerCase()) ||
+//     arg.property_id.unitNo.includes(e) ||
+//     arg.cheque_status.toLowerCase().includes(e.toLowerCase()))
+//   setUpdatedOptions(w)
+// }, [e, props.sortChequeByDate])

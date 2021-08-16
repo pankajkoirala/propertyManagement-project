@@ -61,7 +61,7 @@ let ChequeDetailViewComponent = (props) => {
                         </div>
                         <div className="font-weight-bold my-1">Vat Amount</div>
                         <div className="font-weight-bold my-1">
-                          Miscelleneous Amount
+                          Security Deposite Amount
                         </div>
                         <div className="font-weight-bold my-1">
                           Cheque Issue Date
@@ -105,7 +105,7 @@ let ChequeDetailViewComponent = (props) => {
                           AED. {arg.vat_amount}
                         </div>
                         <div className="font-weight-bold my-1">
-                          AED. {arg.miscellaneous_amount}
+                          AED. {arg.securityDeposite}
                         </div>
                         <div className="font-weight-bold my-1">
                           {moment(arg.cheque_issueDate).format("YYYY-MM-DD")}
@@ -144,7 +144,7 @@ let ChequeDetailViewComponent = (props) => {
                         </div>
                         <div className="font-weight-bold my-1">Vat Amount</div>
                         <div className="font-weight-bold my-1">
-                          Miscelleneous Amount
+                          Security Deposite Amount
                         </div>
 
 
@@ -179,7 +179,7 @@ let ChequeDetailViewComponent = (props) => {
                           AED. {arg.vat_amount}
                         </div>
                         <div className="font-weight-bold my-1">
-                          AED. {arg.miscellaneous_amount}
+                          AED. {arg.securityDeposite}
                         </div>
                         <div className="font-weight-bold my-1">
                           {arg.securityDeposite}

@@ -182,7 +182,7 @@ const LeaseEntry = (props) => {
                   </Label>
                   <RegexConponent
                     setFieldValue={setFieldValue}
-                    editSelectedName={props?.lease?.property?.referenceNO}
+                    editSelectedName={props?.lease?.property?.property_name}
                     options={props.unReserveProperty.map((property) => {
                       console.log('asdadasdsad', property);
                       return {

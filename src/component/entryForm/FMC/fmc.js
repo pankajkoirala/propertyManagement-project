@@ -8,7 +8,6 @@ import { notification } from "../../../shared/notification";
 import RegexConponent from "../../../shared/regexComponent";
 
 const FMC = (props) => {
-  console.log("🚀 ~ file: fmc.js ~ line 11 ~ FMC ~ props", props)
   const [showPopup, setShowPopUp] = useState(false);
   const [loadingState, setLoadingState] = useState(false);
   const [allFile, setAllFile] = useState(
@@ -20,10 +19,13 @@ const FMC = (props) => {
     management_Companies: props?.selectedFMC?.management_Companies?._id || "",
     totalAmount: props?.selectedFMC?.totalAmount || "",
     quarter: props?.selectedFMC?.quarter || "",
-    date: moment(props?.selectedFMC?.date).format('YYYY-MM-DD') || new Date(),
+    file1: props?.selectedFMC?.file1 || "",
+    file2: props?.selectedFMC?.file2 || "",
+    entry_date: moment(props?.selectedFMC?.entry_date).format('YYYY-MM-DD') || new Date(),
     remark: props?.selectedFMC?.remark || "",
+    fmcInvoice_Date: moment(props?.selectedFMC?.fmcInvoice_Date).format('YYYY-MM-DD') || "",
+
   };
-  console.log("🚀 ~ file: fmc.js ~ line 25 ~ FMC ~ props?.selectedFMC", props?.selectedFMC)
 
   return (
     <div>
@@ -34,7 +36,6 @@ const FMC = (props) => {
             onSubmit={(values) => {
               setLoadingState(true);
 
-              console.log("🚀 ~ file: fmc.js ~ line 53 ~ OwnerEntry ~ values", values)
 
               props?.selectedFMC
                 ? props.fmcUpdate(values, props?.selectedFMC?._id)
@@ -95,9 +96,40 @@ const FMC = (props) => {
                           <option value="">Select One </option>
                           <option value="First quarter">First quarter</option>
                           <option value="Second quarter">Second quarter</option>
-                          <option value="Third  quarter">Third quarter</option>
+                          <option value="Third quarter">Third quarter</option>
                           <option value="Fourth quarter">Fourth quarter</option>
                         </Input>
+                      </div>
+                      <div className="mt-2 col-md-4">
+                        <Label for="exampleName">
+                          Date
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              marginTop: "20px",
+                              color: "red",
+                            }}
+                          >
+                            *
+                          </span>
+                        </Label>
+                        {touched.fmcInvoice_Date && errors.fmcInvoice_Date && (
+                          <span
+                            className="text-danger col-md-12 text-left mb-2"
+                            style={{ fontSize: 12 }}
+                          >
+                            {errors.fmcInvoice_Date}
+                          </span>
+                        )}
+                        <Input
+                          type="date"
+                          value={values.fmcInvoice_Date}
+                          name="fmcInvoice_Date"
+                          placeholder=""
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+
                       </div>
                       <div className="mt-2 col-md-4">
                         <Label for="exampleSelect">
@@ -115,7 +147,7 @@ const FMC = (props) => {
                         <RegexConponent
                           setFieldValue={setFieldValue}
                           editSelectedName={
-                            props?.selectedFMC ? (props?.selectedFMC?.property?.property_type +
+                            props?.selectedFMC ? (props?.selectedFMC?.property?.property_name +
                               "-" +
                               'PU No-' + props?.selectedFMC?.property?.unitNo) : ""
                           }
@@ -414,6 +446,165 @@ const FMC = (props) => {
                   ) : (
                     ""
                   )} */}
+                  <div className="col-5 text-left mb-2 mt-4">
+                    <Label className="float-left">
+                      Invoice
+                      <span
+                        style={{
+                          fontSize: "20px",
+                          marginTop: "20px",
+                          color: "red",
+                        }}
+                      >
+                        *
+                      </span>
+                      {touched.file1 && errors.file1 && (
+                        <span
+                          className="text-danger col-md-12 text-left mb-2"
+                          style={{ fontSize: 12 }}
+                        >
+                          {errors.file1}
+                        </span>
+                      )}
+                    </Label>
+                    <Input
+                      type="file"
+                      name="file1"
+                      accept="image/*"
+                      onChange={(event) => {
+                        if (event.currentTarget.files[0]) {
+                          let rn = event.currentTarget.files[0].name;
+                          let bn = rn?.split(".");
+                          bn = bn[bn?.length - 1];
+                          if (
+                            bn === "jpg" ||
+                            bn === "jpeg" ||
+                            bn === "png" ||
+                            bn === "JPG" ||
+                            bn === "JPEG" ||
+                            bn === "PNG"
+                          ) {
+                            if (
+                              event.currentTarget.files[0].size > 1048576
+                            ) {
+                              notification(
+                                "File Size Shouldn't exceed 1.5 MB",
+                                "ERROR"
+                              );
+                            } else {
+                              setFieldValue(
+                                "file1",
+                                event.currentTarget.files[0]
+                              );
+                            }
+                          } else {
+                            notification(
+                              "Please Select JPG, JPEG or PNG Format Only",
+                              "ERROR"
+                            );
+                          }
+                        } else {
+                          notification("Please Select image ", "ERROR");
+                        }
+                      }}
+                    />
+
+                    {touched.file1 &&
+                      values.file1 && (
+                        <img
+                          src={
+                            typeof values.file1 === "string"
+                              ? values.file1
+                              : URL.createObjectURL(
+                                values.file1
+                              )
+                          }
+                          alt="span no file"
+                          height="20"
+                        />
+                      )}
+                    {typeof values.file1 === 'string' && props?.selectedFMC?.file1 && <img style={{ height: '100px', width: '100px' }} alt='' src={props?.selectedFMC?.file1} />}
+
+                  </div>
+                  <div className="col-5 text-left mb-2 mt-4">
+                    <Label className="float-left">
+                      Invoice
+                      <span
+                        style={{
+                          fontSize: "20px",
+                          marginTop: "20px",
+                          color: "red",
+                        }}
+                      >
+                        *
+                      </span>
+                      {touched.file2 && errors.file2 && (
+                        <span
+                          className="text-danger col-md-12 text-left mb-2"
+                          style={{ fontSize: 12 }}
+                        >
+                          {errors.file2}
+                        </span>
+                      )}
+                    </Label>
+                    <Input
+                      type="file"
+                      name="file2"
+                      accept="image/*"
+                      onChange={(event) => {
+                        if (event.currentTarget.files[0]) {
+                          let rn = event.currentTarget.files[0].name;
+                          let bn = rn?.split(".");
+                          bn = bn[bn?.length - 1];
+                          if (
+                            bn === "jpg" ||
+                            bn === "jpeg" ||
+                            bn === "png" ||
+                            bn === "JPG" ||
+                            bn === "JPEG" ||
+                            bn === "PNG"
+                          ) {
+                            if (
+                              event.currentTarget.files[0].size > 1048576
+                            ) {
+                              notification(
+                                "File Size Shouldn't exceed 1.5 MB",
+                                "ERROR"
+                              );
+                            } else {
+                              setFieldValue(
+                                "file2",
+                                event.currentTarget.files[0]
+                              );
+                            }
+                          } else {
+                            notification(
+                              "Please Select JPG, JPEG or PNG Format Only",
+                              "ERROR"
+                            );
+                          }
+                        } else {
+                          notification("Please Select image ", "ERROR");
+                        }
+                      }}
+                    />
+
+                    {touched.file2 &&
+                      values.file2 && (
+                        <img
+                          src={
+                            typeof values.file2 === "string"
+                              ? values.file2
+                              : URL.createObjectURL(
+                                values.file2
+                              )
+                          }
+                          alt="span no file"
+                          height="20"
+                        />
+                      )}
+                    {typeof values.file2 === 'string' && props?.selectedFMC?.file2 && <img style={{ height: '100px', width: '100px' }} alt='' src={props?.selectedFMC?.file2} />}
+                  </div>
                   <button
                     className="btn btn-primary col-sm-2 mt-5"
                     type="button"

@@ -24,7 +24,9 @@ const PropertyView = (props) => {
               return {
                 search1: arg.property_community,
                 search2: arg.property_type,
-                search3: arg.referenceNO,
+                search3: arg.unitNo,
+                search4: arg.property_name,
+
                 ID: arg._id,
               };
             })}

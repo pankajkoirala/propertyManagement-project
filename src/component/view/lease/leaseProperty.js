@@ -24,8 +24,9 @@ const LeaseDisplay = (props) => {
             return {
               search1: arg?.tenants?.tenant_Name,
               search2:
-                arg?.property?.property_type + "/" + arg.property?.referenceNO,
+                arg?.property?.property_name,
               search3: arg?.LeaseId,
+              search4: arg?.property?.unitNo,
               ID: arg._id,
             };
           })}
@@ -38,12 +39,14 @@ const LeaseDisplay = (props) => {
             <thead>
               <tr>
                 <th>SN</th>
-                <th> lease ID</th>
-                <th>tenent name</th>
-                <th>Lease term</th>
-                <th>commerce date</th>
-                <th>expire date</th>
-                <th> lease Property</th>
+                <th> Lease ID</th>
+                <th>Tenent Name</th>
+                <th>Lease Term</th>
+                <th>Eommerce Date</th>
+                <th>Expire Date</th>
+                <th>Property Type </th>
+                <th> Property Name</th>
+                <th> Unit No </th>
                 <th> Detail</th>
               </tr>
             </thead>
@@ -52,15 +55,22 @@ const LeaseDisplay = (props) => {
                 <tbody key={index}>
                   <tr>
                     <td>{index + 1}</td>
-                    <td>{arg.LeaseId}</td>
-                    <td>{arg?.tenants?.tenant_Name}</td>
-                    <td>{arg.lease_Term}</td>
+                    <td>{arg.LeaseId || '-'}</td>
+                    <td>{arg?.tenants?.tenant_Name || '-'}</td>
+                    <td>{arg.lease_Term || '-'}</td>
                     <td>{moment(arg?.commenceDate).format("YYYY-MM-DD")}</td>
                     <td>{moment(arg?.expirationDate).format("YYYY-MM-DD")}</td>
                     <td>
-                      {arg?.property?.property_type +
-                        "/" +
-                        arg.property?.referenceNO}
+                      {arg?.property?.property_type || '-'
+                      }
+                    </td>
+                    <td>
+                      {arg?.property?.property_name || '-'
+                      }
+                    </td>
+                    <td>
+                      {arg?.property?.unitNo || '-'
+                      }
                     </td>
 
                     <td>

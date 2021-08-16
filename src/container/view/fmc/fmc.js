@@ -30,9 +30,18 @@ let FMCContainer = (props) => {
   };
 
   const fmcUpdate = (data, id) => {
+    const formData = new FormData();
+    formData.append("property", data.property);
+    formData.append("management_Companies", data.management_Companies);
+    formData.append("totalAmount", data.totalAmount);
+    formData.append("quarter", data.quarter);
+    formData.append("entry_date", data.entry_date);
+    formData.append("remark", data.remark);
+    formData.append("file1", data.file1);
+    formData.append("file2", data.file2);
+    formData.append("fmcInvoice_Date", data.fmcInvoice_Date);
 
-
-    Axios.put(base_URL + `/api/fmc/${id}`, data, {
+    Axios.put(base_URL + `/api/fmc/${id}`, formData, {
       headers: {
         [token_key]: getLocalStorage(token_key),
       },

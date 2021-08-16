@@ -370,7 +370,7 @@ const NavbarPage = () => {
 
                 <Button variant="success" className="button-size">
                   <VisibilityIcon className="nav-icons" />
-                  Cheque View
+                  PDC Cheque
                 </Button>
               </Link>
               <br />

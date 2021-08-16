@@ -121,7 +121,70 @@ const ChequeEntry = (props) => {
 
                       {values.Transaction_Type === "Cheque" && (
                         <>
+                          <div className="mt-4 col-md-3">
+                            <Label for="exampleName">
+                              Cheque Date
+                              <span
+                                style={{
+                                  fontSize: "20px",
+                                  marginTop: "20px",
+                                  color: "red",
+                                }}
+                              >
+                                *
+                              </span>
+                            </Label>
+                            <Input
+                              type="date"
+                              value={moment(values.cheque_recivedDate).format(
+                                "YYYY-MM-DD"
+                              )}
+                              name="cheque_recivedDate"
+                              placeholder="Enter Recived Date"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.cheque_recivedDate &&
+                              errors.cheque_recivedDate && (
+                                <span
+                                  className="text-danger col-md-12 text-left mb-2"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {errors.cheque_recivedDate}
+                                </span>
+                              )}
+                          </div>
 
+                          <div className="mt-4 col-md-3">
+                            <Label for="exampleName">
+                              Cheque Number
+                              <span
+                                style={{
+                                  fontSize: "20px",
+                                  marginTop: "20px",
+                                  color: "red",
+                                }}
+                              >
+                                *
+                              </span>
+                            </Label>
+                            <Input
+                              type="text"
+                              value={values.cheque_number}
+                              name="cheque_number"
+                              placeholder="Cheque Number"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {touched.cheque_number && errors.cheque_number && (
+                              <span
+                                className="text-danger col-md-12 text-left mb-2"
+                                style={{ fontSize: 12 }}
+                              >
+                                {errors.cheque_number}
+                              </span>
+                            )}
+                          </div>
 
                           <div className="mt-4 col-md-3">
                             <Label for="exampleName">
@@ -153,69 +216,6 @@ const ChequeEntry = (props) => {
                                   style={{ fontSize: 12 }}
                                 >
                                   {errors.cheque_depositeDate}
-                                </span>
-                              )}
-                          </div>
-                          <div className="mt-4 col-md-3">
-                            <Label for="exampleName">
-                              Cheque Number
-                              <span
-                                style={{
-                                  fontSize: "20px",
-                                  marginTop: "20px",
-                                  color: "red",
-                                }}
-                              >
-                                *
-                              </span>
-                            </Label>
-                            <Input
-                              type="text"
-                              value={values.cheque_number}
-                              name="cheque_number"
-                              placeholder="Cheque Number"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched.cheque_number && errors.cheque_number && (
-                              <span
-                                className="text-danger col-md-12 text-left mb-2"
-                                style={{ fontSize: 12 }}
-                              >
-                                {errors.cheque_number}
-                              </span>
-                            )}
-                          </div>
-                          <div className="mt-4 col-md-3">
-                            <Label for="exampleName">
-                              Cheque Date
-                              <span
-                                style={{
-                                  fontSize: "20px",
-                                  marginTop: "20px",
-                                  color: "red",
-                                }}
-                              >
-                                *
-                              </span>
-                            </Label>
-                            <Input
-                              type="date"
-                              value={moment(values.cheque_recivedDate).format(
-                                "YYYY-MM-DD"
-                              )}
-                              name="cheque_recivedDate"
-                              placeholder="Enter Recived Date"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                            />
-                            {touched.cheque_recivedDate &&
-                              errors.cheque_recivedDate && (
-                                <span
-                                  className="text-danger col-md-12 text-left mb-2"
-                                  style={{ fontSize: 12 }}
-                                >
-                                  {errors.cheque_recivedDate}
                                 </span>
                               )}
                           </div>
@@ -618,14 +618,13 @@ const ChequeEntry = (props) => {
                         <RegexComponent
                           {...props}
                           editSelectedName={
-                            props?.Cheque?.lease_property?.LeaseId
+                            props?.Cheque?.property_id?.property_name
                           }
                           setFieldValue={setFieldValue}
                           options={props?.Redux_leaseData?.map((lease) => {
-                            console.log("🚀 ~ file: chequeEntryForm.js ~ line 641 ~ options={props?.Redux_leaseData?.map ~ lease", lease)
                             return {
                               name:
-                                lease.property?.property_type +
+                                lease.property?.property_name +
                                 "-" +
                                 'PU No-' + lease.property?.unitNo,
                               //  +
@@ -686,14 +685,13 @@ const ChequeEntry = (props) => {
                         <RegexComponent
                           {...props}
                           editSelectedName={
-                            props?.Cheque?.lease_property?.LeaseId
+                            props?.Cheque?.property_id?.property_name
                           }
                           setFieldValue={setFieldValue}
                           options={props?.Redux_leaseData?.map((lease) => {
-                            console.log("🚀 ~ file: chequeEntryForm.js ~ line 641 ~ options={props?.Redux_leaseData?.map ~ lease", lease)
                             return {
                               name:
-                                lease.property?.property_type +
+                                lease.property?.property_name +
                                 "-" +
                                 'PU No-' + lease.property?.unitNo,
                               //  +

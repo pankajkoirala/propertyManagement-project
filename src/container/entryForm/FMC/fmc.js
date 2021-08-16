@@ -8,28 +8,27 @@ import { connect } from "react-redux";
 import { getLocalStorage } from "./../../../const/tokenStorage";
 import { token_key } from "./../../../const/base_URL";
 
-let Invoice = (props) => {
-
-
-
+let FMC = (props) => {
   // invoice send
   const fmc = (data) => {
-    console.log("🚀 ~ file: fmc.js ~ line 17 ~ fmc ~ data", data)
-    // const formData = new FormData();
-    // formData.append("property", data.property);
-    // formData.append("management_Companies", data.management_Companies);
-    // formData.append("totalAmount", data.totalAmount);
-    // formData.append("quarter", data.quarter);
-    // formData.append("date", data.date);
-    // formData.append("remark", data.remark);
+    const formData = new FormData();
+    formData.append("property", data.property);
+    formData.append("management_Companies", data.management_Companies);
+    formData.append("totalAmount", data.totalAmount);
+    formData.append("quarter", data.quarter);
+    formData.append("entry_date", data.entry_date);
+    formData.append("remark", data.remark);
+    formData.append("file1", data.file1);
+    formData.append("file2", data.file2);
+    formData.append("fmcInvoice_Date", data.fmcInvoice_Date);
 
-    Axios.post(base_URL + "/api/fmc", data, {
+    Axios.post(base_URL + "/api/fmc", formData, {
       headers: {
         [token_key]: getLocalStorage(token_key),
       },
     })
       .then((res) => {
-        notification("Updated successfully", "SUCCESS");
+        notification("Created successfully", "SUCCESS");
         reloadFunction();
       })
       .catch((err) => {
@@ -59,4 +58,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Invoice);
+export default connect(mapStateToProps, mapDispatchToProps)(FMC);
