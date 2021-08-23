@@ -16,7 +16,6 @@ let PropertyDetailViewComponent = (props) => {
       <div style={{ margin: "20px" }}>
         {showEditForm === false ? (
           props.selectedone.map((arg, index) => {
-            console.log("🚀 ~ file: propertyDetailView.js ~ line 19 ~ props.selectedone.map ~ arg", arg)
 
             return (
               <div key={index}>

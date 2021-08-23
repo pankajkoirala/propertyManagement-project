@@ -18,7 +18,6 @@ let ChequeDetailViewComponent = (props) => {
       {printInvoice === false ? (
         showEditForm === false ? (
           props.selectedCheque.map((arg, index) => {
-            console.log("🚀 ~ file: chequeViewDetail.js ~ line 21 ~ props.selectedCheque.map ~ arg", arg)
             return (
               <div key={index} className="property-card">
                 <h5 className="text-center my-4"> {arg.Transaction_Type} Information</h5>

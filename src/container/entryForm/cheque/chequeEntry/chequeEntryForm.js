@@ -10,7 +10,6 @@ import { token_key } from "./../../../../const/base_URL";
 
 const ChequeEntryContainer = (props) => {
   const ChequeeData = (data) => {
-    console.log("🚀 ~ file: chequeEntryForm.js ~ line 13 ~ ChequeeData ~ data", data)
     const formData = new FormData();
     if (data.Transaction_Type === 'Cash') {
       formData.append("Transaction_Type", data.Transaction_Type);

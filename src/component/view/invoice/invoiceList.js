@@ -50,7 +50,6 @@ let InvoiceListComponent = (props) => {
               </tr>
             </thead>
             {invoiceList.map((arg, index) => {
-              console.log("🚀 ~ file: invoiceList.js ~ line 52 ~ {invoiceList.map ~ arg", arg.invoicePhoto)
 
               return (
                 <tbody key={index}>

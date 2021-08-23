@@ -8,6 +8,8 @@ import ReactToPdf from "react-to-pdf";
 import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import "./invoice.css";
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
+
 let InvoiceComponent = (props) => {
   const [showPopup, setShowPopUp] = useState(false);
   const [loadingState, setLoadingState] = useState(false);
@@ -108,7 +110,7 @@ let InvoiceComponent = (props) => {
         img.src = dataUrl;
         var a = document.createElement("a"); //Create <a>
         a.href = img.src//Image Base64 Goes here
-        console.log("🚀 ~ file: invoice.js ~ line 117 ~ a.href", a.href)
+        // console.log("🚀 ~ file: invoice.js ~ line 117 ~ a.href", a.href)
         a.download = "Image.png"; //File name Here
         a.click(); //Downloaded file
       })
@@ -125,7 +127,7 @@ let InvoiceComponent = (props) => {
     img.src = dataUrl;
     var a = document.createElement("a"); //Create <a>
     a.href = img.src//Image Base64 Goes here
-    console.log("🚀 ~ file: invoice.js ~ line 117 ~ a.href", a.href)
+    // console.log("🚀 ~ file: invoice.js ~ line 117 ~ a.href", a.href)
     // a.download = "Image.png"; //File name Here
     // a.click(); //Downloaded file
     //----------------------------------------------------
@@ -143,6 +145,7 @@ let InvoiceComponent = (props) => {
     setLoadingState(true);
 
   }
+  const oldInvoice = props?.redux_InvoiceData?.some((arg) => arg.chequeNumber === props?.Cheque?.cheque_number)
   return (
     <div id="my-node">
 
@@ -168,26 +171,26 @@ let InvoiceComponent = (props) => {
                 isSubmitting,
               }) => (
                 <Form className="">
+                  {oldInvoice === false ? <button type='button' onClick={() => imageURL()}>save</button> : <b style={{ color: 'green' }}>Saved</b>}
+
+                  <CloudDownloadIcon className='mr-4 ml-4' onClick={(e) => imageDown(e)} />
                   {/* .................................. */}
                   {Invoices.map((inv, index) => {
                     return (
                       <ReactToPdf options={options}>
                         {({ toPdf, targetRef }) => (
                           <div
+                            key={index}
                             style={{
                               marginTop: "30px",
                               height: 700,
-                              width: 1150,
+                              width: 1250,
+                              paddingLeft: '100px',
+                              paddingTop: '25px'
                             }}
                             ref={targetRef}
                           >
-                            <Link
-                              style={{ float: "right", marginLeft: "10px" }}
-                              type="button"
-                              onClick={(e) => imageDown(e)}
-                            >
-                              Download
-                            </Link>
+
 
                             <div
                               style={{
@@ -200,20 +203,22 @@ let InvoiceComponent = (props) => {
 
                               <div>
                                 To,<br />
-                                {props?.tenant?.tenant_Name} <br />
+                                {props?.tenant?.tenant_Name || props?.tenant?.tenant_companyName} <br />
                                 {props?.tenant?.area
                                 },<br />
                                 DIFC,<br />
                                 Dubai,U.A.E <br />
                                 TRN: 1100250024500003
                               </div>
-                              <table className='col-sm-12 border-dark border'>
+                              <table className='col-sm-10 border-dark border'>
                                 <thead className='text-center'>
-                                  <th className='border-right border-dark'>SN</th>
-                                  <th className='border-right border-left border-dark'>Description of Goods/services</th>
-                                  <th className='border-right border-left border-dark'>Unit/Qty</th>
-                                  <th className='border-right border-left border-dark'>Price Per Unit</th>
-                                  <th className='border-left border-dark'>Amount (AED)</th>
+                                  <tr>
+                                    <th className='border-right border-dark'>SN</th>
+                                    <th className='border-right border-left border-dark'>Description of Goods/services</th>
+                                    <th className='border-right border-left border-dark'>Unit/Qty</th>
+                                    <th className='border-right border-left border-dark'>Price Per Unit</th>
+                                    <th className='border-left border-dark'>Amount (AED)</th>
+                                  </tr>
                                 </thead>
                                 <tbody className='border-dark border'>
                                   <tr className='' >
@@ -268,55 +273,7 @@ let InvoiceComponent = (props) => {
                       </ReactToPdf>
                     );
                   })}
-                  <div style={{ marginTop: "100px" }} className="row">
-                    <div className="mt-4 col-5">
-                      <Label className="font-weight-bold">Invoice No</Label>
-                      <Input
-                        type="text"
-                        name="InvoiceId"
-                        value={values.InvoiceId}
-                        placeholder="Expense Heading"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched.InvoiceId && errors.InvoiceId && (
-                        <span
-                          className="text-danger col-md-12 text-left mb-2"
-                          style={{ fontSize: 12 }}
-                        >
-                          {errors.InvoiceId}
-                        </span>
-                      )}
-                    </div>
-                    <div
-                      style={{ margin: "10px" }}
-                      className=" text-left col-5 "
-                    >
-                      <Label className="float-left font-weight-bold">
-                        Upload Scan Copy Of Invoice
-                      </Label>
-                      <Input
-                        style={{ padding: "20px" }}
-                        type="file"
-                        name="invoicePhoto"
-                        accept="image/*"
-                        onChange={(event) => {
-                          setFieldValue(
-                            "invoicePhoto",
-                            event.currentTarget.files[0]
-                          );
-                        }}
-                      />
 
-                      {touched.invoicePhoto && values.invoicePhoto && (
-                        <img
-                          src={URL.createObjectURL(values.invoicePhoto)}
-                          alt="no file"
-                          height="20"
-                        />
-                      )}
-                    </div>
-                  </div>
 
                   <button
                     type="button"

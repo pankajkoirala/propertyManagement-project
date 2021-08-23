@@ -184,7 +184,6 @@ const LeaseEntry = (props) => {
                     setFieldValue={setFieldValue}
                     editSelectedName={props?.lease?.property?.property_name}
                     options={props.unReserveProperty.map((property) => {
-                      console.log('asdadasdsad', property);
                       return {
                         name:
                           (property?.property_name || '') +

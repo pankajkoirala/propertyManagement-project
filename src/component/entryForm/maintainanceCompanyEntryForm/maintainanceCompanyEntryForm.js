@@ -47,7 +47,7 @@ const MaintainanceCompanyComponent = (props) => {
           <Formik
             initialValues={initialvalue}
             onSubmit={(values) => {
-              console.log(values);
+              // console.log(values);
               setLoadingState(true);
               typeof allFile[0].file === "string"
                 ? (values.files_list = JSON.stringify(allFile))

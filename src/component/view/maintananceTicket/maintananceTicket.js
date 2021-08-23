@@ -51,7 +51,6 @@ const MaintananceTicketView = (props) => {
               </tr>
             </thead>
             {maintananceTicketList.map((arg, index) => {
-              console.log("🚀 ~ file: maintananceTicket.js ~ line 54 ~ {maintananceTicketList.map ~ arg", arg)
               return (
                 <tbody key={index}>
                   <tr>
